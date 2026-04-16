@@ -1,0 +1,3094 @@
+task_name,problem_type,instruction,instance,solution,obj,instance_variant,solution_variant,context_index,input_format,input_index_base
+GCP,GCP,"There’s a little puzzle in the club: give every student a single badge color, but if two students teamed up on a project they must have different colors. The aim is to keep the palette tiny — the best solution is the one with the smallest number of distinct badge colors, which you can measure by counting how many different colors appear — and no student gets left without a badge or more than one. The full list of who worked together is shown below.
+
+{
+  ""total_students"": 12,
+  ""total_collaborations"": 34,
+  ""edges"": [
+    {
+      ""student_a_id"": 9,
+      ""student_b_id"": 10
+    },
+    {
+      ""student_a_id"": 9,
+      ""student_b_id"": 11
+    },
+    {
+      ""student_a_id"": 10,
+      ""student_b_id"": 11
+    },
+    {
+      ""student_a_id"": 11,
+      ""student_b_id"": 5
+    },
+    {
+      ""student_a_id"": 11,
+      ""student_b_id"": 12
+    },
+    {
+      ""student_a_id"": 5,
+      ""student_b_id"": 1
+    },
+    {
+      ""student_a_id"": 5,
+      ""student_b_id"": 2
+    },
+    {
+      ""student_a_id"": 5,
+      ""student_b_id"": 3
+    },
+    {
+      ""student_a_id"": 5,
+      ""student_b_id"": 4
+    },
+    {
+      ""student_a_id"": 5,
+      ""student_b_id"": 6
+    },
+    {
+      ""student_a_id"": 5,
+      ""student_b_id"": 7
+    },
+    {
+      ""student_a_id"": 5,
+      ""student_b_id"": 8
+    },
+    {
+      ""student_a_id"": 5,
+      ""student_b_id"": 12
+    },
+    {
+      ""student_a_id"": 4,
+      ""student_b_id"": 1
+    },
+    {
+      ""student_a_id"": 4,
+      ""student_b_id"": 2
+    },
+    {
+      ""student_a_id"": 4,
+      ""student_b_id"": 3
+    },
+    {
+      ""student_a_id"": 4,
+      ""student_b_id"": 6
+    },
+    {
+      ""student_a_id"": 4,
+      ""student_b_id"": 7
+    },
+    {
+      ""student_a_id"": 4,
+      ""student_b_id"": 8
+    },
+    {
+      ""student_a_id"": 7,
+      ""student_b_id"": 1
+    },
+    {
+      ""student_a_id"": 7,
+      ""student_b_id"": 2
+    },
+    {
+      ""student_a_id"": 7,
+      ""student_b_id"": 3
+    },
+    {
+      ""student_a_id"": 7,
+      ""student_b_id"": 6
+    },
+    {
+      ""student_a_id"": 7,
+      ""student_b_id"": 8
+    },
+    {
+      ""student_a_id"": 8,
+      ""student_b_id"": 1
+    },
+    {
+      ""student_a_id"": 8,
+      ""student_b_id"": 2
+    },
+    {
+      ""student_a_id"": 8,
+      ""student_b_id"": 3
+    },
+    {
+      ""student_a_id"": 8,
+      ""student_b_id"": 6
+    },
+    {
+      ""student_a_id"": 3,
+      ""student_b_id"": 1
+    },
+    {
+      ""student_a_id"": 3,
+      ""student_b_id"": 2
+    },
+    {
+      ""student_a_id"": 3,
+      ""student_b_id"": 6
+    },
+    {
+      ""student_a_id"": 6,
+      ""student_b_id"": 1
+    },
+    {
+      ""student_a_id"": 6,
+      ""student_b_id"": 2
+    },
+    {
+      ""student_a_id"": 1,
+      ""student_b_id"": 2
+    }
+  ]
+}
+
+If you want to hand me the solution in a tidy, machine-friendly way, just use a JSON object with this shape — nothing fancy, just a list of groups that share the same badge color:
+
+{
+  ""solution"": [
+    [""student_id"", ""student_id"", ...],
+    [""student_id"", ""student_id"", ...],
+    ...
+  ]
+}
+
+Think of ""solution"" as a list of color buckets: each inner array is all the students who get the same badge color. The placeholder ""student_id"" stands in for whatever exact identifiers your instance uses. This JSON is only a sketch of the shape I expect, not the final answer — fill it with the real identifiers from the instance.
+
+Please use the identifiers exactly as they appear in the input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”"".","{'problem_type': 'GCP', 'num_nodes': 12, 'num_edges': 34, 'edges': [{'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 10, 'v': 11}, {'u': 11, 'v': 5}, {'u': 11, 'v': 12}, {'u': 5, 'v': 1}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 12}, {'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 7, 'v': 1}, {'u': 7, 'v': 2}, {'u': 7, 'v': 3}, {'u': 7, 'v': 6}, {'u': 7, 'v': 8}, {'u': 8, 'v': 1}, {'u': 8, 'v': 2}, {'u': 8, 'v': 3}, {'u': 8, 'v': 6}, {'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 3, 'v': 6}, {'u': 6, 'v': 1}, {'u': 6, 'v': 2}, {'u': 1, 'v': 2}], 'source_file': 'coPapersDBLP.mtx', 'density': 0.5151515151515151, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0000.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0000.png', 'edge_connectivity': 2}","[[7, 11], [5], [3, 10], [4, 12], [6], [1], [8], [2, 9]]",8.0,"{'num_nodes': 12, 'num_edges': 34, 'edges': [{'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 10, 'v': 11}, {'u': 11, 'v': 5}, {'u': 11, 'v': 12}, {'u': 5, 'v': 1}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 12}, {'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 7, 'v': 1}, {'u': 7, 'v': 2}, {'u': 7, 'v': 3}, {'u': 7, 'v': 6}, {'u': 7, 'v': 8}, {'u': 8, 'v': 1}, {'u': 8, 'v': 2}, {'u': 8, 'v': 3}, {'u': 8, 'v': 6}, {'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 3, 'v': 6}, {'u': 6, 'v': 1}, {'u': 6, 'v': 2}, {'u': 1, 'v': 2}]}","[[7, 11], [5], [3, 10], [4, 12], [6], [1], [8], [2, 9]]",1,json,1
+GCP,GCP,"Many people in the cul-de-sac rely on simple handheld radios, and it’s become a little art to assign channels so conversations don’t collide. The plan is to pick a channel for each radio, ensure any pair that can cause interference are on different channels, and try to minimize how many different channel numbers the whole street ends up using — you can determine which plan is better by tallying the unique channels. No device may be skipped and conflicting pairs must not share a channel. The concrete details follow below.
+
+Here are the 30 interfering pairs among the 12 radios:
+Radio 0 must use a different channel than radio 1.
+Radio 0 must use a different channel than radio 2.
+Radio 0 must use a different channel than radio 3.
+Radio 0 must use a different channel than radio 4.
+Radio 0 must use a different channel than radio 5.
+Radio 1 must use a different channel than radio 2.
+Radio 1 must use a different channel than radio 3.
+Radio 1 must use a different channel than radio 4.
+Radio 1 must use a different channel than radio 5.
+Radio 2 must use a different channel than radio 3.
+Radio 2 must use a different channel than radio 4.
+Radio 2 must use a different channel than radio 5.
+Radio 3 must use a different channel than radio 4.
+Radio 3 must use a different channel than radio 5.
+Radio 3 must use a different channel than radio 6.
+Radio 3 must use a different channel than radio 7.
+Radio 3 must use a different channel than radio 8.
+Radio 3 must use a different channel than radio 9.
+Radio 3 must use a different channel than radio 10.
+Radio 3 must use a different channel than radio 11.
+Radio 4 must use a different channel than radio 5.
+Radio 5 must use a different channel than radio 6.
+Radio 5 must use a different channel than radio 7.
+Radio 5 must use a different channel than radio 8.
+Radio 9 must use a different channel than radio 10.
+Radio 9 must use a different channel than radio 11.
+Radio 10 must use a different channel than radio 11.
+Radio 6 must use a different channel than radio 7.
+Radio 6 must use a different channel than radio 8.
+Radio 7 must use a different channel than radio 8.
+These 30 constraints apply to all 12 radios; aim to minimize the number of distinct channels used.
+
+Oh, and when you send back your channel plan, it helps to keep it in a little JSON shape like this so it's easy to read and check:
+
+{
+  ""solution"": [
+    [""radio_id"", ""radio_id"", ...],
+    [""radio_id"", ""radio_id"", ...],
+    ...
+  ]
+}
+
+Each inner list is a group of radios that share the same channel (so none of those pairs should interfere with each other). Think of each inner array as “channel A has these radios, channel B has those radios,” and so on. This is just a sketch of the shape I’m expecting, not the actual answer — replace the placeholders with the real radio identifiers from the instance.
+
+Please use the identifiers exactly as they appear in the instance input — don’t rename them or make up new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 12, 'num_edges': 30, 'edges': [{'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 4, 'v': 9}, {'u': 4, 'v': 10}, {'u': 4, 'v': 11}, {'u': 4, 'v': 12}, {'u': 5, 'v': 6}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 10, 'v': 11}, {'u': 10, 'v': 12}, {'u': 11, 'v': 12}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 8, 'v': 9}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.45454545454545453, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0001.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0001.png', 'edge_connectivity': 3}","[[3, 8, 10], [5, 12], [2, 7, 11], [6], [4], [1, 9]]",6.0,"{'num_nodes': 12, 'num_edges': 30, 'edges': [{'u': 0, 'v': 1}, {'u': 0, 'v': 2}, {'u': 0, 'v': 3}, {'u': 0, 'v': 4}, {'u': 0, 'v': 5}, {'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 3, 'v': 10}, {'u': 3, 'v': 11}, {'u': 4, 'v': 5}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 10, 'v': 11}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 7, 'v': 8}]}","[[2, 7, 9], [4, 11], [1, 6, 10], [5], [3], [0, 8]]",2,nl,0
+GCP,GCP,"I was helping the facilities crew pick paint swatches for every conference room in the building. The rule is simple: every room gets exactly one swatch, and if two rooms share a doorway they can’t be finished in the same swatch. The better plans are the ones that use fewer different swatches overall — you judge that by counting how many distinct swatches end up being used. Nothing can be skipped or double-covered: every room needs a single swatch and no pair of adjacent rooms may match. The concrete room-and-door layout is shown below.
+
+# total_rooms=9
+# total_doorways=21
+room_a_id,room_b_id
+8,2
+8,6
+8,7
+7,2
+7,6
+3,0
+3,1
+3,2
+3,4
+3,5
+6,2
+1,0
+1,2
+1,4
+1,5
+4,0
+4,2
+4,5
+0,2
+0,5
+5,2
+
+Oh, and when you send the plan back, please follow this simple JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [
+    [""room_id"", ""room_id"", ...],
+    [""room_id"", ""room_id"", ...],
+    ...
+  ]
+}
+
+Think of each inner list as one paint swatch and the room IDs inside it as the rooms that get that swatch. The outer list is just the collection of swatches you used. This is only a sketch of the shape I want — not the final assignment.
+
+Please make sure to use the exact room identifiers from the instance input — don’t rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 9, 'num_edges': 21, 'edges': [{'u': 9, 'v': 3}, {'u': 9, 'v': 7}, {'u': 9, 'v': 8}, {'u': 8, 'v': 3}, {'u': 8, 'v': 7}, {'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 7, 'v': 3}, {'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 5, 'v': 1}, {'u': 5, 'v': 3}, {'u': 5, 'v': 6}, {'u': 1, 'v': 3}, {'u': 1, 'v': 6}, {'u': 6, 'v': 3}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.5833333333333334, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0002.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0002.png', 'edge_connectivity': 3}","[[4, 8], [3], [5, 9], [1], [2, 7], [6]]",6.0,"{'num_nodes': 9, 'num_edges': 21, 'edges': [{'u': 8, 'v': 2}, {'u': 8, 'v': 6}, {'u': 8, 'v': 7}, {'u': 7, 'v': 2}, {'u': 7, 'v': 6}, {'u': 3, 'v': 0}, {'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 6, 'v': 2}, {'u': 1, 'v': 0}, {'u': 1, 'v': 2}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 4, 'v': 0}, {'u': 4, 'v': 2}, {'u': 4, 'v': 5}, {'u': 0, 'v': 2}, {'u': 0, 'v': 5}, {'u': 5, 'v': 2}]}","[[3, 7], [2], [4, 8], [0], [1, 6], [5]]",3,csv,0
+GCP,GCP,"Someone at the shop suggested recoloring uniforms so that teammates standing next to each other never blend together, so the plan was to assign exactly one color to each employee and make sure adjacent coworkers have different colors. What makes one coloring better than another is how many separate colors the store needs — the smaller that count of distinct colors, the better the solution. The full list of counters, employees, and the concrete details are shown below.
+
+There are 12 employees and 34 adjacency relationships listed below.
+Employee F stands next to employee B and therefore must wear a different color.
+Employee F stands next to employee D and therefore must wear a different color.
+Employee F stands next to employee G and therefore must wear a different color.
+Employee F stands next to employee J and therefore must wear a different color.
+Employee F stands next to employee L and therefore must wear a different color.
+Employee K stands next to employee B and therefore must wear a different color.
+Employee K stands next to employee C and therefore must wear a different color.
+Employee K stands next to employee D and therefore must wear a different color.
+Employee K stands next to employee E and therefore must wear a different color.
+Employee K stands next to employee G and therefore must wear a different color.
+Employee B stands next to employee A and therefore must wear a different color.
+Employee B stands next to employee C and therefore must wear a different color.
+Employee B stands next to employee D and therefore must wear a different color.
+Employee B stands next to employee E and therefore must wear a different color.
+Employee B stands next to employee H and therefore must wear a different color.
+Employee B stands next to employee I and therefore must wear a different color.
+Employee B stands next to employee J and therefore must wear a different color.
+Employee B stands next to employee L and therefore must wear a different color.
+Employee A stands next to employee G and therefore must wear a different color.
+Employee H stands next to employee C and therefore must wear a different color.
+Employee H stands next to employee D and therefore must wear a different color.
+Employee H stands next to employee G and therefore must wear a different color.
+Employee L stands next to employee D and therefore must wear a different color.
+Employee L stands next to employee G and therefore must wear a different color.
+Employee D stands next to employee C and therefore must wear a different color.
+Employee D stands next to employee E and therefore must wear a different color.
+Employee D stands next to employee G and therefore must wear a different color.
+Employee D stands next to employee J and therefore must wear a different color.
+Employee J stands next to employee G and therefore must wear a different color.
+Employee E stands next to employee C and therefore must wear a different color.
+Employee E stands next to employee I and therefore must wear a different color.
+Employee G stands next to employee C and therefore must wear a different color.
+Employee G stands next to employee I and therefore must wear a different color.
+Employee I stands next to employee C and therefore must wear a different color.
+These 12 employees and 34 adjacencies define the coloring instance to be resolved.
+
+Also, when you send the actual coloring back, please follow this simple JSON layout so it's easy to read and check. Here's a quick sketch of the shape I expect:
+
+{
+  ""solution"": [
+    [""employee_id"", ""employee_id"", ...],
+    [""employee_id"", ""employee_id"", ...],
+    ...
+  ]
+}
+
+Each inner list is one color class — a list of employees who all share the same color (so nobody standing next to each other should be in the same inner list). This is just the shape I want, not the real answer.
+
+One more thing: use the exact identifiers from the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'GCP', 'num_nodes': 12, 'num_edges': 34, 'edges': [{'u': 6, 'v': 2}, {'u': 6, 'v': 4}, {'u': 6, 'v': 7}, {'u': 6, 'v': 10}, {'u': 6, 'v': 12}, {'u': 11, 'v': 2}, {'u': 11, 'v': 3}, {'u': 11, 'v': 4}, {'u': 11, 'v': 5}, {'u': 11, 'v': 7}, {'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 8}, {'u': 2, 'v': 9}, {'u': 2, 'v': 10}, {'u': 2, 'v': 12}, {'u': 1, 'v': 7}, {'u': 8, 'v': 3}, {'u': 8, 'v': 4}, {'u': 8, 'v': 7}, {'u': 12, 'v': 4}, {'u': 12, 'v': 7}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 7}, {'u': 4, 'v': 10}, {'u': 10, 'v': 7}, {'u': 5, 'v': 3}, {'u': 5, 'v': 9}, {'u': 7, 'v': 3}, {'u': 7, 'v': 9}, {'u': 9, 'v': 3}], 'source_file': 'citationCiteseer.mtx', 'density': 0.5151515151515151, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0003.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0003.png', 'edge_connectivity': 2}","[[1, 3, 10, 12], [5], [4], [6, 8, 9, 11], [2, 7]]",5.0,"{'num_nodes': 12, 'num_edges': 34, 'edges': [{'u': 'F', 'v': 'B'}, {'u': 'F', 'v': 'D'}, {'u': 'F', 'v': 'G'}, {'u': 'F', 'v': 'J'}, {'u': 'F', 'v': 'L'}, {'u': 'K', 'v': 'B'}, {'u': 'K', 'v': 'C'}, {'u': 'K', 'v': 'D'}, {'u': 'K', 'v': 'E'}, {'u': 'K', 'v': 'G'}, {'u': 'B', 'v': 'A'}, {'u': 'B', 'v': 'C'}, {'u': 'B', 'v': 'D'}, {'u': 'B', 'v': 'E'}, {'u': 'B', 'v': 'H'}, {'u': 'B', 'v': 'I'}, {'u': 'B', 'v': 'J'}, {'u': 'B', 'v': 'L'}, {'u': 'A', 'v': 'G'}, {'u': 'H', 'v': 'C'}, {'u': 'H', 'v': 'D'}, {'u': 'H', 'v': 'G'}, {'u': 'L', 'v': 'D'}, {'u': 'L', 'v': 'G'}, {'u': 'D', 'v': 'C'}, {'u': 'D', 'v': 'E'}, {'u': 'D', 'v': 'G'}, {'u': 'D', 'v': 'J'}, {'u': 'J', 'v': 'G'}, {'u': 'E', 'v': 'C'}, {'u': 'E', 'v': 'I'}, {'u': 'G', 'v': 'C'}, {'u': 'G', 'v': 'I'}, {'u': 'I', 'v': 'C'}]}","[['A', 'C', 'J', 'L'], ['E'], ['D'], ['F', 'H', 'I', 'K'], ['B', 'G']]",4,nl,names
+GCP,GCP,"On our board, each task gets a colored tag and the rule is that any task linked as a dependency must have a different tag than the one it depends on. The goal is to keep the variety of tags low — evaluate this by counting the number of different tag colors used across the whole board, and aim for that count to be as small as possible. Leave no card untagged and never give the same tag to dependent pairs. The concrete details will be shown below.
+
+{
+  ""total_tasks"": 10,
+  ""total_dependencies"": 23,
+  ""edges"": [
+    {
+      ""task_a_id"": ""D"",
+      ""task_b_id"": ""C""
+    },
+    {
+      ""task_a_id"": ""D"",
+      ""task_b_id"": ""E""
+    },
+    {
+      ""task_a_id"": ""D"",
+      ""task_b_id"": ""F""
+    },
+    {
+      ""task_a_id"": ""E"",
+      ""task_b_id"": ""A""
+    },
+    {
+      ""task_a_id"": ""E"",
+      ""task_b_id"": ""C""
+    },
+    {
+      ""task_a_id"": ""E"",
+      ""task_b_id"": ""F""
+    },
+    {
+      ""task_a_id"": ""E"",
+      ""task_b_id"": ""G""
+    },
+    {
+      ""task_a_id"": ""E"",
+      ""task_b_id"": ""H""
+    },
+    {
+      ""task_a_id"": ""E"",
+      ""task_b_id"": ""I""
+    },
+    {
+      ""task_a_id"": ""E"",
+      ""task_b_id"": ""J""
+    },
+    {
+      ""task_a_id"": ""F"",
+      ""task_b_id"": ""B""
+    },
+    {
+      ""task_a_id"": ""F"",
+      ""task_b_id"": ""C""
+    },
+    {
+      ""task_a_id"": ""B"",
+      ""task_b_id"": ""A""
+    },
+    {
+      ""task_a_id"": ""A"",
+      ""task_b_id"": ""G""
+    },
+    {
+      ""task_a_id"": ""A"",
+      ""task_b_id"": ""H""
+    },
+    {
+      ""task_a_id"": ""A"",
+      ""task_b_id"": ""I""
+    },
+    {
+      ""task_a_id"": ""A"",
+      ""task_b_id"": ""J""
+    },
+    {
+      ""task_a_id"": ""G"",
+      ""task_b_id"": ""H""
+    },
+    {
+      ""task_a_id"": ""G"",
+      ""task_b_id"": ""I""
+    },
+    {
+      ""task_a_id"": ""G"",
+      ""task_b_id"": ""J""
+    },
+    {
+      ""task_a_id"": ""H"",
+      ""task_b_id"": ""I""
+    },
+    {
+      ""task_a_id"": ""H"",
+      ""task_b_id"": ""J""
+    },
+    {
+      ""task_a_id"": ""I"",
+      ""task_b_id"": ""J""
+    }
+  ]
+}
+
+Also, just to keep things simple, please structure your reply to follow this little JSON layout.
+
+{
+  ""solution"": [
+    [""task_id"", ""task_id"", ...],
+    [""task_id"", ""task_id"", ...],
+    ...
+  ]
+}
+
+Think of each inner list as one tag color: a list of tasks that all get the same colored tag. The first list is all tasks with one tag, the next list is another tag, and so on. This block is just a sketch of the shape I expect — not the actual tagging result.
+
+One important note: use the exact identifiers from the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 10, 'num_edges': 23, 'edges': [{'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 5, 'v': 1}, {'u': 5, 'v': 3}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 5, 'v': 10}, {'u': 6, 'v': 2}, {'u': 6, 'v': 3}, {'u': 2, 'v': 1}, {'u': 1, 'v': 7}, {'u': 1, 'v': 8}, {'u': 1, 'v': 9}, {'u': 1, 'v': 10}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 7, 'v': 10}, {'u': 8, 'v': 9}, {'u': 8, 'v': 10}, {'u': 9, 'v': 10}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.5111111111111111, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0004.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0004.png', 'edge_connectivity': 2}","[[6, 9], [1], [5], [3, 8], [2, 7], [4, 10]]",6.0,"{'num_nodes': 10, 'num_edges': 23, 'edges': [{'u': 'D', 'v': 'C'}, {'u': 'D', 'v': 'E'}, {'u': 'D', 'v': 'F'}, {'u': 'E', 'v': 'A'}, {'u': 'E', 'v': 'C'}, {'u': 'E', 'v': 'F'}, {'u': 'E', 'v': 'G'}, {'u': 'E', 'v': 'H'}, {'u': 'E', 'v': 'I'}, {'u': 'E', 'v': 'J'}, {'u': 'F', 'v': 'B'}, {'u': 'F', 'v': 'C'}, {'u': 'B', 'v': 'A'}, {'u': 'A', 'v': 'G'}, {'u': 'A', 'v': 'H'}, {'u': 'A', 'v': 'I'}, {'u': 'A', 'v': 'J'}, {'u': 'G', 'v': 'H'}, {'u': 'G', 'v': 'I'}, {'u': 'G', 'v': 'J'}, {'u': 'H', 'v': 'I'}, {'u': 'H', 'v': 'J'}, {'u': 'I', 'v': 'J'}]}","[['F', 'I'], ['A'], ['E'], ['C', 'H'], ['B', 'G'], ['D', 'J']]",5,json,names
+GCP,GCP,"There’s a shop display with mannequins arranged in a pattern, and the task is to give each mannequin a garment color in a way that any pair of mannequins next to one another wear different colors. Nothing can be left undecided — each mannequin needs exactly one color — and the aim is to make the whole display look coordinated by using as few different colors as possible. One way to judge which dressing plan wins is to count how many distinct colors were used; the smaller that count, the better. The specific arrangement and numbers are shown below.
+
+{
+  ""total_mannequins"": 12,
+  ""adjacent_pairs_count"": 33,
+  ""edges"": [
+    {
+      ""mannequin_a_id"": 6,
+      ""mannequin_b_id"": 2
+    },
+    {
+      ""mannequin_a_id"": 6,
+      ""mannequin_b_id"": 7
+    },
+    {
+      ""mannequin_a_id"": 6,
+      ""mannequin_b_id"": 8
+    },
+    {
+      ""mannequin_a_id"": 6,
+      ""mannequin_b_id"": 9
+    },
+    {
+      ""mannequin_a_id"": 6,
+      ""mannequin_b_id"": 10
+    },
+    {
+      ""mannequin_a_id"": 6,
+      ""mannequin_b_id"": 11
+    },
+    {
+      ""mannequin_a_id"": 6,
+      ""mannequin_b_id"": 12
+    },
+    {
+      ""mannequin_a_id"": 1,
+      ""mannequin_b_id"": 2
+    },
+    {
+      ""mannequin_a_id"": 7,
+      ""mannequin_b_id"": 2
+    },
+    {
+      ""mannequin_a_id"": 7,
+      ""mannequin_b_id"": 8
+    },
+    {
+      ""mannequin_a_id"": 7,
+      ""mannequin_b_id"": 9
+    },
+    {
+      ""mannequin_a_id"": 7,
+      ""mannequin_b_id"": 10
+    },
+    {
+      ""mannequin_a_id"": 7,
+      ""mannequin_b_id"": 11
+    },
+    {
+      ""mannequin_a_id"": 7,
+      ""mannequin_b_id"": 12
+    },
+    {
+      ""mannequin_a_id"": 4,
+      ""mannequin_b_id"": 2
+    },
+    {
+      ""mannequin_a_id"": 4,
+      ""mannequin_b_id"": 5
+    },
+    {
+      ""mannequin_a_id"": 5,
+      ""mannequin_b_id"": 2
+    },
+    {
+      ""mannequin_a_id"": 8,
+      ""mannequin_b_id"": 2
+    },
+    {
+      ""mannequin_a_id"": 8,
+      ""mannequin_b_id"": 9
+    },
+    {
+      ""mannequin_a_id"": 8,
+      ""mannequin_b_id"": 10
+    },
+    {
+      ""mannequin_a_id"": 8,
+      ""mannequin_b_id"": 11
+    },
+    {
+      ""mannequin_a_id"": 8,
+      ""mannequin_b_id"": 12
+    },
+    {
+      ""mannequin_a_id"": 9,
+      ""mannequin_b_id"": 2
+    },
+    {
+      ""mannequin_a_id"": 9,
+      ""mannequin_b_id"": 10
+    },
+    {
+      ""mannequin_a_id"": 9,
+      ""mannequin_b_id"": 11
+    },
+    {
+      ""mannequin_a_id"": 9,
+      ""mannequin_b_id"": 12
+    },
+    {
+      ""mannequin_a_id"": 10,
+      ""mannequin_b_id"": 2
+    },
+    {
+      ""mannequin_a_id"": 10,
+      ""mannequin_b_id"": 11
+    },
+    {
+      ""mannequin_a_id"": 10,
+      ""mannequin_b_id"": 12
+    },
+    {
+      ""mannequin_a_id"": 11,
+      ""mannequin_b_id"": 2
+    },
+    {
+      ""mannequin_a_id"": 11,
+      ""mannequin_b_id"": 12
+    },
+    {
+      ""mannequin_a_id"": 12,
+      ""mannequin_b_id"": 2
+    },
+    {
+      ""mannequin_a_id"": 2,
+      ""mannequin_b_id"": 3
+    }
+  ]
+}
+
+If you want to send the dressing plan in a simple, predictable way, just use a little JSON sketch like this:
+
+{
+  ""solution"": [
+    [""mannequin_id"", ""mannequin_id"", ""mannequin_id""],
+    [""mannequin_id"", ""mannequin_id""],
+    [""mannequin_id""]
+  ]
+}
+
+Super casual explanation: ""solution"" is a list of color groups, and each inner list contains the mannequins that would wear the same color. Think of each inner array as one color bucket — list the mannequin identifiers that share that color. This block is only a sketch of the expected shape, not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — do not rename them or invent new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 12, 'num_edges': 33, 'edges': [{'u': 6, 'v': 2}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 6, 'v': 10}, {'u': 6, 'v': 11}, {'u': 6, 'v': 12}, {'u': 1, 'v': 2}, {'u': 7, 'v': 2}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 7, 'v': 10}, {'u': 7, 'v': 11}, {'u': 7, 'v': 12}, {'u': 4, 'v': 2}, {'u': 4, 'v': 5}, {'u': 5, 'v': 2}, {'u': 8, 'v': 2}, {'u': 8, 'v': 9}, {'u': 8, 'v': 10}, {'u': 8, 'v': 11}, {'u': 8, 'v': 12}, {'u': 9, 'v': 2}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 9, 'v': 12}, {'u': 10, 'v': 2}, {'u': 10, 'v': 11}, {'u': 10, 'v': 12}, {'u': 11, 'v': 2}, {'u': 11, 'v': 12}, {'u': 12, 'v': 2}, {'u': 2, 'v': 3}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.5, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0005.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0005.png', 'edge_connectivity': 1}","[[11], [3, 7], [6], [1, 12], [4, 9], [10], [5, 8], [2]]",8.0,"{'num_nodes': 12, 'num_edges': 33, 'edges': [{'u': 6, 'v': 2}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 6, 'v': 10}, {'u': 6, 'v': 11}, {'u': 6, 'v': 12}, {'u': 1, 'v': 2}, {'u': 7, 'v': 2}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 7, 'v': 10}, {'u': 7, 'v': 11}, {'u': 7, 'v': 12}, {'u': 4, 'v': 2}, {'u': 4, 'v': 5}, {'u': 5, 'v': 2}, {'u': 8, 'v': 2}, {'u': 8, 'v': 9}, {'u': 8, 'v': 10}, {'u': 8, 'v': 11}, {'u': 8, 'v': 12}, {'u': 9, 'v': 2}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 9, 'v': 12}, {'u': 10, 'v': 2}, {'u': 10, 'v': 11}, {'u': 10, 'v': 12}, {'u': 11, 'v': 2}, {'u': 11, 'v': 12}, {'u': 12, 'v': 2}, {'u': 2, 'v': 3}]}","[[11], [3, 7], [6], [1, 12], [4, 9], [10], [5, 8], [2]]",6,json,1
+GCP,GCP,"Recently a small team was given a drawn map made of touching regions and told to assign a single marker hue to each region so that touching regions don’t match. Each region must get one hue and only one, and the winning approach is the one that ends up using the fewest distinct hues — just count how many different colors are on the paper. The full map and its regions are shown below.
+
+There are 10 regions and 17 touching pairs shown below.
+Region 4 shares a boundary with region 2 and therefore must be assigned a different hue.
+Region 4 shares a boundary with region 3 and therefore must be assigned a different hue.
+Region 4 shares a boundary with region 5 and therefore must be assigned a different hue.
+Region 4 shares a boundary with region 6 and therefore must be assigned a different hue.
+Region 6 shares a boundary with region 5 and therefore must be assigned a different hue.
+Region 6 shares a boundary with region 8 and therefore must be assigned a different hue.
+Region 6 shares a boundary with region 9 and therefore must be assigned a different hue.
+Region 9 shares a boundary with region 3 and therefore must be assigned a different hue.
+Region 5 shares a boundary with region 0 and therefore must be assigned a different hue.
+Region 5 shares a boundary with region 1 and therefore must be assigned a different hue.
+Region 5 shares a boundary with region 2 and therefore must be assigned a different hue.
+Region 5 shares a boundary with region 7 and therefore must be assigned a different hue.
+Region 7 shares a boundary with region 0 and therefore must be assigned a different hue.
+Region 0 shares a boundary with region 1 and therefore must be assigned a different hue.
+Region 0 shares a boundary with region 2 and therefore must be assigned a different hue.
+Region 1 shares a boundary with region 2 and therefore must be assigned a different hue.
+Region 2 shares a boundary with region 3 and therefore must be assigned a different hue.
+The goal is to color the 10 regions with as few distinct hues as possible.
+
+If you want to give the coloring back in a predictable layout, just use a little JSON sketch like this:
+
+{
+  ""solution"": [
+    [""region_id"", ""region_id"", ...],
+    [""region_id"", ""region_id"", ...],
+    ...
+  ]
+}
+
+Think of ""solution"" as a list of groups, and each inner list is the set of regions that get the same hue (so each inner list is one color on the map). The strings are placeholders for the region identifiers from the map. This block is just the expected shape — a sketch of the format, not the actual coloring.
+
+Please make sure you use the exact region identifiers from the instance input — don't rename them or invent new labels. For example: ""1"", ""23"", ""A"", ""B"", ""A1"", ""X7"".","{'problem_type': 'GCP', 'num_nodes': 10, 'num_edges': 17, 'edges': [{'u': 5, 'v': 3}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 7, 'v': 6}, {'u': 7, 'v': 9}, {'u': 7, 'v': 10}, {'u': 10, 'v': 4}, {'u': 6, 'v': 1}, {'u': 6, 'v': 2}, {'u': 6, 'v': 3}, {'u': 6, 'v': 8}, {'u': 8, 'v': 1}, {'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 2, 'v': 3}, {'u': 3, 'v': 4}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.37777777777777777, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0006.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0006.png', 'edge_connectivity': 1}","[[6, 10], [3, 9], [2, 5, 8], [1, 4, 7]]",4.0,"{'num_nodes': 10, 'num_edges': 17, 'edges': [{'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 6, 'v': 5}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 9, 'v': 3}, {'u': 5, 'v': 0}, {'u': 5, 'v': 1}, {'u': 5, 'v': 2}, {'u': 5, 'v': 7}, {'u': 7, 'v': 0}, {'u': 0, 'v': 1}, {'u': 0, 'v': 2}, {'u': 1, 'v': 2}, {'u': 2, 'v': 3}]}","[[5, 9], [2, 8], [1, 4, 7], [0, 3, 6]]",7,nl,0
+GCP,GCP,"Imagine a grid of radio masts that all need a channel: the rule was simple — each mast gets one frequency, and if two mast coverages touch, they must be on different frequencies. Better solutions use fewer distinct frequencies; to see how good a setup is, count all the different frequencies actually used. Don’t skip any mast or give any mast multiple frequencies, and only reuse a frequency when overlapping isn’t an issue. The detailed instance is below.
+
+{
+  ""total_masts"": 8,
+  ""overlapping_pairs_count"": 12,
+  ""edges"": [
+    {
+      ""mast_id_a"": ""H"",
+      ""mast_id_b"": ""B""
+    },
+    {
+      ""mast_id_a"": ""H"",
+      ""mast_id_b"": ""C""
+    },
+    {
+      ""mast_id_a"": ""A"",
+      ""mast_id_b"": ""B""
+    },
+    {
+      ""mast_id_a"": ""C"",
+      ""mast_id_b"": ""B""
+    },
+    {
+      ""mast_id_a"": ""C"",
+      ""mast_id_b"": ""D""
+    },
+    {
+      ""mast_id_a"": ""C"",
+      ""mast_id_b"": ""E""
+    },
+    {
+      ""mast_id_a"": ""C"",
+      ""mast_id_b"": ""F""
+    },
+    {
+      ""mast_id_a"": ""C"",
+      ""mast_id_b"": ""G""
+    },
+    {
+      ""mast_id_a"": ""B"",
+      ""mast_id_b"": ""D""
+    },
+    {
+      ""mast_id_a"": ""F"",
+      ""mast_id_b"": ""E""
+    },
+    {
+      ""mast_id_a"": ""F"",
+      ""mast_id_b"": ""G""
+    },
+    {
+      ""mast_id_a"": ""G"",
+      ""mast_id_b"": ""E""
+    }
+  ]
+}
+
+If you want to hand me an answer, just stick to this simple JSON shape so I can read it easily — nothing fancy, just a list of groups. For this radio-mast story I tweaked the placeholder names to match the setting.
+
+{
+  ""solution"": [
+    [""mast_id"", ""mast_id"", ...],
+    [""mast_id"", ""mast_id"", ...],
+    ...
+  ]
+}
+
+Think of each inner list as all the masts that share the same frequency (so each list is one channel), and the outer list collects all the different channels you used. It's just a sketch of the shape I expect, not the real assignment — you'll fill in the actual mast identifiers from the instance.
+
+Please use the exact identifiers from the instance input — don't rename them and don't invent new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 8, 'num_edges': 12, 'edges': [{'u': 8, 'v': 2}, {'u': 8, 'v': 3}, {'u': 1, 'v': 2}, {'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 2, 'v': 4}, {'u': 6, 'v': 5}, {'u': 6, 'v': 7}, {'u': 7, 'v': 5}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.42857142857142855, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0007.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0007.png', 'edge_connectivity': 1}","[[1, 4, 5, 8], [3], [7], [2, 6]]",4.0,"{'num_nodes': 8, 'num_edges': 12, 'edges': [{'u': 'H', 'v': 'B'}, {'u': 'H', 'v': 'C'}, {'u': 'A', 'v': 'B'}, {'u': 'C', 'v': 'B'}, {'u': 'C', 'v': 'D'}, {'u': 'C', 'v': 'E'}, {'u': 'C', 'v': 'F'}, {'u': 'C', 'v': 'G'}, {'u': 'B', 'v': 'D'}, {'u': 'F', 'v': 'E'}, {'u': 'F', 'v': 'G'}, {'u': 'G', 'v': 'E'}]}","[['A', 'D', 'E', 'H'], ['C'], ['G'], ['B', 'F']]",8,json,names
+GCP,GCP,"There’s a small challenge in the backroom: label every category on a shelf with a color, but whenever two categories sit next to one another they must have different colors. A good labeling uses as few different colors as possible — simply count how many distinct colors appear, and aim for that to be as low as it can go. Nothing can be skipped; every category needs one label, and reuse is allowed only when categories aren’t adjacent. The detailed instance (who sits where) appears below.
+
+There are 10 num categories in total and 16 num adjacent pairs.
+
+| category_a_id | category_b_id |
+|---|---|
+| 1 | 2 |
+| 1 | 6 |
+| 2 | 4 |
+| 2 | 6 |
+| 2 | 7 |
+| 5 | 9 |
+| 8 | 10 |
+| 3 | 4 |
+| 3 | 6 |
+| 3 | 7 |
+| 4 | 6 |
+| 4 | 7 |
+| 6 | 7 |
+| 6 | 9 |
+| 6 | 10 |
+| 9 | 10 |
+
+Also, when you send back the labeling, please use this JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [
+    [""category_id"", ""category_id"", ...],
+    [""category_id"", ""category_id"", ...],
+    ...
+  ]
+}
+
+Pretty simple: ""solution"" is a list of color groups, and each inner list contains the category IDs that all share the same color on the shelf. Think of each inner array as one color’s set of labels. This block is just a sketch of the expected shape — not the actual answer.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+
+""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 10, 'num_edges': 16, 'edges': [{'u': 1, 'v': 2}, {'u': 1, 'v': 6}, {'u': 2, 'v': 4}, {'u': 2, 'v': 6}, {'u': 2, 'v': 7}, {'u': 5, 'v': 9}, {'u': 8, 'v': 10}, {'u': 3, 'v': 4}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 6, 'v': 7}, {'u': 6, 'v': 9}, {'u': 6, 'v': 10}, {'u': 9, 'v': 10}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.35555555555555557, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0008.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0008.png', 'edge_connectivity': 1}","[[1, 4, 5, 10], [7, 9], [6], [2, 3, 8]]",4.0,"{'num_nodes': 10, 'num_edges': 16, 'edges': [{'u': 1, 'v': 2}, {'u': 1, 'v': 6}, {'u': 2, 'v': 4}, {'u': 2, 'v': 6}, {'u': 2, 'v': 7}, {'u': 5, 'v': 9}, {'u': 8, 'v': 10}, {'u': 3, 'v': 4}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 6, 'v': 7}, {'u': 6, 'v': 9}, {'u': 6, 'v': 10}, {'u': 9, 'v': 10}]}","[[1, 4, 5, 10], [7, 9], [6], [2, 3, 8]]",9,markdown_table,1
+GCP,GCP,"At a cozy café, the staff needs to pick a pattern for each chair so that any chairs that touch don’t share the same pattern, and no chair is skipped or double-covered. The goal is to keep the number of different patterns as small as possible, and that is judged by tallying up the unique patterns used across all the chairs. The concrete seating layout and details are shown below.
+
+# total_chairs=9
+# touching_pairs_count=18
+chair_id_u,chair_id_v
+1,0
+1,2
+1,3
+1,4
+1,5
+1,6
+1,7
+1,8
+3,2
+4,5
+4,6
+5,6
+6,0
+6,7
+6,8
+0,7
+0,8
+7,8
+
+Also, if you want to hand me a candidate seating plan, just drop it in this simple JSON shape so I can read it easily:
+
+{
+  ""solution"": [
+    [""chair_id"", ""chair_id"", ...],
+    [""chair_id"", ""chair_id"", ...],
+    ...
+  ]
+}
+
+Think of each inner list as one pattern — a group of chairs that all share the same pattern. Replace the ""chair_id"" placeholders with the actual chair labels from the seating instance. This is just a sketch of the shape I expect, not the real answer itself.
+
+Please be sure to use the identifiers exactly as they appear in the instance input — no renaming and no new labels. 
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'GCP', 'num_nodes': 9, 'num_edges': 18, 'edges': [{'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 2, 'v': 7}, {'u': 2, 'v': 8}, {'u': 2, 'v': 9}, {'u': 4, 'v': 3}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 6, 'v': 7}, {'u': 7, 'v': 1}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 1, 'v': 8}, {'u': 1, 'v': 9}, {'u': 8, 'v': 9}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.5, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0009.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0009.png', 'edge_connectivity': 2}","[[3, 8], [6, 9], [7], [1, 4, 5], [2]]",5.0,"{'num_nodes': 9, 'num_edges': 18, 'edges': [{'u': 1, 'v': 0}, {'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 1, 'v': 8}, {'u': 3, 'v': 2}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 5, 'v': 6}, {'u': 6, 'v': 0}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 0, 'v': 7}, {'u': 0, 'v': 8}, {'u': 7, 'v': 8}]}","[[2, 7], [5, 8], [6], [0, 3, 4], [1]]",10,csv,0
+GCP,GCP,"At a small festival the organizers needed to pick colors for volunteer badges so partners on a shift don’t match and no volunteer is skipped or given multiple colors. The choice is to assign one color per person under that no-same-color-for-teammates rule, while trying not to introduce more color types than necessary. You can judge a setup by counting how many distinct colors it uses — the fewer the better. The concrete volunteer list and who works with whom are coming up below.
+
+{
+  ""total_volunteers"": 12,
+  ""total_shift_pairs"": 37,
+  ""edges"": [
+    {
+      ""volunteer_a_id"": 2,
+      ""volunteer_b_id"": 1
+    },
+    {
+      ""volunteer_a_id"": 2,
+      ""volunteer_b_id"": 3
+    },
+    {
+      ""volunteer_a_id"": 2,
+      ""volunteer_b_id"": 4
+    },
+    {
+      ""volunteer_a_id"": 2,
+      ""volunteer_b_id"": 5
+    },
+    {
+      ""volunteer_a_id"": 2,
+      ""volunteer_b_id"": 6
+    },
+    {
+      ""volunteer_a_id"": 2,
+      ""volunteer_b_id"": 8
+    },
+    {
+      ""volunteer_a_id"": 2,
+      ""volunteer_b_id"": 9
+    },
+    {
+      ""volunteer_a_id"": 2,
+      ""volunteer_b_id"": 10
+    },
+    {
+      ""volunteer_a_id"": 3,
+      ""volunteer_b_id"": 1
+    },
+    {
+      ""volunteer_a_id"": 3,
+      ""volunteer_b_id"": 4
+    },
+    {
+      ""volunteer_a_id"": 3,
+      ""volunteer_b_id"": 5
+    },
+    {
+      ""volunteer_a_id"": 3,
+      ""volunteer_b_id"": 6
+    },
+    {
+      ""volunteer_a_id"": 3,
+      ""volunteer_b_id"": 7
+    },
+    {
+      ""volunteer_a_id"": 3,
+      ""volunteer_b_id"": 8
+    },
+    {
+      ""volunteer_a_id"": 3,
+      ""volunteer_b_id"": 9
+    },
+    {
+      ""volunteer_a_id"": 3,
+      ""volunteer_b_id"": 10
+    },
+    {
+      ""volunteer_a_id"": 3,
+      ""volunteer_b_id"": 11
+    },
+    {
+      ""volunteer_a_id"": 3,
+      ""volunteer_b_id"": 12
+    },
+    {
+      ""volunteer_a_id"": 5,
+      ""volunteer_b_id"": 4
+    },
+    {
+      ""volunteer_a_id"": 5,
+      ""volunteer_b_id"": 6
+    },
+    {
+      ""volunteer_a_id"": 5,
+      ""volunteer_b_id"": 8
+    },
+    {
+      ""volunteer_a_id"": 5,
+      ""volunteer_b_id"": 9
+    },
+    {
+      ""volunteer_a_id"": 10,
+      ""volunteer_b_id"": 1
+    },
+    {
+      ""volunteer_a_id"": 10,
+      ""volunteer_b_id"": 4
+    },
+    {
+      ""volunteer_a_id"": 10,
+      ""volunteer_b_id"": 6
+    },
+    {
+      ""volunteer_a_id"": 10,
+      ""volunteer_b_id"": 8
+    },
+    {
+      ""volunteer_a_id"": 10,
+      ""volunteer_b_id"": 11
+    },
+    {
+      ""volunteer_a_id"": 10,
+      ""volunteer_b_id"": 12
+    },
+    {
+      ""volunteer_a_id"": 11,
+      ""volunteer_b_id"": 8
+    },
+    {
+      ""volunteer_a_id"": 11,
+      ""volunteer_b_id"": 12
+    },
+    {
+      ""volunteer_a_id"": 12,
+      ""volunteer_b_id"": 8
+    },
+    {
+      ""volunteer_a_id"": 4,
+      ""volunteer_b_id"": 6
+    },
+    {
+      ""volunteer_a_id"": 4,
+      ""volunteer_b_id"": 8
+    },
+    {
+      ""volunteer_a_id"": 4,
+      ""volunteer_b_id"": 9
+    },
+    {
+      ""volunteer_a_id"": 9,
+      ""volunteer_b_id"": 6
+    },
+    {
+      ""volunteer_a_id"": 9,
+      ""volunteer_b_id"": 8
+    },
+    {
+      ""volunteer_a_id"": 6,
+      ""volunteer_b_id"": 8
+    }
+  ]
+}
+
+Oh, and when you send back the badge assignment, please use this simple JSON layout so it's easy to check:
+
+{
+  ""solution"": [
+    [""volunteer_id"", ""volunteer_id"", ...],
+    [""volunteer_id"", ""volunteer_id"", ...],
+    ...
+  ]
+}
+
+Here ""solution"" is a list of color groups. Each inner array is a set of volunteers who all get the same badge color (so teammates should never appear together in the same inner array). Think of each inner array as one color bucket where you list the volunteer identifiers who share that color. This block is just a sketch of the shape I expect — not the actual answer.
+
+Please make sure you use the exact volunteer identifiers given in the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 12, 'num_edges': 37, 'edges': [{'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 2, 'v': 8}, {'u': 2, 'v': 9}, {'u': 2, 'v': 10}, {'u': 3, 'v': 1}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 3, 'v': 10}, {'u': 3, 'v': 11}, {'u': 3, 'v': 12}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 10, 'v': 1}, {'u': 10, 'v': 4}, {'u': 10, 'v': 6}, {'u': 10, 'v': 8}, {'u': 10, 'v': 11}, {'u': 10, 'v': 12}, {'u': 11, 'v': 8}, {'u': 11, 'v': 12}, {'u': 12, 'v': 8}, {'u': 4, 'v': 6}, {'u': 4, 'v': 8}, {'u': 4, 'v': 9}, {'u': 9, 'v': 6}, {'u': 9, 'v': 8}, {'u': 6, 'v': 8}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.5606060606060606, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0010.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0010.png', 'edge_connectivity': 1}","[[5, 7, 10], [4], [1, 8], [9], [6, 11], [3], [2, 12]]",7.0,"{'num_nodes': 12, 'num_edges': 37, 'edges': [{'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 2, 'v': 8}, {'u': 2, 'v': 9}, {'u': 2, 'v': 10}, {'u': 3, 'v': 1}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 3, 'v': 10}, {'u': 3, 'v': 11}, {'u': 3, 'v': 12}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 10, 'v': 1}, {'u': 10, 'v': 4}, {'u': 10, 'v': 6}, {'u': 10, 'v': 8}, {'u': 10, 'v': 11}, {'u': 10, 'v': 12}, {'u': 11, 'v': 8}, {'u': 11, 'v': 12}, {'u': 12, 'v': 8}, {'u': 4, 'v': 6}, {'u': 4, 'v': 8}, {'u': 4, 'v': 9}, {'u': 9, 'v': 6}, {'u': 9, 'v': 8}, {'u': 6, 'v': 8}]}","[[5, 7, 10], [4], [1, 8], [9], [6, 11], [3], [2, 12]]",11,json,1
+GCP,GCP,"There’s a block of flats that needs painting, and the puzzle is to give each apartment a single finish so that any two apartments with a common wall are painted differently, while keeping the total number of different finishes to a minimum. The practical question is which finish to put on each apartment; a plan that uses fewer different finishes is preferable. To evaluate a setup, count how many unique finishes appear in the building — the fewer unique finishes, the better — and don’t forget every unit must get one finish and adjacent units can’t be the same. The concrete details follow below.
+
+There are 12 apartments in total and 21 num shared walls.
+
+| apartment_u_id | apartment_v_id |
+|---|---|
+| 6 | 0 |
+| 6 | 3 |
+| 6 | 4 |
+| 6 | 5 |
+| 10 | 0 |
+| 10 | 11 |
+| 11 | 0 |
+| 7 | 0 |
+| 7 | 8 |
+| 7 | 9 |
+| 8 | 0 |
+| 8 | 9 |
+| 9 | 0 |
+| 2 | 0 |
+| 1 | 0 |
+| 0 | 3 |
+| 0 | 4 |
+| 0 | 5 |
+| 3 | 4 |
+| 3 | 5 |
+| 4 | 5 |
+
+Also, when you send the solution back, please follow this simple JSON layout so I can read it easily — something like:
+
+{
+  ""solution"": [
+    [""apartment_id"", ""apartment_id"", ...],
+    [""apartment_id"", ""apartment_id"", ...],
+    ...
+  ]
+}
+
+Think of each inner list as one finish (one color) and the apartment_id strings inside as the apartments that get that finish. This block is just a sketch of the shape I expect, not the actual assignment.
+
+Please make sure you use the apartment (vertex) identifiers exactly as they appear in the instance input — do not rename them or introduce any new labels. 
+- for example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'GCP', 'num_nodes': 12, 'num_edges': 21, 'edges': [{'u': 7, 'v': 1}, {'u': 7, 'v': 4}, {'u': 7, 'v': 5}, {'u': 7, 'v': 6}, {'u': 11, 'v': 1}, {'u': 11, 'v': 12}, {'u': 12, 'v': 1}, {'u': 8, 'v': 1}, {'u': 8, 'v': 9}, {'u': 8, 'v': 10}, {'u': 9, 'v': 1}, {'u': 9, 'v': 10}, {'u': 10, 'v': 1}, {'u': 3, 'v': 1}, {'u': 2, 'v': 1}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 5, 'v': 6}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.3181818181818182, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0011.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0011.png', 'edge_connectivity': 1}","[[2, 3, 5, 8, 11], [1], [4], [7, 10], [6, 9, 12]]",5.0,"{'num_nodes': 12, 'num_edges': 21, 'edges': [{'u': 6, 'v': 0}, {'u': 6, 'v': 3}, {'u': 6, 'v': 4}, {'u': 6, 'v': 5}, {'u': 10, 'v': 0}, {'u': 10, 'v': 11}, {'u': 11, 'v': 0}, {'u': 7, 'v': 0}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 8, 'v': 0}, {'u': 8, 'v': 9}, {'u': 9, 'v': 0}, {'u': 2, 'v': 0}, {'u': 1, 'v': 0}, {'u': 0, 'v': 3}, {'u': 0, 'v': 4}, {'u': 0, 'v': 5}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 4, 'v': 5}]}","[[1, 2, 4, 7, 10], [0], [3], [6, 9], [5, 8, 11]]",12,markdown_table,0
+GCP,GCP,"In the office it came up that the archive needed consistent categories: each file gets a single label, and whenever two files reference each other they have to be labeled differently. The task is to work out which label goes on which file. A labeling is preferable if it keeps the number of different labels small — check this by counting the distinct labels used — while making sure no file is left without a label and no file ends up with more than one, and linked files never share a label. The specific file map is shown below.
+
+# total_files=9
+# total_cross_references=14
+file_id_1,file_id_2
+F,C
+F,E
+D,A
+D,B
+D,C
+D,I
+B,A
+B,C
+B,I
+E,C
+C,I
+G,H
+G,I
+H,I
+
+Oh, and when you send the solution back, just use a simple JSON layout like this so it's easy to read and parse:
+
+{
+  ""solution"": [
+    [""file_id"", ""file_id"", ...],
+    [""file_id"", ""file_id"", ...],
+    ...
+  ]
+}
+
+Here, ""solution"" is a list of groups; each inner list is a set of files that share the same label (so files listed together get the same category). Think of it as a quick form: one row per label, and the file IDs that belong to that label listed next to it. This is just the shape I expect — not the actual filled-in answer.
+
+Please make sure you use the exact file identifiers from the instance input, no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 9, 'num_edges': 14, 'edges': [{'u': 6, 'v': 3}, {'u': 6, 'v': 5}, {'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 9}, {'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 9}, {'u': 5, 'v': 3}, {'u': 3, 'v': 9}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 8, 'v': 9}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.3888888888888889, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0012.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0012.png', 'edge_connectivity': 2}","[[2, 8], [5, 9], [1, 3, 7], [4, 6]]",4.0,"{'num_nodes': 9, 'num_edges': 14, 'edges': [{'u': 'F', 'v': 'C'}, {'u': 'F', 'v': 'E'}, {'u': 'D', 'v': 'A'}, {'u': 'D', 'v': 'B'}, {'u': 'D', 'v': 'C'}, {'u': 'D', 'v': 'I'}, {'u': 'B', 'v': 'A'}, {'u': 'B', 'v': 'C'}, {'u': 'B', 'v': 'I'}, {'u': 'E', 'v': 'C'}, {'u': 'C', 'v': 'I'}, {'u': 'G', 'v': 'H'}, {'u': 'G', 'v': 'I'}, {'u': 'H', 'v': 'I'}]}","[['B', 'H'], ['E', 'I'], ['A', 'C', 'G'], ['D', 'F']]",13,csv,names
+GCP,GCP,"There’s a plan to refresh the park’s lanes and the crew wants a tidy, simple palette. That means assigning a color to every path, making sure that whenever two lanes meet they have different colors, and keeping the palette minimal so the fewest distinct shades are used across the whole park. How to tell which plan is better: just count the different colors used — the smaller the number, the better — and don’t forget every lane needs a color and touching lanes can’t share one. The exact lane map is shown below.
+
+# total_lanes=9
+# total_touching_pairs=16
+lane_a_id,lane_b_id
+8,1
+8,2
+8,4
+9,3
+9,5
+9,6
+9,7
+1,4
+1,6
+1,7
+4,2
+4,7
+7,2
+6,3
+6,5
+3,5
+
+Oh, and to make handing the plan back easy, just follow this little JSON shape when you send the coloring — nothing fancy, just a simple list of groups:
+
+{
+  ""solution"": [
+    [""lane_id"", ""lane_id"", ...],
+    [""lane_id"", ""lane_id"", ...],
+    ...
+  ]
+}
+
+Each inner array is a group of lanes that get the same shade — think of each list as one color's worth of paths. This JSON is just a sketch of the format I need, not the actual coloring for the park.
+
+Also be sure to use the exact lane identifiers from the instance input — don't rename them or make up new ones.
+
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'GCP', 'num_nodes': 9, 'num_edges': 16, 'edges': [{'u': 8, 'v': 1}, {'u': 8, 'v': 2}, {'u': 8, 'v': 4}, {'u': 9, 'v': 3}, {'u': 9, 'v': 5}, {'u': 9, 'v': 6}, {'u': 9, 'v': 7}, {'u': 1, 'v': 4}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 4, 'v': 2}, {'u': 4, 'v': 7}, {'u': 7, 'v': 2}, {'u': 6, 'v': 3}, {'u': 6, 'v': 5}, {'u': 3, 'v': 5}], 'source_file': 'citationCiteseer.mtx', 'density': 0.4444444444444444, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0013.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0013.png', 'edge_connectivity': 2}","[[6, 7, 8], [1, 2, 9], [3, 4], [5]]",4.0,"{'num_nodes': 9, 'num_edges': 16, 'edges': [{'u': 8, 'v': 1}, {'u': 8, 'v': 2}, {'u': 8, 'v': 4}, {'u': 9, 'v': 3}, {'u': 9, 'v': 5}, {'u': 9, 'v': 6}, {'u': 9, 'v': 7}, {'u': 1, 'v': 4}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 4, 'v': 2}, {'u': 4, 'v': 7}, {'u': 7, 'v': 2}, {'u': 6, 'v': 3}, {'u': 6, 'v': 5}, {'u': 3, 'v': 5}]}","[[6, 7, 8], [1, 2, 9], [3, 4], [5]]",14,csv,1
+GCP,GCP,"There’s a little design puzzle at work: match a theme to every dev team so that teams that meet or exchange work don’t end up with the same theme, and try to use as few different themes across the board. Concretely, each team gets one theme, teams that interact can’t share that theme, and success is measured by counting the distinct themes you ended up using — lower count wins. The specific layout is shown below.
+
+{
+  ""num_teams"": 10,
+  ""num_team_interactions"": 15,
+  ""edges"": [
+    {
+      ""team_a_id"": 7,
+      ""team_b_id"": 2
+    },
+    {
+      ""team_a_id"": 7,
+      ""team_b_id"": 8
+    },
+    {
+      ""team_a_id"": 7,
+      ""team_b_id"": 9
+    },
+    {
+      ""team_a_id"": 8,
+      ""team_b_id"": 2
+    },
+    {
+      ""team_a_id"": 9,
+      ""team_b_id"": 10
+    },
+    {
+      ""team_a_id"": 5,
+      ""team_b_id"": 2
+    },
+    {
+      ""team_a_id"": 5,
+      ""team_b_id"": 3
+    },
+    {
+      ""team_a_id"": 5,
+      ""team_b_id"": 6
+    },
+    {
+      ""team_a_id"": 6,
+      ""team_b_id"": 2
+    },
+    {
+      ""team_a_id"": 6,
+      ""team_b_id"": 3
+    },
+    {
+      ""team_a_id"": 4,
+      ""team_b_id"": 2
+    },
+    {
+      ""team_a_id"": 4,
+      ""team_b_id"": 3
+    },
+    {
+      ""team_a_id"": 2,
+      ""team_b_id"": 1
+    },
+    {
+      ""team_a_id"": 2,
+      ""team_b_id"": 3
+    },
+    {
+      ""team_a_id"": 3,
+      ""team_b_id"": 1
+    }
+  ]
+}
+
+If you want the outcome in a neat, predictable shape, just send it in this simple JSON sketch — nothing fancy, just a quick map of which teams share a theme:
+
+{
+  ""solution"": [
+    [""team_id"", ""team_id"", ...],
+    [""team_id"", ""team_id"", ...],
+    ...
+  ]
+}
+
+Each inner array is one theme group: list the team identifiers that get the same theme (so teams inside the same sub-array must not conflict with each other). This is just the expected shape — a sketch of the format, not the actual assignment.
+
+Please make sure you use the identifiers exactly as they appear in the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 10, 'num_edges': 15, 'edges': [{'u': 7, 'v': 2}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 8, 'v': 2}, {'u': 9, 'v': 10}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 6}, {'u': 6, 'v': 2}, {'u': 6, 'v': 3}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 3, 'v': 1}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.3333333333333333, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0014.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0014.png', 'edge_connectivity': 1}","[[3, 7], [1, 4, 6], [5, 8, 9], [2, 10]]",4.0,"{'num_nodes': 10, 'num_edges': 15, 'edges': [{'u': 7, 'v': 2}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 8, 'v': 2}, {'u': 9, 'v': 10}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 6}, {'u': 6, 'v': 2}, {'u': 6, 'v': 3}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 3, 'v': 1}]}","[[3, 7], [1, 4, 6], [5, 8, 9], [2, 10]]",15,json,1
+GCP,GCP,"On the day of the ceremony the team wants the ribbons to look tidy: each recipient gets one ribbon, and anyone who’s tied to someone else through a joint achievement shouldn’t have the same color. The challenge is to pick colors so that linked people are different and the ceremony ends up using as few different ribbon colors as possible. Measure how good a choice is by counting the number of different colors used — the smaller that number, the better. Nobody can be left out or given multiple ribbons, and all linked pairs must be colored differently. The specific assignments to consider are shown below.
+
+There are 11 recipients in total and 23 joint achievements.
+
+| recipient_a | recipient_b |
+|---|---|
+| 3 | 6 |
+| 3 | 9 |
+| 2 | 5 |
+| 2 | 6 |
+| 4 | 5 |
+| 4 | 6 |
+| 4 | 7 |
+| 4 | 8 |
+| 5 | 6 |
+| 5 | 7 |
+| 5 | 8 |
+| 6 | 1 |
+| 6 | 7 |
+| 6 | 8 |
+| 6 | 9 |
+| 6 | 10 |
+| 6 | 11 |
+| 7 | 8 |
+| 9 | 1 |
+| 9 | 10 |
+| 9 | 11 |
+| 10 | 1 |
+| 10 | 11 |
+
+If you want to send me a candidate assignment, a simple JSON sketch like the one below is perfect — just list groups of recipients that share the same ribbon color.
+
+{
+  ""solution"": [
+    [""recipient_id"", ""recipient_id"", ...],
+    [""recipient_id"", ""recipient_id"", ...],
+    ...
+  ]
+}
+
+Each inner list is a single ribbon color and contains the identifiers of everyone who gets that color. Think of it like filling out a form: each row is one color and the names in that row all match that ribbon.
+
+This JSON is just the expected shape — a sketch of how to format your reply, not the actual coloring for the instance.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new labels. For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'GCP', 'num_nodes': 11, 'num_edges': 23, 'edges': [{'u': 3, 'v': 6}, {'u': 3, 'v': 9}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 6, 'v': 1}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 6, 'v': 10}, {'u': 6, 'v': 11}, {'u': 7, 'v': 8}, {'u': 9, 'v': 1}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 10, 'v': 1}, {'u': 10, 'v': 11}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.41818181818181815, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0015.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0015.png', 'edge_connectivity': 2}","[[6], [4], [1, 7, 11], [5, 9], [2, 3, 8, 10]]",5.0,"{'num_nodes': 11, 'num_edges': 23, 'edges': [{'u': 3, 'v': 6}, {'u': 3, 'v': 9}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 6, 'v': 1}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 6, 'v': 10}, {'u': 6, 'v': 11}, {'u': 7, 'v': 8}, {'u': 9, 'v': 1}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 10, 'v': 1}, {'u': 10, 'v': 11}]}","[[6], [4], [1, 7, 11], [5, 9], [2, 3, 8, 10]]",16,markdown_table,1
+GCP,GCP,"Back at the data center there was a clean-up task: choose a color for every cord so that any two cords that plug into the same set of ports are not the same color. Nothing could be left uncolored or given multiple colors, and the winning arrangements are those that squeeze the palette down to as few different colors as possible — simply count how many unique colors show up to see how compact it is. The detailed rack diagram and connections are shown below.
+
+There are 10 num cords in total and 15 num conflicting pairs.
+
+| cord_endpoint_u | cord_endpoint_v |
+|---|---|
+| 3 | 1 |
+| 3 | 4 |
+| 3 | 7 |
+| 3 | 8 |
+| 2 | 1 |
+| 9 | 0 |
+| 9 | 1 |
+| 9 | 8 |
+| 5 | 8 |
+| 8 | 1 |
+| 8 | 4 |
+| 8 | 6 |
+| 8 | 7 |
+| 1 | 7 |
+| 4 | 6 |
+
+Oh, and when you hand me the result, please use a tiny JSON shape like this so it's easy to parse:
+
+{
+  ""solution"": [
+    [""cord_id"", ""cord_id"", ...],
+    [""cord_id"", ""cord_id"", ...],
+    ...
+  ]
+}
+
+Think of it like a form: ""solution"" is the whole coloring, and each inner list is one color class — a group of cords that all share the same color. Each string in those lists is a cord identifier from the rack diagram. This block is just a sketch of the expected shape, not the actual coloring itself.
+
+Please make sure all identifiers in your real answer match exactly what appears in the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'GCP', 'num_nodes': 10, 'num_edges': 15, 'edges': [{'u': 4, 'v': 2}, {'u': 4, 'v': 5}, {'u': 4, 'v': 8}, {'u': 4, 'v': 9}, {'u': 3, 'v': 2}, {'u': 10, 'v': 1}, {'u': 10, 'v': 2}, {'u': 10, 'v': 9}, {'u': 6, 'v': 9}, {'u': 9, 'v': 2}, {'u': 9, 'v': 5}, {'u': 9, 'v': 7}, {'u': 9, 'v': 8}, {'u': 2, 'v': 8}, {'u': 5, 'v': 7}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.3333333333333333, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0016.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0016.png', 'edge_connectivity': 1}","[[1, 9], [2, 5], [8], [3, 4, 6, 7, 10]]",4.0,"{'num_nodes': 10, 'num_edges': 15, 'edges': [{'u': 3, 'v': 1}, {'u': 3, 'v': 4}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 2, 'v': 1}, {'u': 9, 'v': 0}, {'u': 9, 'v': 1}, {'u': 9, 'v': 8}, {'u': 5, 'v': 8}, {'u': 8, 'v': 1}, {'u': 8, 'v': 4}, {'u': 8, 'v': 6}, {'u': 8, 'v': 7}, {'u': 1, 'v': 7}, {'u': 4, 'v': 6}]}","[[0, 8], [1, 4], [7], [2, 3, 5, 6, 9]]",17,markdown_table,0
+GCP,GCP,"I was helping plan a big banquet and needed to pick napkin colors for every table so neighboring tables didn’t end up with the same color. The job was to give each table exactly one napkin color (no table left without a color and none with two), make sure any two tables next to each other use different colors, and try to keep the total number of different colors as small as possible — you just count how many distinct colors show up and the fewer, the better. The exact seating layout and table neighbors are shown below.
+
+There are 10 num tables in total and 23 num adjacent table pairs.
+
+| table_u_id | table_v_id |
+|---|---|
+| 9 | 1 |
+| 9 | 2 |
+| 9 | 5 |
+| 9 | 6 |
+| 9 | 10 |
+| 1 | 2 |
+| 1 | 5 |
+| 1 | 6 |
+| 5 | 2 |
+| 5 | 3 |
+| 5 | 4 |
+| 5 | 6 |
+| 5 | 7 |
+| 5 | 8 |
+| 5 | 10 |
+| 8 | 6 |
+| 8 | 7 |
+| 6 | 2 |
+| 6 | 3 |
+| 6 | 4 |
+| 6 | 7 |
+| 6 | 10 |
+| 7 | 4 |
+
+If you could send the napkin-coloring back in a simple JSON shape, that would be perfect — nothing fancy, just an array of groups that share the same color. Here’s the shape I expect:
+
+{
+  ""solution"": [
+    [""table_id"", ""table_id"", ...],
+    [""table_id"", ""table_id"", ...],
+    ...
+  ]
+}
+
+Pretty much: each inner list is one napkin color and lists the table IDs that get that color. This block is just a sketch of the shape I want, not the actual coloring.
+
+Please use the exact table identifiers from the instance input — don’t rename them or invent new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 10, 'num_edges': 23, 'edges': [{'u': 9, 'v': 1}, {'u': 9, 'v': 2}, {'u': 9, 'v': 5}, {'u': 9, 'v': 6}, {'u': 9, 'v': 10}, {'u': 1, 'v': 2}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 10}, {'u': 8, 'v': 6}, {'u': 8, 'v': 7}, {'u': 6, 'v': 2}, {'u': 6, 'v': 3}, {'u': 6, 'v': 4}, {'u': 6, 'v': 7}, {'u': 6, 'v': 10}, {'u': 7, 'v': 4}], 'source_file': 'citationCiteseer.mtx', 'density': 0.5111111111111111, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0017.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0017.png', 'edge_connectivity': 2}","[[6], [1, 10], [2, 3, 7], [5], [4, 8, 9]]",5.0,"{'num_nodes': 10, 'num_edges': 23, 'edges': [{'u': 9, 'v': 1}, {'u': 9, 'v': 2}, {'u': 9, 'v': 5}, {'u': 9, 'v': 6}, {'u': 9, 'v': 10}, {'u': 1, 'v': 2}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 10}, {'u': 8, 'v': 6}, {'u': 8, 'v': 7}, {'u': 6, 'v': 2}, {'u': 6, 'v': 3}, {'u': 6, 'v': 4}, {'u': 6, 'v': 7}, {'u': 6, 'v': 10}, {'u': 7, 'v': 4}]}","[[6], [1, 10], [2, 3, 7], [5], [4, 8, 9]]",18,markdown_table,1
+GCP,GCP,"Recently the visual merchandiser was coloring book covers for a display, making sure every side-by-side pair looked different. What makes one choice better than another is simply how few distinct colors end up on the whole rack — it’s obvious by counting the unique colors. Every single book needs one, and only one, color, and the full layout of which books are next to each other follows below.
+
+{
+  ""total_books"": 9,
+  ""total_adjacent_pairs"": 22,
+  ""edges"": [
+    {
+      ""book_a"": 7,
+      ""book_b"": 0
+    },
+    {
+      ""book_a"": 7,
+      ""book_b"": 1
+    },
+    {
+      ""book_a"": 7,
+      ""book_b"": 4
+    },
+    {
+      ""book_a"": 7,
+      ""book_b"": 5
+    },
+    {
+      ""book_a"": 7,
+      ""book_b"": 8
+    },
+    {
+      ""book_a"": 6,
+      ""book_b"": 8
+    },
+    {
+      ""book_a"": 5,
+      ""book_b"": 0
+    },
+    {
+      ""book_a"": 5,
+      ""book_b"": 1
+    },
+    {
+      ""book_a"": 5,
+      ""book_b"": 3
+    },
+    {
+      ""book_a"": 5,
+      ""book_b"": 4
+    },
+    {
+      ""book_a"": 4,
+      ""book_b"": 0
+    },
+    {
+      ""book_a"": 4,
+      ""book_b"": 1
+    },
+    {
+      ""book_a"": 4,
+      ""book_b"": 2
+    },
+    {
+      ""book_a"": 4,
+      ""book_b"": 3
+    },
+    {
+      ""book_a"": 4,
+      ""book_b"": 8
+    },
+    {
+      ""book_a"": 1,
+      ""book_b"": 0
+    },
+    {
+      ""book_a"": 1,
+      ""book_b"": 2
+    },
+    {
+      ""book_a"": 1,
+      ""book_b"": 3
+    },
+    {
+      ""book_a"": 1,
+      ""book_b"": 8
+    },
+    {
+      ""book_a"": 2,
+      ""book_b"": 0
+    },
+    {
+      ""book_a"": 2,
+      ""book_b"": 3
+    },
+    {
+      ""book_a"": 3,
+      ""book_b"": 0
+    }
+  ]
+}
+
+Oh, and when you send the coloring back, just stick to this simple JSON shape so I can read it easily:
+
+{
+  ""solution"": [
+    [""book_id"", ""book_id"", ...],
+    [""book_id"", ""book_id"", ...],
+    ...
+  ]
+}
+
+Think of each inner list as one color group — a little cluster of side-by-side books that all share the same cover color. The first list would be everything painted with color #1, the second list color #2, and so on. This is just a sketch of the shape I expect, not the actual coloring.
+
+Please be sure to use the exact identifiers from the instance input — don’t rename them or invent new ones. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'GCP', 'num_nodes': 9, 'num_edges': 22, 'edges': [{'u': 8, 'v': 1}, {'u': 8, 'v': 2}, {'u': 8, 'v': 5}, {'u': 8, 'v': 6}, {'u': 8, 'v': 9}, {'u': 7, 'v': 9}, {'u': 6, 'v': 1}, {'u': 6, 'v': 2}, {'u': 6, 'v': 4}, {'u': 6, 'v': 5}, {'u': 5, 'v': 1}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 4}, {'u': 5, 'v': 9}, {'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 9}, {'u': 3, 'v': 1}, {'u': 3, 'v': 4}, {'u': 4, 'v': 1}], 'source_file': 'citationCiteseer.mtx', 'density': 0.6111111111111112, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0018.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0018.png', 'edge_connectivity': 1}","[[3, 6, 9], [4, 8], [1, 7], [2], [5]]",5.0,"{'num_nodes': 9, 'num_edges': 22, 'edges': [{'u': 7, 'v': 0}, {'u': 7, 'v': 1}, {'u': 7, 'v': 4}, {'u': 7, 'v': 5}, {'u': 7, 'v': 8}, {'u': 6, 'v': 8}, {'u': 5, 'v': 0}, {'u': 5, 'v': 1}, {'u': 5, 'v': 3}, {'u': 5, 'v': 4}, {'u': 4, 'v': 0}, {'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 8}, {'u': 1, 'v': 0}, {'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 8}, {'u': 2, 'v': 0}, {'u': 2, 'v': 3}, {'u': 3, 'v': 0}]}","[[2, 5, 8], [3, 7], [0, 6], [1], [4]]",19,json,0
+GCP,GCP,"I was picturing a youth league scrimmage where every player needs a helmet color so teammates and opponents can be told apart — the tricky bit is that any two players who line up across from each other on the field can't wear the same color. The job is to give each player one helmet color (no player left without a color, and nobody gets two different colors) in a way that avoids same-colored helmets for every pair that face one another. Better setups are the ones that use fewer different helmet colors overall — you just count how many distinct colors end up being used, and the lower that number, the better. The concrete matchups and player list are shown below.
+
+{
+  ""total_players"": 11,
+  ""total_facing_pairs"": 36,
+  ""edges"": [
+    {
+      ""player_a_id"": 1,
+      ""player_b_id"": 2
+    },
+    {
+      ""player_a_id"": 1,
+      ""player_b_id"": 3
+    },
+    {
+      ""player_a_id"": 1,
+      ""player_b_id"": 4
+    },
+    {
+      ""player_a_id"": 1,
+      ""player_b_id"": 5
+    },
+    {
+      ""player_a_id"": 1,
+      ""player_b_id"": 7
+    },
+    {
+      ""player_a_id"": 1,
+      ""player_b_id"": 8
+    },
+    {
+      ""player_a_id"": 1,
+      ""player_b_id"": 9
+    },
+    {
+      ""player_a_id"": 1,
+      ""player_b_id"": 10
+    },
+    {
+      ""player_a_id"": 3,
+      ""player_b_id"": 4
+    },
+    {
+      ""player_a_id"": 3,
+      ""player_b_id"": 5
+    },
+    {
+      ""player_a_id"": 3,
+      ""player_b_id"": 6
+    },
+    {
+      ""player_a_id"": 3,
+      ""player_b_id"": 7
+    },
+    {
+      ""player_a_id"": 3,
+      ""player_b_id"": 8
+    },
+    {
+      ""player_a_id"": 3,
+      ""player_b_id"": 9
+    },
+    {
+      ""player_a_id"": 3,
+      ""player_b_id"": 10
+    },
+    {
+      ""player_a_id"": 2,
+      ""player_b_id"": 5
+    },
+    {
+      ""player_a_id"": 2,
+      ""player_b_id"": 7
+    },
+    {
+      ""player_a_id"": 2,
+      ""player_b_id"": 9
+    },
+    {
+      ""player_a_id"": 7,
+      ""player_b_id"": 4
+    },
+    {
+      ""player_a_id"": 7,
+      ""player_b_id"": 5
+    },
+    {
+      ""player_a_id"": 7,
+      ""player_b_id"": 6
+    },
+    {
+      ""player_a_id"": 7,
+      ""player_b_id"": 8
+    },
+    {
+      ""player_a_id"": 7,
+      ""player_b_id"": 9
+    },
+    {
+      ""player_a_id"": 5,
+      ""player_b_id"": 4
+    },
+    {
+      ""player_a_id"": 5,
+      ""player_b_id"": 8
+    },
+    {
+      ""player_a_id"": 5,
+      ""player_b_id"": 9
+    },
+    {
+      ""player_a_id"": 5,
+      ""player_b_id"": 10
+    },
+    {
+      ""player_a_id"": 5,
+      ""player_b_id"": 11
+    },
+    {
+      ""player_a_id"": 9,
+      ""player_b_id"": 6
+    },
+    {
+      ""player_a_id"": 9,
+      ""player_b_id"": 8
+    },
+    {
+      ""player_a_id"": 10,
+      ""player_b_id"": 4
+    },
+    {
+      ""player_a_id"": 10,
+      ""player_b_id"": 6
+    },
+    {
+      ""player_a_id"": 4,
+      ""player_b_id"": 6
+    },
+    {
+      ""player_a_id"": 4,
+      ""player_b_id"": 8
+    },
+    {
+      ""player_a_id"": 4,
+      ""player_b_id"": 11
+    },
+    {
+      ""player_a_id"": 8,
+      ""player_b_id"": 6
+    }
+  ]
+}
+
+I'll keep the answer in a small, easy JSON layout so it's straightforward to check and reuse. Below is the shape I expect:
+
+{
+  ""solution"": [
+    [""player_id"", ""player_id"", ...],
+    [""player_id"", ""player_id"", ...],
+    ...
+  ]
+}
+
+Think of each inner array as one helmet color group — the player identifiers listed together all get the same color. This is just a sketch of the expected shape, not the actual assignment.
+
+Please use the exact identifiers from the instance input — do not rename or invent labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 11, 'num_edges': 36, 'edges': [{'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 1, 'v': 7}, {'u': 1, 'v': 8}, {'u': 1, 'v': 9}, {'u': 1, 'v': 10}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 3, 'v': 10}, {'u': 2, 'v': 5}, {'u': 2, 'v': 7}, {'u': 2, 'v': 9}, {'u': 7, 'v': 4}, {'u': 7, 'v': 5}, {'u': 7, 'v': 6}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 5, 'v': 4}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 5, 'v': 10}, {'u': 5, 'v': 11}, {'u': 9, 'v': 6}, {'u': 9, 'v': 8}, {'u': 10, 'v': 4}, {'u': 10, 'v': 6}, {'u': 4, 'v': 6}, {'u': 4, 'v': 8}, {'u': 4, 'v': 11}, {'u': 8, 'v': 6}], 'source_file': 'citationCiteseer.mtx', 'density': 0.6545454545454545, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0019.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0019.png', 'edge_connectivity': 2}","[[5, 6], [1], [3, 11], [7], [4, 9], [2, 8, 10]]",6.0,"{'num_nodes': 11, 'num_edges': 36, 'edges': [{'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 1, 'v': 7}, {'u': 1, 'v': 8}, {'u': 1, 'v': 9}, {'u': 1, 'v': 10}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 3, 'v': 10}, {'u': 2, 'v': 5}, {'u': 2, 'v': 7}, {'u': 2, 'v': 9}, {'u': 7, 'v': 4}, {'u': 7, 'v': 5}, {'u': 7, 'v': 6}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 5, 'v': 4}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 5, 'v': 10}, {'u': 5, 'v': 11}, {'u': 9, 'v': 6}, {'u': 9, 'v': 8}, {'u': 10, 'v': 4}, {'u': 10, 'v': 6}, {'u': 4, 'v': 6}, {'u': 4, 'v': 8}, {'u': 4, 'v': 11}, {'u': 8, 'v': 6}]}","[[5, 6], [1], [3, 11], [7], [4, 9], [2, 8, 10]]",20,json,1
+GCP,GCP,"My cousin runs events and wanted each table dressed in one color while making sure any pair of tables connected by guest walkways never wore the same cloth. The choice is which single color goes on each table, with the best outcome using as few different colors as possible — measured by counting the distinct cloth colors used. Nothing can be skipped or double-covered, and the full map of tables and adjacencies is shown below.
+
+# total_tables=11
+# total_adjacent_pairs=25
+table_id_a,table_id_b
+1,0
+1,3
+1,4
+1,7
+1,8
+1,9
+7,0
+7,2
+7,5
+7,6
+9,0
+9,5
+9,6
+10,8
+8,0
+8,2
+8,5
+8,6
+2,4
+2,5
+6,3
+6,4
+0,3
+0,4
+4,3
+
+If you want to give me the table-coloring itself, just drop it in this simple JSON shape so I can read it easily:
+
+{
+  ""solution"": [
+    [""table_id"", ""table_id"", ...],
+    [""table_id"", ""table_id"", ...],
+    ...
+  ]
+}
+
+Think of ""solution"" as a list of color groups: each inner array is one color and lists the table identifiers (which tables get that same cloth). The ""table_id"" bits are just placeholders standing in for the real table names from the instance — replace them with the exact identifiers from the input.
+
+This JSON is only a sketch of the shape I expect, not the actual answer — please fill in the real table IDs from the instance. All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 11, 'num_edges': 25, 'edges': [{'u': 2, 'v': 1}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 8}, {'u': 2, 'v': 9}, {'u': 2, 'v': 10}, {'u': 8, 'v': 1}, {'u': 8, 'v': 3}, {'u': 8, 'v': 6}, {'u': 8, 'v': 7}, {'u': 10, 'v': 1}, {'u': 10, 'v': 6}, {'u': 10, 'v': 7}, {'u': 11, 'v': 9}, {'u': 9, 'v': 1}, {'u': 9, 'v': 3}, {'u': 9, 'v': 6}, {'u': 9, 'v': 7}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 7, 'v': 4}, {'u': 7, 'v': 5}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 5, 'v': 4}], 'source_file': 'citationCiteseer.mtx', 'density': 0.45454545454545453, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0020.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0020.png', 'edge_connectivity': 1}","[[2, 6, 7, 11], [1], [3, 4, 10], [5, 8, 9]]",4.0,"{'num_nodes': 11, 'num_edges': 25, 'edges': [{'u': 1, 'v': 0}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 7}, {'u': 1, 'v': 8}, {'u': 1, 'v': 9}, {'u': 7, 'v': 0}, {'u': 7, 'v': 2}, {'u': 7, 'v': 5}, {'u': 7, 'v': 6}, {'u': 9, 'v': 0}, {'u': 9, 'v': 5}, {'u': 9, 'v': 6}, {'u': 10, 'v': 8}, {'u': 8, 'v': 0}, {'u': 8, 'v': 2}, {'u': 8, 'v': 5}, {'u': 8, 'v': 6}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 6, 'v': 3}, {'u': 6, 'v': 4}, {'u': 0, 'v': 3}, {'u': 0, 'v': 4}, {'u': 4, 'v': 3}]}","[[1, 5, 6, 10], [0], [2, 3, 9], [4, 7, 8]]",21,csv,0
+GCP,GCP,"Many people on the scheduling team were asked to pick a single color for each exam room so adjacent rooms (those with a common wall) don’t end up matching. Every room needs one and only one sign, and the cleaner solution is the one that uses the fewest different colors — just count the unique colors to see which one wins. The exact room info appears below.
+
+There are 9 exam rooms in total and 12 pairs of adjacent rooms.
+Room 4 and room 3 share a wall.
+Room 4 and room 5 share a wall.
+Room 4 and room 6 share a wall.
+Room 4 and room 8 share a wall.
+Room 1 and room 0 share a wall.
+Room 1 and room 2 share a wall.
+Room 2 and room 0 share a wall.
+Room 2 and room 5 share a wall.
+Room 2 and room 7 share a wall.
+Room 7 and room 5 share a wall.
+Room 8 and room 5 share a wall.
+Room 3 and room 5 share a wall.
+Assign one color per room so adjacent rooms differ; the solution with the fewest unique colors wins.
+
+Also, when you hand the answers back, just use this simple JSON layout so it's easy to read and parse:
+
+{
+  ""solution"": [
+    [""room_id"", ""room_id"", ...],
+    [""room_id"", ""room_id"", ...],
+    ...
+  ]
+}
+
+Pretty straightforward: ""solution"" is a list of groups, and each inner list is the set of room IDs that share the same colored sign. Think of each inner list as one color — all rooms in that list get the same sign. This JSON is just a sketch of the shape I expect, not the actual assignment.
+
+Please use the room identifiers exactly as they appear in the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".
+
+- ""1""
+- ""23""
+- ""A""
+- ""B""
+- ""A1""
+- ""X7""","{'problem_type': 'GCP', 'num_nodes': 9, 'num_edges': 12, 'edges': [{'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 9}, {'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 3, 'v': 1}, {'u': 3, 'v': 6}, {'u': 3, 'v': 8}, {'u': 8, 'v': 6}, {'u': 9, 'v': 6}, {'u': 4, 'v': 6}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.3333333333333333, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0021.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0021.png', 'edge_connectivity': 1}","[[2, 5, 8], [1, 6], [3, 4, 7, 9]]",3.0,"{'num_nodes': 9, 'num_edges': 12, 'edges': [{'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 8}, {'u': 1, 'v': 0}, {'u': 1, 'v': 2}, {'u': 2, 'v': 0}, {'u': 2, 'v': 5}, {'u': 2, 'v': 7}, {'u': 7, 'v': 5}, {'u': 8, 'v': 5}, {'u': 3, 'v': 5}]}","[[1, 4, 7], [0, 5], [2, 3, 6, 8]]",22,nl,0
+GCP,GCP,"On a quiet afternoon the ops team sketched out all the transmitters and decided each one needed its own channel tag, with the catch that any two whose blobs of coverage intersect can’t share the same tag. Every transmitter must have a single tag and no overlaps can be given the same tag, and a simpler plan is one that uses as few different tags as possible — just tally the distinct tags to see how many were used. The detailed instance is shown below.
+
+{
+  ""total_transmitters"": 12,
+  ""total_overlapping_pairs"": 26,
+  ""edges"": [
+    {
+      ""transmitter_a_id"": 5,
+      ""transmitter_b_id"": 2
+    },
+    {
+      ""transmitter_a_id"": 5,
+      ""transmitter_b_id"": 6
+    },
+    {
+      ""transmitter_a_id"": 5,
+      ""transmitter_b_id"": 7
+    },
+    {
+      ""transmitter_a_id"": 5,
+      ""transmitter_b_id"": 8
+    },
+    {
+      ""transmitter_a_id"": 6,
+      ""transmitter_b_id"": 2
+    },
+    {
+      ""transmitter_a_id"": 6,
+      ""transmitter_b_id"": 7
+    },
+    {
+      ""transmitter_a_id"": 6,
+      ""transmitter_b_id"": 8
+    },
+    {
+      ""transmitter_a_id"": 7,
+      ""transmitter_b_id"": 2
+    },
+    {
+      ""transmitter_a_id"": 7,
+      ""transmitter_b_id"": 8
+    },
+    {
+      ""transmitter_a_id"": 0,
+      ""transmitter_b_id"": 1
+    },
+    {
+      ""transmitter_a_id"": 0,
+      ""transmitter_b_id"": 2
+    },
+    {
+      ""transmitter_a_id"": 0,
+      ""transmitter_b_id"": 3
+    },
+    {
+      ""transmitter_a_id"": 0,
+      ""transmitter_b_id"": 4
+    },
+    {
+      ""transmitter_a_id"": 1,
+      ""transmitter_b_id"": 2
+    },
+    {
+      ""transmitter_a_id"": 1,
+      ""transmitter_b_id"": 3
+    },
+    {
+      ""transmitter_a_id"": 1,
+      ""transmitter_b_id"": 4
+    },
+    {
+      ""transmitter_a_id"": 1,
+      ""transmitter_b_id"": 9
+    },
+    {
+      ""transmitter_a_id"": 1,
+      ""transmitter_b_id"": 10
+    },
+    {
+      ""transmitter_a_id"": 1,
+      ""transmitter_b_id"": 11
+    },
+    {
+      ""transmitter_a_id"": 2,
+      ""transmitter_b_id"": 3
+    },
+    {
+      ""transmitter_a_id"": 2,
+      ""transmitter_b_id"": 4
+    },
+    {
+      ""transmitter_a_id"": 2,
+      ""transmitter_b_id"": 8
+    },
+    {
+      ""transmitter_a_id"": 3,
+      ""transmitter_b_id"": 4
+    },
+    {
+      ""transmitter_a_id"": 9,
+      ""transmitter_b_id"": 10
+    },
+    {
+      ""transmitter_a_id"": 9,
+      ""transmitter_b_id"": 11
+    },
+    {
+      ""transmitter_a_id"": 10,
+      ""transmitter_b_id"": 11
+    }
+  ]
+}
+
+If you prefer to hand me the answer in a neat, machine-friendly way, just follow this little JSON sketch for the shape of the reply.
+
+{
+  ""solution"": [
+    [""transmitter_id"", ""transmitter_id"", ...],
+    [""transmitter_id"", ""transmitter_id"", ...],
+    ...
+  ]
+}
+
+Here ""solution"" is a list of channels (each inner list is a group of transmitters that share the same tag). Think of each inner array as a single tag listing which transmitters get it. This is just a template showing the shape I expect — not the actual assignment.
+
+Please make sure you use the exact identifiers from the instance input — do not rename any of them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 12, 'num_edges': 26, 'edges': [{'u': 6, 'v': 3}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 7, 'v': 3}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 8, 'v': 3}, {'u': 8, 'v': 9}, {'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 10}, {'u': 2, 'v': 11}, {'u': 2, 'v': 12}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 9}, {'u': 4, 'v': 5}, {'u': 10, 'v': 11}, {'u': 10, 'v': 12}, {'u': 11, 'v': 12}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.3939393939393939, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0022.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0022.png', 'edge_connectivity': 3}","[[2, 8], [5, 7], [4, 9, 11], [3, 12], [1, 6, 10]]",5.0,"{'num_nodes': 12, 'num_edges': 26, 'edges': [{'u': 5, 'v': 2}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 6, 'v': 2}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 7, 'v': 2}, {'u': 7, 'v': 8}, {'u': 0, 'v': 1}, {'u': 0, 'v': 2}, {'u': 0, 'v': 3}, {'u': 0, 'v': 4}, {'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 9}, {'u': 1, 'v': 10}, {'u': 1, 'v': 11}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 8}, {'u': 3, 'v': 4}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 10, 'v': 11}]}","[[1, 7], [4, 6], [3, 8, 10], [2, 11], [0, 5, 9]]",23,json,0
+GCP,GCP,"We’ve got a display wall covered in poster spots and it’s time to give each spot a background color. The choice to make is which hue goes on which poster board, with the idea that boards sitting side-by-side shouldn’t have the same background. The notion of “better” here means using fewer unique hues overall, so performance is tracked by counting how many different hues end up used. No board can be left without a hue, and any pair of adjacent boards must be different. The concrete details of the layout are shown below.
+
+# total_poster_boards=8
+# adjacent_board_pairs=12
+board_u_id,board_v_id
+D,E
+D,G
+E,A
+E,B
+E,C
+E,F
+E,H
+B,A
+A,G
+H,G
+G,C
+G,F
+
+Also, to keep things tidy, please send the coloring back in this JSON shape so I know which posters share a hue:
+
+{
+  ""solution"": [
+    [""poster_id"", ""poster_id"", ...],
+    [""poster_id"", ""poster_id"", ...],
+    ...
+  ]
+}
+
+The ""solution"" array is just a list of color buckets — each inner list is the set of poster spots that all get the same background color. Treat each inner list as one hue assignment. This is just a sketch of the expected shape, not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them and don't invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”"".","{'problem_type': 'GCP', 'num_nodes': 8, 'num_edges': 12, 'edges': [{'u': 4, 'v': 5}, {'u': 4, 'v': 7}, {'u': 5, 'v': 1}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 6}, {'u': 5, 'v': 8}, {'u': 2, 'v': 1}, {'u': 1, 'v': 7}, {'u': 8, 'v': 7}, {'u': 7, 'v': 3}, {'u': 7, 'v': 6}], 'source_file': 'citationCiteseer.mtx', 'density': 0.42857142857142855, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0023.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0023.png', 'edge_connectivity': 2}","[[2], [1, 3, 4, 6, 8], [5, 7]]",3.0,"{'num_nodes': 8, 'num_edges': 12, 'edges': [{'u': 'D', 'v': 'E'}, {'u': 'D', 'v': 'G'}, {'u': 'E', 'v': 'A'}, {'u': 'E', 'v': 'B'}, {'u': 'E', 'v': 'C'}, {'u': 'E', 'v': 'F'}, {'u': 'E', 'v': 'H'}, {'u': 'B', 'v': 'A'}, {'u': 'A', 'v': 'G'}, {'u': 'H', 'v': 'G'}, {'u': 'G', 'v': 'C'}, {'u': 'G', 'v': 'F'}]}","[['B'], ['A', 'C', 'D', 'F', 'H'], ['E', 'G']]",24,csv,names
+GCP,GCP,"Someone on the operations team has to mark every storage rack with a colored dot so that when two racks face each other across a forklift lane they’re never the same color. The task is picking a single color for each rack, under the rule that linked racks can’t share that color. Better plans use a smaller palette overall; the simple way to judge a plan is to count how many different colors are used — the lower the count, the better. No rack is allowed to be unmarked and no rack gets more than one color. The exact instance details are below.
+
+# total_racks=12
+# aisle_connections=22
+rack_a_id,rack_b_id
+12,5
+12,6
+12,11
+8,4
+8,6
+8,9
+8,11
+7,2
+7,5
+7,6
+7,11
+10,6
+10,11
+3,6
+3,11
+6,1
+6,2
+6,5
+11,1
+11,2
+11,5
+5,2
+
+If you want to return the plan in a machine-friendly way, you can just use this little JSON shape — it’s an easy way to list which racks get the same colored dot.
+
+{
+  ""solution"": [
+    [""rack_id"", ""rack_id"", ...],
+    [""rack_id"", ""rack_id"", ...],
+    ...
+  ]
+}
+
+Think of ""solution"" as a list of groups: each inner list is a set of racks that all get the same color dot. It's just a sketch of the shape I expect here, not the actual coloring — you'll replace those placeholders with the real rack identifiers from the instance.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 12, 'num_edges': 22, 'edges': [{'u': 12, 'v': 5}, {'u': 12, 'v': 6}, {'u': 12, 'v': 11}, {'u': 8, 'v': 4}, {'u': 8, 'v': 6}, {'u': 8, 'v': 9}, {'u': 8, 'v': 11}, {'u': 7, 'v': 2}, {'u': 7, 'v': 5}, {'u': 7, 'v': 6}, {'u': 7, 'v': 11}, {'u': 10, 'v': 6}, {'u': 10, 'v': 11}, {'u': 3, 'v': 6}, {'u': 3, 'v': 11}, {'u': 6, 'v': 1}, {'u': 6, 'v': 2}, {'u': 6, 'v': 5}, {'u': 11, 'v': 1}, {'u': 11, 'v': 2}, {'u': 11, 'v': 5}, {'u': 5, 'v': 2}], 'source_file': 'citationCiteseer.mtx', 'density': 0.3333333333333333, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0024.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0024.png', 'edge_connectivity': 1}","[[2], [6, 11], [1, 4, 5, 9], [3, 7, 8, 10, 12]]",4.0,"{'num_nodes': 12, 'num_edges': 22, 'edges': [{'u': 12, 'v': 5}, {'u': 12, 'v': 6}, {'u': 12, 'v': 11}, {'u': 8, 'v': 4}, {'u': 8, 'v': 6}, {'u': 8, 'v': 9}, {'u': 8, 'v': 11}, {'u': 7, 'v': 2}, {'u': 7, 'v': 5}, {'u': 7, 'v': 6}, {'u': 7, 'v': 11}, {'u': 10, 'v': 6}, {'u': 10, 'v': 11}, {'u': 3, 'v': 6}, {'u': 3, 'v': 11}, {'u': 6, 'v': 1}, {'u': 6, 'v': 2}, {'u': 6, 'v': 5}, {'u': 11, 'v': 1}, {'u': 11, 'v': 2}, {'u': 11, 'v': 5}, {'u': 5, 'v': 2}]}","[[2], [6, 11], [1, 4, 5, 9], [3, 7, 8, 10, 12]]",25,csv,1
+GCP,GCP,"Recently the city decided to tag every crosswalk with a paint design code, under the simple rule that crosswalks converging at one intersection must all look different. Every crosswalk must receive one code, no exceptions, and the objective is to make the palette as small as possible — just count how many unique codes appear to see how compact the solution is. The detailed map and example cases follow below.
+
+# total_crosswalks=8
+# adjacent_crosswalk_pairs=14
+crosswalk_id_a,crosswalk_id_b
+4,0
+4,1
+4,2
+4,3
+4,5
+4,6
+5,1
+5,6
+6,1
+6,7
+0,1
+0,3
+1,2
+1,3
+
+If you want to hand me the results in a machine-friendly way, just follow this little JSON shape:
+
+{
+  ""solution"": [
+    [""crosswalk_id"", ""crosswalk_id"", ...],
+    [""crosswalk_id"", ""crosswalk_id"", ...],
+    ...
+  ]
+}
+
+Each inner list is one paint design code and lists the crosswalk IDs that get that same code. The outer array collects all the different codes used. This is just a sketch of the expected shape—not the actual assignment.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'GCP', 'num_nodes': 8, 'num_edges': 14, 'edges': [{'u': 5, 'v': 1}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 6, 'v': 2}, {'u': 6, 'v': 7}, {'u': 7, 'v': 2}, {'u': 7, 'v': 8}, {'u': 1, 'v': 2}, {'u': 1, 'v': 4}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.5, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0025.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0025.png', 'edge_connectivity': 1}","[[2, 8], [5], [4, 6], [1, 3, 7]]",4.0,"{'num_nodes': 8, 'num_edges': 14, 'edges': [{'u': 4, 'v': 0}, {'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 5, 'v': 1}, {'u': 5, 'v': 6}, {'u': 6, 'v': 1}, {'u': 6, 'v': 7}, {'u': 0, 'v': 1}, {'u': 0, 'v': 3}, {'u': 1, 'v': 2}, {'u': 1, 'v': 3}]}","[[1, 7], [4], [3, 5], [0, 2, 6]]",26,csv,0
+GCP,GCP,"Someone organized teams for a school event and needed to assign a shirt color to every team, with the rule that teams seated alongside one another can’t wear the same color. What makes one assignment better than another is how many different colors end up being used — lower is better, and you can compute that by counting the different colors used across all teams. Every team must have exactly one color and adjacency pairs must be different. The specific seating arrangement and team list are given below.
+
+{
+  ""total_groups"": 11,
+  ""adjacent_group_pairs"": 28,
+  ""edges"": [
+    {
+      ""group_a_id"": ""D"",
+      ""group_b_id"": ""A""
+    },
+    {
+      ""group_a_id"": ""D"",
+      ""group_b_id"": ""E""
+    },
+    {
+      ""group_a_id"": ""D"",
+      ""group_b_id"": ""F""
+    },
+    {
+      ""group_a_id"": ""D"",
+      ""group_b_id"": ""G""
+    },
+    {
+      ""group_a_id"": ""E"",
+      ""group_b_id"": ""A""
+    },
+    {
+      ""group_a_id"": ""E"",
+      ""group_b_id"": ""B""
+    },
+    {
+      ""group_a_id"": ""E"",
+      ""group_b_id"": ""F""
+    },
+    {
+      ""group_a_id"": ""E"",
+      ""group_b_id"": ""G""
+    },
+    {
+      ""group_a_id"": ""E"",
+      ""group_b_id"": ""H""
+    },
+    {
+      ""group_a_id"": ""E"",
+      ""group_b_id"": ""I""
+    },
+    {
+      ""group_a_id"": ""J"",
+      ""group_b_id"": ""A""
+    },
+    {
+      ""group_a_id"": ""J"",
+      ""group_b_id"": ""B""
+    },
+    {
+      ""group_a_id"": ""J"",
+      ""group_b_id"": ""C""
+    },
+    {
+      ""group_a_id"": ""J"",
+      ""group_b_id"": ""I""
+    },
+    {
+      ""group_a_id"": ""J"",
+      ""group_b_id"": ""K""
+    },
+    {
+      ""group_a_id"": ""G"",
+      ""group_b_id"": ""A""
+    },
+    {
+      ""group_a_id"": ""G"",
+      ""group_b_id"": ""B""
+    },
+    {
+      ""group_a_id"": ""C"",
+      ""group_b_id"": ""A""
+    },
+    {
+      ""group_a_id"": ""C"",
+      ""group_b_id"": ""B""
+    },
+    {
+      ""group_a_id"": ""C"",
+      ""group_b_id"": ""I""
+    },
+    {
+      ""group_a_id"": ""C"",
+      ""group_b_id"": ""K""
+    },
+    {
+      ""group_a_id"": ""K"",
+      ""group_b_id"": ""A""
+    },
+    {
+      ""group_a_id"": ""K"",
+      ""group_b_id"": ""B""
+    },
+    {
+      ""group_a_id"": ""K"",
+      ""group_b_id"": ""I""
+    },
+    {
+      ""group_a_id"": ""B"",
+      ""group_b_id"": ""A""
+    },
+    {
+      ""group_a_id"": ""B"",
+      ""group_b_id"": ""H""
+    },
+    {
+      ""group_a_id"": ""B"",
+      ""group_b_id"": ""I""
+    },
+    {
+      ""group_a_id"": ""I"",
+      ""group_b_id"": ""A""
+    }
+  ]
+}
+
+Also, when you send the solution back, please stick to this simple JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [
+    [""team_id"", ""team_id""],
+    [""team_id"", ""team_id"", ""team_id""],
+    [""team_id""]
+  ]
+}
+
+This JSON is just a friendly sketch: ""solution"" is the list of color groups, and each inner list contains the team identifiers that get the same shirt color. Think of each inner array as one color and the team IDs inside it as who wears that color. It's a template, not the actual coloring — just the shape I need.
+
+One important note: use the exact identifiers from the instance input — do not rename them or invent new ones. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'GCP', 'num_nodes': 11, 'num_edges': 28, 'edges': [{'u': 4, 'v': 1}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 5, 'v': 1}, {'u': 5, 'v': 2}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 10, 'v': 1}, {'u': 10, 'v': 2}, {'u': 10, 'v': 3}, {'u': 10, 'v': 9}, {'u': 10, 'v': 11}, {'u': 7, 'v': 1}, {'u': 7, 'v': 2}, {'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 3, 'v': 9}, {'u': 3, 'v': 11}, {'u': 11, 'v': 1}, {'u': 11, 'v': 2}, {'u': 11, 'v': 9}, {'u': 2, 'v': 1}, {'u': 2, 'v': 8}, {'u': 2, 'v': 9}, {'u': 9, 'v': 1}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.509090909090909, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0026.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0026.png', 'edge_connectivity': 2}","[[3, 5], [1], [4, 11], [9], [2, 6], [7, 8, 10]]",6.0,"{'num_nodes': 11, 'num_edges': 28, 'edges': [{'u': 'D', 'v': 'A'}, {'u': 'D', 'v': 'E'}, {'u': 'D', 'v': 'F'}, {'u': 'D', 'v': 'G'}, {'u': 'E', 'v': 'A'}, {'u': 'E', 'v': 'B'}, {'u': 'E', 'v': 'F'}, {'u': 'E', 'v': 'G'}, {'u': 'E', 'v': 'H'}, {'u': 'E', 'v': 'I'}, {'u': 'J', 'v': 'A'}, {'u': 'J', 'v': 'B'}, {'u': 'J', 'v': 'C'}, {'u': 'J', 'v': 'I'}, {'u': 'J', 'v': 'K'}, {'u': 'G', 'v': 'A'}, {'u': 'G', 'v': 'B'}, {'u': 'C', 'v': 'A'}, {'u': 'C', 'v': 'B'}, {'u': 'C', 'v': 'I'}, {'u': 'C', 'v': 'K'}, {'u': 'K', 'v': 'A'}, {'u': 'K', 'v': 'B'}, {'u': 'K', 'v': 'I'}, {'u': 'B', 'v': 'A'}, {'u': 'B', 'v': 'H'}, {'u': 'B', 'v': 'I'}, {'u': 'I', 'v': 'A'}]}","[['C', 'E'], ['A'], ['D', 'K'], ['I'], ['B', 'F'], ['G', 'H', 'J']]",27,json,names
+GCP,GCP,"Many people at the allotment want tidy-looking edges, so the plan was: assign one border color to every bed, make sure any beds that touch along a path don’t match, and keep the paint box as small as possible — the better plan uses fewer distinct colors, counted across all beds. The concrete details will be shown below.
+
+There are 9 beds in total and 18 touching pairs to consider.
+Bed 0 touches bed 2 and therefore must have a different border color.
+Bed 0 touches bed 5 and therefore must have a different border color.
+Bed 0 touches bed 7 and therefore must have a different border color.
+Bed 0 touches bed 8 and therefore must have a different border color.
+Bed 6 touches bed 2 and therefore must have a different border color.
+Bed 6 touches bed 5 and therefore must have a different border color.
+Bed 6 touches bed 7 and therefore must have a different border color.
+Bed 6 touches bed 8 and therefore must have a different border color.
+Bed 7 touches bed 1 and therefore must have a different border color.
+Bed 7 touches bed 2 and therefore must have a different border color.
+Bed 7 touches bed 3 and therefore must have a different border color.
+Bed 7 touches bed 4 and therefore must have a different border color.
+Bed 7 touches bed 8 and therefore must have a different border color.
+Bed 4 touches bed 5 and therefore must have a different border color.
+Bed 1 touches bed 5 and therefore must have a different border color.
+Bed 3 touches bed 5 and therefore must have a different border color.
+Bed 8 touches bed 5 and therefore must have a different border color.
+Bed 5 touches bed 2 and therefore must have a different border color.
+These adjacency rules cover all 18 touching pairs.
+
+Also, when you send the coloring back, just use this little JSON layout so it's easy to read:
+
+{
+  ""solution"": [
+    [""bed_id"", ""bed_id"", ...],
+    [""bed_id"", ""bed_id"", ...],
+    ...
+  ]
+}
+
+Each inner array is one paint color — list the bed IDs that share that border color together. The outer array is just the collection of all those color groups. This is only a sketch of the shape I want, not the actual filled-in answer.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 9, 'num_edges': 18, 'edges': [{'u': 1, 'v': 3}, {'u': 1, 'v': 6}, {'u': 1, 'v': 8}, {'u': 1, 'v': 9}, {'u': 7, 'v': 3}, {'u': 7, 'v': 6}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 8, 'v': 2}, {'u': 8, 'v': 3}, {'u': 8, 'v': 4}, {'u': 8, 'v': 5}, {'u': 8, 'v': 9}, {'u': 5, 'v': 6}, {'u': 2, 'v': 6}, {'u': 4, 'v': 6}, {'u': 9, 'v': 6}, {'u': 6, 'v': 3}], 'source_file': 'citationCiteseer.mtx', 'density': 0.5, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0027.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0027.png', 'edge_connectivity': 2}","[[6, 8], [1, 7], [2, 3, 4, 5, 9]]",3.0,"{'num_nodes': 9, 'num_edges': 18, 'edges': [{'u': 0, 'v': 2}, {'u': 0, 'v': 5}, {'u': 0, 'v': 7}, {'u': 0, 'v': 8}, {'u': 6, 'v': 2}, {'u': 6, 'v': 5}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 7, 'v': 1}, {'u': 7, 'v': 2}, {'u': 7, 'v': 3}, {'u': 7, 'v': 4}, {'u': 7, 'v': 8}, {'u': 4, 'v': 5}, {'u': 1, 'v': 5}, {'u': 3, 'v': 5}, {'u': 8, 'v': 5}, {'u': 5, 'v': 2}]}","[[5, 7], [0, 6], [1, 2, 3, 4, 8]]",28,nl,0
+GCP,GCP,"There’s a busy concourse where every gate needs to be fitted with a curtain, but gates that touch via jet bridges can’t have matching curtains. The idea is to assign one color to each gate so no neighboring gates share a color, and to keep the total variety of colors as low as possible — just count how many different colors end up being used to see how well that went. Nothing can be skipped: each gate needs exactly one curtain and adjacent gates must differ. The concrete layout and instance details follow below.
+
+There are 10 gates in total and 29 jetbridge adjacencies.
+
+| gate_endpoint_one | gate_endpoint_two |
+|---|---|
+| D | A |
+| D | B |
+| D | C |
+| D | E |
+| D | F |
+| D | G |
+| D | H |
+| D | I |
+| D | J |
+| E | A |
+| E | B |
+| E | F |
+| E | G |
+| A | B |
+| A | F |
+| A | G |
+| C | F |
+| C | H |
+| C | I |
+| C | J |
+| H | F |
+| H | I |
+| H | J |
+| F | B |
+| F | G |
+| F | I |
+| F | J |
+| I | J |
+| G | B |
+
+If you want to hand the curtain plan back in a compact, machine-friendly way, just follow this simple JSON shape for the answer.
+
+{
+  ""solution"": [
+    [""gate_id"", ""gate_id"", ...],
+    [""gate_id"", ""gate_id"", ...],
+    ...
+  ]
+}
+
+Think of each inner list as a group of gates that all get the same curtain color (so no two touching gates should end up in the same inner list). The outer list is just the collection of those color-groups. This is just a template showing the expected shape, not the actual assignment.
+
+Please make sure to use the exact gate identifiers from the instance input — do not rename them or invent new ones. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'GCP', 'num_nodes': 10, 'num_edges': 29, 'edges': [{'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 4, 'v': 9}, {'u': 4, 'v': 10}, {'u': 5, 'v': 1}, {'u': 5, 'v': 2}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 1, 'v': 2}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 3, 'v': 6}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 3, 'v': 10}, {'u': 8, 'v': 6}, {'u': 8, 'v': 9}, {'u': 8, 'v': 10}, {'u': 6, 'v': 2}, {'u': 6, 'v': 7}, {'u': 6, 'v': 9}, {'u': 6, 'v': 10}, {'u': 9, 'v': 10}, {'u': 7, 'v': 2}], 'source_file': 'coPapersCiteseer.mtx', 'density': 0.6444444444444445, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0028.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0028.png', 'edge_connectivity': 5}","[[2, 10], [5, 9], [6], [4], [3, 7], [1, 8]]",6.0,"{'num_nodes': 10, 'num_edges': 29, 'edges': [{'u': 'D', 'v': 'A'}, {'u': 'D', 'v': 'B'}, {'u': 'D', 'v': 'C'}, {'u': 'D', 'v': 'E'}, {'u': 'D', 'v': 'F'}, {'u': 'D', 'v': 'G'}, {'u': 'D', 'v': 'H'}, {'u': 'D', 'v': 'I'}, {'u': 'D', 'v': 'J'}, {'u': 'E', 'v': 'A'}, {'u': 'E', 'v': 'B'}, {'u': 'E', 'v': 'F'}, {'u': 'E', 'v': 'G'}, {'u': 'A', 'v': 'B'}, {'u': 'A', 'v': 'F'}, {'u': 'A', 'v': 'G'}, {'u': 'C', 'v': 'F'}, {'u': 'C', 'v': 'H'}, {'u': 'C', 'v': 'I'}, {'u': 'C', 'v': 'J'}, {'u': 'H', 'v': 'F'}, {'u': 'H', 'v': 'I'}, {'u': 'H', 'v': 'J'}, {'u': 'F', 'v': 'B'}, {'u': 'F', 'v': 'G'}, {'u': 'F', 'v': 'I'}, {'u': 'F', 'v': 'J'}, {'u': 'I', 'v': 'J'}, {'u': 'G', 'v': 'B'}]}","[['B', 'J'], ['E', 'I'], ['F'], ['D'], ['C', 'G'], ['A', 'H']]",29,markdown_table,names
+GCP,GCP,"Imagine a shelf where every magazine gets a colored sleeve, and the rule is that any two magazines touching side by side must wear different colors. The job is to assign one color to each magazine (no magazine without a sleeve and none with two), and to avoid matching colors on neighbors. The neatest solution is the one that ends up with the fewest different sleeve colors — look at all sleeves, count the unique colors, and minimize that count. The full details of which magazines are next to each other are listed below.
+
+Below are the 10 magazines and 16 side-by-side adjacencies.
+Magazine 3 is side-by-side with magazine 2; they must wear different sleeve colors.
+Magazine 3 is side-by-side with magazine 9; they must wear different sleeve colors.
+Magazine 10 is side-by-side with magazine 7; they must wear different sleeve colors.
+Magazine 10 is side-by-side with magazine 9; they must wear different sleeve colors.
+Magazine 9 is side-by-side with magazine 1; they must wear different sleeve colors.
+Magazine 9 is side-by-side with magazine 2; they must wear different sleeve colors.
+Magazine 9 is side-by-side with magazine 4; they must wear different sleeve colors.
+Magazine 9 is side-by-side with magazine 5; they must wear different sleeve colors.
+Magazine 9 is side-by-side with magazine 6; they must wear different sleeve colors.
+Magazine 9 is side-by-side with magazine 7; they must wear different sleeve colors.
+Magazine 9 is side-by-side with magazine 8; they must wear different sleeve colors.
+Magazine 8 is side-by-side with magazine 2; they must wear different sleeve colors.
+Magazine 8 is side-by-side with magazine 6; they must wear different sleeve colors.
+Magazine 2 is side-by-side with magazine 6; they must wear different sleeve colors.
+Magazine 1 is side-by-side with magazine 7; they must wear different sleeve colors.
+Magazine 5 is side-by-side with magazine 7; they must wear different sleeve colors.
+Assign one sleeve to each magazine and choose colors so the total number of distinct sleeve colors is minimized.
+
+Also, when you reply with your proposed grouping of sleeves, please use this simple JSON layout so it's easy to parse.
+
+{
+  ""solution"": [
+    [""magazine_id"", ""magazine_id"", ...],
+    [""magazine_id"", ""magazine_id"", ...],
+    ...
+  ]
+}
+
+The ""solution"" array is just a list of groups — each inner list contains the magazine identifiers that share the same sleeve color. Think of each inner list as one sleeve color and the strings as the magazine labels to put inside that sleeve. This block is just a sketch of the shape I need, not the actual answer.
+
+Please be sure to use the exact identifiers from the instance input — don’t rename them or invent new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 10, 'num_edges': 16, 'edges': [{'u': 3, 'v': 2}, {'u': 3, 'v': 9}, {'u': 10, 'v': 7}, {'u': 10, 'v': 9}, {'u': 9, 'v': 1}, {'u': 9, 'v': 2}, {'u': 9, 'v': 4}, {'u': 9, 'v': 5}, {'u': 9, 'v': 6}, {'u': 9, 'v': 7}, {'u': 9, 'v': 8}, {'u': 8, 'v': 2}, {'u': 8, 'v': 6}, {'u': 2, 'v': 6}, {'u': 1, 'v': 7}, {'u': 5, 'v': 7}], 'source_file': 'citationCiteseer.mtx', 'density': 0.35555555555555557, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0029.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0029.png', 'edge_connectivity': 1}","[[2, 4, 7], [9], [6], [1, 3, 5, 8, 10]]",4.0,"{'num_nodes': 10, 'num_edges': 16, 'edges': [{'u': 3, 'v': 2}, {'u': 3, 'v': 9}, {'u': 10, 'v': 7}, {'u': 10, 'v': 9}, {'u': 9, 'v': 1}, {'u': 9, 'v': 2}, {'u': 9, 'v': 4}, {'u': 9, 'v': 5}, {'u': 9, 'v': 6}, {'u': 9, 'v': 7}, {'u': 9, 'v': 8}, {'u': 8, 'v': 2}, {'u': 8, 'v': 6}, {'u': 2, 'v': 6}, {'u': 1, 'v': 7}, {'u': 5, 'v': 7}]}","[[2, 4, 7], [9], [6], [1, 3, 5, 8, 10]]",30,nl,1
+GCP,GCP,"Someone on the design team said it best: give each exhibit a single accent, never give the same accent to two exhibits that are connected by visitor routes, and don’t leave any exhibit unaccented or slap more than one on the same exhibit. Success is just using the smallest number of different accents — you can see how well that worked by counting the unique colors used. The specific map and data are shown below.
+
+There are 12 exhibits in total and 39 visitor routes.
+
+| exhibit_a | exhibit_b |
+|---|---|
+| 3 | 1 |
+| 3 | 2 |
+| 3 | 4 |
+| 3 | 5 |
+| 3 | 6 |
+| 3 | 7 |
+| 3 | 8 |
+| 3 | 9 |
+| 3 | 10 |
+| 3 | 11 |
+| 4 | 1 |
+| 4 | 2 |
+| 4 | 5 |
+| 4 | 6 |
+| 4 | 7 |
+| 4 | 8 |
+| 4 | 9 |
+| 4 | 10 |
+| 4 | 11 |
+| 5 | 2 |
+| 5 | 6 |
+| 5 | 8 |
+| 5 | 9 |
+| 5 | 11 |
+| 6 | 0 |
+| 6 | 2 |
+| 6 | 8 |
+| 6 | 9 |
+| 6 | 11 |
+| 7 | 1 |
+| 7 | 10 |
+| 8 | 0 |
+| 8 | 2 |
+| 8 | 9 |
+| 8 | 11 |
+| 9 | 2 |
+| 9 | 11 |
+| 1 | 10 |
+| 11 | 2 |
+
+Oh — and when you send the final assignment, just stick to this simple JSON shape so it's easy to check automatically:
+
+{
+  ""solution"": [
+    [""exhibit_id"", ""exhibit_id"", ...],
+    [""exhibit_id"", ""exhibit_id"", ...],
+    ...
+  ]
+}
+
+Here each inner list is one accent/color group — basically a list of the exhibits that share the same accent — and the outer list is the collection of those groups. Think of it as a handful of buckets: put each exhibit ID into exactly one bucket. This is just the expected shape, not the actual coloring answer.
+
+Please make sure every identifier you list matches the instance input exactly — no renaming and no extra labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 12, 'num_edges': 39, 'edges': [{'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 4, 'v': 9}, {'u': 4, 'v': 10}, {'u': 4, 'v': 11}, {'u': 4, 'v': 12}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 5, 'v': 10}, {'u': 5, 'v': 11}, {'u': 5, 'v': 12}, {'u': 6, 'v': 3}, {'u': 6, 'v': 7}, {'u': 6, 'v': 9}, {'u': 6, 'v': 10}, {'u': 6, 'v': 12}, {'u': 7, 'v': 1}, {'u': 7, 'v': 3}, {'u': 7, 'v': 9}, {'u': 7, 'v': 10}, {'u': 7, 'v': 12}, {'u': 8, 'v': 2}, {'u': 8, 'v': 11}, {'u': 9, 'v': 1}, {'u': 9, 'v': 3}, {'u': 9, 'v': 10}, {'u': 9, 'v': 12}, {'u': 10, 'v': 3}, {'u': 10, 'v': 12}, {'u': 2, 'v': 11}, {'u': 12, 'v': 3}], 'source_file': 'coPapersCiteseer.mtx', 'density': 0.5909090909090909, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0030.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0030.png', 'edge_connectivity': 2}","[[2, 9], [7, 8], [6], [1, 5], [12], [4], [10], [3, 11]]",8.0,"{'num_nodes': 12, 'num_edges': 39, 'edges': [{'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 3, 'v': 10}, {'u': 3, 'v': 11}, {'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 4, 'v': 9}, {'u': 4, 'v': 10}, {'u': 4, 'v': 11}, {'u': 5, 'v': 2}, {'u': 5, 'v': 6}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 5, 'v': 11}, {'u': 6, 'v': 0}, {'u': 6, 'v': 2}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 6, 'v': 11}, {'u': 7, 'v': 1}, {'u': 7, 'v': 10}, {'u': 8, 'v': 0}, {'u': 8, 'v': 2}, {'u': 8, 'v': 9}, {'u': 8, 'v': 11}, {'u': 9, 'v': 2}, {'u': 9, 'v': 11}, {'u': 1, 'v': 10}, {'u': 11, 'v': 2}]}","[[1, 8], [6, 7], [5], [0, 4], [11], [3], [9], [2, 10]]",31,markdown_table,0
+GCP,GCP,"Someone on the release team is sorting modules into colored channels so dependencies don’t collide: every module gets one color, but if one module depends on another they must have different colors. The better the arrangement, the fewer total colors you use — evaluate it by counting the distinct colors assigned. Make sure nothing is left uncolored and no directly dependent pair shares a color. The full list of modules and their links appears below.
+
+There are 12 num modules in total and 26 num dependency links.
+
+| module_a | module_b |
+|---|---|
+| 9 | 3 |
+| 9 | 4 |
+| 11 | 1 |
+| 11 | 3 |
+| 11 | 4 |
+| 6 | 0 |
+| 6 | 2 |
+| 6 | 3 |
+| 6 | 10 |
+| 0 | 2 |
+| 0 | 4 |
+| 8 | 1 |
+| 8 | 3 |
+| 8 | 4 |
+| 5 | 1 |
+| 10 | 1 |
+| 10 | 2 |
+| 10 | 3 |
+| 10 | 4 |
+| 4 | 1 |
+| 4 | 2 |
+| 4 | 3 |
+| 4 | 7 |
+| 2 | 1 |
+| 2 | 7 |
+| 1 | 3 |
+
+Also, when you send the arrangement back, please stick to this JSON layout so it's easy to parse:
+
+{
+  ""solution"": [
+    [""module_id"", ""module_id"", ...],
+    [""module_id"", ""module_id"", ...],
+    ...
+  ]
+}
+
+Each inner list is one color channel — just list the modules that share that color together. Make sure every module appears exactly once and that no module appears in the same inner list as one of its direct dependencies. This JSON is just a sketch of the shape I need, not the actual answer.
+
+Also, use the exact identifiers given in the instance input — do not rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”"".","{'problem_type': 'GCP', 'num_nodes': 12, 'num_edges': 26, 'edges': [{'u': 10, 'v': 4}, {'u': 10, 'v': 5}, {'u': 12, 'v': 2}, {'u': 12, 'v': 4}, {'u': 12, 'v': 5}, {'u': 7, 'v': 1}, {'u': 7, 'v': 3}, {'u': 7, 'v': 4}, {'u': 7, 'v': 11}, {'u': 1, 'v': 3}, {'u': 1, 'v': 5}, {'u': 9, 'v': 2}, {'u': 9, 'v': 4}, {'u': 9, 'v': 5}, {'u': 6, 'v': 2}, {'u': 11, 'v': 2}, {'u': 11, 'v': 3}, {'u': 11, 'v': 4}, {'u': 11, 'v': 5}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 4}, {'u': 5, 'v': 8}, {'u': 3, 'v': 2}, {'u': 3, 'v': 8}, {'u': 2, 'v': 4}], 'source_file': 'citationCiteseer.mtx', 'density': 0.3939393939393939, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0031.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0031.png', 'edge_connectivity': 1}","[[5, 6, 7], [2, 8, 10], [3, 4], [1, 9, 11, 12]]",4.0,"{'num_nodes': 12, 'num_edges': 26, 'edges': [{'u': 9, 'v': 3}, {'u': 9, 'v': 4}, {'u': 11, 'v': 1}, {'u': 11, 'v': 3}, {'u': 11, 'v': 4}, {'u': 6, 'v': 0}, {'u': 6, 'v': 2}, {'u': 6, 'v': 3}, {'u': 6, 'v': 10}, {'u': 0, 'v': 2}, {'u': 0, 'v': 4}, {'u': 8, 'v': 1}, {'u': 8, 'v': 3}, {'u': 8, 'v': 4}, {'u': 5, 'v': 1}, {'u': 10, 'v': 1}, {'u': 10, 'v': 2}, {'u': 10, 'v': 3}, {'u': 10, 'v': 4}, {'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 7}, {'u': 2, 'v': 1}, {'u': 2, 'v': 7}, {'u': 1, 'v': 3}]}","[[4, 5, 6], [1, 7, 9], [2, 3], [0, 8, 10, 11]]",32,markdown_table,0
+GCP,GCP,"Back when the neighborhood decided to coordinate mailbox colors, the rule became: paint every box, don’t let any two side-by-side boxes share the same paint, and try to do it with the fewest different paints you can manage. That requires picking one color per mailbox, avoiding identical colors on adjacent boxes, and minimizing the total count of unique colors — the fewer unique paints, the better, and that count is what’s tracked. The concrete mailbox map appears below.
+
+There are 10 mailboxes in total and 21 adjacent mailbox pairs.
+
+| mailbox_one_id | mailbox_two_id |
+|---|---|
+| 6 | 1 |
+| 6 | 2 |
+| 6 | 3 |
+| 6 | 7 |
+| 3 | 0 |
+| 3 | 1 |
+| 3 | 5 |
+| 3 | 9 |
+| 9 | 5 |
+| 9 | 8 |
+| 7 | 1 |
+| 7 | 4 |
+| 7 | 5 |
+| 8 | 1 |
+| 8 | 4 |
+| 5 | 1 |
+| 5 | 2 |
+| 1 | 0 |
+| 1 | 4 |
+| 4 | 2 |
+| 0 | 2 |
+
+Also, to keep things simple for me to check your answer, please put the assignment into a little JSON sketch like this:
+
+{
+  ""solution"": [
+    [""mailbox_id"", ""mailbox_id"", ...],
+    [""mailbox_id"", ""mailbox_id"", ...],
+    ...
+  ]
+}
+
+Think of each inner list as a group of mailboxes that all get the same paint color — one list per paint. The outer array is just the collection of those paint-groups. This is just a template showing the shape I expect, not the actual painted map.
+
+Please make sure you use the exact identifiers from the instance input — do not rename them or invent new ones. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'GCP', 'num_nodes': 10, 'num_edges': 21, 'edges': [{'u': 7, 'v': 2}, {'u': 7, 'v': 3}, {'u': 7, 'v': 4}, {'u': 7, 'v': 8}, {'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 6}, {'u': 4, 'v': 10}, {'u': 10, 'v': 6}, {'u': 10, 'v': 9}, {'u': 8, 'v': 2}, {'u': 8, 'v': 5}, {'u': 8, 'v': 6}, {'u': 9, 'v': 2}, {'u': 9, 'v': 5}, {'u': 6, 'v': 2}, {'u': 6, 'v': 3}, {'u': 2, 'v': 1}, {'u': 2, 'v': 5}, {'u': 5, 'v': 3}, {'u': 1, 'v': 3}], 'source_file': 'citationCiteseer.mtx', 'density': 0.4666666666666667, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0032.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0032.png', 'edge_connectivity': 3}","[[1, 5, 6, 7], [2, 3, 10], [4, 8, 9]]",3.0,"{'num_nodes': 10, 'num_edges': 21, 'edges': [{'u': 6, 'v': 1}, {'u': 6, 'v': 2}, {'u': 6, 'v': 3}, {'u': 6, 'v': 7}, {'u': 3, 'v': 0}, {'u': 3, 'v': 1}, {'u': 3, 'v': 5}, {'u': 3, 'v': 9}, {'u': 9, 'v': 5}, {'u': 9, 'v': 8}, {'u': 7, 'v': 1}, {'u': 7, 'v': 4}, {'u': 7, 'v': 5}, {'u': 8, 'v': 1}, {'u': 8, 'v': 4}, {'u': 5, 'v': 1}, {'u': 5, 'v': 2}, {'u': 1, 'v': 0}, {'u': 1, 'v': 4}, {'u': 4, 'v': 2}, {'u': 0, 'v': 2}]}","[[0, 4, 5, 6], [1, 2, 9], [3, 7, 8]]",33,markdown_table,0
+GCP,GCP,"There’s a little puzzle backstage: every musician’s mark needs a spotlight gel and any two neighboring marks must look different under the lights. The task is to pick one gel for each mark so that adjacent areas never share the same gel, and a neat solution is one that reuses the same few gel colors everywhere. To see how good a setup is, just count the distinct gel colors in use — fewer distinct colors means a nicer solution. Every spot gets exactly one gel and none of the adjacent spots can match. The exact map of positions is shown below.
+
+# total_positions=12
+# num_adjacent_pairs=27
+position_a,position_b
+2,1
+2,3
+2,4
+2,5
+2,6
+2,7
+2,8
+2,9
+2,10
+2,11
+2,12
+4,1
+4,5
+4,7
+1,5
+1,6
+1,7
+1,8
+10,8
+10,11
+10,12
+11,8
+12,8
+5,6
+5,7
+5,8
+6,8
+
+If you want to hand me the coloring in a tidy, machine-friendly way, just follow this little JSON shape:
+
+{
+  ""solution"": [
+    [""mark_id"", ""mark_id"", ...],
+    [""mark_id"", ""mark_id"", ...],
+    ...
+  ]
+}
+
+Each inner array is one gel color: list the mark IDs that get that same gel. The first array is all the marks using the first gel, the second array the marks using the second gel, and so on. Think of it as just a simple form to fill out — this sketch shows the shape I expect, not the final coloring itself.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”. ""","{'problem_type': 'GCP', 'num_nodes': 12, 'num_edges': 27, 'edges': [{'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 2, 'v': 7}, {'u': 2, 'v': 8}, {'u': 2, 'v': 9}, {'u': 2, 'v': 10}, {'u': 2, 'v': 11}, {'u': 2, 'v': 12}, {'u': 4, 'v': 1}, {'u': 4, 'v': 5}, {'u': 4, 'v': 7}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 1, 'v': 8}, {'u': 10, 'v': 8}, {'u': 10, 'v': 11}, {'u': 10, 'v': 12}, {'u': 11, 'v': 8}, {'u': 12, 'v': 8}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 6, 'v': 8}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.4090909090909091, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0033.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0033.png', 'edge_connectivity': 1}","[[3, 7, 8, 9], [2], [5], [4, 6, 10], [1, 11, 12]]",5.0,"{'num_nodes': 12, 'num_edges': 27, 'edges': [{'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 2, 'v': 7}, {'u': 2, 'v': 8}, {'u': 2, 'v': 9}, {'u': 2, 'v': 10}, {'u': 2, 'v': 11}, {'u': 2, 'v': 12}, {'u': 4, 'v': 1}, {'u': 4, 'v': 5}, {'u': 4, 'v': 7}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 1, 'v': 8}, {'u': 10, 'v': 8}, {'u': 10, 'v': 11}, {'u': 10, 'v': 12}, {'u': 11, 'v': 8}, {'u': 12, 'v': 8}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 6, 'v': 8}]}","[[3, 7, 8, 9], [2], [5], [4, 6, 10], [1, 11, 12]]",34,csv,1
+GCP,GCP,"Recently the maintenance crew had to pick backgrounds for a set of signs, and the only tricky bit was avoiding identical backgrounds for signs a driver can see together from one approach. The task is to give every sign a background color, never using the same one on two signs that are visible simultaneously. A smarter pick uses as few different colors as possible — the score is simply the count of distinct backgrounds used. The full sign arrangement is shown below.
+
+The arrangement shown had 9 signs and 15 pairs of signs visible together.
+Signs 5 and 3 were visible together and could not share the same background.
+Signs 5 and 6 were visible together and could not share the same background.
+Signs 5 and 8 were visible together and could not share the same background.
+Signs 1 and 0 were visible together and could not share the same background.
+Signs 1 and 4 were visible together and could not share the same background.
+Signs 1 and 7 were visible together and could not share the same background.
+Signs 1 and 8 were visible together and could not share the same background.
+Signs 2 and 3 were visible together and could not share the same background.
+Signs 3 and 6 were visible together and could not share the same background.
+Signs 3 and 8 were visible together and could not share the same background.
+Signs 4 and 0 were visible together and could not share the same background.
+Signs 4 and 7 were visible together and could not share the same background.
+Signs 4 and 8 were visible together and could not share the same background.
+Signs 8 and 6 were visible together and could not share the same background.
+Signs 8 and 7 were visible together and could not share the same background.
+Any valid background assignment avoided identical backgrounds on those 15 conflicting pairs.
+
+If you want to hand me the answer in a machine-friendly way, a compact JSON sketch like the one below is perfect — just a list of groups, where each inner list holds the signs that share the same background.
+
+{
+  ""solution"": [
+    [""sign_id"", ""sign_id""],
+    [""sign_id"", ""sign_id""],
+    [""sign_id""]
+  ]
+}
+
+Pretty simple: ""solution"" is a list of background groups, and each inner list is the set of sign identifiers that get the same background color. Think of each inner list as one background choice and the strings inside as the sign labels you'd put on a form. This is just the shape I need, not the actual final assignment.
+
+Please be sure to use the identifiers exactly as they appear in the instance input — no renaming and no new labels. 
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'GCP', 'num_nodes': 9, 'num_edges': 15, 'edges': [{'u': 6, 'v': 4}, {'u': 6, 'v': 7}, {'u': 6, 'v': 9}, {'u': 2, 'v': 1}, {'u': 2, 'v': 5}, {'u': 2, 'v': 8}, {'u': 2, 'v': 9}, {'u': 3, 'v': 4}, {'u': 4, 'v': 7}, {'u': 4, 'v': 9}, {'u': 5, 'v': 1}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 9, 'v': 7}, {'u': 9, 'v': 8}], 'source_file': 'citationCiteseer.mtx', 'density': 0.4166666666666667, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0034.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0034.png', 'edge_connectivity': 1}","[[1, 3, 7, 8], [5, 6], [2, 4], [9]]",4.0,"{'num_nodes': 9, 'num_edges': 15, 'edges': [{'u': 5, 'v': 3}, {'u': 5, 'v': 6}, {'u': 5, 'v': 8}, {'u': 1, 'v': 0}, {'u': 1, 'v': 4}, {'u': 1, 'v': 7}, {'u': 1, 'v': 8}, {'u': 2, 'v': 3}, {'u': 3, 'v': 6}, {'u': 3, 'v': 8}, {'u': 4, 'v': 0}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 8, 'v': 6}, {'u': 8, 'v': 7}]}","[[0, 2, 6, 7], [4, 5], [1, 3], [8]]",35,nl,0
+GCP,GCP,"Many people who manage multiple tanks end up labeling each aquarium so filter-linked tanks are easy to tell apart; here the task is to choose one stripe per tank and avoid matching stripes on tanks that share a filtration connection. A better labeling uses fewer overall stripe colors — just count how many different stripe colors appear and smaller counts are preferable. It’s required that every tank gets exactly one stripe and no two connected tanks have the same stripe, with nothing omitted or duplicated on a single tank. The full layout and connection list are shown below.
+
+There are 12 tanks in total and 24 filtration connections.
+
+| tank_u_id | tank_v_id |
+|---|---|
+| 8 | 0 |
+| 8 | 2 |
+| 8 | 4 |
+| 8 | 5 |
+| 8 | 7 |
+| 7 | 0 |
+| 7 | 4 |
+| 0 | 2 |
+| 0 | 3 |
+| 0 | 4 |
+| 0 | 5 |
+| 0 | 6 |
+| 0 | 9 |
+| 0 | 10 |
+| 0 | 11 |
+| 6 | 4 |
+| 6 | 11 |
+| 5 | 4 |
+| 1 | 10 |
+| 11 | 2 |
+| 11 | 4 |
+| 11 | 9 |
+| 4 | 2 |
+| 4 | 3 |
+
+Also, when you give the stripe grouping, please use this simple JSON layout — just a list of stripe groups, nothing fancy:
+
+{
+  ""solution"": [
+    [""tank_id"", ""tank_id"", ...],
+    [""tank_id"", ""tank_id"", ...],
+    ...
+  ]
+}
+
+Each inner list is a single stripe color (so all the tanks in that list share one stripe), the first list would be stripe color 1, the second stripe color 2, and so on. Think of it as putting tanks into piles by stripe — every tank should appear in exactly one pile. This JSON is only a sketch of the shape I need, not the actual assignment.
+
+Please make sure you use the exact identifiers from the instance input — don’t rename them or invent new ones.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 12, 'num_edges': 24, 'edges': [{'u': 9, 'v': 1}, {'u': 9, 'v': 3}, {'u': 9, 'v': 5}, {'u': 9, 'v': 6}, {'u': 9, 'v': 8}, {'u': 8, 'v': 1}, {'u': 8, 'v': 5}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 1, 'v': 10}, {'u': 1, 'v': 11}, {'u': 1, 'v': 12}, {'u': 7, 'v': 5}, {'u': 7, 'v': 12}, {'u': 6, 'v': 5}, {'u': 2, 'v': 11}, {'u': 12, 'v': 3}, {'u': 12, 'v': 5}, {'u': 12, 'v': 10}, {'u': 5, 'v': 3}, {'u': 5, 'v': 4}], 'source_file': 'citationCiteseer.mtx', 'density': 0.36363636363636365, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0035.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0035.png', 'edge_connectivity': 1}","[[3, 4, 6, 7, 8, 10, 11], [1, 2], [9, 12], [5]]",4.0,"{'num_nodes': 12, 'num_edges': 24, 'edges': [{'u': 8, 'v': 0}, {'u': 8, 'v': 2}, {'u': 8, 'v': 4}, {'u': 8, 'v': 5}, {'u': 8, 'v': 7}, {'u': 7, 'v': 0}, {'u': 7, 'v': 4}, {'u': 0, 'v': 2}, {'u': 0, 'v': 3}, {'u': 0, 'v': 4}, {'u': 0, 'v': 5}, {'u': 0, 'v': 6}, {'u': 0, 'v': 9}, {'u': 0, 'v': 10}, {'u': 0, 'v': 11}, {'u': 6, 'v': 4}, {'u': 6, 'v': 11}, {'u': 5, 'v': 4}, {'u': 1, 'v': 10}, {'u': 11, 'v': 2}, {'u': 11, 'v': 4}, {'u': 11, 'v': 9}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}]}","[[2, 3, 5, 6, 7, 9, 10], [0, 1], [8, 11], [4]]",36,markdown_table,0
+GCP,GCP,"We’ve got a bunch of bookshelves lined up and someone suggested color-coding the ends of each shelf. In practice that means choosing one color label for each shelf, making sure any shelves that meet side by side don’t end up with the same color, and making sure each shelf gets one label only. The trick is to make the whole setup look tidy by using as few different label colors as possible — evaluate a setup by counting how many unique colors appear. The concrete shelf map is shown below.
+
+{
+  ""total_shelves"": 8,
+  ""touching_adjacent_pairs"": 16,
+  ""edges"": [
+    {
+      ""shelf_a"": 2,
+      ""shelf_b"": 0
+    },
+    {
+      ""shelf_a"": 2,
+      ""shelf_b"": 1
+    },
+    {
+      ""shelf_a"": 2,
+      ""shelf_b"": 3
+    },
+    {
+      ""shelf_a"": 2,
+      ""shelf_b"": 4
+    },
+    {
+      ""shelf_a"": 2,
+      ""shelf_b"": 5
+    },
+    {
+      ""shelf_a"": 6,
+      ""shelf_b"": 0
+    },
+    {
+      ""shelf_a"": 6,
+      ""shelf_b"": 1
+    },
+    {
+      ""shelf_a"": 4,
+      ""shelf_b"": 0
+    },
+    {
+      ""shelf_a"": 4,
+      ""shelf_b"": 3
+    },
+    {
+      ""shelf_a"": 4,
+      ""shelf_b"": 5
+    },
+    {
+      ""shelf_a"": 3,
+      ""shelf_b"": 0
+    },
+    {
+      ""shelf_a"": 3,
+      ""shelf_b"": 5
+    },
+    {
+      ""shelf_a"": 5,
+      ""shelf_b"": 1
+    },
+    {
+      ""shelf_a"": 7,
+      ""shelf_b"": 0
+    },
+    {
+      ""shelf_a"": 7,
+      ""shelf_b"": 1
+    },
+    {
+      ""shelf_a"": 0,
+      ""shelf_b"": 1
+    }
+  ]
+}
+
+If you're going to send the coloring back, keep it in a simple JSON shape so it's easy to check. Something like this works fine:
+
+{
+  ""solution"": [
+    [""shelf_id"", ""shelf_id"", ...],
+    [""shelf_id"", ""shelf_id"", ...],
+    ...
+  ]
+}
+
+Each inner list is one color group — a list of the shelf IDs that all get the same label color. The outer array is just all the color groups together. This is just a sketch of the shape I expect, not the actual coloring.
+
+Quick reminder: use the exact identifiers from the instance input — don't rename them or invent new ones.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 8, 'num_edges': 16, 'edges': [{'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 7, 'v': 1}, {'u': 7, 'v': 2}, {'u': 5, 'v': 1}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 4, 'v': 1}, {'u': 4, 'v': 6}, {'u': 6, 'v': 2}, {'u': 8, 'v': 1}, {'u': 8, 'v': 2}, {'u': 1, 'v': 2}], 'source_file': 'citationCiteseer.mtx', 'density': 0.5714285714285714, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0036.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0036.png', 'edge_connectivity': 2}","[[1, 6], [4], [2, 5], [3, 7, 8]]",4.0,"{'num_nodes': 8, 'num_edges': 16, 'edges': [{'u': 2, 'v': 0}, {'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 6, 'v': 0}, {'u': 6, 'v': 1}, {'u': 4, 'v': 0}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 3, 'v': 0}, {'u': 3, 'v': 5}, {'u': 5, 'v': 1}, {'u': 7, 'v': 0}, {'u': 7, 'v': 1}, {'u': 0, 'v': 1}]}","[[0, 5], [3], [1, 4], [2, 6, 7]]",37,json,0
+GCP,GCP,"Many people face the same tricky decorating puzzle: color every room so adjoining rooms don’t end up the same. The task is to assign one paint to each room (no room skipped, and touching rooms must differ) while trying to keep the palette small. The quality of a plan is judged by how many different paints it uses — simply count the unique colors to see which plan is better. The full layout and details are provided below.
+
+There are 11 rooms and 31 shared walls to consider:
+Room 4 shares a wall with room 3, so they must be painted different colors.
+Room 4 shares a wall with room 10, so they must be painted different colors.
+Room 4 shares a wall with room 11, so they must be painted different colors.
+Room 9 shares a wall with room 8, so they must be painted different colors.
+Room 9 shares a wall with room 10, so they must be painted different colors.
+Room 9 shares a wall with room 11, so they must be painted different colors.
+Room 8 shares a wall with room 10, so they must be painted different colors.
+Room 8 shares a wall with room 11, so they must be painted different colors.
+Room 2 shares a wall with room 1, so they must be painted different colors.
+Room 2 shares a wall with room 5, so they must be painted different colors.
+Room 2 shares a wall with room 6, so they must be painted different colors.
+Room 2 shares a wall with room 7, so they must be painted different colors.
+Room 2 shares a wall with room 10, so they must be painted different colors.
+Room 2 shares a wall with room 11, so they must be painted different colors.
+Room 10 shares a wall with room 1, so they must be painted different colors.
+Room 10 shares a wall with room 3, so they must be painted different colors.
+Room 10 shares a wall with room 5, so they must be painted different colors.
+Room 10 shares a wall with room 6, so they must be painted different colors.
+Room 10 shares a wall with room 7, so they must be painted different colors.
+Room 10 shares a wall with room 11, so they must be painted different colors.
+Room 11 shares a wall with room 1, so they must be painted different colors.
+Room 11 shares a wall with room 3, so they must be painted different colors.
+Room 11 shares a wall with room 5, so they must be painted different colors.
+Room 11 shares a wall with room 6, so they must be painted different colors.
+Room 11 shares a wall with room 7, so they must be painted different colors.
+Room 5 shares a wall with room 1, so they must be painted different colors.
+Room 5 shares a wall with room 6, so they must be painted different colors.
+Room 5 shares a wall with room 7, so they must be painted different colors.
+Room 6 shares a wall with room 1, so they must be painted different colors.
+Room 6 shares a wall with room 7, so they must be painted different colors.
+Room 7 shares a wall with room 1, so they must be painted different colors.
+Keep the palette as small as possible and count the distinct paints across the 11 rooms to judge a plan.
+
+Oh, and one more practical thing — when you reply, please follow this simple JSON layout so it's easy to check automatically. Just stick to the shape below:
+
+{
+  ""solution"": [
+    [""room_id"", ""room_id"", ...],
+    [""room_id"", ""room_id"", ...],
+    ...
+  ]
+}
+
+Think of each inner list as one paint color: it lists the rooms that get that same color (rooms in the same list must not share a wall in the actual layout). The outer array is just the collection of all those color groups. This JSON is just a sketch of the shape I need, not the final coloring — you'll fill it with the exact room identifiers from the instance.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 11, 'num_edges': 31, 'edges': [{'u': 4, 'v': 3}, {'u': 4, 'v': 10}, {'u': 4, 'v': 11}, {'u': 9, 'v': 8}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 8, 'v': 10}, {'u': 8, 'v': 11}, {'u': 2, 'v': 1}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 2, 'v': 7}, {'u': 2, 'v': 10}, {'u': 2, 'v': 11}, {'u': 10, 'v': 1}, {'u': 10, 'v': 3}, {'u': 10, 'v': 5}, {'u': 10, 'v': 6}, {'u': 10, 'v': 7}, {'u': 10, 'v': 11}, {'u': 11, 'v': 1}, {'u': 11, 'v': 3}, {'u': 11, 'v': 5}, {'u': 11, 'v': 6}, {'u': 11, 'v': 7}, {'u': 5, 'v': 1}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 6, 'v': 1}, {'u': 6, 'v': 7}, {'u': 7, 'v': 1}], 'source_file': 'coPapersCiteseer.mtx', 'density': 0.5636363636363636, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0037.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0037.png', 'edge_connectivity': 3}","[[3, 7, 8], [1], [6], [10], [11], [5], [2, 4, 9]]",7.0,"{'num_nodes': 11, 'num_edges': 31, 'edges': [{'u': 4, 'v': 3}, {'u': 4, 'v': 10}, {'u': 4, 'v': 11}, {'u': 9, 'v': 8}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 8, 'v': 10}, {'u': 8, 'v': 11}, {'u': 2, 'v': 1}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 2, 'v': 7}, {'u': 2, 'v': 10}, {'u': 2, 'v': 11}, {'u': 10, 'v': 1}, {'u': 10, 'v': 3}, {'u': 10, 'v': 5}, {'u': 10, 'v': 6}, {'u': 10, 'v': 7}, {'u': 10, 'v': 11}, {'u': 11, 'v': 1}, {'u': 11, 'v': 3}, {'u': 11, 'v': 5}, {'u': 11, 'v': 6}, {'u': 11, 'v': 7}, {'u': 5, 'v': 1}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 6, 'v': 1}, {'u': 6, 'v': 7}, {'u': 7, 'v': 1}]}","[[3, 7, 8], [1], [6], [10], [11], [5], [2, 4, 9]]",38,nl,1
+GCP,GCP,"There’s a small neighborhood of wireless hotspots and the job is to label each hotspot’s channel so neighbors with overlapping ranges don’t share the same label. That means deciding a channel for every hotspot (no hotspot left unlabeled and no hotspot with more than one label) and making sure overlapping pairs are on different channels. The better setups are the ones that get by with the smallest set of different channel names — tally the distinct labels to compare. The exact instance is shown below.
+
+{
+  ""total_hotspots"": 12,
+  ""overlap_pair_count"": 22,
+  ""edges"": [
+    {
+      ""hotspot_a_id"": 1,
+      ""hotspot_b_id"": 9
+    },
+    {
+      ""hotspot_a_id"": 5,
+      ""hotspot_b_id"": 2
+    },
+    {
+      ""hotspot_a_id"": 5,
+      ""hotspot_b_id"": 4
+    },
+    {
+      ""hotspot_a_id"": 5,
+      ""hotspot_b_id"": 8
+    },
+    {
+      ""hotspot_a_id"": 5,
+      ""hotspot_b_id"": 10
+    },
+    {
+      ""hotspot_a_id"": 5,
+      ""hotspot_b_id"": 11
+    },
+    {
+      ""hotspot_a_id"": 0,
+      ""hotspot_b_id"": 9
+    },
+    {
+      ""hotspot_a_id"": 0,
+      ""hotspot_b_id"": 11
+    },
+    {
+      ""hotspot_a_id"": 9,
+      ""hotspot_b_id"": 2
+    },
+    {
+      ""hotspot_a_id"": 9,
+      ""hotspot_b_id"": 3
+    },
+    {
+      ""hotspot_a_id"": 9,
+      ""hotspot_b_id"": 4
+    },
+    {
+      ""hotspot_a_id"": 9,
+      ""hotspot_b_id"": 6
+    },
+    {
+      ""hotspot_a_id"": 9,
+      ""hotspot_b_id"": 7
+    },
+    {
+      ""hotspot_a_id"": 9,
+      ""hotspot_b_id"": 8
+    },
+    {
+      ""hotspot_a_id"": 9,
+      ""hotspot_b_id"": 10
+    },
+    {
+      ""hotspot_a_id"": 9,
+      ""hotspot_b_id"": 11
+    },
+    {
+      ""hotspot_a_id"": 10,
+      ""hotspot_b_id"": 2
+    },
+    {
+      ""hotspot_a_id"": 10,
+      ""hotspot_b_id"": 11
+    },
+    {
+      ""hotspot_a_id"": 6,
+      ""hotspot_b_id"": 3
+    },
+    {
+      ""hotspot_a_id"": 2,
+      ""hotspot_b_id"": 4
+    },
+    {
+      ""hotspot_a_id"": 7,
+      ""hotspot_b_id"": 3
+    },
+    {
+      ""hotspot_a_id"": 4,
+      ""hotspot_b_id"": 8
+    }
+  ]
+}
+
+Also, when you send the answer, please follow this simple JSON shape so it's easy to check automatically:
+
+{
+  ""solution"": [
+    [""hotspot_id"", ""hotspot_id"", ...],
+    [""hotspot_id"", ""hotspot_id"", ...],
+    ...
+  ]
+}
+
+Each inner list is a group of hotspots that share the same channel (so each group is one channel), and the outer list is just the collection of those channels. Think of it like filling out a form: each row is a channel and you list the hotspot identifiers assigned to it. This JSON is just the expected shape — a sketch, not the actual labeling.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new ones. To be clear, valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'GCP', 'num_nodes': 12, 'num_edges': 22, 'edges': [{'u': 2, 'v': 10}, {'u': 6, 'v': 3}, {'u': 6, 'v': 5}, {'u': 6, 'v': 9}, {'u': 6, 'v': 11}, {'u': 6, 'v': 12}, {'u': 1, 'v': 10}, {'u': 1, 'v': 12}, {'u': 10, 'v': 3}, {'u': 10, 'v': 4}, {'u': 10, 'v': 5}, {'u': 10, 'v': 7}, {'u': 10, 'v': 8}, {'u': 10, 'v': 9}, {'u': 10, 'v': 11}, {'u': 10, 'v': 12}, {'u': 11, 'v': 3}, {'u': 11, 'v': 12}, {'u': 7, 'v': 4}, {'u': 3, 'v': 5}, {'u': 8, 'v': 4}, {'u': 5, 'v': 9}], 'source_file': 'citationCiteseer.mtx', 'density': 0.3333333333333333, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0038.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0038.png', 'edge_connectivity': 1}","[[1, 2, 4, 5, 11], [6, 10], [3, 7, 8, 9, 12]]",3.0,"{'num_nodes': 12, 'num_edges': 22, 'edges': [{'u': 1, 'v': 9}, {'u': 5, 'v': 2}, {'u': 5, 'v': 4}, {'u': 5, 'v': 8}, {'u': 5, 'v': 10}, {'u': 5, 'v': 11}, {'u': 0, 'v': 9}, {'u': 0, 'v': 11}, {'u': 9, 'v': 2}, {'u': 9, 'v': 3}, {'u': 9, 'v': 4}, {'u': 9, 'v': 6}, {'u': 9, 'v': 7}, {'u': 9, 'v': 8}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 10, 'v': 2}, {'u': 10, 'v': 11}, {'u': 6, 'v': 3}, {'u': 2, 'v': 4}, {'u': 7, 'v': 3}, {'u': 4, 'v': 8}]}","[[0, 1, 3, 4, 10], [5, 9], [2, 6, 7, 8, 11]]",39,json,0
+GCP,GCP,"In a tiny secondhand bookstore the owner wanted each shelf cubby labeled with a colored dot, but insisted that any cubbies that touch can’t wear the same color. The winning layouts are those that make do with the smallest number of distinct colors — you can check by listing all the colors that appear and counting them, with a lower count being better. Every cubby must have one tag and adjacent cubbies must differ; the specific arrangement is shown below.
+
+There are 9 cubbies in total and 20 touching pairs.
+
+| cubby_u | cubby_v |
+|---|---|
+| F | D |
+| F | G |
+| F | H |
+| F | I |
+| G | D |
+| G | H |
+| G | I |
+| H | D |
+| H | I |
+| I | D |
+| B | A |
+| B | C |
+| B | D |
+| B | E |
+| C | A |
+| C | D |
+| C | E |
+| D | A |
+| D | E |
+| E | A |
+
+If you want to hand the answer back in a tidy way, just follow this little JSON shape — it's the form I expect to see.
+
+{
+  ""solution"": [
+    [""cubby_id"", ""cubby_id"", ...],
+    [""cubby_id"", ""cubby_id"", ...],
+    ...
+  ]
+}
+
+Think of ""solution"" as a list of color groups: each inner list is the set of cubby IDs that get the same colored dot. It's just a sketch of the shape I need, not the actual assignment.
+
+Please be sure to use the exact identifiers from the instance input — don't rename or invent labels. Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".","{'problem_type': 'GCP', 'num_nodes': 9, 'num_edges': 20, 'edges': [{'u': 6, 'v': 4}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 7, 'v': 4}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 8, 'v': 4}, {'u': 8, 'v': 9}, {'u': 9, 'v': 4}, {'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 3, 'v': 1}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 4, 'v': 1}, {'u': 4, 'v': 5}, {'u': 5, 'v': 1}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.5555555555555556, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0039.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0039.png', 'edge_connectivity': 4}","[[4], [5, 9], [2, 6], [1, 8], [3, 7]]",5.0,"{'num_nodes': 9, 'num_edges': 20, 'edges': [{'u': 'F', 'v': 'D'}, {'u': 'F', 'v': 'G'}, {'u': 'F', 'v': 'H'}, {'u': 'F', 'v': 'I'}, {'u': 'G', 'v': 'D'}, {'u': 'G', 'v': 'H'}, {'u': 'G', 'v': 'I'}, {'u': 'H', 'v': 'D'}, {'u': 'H', 'v': 'I'}, {'u': 'I', 'v': 'D'}, {'u': 'B', 'v': 'A'}, {'u': 'B', 'v': 'C'}, {'u': 'B', 'v': 'D'}, {'u': 'B', 'v': 'E'}, {'u': 'C', 'v': 'A'}, {'u': 'C', 'v': 'D'}, {'u': 'C', 'v': 'E'}, {'u': 'D', 'v': 'A'}, {'u': 'D', 'v': 'E'}, {'u': 'E', 'v': 'A'}]}","[['D'], ['E', 'I'], ['B', 'F'], ['A', 'H'], ['C', 'G']]",40,markdown_table,names
+GCP,GCP,"Many people on the block want a tidy look, so the plan is to pick one color for each façade, making sure neighbors that touch don’t share a color. The task is to assign a single color to every building (no skips, no doubles) while keeping the number of different paints as low as possible — check by counting unique colors used. The specific building list and layout will be shown below.
+
+# total_buildings=9
+# touching_pairs_count=13
+building_a_id,building_b_id
+2,1
+2,3
+2,4
+1,3
+1,4
+1,5
+1,6
+1,7
+1,8
+1,9
+5,8
+3,4
+7,8
+
+Just so we're on the same page, please return the colouring as a simple JSON list of groups — each inner list is the buildings that share the same paint (i.e., the same color). Here’s the shape I expect:
+
+{
+  ""solution"": [
+    [""building_id"", ""building_id"", ...],
+    [""building_id"", ""building_id"", ...],
+    ...
+  ]
+}
+
+Each inner array is one color group (all those building IDs get the same color). The top-level ""solution"" array just holds all the color groups together. This is only a sketch of the expected shape, not the actual colouring — fill it in with the real building identifiers from the instance.
+
+Please use the exact identifiers from the instance input with no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'GCP', 'num_nodes': 9, 'num_edges': 13, 'edges': [{'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 1, 'v': 8}, {'u': 1, 'v': 9}, {'u': 5, 'v': 8}, {'u': 3, 'v': 4}, {'u': 7, 'v': 8}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.3611111111111111, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0040.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0040.png', 'edge_connectivity': 1}","[[2, 6, 8, 9], [4], [3, 5, 7], [1]]",4.0,"{'num_nodes': 9, 'num_edges': 13, 'edges': [{'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 1, 'v': 8}, {'u': 1, 'v': 9}, {'u': 5, 'v': 8}, {'u': 3, 'v': 4}, {'u': 7, 'v': 8}]}","[[2, 6, 8, 9], [4], [3, 5, 7], [1]]",41,csv,1
+GCP,GCP,"I was helping organize the community garden and the job turned out to be picking colored name-plates for every raised bed so that next to each other there aren’t two beds with the same color sign. Every bed gets one sign, and beds that touch have to wear different colors, and the whole idea is to do that while using as few different sign colors as possible — the “score” is just how many unique colors end up on the beds, fewer is better. The exact layout and which beds are next to which are shown below.
+
+# total_beds=11
+# adjacent_bed_pairs=28
+bed_a_id,bed_b_id
+7,3
+7,4
+7,8
+8,3
+8,4
+8,10
+4,0
+4,2
+4,3
+4,5
+4,6
+3,0
+3,2
+3,5
+3,6
+3,10
+6,0
+6,1
+6,2
+6,5
+6,9
+5,0
+5,2
+5,9
+2,0
+1,0
+1,9
+9,0
+
+Oh, and I'll put the result in a tiny JSON sketch like this so it's easy to read and check:
+
+{
+  ""solution"": [
+    [""bed_id"", ""bed_id"", ...],
+    [""bed_id"", ""bed_id"", ...],
+    ...
+  ]
+}
+
+Each inner list is the set of beds that get the same sign color — the first list would be color 1, the next list color 2, and so on. It's just a template showing the shape I'll use, not the actual assignment.
+
+Please make sure I use the exact bed identifiers from the instance input — no renaming and no new labels. Valid identifiers look like:
+- plain numbers such as “1” or “23”
+- single capital letters like “A” or “B”
+- a capital letter followed by digits like “A1” or “X7”","{'problem_type': 'GCP', 'num_nodes': 11, 'num_edges': 28, 'edges': [{'u': 8, 'v': 4}, {'u': 8, 'v': 5}, {'u': 8, 'v': 9}, {'u': 9, 'v': 4}, {'u': 9, 'v': 5}, {'u': 9, 'v': 11}, {'u': 5, 'v': 1}, {'u': 5, 'v': 3}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 4, 'v': 1}, {'u': 4, 'v': 3}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 11}, {'u': 7, 'v': 1}, {'u': 7, 'v': 2}, {'u': 7, 'v': 3}, {'u': 7, 'v': 6}, {'u': 7, 'v': 10}, {'u': 6, 'v': 1}, {'u': 6, 'v': 3}, {'u': 6, 'v': 10}, {'u': 3, 'v': 1}, {'u': 2, 'v': 1}, {'u': 2, 'v': 10}, {'u': 10, 'v': 1}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.509090909090909, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0041.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0041.png', 'edge_connectivity': 2}","[[1, 9], [4], [7], [3], [2, 6, 8, 11], [5, 10]]",6.0,"{'num_nodes': 11, 'num_edges': 28, 'edges': [{'u': 7, 'v': 3}, {'u': 7, 'v': 4}, {'u': 7, 'v': 8}, {'u': 8, 'v': 3}, {'u': 8, 'v': 4}, {'u': 8, 'v': 10}, {'u': 4, 'v': 0}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 3, 'v': 0}, {'u': 3, 'v': 2}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 10}, {'u': 6, 'v': 0}, {'u': 6, 'v': 1}, {'u': 6, 'v': 2}, {'u': 6, 'v': 5}, {'u': 6, 'v': 9}, {'u': 5, 'v': 0}, {'u': 5, 'v': 2}, {'u': 5, 'v': 9}, {'u': 2, 'v': 0}, {'u': 1, 'v': 0}, {'u': 1, 'v': 9}, {'u': 9, 'v': 0}]}","[[0, 8], [3], [6], [2], [1, 5, 7, 10], [4, 9]]",42,csv,0
+GCP,GCP,"We put together a line-up of photo booths and needed to choose a backdrop for each one: adjacent booths must have different backdrops, every booth must get one, and a better plan is simply the one that uses fewer different backdrop tones across the whole area. To see which plan is better, just count how many unique backdrop colors were used — lower is better — while never letting two booths that share a side match. The concrete booth map and details follow below.
+
+There are 11 booths in total and 19 side by side pairs.
+
+| booth_endpoint_a | booth_endpoint_b |
+|---|---|
+| K | A |
+| K | B |
+| K | F |
+| K | I |
+| J | A |
+| J | F |
+| J | I |
+| F | C |
+| F | D |
+| F | G |
+| F | H |
+| F | I |
+| E | B |
+| E | C |
+| E | G |
+| I | H |
+| D | G |
+| C | G |
+| C | H |
+
+If you want to hand in a plan, keep it in this simple JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [
+    [""booth_id"", ""booth_id"", ...],
+    [""booth_id"", ""booth_id"", ...],
+    ...
+  ]
+}
+
+Think of each inner list as one backdrop tone: list the booths that share that tone together, and each list is another tone. It's just a sketch of the shape I expect—don't treat these placeholder names as the real booths.
+
+Please use the exact identifiers from the instance input when you fill this in — no renaming, no made-up labels, and keep capitalization exactly the same.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 11, 'num_edges': 19, 'edges': [{'u': 11, 'v': 1}, {'u': 11, 'v': 2}, {'u': 11, 'v': 6}, {'u': 11, 'v': 9}, {'u': 10, 'v': 1}, {'u': 10, 'v': 6}, {'u': 10, 'v': 9}, {'u': 6, 'v': 3}, {'u': 6, 'v': 4}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 7}, {'u': 9, 'v': 8}, {'u': 4, 'v': 7}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}], 'source_file': 'citationCiteseer.mtx', 'density': 0.34545454545454546, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0042.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0042.png', 'edge_connectivity': 2}","[[7, 8, 10, 11], [5, 6], [1, 2, 3, 4, 9]]",3.0,"{'num_nodes': 11, 'num_edges': 19, 'edges': [{'u': 'K', 'v': 'A'}, {'u': 'K', 'v': 'B'}, {'u': 'K', 'v': 'F'}, {'u': 'K', 'v': 'I'}, {'u': 'J', 'v': 'A'}, {'u': 'J', 'v': 'F'}, {'u': 'J', 'v': 'I'}, {'u': 'F', 'v': 'C'}, {'u': 'F', 'v': 'D'}, {'u': 'F', 'v': 'G'}, {'u': 'F', 'v': 'H'}, {'u': 'F', 'v': 'I'}, {'u': 'E', 'v': 'B'}, {'u': 'E', 'v': 'C'}, {'u': 'E', 'v': 'G'}, {'u': 'I', 'v': 'H'}, {'u': 'D', 'v': 'G'}, {'u': 'C', 'v': 'G'}, {'u': 'C', 'v': 'H'}]}","[['G', 'H', 'J', 'K'], ['E', 'F'], ['A', 'B', 'C', 'D', 'I']]",43,markdown_table,names
+GCP,GCP,"We’ve got a cluster of connected exhibit rooms and the brief is simple: assign one accent color to each room, never give the same color to rooms that sit next to each other, and try to do it with the fewest distinct colors you can. In practice that means every room must be colored, nearby rooms must be different, and you can measure success by the number of different colors used — smaller is better. The exact layout and room adjacencies appear below.
+
+{
+  ""total_rooms"": 10,
+  ""total_adjacencies"": 14,
+  ""edges"": [
+    {
+      ""room_a"": 9,
+      ""room_b"": 2
+    },
+    {
+      ""room_a"": 9,
+      ""room_b"": 8
+    },
+    {
+      ""room_a"": 0,
+      ""room_b"": 2
+    },
+    {
+      ""room_a"": 2,
+      ""room_b"": 1
+    },
+    {
+      ""room_a"": 2,
+      ""room_b"": 3
+    },
+    {
+      ""room_a"": 2,
+      ""room_b"": 4
+    },
+    {
+      ""room_a"": 2,
+      ""room_b"": 5
+    },
+    {
+      ""room_a"": 2,
+      ""room_b"": 6
+    },
+    {
+      ""room_a"": 2,
+      ""room_b"": 7
+    },
+    {
+      ""room_a"": 2,
+      ""room_b"": 8
+    },
+    {
+      ""room_a"": 5,
+      ""room_b"": 6
+    },
+    {
+      ""room_a"": 1,
+      ""room_b"": 3
+    },
+    {
+      ""room_a"": 1,
+      ""room_b"": 4
+    },
+    {
+      ""room_a"": 3,
+      ""room_b"": 4
+    }
+  ]
+}
+
+Think of the JSON below as the simple form I’ll want back — one key called ""solution"" whose value is a list of color groups, and each color group is a list of room identifiers that all share the same accent.
+
+{
+  ""solution"": [
+    [""room_id"", ""room_id"", ...],
+    [""room_id"", ""room_id"", ...],
+    ...
+  ]
+}
+
+Super casual explanation: each inner list is one accent color and the entries inside are the room IDs that get that color. The JSON here is just a sketch of the shape I expect, not the actual coloring — you'll replace those placeholders with the real room IDs from the instance.
+
+Please be sure to use the room identifiers exactly as they appear in the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 10, 'num_edges': 14, 'edges': [{'u': 10, 'v': 3}, {'u': 10, 'v': 9}, {'u': 1, 'v': 3}, {'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 6, 'v': 7}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 4, 'v': 5}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.3111111111111111, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0043.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0043.png', 'edge_connectivity': 1}","[[4], [3], [2, 7, 8, 10], [1, 5, 6, 9]]",4.0,"{'num_nodes': 10, 'num_edges': 14, 'edges': [{'u': 9, 'v': 2}, {'u': 9, 'v': 8}, {'u': 0, 'v': 2}, {'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 2, 'v': 7}, {'u': 2, 'v': 8}, {'u': 5, 'v': 6}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 3, 'v': 4}]}","[[3], [2], [1, 6, 7, 9], [0, 4, 5, 8]]",44,json,0
+GCP,GCP,"Many people working on the festival’s sound setup label each wireless mic with a band name, making sure that any two mics that might interfere are labeled differently. A smarter labeling uses fewer distinct band names overall — the score is simply the number of unique names assigned. Each microphone must be labeled exactly once and overlapping mics cannot share a label. The specific instance is given below.
+
+Here are the 10 microphones and 19 overlapping pairs in this instance:
+Microphone 8 overlaps with microphone 2, so they must be assigned different band names.
+Microphone 8 overlaps with microphone 3, so they must be assigned different band names.
+Microphone 8 overlaps with microphone 4, so they must be assigned different band names.
+Microphone 8 overlaps with microphone 6, so they must be assigned different band names.
+Microphone 8 overlaps with microphone 10, so they must be assigned different band names.
+Microphone 6 overlaps with microphone 1, so they must be assigned different band names.
+Microphone 6 overlaps with microphone 3, so they must be assigned different band names.
+Microphone 6 overlaps with microphone 10, so they must be assigned different band names.
+Microphone 9 overlaps with microphone 3, so they must be assigned different band names.
+Microphone 9 overlaps with microphone 4, so they must be assigned different band names.
+Microphone 9 overlaps with microphone 5, so they must be assigned different band names.
+Microphone 4 overlaps with microphone 1, so they must be assigned different band names.
+Microphone 4 overlaps with microphone 3, so they must be assigned different band names.
+Microphone 4 overlaps with microphone 5, so they must be assigned different band names.
+Microphone 4 overlaps with microphone 7, so they must be assigned different band names.
+Microphone 4 overlaps with microphone 10, so they must be assigned different band names.
+Microphone 3 overlaps with microphone 1, so they must be assigned different band names.
+Microphone 3 overlaps with microphone 10, so they must be assigned different band names.
+Microphone 10 overlaps with microphone 5, so they must be assigned different band names.
+Label each microphone exactly once, minimizing the number of distinct band names so that no overlapping pair shares a name.
+
+If you'd like to return the answer in a tidy, machine-friendly form, here's the little JSON sketch I expect—just showing the shape of the reply, not the real assignment:
+
+{
+  ""solution"": [
+    [""mic_id"", ""mic_id"", ...],
+    [""mic_id"", ""mic_id"", ...],
+    ...
+  ]
+}
+
+Think of each inner list as one band name (all the mics in that list share the same label), and the outer list as the full set of different band names you're using. This is only a template for the format I want you to follow, not the actual labeling.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new ones. Valid identifiers look like:
+- ""1"" or ""23""
+- ""A"" or ""B""
+- ""A1"" or ""X7""","{'problem_type': 'GCP', 'num_nodes': 10, 'num_edges': 19, 'edges': [{'u': 8, 'v': 2}, {'u': 8, 'v': 3}, {'u': 8, 'v': 4}, {'u': 8, 'v': 6}, {'u': 8, 'v': 10}, {'u': 6, 'v': 1}, {'u': 6, 'v': 3}, {'u': 6, 'v': 10}, {'u': 9, 'v': 3}, {'u': 9, 'v': 4}, {'u': 9, 'v': 5}, {'u': 4, 'v': 1}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 7}, {'u': 4, 'v': 10}, {'u': 3, 'v': 1}, {'u': 3, 'v': 10}, {'u': 10, 'v': 5}], 'source_file': 'citationCiteseer.mtx', 'density': 0.4222222222222222, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0044.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0044.png', 'edge_connectivity': 1}","[[2, 4, 6], [3, 5, 7], [1, 8], [9, 10]]",4.0,"{'num_nodes': 10, 'num_edges': 19, 'edges': [{'u': 8, 'v': 2}, {'u': 8, 'v': 3}, {'u': 8, 'v': 4}, {'u': 8, 'v': 6}, {'u': 8, 'v': 10}, {'u': 6, 'v': 1}, {'u': 6, 'v': 3}, {'u': 6, 'v': 10}, {'u': 9, 'v': 3}, {'u': 9, 'v': 4}, {'u': 9, 'v': 5}, {'u': 4, 'v': 1}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 7}, {'u': 4, 'v': 10}, {'u': 3, 'v': 1}, {'u': 3, 'v': 10}, {'u': 10, 'v': 5}]}","[[2, 4, 6], [3, 5, 7], [1, 8], [9, 10]]",45,nl,1
+GCP,GCP,"There’s a workshop challenge to glaze a mosaic where touching tiles must look different, so the job is to pick a glaze for each tile without repeating a glaze on neighboring pieces. What makes one choice better than another is obvious: the one that gets the whole mosaic done with the fewest distinct glaze colors wins, and you check that by counting the unique glazes. Every tile needs exactly one glaze and adjacent tiles can’t match. The specific mosaic layout follows below.
+
+{
+  ""total_tiles"": 8,
+  ""adjacent_tile_pairs"": 10,
+  ""edges"": [
+    {
+      ""tile_a_id"": 7,
+      ""tile_b_id"": 2
+    },
+    {
+      ""tile_a_id"": 7,
+      ""tile_b_id"": 3
+    },
+    {
+      ""tile_a_id"": 1,
+      ""tile_b_id"": 2
+    },
+    {
+      ""tile_a_id"": 1,
+      ""tile_b_id"": 5
+    },
+    {
+      ""tile_a_id"": 8,
+      ""tile_b_id"": 2
+    },
+    {
+      ""tile_a_id"": 8,
+      ""tile_b_id"": 6
+    },
+    {
+      ""tile_a_id"": 2,
+      ""tile_b_id"": 3
+    },
+    {
+      ""tile_a_id"": 2,
+      ""tile_b_id"": 4
+    },
+    {
+      ""tile_a_id"": 2,
+      ""tile_b_id"": 5
+    },
+    {
+      ""tile_a_id"": 2,
+      ""tile_b_id"": 6
+    }
+  ]
+}
+
+Also, when you hand me the glazing plan, please stick to this JSON shape so it's easy to check:
+
+{
+  ""solution"": [
+    [""tile_id"", ""tile_id"", ...],
+    [""tile_id"", ""tile_id"", ...],
+    ...
+  ]
+}
+
+Think of ""solution"" as a list of glaze buckets — each inner array is the set of tiles that get the same glaze color, and each string is a tile identifier from the mosaic layout. This is just a sketch of the expected shape, not the actual glazing assignment.
+
+Please use identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 8, 'num_edges': 10, 'edges': [{'u': 7, 'v': 2}, {'u': 7, 'v': 3}, {'u': 1, 'v': 2}, {'u': 1, 'v': 5}, {'u': 8, 'v': 2}, {'u': 8, 'v': 6}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.35714285714285715, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0045.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0045.png', 'edge_connectivity': 1}","[[2], [1, 7, 8], [3, 4, 5, 6]]",3.0,"{'num_nodes': 8, 'num_edges': 10, 'edges': [{'u': 7, 'v': 2}, {'u': 7, 'v': 3}, {'u': 1, 'v': 2}, {'u': 1, 'v': 5}, {'u': 8, 'v': 2}, {'u': 8, 'v': 6}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}]}","[[2], [1, 7, 8], [3, 4, 5, 6]]",46,json,1
+GCP,GCP,"Someone’s got the job of assigning jerseys for the tournament: each team gets one color, and whenever two teams are scheduled to meet they cannot wear the same color. The goal is to keep the wardrobe tight by using the fewest different colors overall — judge a solution by how many distinct colors end up being used, found by counting unique colors across teams. No team can be skipped or assigned multiple colors, and the full schedule appears below.
+
+There are 9 teams and 14 scheduled matches:
+Teams C vs D — they cannot wear the same color.
+Teams D vs F — they cannot wear the same color.
+Teams D vs H — they cannot wear the same color.
+Teams D vs I — they cannot wear the same color.
+Teams I vs F — they cannot wear the same color.
+Teams I vs H — they cannot wear the same color.
+Teams B vs E — they cannot wear the same color.
+Teams E vs F — they cannot wear the same color.
+Teams E vs G — they cannot wear the same color.
+Teams E vs H — they cannot wear the same color.
+Teams A vs G — they cannot wear the same color.
+Teams F vs G — they cannot wear the same color.
+Teams F vs H — they cannot wear the same color.
+Teams G vs H — they cannot wear the same color.
+Keep the wardrobe tight: use as few distinct colors as possible across the 9 teams while honoring these 14 match constraints.
+
+If you want to hand the coloring back in a tidy way, just follow this little JSON sketch for the shape of the answer.
+
+{
+  ""solution"": [
+    [""team_id"", ""team_id"", ...],
+    [""team_id"", ""team_id"", ...],
+    ...
+  ]
+}
+
+Pretty straightforward: ""solution"" is a list of color groups, and each inner list is the set of teams that share the same jersey color. Treat it like a simple form — each array is one color, and the teams listed together wear that same color. This JSON is just a sketch of the expected shape, not the actual coloring answer.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 9, 'num_edges': 14, 'edges': [{'u': 3, 'v': 4}, {'u': 4, 'v': 6}, {'u': 4, 'v': 8}, {'u': 4, 'v': 9}, {'u': 9, 'v': 6}, {'u': 9, 'v': 8}, {'u': 2, 'v': 5}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 1, 'v': 7}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 7, 'v': 8}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.3888888888888889, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0046.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0046.png', 'edge_connectivity': 1}","[[1, 3, 5, 9], [4, 7], [6], [2, 8]]",4.0,"{'num_nodes': 9, 'num_edges': 14, 'edges': [{'u': 'C', 'v': 'D'}, {'u': 'D', 'v': 'F'}, {'u': 'D', 'v': 'H'}, {'u': 'D', 'v': 'I'}, {'u': 'I', 'v': 'F'}, {'u': 'I', 'v': 'H'}, {'u': 'B', 'v': 'E'}, {'u': 'E', 'v': 'F'}, {'u': 'E', 'v': 'G'}, {'u': 'E', 'v': 'H'}, {'u': 'A', 'v': 'G'}, {'u': 'F', 'v': 'G'}, {'u': 'F', 'v': 'H'}, {'u': 'G', 'v': 'H'}]}","[['A', 'C', 'E', 'I'], ['D', 'G'], ['F'], ['B', 'H']]",47,nl,names
+GCP,GCP,"Picture a dining hall where someone needs to assign a placemat to every table, making sure every pair of neighboring tables wears different colors, while keeping the overall color mix as small as possible. The better the plan, the fewer different colors it uses — simply count the different placemat colors to see which plan wins. Every table must get one placemat, and adjacent tables must not share a color. The concrete instance details are shown below.
+
+There are 8 tables and 19 neighboring-table pairs in this instance.
+Table 3 is adjacent to table 0; they must not share the same placemat color.
+Table 3 is adjacent to table 1; they must not share the same placemat color.
+Table 3 is adjacent to table 2; they must not share the same placemat color.
+Table 3 is adjacent to table 4; they must not share the same placemat color.
+Table 3 is adjacent to table 5; they must not share the same placemat color.
+Table 3 is adjacent to table 6; they must not share the same placemat color.
+Table 0 is adjacent to table 1; they must not share the same placemat color.
+Table 0 is adjacent to table 2; they must not share the same placemat color.
+Table 0 is adjacent to table 4; they must not share the same placemat color.
+Table 0 is adjacent to table 5; they must not share the same placemat color.
+Table 0 is adjacent to table 6; they must not share the same placemat color.
+Table 2 is adjacent to table 1; they must not share the same placemat color.
+Table 2 is adjacent to table 4; they must not share the same placemat color.
+Table 2 is adjacent to table 5; they must not share the same placemat color.
+Table 2 is adjacent to table 6; they must not share the same placemat color.
+Table 2 is adjacent to table 7; they must not share the same placemat color.
+Table 7 is adjacent to table 1; they must not share the same placemat color.
+Table 6 is adjacent to table 1; they must not share the same placemat color.
+Table 4 is adjacent to table 5; they must not share the same placemat color.
+Assign one placemat per table so all listed adjacent pairs differ in color.
+
+Oh, and one more thing — when you reply with a coloring plan, please use this simple JSON layout so it's easy to check:
+
+{
+  ""solution"": [
+    [""table_id"", ""table_id"", ...],
+    [""table_id"", ""table_id"", ...],
+    ...
+  ]
+}
+
+Each inner list is a group of tables that all get the same placemat color (the first list = color 1, the second = color 2, and so on). Think of it as a quick form: each row is one color and lists the table IDs that share that color. This JSON is just the expected shape — not the actual answer.
+
+Important: use the exact identifiers from the instance input — no renaming, no made-up labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 8, 'num_edges': 19, 'edges': [{'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 3, 'v': 2}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 8, 'v': 2}, {'u': 7, 'v': 2}, {'u': 5, 'v': 6}], 'source_file': 'citationCiteseer.mtx', 'density': 0.6785714285714286, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0047.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0047.png', 'edge_connectivity': 2}","[[3], [5, 7], [1], [4, 8], [2, 6]]",5.0,"{'num_nodes': 8, 'num_edges': 19, 'edges': [{'u': 3, 'v': 0}, {'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 0, 'v': 1}, {'u': 0, 'v': 2}, {'u': 0, 'v': 4}, {'u': 0, 'v': 5}, {'u': 0, 'v': 6}, {'u': 2, 'v': 1}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 2, 'v': 7}, {'u': 7, 'v': 1}, {'u': 6, 'v': 1}, {'u': 4, 'v': 5}]}","[[2], [4, 6], [0], [3, 7], [1, 5]]",48,nl,0
+GCP,GCP,"Someone on the team asked for help coloring a navigation list so that no two adjacent entries share the same highlight, while also keeping the total number of different highlights small. What separates a good coloring from a messy one is simply how many different colors show up overall — fewer distinct highlights is better, and that’s determined by tallying the unique colors used. Make sure every entry gets one color and don’t give the same color to neighbors. The concrete details are shown below.
+
+There are 9 num menu items in total and 11 num adjacent pairs.
+
+| adjacent_menu_item_a | adjacent_menu_item_b |
+|---|---|
+| A | B |
+| F | B |
+| F | G |
+| G | B |
+| B | C |
+| B | D |
+| B | E |
+| B | H |
+| B | I |
+| D | E |
+| H | I |
+
+Also, when you send the coloring back, please follow this simple JSON shape so it’s easy to parse:
+
+{
+  ""solution"": [
+    [""entry_id"", ""entry_id"", ...],
+    [""entry_id"", ""entry_id"", ...],
+    ...
+  ]
+}
+
+Each inner list is a group of navigation entries that share the same highlight (so each list is one color). Think of it like filling out a form: put every entry’s identifier into exactly one of the lists, and each list represents all items painted that same color. This JSON is just a sketch of the expected shape — don’t treat the placeholders as the actual answer.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels. 
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'GCP', 'num_nodes': 9, 'num_edges': 11, 'edges': [{'u': 1, 'v': 2}, {'u': 6, 'v': 2}, {'u': 6, 'v': 7}, {'u': 7, 'v': 2}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 8}, {'u': 2, 'v': 9}, {'u': 4, 'v': 5}, {'u': 8, 'v': 9}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.3055555555555556, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0048.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0048.png', 'edge_connectivity': 1}","[[2], [3, 4, 6, 8], [1, 5, 7, 9]]",3.0,"{'num_nodes': 9, 'num_edges': 11, 'edges': [{'u': 'A', 'v': 'B'}, {'u': 'F', 'v': 'B'}, {'u': 'F', 'v': 'G'}, {'u': 'G', 'v': 'B'}, {'u': 'B', 'v': 'C'}, {'u': 'B', 'v': 'D'}, {'u': 'B', 'v': 'E'}, {'u': 'B', 'v': 'H'}, {'u': 'B', 'v': 'I'}, {'u': 'D', 'v': 'E'}, {'u': 'H', 'v': 'I'}]}","[['B'], ['C', 'D', 'F', 'H'], ['A', 'E', 'G', 'I']]",49,markdown_table,names
+GCP,GCP,"A friend organizing a party asked for help picking ribbon shades for all the centerpieces so nothing clashes side-by-side. Every centerpiece needs one ribbon and any two that touch can’t share a color, so the cleanest solution is the one that uses the fewest different colors overall — you can check that by tallying the unique ribbons used. The exact list of centerpieces and their neighbors is provided below.
+
+There are 9 centerpieces and 11 adjacent pairs listed below:
+Centerpiece 8 touches centerpiece 1, so they must have different ribbon colors.
+Centerpiece 8 touches centerpiece 2, so they must have different ribbon colors.
+Centerpiece 8 touches centerpiece 3, so they must have different ribbon colors.
+Centerpiece 8 touches centerpiece 4, so they must have different ribbon colors.
+Centerpiece 8 touches centerpiece 5, so they must have different ribbon colors.
+Centerpiece 8 touches centerpiece 6, so they must have different ribbon colors.
+Centerpiece 8 touches centerpiece 7, so they must have different ribbon colors.
+Centerpiece 5 touches centerpiece 6, so they must have different ribbon colors.
+Centerpiece 2 touches centerpiece 3, so they must have different ribbon colors.
+Centerpiece 2 touches centerpiece 4, so they must have different ribbon colors.
+Centerpiece 4 touches centerpiece 0, so they must have different ribbon colors.
+Pick ribbons so adjacent centerpieces differ and the total number of unique colors is kept as small as possible.
+
+Also, when you send the ribbon plan back, keep it in this simple JSON shape so it's easy to check automatically — nothing fancy, just a list of groups:
+
+{
+  ""solution"": [
+    [""centerpiece_id"", ""centerpiece_id"", ...],
+    [""centerpiece_id"", ""centerpiece_id"", ...],
+    ...
+  ]
+}
+
+Each inner list is one ribbon shade (a group of centerpieces that all use the same ribbon). Think of each array as a little column on the packing list: all those centerpieces get the same ribbon color. The JSON above is just a sketch of the layout I need, not the actual coloring.
+
+Please use the exact identifiers from the instance input — don't rename any of them or invent new labels. 
+
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'GCP', 'num_nodes': 9, 'num_edges': 11, 'edges': [{'u': 9, 'v': 2}, {'u': 9, 'v': 3}, {'u': 9, 'v': 4}, {'u': 9, 'v': 5}, {'u': 9, 'v': 6}, {'u': 9, 'v': 7}, {'u': 9, 'v': 8}, {'u': 6, 'v': 7}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 5, 'v': 1}], 'source_file': 'citationCiteseer.mtx', 'density': 0.3055555555555556, 'viz_instance': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/instance_0049.png', 'viz_solution': 'step1_instance_creation/generated_data/GCP/viz/GCP_S/solution_0049.png', 'edge_connectivity': 1}","[[1, 9], [3, 7], [2, 4, 5, 6, 8]]",3.0,"{'num_nodes': 9, 'num_edges': 11, 'edges': [{'u': 8, 'v': 1}, {'u': 8, 'v': 2}, {'u': 8, 'v': 3}, {'u': 8, 'v': 4}, {'u': 8, 'v': 5}, {'u': 8, 'v': 6}, {'u': 8, 'v': 7}, {'u': 5, 'v': 6}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 4, 'v': 0}]}","[[0, 8], [2, 6], [1, 3, 4, 5, 7]]",50,nl,0

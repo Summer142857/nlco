@@ -1,0 +1,16 @@
+problem: PCENTER
+scale: L
+seed: 43
+step1:
+  dataset_dir: datasets/cached_context1/PMED
+  n_vertices: 15-20
+
+  n_instances: 50
+  output: step1_instance_creation/generated_data/PCENTER/PCENTER_L.json
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/PCENTER/PCENTER_contexts.json
+  instance_dir: step1_instance_creation/generated_data/PCENTER
+  output_root_dir: step2_contextualization/dataset/PCENTER
+  k_per_call: 20
+  n_target: 30

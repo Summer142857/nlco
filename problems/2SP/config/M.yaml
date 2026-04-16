@@ -1,0 +1,16 @@
+problem: 2SP
+scale: M
+seed: 43
+step1:
+  dataset_dir: datasets/2SP
+  n_items: 11-15
+
+  n_instances: 50
+  output: step1_instance_creation/generated_data/2SP/2SP_M.json
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/2SP/2SP_contexts.json
+  instance_dir: step1_instance_creation/generated_data/2SP
+  output_root_dir: step2_contextualization/dataset/2SP
+  k_per_call: 20
+  n_target: 30

@@ -1,0 +1,16 @@
+problem: TSPTW
+scale: S
+seed: 43
+step1:
+  dataset_dir: datasets/TSP
+  n_nodes: 5-10
+
+  n_instances: 50
+  output: step1_instance_creation/generated_data/TSPTW/TSPTW_S.json
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/TSPTW/TSPTW_contexts.json
+  instance_dir: step1_instance_creation/generated_data/TSPTW
+  output_root_dir: step2_contextualization/dataset/TSPTW
+  k_per_call: 20
+  n_target: 30

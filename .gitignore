@@ -1,0 +1,10 @@
+.venv/
+.venv312/
+__pycache__/
+*.py[cod]
+*.log
+
+step3_evaluation/configs/keys.json
+
+gurobi.lic
+*.lic

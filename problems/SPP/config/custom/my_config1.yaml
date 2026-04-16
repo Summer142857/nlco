@@ -1,0 +1,29 @@
+problem: SPP
+scale: S
+
+seed: 43
+step1:
+  items_range: "8-12"
+
+  seed: 43
+  n_instances: 50
+  output: step1_instance_creation/generated_data/SPP/SPP_S.json
+  params:
+    # optional visualization output directory
+    viz_dir: step1_instance_creation/generated_data/SPP/viz/SPP_S
+
+    # generator hyperparams (match spp.py CLI)
+    items_min: 8
+    items_max: 25
+    bag_factor_min: 2.0
+    bag_factor_max: 4.0
+    high_cost: 10000
+    cluster_sigma_ratio: 0.1
+    remove_duplicate_bags: true
+    solve: true
+
+step2:
+  instance_dir: step1_instance_creation/generated_data/SPP
+  output_root_dir: step2_contextualization/dataset/SPP
+  k_per_call: 20
+  n_target: 30

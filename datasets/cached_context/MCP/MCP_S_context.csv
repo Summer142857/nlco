@@ -1,0 +1,2583 @@
+task_name,problem_type,instruction,instance,solution,obj,instance_variant,solution_variant,context_index,input_format,input_index_base
+MCP,MCP,"Recently the corner of the block decided to do a communal dinner, and the aim is to invite the largest group where everyone already has met everyone else. The decision is selecting that guest list so there are no unknown face-to-face pairings inside the group. To decide, check candidate lists by counting how many people they include and verifying that each pair among them has a prior relationship — the chosen list is simply the biggest one that satisfies that. No duplicate invites or partial entries allowed, and the specific neighbor names and who’s acquainted with whom follow below.
+
+{
+  ""total_neighbors"": 10,
+  ""total_acquaintance_pairs"": 21,
+  ""edges"": [
+    {
+      ""neighbor_one"": 0,
+      ""neighbor_two"": 1
+    },
+    {
+      ""neighbor_one"": 0,
+      ""neighbor_two"": 2
+    },
+    {
+      ""neighbor_one"": 1,
+      ""neighbor_two"": 2
+    },
+    {
+      ""neighbor_one"": 1,
+      ""neighbor_two"": 3
+    },
+    {
+      ""neighbor_one"": 1,
+      ""neighbor_two"": 4
+    },
+    {
+      ""neighbor_one"": 1,
+      ""neighbor_two"": 5
+    },
+    {
+      ""neighbor_one"": 1,
+      ""neighbor_two"": 6
+    },
+    {
+      ""neighbor_one"": 1,
+      ""neighbor_two"": 7
+    },
+    {
+      ""neighbor_one"": 1,
+      ""neighbor_two"": 8
+    },
+    {
+      ""neighbor_one"": 1,
+      ""neighbor_two"": 9
+    },
+    {
+      ""neighbor_one"": 2,
+      ""neighbor_two"": 3
+    },
+    {
+      ""neighbor_one"": 2,
+      ""neighbor_two"": 4
+    },
+    {
+      ""neighbor_one"": 2,
+      ""neighbor_two"": 5
+    },
+    {
+      ""neighbor_one"": 2,
+      ""neighbor_two"": 6
+    },
+    {
+      ""neighbor_one"": 3,
+      ""neighbor_two"": 4
+    },
+    {
+      ""neighbor_one"": 3,
+      ""neighbor_two"": 5
+    },
+    {
+      ""neighbor_one"": 3,
+      ""neighbor_two"": 6
+    },
+    {
+      ""neighbor_one"": 4,
+      ""neighbor_two"": 5
+    },
+    {
+      ""neighbor_one"": 4,
+      ""neighbor_two"": 6
+    },
+    {
+      ""neighbor_one"": 5,
+      ""neighbor_two"": 6
+    },
+    {
+      ""neighbor_one"": 8,
+      ""neighbor_two"": 9
+    }
+  ]
+}
+
+Also, when you send back the guest list, just use this simple JSON shape so it's easy to read and parse.
+
+{
+  ""solution"": [""guest_id"", ""guest_id"", ...]
+}
+
+Here the ""solution"" array is where you put the final invite list — each entry is a guest identifier (just the label from the instance). Think of it like filling out a little form: list the people you want to invite in that array, nothing else. This JSON is only a sketch of the expected shape, not the actual answer.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 10, 'num_edges': 21, 'edges': [{'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 2, 'v': 7}, {'u': 2, 'v': 8}, {'u': 2, 'v': 9}, {'u': 2, 'v': 10}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 6, 'v': 7}, {'u': 9, 'v': 10}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.4666666666666667, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0000.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0000.png', 'edge_connectivity': 1}","[2, 3, 4, 5, 6, 7]",6.0,"{'num_nodes': 10, 'num_edges': 21, 'edges': [{'u': 0, 'v': 1}, {'u': 0, 'v': 2}, {'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 1, 'v': 8}, {'u': 1, 'v': 9}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 5, 'v': 6}, {'u': 8, 'v': 9}]}","[1, 2, 3, 4, 5, 6]",1,json,0
+MCP,MCP,"There’s a plan to fill a shared house, and the aim is to find the biggest group of roommates who all like each other enough to live together. The choice is which people to include; “better” means the group has a larger headcount, counted by tallying the distinct roommates. Crucially, anyone picked must be okay living with every other picked person — mutual comfort for each pair — and nobody is duplicated in the list. The concrete details about who is comfortable with whom are shown below.
+
+Below are the 9 candidates and the 14 mutually comfortable pairs among them.
+6 and 1 are mutually comfortable living together.
+6 and 3 are mutually comfortable living together.
+6 and 7 are mutually comfortable living together.
+6 and 8 are mutually comfortable living together.
+4 and 2 are mutually comfortable living together.
+4 and 3 are mutually comfortable living together.
+4 and 5 are mutually comfortable living together.
+4 and 7 are mutually comfortable living together.
+8 and 3 are mutually comfortable living together.
+8 and 7 are mutually comfortable living together.
+1 and 2 are mutually comfortable living together.
+1 and 7 are mutually comfortable living together.
+3 and 7 are mutually comfortable living together.
+9 and 2 are mutually comfortable living together.
+These pairs define the compatibility graph for finding the largest group of mutually comfortable roommates.
+
+Also, when you send the final pick, just use a little JSON snippet like this so it's easy to read and parse:
+
+{
+  ""solution"": [""roommate_id"", ""roommate_id"", ...]
+}
+
+Here ""solution"" should be a list of the people you want to live together — one entry per chosen person, using their identifier exactly as given. Think of it like filling out a short form: put the chosen roommate IDs in that array. This JSON is just a sketch of the shape I expect, not the actual answer itself.
+
+Please make sure you use the identifiers exactly as they appear in the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'MCP', 'num_nodes': 9, 'num_edges': 14, 'edges': [{'u': 6, 'v': 1}, {'u': 6, 'v': 3}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 7}, {'u': 8, 'v': 3}, {'u': 8, 'v': 7}, {'u': 1, 'v': 2}, {'u': 1, 'v': 7}, {'u': 3, 'v': 7}, {'u': 9, 'v': 2}], 'source_file': 'citationCiteseer.mtx', 'density': 0.3888888888888889, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0001.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0001.png', 'edge_connectivity': 1}","[3, 6, 7, 8]",4.0,"{'num_nodes': 9, 'num_edges': 14, 'edges': [{'u': 6, 'v': 1}, {'u': 6, 'v': 3}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 7}, {'u': 8, 'v': 3}, {'u': 8, 'v': 7}, {'u': 1, 'v': 2}, {'u': 1, 'v': 7}, {'u': 3, 'v': 7}, {'u': 9, 'v': 2}]}","[3, 6, 7, 8]",2,nl,1
+MCP,MCP,"At the office there’s an informal challenge: pick as many devices as possible to join a peer network where any two devices can talk directly, so everyone can share without a central switch. The decision is which devices to include, and the better decision is the one that yields the largest set where every device has a direct link to every other. To know which is best, just count the distinct devices in that fully connected set — duplicates are not allowed and every chosen device must be directly connected to each other chosen device. The concrete device and connection list follows below.
+
+There are 12 distinct devices and 29 direct bidirectional links listed below.
+Devices K and C can directly communicate.
+Devices K and D can directly communicate.
+Devices K and J can directly communicate.
+Devices K and L can directly communicate.
+Devices G and C can directly communicate.
+Devices G and E can directly communicate.
+Devices J and C can directly communicate.
+Devices J and D can directly communicate.
+Devices J and E can directly communicate.
+Devices J and L can directly communicate.
+Devices H and C can directly communicate.
+Devices H and E can directly communicate.
+Devices H and I can directly communicate.
+Devices L and A can directly communicate.
+Devices L and C can directly communicate.
+Devices L and E can directly communicate.
+Devices D and A can directly communicate.
+Devices D and C can directly communicate.
+Devices D and E can directly communicate.
+Devices D and I can directly communicate.
+Devices C and A can directly communicate.
+Devices C and B can directly communicate.
+Devices C and E can directly communicate.
+Devices C and F can directly communicate.
+Devices C and I can directly communicate.
+Devices E and A can directly communicate.
+Devices E and I can directly communicate.
+Devices A and I can directly communicate.
+Devices F and I can directly communicate.
+From these 12 devices and 29 links, identify the largest set where every device is directly connected to every other.
+
+Also, when you send the answer, please use this simple JSON shape so it's easy to check:
+
+{
+  ""solution"": [""device_id"", ""device_id"", ...]
+}
+
+Here ""solution"" is the list of devices you picked to join the fully connected peer network — each item is a device identifier from the instance (just the IDs, nothing else). This JSON is only a sketch of the expected shape, not the actual answer.
+
+Make sure all identifiers are used exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 12, 'num_edges': 29, 'edges': [{'u': 11, 'v': 3}, {'u': 11, 'v': 4}, {'u': 11, 'v': 10}, {'u': 11, 'v': 12}, {'u': 7, 'v': 3}, {'u': 7, 'v': 5}, {'u': 10, 'v': 3}, {'u': 10, 'v': 4}, {'u': 10, 'v': 5}, {'u': 10, 'v': 12}, {'u': 8, 'v': 3}, {'u': 8, 'v': 5}, {'u': 8, 'v': 9}, {'u': 12, 'v': 1}, {'u': 12, 'v': 3}, {'u': 12, 'v': 5}, {'u': 4, 'v': 1}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 9}, {'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 9}, {'u': 5, 'v': 1}, {'u': 5, 'v': 9}, {'u': 1, 'v': 9}, {'u': 6, 'v': 9}], 'source_file': 'citationCiteseer.mtx', 'density': 0.4393939393939394, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0002.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0002.png', 'edge_connectivity': 1}","[1, 3, 4, 5, 9]",5.0,"{'num_nodes': 12, 'num_edges': 29, 'edges': [{'u': 'K', 'v': 'C'}, {'u': 'K', 'v': 'D'}, {'u': 'K', 'v': 'J'}, {'u': 'K', 'v': 'L'}, {'u': 'G', 'v': 'C'}, {'u': 'G', 'v': 'E'}, {'u': 'J', 'v': 'C'}, {'u': 'J', 'v': 'D'}, {'u': 'J', 'v': 'E'}, {'u': 'J', 'v': 'L'}, {'u': 'H', 'v': 'C'}, {'u': 'H', 'v': 'E'}, {'u': 'H', 'v': 'I'}, {'u': 'L', 'v': 'A'}, {'u': 'L', 'v': 'C'}, {'u': 'L', 'v': 'E'}, {'u': 'D', 'v': 'A'}, {'u': 'D', 'v': 'C'}, {'u': 'D', 'v': 'E'}, {'u': 'D', 'v': 'I'}, {'u': 'C', 'v': 'A'}, {'u': 'C', 'v': 'B'}, {'u': 'C', 'v': 'E'}, {'u': 'C', 'v': 'F'}, {'u': 'C', 'v': 'I'}, {'u': 'E', 'v': 'A'}, {'u': 'E', 'v': 'I'}, {'u': 'A', 'v': 'I'}, {'u': 'F', 'v': 'I'}]}","['A', 'C', 'D', 'E', 'I']",3,nl,names
+MCP,MCP,"A chef was sketching a menu and wanted the largest possible combo of components that all play nicely together: every item in the group must pair well with every other item. A stronger choice is simply a longer list of ingredients that remain fully compatible; the way to confirm is to test each pair and then count how many ingredients are included. No repeats, and any mismatch between two items means that combo doesn't work. The specific ingredients and their pairwise compatibility are detailed below.
+
+There are 9 ingredients in total and 12 pairings.
+
+| ingredient_a | ingredient_b |
+|---|---|
+| 7 | 1 |
+| 7 | 3 |
+| 7 | 9 |
+| 2 | 3 |
+| 2 | 4 |
+| 3 | 4 |
+| 3 | 5 |
+| 3 | 6 |
+| 3 | 8 |
+| 3 | 9 |
+| 4 | 8 |
+| 5 | 6 |
+
+If you want to return the chosen combo, just hand it back in this simple JSON shape — no fuss, same format as below:
+
+{
+  ""solution"": [""ingredient_id"", ""ingredient_id"", ...]
+}
+
+""solution"" is just the list of ingredient IDs that make up the fully compatible combo. Think of each entry as the exact label for an ingredient from the menu — drop them in as-is. This JSON is only a sketch of the shape I expect, not the final answer itself.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 9, 'num_edges': 12, 'edges': [{'u': 7, 'v': 1}, {'u': 7, 'v': 3}, {'u': 7, 'v': 9}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 4, 'v': 8}, {'u': 5, 'v': 6}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.3333333333333333, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0003.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0003.png', 'edge_connectivity': 1}","[3, 7, 9]",3.0,"{'num_nodes': 9, 'num_edges': 12, 'edges': [{'u': 7, 'v': 1}, {'u': 7, 'v': 3}, {'u': 7, 'v': 9}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 4, 'v': 8}, {'u': 5, 'v': 6}]}","[3, 7, 9]",4,markdown_table,1
+MCP,MCP,"We’ve got a stack of class notes and a roster that shows who ever sat down and studied with whom, and the fun task is to assemble a study team where everyone already knows how to work with everyone else. What’s happening: there are lots of students and handshake-style records of past study sessions. The decision is picking which subset of students to meet as one group; the better group is the one with the most people — measure that by counting members. Practical rule: every two people in the chosen team must have a recorded study session together, and nobody should be counted more than once. The concrete details about who studied with whom are listed below.
+
+# total_students=8
+# total_study_pairs=14
+student_a_id,student_b_id
+4,3
+4,5
+4,6
+4,7
+1,2
+1,5
+6,3
+6,5
+6,7
+7,3
+7,5
+5,2
+5,3
+5,8
+
+Oh, and one more thing — when you give the final pick, please tuck it into this little JSON layout so it's nice and tidy for whoever's reading it:
+
+{
+  ""solution"": [""student_id"", ""student_id"", ...]
+}
+
+Think of ""solution"" as just the list of student IDs for the study team — list everyone who should be in the group, in whatever order you like. The ""student_id"" entries are placeholders showing the shape I expect; replace them with the actual IDs from the instance when you answer. This JSON is just a sketch of the expected shape, not the final answer itself.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels. For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'MCP', 'num_nodes': 8, 'num_edges': 14, 'edges': [{'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 1, 'v': 2}, {'u': 1, 'v': 5}, {'u': 6, 'v': 3}, {'u': 6, 'v': 5}, {'u': 6, 'v': 7}, {'u': 7, 'v': 3}, {'u': 7, 'v': 5}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 8}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.5, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0004.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0004.png', 'edge_connectivity': 1}","[3, 4, 5, 6, 7]",5.0,"{'num_nodes': 8, 'num_edges': 14, 'edges': [{'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 1, 'v': 2}, {'u': 1, 'v': 5}, {'u': 6, 'v': 3}, {'u': 6, 'v': 5}, {'u': 6, 'v': 7}, {'u': 7, 'v': 3}, {'u': 7, 'v': 5}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 8}]}","[3, 4, 5, 6, 7]",5,csv,1
+MCP,MCP,"I’m putting together a one-night supergroup from a bunch of local players, and the rule is simple: everyone in the band has to have shared the stage with every other person at least once before. The choice is which subset of musicians to invite so the band is as big as possible — success is just the number of people in that group, counted once per person, and no one can be on the list twice or half-invited. The specific lineup and who’s played with whom will be shown below.
+
+# total_musicians=11
+# total_shared_stage_pairs=23
+musician_a_id,musician_b_id
+2,3
+2,10
+4,5
+4,6
+5,6
+5,7
+5,8
+5,9
+5,10
+5,11
+8,1
+8,7
+8,9
+8,10
+8,11
+9,1
+9,7
+9,10
+9,11
+10,3
+10,7
+10,11
+11,7
+
+Also, when you send back the chosen cast, it'd be great if you used a tiny JSON sketch for the lineup — keeps things neat and copy-pastable. Something like this is perfect:
+
+{
+  ""solution"": [""musician_id"", ""musician_id"", ...]
+}
+
+Here ""solution"" is just the list of people you want in the supergroup — each entry is one musician's identifier (one per person, no duplicates). This JSON is just a template showing the shape I want the answer in, not the actual final lineup.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 11, 'num_edges': 23, 'edges': [{'u': 2, 'v': 3}, {'u': 2, 'v': 10}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 5, 'v': 10}, {'u': 5, 'v': 11}, {'u': 8, 'v': 1}, {'u': 8, 'v': 7}, {'u': 8, 'v': 9}, {'u': 8, 'v': 10}, {'u': 8, 'v': 11}, {'u': 9, 'v': 1}, {'u': 9, 'v': 7}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 10, 'v': 3}, {'u': 10, 'v': 7}, {'u': 10, 'v': 11}, {'u': 11, 'v': 7}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.41818181818181815, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0005.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0005.png', 'edge_connectivity': 2}","[5, 7, 8, 9, 10, 11]",6.0,"{'num_nodes': 11, 'num_edges': 23, 'edges': [{'u': 2, 'v': 3}, {'u': 2, 'v': 10}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 5, 'v': 10}, {'u': 5, 'v': 11}, {'u': 8, 'v': 1}, {'u': 8, 'v': 7}, {'u': 8, 'v': 9}, {'u': 8, 'v': 10}, {'u': 8, 'v': 11}, {'u': 9, 'v': 1}, {'u': 9, 'v': 7}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 10, 'v': 3}, {'u': 10, 'v': 7}, {'u': 10, 'v': 11}, {'u': 11, 'v': 7}]}","[5, 7, 8, 9, 10, 11]",6,csv,1
+MCP,MCP,"Back when the research team was forming a review panel, the rule was that everyone on the panel needed to mutually trust each other. The question became which researchers to select so that every pair among them shares that trust. The better selection is the one with more people; to decide, look at every selection where all members trust each other, count how many people are included, and pick the selection with the greatest number. No duplicate entries are allowed, and a missing trust link between any two members invalidates the selection. The concrete details will be shown below.
+
+{
+  ""total_researchers"": 8,
+  ""total_mutual_trust_links"": 10,
+  ""edges"": [
+    {
+      ""researcher_a_id"": ""D"",
+      ""researcher_b_id"": ""A""
+    },
+    {
+      ""researcher_a_id"": ""D"",
+      ""researcher_b_id"": ""C""
+    },
+    {
+      ""researcher_a_id"": ""G"",
+      ""researcher_b_id"": ""A""
+    },
+    {
+      ""researcher_a_id"": ""B"",
+      ""researcher_b_id"": ""A""
+    },
+    {
+      ""researcher_a_id"": ""B"",
+      ""researcher_b_id"": ""H""
+    },
+    {
+      ""researcher_a_id"": ""E"",
+      ""researcher_b_id"": ""A""
+    },
+    {
+      ""researcher_a_id"": ""E"",
+      ""researcher_b_id"": ""F""
+    },
+    {
+      ""researcher_a_id"": ""C"",
+      ""researcher_b_id"": ""A""
+    },
+    {
+      ""researcher_a_id"": ""H"",
+      ""researcher_b_id"": ""A""
+    },
+    {
+      ""researcher_a_id"": ""F"",
+      ""researcher_b_id"": ""A""
+    }
+  ]
+}
+
+I'll keep it simple and show the shape of the reply I need — just a relaxed JSON snippet you can follow when giving the final selection.
+
+{
+  ""solution"": [""researcher_id"", ""researcher_id"", ...]
+}
+
+Here ""solution"" is the list of researchers you picked for the panel; each item is the identifier for one researcher. Think of it like a little form field where you drop in the exact IDs of the people you chose. This is only a sketch of the expected shape, not the actual answer — you'll replace those placeholders with the real IDs from the instance.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'MCP', 'num_nodes': 8, 'num_edges': 10, 'edges': [{'u': 4, 'v': 1}, {'u': 4, 'v': 3}, {'u': 7, 'v': 1}, {'u': 2, 'v': 1}, {'u': 2, 'v': 8}, {'u': 5, 'v': 1}, {'u': 5, 'v': 6}, {'u': 3, 'v': 1}, {'u': 8, 'v': 1}, {'u': 6, 'v': 1}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.35714285714285715, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0006.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0006.png', 'edge_connectivity': 1}","[1, 3, 4]",3.0,"{'num_nodes': 8, 'num_edges': 10, 'edges': [{'u': 'D', 'v': 'A'}, {'u': 'D', 'v': 'C'}, {'u': 'G', 'v': 'A'}, {'u': 'B', 'v': 'A'}, {'u': 'B', 'v': 'H'}, {'u': 'E', 'v': 'A'}, {'u': 'E', 'v': 'F'}, {'u': 'C', 'v': 'A'}, {'u': 'H', 'v': 'A'}, {'u': 'F', 'v': 'A'}]}","['A', 'C', 'D']",7,json,names
+MCP,MCP,"Picture this: a cocktail hour where the aim is to form one solid group of guests so that there are no unknowns — every person in the group has already met every other person. The decision comes down to which guests to group; a grouping is preferable if it contains more people who are all mutually acquainted. To assess any option, check the acquaintance status for every pair and then count how many people are in the grouping — the larger the count, the better the pick. Each person is unique in the list and must be pairwise acquainted with everyone else at that table. The guest list and who knows whom are shown below.
+
+There are 8 guests in total and 11 acquaintance pairs.
+
+| guest_id_a | guest_id_b |
+|---|---|
+| 7 | 1 |
+| 7 | 2 |
+| 7 | 3 |
+| 7 | 4 |
+| 7 | 5 |
+| 7 | 6 |
+| 7 | 8 |
+| 1 | 5 |
+| 1 | 8 |
+| 8 | 5 |
+| 4 | 3 |
+
+Oh, and if you want to send your pick back in a neat, machine-friendly way, just use this simple JSON shape — nothing fancy, just one key and a list of the guests you picked:
+
+{
+  ""solution"": [""guest_id"", ""guest_id"", ...]
+}
+
+Here ""solution"" is the list containing the IDs of the people at the table you chose. Think of the array as the seats at that one friendly table — put each guest's exact ID inside the quotes. This JSON is just a sketch of the shape I expect, not the actual answer.
+
+Please make sure you use the exact identifiers from the instance input — do not rename them or invent new labels. Valid identifiers look like:
+- plain numbers such as “1” or “23”
+- single capital letters like “A” or “B”
+- a capital letter followed by digits like “A1” or “X7”","{'problem_type': 'MCP', 'num_nodes': 8, 'num_edges': 11, 'edges': [{'u': 7, 'v': 1}, {'u': 7, 'v': 2}, {'u': 7, 'v': 3}, {'u': 7, 'v': 4}, {'u': 7, 'v': 5}, {'u': 7, 'v': 6}, {'u': 7, 'v': 8}, {'u': 1, 'v': 5}, {'u': 1, 'v': 8}, {'u': 8, 'v': 5}, {'u': 4, 'v': 3}], 'source_file': 'citationCiteseer.mtx', 'density': 0.39285714285714285, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0007.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0007.png', 'edge_connectivity': 1}","[1, 5, 7, 8]",4.0,"{'num_nodes': 8, 'num_edges': 11, 'edges': [{'u': 7, 'v': 1}, {'u': 7, 'v': 2}, {'u': 7, 'v': 3}, {'u': 7, 'v': 4}, {'u': 7, 'v': 5}, {'u': 7, 'v': 6}, {'u': 7, 'v': 8}, {'u': 1, 'v': 5}, {'u': 1, 'v': 8}, {'u': 8, 'v': 5}, {'u': 4, 'v': 3}]}","[1, 5, 7, 8]",8,markdown_table,1
+MCP,MCP,"Recently a lab was trying to put together a grant team, and the only acceptable teams were those where every person had coauthored with every other person before. The goal was to go as big as possible — the winning team is the one with the highest count of members that still satisfies that pairwise publication requirement. It’s also important not to duplicate names or include anyone who hasn’t teamed up with every other chosen person. The exact list of collaborations and candidate people appears below.
+
+{
+  ""total_candidates"": 9,
+  ""total_coauthorships"": 14,
+  ""edges"": [
+    {
+      ""author_a"": 5,
+      ""author_b"": 0
+    },
+    {
+      ""author_a"": 5,
+      ""author_b"": 2
+    },
+    {
+      ""author_a"": 5,
+      ""author_b"": 3
+    },
+    {
+      ""author_a"": 6,
+      ""author_b"": 2
+    },
+    {
+      ""author_a"": 6,
+      ""author_b"": 4
+    },
+    {
+      ""author_a"": 6,
+      ""author_b"": 7
+    },
+    {
+      ""author_a"": 7,
+      ""author_b"": 2
+    },
+    {
+      ""author_a"": 7,
+      ""author_b"": 4
+    },
+    {
+      ""author_a"": 8,
+      ""author_b"": 2
+    },
+    {
+      ""author_a"": 2,
+      ""author_b"": 0
+    },
+    {
+      ""author_a"": 2,
+      ""author_b"": 1
+    },
+    {
+      ""author_a"": 2,
+      ""author_b"": 3
+    },
+    {
+      ""author_a"": 2,
+      ""author_b"": 4
+    },
+    {
+      ""author_a"": 0,
+      ""author_b"": 1
+    }
+  ]
+}
+
+Also, just a heads-up: when you send the final pick, please use this simple JSON layout so it's easy to read and check.
+
+{
+  ""solution"": [""person_id"", ""person_id"", ...]
+}
+
+Pretty straightforward: ""solution"" is the list (an array) of people you picked for the grant team, and each entry is a person identifier from the input. This block is just a sketch of the shape I need — not the actual answer itself.
+
+Make sure every identifier in your real answer matches exactly what appears in the instance input — do not rename identifiers or invent new labels.
+
+for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 9, 'num_edges': 14, 'edges': [{'u': 6, 'v': 1}, {'u': 6, 'v': 3}, {'u': 6, 'v': 4}, {'u': 7, 'v': 3}, {'u': 7, 'v': 5}, {'u': 7, 'v': 8}, {'u': 8, 'v': 3}, {'u': 8, 'v': 5}, {'u': 9, 'v': 3}, {'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 1, 'v': 2}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.3888888888888889, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0008.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0008.png', 'edge_connectivity': 1}","[3, 5, 7, 8]",4.0,"{'num_nodes': 9, 'num_edges': 14, 'edges': [{'u': 5, 'v': 0}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 6, 'v': 2}, {'u': 6, 'v': 4}, {'u': 6, 'v': 7}, {'u': 7, 'v': 2}, {'u': 7, 'v': 4}, {'u': 8, 'v': 2}, {'u': 2, 'v': 0}, {'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 0, 'v': 1}]}","[2, 4, 6, 7]",9,json,0
+MCP,MCP,"We have one planting spot and a pile of candidate plants; the task is to pick one set to go into the same bed so that each plant in that set is friendly with every other. The decision is which combination to plant, and the “best” combination is the one that gives the biggest headcount of mutually compatible plants. To tell how good a choice is, just count the plants included — no plant appears twice and every pair in the bed must be companionable. The concrete details are shown below.
+
+There are 10 candidate plants and 16 confirmed companionable pairs listed below.
+5 and 0 can be planted together.
+5 and 2 can be planted together.
+5 and 4 can be planted together.
+6 and 0 can be planted together.
+6 and 7 can be planted together.
+6 and 8 can be planted together.
+3 and 1 can be planted together.
+3 and 4 can be planted together.
+0 and 2 can be planted together.
+0 and 4 can be planted together.
+0 and 7 can be planted together.
+0 and 8 can be planted together.
+9 and 4 can be planted together.
+7 and 8 can be planted together.
+4 and 2 can be planted together.
+2 and 1 can be planted together.
+We will choose the combination with the largest headcount of mutually companionable plants.
+
+Oh, and when you give the final choice, please use this simple JSON layout so it's easy to check:
+
+{
+  ""solution"": [""plant_id"", ""plant_id"", ...]
+}
+
+Think of it like a little form: ""solution"" is the list of plant IDs you want to put together in the same bed — each entry is one plant and the whole list should be mutually friendly. This JSON is just a sketch of the shape I need, not the actual answer.
+
+Please be sure to use the exact identifiers from the instance input — don't rename them or make up new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'MCP', 'num_nodes': 10, 'num_edges': 16, 'edges': [{'u': 6, 'v': 1}, {'u': 6, 'v': 3}, {'u': 6, 'v': 5}, {'u': 7, 'v': 1}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 4, 'v': 2}, {'u': 4, 'v': 5}, {'u': 1, 'v': 3}, {'u': 1, 'v': 5}, {'u': 1, 'v': 8}, {'u': 1, 'v': 9}, {'u': 10, 'v': 5}, {'u': 8, 'v': 9}, {'u': 5, 'v': 3}, {'u': 3, 'v': 2}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.35555555555555557, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0009.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0009.png', 'edge_connectivity': 1}","[1, 3, 5, 6]",4.0,"{'num_nodes': 10, 'num_edges': 16, 'edges': [{'u': 5, 'v': 0}, {'u': 5, 'v': 2}, {'u': 5, 'v': 4}, {'u': 6, 'v': 0}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 3, 'v': 1}, {'u': 3, 'v': 4}, {'u': 0, 'v': 2}, {'u': 0, 'v': 4}, {'u': 0, 'v': 7}, {'u': 0, 'v': 8}, {'u': 9, 'v': 4}, {'u': 7, 'v': 8}, {'u': 4, 'v': 2}, {'u': 2, 'v': 1}]}","[0, 2, 4, 5]",10,nl,0
+MCP,MCP,"Someone at the agency suggested assembling a giant roster of freelance photographers, but they only want people who’ve all shared shoots with each other — so anyone chosen must have previously teamed up with every other chosen person. The decision is which group of freelancers to pick, and the “best” group is simply the largest one possible, judged by how many photographers are on it. Each person can only be listed once and everyone on the roster must have a direct past collaboration with every other person on it. The specific roster candidates and their collaborations appear below.
+
+There are 8 photographer candidates and 9 recorded pairwise collaborations among them.
+Photographers 2 and 0 have previously shared a shoot.
+Photographers 2 and 6 have previously shared a shoot.
+Photographers 7 and 0 have previously shared a shoot.
+Photographers 7 and 4 have previously shared a shoot.
+Photographers 5 and 3 have previously shared a shoot.
+Photographers 3 and 1 have previously shared a shoot.
+Photographers 3 and 4 have previously shared a shoot.
+Photographers 0 and 6 have previously shared a shoot.
+Photographers 6 and 4 have previously shared a shoot.
+The lines list each direct past collaboration among the candidates.
+
+Oh, and when you send the final pick back, a tiny JSON sketch like this is perfect:
+
+{
+  ""solution"": [""photographer_id"", ""photographer_id"", ...]
+}
+
+Think of ""solution"" as the roster — an ordered list of the chosen photographers — and each ""photographer_id"" is where you drop the exact identifier for one person from the instance. This block is just the shape I expect, not the actual answer.
+
+Please use the identifiers exactly as they appear in the input — no renaming, no made-up labels.  
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'MCP', 'num_nodes': 8, 'num_edges': 9, 'edges': [{'u': 3, 'v': 1}, {'u': 3, 'v': 7}, {'u': 8, 'v': 1}, {'u': 8, 'v': 5}, {'u': 6, 'v': 4}, {'u': 4, 'v': 2}, {'u': 4, 'v': 5}, {'u': 1, 'v': 7}, {'u': 7, 'v': 5}], 'source_file': 'citationCiteseer.mtx', 'density': 0.32142857142857145, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0010.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0010.png', 'edge_connectivity': 1}","[1, 3, 7]",3.0,"{'num_nodes': 8, 'num_edges': 9, 'edges': [{'u': 2, 'v': 0}, {'u': 2, 'v': 6}, {'u': 7, 'v': 0}, {'u': 7, 'v': 4}, {'u': 5, 'v': 3}, {'u': 3, 'v': 1}, {'u': 3, 'v': 4}, {'u': 0, 'v': 6}, {'u': 6, 'v': 4}]}","[0, 2, 6]",11,nl,0
+MCP,MCP,"I’m trying to put together a volunteer team for a new community project and the rule is simple: anyone who’s chosen has to have done training with everyone else already. The job is to pick the biggest possible crew that meets that rule — the better choice is the one with more people in it, and the size is just the number of volunteers picked. Each person can only appear once in the team, and if a pair hasn’t trained together they can’t both be included. The exact list of volunteers and who has trained with whom is shown below.
+
+There are 8 volunteers in total and 13 trained pairs.
+
+| volunteer_a_id | volunteer_b_id |
+|---|---|
+| 4 | 1 |
+| 4 | 2 |
+| 4 | 3 |
+| 4 | 5 |
+| 4 | 6 |
+| 5 | 1 |
+| 5 | 2 |
+| 5 | 3 |
+| 5 | 6 |
+| 6 | 2 |
+| 7 | 1 |
+| 0 | 1 |
+| 1 | 3 |
+
+Oh, and when you send back the chosen crew, please drop it into a tiny JSON snippet so it's easy to read programmatically. For this story, I'd use something like:
+
+{
+  ""solution"": [""volunteer_id"", ""volunteer_id"", ...]
+}
+
+This just means ""solution"" holds a list of the volunteers you picked — each ""volunteer_id"" is a placeholder for one person on the team. Think of it like filling out a short form: list the people you want in the crew in that array. The JSON above is just a sketch of the shape I expect, not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — don't rename anyone or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 8, 'num_edges': 13, 'edges': [{'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 6, 'v': 2}, {'u': 6, 'v': 3}, {'u': 6, 'v': 4}, {'u': 6, 'v': 7}, {'u': 7, 'v': 3}, {'u': 8, 'v': 2}, {'u': 1, 'v': 2}, {'u': 2, 'v': 4}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.4642857142857143, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0011.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0011.png', 'edge_connectivity': 1}","[3, 5, 6, 7]",4.0,"{'num_nodes': 8, 'num_edges': 13, 'edges': [{'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 5, 'v': 1}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 6}, {'u': 6, 'v': 2}, {'u': 7, 'v': 1}, {'u': 0, 'v': 1}, {'u': 1, 'v': 3}]}","[2, 4, 5, 6]",12,markdown_table,0
+MCP,MCP,"We were trying to suggest a “core friends” list for someone — the goal was simple: recommend the largest possible crew where every pair are already friends in the app, so nobody in the group is a stranger to anyone else. To do that, look at different combinations of that user’s contacts, verify that each pair within a combo has a direct link, tally how many people are in each all-connected combo, and choose the combo with the highest headcount. Make sure everyone appears only once and that no one in the circle lacks a direct connection to any other circle member. Concrete details are shown below.
+
+There are 10 contacts in total and 19 friendships between contacts.
+
+| contact_id_a | contact_id_b |
+|---|---|
+| 4 | 7 |
+| 4 | 8 |
+| 0 | 7 |
+| 0 | 8 |
+| 6 | 1 |
+| 6 | 5 |
+| 6 | 7 |
+| 2 | 7 |
+| 2 | 8 |
+| 9 | 5 |
+| 9 | 7 |
+| 1 | 5 |
+| 1 | 7 |
+| 1 | 8 |
+| 8 | 3 |
+| 8 | 5 |
+| 8 | 7 |
+| 3 | 7 |
+| 5 | 7 |
+
+When you send the result back, just drop a tiny JSON snippet in the same shape as below — nothing fancy, just the list of people in the chosen all-friends crew:
+
+{
+  ""solution"": [""friend_id"", ""friend_id"", ...]
+}
+
+Super simple: ""solution"" is the array of contact IDs that make up the core friends group — one entry per person, and each must be directly connected to every other person in the list. This JSON is just the shape I want, not the actual answer.
+
+Please use the exact identifiers from the instance input — do not rename them or make up new labels. To be clear, valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'MCP', 'num_nodes': 10, 'num_edges': 19, 'edges': [{'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 1, 'v': 8}, {'u': 1, 'v': 9}, {'u': 7, 'v': 2}, {'u': 7, 'v': 6}, {'u': 7, 'v': 8}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 10, 'v': 6}, {'u': 10, 'v': 8}, {'u': 2, 'v': 6}, {'u': 2, 'v': 8}, {'u': 2, 'v': 9}, {'u': 9, 'v': 4}, {'u': 9, 'v': 6}, {'u': 9, 'v': 8}, {'u': 4, 'v': 8}, {'u': 6, 'v': 8}], 'source_file': 'citationCiteseer.mtx', 'density': 0.4222222222222222, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0012.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0012.png', 'edge_connectivity': 2}","[2, 6, 8, 9]",4.0,"{'num_nodes': 10, 'num_edges': 19, 'edges': [{'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 0, 'v': 7}, {'u': 0, 'v': 8}, {'u': 6, 'v': 1}, {'u': 6, 'v': 5}, {'u': 6, 'v': 7}, {'u': 2, 'v': 7}, {'u': 2, 'v': 8}, {'u': 9, 'v': 5}, {'u': 9, 'v': 7}, {'u': 1, 'v': 5}, {'u': 1, 'v': 7}, {'u': 1, 'v': 8}, {'u': 8, 'v': 3}, {'u': 8, 'v': 5}, {'u': 8, 'v': 7}, {'u': 3, 'v': 7}, {'u': 5, 'v': 7}]}","[1, 5, 7, 8]",13,markdown_table,0
+MCP,MCP,"On a busy market day the vendor wants to sell a combo pack made up of adapters that don’t clash with one another, aiming to include as many different adapters as possible while ensuring that every adapter pairs cleanly with every other. The decision is picking which adapters to put in the pack; a better pack is the one with the most distinct pieces. To confirm a pack works, count its adapters and test every pair for mutual compatibility — no repeats and no incompatible pairings permitted. The concrete list of adapters and compatibility info is shown below.
+
+{
+  ""total_adapters"": 10,
+  ""total_compatible_pairs"": 25,
+  ""edges"": [
+    {
+      ""adapter_a"": ""H"",
+      ""adapter_b"": ""B""
+    },
+    {
+      ""adapter_a"": ""H"",
+      ""adapter_b"": ""D""
+    },
+    {
+      ""adapter_a"": ""H"",
+      ""adapter_b"": ""E""
+    },
+    {
+      ""adapter_a"": ""H"",
+      ""adapter_b"": ""F""
+    },
+    {
+      ""adapter_a"": ""H"",
+      ""adapter_b"": ""G""
+    },
+    {
+      ""adapter_a"": ""H"",
+      ""adapter_b"": ""I""
+    },
+    {
+      ""adapter_a"": ""I"",
+      ""adapter_b"": ""B""
+    },
+    {
+      ""adapter_a"": ""I"",
+      ""adapter_b"": ""D""
+    },
+    {
+      ""adapter_a"": ""I"",
+      ""adapter_b"": ""E""
+    },
+    {
+      ""adapter_a"": ""I"",
+      ""adapter_b"": ""F""
+    },
+    {
+      ""adapter_a"": ""I"",
+      ""adapter_b"": ""G""
+    },
+    {
+      ""adapter_a"": ""C"",
+      ""adapter_b"": ""A""
+    },
+    {
+      ""adapter_a"": ""C"",
+      ""adapter_b"": ""B""
+    },
+    {
+      ""adapter_a"": ""A"",
+      ""adapter_b"": ""B""
+    },
+    {
+      ""adapter_a"": ""D"",
+      ""adapter_b"": ""B""
+    },
+    {
+      ""adapter_a"": ""D"",
+      ""adapter_b"": ""E""
+    },
+    {
+      ""adapter_a"": ""D"",
+      ""adapter_b"": ""F""
+    },
+    {
+      ""adapter_a"": ""D"",
+      ""adapter_b"": ""G""
+    },
+    {
+      ""adapter_a"": ""J"",
+      ""adapter_b"": ""F""
+    },
+    {
+      ""adapter_a"": ""B"",
+      ""adapter_b"": ""E""
+    },
+    {
+      ""adapter_a"": ""B"",
+      ""adapter_b"": ""F""
+    },
+    {
+      ""adapter_a"": ""B"",
+      ""adapter_b"": ""G""
+    },
+    {
+      ""adapter_a"": ""E"",
+      ""adapter_b"": ""F""
+    },
+    {
+      ""adapter_a"": ""E"",
+      ""adapter_b"": ""G""
+    },
+    {
+      ""adapter_a"": ""F"",
+      ""adapter_b"": ""G""
+    }
+  ]
+}
+
+If you'd like the answer sent back in a tidy, machine-friendly way, I'll use a tiny JSON snippet like this to show which adapters end up in the pack.
+
+{
+  ""solution"": [""adapter_id"", ""adapter_id"", ...]
+}
+
+Here ""solution"" is just a list of the adapter IDs you're including in the combo pack — think of it as the names you write on the packing slip. This block is only a sketch of the expected shape, not the actual final pick.
+
+Please use the adapter identifiers exactly as they appear in the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".","{'problem_type': 'MCP', 'num_nodes': 10, 'num_edges': 25, 'edges': [{'u': 8, 'v': 2}, {'u': 8, 'v': 4}, {'u': 8, 'v': 5}, {'u': 8, 'v': 6}, {'u': 8, 'v': 7}, {'u': 8, 'v': 9}, {'u': 9, 'v': 2}, {'u': 9, 'v': 4}, {'u': 9, 'v': 5}, {'u': 9, 'v': 6}, {'u': 9, 'v': 7}, {'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 1, 'v': 2}, {'u': 4, 'v': 2}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 10, 'v': 6}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 2, 'v': 7}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 6, 'v': 7}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.5555555555555556, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0013.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0013.png', 'edge_connectivity': 1}","[2, 4, 5, 6, 7, 8, 9]",7.0,"{'num_nodes': 10, 'num_edges': 25, 'edges': [{'u': 'H', 'v': 'B'}, {'u': 'H', 'v': 'D'}, {'u': 'H', 'v': 'E'}, {'u': 'H', 'v': 'F'}, {'u': 'H', 'v': 'G'}, {'u': 'H', 'v': 'I'}, {'u': 'I', 'v': 'B'}, {'u': 'I', 'v': 'D'}, {'u': 'I', 'v': 'E'}, {'u': 'I', 'v': 'F'}, {'u': 'I', 'v': 'G'}, {'u': 'C', 'v': 'A'}, {'u': 'C', 'v': 'B'}, {'u': 'A', 'v': 'B'}, {'u': 'D', 'v': 'B'}, {'u': 'D', 'v': 'E'}, {'u': 'D', 'v': 'F'}, {'u': 'D', 'v': 'G'}, {'u': 'J', 'v': 'F'}, {'u': 'B', 'v': 'E'}, {'u': 'B', 'v': 'F'}, {'u': 'B', 'v': 'G'}, {'u': 'E', 'v': 'F'}, {'u': 'E', 'v': 'G'}, {'u': 'F', 'v': 'G'}]}","['B', 'D', 'E', 'F', 'G', 'H', 'I']",14,json,names
+MCP,MCP,"Many people on the bid committee prefer a fully connected supplier group — a team where every supplier has an established working relationship with each of the others — so the task is to pick the largest such team. What makes one choice superior is simple: it has more suppliers (just count them), but the catch is every member must be directly partnered with every other member and no supplier can be repeated. The specific pairings and supplier names will be listed below.
+
+There are 10 distinct suppliers and 19 established partnerships listed below:
+0 is partnered with 1.
+0 is partnered with 2.
+0 is partnered with 3.
+0 is partnered with 7.
+2 is partnered with 1.
+2 is partnered with 3.
+2 is partnered with 7.
+3 is partnered with 1.
+3 is partnered with 7.
+6 is partnered with 4.
+6 is partnered with 5.
+6 is partnered with 7.
+6 is partnered with 8.
+6 is partnered with 9.
+8 is partnered with 7.
+8 is partnered with 9.
+9 is partnered with 7.
+1 is partnered with 7.
+4 is partnered with 5.
+These pairings should be used to determine the largest fully connected supplier team.
+
+You can just hand the chosen supplier team back in a tiny JSON snippet like this — nice and simple.
+
+{
+  ""solution"": [""supplier_id"", ""supplier_id"", ...]
+}
+
+Here ""solution"" is the list of supplier identifiers making up the fully connected team — one entry per supplier. Think of it like filling out a short form: just list the exact supplier IDs you picked in that array. This block is only a sketch of the shape I expect, not the actual answer.
+
+Please be sure to use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 10, 'num_edges': 19, 'edges': [{'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 8}, {'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 8}, {'u': 4, 'v': 2}, {'u': 4, 'v': 8}, {'u': 7, 'v': 5}, {'u': 7, 'v': 6}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 7, 'v': 10}, {'u': 9, 'v': 8}, {'u': 9, 'v': 10}, {'u': 10, 'v': 8}, {'u': 2, 'v': 8}, {'u': 5, 'v': 6}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.4222222222222222, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0014.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0014.png', 'edge_connectivity': 2}","[1, 2, 3, 4, 8]",5.0,"{'num_nodes': 10, 'num_edges': 19, 'edges': [{'u': 0, 'v': 1}, {'u': 0, 'v': 2}, {'u': 0, 'v': 3}, {'u': 0, 'v': 7}, {'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 7}, {'u': 3, 'v': 1}, {'u': 3, 'v': 7}, {'u': 6, 'v': 4}, {'u': 6, 'v': 5}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 8, 'v': 7}, {'u': 8, 'v': 9}, {'u': 9, 'v': 7}, {'u': 1, 'v': 7}, {'u': 4, 'v': 5}]}","[0, 1, 2, 3, 7]",15,nl,0
+MCP,MCP,"I need to pick a bunch of lab routers so that every one of them can be hooked up to every other with a direct cable — no intermediaries, no missing links. The choice to make is which routers to include; a better choice is simply a bigger group that still keeps that all-to-all wiring. Success is just the number of routers in that fully interconnected group (count them to see how well the pick did), and each router must be a distinct piece of kit and have a direct cable to every other chosen router. The concrete details are shown below.
+
+# total_routers=11
+# total_direct_connection_pairs=38
+router_u_id,router_v_id
+7,8
+7,9
+7,10
+8,2
+8,3
+8,5
+8,6
+8,9
+8,10
+8,11
+11,2
+11,3
+11,5
+11,6
+11,9
+11,10
+9,2
+9,3
+9,5
+9,6
+9,10
+10,2
+10,3
+10,5
+10,6
+6,2
+6,3
+6,5
+3,1
+3,2
+3,4
+3,5
+4,1
+4,2
+4,5
+5,1
+5,2
+1,2
+
+When you reply, just drop the chosen routers into a tiny JSON note so it's easy to parse. Something like this:
+
+{
+  ""solution"": [""router_id"", ""router_id"", ...]
+}
+
+This shows the shape I expect: put the ids of the routers you picked (one id per entry) inside the solution array. It's just an example layout — not the real answer, just a sketch of the format I want you to follow.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 11, 'num_edges': 38, 'edges': [{'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 7, 'v': 10}, {'u': 8, 'v': 2}, {'u': 8, 'v': 3}, {'u': 8, 'v': 5}, {'u': 8, 'v': 6}, {'u': 8, 'v': 9}, {'u': 8, 'v': 10}, {'u': 8, 'v': 11}, {'u': 11, 'v': 2}, {'u': 11, 'v': 3}, {'u': 11, 'v': 5}, {'u': 11, 'v': 6}, {'u': 11, 'v': 9}, {'u': 11, 'v': 10}, {'u': 9, 'v': 2}, {'u': 9, 'v': 3}, {'u': 9, 'v': 5}, {'u': 9, 'v': 6}, {'u': 9, 'v': 10}, {'u': 10, 'v': 2}, {'u': 10, 'v': 3}, {'u': 10, 'v': 5}, {'u': 10, 'v': 6}, {'u': 6, 'v': 2}, {'u': 6, 'v': 3}, {'u': 6, 'v': 5}, {'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 5}, {'u': 5, 'v': 1}, {'u': 5, 'v': 2}, {'u': 1, 'v': 2}], 'source_file': 'coPapersDBLP.mtx', 'density': 0.6909090909090909, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0015.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0015.png', 'edge_connectivity': 3}","[2, 3, 5, 6, 8, 9, 10, 11]",8.0,"{'num_nodes': 11, 'num_edges': 38, 'edges': [{'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 7, 'v': 10}, {'u': 8, 'v': 2}, {'u': 8, 'v': 3}, {'u': 8, 'v': 5}, {'u': 8, 'v': 6}, {'u': 8, 'v': 9}, {'u': 8, 'v': 10}, {'u': 8, 'v': 11}, {'u': 11, 'v': 2}, {'u': 11, 'v': 3}, {'u': 11, 'v': 5}, {'u': 11, 'v': 6}, {'u': 11, 'v': 9}, {'u': 11, 'v': 10}, {'u': 9, 'v': 2}, {'u': 9, 'v': 3}, {'u': 9, 'v': 5}, {'u': 9, 'v': 6}, {'u': 9, 'v': 10}, {'u': 10, 'v': 2}, {'u': 10, 'v': 3}, {'u': 10, 'v': 5}, {'u': 10, 'v': 6}, {'u': 6, 'v': 2}, {'u': 6, 'v': 3}, {'u': 6, 'v': 5}, {'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 5}, {'u': 5, 'v': 1}, {'u': 5, 'v': 2}, {'u': 1, 'v': 2}]}","[2, 3, 5, 6, 8, 9, 10, 11]",16,csv,1
+MCP,MCP,"Recently the coaches talked about staging a reunion scrimmage and the challenge ended up being: pick the largest group where everyone has already played with everyone else. The choice is which players to include, and the way to tell which choice is best is by how many people are on the list — just count them. Important rule: for the group to work, every pair within it must have a recorded game together and nobody gets duplicated. The specific roster and who’s played with whom are shown below.
+
+# total_players=9
+# total_recorded_pairings=24
+player_a_id,player_b_id
+0,1
+0,2
+0,3
+0,4
+0,5
+0,6
+0,7
+0,8
+1,2
+3,4
+3,5
+3,6
+3,7
+3,8
+4,5
+4,6
+4,7
+4,8
+5,6
+5,7
+5,8
+6,7
+6,8
+7,8
+
+Oh, and when you send the final pick back, just use this little JSON shape so it's easy to read:
+
+{
+  ""solution"": [""player_id"", ""player_id"", ...]
+}
+
+Pretty simple — ""solution"" is the list of players you're inviting to the scrimmage, with each entry being that player's identifier exactly as it appears in the instance. Think of it like filling in a short form: one identifier per person in the group. This JSON is just a sketch of the shape I want, not the actual selection.
+
+Please make sure to use the identifiers exactly as they appear in the input — no renaming and no new labels. 
+
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'MCP', 'num_nodes': 9, 'num_edges': 24, 'edges': [{'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 1, 'v': 8}, {'u': 1, 'v': 9}, {'u': 2, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 4, 'v': 9}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 8, 'v': 9}], 'source_file': 'coPapersCiteseer.mtx', 'density': 0.6666666666666666, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0016.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0016.png', 'edge_connectivity': 2}","[1, 4, 5, 6, 7, 8, 9]",7.0,"{'num_nodes': 9, 'num_edges': 24, 'edges': [{'u': 0, 'v': 1}, {'u': 0, 'v': 2}, {'u': 0, 'v': 3}, {'u': 0, 'v': 4}, {'u': 0, 'v': 5}, {'u': 0, 'v': 6}, {'u': 0, 'v': 7}, {'u': 0, 'v': 8}, {'u': 1, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 7, 'v': 8}]}","[0, 3, 4, 5, 6, 7, 8]",17,csv,0
+MCP,MCP,"Backstage talk is to create the biggest reunion scene possible, but there’s a catch: every actor in the chosen bunch must have previously co-starred with every other actor there. The casting that’s considered superior is the one that includes more unique actors, so compare options by headcount, and make sure nobody is duplicated and every pair in the cast has a past credit together. The concrete details of who’s available and who’s worked with whom are listed below.
+
+# total_actors_in_pool=10
+# total_co_star_pairs=15
+actor_a_id,actor_b_id
+D,C
+D,E
+D,F
+E,C
+E,F
+F,C
+B,C
+G,C
+G,H
+G,I
+H,C
+C,A
+C,I
+C,J
+A,J
+
+I'll return the final cast in a tiny JSON snippet like this, so it's easy to copy-paste into whatever you're using:
+
+{
+  ""solution"": [""actor_id"", ""actor_id"", ...]
+}
+
+'solution' is just the list of actor identifiers that make up the biggest reunion — each entry is one actor from the instance. Think of it like filling out a short form: put the exact IDs of the cast members in that array, and that's the answer. This JSON is just a sketch of the shape I’ll use, not the actual cast yet.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 10, 'num_edges': 15, 'edges': [{'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 5, 'v': 3}, {'u': 5, 'v': 6}, {'u': 6, 'v': 3}, {'u': 2, 'v': 3}, {'u': 7, 'v': 3}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 8, 'v': 3}, {'u': 3, 'v': 1}, {'u': 3, 'v': 9}, {'u': 3, 'v': 10}, {'u': 1, 'v': 10}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.3333333333333333, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0017.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0017.png', 'edge_connectivity': 1}","[3, 4, 5, 6]",4.0,"{'num_nodes': 10, 'num_edges': 15, 'edges': [{'u': 'D', 'v': 'C'}, {'u': 'D', 'v': 'E'}, {'u': 'D', 'v': 'F'}, {'u': 'E', 'v': 'C'}, {'u': 'E', 'v': 'F'}, {'u': 'F', 'v': 'C'}, {'u': 'B', 'v': 'C'}, {'u': 'G', 'v': 'C'}, {'u': 'G', 'v': 'H'}, {'u': 'G', 'v': 'I'}, {'u': 'H', 'v': 'C'}, {'u': 'C', 'v': 'A'}, {'u': 'C', 'v': 'I'}, {'u': 'C', 'v': 'J'}, {'u': 'A', 'v': 'J'}]}","['C', 'D', 'E', 'F']",18,csv,names
+MCP,MCP,"In the neighborhood book circle, the trick is to assemble the biggest possible subgroup where each person has already discussed books with each other person in that subgroup. The decision is which names to combine so the group stays fully interconnected — bigger is better, and group size is determined by counting the members — and the ground rules are no duplicate entries and only include people when every pair in the group has an actual discussion history. The concrete who-talked-to-whom breakdown is given below.
+
+{
+  ""total_readers"": 12,
+  ""total_discussion_pairs"": 30,
+  ""edges"": [
+    {
+      ""reader_a_id"": ""D"",
+      ""reader_b_id"": ""C""
+    },
+    {
+      ""reader_a_id"": ""D"",
+      ""reader_b_id"": ""G""
+    },
+    {
+      ""reader_a_id"": ""E"",
+      ""reader_b_id"": ""A""
+    },
+    {
+      ""reader_a_id"": ""E"",
+      ""reader_b_id"": ""B""
+    },
+    {
+      ""reader_a_id"": ""E"",
+      ""reader_b_id"": ""F""
+    },
+    {
+      ""reader_a_id"": ""H"",
+      ""reader_b_id"": ""F""
+    },
+    {
+      ""reader_a_id"": ""H"",
+      ""reader_b_id"": ""G""
+    },
+    {
+      ""reader_a_id"": ""H"",
+      ""reader_b_id"": ""I""
+    },
+    {
+      ""reader_a_id"": ""H"",
+      ""reader_b_id"": ""J""
+    },
+    {
+      ""reader_a_id"": ""H"",
+      ""reader_b_id"": ""K""
+    },
+    {
+      ""reader_a_id"": ""H"",
+      ""reader_b_id"": ""L""
+    },
+    {
+      ""reader_a_id"": ""I"",
+      ""reader_b_id"": ""F""
+    },
+    {
+      ""reader_a_id"": ""I"",
+      ""reader_b_id"": ""G""
+    },
+    {
+      ""reader_a_id"": ""I"",
+      ""reader_b_id"": ""J""
+    },
+    {
+      ""reader_a_id"": ""I"",
+      ""reader_b_id"": ""K""
+    },
+    {
+      ""reader_a_id"": ""I"",
+      ""reader_b_id"": ""L""
+    },
+    {
+      ""reader_a_id"": ""F"",
+      ""reader_b_id"": ""A""
+    },
+    {
+      ""reader_a_id"": ""F"",
+      ""reader_b_id"": ""B""
+    },
+    {
+      ""reader_a_id"": ""F"",
+      ""reader_b_id"": ""G""
+    },
+    {
+      ""reader_a_id"": ""F"",
+      ""reader_b_id"": ""J""
+    },
+    {
+      ""reader_a_id"": ""F"",
+      ""reader_b_id"": ""K""
+    },
+    {
+      ""reader_a_id"": ""F"",
+      ""reader_b_id"": ""L""
+    },
+    {
+      ""reader_a_id"": ""K"",
+      ""reader_b_id"": ""G""
+    },
+    {
+      ""reader_a_id"": ""K"",
+      ""reader_b_id"": ""J""
+    },
+    {
+      ""reader_a_id"": ""K"",
+      ""reader_b_id"": ""L""
+    },
+    {
+      ""reader_a_id"": ""L"",
+      ""reader_b_id"": ""G""
+    },
+    {
+      ""reader_a_id"": ""L"",
+      ""reader_b_id"": ""J""
+    },
+    {
+      ""reader_a_id"": ""J"",
+      ""reader_b_id"": ""G""
+    },
+    {
+      ""reader_a_id"": ""C"",
+      ""reader_b_id"": ""G""
+    },
+    {
+      ""reader_a_id"": ""A"",
+      ""reader_b_id"": ""B""
+    }
+  ]
+}
+
+Also, when you send back your pick, please use this simple JSON layout so it's easy to parse — nothing fancy, just a single key with a list of the people you picked:
+
+{
+  ""solution"": [""member_id"", ""member_id"", ...]
+}
+
+Here ""solution"" is the list of people in the fully connected book-circle subgroup, and each string in the list is a placeholder for one person's identifier from the instance. Think of it like filling in a little form: put the exact IDs of the members you choose into that array. This JSON is just a sketch of the shape I want, not the final answer itself.
+
+Please make sure you use the identifiers exactly as they appear in the problem input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 12, 'num_edges': 30, 'edges': [{'u': 4, 'v': 3}, {'u': 4, 'v': 7}, {'u': 5, 'v': 1}, {'u': 5, 'v': 2}, {'u': 5, 'v': 6}, {'u': 8, 'v': 6}, {'u': 8, 'v': 7}, {'u': 8, 'v': 9}, {'u': 8, 'v': 10}, {'u': 8, 'v': 11}, {'u': 8, 'v': 12}, {'u': 9, 'v': 6}, {'u': 9, 'v': 7}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 9, 'v': 12}, {'u': 6, 'v': 1}, {'u': 6, 'v': 2}, {'u': 6, 'v': 7}, {'u': 6, 'v': 10}, {'u': 6, 'v': 11}, {'u': 6, 'v': 12}, {'u': 11, 'v': 7}, {'u': 11, 'v': 10}, {'u': 11, 'v': 12}, {'u': 12, 'v': 7}, {'u': 12, 'v': 10}, {'u': 10, 'v': 7}, {'u': 3, 'v': 7}, {'u': 1, 'v': 2}], 'source_file': 'coPapersCiteseer.mtx', 'density': 0.45454545454545453, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0018.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0018.png', 'edge_connectivity': 2}","[6, 7, 8, 9, 10, 11, 12]",7.0,"{'num_nodes': 12, 'num_edges': 30, 'edges': [{'u': 'D', 'v': 'C'}, {'u': 'D', 'v': 'G'}, {'u': 'E', 'v': 'A'}, {'u': 'E', 'v': 'B'}, {'u': 'E', 'v': 'F'}, {'u': 'H', 'v': 'F'}, {'u': 'H', 'v': 'G'}, {'u': 'H', 'v': 'I'}, {'u': 'H', 'v': 'J'}, {'u': 'H', 'v': 'K'}, {'u': 'H', 'v': 'L'}, {'u': 'I', 'v': 'F'}, {'u': 'I', 'v': 'G'}, {'u': 'I', 'v': 'J'}, {'u': 'I', 'v': 'K'}, {'u': 'I', 'v': 'L'}, {'u': 'F', 'v': 'A'}, {'u': 'F', 'v': 'B'}, {'u': 'F', 'v': 'G'}, {'u': 'F', 'v': 'J'}, {'u': 'F', 'v': 'K'}, {'u': 'F', 'v': 'L'}, {'u': 'K', 'v': 'G'}, {'u': 'K', 'v': 'J'}, {'u': 'K', 'v': 'L'}, {'u': 'L', 'v': 'G'}, {'u': 'L', 'v': 'J'}, {'u': 'J', 'v': 'G'}, {'u': 'C', 'v': 'G'}, {'u': 'A', 'v': 'B'}]}","['F', 'G', 'H', 'I', 'J', 'K', 'L']",19,json,names
+MCP,MCP,"Out in the community there’s a plan to gather hobby enthusiasts into one big circle where every pair of people actually shares a hobby, and the aim is to make that circle as large as it can get. Success is simply the size of the circle — count the people — and to verify any candidate circle, inspect every pair of attendees to ensure a direct hobby link exists between them. Each person is used at most once and everyone in the chosen group must be directly connected. The exact roster and connection map are shown below.
+
+{
+  ""total_hobbyists"": 12,
+  ""total_direct_hobby_links"": 27,
+  ""edges"": [
+    {
+      ""person_a_id"": 8,
+      ""person_b_id"": 1
+    },
+    {
+      ""person_a_id"": 8,
+      ""person_b_id"": 2
+    },
+    {
+      ""person_a_id"": 8,
+      ""person_b_id"": 5
+    },
+    {
+      ""person_a_id"": 8,
+      ""person_b_id"": 7
+    },
+    {
+      ""person_a_id"": 8,
+      ""person_b_id"": 9
+    },
+    {
+      ""person_a_id"": 8,
+      ""person_b_id"": 10
+    },
+    {
+      ""person_a_id"": 8,
+      ""person_b_id"": 11
+    },
+    {
+      ""person_a_id"": 9,
+      ""person_b_id"": 1
+    },
+    {
+      ""person_a_id"": 9,
+      ""person_b_id"": 2
+    },
+    {
+      ""person_a_id"": 9,
+      ""person_b_id"": 3
+    },
+    {
+      ""person_a_id"": 9,
+      ""person_b_id"": 4
+    },
+    {
+      ""person_a_id"": 9,
+      ""person_b_id"": 5
+    },
+    {
+      ""person_a_id"": 10,
+      ""person_b_id"": 7
+    },
+    {
+      ""person_a_id"": 10,
+      ""person_b_id"": 11
+    },
+    {
+      ""person_a_id"": 11,
+      ""person_b_id"": 7
+    },
+    {
+      ""person_a_id"": 7,
+      ""person_b_id"": 6
+    },
+    {
+      ""person_a_id"": 6,
+      ""person_b_id"": 0
+    },
+    {
+      ""person_a_id"": 1,
+      ""person_b_id"": 2
+    },
+    {
+      ""person_a_id"": 1,
+      ""person_b_id"": 3
+    },
+    {
+      ""person_a_id"": 1,
+      ""person_b_id"": 4
+    },
+    {
+      ""person_a_id"": 1,
+      ""person_b_id"": 5
+    },
+    {
+      ""person_a_id"": 2,
+      ""person_b_id"": 3
+    },
+    {
+      ""person_a_id"": 2,
+      ""person_b_id"": 4
+    },
+    {
+      ""person_a_id"": 2,
+      ""person_b_id"": 5
+    },
+    {
+      ""person_a_id"": 3,
+      ""person_b_id"": 4
+    },
+    {
+      ""person_a_id"": 3,
+      ""person_b_id"": 5
+    },
+    {
+      ""person_a_id"": 4,
+      ""person_b_id"": 5
+    }
+  ]
+}
+
+Oh, and when you send the roster back, keep it in this little shape so I can read it easily:
+
+{
+  ""solution"": [""attendee_id"", ""attendee_id"", ...]
+}
+
+Here ""solution"" is just the list of people in the circle — each entry is an identifier for one attendee. Think of it like filling in a short form: toss the exact labels of the people you picked into that array and that’s your answer. This block is only a sketch of the expected shape, not the final roster.
+
+Please use the identifiers exactly as they appear in the instance input — don’t rename or invent labels. Valid identifiers look like these examples:
+- ""1"" or ""23""
+- ""A"" or ""B""
+- ""A1"" or ""X7""","{'problem_type': 'MCP', 'num_nodes': 12, 'num_edges': 27, 'edges': [{'u': 9, 'v': 2}, {'u': 9, 'v': 3}, {'u': 9, 'v': 6}, {'u': 9, 'v': 8}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 9, 'v': 12}, {'u': 10, 'v': 2}, {'u': 10, 'v': 3}, {'u': 10, 'v': 4}, {'u': 10, 'v': 5}, {'u': 10, 'v': 6}, {'u': 11, 'v': 8}, {'u': 11, 'v': 12}, {'u': 12, 'v': 8}, {'u': 8, 'v': 7}, {'u': 7, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 5, 'v': 6}], 'source_file': 'coPapersDBLP.mtx', 'density': 0.4090909090909091, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0019.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0019.png', 'edge_connectivity': 1}","[2, 3, 4, 5, 6, 10]",6.0,"{'num_nodes': 12, 'num_edges': 27, 'edges': [{'u': 8, 'v': 1}, {'u': 8, 'v': 2}, {'u': 8, 'v': 5}, {'u': 8, 'v': 7}, {'u': 8, 'v': 9}, {'u': 8, 'v': 10}, {'u': 8, 'v': 11}, {'u': 9, 'v': 1}, {'u': 9, 'v': 2}, {'u': 9, 'v': 3}, {'u': 9, 'v': 4}, {'u': 9, 'v': 5}, {'u': 10, 'v': 7}, {'u': 10, 'v': 11}, {'u': 11, 'v': 7}, {'u': 7, 'v': 6}, {'u': 6, 'v': 0}, {'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 4, 'v': 5}]}","[1, 2, 3, 4, 5, 9]",20,json,0
+MCP,MCP,"At the reception the aim is to create a table where every seat feels like among friends, so the planner looks for the largest group of guests who all know one another. A better seating plan is simply the one with more people, so the way to pick is to count how many people can be grouped so that every pair among them already knows each other. Practical limits: selected guests must all be mutually acquainted and no name is used more than once. The guest connections are shown below.
+
+There are 9 guests in total and 14 acquaintance pairs.
+
+| guest_a | guest_b |
+|---|---|
+| F | A |
+| F | B |
+| F | G |
+| F | H |
+| D | B |
+| D | C |
+| D | E |
+| G | B |
+| G | H |
+| G | I |
+| H | B |
+| E | B |
+| E | C |
+| C | B |
+
+If you want to send the seating back, a tiny JSON snippet is perfect — something like this:
+
+{
+  ""solution"": [""guest_id"", ""guest_id"", ...]
+}
+
+Here ""solution"" is just the list of guest IDs you're choosing to sit together — one ID per selected person. Think of it like filling a simple form: replace each placeholder with the actual ID of a guest who should sit at the table. This JSON is only a sketch of the expected shape, not the real seating — you'll swap the placeholders for the real identifiers from the instance.
+
+Please make sure you use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'MCP', 'num_nodes': 9, 'num_edges': 14, 'edges': [{'u': 6, 'v': 1}, {'u': 6, 'v': 2}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 7, 'v': 2}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 8, 'v': 2}, {'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 3, 'v': 2}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.3888888888888889, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0020.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0020.png', 'edge_connectivity': 1}","[2, 6, 7, 8]",4.0,"{'num_nodes': 9, 'num_edges': 14, 'edges': [{'u': 'F', 'v': 'A'}, {'u': 'F', 'v': 'B'}, {'u': 'F', 'v': 'G'}, {'u': 'F', 'v': 'H'}, {'u': 'D', 'v': 'B'}, {'u': 'D', 'v': 'C'}, {'u': 'D', 'v': 'E'}, {'u': 'G', 'v': 'B'}, {'u': 'G', 'v': 'H'}, {'u': 'G', 'v': 'I'}, {'u': 'H', 'v': 'B'}, {'u': 'E', 'v': 'B'}, {'u': 'E', 'v': 'C'}, {'u': 'C', 'v': 'B'}]}","['B', 'F', 'G', 'H']",21,markdown_table,names
+MCP,MCP,"I was sorting through a pile of software modules like apps on a phone, trying to put together the biggest possible bundle that won’t fight with itself — every module in the bundle has to get along with every other one. The choice is simple: pick the group that has the most modules, and to check any candidate group just make sure each pair in it is compatible; the better group is the one with the highest headcount. No module can appear twice, and nothing in the chosen group can be incompatible with any other. The concrete module-by-module details are shown below.
+
+I've got 11 modules and 23 compatibility pairs listed below:
+Module 1 gets along with module 2.
+Module 1 gets along with module 5.
+Module 1 gets along with module 6.
+Module 1 gets along with module 9.
+Module 1 gets along with module 11.
+Module 2 gets along with module 5.
+Module 2 gets along with module 6.
+Module 2 gets along with module 8.
+Module 2 gets along with module 9.
+Module 2 gets along with module 11.
+Module 10 gets along with module 9.
+Module 3 gets along with module 9.
+Module 6 gets along with module 4.
+Module 6 gets along with module 5.
+Module 6 gets along with module 9.
+Module 6 gets along with module 11.
+Module 11 gets along with module 8.
+Module 11 gets along with module 9.
+Module 5 gets along with module 8.
+Module 5 gets along with module 9.
+Module 9 gets along with module 4.
+Module 9 gets along with module 7.
+Module 9 gets along with module 8.
+That's the full list I'll use to pick the largest mutually compatible bundle.
+
+Also, when you send the final pick, just drop it into a tiny JSON snippet like the one below — super simple: a single ""solution"" list containing the IDs of the modules you chose.
+
+{
+  ""solution"": [""module_id"", ""module_id"", ...]
+}
+
+Think of ""solution"" as the box where you list every module in the bundle — one ID per entry. This example is just the shape I want, not the actual answer.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no invented labels.  
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 11, 'num_edges': 23, 'edges': [{'u': 1, 'v': 2}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 1, 'v': 9}, {'u': 1, 'v': 11}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 2, 'v': 8}, {'u': 2, 'v': 9}, {'u': 2, 'v': 11}, {'u': 10, 'v': 9}, {'u': 3, 'v': 9}, {'u': 6, 'v': 4}, {'u': 6, 'v': 5}, {'u': 6, 'v': 9}, {'u': 6, 'v': 11}, {'u': 11, 'v': 8}, {'u': 11, 'v': 9}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 9, 'v': 4}, {'u': 9, 'v': 7}, {'u': 9, 'v': 8}], 'source_file': 'citationCiteseer.mtx', 'density': 0.41818181818181815, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0021.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0021.png', 'edge_connectivity': 1}","[1, 2, 6, 9, 11]",5.0,"{'num_nodes': 11, 'num_edges': 23, 'edges': [{'u': 1, 'v': 2}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 1, 'v': 9}, {'u': 1, 'v': 11}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 2, 'v': 8}, {'u': 2, 'v': 9}, {'u': 2, 'v': 11}, {'u': 10, 'v': 9}, {'u': 3, 'v': 9}, {'u': 6, 'v': 4}, {'u': 6, 'v': 5}, {'u': 6, 'v': 9}, {'u': 6, 'v': 11}, {'u': 11, 'v': 8}, {'u': 11, 'v': 9}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 9, 'v': 4}, {'u': 9, 'v': 7}, {'u': 9, 'v': 8}]}","[1, 2, 6, 9, 11]",22,nl,1
+MCP,MCP,"Many brands want a seamless-looking group post, so the brief was to find a set of influencers who all follow one another before asking them to team up. The decision is which influencers to include — bigger is better here, because a larger fully connected group gives more reach and cohesion; you check that by counting how many different people are in the group. No duplicates, and nobody who doesn’t follow the rest can be part of the chosen set. The concrete follower list is below.
+
+{
+  ""total_influencers"": 11,
+  ""total_mutual_follows"": 20,
+  ""edges"": [
+    {
+      ""influencer_a"": 1,
+      ""influencer_b"": 3
+    },
+    {
+      ""influencer_a"": 1,
+      ""influencer_b"": 6
+    },
+    {
+      ""influencer_a"": 1,
+      ""influencer_b"": 10
+    },
+    {
+      ""influencer_a"": 9,
+      ""influencer_b"": 6
+    },
+    {
+      ""influencer_a"": 8,
+      ""influencer_b"": 3
+    },
+    {
+      ""influencer_a"": 8,
+      ""influencer_b"": 4
+    },
+    {
+      ""influencer_a"": 8,
+      ""influencer_b"": 5
+    },
+    {
+      ""influencer_a"": 6,
+      ""influencer_b"": 0
+    },
+    {
+      ""influencer_a"": 6,
+      ""influencer_b"": 2
+    },
+    {
+      ""influencer_a"": 6,
+      ""influencer_b"": 3
+    },
+    {
+      ""influencer_a"": 0,
+      ""influencer_b"": 3
+    },
+    {
+      ""influencer_a"": 0,
+      ""influencer_b"": 4
+    },
+    {
+      ""influencer_a"": 0,
+      ""influencer_b"": 10
+    },
+    {
+      ""influencer_a"": 3,
+      ""influencer_b"": 2
+    },
+    {
+      ""influencer_a"": 3,
+      ""influencer_b"": 4
+    },
+    {
+      ""influencer_a"": 3,
+      ""influencer_b"": 5
+    },
+    {
+      ""influencer_a"": 3,
+      ""influencer_b"": 7
+    },
+    {
+      ""influencer_a"": 2,
+      ""influencer_b"": 4
+    },
+    {
+      ""influencer_a"": 5,
+      ""influencer_b"": 4
+    },
+    {
+      ""influencer_a"": 10,
+      ""influencer_b"": 4
+    }
+  ]
+}
+
+Oh, and when you send back the pick, please use this simple JSON shape so I can read it cleanly:
+
+{
+  ""solution"": [""influencer_id"", ""influencer_id"", ...]
+}
+
+Here ""solution"" is just the list of influencer identifiers that make the fully connected group — one entry per person. Think of it as a short form: the array holds the exact labels for the people you picked. This JSON is just a sketch of the shape I expect, not the final answer itself.
+
+Remember to use the identifiers exactly as they appear in the instance input — don't rename them or invent new ones.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 11, 'num_edges': 20, 'edges': [{'u': 2, 'v': 4}, {'u': 2, 'v': 7}, {'u': 2, 'v': 11}, {'u': 10, 'v': 7}, {'u': 9, 'v': 4}, {'u': 9, 'v': 5}, {'u': 9, 'v': 6}, {'u': 7, 'v': 1}, {'u': 7, 'v': 3}, {'u': 7, 'v': 4}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 1, 'v': 11}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 8}, {'u': 3, 'v': 5}, {'u': 6, 'v': 5}, {'u': 11, 'v': 5}], 'source_file': 'citationCiteseer.mtx', 'density': 0.36363636363636365, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0022.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0022.png', 'edge_connectivity': 1}","[4, 5, 6, 9]",4.0,"{'num_nodes': 11, 'num_edges': 20, 'edges': [{'u': 1, 'v': 3}, {'u': 1, 'v': 6}, {'u': 1, 'v': 10}, {'u': 9, 'v': 6}, {'u': 8, 'v': 3}, {'u': 8, 'v': 4}, {'u': 8, 'v': 5}, {'u': 6, 'v': 0}, {'u': 6, 'v': 2}, {'u': 6, 'v': 3}, {'u': 0, 'v': 3}, {'u': 0, 'v': 4}, {'u': 0, 'v': 10}, {'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 7}, {'u': 2, 'v': 4}, {'u': 5, 'v': 4}, {'u': 10, 'v': 4}]}","[3, 4, 5, 8]",23,json,0
+MCP,MCP,"I’m a museum curator trying to put together the biggest possible grouping of artifacts such that every piece in that group has a documented provenance link to every other piece; the choice is which items to include, and one grouping is better than another if it contains more artifacts — count the items to tell which grouping wins — but every selected artifact must have a proven link to every other selected artifact and nothing can be duplicated or left halfway connected. The exact list of artifacts and their provenance links is shown below.
+
+There are 8 artifacts in total and 9 provenance links.
+
+| artifact_a_id | artifact_b_id |
+|---|---|
+| 5 | 2 |
+| 5 | 3 |
+| 5 | 4 |
+| 5 | 6 |
+| 5 | 7 |
+| 5 | 8 |
+| 8 | 7 |
+| 6 | 4 |
+| 1 | 4 |
+
+Also, when you send back the final grouping, please use this simple JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [""artifact_id"", ""artifact_id"", ...]
+}
+
+The ""solution"" array should list the artifact identifiers that make up the largest fully linked grouping in the museum — basically, the items you picked for the group. This JSON is just a sketch of the shape I expect, not the actual answer itself.
+
+Please be sure to use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'MCP', 'num_nodes': 8, 'num_edges': 9, 'edges': [{'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 8, 'v': 7}, {'u': 6, 'v': 4}, {'u': 1, 'v': 4}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.32142857142857145, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0023.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0023.png', 'edge_connectivity': 1}","[5, 7, 8]",3.0,"{'num_nodes': 8, 'num_edges': 9, 'edges': [{'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 8, 'v': 7}, {'u': 6, 'v': 4}, {'u': 1, 'v': 4}]}","[5, 7, 8]",24,markdown_table,1
+MCP,MCP,"We had a coach trying to build chemistry fast, so the plan was to assemble the biggest crew of players where everyone already has a one-on-one history from practices or games. The decision was which players to include; a better choice is simply the one with more players, and that count is how the picks are judged. Every pair among the chosen players must have previously worked together, and no player gets picked twice. The concrete player connections are listed below.
+
+We have 9 total players and 17 recorded one-on-one histories.
+Players 8 and 7 have a recorded one-on-one history.
+Players 4 and 1 have a recorded one-on-one history.
+Players 4 and 2 have a recorded one-on-one history.
+Players 4 and 3 have a recorded one-on-one history.
+Players 7 and 1 have a recorded one-on-one history.
+Players 7 and 2 have a recorded one-on-one history.
+Players 7 and 6 have a recorded one-on-one history.
+Players 9 and 1 have a recorded one-on-one history.
+Players 9 and 3 have a recorded one-on-one history.
+Players 9 and 6 have a recorded one-on-one history.
+Players 3 and 1 have a recorded one-on-one history.
+Players 3 and 2 have a recorded one-on-one history.
+Players 3 and 5 have a recorded one-on-one history.
+Players 3 and 6 have a recorded one-on-one history.
+Players 5 and 1 have a recorded one-on-one history.
+Players 1 and 2 have a recorded one-on-one history.
+Players 1 and 6 have a recorded one-on-one history.
+We use these 17 histories across the 9 players to find the biggest crew where every pair already worked together.
+
+If you want to hand me the final crew, just drop it in this little JSON shape:
+
+{
+  ""solution"": [""player_id"", ""player_id"", ...]
+}
+
+""solution"" is where you list the picked players (one id per entry) — just the ids, nothing else. This is only a sketch of the shape I expect, not the actual picks.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels.  
+Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".","{'problem_type': 'MCP', 'num_nodes': 9, 'num_edges': 17, 'edges': [{'u': 8, 'v': 7}, {'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 7, 'v': 1}, {'u': 7, 'v': 2}, {'u': 7, 'v': 6}, {'u': 9, 'v': 1}, {'u': 9, 'v': 3}, {'u': 9, 'v': 6}, {'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 5, 'v': 1}, {'u': 1, 'v': 2}, {'u': 1, 'v': 6}], 'source_file': 'citationCiteseer.mtx', 'density': 0.4722222222222222, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0024.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0024.png', 'edge_connectivity': 1}","[1, 2, 3, 4]",4.0,"{'num_nodes': 9, 'num_edges': 17, 'edges': [{'u': 8, 'v': 7}, {'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 7, 'v': 1}, {'u': 7, 'v': 2}, {'u': 7, 'v': 6}, {'u': 9, 'v': 1}, {'u': 9, 'v': 3}, {'u': 9, 'v': 6}, {'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 5, 'v': 1}, {'u': 1, 'v': 2}, {'u': 1, 'v': 6}]}","[1, 2, 3, 4]",25,nl,1
+MCP,MCP,"We need to pick a research squad from a department roster so that everyone on that squad has already coauthored with every other squad member — that’s the setup, and the decision is which group of colleagues to lock in. What makes one pick better than another is simple: the bigger the squad, the better, so compare groups by their headcount. Practically, each chosen person must have a coauthorship tie to every other chosen person, no name appears twice, and the full list of names and their coauthorship links appears below.
+
+Below are the 10 researchers and the 20 coauthorship links:
+We record a coauthorship tie between G and B.
+We record a coauthorship tie between G and C.
+We record a coauthorship tie between G and E.
+We record a coauthorship tie between G and F.
+We record a coauthorship tie between G and H.
+We record a coauthorship tie between H and A.
+We record a coauthorship tie between H and B.
+We record a coauthorship tie between H and C.
+We record a coauthorship tie between H and D.
+We record a coauthorship tie between H and E.
+We record a coauthorship tie between H and F.
+We record a coauthorship tie between H and I.
+We record a coauthorship tie between H and J.
+We record a coauthorship tie between C and B.
+We record a coauthorship tie between C and E.
+We record a coauthorship tie between C and F.
+We record a coauthorship tie between I and A.
+We record a coauthorship tie between E and B.
+We record a coauthorship tie between E and F.
+We record a coauthorship tie between F and B.
+We will use these 10 researchers and 20 links to lock in the largest fully coauthored squad.
+
+Oh — when you send back the chosen squad, just drop it into this little JSON shape so it's easy to read and parse:
+
+{
+  ""solution"": [""researcher_id"", ""researcher_id"", ...]
+}
+
+Here, ""solution"" is the list of researcher identifiers — one string per person who makes up the squad (i.e., the people who have all coauthored with each other). Think of it like filling in a short form: list the exact IDs for the group you picked. This JSON is just a sketch of the shape I want, not the actual answer.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".""","{'problem_type': 'MCP', 'num_nodes': 10, 'num_edges': 20, 'edges': [{'u': 7, 'v': 2}, {'u': 7, 'v': 3}, {'u': 7, 'v': 5}, {'u': 7, 'v': 6}, {'u': 7, 'v': 8}, {'u': 8, 'v': 1}, {'u': 8, 'v': 2}, {'u': 8, 'v': 3}, {'u': 8, 'v': 4}, {'u': 8, 'v': 5}, {'u': 8, 'v': 6}, {'u': 8, 'v': 9}, {'u': 8, 'v': 10}, {'u': 3, 'v': 2}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 9, 'v': 1}, {'u': 5, 'v': 2}, {'u': 5, 'v': 6}, {'u': 6, 'v': 2}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.4444444444444444, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0025.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0025.png', 'edge_connectivity': 1}","[2, 3, 5, 6, 7, 8]",6.0,"{'num_nodes': 10, 'num_edges': 20, 'edges': [{'u': 'G', 'v': 'B'}, {'u': 'G', 'v': 'C'}, {'u': 'G', 'v': 'E'}, {'u': 'G', 'v': 'F'}, {'u': 'G', 'v': 'H'}, {'u': 'H', 'v': 'A'}, {'u': 'H', 'v': 'B'}, {'u': 'H', 'v': 'C'}, {'u': 'H', 'v': 'D'}, {'u': 'H', 'v': 'E'}, {'u': 'H', 'v': 'F'}, {'u': 'H', 'v': 'I'}, {'u': 'H', 'v': 'J'}, {'u': 'C', 'v': 'B'}, {'u': 'C', 'v': 'E'}, {'u': 'C', 'v': 'F'}, {'u': 'I', 'v': 'A'}, {'u': 'E', 'v': 'B'}, {'u': 'E', 'v': 'F'}, {'u': 'F', 'v': 'B'}]}","['B', 'C', 'E', 'F', 'G', 'H']",26,nl,names
+MCP,MCP,"Picture this: the organizer needs one table where every attendee already has a one-on-one agreement with every other attendee at that same table. The choice to make is which people to seat together — what matters most is seating as many people as possible while keeping that mutual-agreement condition intact. To determine the winner, just tally how many people are seated (that’s the measure of success) and check that every possible pair among them holds an agreement; don’t seat someone twice or pretend a missing agreement exists. The exact participant list and agreement details appear below.
+
+There are 11 delegates in total and 26 bilateral agreements.
+
+| delegate_id_1 | delegate_id_2 |
+|---|---|
+| 9 | 8 |
+| 9 | 10 |
+| 9 | 11 |
+| 10 | 8 |
+| 10 | 11 |
+| 11 | 8 |
+| 6 | 2 |
+| 6 | 5 |
+| 6 | 7 |
+| 6 | 8 |
+| 3 | 1 |
+| 3 | 2 |
+| 3 | 4 |
+| 3 | 5 |
+| 4 | 1 |
+| 4 | 2 |
+| 4 | 5 |
+| 1 | 2 |
+| 1 | 5 |
+| 1 | 7 |
+| 7 | 2 |
+| 7 | 5 |
+| 7 | 8 |
+| 8 | 2 |
+| 8 | 5 |
+| 2 | 5 |
+
+Also, when you send the seating choice back, just use a tiny JSON snippet like this so it’s easy to read and check:
+
+{
+  ""solution"": [""person_id"", ""person_id"", ...]
+}
+
+Think of ""solution"" as the list of people you’d seat together — each entry is one attendee’s exact ID from the instance. This is just the shape I want (a sketch), not the actual seating answer — put the real IDs from the input in the array.
+
+Don't rename or invent IDs; they must match the instance exactly.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 11, 'num_edges': 26, 'edges': [{'u': 9, 'v': 8}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 10, 'v': 8}, {'u': 10, 'v': 11}, {'u': 11, 'v': 8}, {'u': 6, 'v': 2}, {'u': 6, 'v': 5}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 5}, {'u': 1, 'v': 2}, {'u': 1, 'v': 5}, {'u': 1, 'v': 7}, {'u': 7, 'v': 2}, {'u': 7, 'v': 5}, {'u': 7, 'v': 8}, {'u': 8, 'v': 2}, {'u': 8, 'v': 5}, {'u': 2, 'v': 5}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.4727272727272727, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0026.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0026.png', 'edge_connectivity': 3}","[2, 5, 6, 7, 8]",5.0,"{'num_nodes': 11, 'num_edges': 26, 'edges': [{'u': 9, 'v': 8}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 10, 'v': 8}, {'u': 10, 'v': 11}, {'u': 11, 'v': 8}, {'u': 6, 'v': 2}, {'u': 6, 'v': 5}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 5}, {'u': 1, 'v': 2}, {'u': 1, 'v': 5}, {'u': 1, 'v': 7}, {'u': 7, 'v': 2}, {'u': 7, 'v': 5}, {'u': 7, 'v': 8}, {'u': 8, 'v': 2}, {'u': 8, 'v': 5}, {'u': 2, 'v': 5}]}","[2, 5, 6, 7, 8]",27,markdown_table,1
+MCP,MCP,"There’s a buyer trying to assemble a showcase of brands that genuinely know how to work together — the trick is finding a bunch that have all collaborated with each other. The choice is which brands to lock in; the best choice is the biggest possible bunch where every brand has a collaboration link to every other brand in that bunch. You judge that by counting the brands you’ve picked and confirming that every pair among them has a past collaboration. Make sure no brand is repeated and every chosen brand connects to all the others. The concrete team-up info is listed below.
+
+There are 12 brands in total and 38 collaborations.
+
+| brand_a | brand_b |
+|---|---|
+| 5 | 2 |
+| 5 | 6 |
+| 5 | 8 |
+| 5 | 9 |
+| 5 | 10 |
+| 5 | 11 |
+| 6 | 0 |
+| 6 | 2 |
+| 6 | 3 |
+| 6 | 4 |
+| 6 | 7 |
+| 6 | 8 |
+| 6 | 9 |
+| 6 | 10 |
+| 6 | 11 |
+| 1 | 11 |
+| 11 | 0 |
+| 11 | 2 |
+| 11 | 3 |
+| 11 | 4 |
+| 11 | 7 |
+| 11 | 8 |
+| 4 | 8 |
+| 4 | 9 |
+| 4 | 10 |
+| 7 | 8 |
+| 9 | 0 |
+| 9 | 3 |
+| 9 | 8 |
+| 9 | 10 |
+| 3 | 0 |
+| 3 | 2 |
+| 3 | 8 |
+| 0 | 2 |
+| 0 | 8 |
+| 2 | 8 |
+| 2 | 10 |
+| 10 | 8 |
+
+When you send back the chosen group, just drop it into this little JSON shape so it's easy to read:
+
+{
+  ""solution"": [""brand_id"", ""brand_id"", ...]
+}
+
+""solution"" is just the list of selected brands (one identifier per entry). This JSON is only a sketch of the shape I expect — fill it with the actual identifiers from the instance.
+
+Please use identifiers exactly as they appear in the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'MCP', 'num_nodes': 12, 'num_edges': 38, 'edges': [{'u': 6, 'v': 3}, {'u': 6, 'v': 7}, {'u': 6, 'v': 9}, {'u': 6, 'v': 10}, {'u': 6, 'v': 11}, {'u': 6, 'v': 12}, {'u': 7, 'v': 1}, {'u': 7, 'v': 3}, {'u': 7, 'v': 4}, {'u': 7, 'v': 5}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 7, 'v': 10}, {'u': 7, 'v': 11}, {'u': 7, 'v': 12}, {'u': 2, 'v': 12}, {'u': 12, 'v': 1}, {'u': 12, 'v': 3}, {'u': 12, 'v': 4}, {'u': 12, 'v': 5}, {'u': 12, 'v': 8}, {'u': 12, 'v': 9}, {'u': 5, 'v': 9}, {'u': 5, 'v': 10}, {'u': 5, 'v': 11}, {'u': 8, 'v': 9}, {'u': 10, 'v': 1}, {'u': 10, 'v': 4}, {'u': 10, 'v': 9}, {'u': 10, 'v': 11}, {'u': 4, 'v': 1}, {'u': 4, 'v': 3}, {'u': 4, 'v': 9}, {'u': 1, 'v': 3}, {'u': 1, 'v': 9}, {'u': 3, 'v': 9}, {'u': 3, 'v': 11}, {'u': 11, 'v': 9}], 'source_file': 'citationCiteseer.mtx', 'density': 0.5757575757575758, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0027.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0027.png', 'edge_connectivity': 1}","[1, 3, 4, 7, 9, 12]",6.0,"{'num_nodes': 12, 'num_edges': 38, 'edges': [{'u': 5, 'v': 2}, {'u': 5, 'v': 6}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 5, 'v': 10}, {'u': 5, 'v': 11}, {'u': 6, 'v': 0}, {'u': 6, 'v': 2}, {'u': 6, 'v': 3}, {'u': 6, 'v': 4}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 6, 'v': 10}, {'u': 6, 'v': 11}, {'u': 1, 'v': 11}, {'u': 11, 'v': 0}, {'u': 11, 'v': 2}, {'u': 11, 'v': 3}, {'u': 11, 'v': 4}, {'u': 11, 'v': 7}, {'u': 11, 'v': 8}, {'u': 4, 'v': 8}, {'u': 4, 'v': 9}, {'u': 4, 'v': 10}, {'u': 7, 'v': 8}, {'u': 9, 'v': 0}, {'u': 9, 'v': 3}, {'u': 9, 'v': 8}, {'u': 9, 'v': 10}, {'u': 3, 'v': 0}, {'u': 3, 'v': 2}, {'u': 3, 'v': 8}, {'u': 0, 'v': 2}, {'u': 0, 'v': 8}, {'u': 2, 'v': 8}, {'u': 2, 'v': 10}, {'u': 10, 'v': 8}]}","[0, 2, 3, 6, 8, 11]",28,markdown_table,0
+MCP,MCP,"At the building’s annual meeting the manager must appoint a board made up solely of residents who have formally endorsed every other board member on the team. What has to be decided is which distinct residents to include so the team is as large as it can be while still having that “everyone has formally backed everyone else” property — verify that every pair of people in a candidate team has an endorsement, then tally the members; the highest tally among qualifying teams wins. No person can be counted more than once. The concrete endorsements and resident names follow below.
+
+There are 10 residents and 15 mutual-endorsement pairs listed below.
+9 and 6 have formally endorsed each other.
+9 and 8 have formally endorsed each other.
+9 and 10 have formally endorsed each other.
+10 and 6 have formally endorsed each other.
+10 and 8 have formally endorsed each other.
+5 and 6 have formally endorsed each other.
+5 and 7 have formally endorsed each other.
+6 and 7 have formally endorsed each other.
+2 and 1 have formally endorsed each other.
+2 and 3 have formally endorsed each other.
+2 and 4 have formally endorsed each other.
+3 and 1 have formally endorsed each other.
+3 and 4 have formally endorsed each other.
+4 and 1 have formally endorsed each other.
+1 and 8 have formally endorsed each other.
+Select the qualifying team with the greatest number of members.
+
+Also, when you send back the final pick, please use this simple JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [""resident_id"", ""resident_id"", ...]
+}
+
+Think of ""solution"" as just the list of residents who would make up the board — each entry is the resident's identifier from the instance. This JSON is just a sketch of the shape I want; it's not the actual selection itself.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".""","{'problem_type': 'MCP', 'num_nodes': 10, 'num_edges': 15, 'edges': [{'u': 9, 'v': 6}, {'u': 9, 'v': 8}, {'u': 9, 'v': 10}, {'u': 10, 'v': 6}, {'u': 10, 'v': 8}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 6, 'v': 7}, {'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 3, 'v': 1}, {'u': 3, 'v': 4}, {'u': 4, 'v': 1}, {'u': 1, 'v': 8}], 'source_file': 'coPapersCiteseer.mtx', 'density': 0.3333333333333333, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0028.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0028.png', 'edge_connectivity': 1}","[1, 2, 3, 4]",4.0,"{'num_nodes': 10, 'num_edges': 15, 'edges': [{'u': 9, 'v': 6}, {'u': 9, 'v': 8}, {'u': 9, 'v': 10}, {'u': 10, 'v': 6}, {'u': 10, 'v': 8}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 6, 'v': 7}, {'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 3, 'v': 1}, {'u': 3, 'v': 4}, {'u': 4, 'v': 1}, {'u': 1, 'v': 8}]}","[1, 2, 3, 4]",29,nl,1
+MCP,MCP,"Back at the center there’s an effort to pick a single volunteer group made up only of people who have all partnered with one another on past projects — every pair needs that history. The right pick is the biggest possible group, measured by the number of volunteers in it. Each person must be unique on the list and every pair inside the group must have a prior collaboration. The concrete details of names and past pairings follow below.
+
+{
+  ""total_volunteers_listed"": 8,
+  ""total_recorded_pair_collaborations"": 16,
+  ""edges"": [
+    {
+      ""volunteer_one_identifier"": ""A"",
+      ""volunteer_two_identifier"": ""B""
+    },
+    {
+      ""volunteer_one_identifier"": ""A"",
+      ""volunteer_two_identifier"": ""C""
+    },
+    {
+      ""volunteer_one_identifier"": ""A"",
+      ""volunteer_two_identifier"": ""D""
+    },
+    {
+      ""volunteer_one_identifier"": ""A"",
+      ""volunteer_two_identifier"": ""E""
+    },
+    {
+      ""volunteer_one_identifier"": ""C"",
+      ""volunteer_two_identifier"": ""B""
+    },
+    {
+      ""volunteer_one_identifier"": ""C"",
+      ""volunteer_two_identifier"": ""D""
+    },
+    {
+      ""volunteer_one_identifier"": ""C"",
+      ""volunteer_two_identifier"": ""E""
+    },
+    {
+      ""volunteer_one_identifier"": ""F"",
+      ""volunteer_two_identifier"": ""D""
+    },
+    {
+      ""volunteer_one_identifier"": ""F"",
+      ""volunteer_two_identifier"": ""G""
+    },
+    {
+      ""volunteer_one_identifier"": ""F"",
+      ""volunteer_two_identifier"": ""H""
+    },
+    {
+      ""volunteer_one_identifier"": ""G"",
+      ""volunteer_two_identifier"": ""D""
+    },
+    {
+      ""volunteer_one_identifier"": ""G"",
+      ""volunteer_two_identifier"": ""H""
+    },
+    {
+      ""volunteer_one_identifier"": ""H"",
+      ""volunteer_two_identifier"": ""D""
+    },
+    {
+      ""volunteer_one_identifier"": ""B"",
+      ""volunteer_two_identifier"": ""D""
+    },
+    {
+      ""volunteer_one_identifier"": ""B"",
+      ""volunteer_two_identifier"": ""E""
+    },
+    {
+      ""volunteer_one_identifier"": ""D"",
+      ""volunteer_two_identifier"": ""E""
+    }
+  ]
+}
+
+Oh, and when you send the final pick back, please stick to a little JSON sketch like this so it's easy to read and check:
+
+{
+  ""solution"": [""volunteer_id"", ""volunteer_id"", ...]
+}
+
+Think of ""solution"" as the list of people you're choosing for the volunteer group — one identifier per person. The placeholder volunteer_id just stands in for whatever actual IDs appear in the instance; it's a sketch of the shape I need, not the final contents.
+
+Please make sure you use the exact identifiers from the instance input — don't rename them or invent new labels. Valid identifiers look like:
+- plain numbers such as ""1"" or ""23""
+- single capital letters like ""A"" or ""B""
+- a capital letter followed by digits like ""A1"" or ""X7""","{'problem_type': 'MCP', 'num_nodes': 8, 'num_edges': 16, 'edges': [{'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 6, 'v': 4}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 7, 'v': 4}, {'u': 7, 'v': 8}, {'u': 8, 'v': 4}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 4, 'v': 5}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.5714285714285714, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0029.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0029.png', 'edge_connectivity': 3}","[1, 2, 3, 4, 5]",5.0,"{'num_nodes': 8, 'num_edges': 16, 'edges': [{'u': 'A', 'v': 'B'}, {'u': 'A', 'v': 'C'}, {'u': 'A', 'v': 'D'}, {'u': 'A', 'v': 'E'}, {'u': 'C', 'v': 'B'}, {'u': 'C', 'v': 'D'}, {'u': 'C', 'v': 'E'}, {'u': 'F', 'v': 'D'}, {'u': 'F', 'v': 'G'}, {'u': 'F', 'v': 'H'}, {'u': 'G', 'v': 'D'}, {'u': 'G', 'v': 'H'}, {'u': 'H', 'v': 'D'}, {'u': 'B', 'v': 'D'}, {'u': 'B', 'v': 'E'}, {'u': 'D', 'v': 'E'}]}","['A', 'B', 'C', 'D', 'E']",30,json,names
+MCP,MCP,"Recently the recruiting team agreed it’s best to keep interview panels familiar, so the aim is to build the largest panel possible where every panelist has previously worked one-on-one with every other panelist. The choice comes down to which people to include; the better choice is the one that keeps that everyone-acquainted condition and has the most people. Practically, that means checking every pair in a proposed panel to confirm past collaboration, counting the members if they all pass, and selecting the group with the highest count — and every name must be distinct. The concrete details will be shown below.
+
+{
+  ""total_people_available"": 10,
+  ""total_confirmed_pairwise_collaborations"": 14,
+  ""edges"": [
+    {
+      ""person_a_id"": ""J"",
+      ""person_b_id"": ""A""
+    },
+    {
+      ""person_a_id"": ""J"",
+      ""person_b_id"": ""D""
+    },
+    {
+      ""person_a_id"": ""J"",
+      ""person_b_id"": ""I""
+    },
+    {
+      ""person_a_id"": ""C"",
+      ""person_b_id"": ""D""
+    },
+    {
+      ""person_a_id"": ""C"",
+      ""person_b_id"": ""E""
+    },
+    {
+      ""person_a_id"": ""D"",
+      ""person_b_id"": ""A""
+    },
+    {
+      ""person_a_id"": ""D"",
+      ""person_b_id"": ""E""
+    },
+    {
+      ""person_a_id"": ""D"",
+      ""person_b_id"": ""I""
+    },
+    {
+      ""person_a_id"": ""H"",
+      ""person_b_id"": ""A""
+    },
+    {
+      ""person_a_id"": ""A"",
+      ""person_b_id"": ""B""
+    },
+    {
+      ""person_a_id"": ""A"",
+      ""person_b_id"": ""F""
+    },
+    {
+      ""person_a_id"": ""A"",
+      ""person_b_id"": ""G""
+    },
+    {
+      ""person_a_id"": ""A"",
+      ""person_b_id"": ""I""
+    },
+    {
+      ""person_a_id"": ""F"",
+      ""person_b_id"": ""G""
+    }
+  ]
+}
+
+And to keep things tidy, please put the final choice into a small JSON snippet like this — it's just a convenient format so we all know what to look for:
+
+{
+  ""solution"": [""panelist_id"", ""panelist_id"", ...]
+}
+
+Here ""solution"" is the list of people selected for the panel, and each ""panelist_id"" is just a placeholder for a person identifier from the input (replace those placeholders with the actual IDs when you answer). Think of it like filling out a short form — list the chosen panelists in that array order, that's all.
+
+This JSON is only a sketch of the expected shape, not the actual answer.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 10, 'num_edges': 14, 'edges': [{'u': 10, 'v': 1}, {'u': 10, 'v': 4}, {'u': 10, 'v': 9}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 4, 'v': 1}, {'u': 4, 'v': 5}, {'u': 4, 'v': 9}, {'u': 8, 'v': 1}, {'u': 1, 'v': 2}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 1, 'v': 9}, {'u': 6, 'v': 7}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.3111111111111111, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0030.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0030.png', 'edge_connectivity': 1}","[1, 4, 9, 10]",4.0,"{'num_nodes': 10, 'num_edges': 14, 'edges': [{'u': 'J', 'v': 'A'}, {'u': 'J', 'v': 'D'}, {'u': 'J', 'v': 'I'}, {'u': 'C', 'v': 'D'}, {'u': 'C', 'v': 'E'}, {'u': 'D', 'v': 'A'}, {'u': 'D', 'v': 'E'}, {'u': 'D', 'v': 'I'}, {'u': 'H', 'v': 'A'}, {'u': 'A', 'v': 'B'}, {'u': 'A', 'v': 'F'}, {'u': 'A', 'v': 'G'}, {'u': 'A', 'v': 'I'}, {'u': 'F', 'v': 'G'}]}","['A', 'D', 'I', 'J']",31,json,names
+MCP,MCP,"At a pop-up dinner the goal became: create the biggest possible ensemble of ingredients for a course, but only if every ingredient complements every other ingredient in the ensemble. The better ensemble is simply the one with more compatible ingredients — you find that by counting the members of any fully compatible ensemble. Nothing in the ensemble can be omitted or used more than once, and every pair must be compatible. The concrete ingredient list and pairing details are listed below.
+
+# total_ingredients=8
+# total_pairings=14
+ingredient_a,ingredient_b
+3,2
+3,4
+3,6
+3,7
+6,0
+6,1
+6,2
+6,4
+6,5
+1,7
+5,7
+4,7
+0,7
+2,7
+
+If you want to give the answer in a tidy, machine-friendly way, just use a little JSON snippet like this:
+
+{
+  ""solution"": [""vertex_id"", ""vertex_id"", ...]
+}
+
+Think of that as a simple form: ""solution"" is where you list the ingredient IDs that make up the fully compatible ensemble (one ID per ingredient). This is just the shape I expect — a sketch, not the actual answer itself.
+
+Please be sure all identifiers you use match the instance input exactly — don’t rename or invent labels. For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'MCP', 'num_nodes': 8, 'num_edges': 14, 'edges': [{'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 7, 'v': 1}, {'u': 7, 'v': 2}, {'u': 7, 'v': 3}, {'u': 7, 'v': 5}, {'u': 7, 'v': 6}, {'u': 2, 'v': 8}, {'u': 6, 'v': 8}, {'u': 5, 'v': 8}, {'u': 1, 'v': 8}, {'u': 3, 'v': 8}], 'source_file': 'citationCiteseer.mtx', 'density': 0.5, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0031.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0031.png', 'edge_connectivity': 2}","[4, 5, 7]",3.0,"{'num_nodes': 8, 'num_edges': 14, 'edges': [{'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 6, 'v': 0}, {'u': 6, 'v': 1}, {'u': 6, 'v': 2}, {'u': 6, 'v': 4}, {'u': 6, 'v': 5}, {'u': 1, 'v': 7}, {'u': 5, 'v': 7}, {'u': 4, 'v': 7}, {'u': 0, 'v': 7}, {'u': 2, 'v': 7}]}","[3, 4, 6]",32,csv,0
+MCP,MCP,"There’s a librarian trying to make a neat shelf of related works where every book on the shelf cites every other book on it. The task is to choose which books go on that shelf, and what makes one arrangement better than another is just how many books you can fit that all mutually reference one another. To check how good a selection is, count the titles that satisfy that mutual‑citation condition; don’t include the same book twice and don’t include any that fail to reference every other title. The specific books and their cross-references are listed below.
+
+{
+  ""total_books"": 11,
+  ""total_mutual_citation_pairs"": 18,
+  ""edges"": [
+    {
+      ""book_a_id"": ""D"",
+      ""book_b_id"": ""E""
+    },
+    {
+      ""book_a_id"": ""D"",
+      ""book_b_id"": ""F""
+    },
+    {
+      ""book_a_id"": ""D"",
+      ""book_b_id"": ""G""
+    },
+    {
+      ""book_a_id"": ""E"",
+      ""book_b_id"": ""F""
+    },
+    {
+      ""book_a_id"": ""E"",
+      ""book_b_id"": ""G""
+    },
+    {
+      ""book_a_id"": ""B"",
+      ""book_b_id"": ""A""
+    },
+    {
+      ""book_a_id"": ""B"",
+      ""book_b_id"": ""C""
+    },
+    {
+      ""book_a_id"": ""B"",
+      ""book_b_id"": ""G""
+    },
+    {
+      ""book_a_id"": ""B"",
+      ""book_b_id"": ""H""
+    },
+    {
+      ""book_a_id"": ""B"",
+      ""book_b_id"": ""J""
+    },
+    {
+      ""book_a_id"": ""B"",
+      ""book_b_id"": ""K""
+    },
+    {
+      ""book_a_id"": ""F"",
+      ""book_b_id"": ""G""
+    },
+    {
+      ""book_a_id"": ""G"",
+      ""book_b_id"": ""J""
+    },
+    {
+      ""book_a_id"": ""G"",
+      ""book_b_id"": ""K""
+    },
+    {
+      ""book_a_id"": ""J"",
+      ""book_b_id"": ""I""
+    },
+    {
+      ""book_a_id"": ""J"",
+      ""book_b_id"": ""K""
+    },
+    {
+      ""book_a_id"": ""C"",
+      ""book_b_id"": ""A""
+    },
+    {
+      ""book_a_id"": ""C"",
+      ""book_b_id"": ""H""
+    }
+  ]
+}
+
+If you want to send back which books go on the shelf, just use a tiny JSON snippet like this so it's easy for me to read:
+
+{
+  ""solution"": [""book_id"", ""book_id"", ...]
+}
+
+""solution"" is simply the list of book identifiers you picked for the shelf — each entry should be the exact ID from the instance, and each of those books should cite every other one on the list. This JSON is just a sketch of the shape I expect, not the actual answer.
+
+Please make sure you use the identifiers exactly as they appear in the instance input — no renaming and no new labels. For example, valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".","{'problem_type': 'MCP', 'num_nodes': 11, 'num_edges': 18, 'edges': [{'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 7}, {'u': 2, 'v': 8}, {'u': 2, 'v': 10}, {'u': 2, 'v': 11}, {'u': 6, 'v': 7}, {'u': 7, 'v': 10}, {'u': 7, 'v': 11}, {'u': 10, 'v': 9}, {'u': 10, 'v': 11}, {'u': 3, 'v': 1}, {'u': 3, 'v': 8}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.32727272727272727, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0032.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0032.png', 'edge_connectivity': 1}","[4, 5, 6, 7]",4.0,"{'num_nodes': 11, 'num_edges': 18, 'edges': [{'u': 'D', 'v': 'E'}, {'u': 'D', 'v': 'F'}, {'u': 'D', 'v': 'G'}, {'u': 'E', 'v': 'F'}, {'u': 'E', 'v': 'G'}, {'u': 'B', 'v': 'A'}, {'u': 'B', 'v': 'C'}, {'u': 'B', 'v': 'G'}, {'u': 'B', 'v': 'H'}, {'u': 'B', 'v': 'J'}, {'u': 'B', 'v': 'K'}, {'u': 'F', 'v': 'G'}, {'u': 'G', 'v': 'J'}, {'u': 'G', 'v': 'K'}, {'u': 'J', 'v': 'I'}, {'u': 'J', 'v': 'K'}, {'u': 'C', 'v': 'A'}, {'u': 'C', 'v': 'H'}]}","['D', 'E', 'F', 'G']",33,json,names
+MCP,MCP,"Recently the team was challenged to design an all-connected getaway: pick the most cities possible so that each chosen city has a direct flight to every other chosen city. The quality of the plan is simple — more cities is better — and you compute that by tallying how many cities made the cut. No duplicates allowed, and every pair on the list must have a nonstop link. The concrete list of cities and flights is given below.
+
+# total_cities=11
+# total_direct_flights=18
+city_a,city_b
+6,1
+6,7
+11,7
+5,7
+5,8
+5,9
+5,10
+9,7
+9,8
+9,10
+3,1
+3,7
+7,1
+7,2
+7,4
+7,8
+4,10
+10,1
+
+When you send back the chosen set of cities, just use this little JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [""city_id"", ""city_id"", ...]
+}
+
+Here ""solution"" is the list of cities that made the getaway, and each entry is the city's identifier from the instance (just a short label for the city). This is just a sketch of the shape I expect — replace those placeholders with the actual IDs from the input.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 11, 'num_edges': 18, 'edges': [{'u': 6, 'v': 1}, {'u': 6, 'v': 7}, {'u': 11, 'v': 7}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 5, 'v': 10}, {'u': 9, 'v': 7}, {'u': 9, 'v': 8}, {'u': 9, 'v': 10}, {'u': 3, 'v': 1}, {'u': 3, 'v': 7}, {'u': 7, 'v': 1}, {'u': 7, 'v': 2}, {'u': 7, 'v': 4}, {'u': 7, 'v': 8}, {'u': 4, 'v': 10}, {'u': 10, 'v': 1}], 'source_file': 'citationCiteseer.mtx', 'density': 0.32727272727272727, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0033.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0033.png', 'edge_connectivity': 1}","[5, 7, 8, 9]",4.0,"{'num_nodes': 11, 'num_edges': 18, 'edges': [{'u': 6, 'v': 1}, {'u': 6, 'v': 7}, {'u': 11, 'v': 7}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 5, 'v': 10}, {'u': 9, 'v': 7}, {'u': 9, 'v': 8}, {'u': 9, 'v': 10}, {'u': 3, 'v': 1}, {'u': 3, 'v': 7}, {'u': 7, 'v': 1}, {'u': 7, 'v': 2}, {'u': 7, 'v': 4}, {'u': 7, 'v': 8}, {'u': 4, 'v': 10}, {'u': 10, 'v': 1}]}","[5, 7, 8, 9]",34,csv,1
+MCP,MCP,"Backstage talk turned into a challenge: build the largest possible roster of bands where every band in that roster has a history of collaborating with every other band, whether through live sets or joint tracks. The choice to make is which acts to invite; a choice is better the more bands it contains, provided each pair in that set has actually collaborated. You judge each possible roster by the number of bands it includes — tally them up, don’t duplicate acts, and verify that every pair has a collaboration link. The concrete details and collaboration info follow below.
+
+Below are the 10 bands and 27 collaborations to check.
+Band 3 has a recorded collaboration with band 0.
+Band 3 has a recorded collaboration with band 1.
+Band 3 has a recorded collaboration with band 2.
+Band 3 has a recorded collaboration with band 4.
+Band 3 has a recorded collaboration with band 5.
+Band 3 has a recorded collaboration with band 6.
+Band 3 has a recorded collaboration with band 7.
+Band 3 has a recorded collaboration with band 8.
+Band 3 has a recorded collaboration with band 9.
+Band 6 has a recorded collaboration with band 4.
+Band 6 has a recorded collaboration with band 5.
+Band 6 has a recorded collaboration with band 7.
+Band 6 has a recorded collaboration with band 8.
+Band 6 has a recorded collaboration with band 9.
+Band 4 has a recorded collaboration with band 5.
+Band 4 has a recorded collaboration with band 7.
+Band 4 has a recorded collaboration with band 8.
+Band 4 has a recorded collaboration with band 9.
+Band 8 has a recorded collaboration with band 5.
+Band 8 has a recorded collaboration with band 7.
+Band 8 has a recorded collaboration with band 9.
+Band 9 has a recorded collaboration with band 5.
+Band 9 has a recorded collaboration with band 7.
+Band 7 has a recorded collaboration with band 5.
+Band 0 has a recorded collaboration with band 1.
+Band 0 has a recorded collaboration with band 2.
+Band 1 has a recorded collaboration with band 2.
+Tally invitees, don’t duplicate acts, and verify every pair in your chosen roster shares a collaboration.
+
+Also, when you send your final pick, toss it into this little JSON shape so it's easy to read by whatever's checking the rosters:
+
+{
+  ""solution"": [""band_id"", ""band_id"", ...]
+}
+
+Think of ""solution"" as the roster — just a list of band IDs from the instance you're inviting to the party. Each item should be the exact ID for a band (that's the placeholder there), and the block above is just a sketch of the shape I expect, not the actual answer.
+
+Please use the identifiers exactly as they appear in the input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".","{'problem_type': 'MCP', 'num_nodes': 10, 'num_edges': 27, 'edges': [{'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 4, 'v': 9}, {'u': 4, 'v': 10}, {'u': 7, 'v': 5}, {'u': 7, 'v': 6}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 7, 'v': 10}, {'u': 5, 'v': 6}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 5, 'v': 10}, {'u': 9, 'v': 6}, {'u': 9, 'v': 8}, {'u': 9, 'v': 10}, {'u': 10, 'v': 6}, {'u': 10, 'v': 8}, {'u': 8, 'v': 6}, {'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 2, 'v': 3}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.6, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0034.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0034.png', 'edge_connectivity': 3}","[4, 5, 6, 7, 8, 9, 10]",7.0,"{'num_nodes': 10, 'num_edges': 27, 'edges': [{'u': 3, 'v': 0}, {'u': 3, 'v': 1}, {'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 6, 'v': 4}, {'u': 6, 'v': 5}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 4, 'v': 5}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 4, 'v': 9}, {'u': 8, 'v': 5}, {'u': 8, 'v': 7}, {'u': 8, 'v': 9}, {'u': 9, 'v': 5}, {'u': 9, 'v': 7}, {'u': 7, 'v': 5}, {'u': 0, 'v': 1}, {'u': 0, 'v': 2}, {'u': 1, 'v': 2}]}","[3, 4, 5, 6, 7, 8, 9]",35,nl,0
+MCP,MCP,"Someone on the leadership team suggested forming a core group of developers where everyone on the roster has reviewed everyone else’s work. The task is picking which developers to include, and the goal is straightforward: get the largest group you can that still meets the mutual-review condition — success is measured by the number of people in the group, so pick the group with the biggest headcount. Each picked engineer must have reviewed every other picked engineer, no duplicates allowed, and picks must come from the existing list. The exact pairwise review details are shown below.
+
+There are 12 engineers on the roster and 30 mutual-review pairs listed below:
+Engineers A and B have mutually reviewed each other.
+Engineers A and C have mutually reviewed each other.
+Engineers A and D have mutually reviewed each other.
+Engineers A and I have mutually reviewed each other.
+Engineers A and J have mutually reviewed each other.
+Engineers A and K have mutually reviewed each other.
+Engineers A and L have mutually reviewed each other.
+Engineers E and F have mutually reviewed each other.
+Engineers E and G have mutually reviewed each other.
+Engineers E and H have mutually reviewed each other.
+Engineers E and I have mutually reviewed each other.
+Engineers F and G have mutually reviewed each other.
+Engineers F and H have mutually reviewed each other.
+Engineers F and I have mutually reviewed each other.
+Engineers G and H have mutually reviewed each other.
+Engineers G and I have mutually reviewed each other.
+Engineers H and I have mutually reviewed each other.
+Engineers I and B have mutually reviewed each other.
+Engineers I and J have mutually reviewed each other.
+Engineers I and K have mutually reviewed each other.
+Engineers I and L have mutually reviewed each other.
+Engineers J and B have mutually reviewed each other.
+Engineers J and K have mutually reviewed each other.
+Engineers J and L have mutually reviewed each other.
+Engineers K and B have mutually reviewed each other.
+Engineers K and L have mutually reviewed each other.
+Engineers L and B have mutually reviewed each other.
+Engineers B and C have mutually reviewed each other.
+Engineers B and D have mutually reviewed each other.
+Engineers D and C have mutually reviewed each other.
+Now pick the largest group you can that meets the mutual-review condition using these 12 engineers and 30 pairs.
+
+If you'd rather hand the answer back in a tidy, machine-friendly way, just drop it into a small JSON object like this:
+
+{
+  ""solution"": [""dev_id"", ""dev_id"", ...]
+}
+
+Think of that as a simple form: ""solution"" is the list of developers you want on the core team, and each string in the array is the exact identifier for one picked developer. This is just a sketch of the shape I expect, not the actual final group.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming, no invented labels.  
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'MCP', 'num_nodes': 12, 'num_edges': 30, 'edges': [{'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 9}, {'u': 1, 'v': 10}, {'u': 1, 'v': 11}, {'u': 1, 'v': 12}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 8, 'v': 9}, {'u': 9, 'v': 2}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 9, 'v': 12}, {'u': 10, 'v': 2}, {'u': 10, 'v': 11}, {'u': 10, 'v': 12}, {'u': 11, 'v': 2}, {'u': 11, 'v': 12}, {'u': 12, 'v': 2}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 4, 'v': 3}], 'source_file': 'coPapersCiteseer.mtx', 'density': 0.45454545454545453, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0035.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0035.png', 'edge_connectivity': 3}","[1, 2, 9, 10, 11, 12]",6.0,"{'num_nodes': 12, 'num_edges': 30, 'edges': [{'u': 'A', 'v': 'B'}, {'u': 'A', 'v': 'C'}, {'u': 'A', 'v': 'D'}, {'u': 'A', 'v': 'I'}, {'u': 'A', 'v': 'J'}, {'u': 'A', 'v': 'K'}, {'u': 'A', 'v': 'L'}, {'u': 'E', 'v': 'F'}, {'u': 'E', 'v': 'G'}, {'u': 'E', 'v': 'H'}, {'u': 'E', 'v': 'I'}, {'u': 'F', 'v': 'G'}, {'u': 'F', 'v': 'H'}, {'u': 'F', 'v': 'I'}, {'u': 'G', 'v': 'H'}, {'u': 'G', 'v': 'I'}, {'u': 'H', 'v': 'I'}, {'u': 'I', 'v': 'B'}, {'u': 'I', 'v': 'J'}, {'u': 'I', 'v': 'K'}, {'u': 'I', 'v': 'L'}, {'u': 'J', 'v': 'B'}, {'u': 'J', 'v': 'K'}, {'u': 'J', 'v': 'L'}, {'u': 'K', 'v': 'B'}, {'u': 'K', 'v': 'L'}, {'u': 'L', 'v': 'B'}, {'u': 'B', 'v': 'C'}, {'u': 'B', 'v': 'D'}, {'u': 'D', 'v': 'C'}]}","['A', 'B', 'I', 'J', 'K', 'L']",36,nl,names
+MCP,MCP,"Someone on the block wants to build the most trustworthy watch crew possible — meaning every member has met every other member face-to-face. The challenge is picking which residents to include; what makes one selection better is simply how many people fit together under that all-familiar condition. The result is measured by the group’s headcount, and the practical musts are clear: each person appears once and every pair in the group must have a direct, personal connection. The detailed list of people and their ties appears below.
+
+Below are the 10 residents and the 17 recorded face-to-face ties to consider.
+Resident C and resident D have met face-to-face.
+Resident C and resident I have met face-to-face.
+Resident D and resident H have met face-to-face.
+Resident A and resident B have met face-to-face.
+Resident E and resident B have met face-to-face.
+Resident E and resident F have met face-to-face.
+Resident F and resident B have met face-to-face.
+Resident G and resident B have met face-to-face.
+Resident G and resident H have met face-to-face.
+Resident G and resident I have met face-to-face.
+Resident G and resident J have met face-to-face.
+Resident H and resident B have met face-to-face.
+Resident H and resident I have met face-to-face.
+Resident H and resident J have met face-to-face.
+Resident I and resident B have met face-to-face.
+Resident I and resident J have met face-to-face.
+Resident J and resident B have met face-to-face.
+From these ties, the largest all-acquainted watch crew can be determined.
+
+If you want to hand me the chosen crew, keep it simple and use this little JSON shape so everything stays tidy:
+
+{
+  ""solution"": [""resident_id"", ""resident_id"", ...]
+}
+
+Think of it like a short form: ""solution"" is just the list of people you want on the crew, and each quoted item is that person's identifier from the instance (one per person). It's just a sketch of the shape I need — not the actual answer itself.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming, no made-up labels. For example, valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".","{'problem_type': 'MCP', 'num_nodes': 10, 'num_edges': 17, 'edges': [{'u': 3, 'v': 4}, {'u': 3, 'v': 9}, {'u': 4, 'v': 8}, {'u': 1, 'v': 2}, {'u': 5, 'v': 2}, {'u': 5, 'v': 6}, {'u': 6, 'v': 2}, {'u': 7, 'v': 2}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 7, 'v': 10}, {'u': 8, 'v': 2}, {'u': 8, 'v': 9}, {'u': 8, 'v': 10}, {'u': 9, 'v': 2}, {'u': 9, 'v': 10}, {'u': 10, 'v': 2}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.37777777777777777, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0036.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0036.png', 'edge_connectivity': 1}","[2, 7, 8, 9, 10]",5.0,"{'num_nodes': 10, 'num_edges': 17, 'edges': [{'u': 'C', 'v': 'D'}, {'u': 'C', 'v': 'I'}, {'u': 'D', 'v': 'H'}, {'u': 'A', 'v': 'B'}, {'u': 'E', 'v': 'B'}, {'u': 'E', 'v': 'F'}, {'u': 'F', 'v': 'B'}, {'u': 'G', 'v': 'B'}, {'u': 'G', 'v': 'H'}, {'u': 'G', 'v': 'I'}, {'u': 'G', 'v': 'J'}, {'u': 'H', 'v': 'B'}, {'u': 'H', 'v': 'I'}, {'u': 'H', 'v': 'J'}, {'u': 'I', 'v': 'B'}, {'u': 'I', 'v': 'J'}, {'u': 'J', 'v': 'B'}]}","['B', 'G', 'H', 'I', 'J']",37,nl,names
+MCP,MCP,"Recently the roadmap discussion boiled down to one simple challenge: group features into bundles, but only keep bundles where every feature works directly with every other. The decision is which bundle to ship; the one to choose is the bundle that contains the highest number of unique, mutually compatible features. You decide by counting members of each fully compatible bundle — more members = better — and make sure no feature is duplicated or included if it fails to integrate with any other chosen feature. The detailed instance is below.
+
+You are given 12 total features and 42 direct integrations.
+Feature 1 integrates directly with feature 2.
+Feature 1 integrates directly with feature 3.
+Feature 1 integrates directly with feature 4.
+Feature 1 integrates directly with feature 5.
+Feature 1 integrates directly with feature 6.
+Feature 1 integrates directly with feature 7.
+Feature 1 integrates directly with feature 8.
+Feature 1 integrates directly with feature 9.
+Feature 2 integrates directly with feature 3.
+Feature 2 integrates directly with feature 4.
+Feature 2 integrates directly with feature 5.
+Feature 2 integrates directly with feature 6.
+Feature 2 integrates directly with feature 7.
+Feature 2 integrates directly with feature 8.
+Feature 2 integrates directly with feature 9.
+Feature 3 integrates directly with feature 4.
+Feature 3 integrates directly with feature 5.
+Feature 3 integrates directly with feature 6.
+Feature 3 integrates directly with feature 7.
+Feature 3 integrates directly with feature 8.
+Feature 3 integrates directly with feature 9.
+Feature 3 integrates directly with feature 10.
+Feature 3 integrates directly with feature 11.
+Feature 3 integrates directly with feature 12.
+Feature 11 integrates directly with feature 10.
+Feature 11 integrates directly with feature 12.
+Feature 4 integrates directly with feature 5.
+Feature 4 integrates directly with feature 6.
+Feature 4 integrates directly with feature 7.
+Feature 4 integrates directly with feature 8.
+Feature 4 integrates directly with feature 9.
+Feature 12 integrates directly with feature 10.
+Feature 5 integrates directly with feature 6.
+Feature 5 integrates directly with feature 7.
+Feature 5 integrates directly with feature 8.
+Feature 5 integrates directly with feature 9.
+Feature 6 integrates directly with feature 7.
+Feature 6 integrates directly with feature 8.
+Feature 6 integrates directly with feature 9.
+Feature 7 integrates directly with feature 8.
+Feature 7 integrates directly with feature 9.
+Feature 8 integrates directly with feature 9.
+Use these pairs to count members of each fully compatible bundle and choose the largest.
+
+Oh, and when you send the answer back, please keep it in a tiny, predictable JSON shape so it's easy to read by whatever's checking it. Something like this will do:
+
+{
+  ""solution"": [""feature_id"", ""feature_id"", ...]
+}
+
+""solution"" should be the list of features you want to ship together — each entry is a feature identifier from the instance (not a new made-up name). This JSON is just a sketch of the shape I expect, not the actual bundle — fill it with the real identifiers from the instance when you answer.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 12, 'num_edges': 42, 'edges': [{'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 1, 'v': 8}, {'u': 1, 'v': 9}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 2, 'v': 7}, {'u': 2, 'v': 8}, {'u': 2, 'v': 9}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 3, 'v': 10}, {'u': 3, 'v': 11}, {'u': 3, 'v': 12}, {'u': 11, 'v': 10}, {'u': 11, 'v': 12}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 4, 'v': 9}, {'u': 12, 'v': 10}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 8, 'v': 9}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.6363636363636364, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0037.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0037.png', 'edge_connectivity': 3}","[1, 2, 3, 4, 5, 6, 7, 8, 9]",9.0,"{'num_nodes': 12, 'num_edges': 42, 'edges': [{'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 5}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 1, 'v': 8}, {'u': 1, 'v': 9}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 2, 'v': 7}, {'u': 2, 'v': 8}, {'u': 2, 'v': 9}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 3, 'v': 10}, {'u': 3, 'v': 11}, {'u': 3, 'v': 12}, {'u': 11, 'v': 10}, {'u': 11, 'v': 12}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 4, 'v': 9}, {'u': 12, 'v': 10}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 8, 'v': 9}]}","[1, 2, 3, 4, 5, 6, 7, 8, 9]",38,nl,1
+MCP,MCP,"We’ve got a pile of students who’ve paired up on projects in the past, and the task is to form a study group as large as possible where every person has collaborated with every other person in that group. The choice is which set of students to invite, and “better” simply means having more students in the circle—count them to see how big it is. The sticking point is that every selected student must have a prior working relationship with each other selected student, and each student is either in or out (no duplicates). The exact collaboration details are shown below.
+
+There are 11 students in total and 24 prior pairings.
+
+| student_a_id | student_b_id |
+|---|---|
+| J | E |
+| J | G |
+| J | I |
+| J | K |
+| K | E |
+| K | G |
+| K | I |
+| C | A |
+| C | D |
+| C | E |
+| C | F |
+| C | G |
+| C | H |
+| D | F |
+| D | H |
+| E | A |
+| E | F |
+| E | G |
+| E | I |
+| F | G |
+| F | H |
+| G | A |
+| G | I |
+| A | B |
+
+Oh, and when you send the final pick, just drop it into this simple JSON shape so it's easy to read and parse:
+
+{
+  ""solution"": [""student_id"", ""student_id"", ...]
+}
+
+Think of ""solution"" as the invite list — just the IDs of the students you want in the study group, in any order. The placeholder ""student_id"" is just showing the shape; replace those with the actual IDs from the instance.
+
+This JSON is just a sketch of the expected shape, not the actual answer.
+
+Please use the exact identifiers from the instance input — no renaming, no made-up labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 11, 'num_edges': 24, 'edges': [{'u': 10, 'v': 5}, {'u': 10, 'v': 7}, {'u': 10, 'v': 9}, {'u': 10, 'v': 11}, {'u': 11, 'v': 5}, {'u': 11, 'v': 7}, {'u': 11, 'v': 9}, {'u': 3, 'v': 1}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 4, 'v': 6}, {'u': 4, 'v': 8}, {'u': 5, 'v': 1}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 9}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 7, 'v': 1}, {'u': 7, 'v': 9}, {'u': 1, 'v': 2}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.43636363636363634, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0038.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0038.png', 'edge_connectivity': 1}","[5, 7, 9, 10, 11]",5.0,"{'num_nodes': 11, 'num_edges': 24, 'edges': [{'u': 'J', 'v': 'E'}, {'u': 'J', 'v': 'G'}, {'u': 'J', 'v': 'I'}, {'u': 'J', 'v': 'K'}, {'u': 'K', 'v': 'E'}, {'u': 'K', 'v': 'G'}, {'u': 'K', 'v': 'I'}, {'u': 'C', 'v': 'A'}, {'u': 'C', 'v': 'D'}, {'u': 'C', 'v': 'E'}, {'u': 'C', 'v': 'F'}, {'u': 'C', 'v': 'G'}, {'u': 'C', 'v': 'H'}, {'u': 'D', 'v': 'F'}, {'u': 'D', 'v': 'H'}, {'u': 'E', 'v': 'A'}, {'u': 'E', 'v': 'F'}, {'u': 'E', 'v': 'G'}, {'u': 'E', 'v': 'I'}, {'u': 'F', 'v': 'G'}, {'u': 'F', 'v': 'H'}, {'u': 'G', 'v': 'A'}, {'u': 'G', 'v': 'I'}, {'u': 'A', 'v': 'B'}]}","['E', 'G', 'I', 'J', 'K']",39,markdown_table,names
+MCP,MCP,"There's a little puzzle in the company: build the biggest possible committee where every person on it actually works directly with every other person on it. The task is choosing which employees to put on the committee; what makes one choice better than another is simply having more people while still keeping the rule that any two chosen people have a direct working link. Figures of merit are plain headcounts — count members to see which group is largest — but only count groups that satisfy the mutual connection requirement. No one can be repeated in the list, and no chosen pair can lack a working relationship. The concrete details of who knows who follow below.
+
+{
+  ""total_employees"": 10,
+  ""total_working_relationships"": 15,
+  ""edges"": [
+    {
+      ""employee_a"": ""B"",
+      ""employee_b"": ""F""
+    },
+    {
+      ""employee_a"": ""B"",
+      ""employee_b"": ""J""
+    },
+    {
+      ""employee_a"": ""E"",
+      ""employee_b"": ""D""
+    },
+    {
+      ""employee_a"": ""E"",
+      ""employee_b"": ""F""
+    },
+    {
+      ""employee_a"": ""E"",
+      ""employee_b"": ""H""
+    },
+    {
+      ""employee_a"": ""F"",
+      ""employee_b"": ""G""
+    },
+    {
+      ""employee_a"": ""F"",
+      ""employee_b"": ""I""
+    },
+    {
+      ""employee_a"": ""A"",
+      ""employee_b"": ""I""
+    },
+    {
+      ""employee_a"": ""C"",
+      ""employee_b"": ""H""
+    },
+    {
+      ""employee_a"": ""C"",
+      ""employee_b"": ""I""
+    },
+    {
+      ""employee_a"": ""J"",
+      ""employee_b"": ""D""
+    },
+    {
+      ""employee_a"": ""J"",
+      ""employee_b"": ""G""
+    },
+    {
+      ""employee_a"": ""J"",
+      ""employee_b"": ""H""
+    },
+    {
+      ""employee_a"": ""J"",
+      ""employee_b"": ""I""
+    },
+    {
+      ""employee_a"": ""I"",
+      ""employee_b"": ""H""
+    }
+  ]
+}
+
+Also, when you send back your pick, just drop it in a little JSON snippet like this:
+
+{
+  ""solution"": [""staff_id"", ""staff_id"", ...]
+}
+
+Think of ""solution"" as the place to list the people you picked for the committee — one identifier per person. The placeholder ""staff_id"" is just showing the shape of the answer; you'll replace those placeholders with the actual IDs from the instance.
+
+Please make sure to use the identifiers exactly as they appear in the input — no renaming and no new labels, and match them character-for-character. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 10, 'num_edges': 15, 'edges': [{'u': 2, 'v': 6}, {'u': 2, 'v': 10}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 5, 'v': 8}, {'u': 6, 'v': 7}, {'u': 6, 'v': 9}, {'u': 1, 'v': 9}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 10, 'v': 4}, {'u': 10, 'v': 7}, {'u': 10, 'v': 8}, {'u': 10, 'v': 9}, {'u': 9, 'v': 8}], 'source_file': 'citationCiteseer.mtx', 'density': 0.3333333333333333, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0039.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0039.png', 'edge_connectivity': 1}","[8, 9, 10]",3.0,"{'num_nodes': 10, 'num_edges': 15, 'edges': [{'u': 'B', 'v': 'F'}, {'u': 'B', 'v': 'J'}, {'u': 'E', 'v': 'D'}, {'u': 'E', 'v': 'F'}, {'u': 'E', 'v': 'H'}, {'u': 'F', 'v': 'G'}, {'u': 'F', 'v': 'I'}, {'u': 'A', 'v': 'I'}, {'u': 'C', 'v': 'H'}, {'u': 'C', 'v': 'I'}, {'u': 'J', 'v': 'D'}, {'u': 'J', 'v': 'G'}, {'u': 'J', 'v': 'H'}, {'u': 'J', 'v': 'I'}, {'u': 'I', 'v': 'H'}]}","['H', 'I', 'J']",40,json,names
+MCP,MCP,"Someone has to pick a bundle of lab sensors for an experiment, but the bundle only works if every sensor pairs up cleanly with every other sensor in that bundle. The decision is about which sensors to bundle so the bundle contains the most sensors possible — the score is just how many sensors are in the bundle. Each sensor must be unique in the bundle and every possible pair within the bundle must be directly compatible. The detailed list of sensors and compatibility links appears below.
+
+There are 12 distinct sensors and 24 direct compatibility links.
+Sensor D is directly compatible with sensor A.
+Sensor D is directly compatible with sensor C.
+Sensor D is directly compatible with sensor H.
+Sensor F is directly compatible with sensor G.
+Sensor F is directly compatible with sensor H.
+Sensor F is directly compatible with sensor I.
+Sensor L is directly compatible with sensor E.
+Sensor L is directly compatible with sensor H.
+Sensor C is directly compatible with sensor E.
+Sensor C is directly compatible with sensor G.
+Sensor C is directly compatible with sensor J.
+Sensor A is directly compatible with sensor E.
+Sensor A is directly compatible with sensor H.
+Sensor A is directly compatible with sensor J.
+Sensor A is directly compatible with sensor K.
+Sensor G is directly compatible with sensor H.
+Sensor G is directly compatible with sensor J.
+Sensor J is directly compatible with sensor E.
+Sensor J is directly compatible with sensor H.
+Sensor I is directly compatible with sensor H.
+Sensor K is directly compatible with sensor E.
+Sensor B is directly compatible with sensor E.
+Sensor B is directly compatible with sensor H.
+Sensor E is directly compatible with sensor H.
+Someone should pick the largest fully pairwise-compatible bundle from these 12 sensors.
+
+Oh, and when you send the chosen bundle back, please use this simple JSON layout so it's easy to read and parse:
+
+{
+  ""solution"": [""sensor_id"", ""sensor_id"", ...]
+}
+
+Here ""solution"" should be a list of the sensor identifiers that form the working bundle (every sensor in the list must pair cleanly with every other one). Think of it like filling out a short form: put each sensor's exact ID into the array in any order. This JSON is just a sketch of the shape I expect — not the actual answer itself.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 12, 'num_edges': 24, 'edges': [{'u': 4, 'v': 1}, {'u': 4, 'v': 3}, {'u': 4, 'v': 8}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 12, 'v': 5}, {'u': 12, 'v': 8}, {'u': 3, 'v': 5}, {'u': 3, 'v': 7}, {'u': 3, 'v': 10}, {'u': 1, 'v': 5}, {'u': 1, 'v': 8}, {'u': 1, 'v': 10}, {'u': 1, 'v': 11}, {'u': 7, 'v': 8}, {'u': 7, 'v': 10}, {'u': 10, 'v': 5}, {'u': 10, 'v': 8}, {'u': 9, 'v': 8}, {'u': 11, 'v': 5}, {'u': 2, 'v': 5}, {'u': 2, 'v': 8}, {'u': 5, 'v': 8}], 'source_file': 'citationCiteseer.mtx', 'density': 0.36363636363636365, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0040.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0040.png', 'edge_connectivity': 2}","[1, 5, 8, 10]",4.0,"{'num_nodes': 12, 'num_edges': 24, 'edges': [{'u': 'D', 'v': 'A'}, {'u': 'D', 'v': 'C'}, {'u': 'D', 'v': 'H'}, {'u': 'F', 'v': 'G'}, {'u': 'F', 'v': 'H'}, {'u': 'F', 'v': 'I'}, {'u': 'L', 'v': 'E'}, {'u': 'L', 'v': 'H'}, {'u': 'C', 'v': 'E'}, {'u': 'C', 'v': 'G'}, {'u': 'C', 'v': 'J'}, {'u': 'A', 'v': 'E'}, {'u': 'A', 'v': 'H'}, {'u': 'A', 'v': 'J'}, {'u': 'A', 'v': 'K'}, {'u': 'G', 'v': 'H'}, {'u': 'G', 'v': 'J'}, {'u': 'J', 'v': 'E'}, {'u': 'J', 'v': 'H'}, {'u': 'I', 'v': 'H'}, {'u': 'K', 'v': 'E'}, {'u': 'B', 'v': 'E'}, {'u': 'B', 'v': 'H'}, {'u': 'E', 'v': 'H'}]}","['A', 'E', 'H', 'J']",41,nl,names
+MCP,MCP,"Many people at the club like the idea of one big table where everyone has already played with everyone else. The practical question becomes: who do you put at that single table so that each person has a prior game with every other person there? The winning arrangement is the one that seats the most people — its value is just the number of different players included, so count them to compare choices. Make sure each player appears only once and that every pair in the group has a recorded past game. The concrete player list and who’s played with whom appear below.
+
+There are 12 players in total and 28 played pairs.
+
+| player_id_a | player_id_b |
+|---|---|
+| 2 | 1 |
+| 2 | 3 |
+| 2 | 4 |
+| 2 | 5 |
+| 3 | 1 |
+| 3 | 4 |
+| 3 | 5 |
+| 3 | 6 |
+| 3 | 7 |
+| 3 | 8 |
+| 3 | 9 |
+| 5 | 4 |
+| 5 | 6 |
+| 5 | 7 |
+| 5 | 8 |
+| 5 | 9 |
+| 6 | 7 |
+| 6 | 8 |
+| 6 | 9 |
+| 7 | 8 |
+| 7 | 9 |
+| 7 | 10 |
+| 7 | 11 |
+| 7 | 12 |
+| 10 | 11 |
+| 10 | 12 |
+| 11 | 12 |
+| 9 | 8 |
+
+Also, when you send the final seating, please put it in a little JSON snippet like this so it's easy to pick up:
+
+{
+  ""solution"": [""player_id"", ""player_id"", ...]
+}
+
+This ""solution"" field is just a list of the people you want at the big table. Each entry is a placeholder for one person’s identifier from the instance (replace the placeholders with the actual IDs). Think of it like filling in a name or number on a form — simple and tidy. The JSON above is only a sketch of the shape I expect, not the actual answer.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 12, 'num_edges': 28, 'edges': [{'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 3, 'v': 1}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 7, 'v': 10}, {'u': 7, 'v': 11}, {'u': 7, 'v': 12}, {'u': 10, 'v': 11}, {'u': 10, 'v': 12}, {'u': 11, 'v': 12}, {'u': 9, 'v': 8}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.42424242424242425, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0041.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0041.png', 'edge_connectivity': 2}","[3, 5, 6, 7, 8, 9]",6.0,"{'num_nodes': 12, 'num_edges': 28, 'edges': [{'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 3, 'v': 1}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 3, 'v': 9}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 7, 'v': 10}, {'u': 7, 'v': 11}, {'u': 7, 'v': 12}, {'u': 10, 'v': 11}, {'u': 10, 'v': 12}, {'u': 11, 'v': 12}, {'u': 9, 'v': 8}]}","[3, 5, 6, 7, 8, 9]",42,markdown_table,1
+MCP,MCP,"There’s a small exhibition in the works where the curator wants each selected piece to directly relate to every other selected piece, so the room reads as a single, cohesive conversation. The job is to pick which artworks to put together; what makes one pick superior is simply that it contains more works while preserving that mutual, pairwise connection. To judge a grouping, count the artworks in it — higher counts win — and make sure every chosen artwork connects to every other one, and that no artwork is included twice. The specific artworks and their links appear below.
+
+{
+  ""total_artworks"": 12,
+  ""total_thematic_links"": 28,
+  ""edges"": [
+    {
+      ""artwork_a_id"": 3,
+      ""artwork_b_id"": 0
+    },
+    {
+      ""artwork_a_id"": 3,
+      ""artwork_b_id"": 1
+    },
+    {
+      ""artwork_a_id"": 3,
+      ""artwork_b_id"": 4
+    },
+    {
+      ""artwork_a_id"": 3,
+      ""artwork_b_id"": 5
+    },
+    {
+      ""artwork_a_id"": 3,
+      ""artwork_b_id"": 6
+    },
+    {
+      ""artwork_a_id"": 3,
+      ""artwork_b_id"": 7
+    },
+    {
+      ""artwork_a_id"": 3,
+      ""artwork_b_id"": 8
+    },
+    {
+      ""artwork_a_id"": 4,
+      ""artwork_b_id"": 2
+    },
+    {
+      ""artwork_a_id"": 4,
+      ""artwork_b_id"": 5
+    },
+    {
+      ""artwork_a_id"": 4,
+      ""artwork_b_id"": 7
+    },
+    {
+      ""artwork_a_id"": 4,
+      ""artwork_b_id"": 8
+    },
+    {
+      ""artwork_a_id"": 4,
+      ""artwork_b_id"": 9
+    },
+    {
+      ""artwork_a_id"": 5,
+      ""artwork_b_id"": 2
+    },
+    {
+      ""artwork_a_id"": 5,
+      ""artwork_b_id"": 7
+    },
+    {
+      ""artwork_a_id"": 5,
+      ""artwork_b_id"": 8
+    },
+    {
+      ""artwork_a_id"": 5,
+      ""artwork_b_id"": 9
+    },
+    {
+      ""artwork_a_id"": 5,
+      ""artwork_b_id"": 10
+    },
+    {
+      ""artwork_a_id"": 5,
+      ""artwork_b_id"": 11
+    },
+    {
+      ""artwork_a_id"": 6,
+      ""artwork_b_id"": 0
+    },
+    {
+      ""artwork_a_id"": 6,
+      ""artwork_b_id"": 1
+    },
+    {
+      ""artwork_a_id"": 7,
+      ""artwork_b_id"": 8
+    },
+    {
+      ""artwork_a_id"": 7,
+      ""artwork_b_id"": 11
+    },
+    {
+      ""artwork_a_id"": 8,
+      ""artwork_b_id"": 2
+    },
+    {
+      ""artwork_a_id"": 8,
+      ""artwork_b_id"": 9
+    },
+    {
+      ""artwork_a_id"": 8,
+      ""artwork_b_id"": 10
+    },
+    {
+      ""artwork_a_id"": 8,
+      ""artwork_b_id"": 11
+    },
+    {
+      ""artwork_a_id"": 1,
+      ""artwork_b_id"": 0
+    },
+    {
+      ""artwork_a_id"": 2,
+      ""artwork_b_id"": 9
+    }
+  ]
+}
+
+Oh, and to keep things tidy, please give the final pick in a little JSON snippet like this:
+
+{
+  ""solution"": [""artwork_id"", ""artwork_id"", ...]
+}
+
+Here, ""solution"" is just a list of the artwork identifiers you've chosen for the room — think of each ""artwork_id"" as a slot where you drop the exact label from the instance. This is just the shape I expect, not the actual answer itself.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 12, 'num_edges': 28, 'edges': [{'u': 4, 'v': 1}, {'u': 4, 'v': 2}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 4, 'v': 9}, {'u': 5, 'v': 3}, {'u': 5, 'v': 6}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 5, 'v': 10}, {'u': 6, 'v': 3}, {'u': 6, 'v': 8}, {'u': 6, 'v': 9}, {'u': 6, 'v': 10}, {'u': 6, 'v': 11}, {'u': 6, 'v': 12}, {'u': 7, 'v': 1}, {'u': 7, 'v': 2}, {'u': 8, 'v': 9}, {'u': 8, 'v': 12}, {'u': 9, 'v': 3}, {'u': 9, 'v': 10}, {'u': 9, 'v': 11}, {'u': 9, 'v': 12}, {'u': 2, 'v': 1}, {'u': 3, 'v': 10}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.42424242424242425, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0042.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0042.png', 'edge_connectivity': 2}","[4, 5, 6, 8, 9]",5.0,"{'num_nodes': 12, 'num_edges': 28, 'edges': [{'u': 3, 'v': 0}, {'u': 3, 'v': 1}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 3, 'v': 8}, {'u': 4, 'v': 2}, {'u': 4, 'v': 5}, {'u': 4, 'v': 7}, {'u': 4, 'v': 8}, {'u': 4, 'v': 9}, {'u': 5, 'v': 2}, {'u': 5, 'v': 7}, {'u': 5, 'v': 8}, {'u': 5, 'v': 9}, {'u': 5, 'v': 10}, {'u': 5, 'v': 11}, {'u': 6, 'v': 0}, {'u': 6, 'v': 1}, {'u': 7, 'v': 8}, {'u': 7, 'v': 11}, {'u': 8, 'v': 2}, {'u': 8, 'v': 9}, {'u': 8, 'v': 10}, {'u': 8, 'v': 11}, {'u': 1, 'v': 0}, {'u': 2, 'v': 9}]}","[3, 4, 5, 7, 8]",43,json,0
+MCP,MCP,"Recently the architecture group challenged itself to put together the biggest possible set of modules that all directly interconnect. The idea is to pick modules so that each selected module has a direct interface to each of the others, and a selection is considered better when it contains more modules that meet that condition. To measure and compare selections, just count how many modules are in that fully connected group — higher numbers are preferred. Don’t include duplicates, and don’t accept any module that doesn’t have a direct link to every other chosen module. The concrete module list and connections are provided below.
+
+# total_modules=8
+# total_direct_interfaces=13
+module_a,module_b
+5,2
+5,3
+5,4
+1,4
+1,6
+1,7
+8,3
+4,2
+4,3
+4,6
+4,7
+2,3
+6,7
+
+Also, when you send your selection back, please use this simple JSON shape so it's easy to read by whatever's checking it:
+
+{
+  ""solution"": [""module_id"", ""module_id"", ...]
+}
+
+Here ""solution"" is just a list of the chosen modules — put each module's identifier in the array (no duplicates), exactly as it appears in the instance. Think of it like filling in a little form: each string is the ID of one module you picked. This JSON is only a sketch of the expected shape, not the actual answer — replace the placeholders with the real module IDs from the instance.
+
+One more gentle note: use the identifiers exactly as they appear in the input — don't rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 8, 'num_edges': 13, 'edges': [{'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 4}, {'u': 1, 'v': 4}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 8, 'v': 3}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 2, 'v': 3}, {'u': 6, 'v': 7}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.4642857142857143, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0043.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0043.png', 'edge_connectivity': 1}","[2, 3, 4, 5]",4.0,"{'num_nodes': 8, 'num_edges': 13, 'edges': [{'u': 5, 'v': 2}, {'u': 5, 'v': 3}, {'u': 5, 'v': 4}, {'u': 1, 'v': 4}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 8, 'v': 3}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 2, 'v': 3}, {'u': 6, 'v': 7}]}","[2, 3, 4, 5]",44,csv,1
+MCP,MCP,"Many people know the awkwardness of seating families, so the idea here is to put as many relatives as possible at one table, but only if every single one of them gets along with every other. The choice is which group of relatives to assemble; the superior grouping is simply the one with the most people who all get along, and you determine that by counting how many are seated together. Nobody can be sat twice or omitted from the count improperly, and each pair at the table must be on good terms. The specific names and compatibility map are shown below.
+
+There are 8 relatives in total and 12 compatible pairs.
+
+| relative_a_id | relative_b_id |
+|---|---|
+| 2 | 1 |
+| 2 | 3 |
+| 2 | 4 |
+| 2 | 5 |
+| 2 | 6 |
+| 0 | 1 |
+| 3 | 1 |
+| 3 | 4 |
+| 3 | 5 |
+| 3 | 6 |
+| 7 | 1 |
+| 5 | 6 |
+
+If you want to send the seating choice back in a neat, machine-friendly way, you can just use a tiny JSON like this:
+
+{
+  ""solution"": [""relative_id"", ""relative_id"", ...]
+}
+
+This just means ""solution"" is the list of people (the ones you'd seat together). Think of each entry as a blank where you drop a single person's identifier — it's just a sketch of the shape I need, not the actual seating.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new labels. Valid identifiers look like:
+- plain numbers such as “1” or “23”
+- single capital letters like “A” or “B”
+- a capital letter followed by digits like “A1” or “X7”","{'problem_type': 'MCP', 'num_nodes': 8, 'num_edges': 12, 'edges': [{'u': 3, 'v': 2}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 3, 'v': 7}, {'u': 1, 'v': 2}, {'u': 4, 'v': 2}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 8, 'v': 2}, {'u': 6, 'v': 7}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.42857142857142855, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0044.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0044.png', 'edge_connectivity': 1}","[3, 4, 6, 7]",4.0,"{'num_nodes': 8, 'num_edges': 12, 'edges': [{'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 5}, {'u': 2, 'v': 6}, {'u': 0, 'v': 1}, {'u': 3, 'v': 1}, {'u': 3, 'v': 4}, {'u': 3, 'v': 5}, {'u': 3, 'v': 6}, {'u': 7, 'v': 1}, {'u': 5, 'v': 6}]}","[2, 3, 5, 6]",45,markdown_table,0
+MCP,MCP,"Recently the company announced a special project and the idea is to invite the largest group of people who all know how to work with one another — meaning each person has collaborated with each other person before. The decision boils down to which subset of candidates gives the biggest team; the outcome is judged by the number of people included. It’s important that every selected person has a collaboration tie to every other selected person, and each person is either in or out (no duplicates). The detailed candidate list and collaboration map follow below.
+
+There are 8 candidates in total and 11 collaborations.
+
+| candidate_a | candidate_b |
+|---|---|
+| F | A |
+| F | B |
+| F | D |
+| F | G |
+| B | C |
+| B | D |
+| B | G |
+| D | E |
+| D | G |
+| H | E |
+| G | E |
+
+Oh, and to keep things machine-friendly, please return the chosen team in this little JSON layout when you reply — nothing fancy, just the shape below:
+
+{
+  ""solution"": [""person_id"", ""person_id"", ...]
+}
+
+Think of ""solution"" as the list of people you picked for the team — each entry is the exact ID for a candidate from the instance. This is just a sketch of the shape I need, not the actual answer itself, so fill it with the real IDs when you submit.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".""","{'problem_type': 'MCP', 'num_nodes': 8, 'num_edges': 11, 'edges': [{'u': 6, 'v': 1}, {'u': 6, 'v': 2}, {'u': 6, 'v': 4}, {'u': 6, 'v': 7}, {'u': 2, 'v': 3}, {'u': 2, 'v': 4}, {'u': 2, 'v': 7}, {'u': 4, 'v': 5}, {'u': 4, 'v': 7}, {'u': 8, 'v': 5}, {'u': 7, 'v': 5}], 'source_file': 'citationCiteseer.mtx', 'density': 0.39285714285714285, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0045.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0045.png', 'edge_connectivity': 1}","[2, 4, 6, 7]",4.0,"{'num_nodes': 8, 'num_edges': 11, 'edges': [{'u': 'F', 'v': 'A'}, {'u': 'F', 'v': 'B'}, {'u': 'F', 'v': 'D'}, {'u': 'F', 'v': 'G'}, {'u': 'B', 'v': 'C'}, {'u': 'B', 'v': 'D'}, {'u': 'B', 'v': 'G'}, {'u': 'D', 'v': 'E'}, {'u': 'D', 'v': 'G'}, {'u': 'H', 'v': 'E'}, {'u': 'G', 'v': 'E'}]}","['B', 'D', 'F', 'G']",46,markdown_table,names
+MCP,MCP,"Recently the engineers needed a faultless secure cluster: pick servers so that every chosen server has an encrypted link to every other chosen server, and try to include as many servers as possible. The way to judge a selection is straightforward — the larger the number of servers in the group, the better, so count them to decide. Any server missing a direct encrypted link to even one other chosen server has to be left out, and no server is listed more than once. The concrete network diagram follows below.
+
+It contains 12 servers and 20 encrypted links:
+Server 8 is directly encrypted with server 1.
+Server 8 is directly encrypted with server 5.
+Server 8 is directly encrypted with server 6.
+Server 8 is directly encrypted with server 9.
+Server 8 is directly encrypted with server 10.
+Server 8 is directly encrypted with server 12.
+Server 12 is directly encrypted with server 7.
+Server 1 is directly encrypted with server 4.
+Server 1 is directly encrypted with server 6.
+Server 1 is directly encrypted with server 7.
+Server 10 is directly encrypted with server 4.
+Server 5 is directly encrypted with server 6.
+Server 4 is directly encrypted with server 2.
+Server 4 is directly encrypted with server 6.
+Server 4 is directly encrypted with server 7.
+Server 4 is directly encrypted with server 9.
+Server 4 is directly encrypted with server 11.
+Server 3 is directly encrypted with server 6.
+Server 11 is directly encrypted with server 6.
+Server 7 is directly encrypted with server 2.
+List each encrypted link once; the selection will be judged by the size of the fully connected server group.
+
+When you send back the chosen group, please use this simple JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [""server_id"", ""server_id"", ...]
+}
+
+Think of ""solution"" as the list of servers you're picking for the secure cluster — just drop each server's identifier into the array in whatever order you like. The items in the example are just placeholders showing the shape of the reply, not the actual selection.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — don’t rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 12, 'num_edges': 20, 'edges': [{'u': 8, 'v': 1}, {'u': 8, 'v': 5}, {'u': 8, 'v': 6}, {'u': 8, 'v': 9}, {'u': 8, 'v': 10}, {'u': 8, 'v': 12}, {'u': 12, 'v': 7}, {'u': 1, 'v': 4}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 10, 'v': 4}, {'u': 5, 'v': 6}, {'u': 4, 'v': 2}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 9}, {'u': 4, 'v': 11}, {'u': 3, 'v': 6}, {'u': 11, 'v': 6}, {'u': 7, 'v': 2}], 'source_file': 'citationCiteseer.mtx', 'density': 0.30303030303030304, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0046.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0046.png', 'edge_connectivity': 1}","[1, 4, 6]",3.0,"{'num_nodes': 12, 'num_edges': 20, 'edges': [{'u': 8, 'v': 1}, {'u': 8, 'v': 5}, {'u': 8, 'v': 6}, {'u': 8, 'v': 9}, {'u': 8, 'v': 10}, {'u': 8, 'v': 12}, {'u': 12, 'v': 7}, {'u': 1, 'v': 4}, {'u': 1, 'v': 6}, {'u': 1, 'v': 7}, {'u': 10, 'v': 4}, {'u': 5, 'v': 6}, {'u': 4, 'v': 2}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 4, 'v': 9}, {'u': 4, 'v': 11}, {'u': 3, 'v': 6}, {'u': 11, 'v': 6}, {'u': 7, 'v': 2}]}","[1, 4, 6]",47,nl,1
+MCP,MCP,"Many people want a starting group where there are no strangers — everyone in the lineup has been on the field with everyone else — and the aim is to make that group as large as possible. The selection choice is straightforward: prefer the group with the highest number of players, but only if every pair in that group has played together, and make sure each chosen player is distinct and drawn from the roster. The exact roster and who’s played with whom are shown below.
+
+{
+  ""roster_size"": 9,
+  ""teammate_pair_count"": 14,
+  ""edges"": [
+    {
+      ""player_a_id"": ""B"",
+      ""player_b_id"": ""A""
+    },
+    {
+      ""player_a_id"": ""B"",
+      ""player_b_id"": ""C""
+    },
+    {
+      ""player_a_id"": ""B"",
+      ""player_b_id"": ""F""
+    },
+    {
+      ""player_a_id"": ""B"",
+      ""player_b_id"": ""I""
+    },
+    {
+      ""player_a_id"": ""I"",
+      ""player_b_id"": ""C""
+    },
+    {
+      ""player_a_id"": ""I"",
+      ""player_b_id"": ""F""
+    },
+    {
+      ""player_a_id"": ""H"",
+      ""player_b_id"": ""F""
+    },
+    {
+      ""player_a_id"": ""D"",
+      ""player_b_id"": ""E""
+    },
+    {
+      ""player_a_id"": ""D"",
+      ""player_b_id"": ""F""
+    },
+    {
+      ""player_a_id"": ""D"",
+      ""player_b_id"": ""G""
+    },
+    {
+      ""player_a_id"": ""E"",
+      ""player_b_id"": ""F""
+    },
+    {
+      ""player_a_id"": ""E"",
+      ""player_b_id"": ""G""
+    },
+    {
+      ""player_a_id"": ""F"",
+      ""player_b_id"": ""C""
+    },
+    {
+      ""player_a_id"": ""F"",
+      ""player_b_id"": ""G""
+    }
+  ]
+}
+
+Oh, and when you send the chosen lineup back, a simple JSON sketch like this is perfect:
+
+{
+  ""solution"": [""player_id"", ""player_id"", ...]
+}
+
+Think of ""solution"" as the field where you list the selected players — each entry is one player identifier from the roster. Keep it casual: just a list of the player IDs that make up the group. This block is only a template showing the shape I expect, not the actual selection.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — no renaming or new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 9, 'num_edges': 14, 'edges': [{'u': 2, 'v': 1}, {'u': 2, 'v': 3}, {'u': 2, 'v': 6}, {'u': 2, 'v': 9}, {'u': 9, 'v': 3}, {'u': 9, 'v': 6}, {'u': 8, 'v': 6}, {'u': 4, 'v': 5}, {'u': 4, 'v': 6}, {'u': 4, 'v': 7}, {'u': 5, 'v': 6}, {'u': 5, 'v': 7}, {'u': 6, 'v': 3}, {'u': 6, 'v': 7}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.3888888888888889, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0047.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0047.png', 'edge_connectivity': 1}","[2, 3, 6, 9]",4.0,"{'num_nodes': 9, 'num_edges': 14, 'edges': [{'u': 'B', 'v': 'A'}, {'u': 'B', 'v': 'C'}, {'u': 'B', 'v': 'F'}, {'u': 'B', 'v': 'I'}, {'u': 'I', 'v': 'C'}, {'u': 'I', 'v': 'F'}, {'u': 'H', 'v': 'F'}, {'u': 'D', 'v': 'E'}, {'u': 'D', 'v': 'F'}, {'u': 'D', 'v': 'G'}, {'u': 'E', 'v': 'F'}, {'u': 'E', 'v': 'G'}, {'u': 'F', 'v': 'C'}, {'u': 'F', 'v': 'G'}]}","['B', 'C', 'F', 'I']",48,json,names
+MCP,MCP,"Someone suggested doing a themed roundup where every paper in the set references every other — like a tiny academic clique — and the aim is to make that set as big as it can be. The decision is which papers to collect so that each one links to each other one; the better the selection, the more papers you end up with in the fully connected group. Performance is measured by the number of papers in that group, which you get by counting the papers that meet the mutual-reference requirement. No duplicates are allowed and every required mutual citation must be present. The concrete list of papers and their citation relationships is shown below.
+
+# total_papers=10
+# total_mutual_citation_pairs=15
+paper_a_id,paper_b_id
+8,2
+8,6
+8,7
+9,2
+4,2
+4,3
+4,5
+6,2
+6,7
+0,2
+7,2
+3,2
+3,5
+1,2
+5,2
+
+Also, when you send your pick, please stick to this little JSON layout so it's easy to check automatically:
+
+{
+  ""solution"": [""paper_id"", ""paper_id"", ...]
+}
+
+Think of it like a simple form: ""solution"" is the list of paper IDs that form the tiny mutually-referencing group. Use the placeholder above as a template — in your real answer you'll replace those placeholders with the actual IDs from the instance. This JSON is just a sketch of the shape I need, not the final answer itself.
+
+One quick note: use the identifiers exactly as they appear in the instance input — don't rename them or invent new ones. Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".","{'problem_type': 'MCP', 'num_nodes': 10, 'num_edges': 15, 'edges': [{'u': 9, 'v': 3}, {'u': 9, 'v': 7}, {'u': 9, 'v': 8}, {'u': 10, 'v': 3}, {'u': 5, 'v': 3}, {'u': 5, 'v': 4}, {'u': 5, 'v': 6}, {'u': 7, 'v': 3}, {'u': 7, 'v': 8}, {'u': 1, 'v': 3}, {'u': 8, 'v': 3}, {'u': 4, 'v': 3}, {'u': 4, 'v': 6}, {'u': 2, 'v': 3}, {'u': 6, 'v': 3}], 'source_file': 'coAuthorsDBLP.mtx', 'density': 0.3333333333333333, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0048.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0048.png', 'edge_connectivity': 1}","[3, 7, 8, 9]",4.0,"{'num_nodes': 10, 'num_edges': 15, 'edges': [{'u': 8, 'v': 2}, {'u': 8, 'v': 6}, {'u': 8, 'v': 7}, {'u': 9, 'v': 2}, {'u': 4, 'v': 2}, {'u': 4, 'v': 3}, {'u': 4, 'v': 5}, {'u': 6, 'v': 2}, {'u': 6, 'v': 7}, {'u': 0, 'v': 2}, {'u': 7, 'v': 2}, {'u': 3, 'v': 2}, {'u': 3, 'v': 5}, {'u': 1, 'v': 2}, {'u': 5, 'v': 2}]}","[2, 6, 7, 8]",49,csv,0
+MCP,MCP,"Recently the event team decided to host a roundtable made up solely of firms that are already connected by active partnerships across the board, and the challenge is to invite the biggest possible clique of partners. The decision is which set of companies to put on the guest list; what makes one guest list preferable is simply that it contains more companies while still keeping the “every invited company is partnered with every other invited company” condition. To compare options, count how many firms are in each valid list and pick the largest one, ensuring no company is listed twice and all pairwise partnerships are present. The concrete details follow below.
+
+There are 11 companies in total and 21 active partnerships.
+
+| company_a_id | company_b_id |
+|---|---|
+| 9 | 1 |
+| 9 | 6 |
+| 9 | 7 |
+| 0 | 1 |
+| 0 | 2 |
+| 0 | 3 |
+| 0 | 6 |
+| 0 | 10 |
+| 4 | 2 |
+| 4 | 6 |
+| 4 | 8 |
+| 2 | 1 |
+| 2 | 10 |
+| 10 | 1 |
+| 10 | 8 |
+| 3 | 6 |
+| 5 | 6 |
+| 6 | 1 |
+| 6 | 7 |
+| 6 | 8 |
+| 1 | 7 |
+
+Also, when you send back the invite list, please put it in a tiny JSON snippet like this so it's easy to parse:
+
+{
+  ""solution"": [""company_id"", ""company_id"", ...]
+}
+
+Think of this like a simple form: ""solution"" is the whole guest list and each string in the array is one company identifier you want to invite. This is just a sketch of the shape I need — replace the placeholders with the actual labels from the instance when you answer.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — don’t rename them or invent new ones. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'MCP', 'num_nodes': 11, 'num_edges': 21, 'edges': [{'u': 10, 'v': 2}, {'u': 10, 'v': 7}, {'u': 10, 'v': 8}, {'u': 1, 'v': 2}, {'u': 1, 'v': 3}, {'u': 1, 'v': 4}, {'u': 1, 'v': 7}, {'u': 1, 'v': 11}, {'u': 5, 'v': 3}, {'u': 5, 'v': 7}, {'u': 5, 'v': 9}, {'u': 3, 'v': 2}, {'u': 3, 'v': 11}, {'u': 11, 'v': 2}, {'u': 11, 'v': 9}, {'u': 4, 'v': 7}, {'u': 6, 'v': 7}, {'u': 7, 'v': 2}, {'u': 7, 'v': 8}, {'u': 7, 'v': 9}, {'u': 2, 'v': 8}], 'source_file': 'coAuthorsCiteseer.mtx', 'density': 0.38181818181818183, 'viz_instance': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/instance_0049.png', 'viz_solution': 'step1_instance_creation/generated_data/MCP/viz/MCP_S/solution_0049.png', 'edge_connectivity': 1}","[2, 7, 8, 10]",4.0,"{'num_nodes': 11, 'num_edges': 21, 'edges': [{'u': 9, 'v': 1}, {'u': 9, 'v': 6}, {'u': 9, 'v': 7}, {'u': 0, 'v': 1}, {'u': 0, 'v': 2}, {'u': 0, 'v': 3}, {'u': 0, 'v': 6}, {'u': 0, 'v': 10}, {'u': 4, 'v': 2}, {'u': 4, 'v': 6}, {'u': 4, 'v': 8}, {'u': 2, 'v': 1}, {'u': 2, 'v': 10}, {'u': 10, 'v': 1}, {'u': 10, 'v': 8}, {'u': 3, 'v': 6}, {'u': 5, 'v': 6}, {'u': 6, 'v': 1}, {'u': 6, 'v': 7}, {'u': 6, 'v': 8}, {'u': 1, 'v': 7}]}","[1, 6, 7, 9]",50,markdown_table,0

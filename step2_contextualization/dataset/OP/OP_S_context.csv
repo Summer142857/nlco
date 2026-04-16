@@ -1,0 +1,1891 @@
+id,task_id,difficulty_tier,example_index,prompt,surface_format,indexing_scheme,instance_canonical_json,reference_solution_canonical_json,reference_objective_value,instance_surface_json,reference_solution_surface_json
+OP_S_001,OP,S,1,"Recently I sketched a plan for a single loop from home that hits a few bakeries; each bakery has a reward score, and the goal is to pick the combination of stops whose reward scores add up to the highest total. The walk must start and finish at the apartment, avoid revisiting any bakery, and stay within the distance I’m allowed. I’ll put the exact bakery list, rewards, and distances below.
+
+# total_locations_including_apartment=6
+# apartment_node_id=A
+# max_walk_distance=28.0
+bakery_node_id,map_x,map_y,reward_score
+A,10,14,0
+B,15,11,10
+C,14,13,5
+D,15,17,5
+E,16,19,10
+F,7,24,15
+
+If you could send the chosen loop back in a simple JSON shape, that'd be perfect — something like this:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+The ""solution"" array is just the ordered list of stops for the loop, starting and finishing at the depot (your apartment) and listing each bakery you visit once. This JSON is only a sketch of the shape I need, not the actual answer—I'll expect the real IDs from the instance.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"{""coordinates"": [[10, 14], [15, 11], [14, 13], [15, 17], [16, 19], [7, 24]], ""prizes"": [0, 10, 5, 5, 10, 15], ""depot"": 0, ""max_length"": 28.0, ""route_length"": 22.236443151369194, ""collected_prize"": 30.0, ""objective"": 30.0}","[0, 1, 2, 3, 4, 0]",30.0,"{""problem_type"": ""OP"", ""num_nodes"": 6, ""nodes"": [{""id"": ""A"", ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": ""B"", ""x"": 15, ""y"": 11, ""prize"": 10}, {""id"": ""C"", ""x"": 14, ""y"": 13, ""prize"": 5}, {""id"": ""D"", ""x"": 15, ""y"": 17, ""prize"": 5}, {""id"": ""E"", ""x"": 16, ""y"": 19, ""prize"": 10}, {""id"": ""F"", ""x"": 7, ""y"": 24, ""prize"": 15}], ""depot"": ""A"", ""max_length"": 28.0, ""route_length"": 22.236443151369194, ""collected_prize"": 30.0, ""objective"": 30.0}","[""A"", ""B"", ""C"", ""D"", ""E"", ""A""]"
+OP_S_002,OP,S,2,"Many people are pitching in to design a single loop from the church that stops at a few donation boxes, each box having a different importance score. The idea is to decide which boxes to include so the sum of their importance scores is as high as possible, making sure the finished route doesn’t exceed the set distance and that each box is visited only once. The specific instance details — the drop points, their scores, and the maximum route length — follow below.
+
+# total_locations_including_church=10
+# church_node_id=A
+# max_route_length=23.0
+location_id,x_coordinate,y_coordinate,importance_score
+A,10,14,0
+B,18,15,10
+C,18,13,10
+D,16,9,10
+E,16,17,5
+F,15,17,5
+G,11,6,15
+H,11,12,5
+I,11,20,10
+J,5,11,10
+
+Oh, and to keep things machine-friendly, please send your chosen loop in this simple JSON shape:
+
+{
+  ""solution"": [church_id, box_id, ..., church_id]
+}
+
+This just means: ""solution"" is the route as an ordered list — start at the church, list each donation box you stop at (each box at most once), and finish back at the church. The placeholders above are only a sketch of the shape I want; don’t treat them as the real answer.
+
+Please use the exact identifiers from the instance input — no renaming, no made-up labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"{""coordinates"": [[10, 14], [18, 15], [18, 13], [16, 9], [16, 17], [15, 17], [11, 6], [11, 12], [11, 20], [5, 11]], ""prizes"": [0, 10, 10, 10, 5, 5, 15, 5, 10, 10], ""depot"": 0, ""max_length"": 23.0, ""route_length"": 20.966514808956756, ""collected_prize"": 35.0, ""objective"": 35.0}","[0, 5, 4, 1, 2, 7, 0]",35.0,"{""problem_type"": ""OP"", ""num_nodes"": 10, ""nodes"": [{""id"": ""A"", ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": ""B"", ""x"": 18, ""y"": 15, ""prize"": 10}, {""id"": ""C"", ""x"": 18, ""y"": 13, ""prize"": 10}, {""id"": ""D"", ""x"": 16, ""y"": 9, ""prize"": 10}, {""id"": ""E"", ""x"": 16, ""y"": 17, ""prize"": 5}, {""id"": ""F"", ""x"": 15, ""y"": 17, ""prize"": 5}, {""id"": ""G"", ""x"": 11, ""y"": 6, ""prize"": 15}, {""id"": ""H"", ""x"": 11, ""y"": 12, ""prize"": 5}, {""id"": ""I"", ""x"": 11, ""y"": 20, ""prize"": 10}, {""id"": ""J"", ""x"": 5, ""y"": 11, ""prize"": 10}], ""depot"": ""A"", ""max_length"": 23.0, ""route_length"": 20.966514808956756, ""collected_prize"": 35.0, ""objective"": 35.0}","[""A"", ""F"", ""E"", ""B"", ""C"", ""H"", ""A""]"
+OP_S_003,OP,S,3,"I’m putting together a museum loop that starts and ends at the hotel: pick which museums to include (each one has a little satisfaction rating), don’t visit any museum twice, and keep the total travel time within a fixed time budget. The idea is to get the most enjoyment possible — that’s measured by adding up the satisfaction scores of the museums visited — while making sure the whole route is one continuous loop from the hotel back to the hotel. The concrete details are shown below.
+
+I have 10 locations (including the hotel A) and a time budget of 27.0.
+Location A: at (10, 14) with satisfaction 0.
+Location B: at (18, 15) with satisfaction 10.
+Location C: at (15, 17) with satisfaction 5.
+Location D: at (16, 19) with satisfaction 10.
+Location E: at (11, 6) with satisfaction 15.
+Location F: at (8, 5) with satisfaction 15.
+Location G: at (11, 17) with satisfaction 5.
+Location H: at (10, 18) with satisfaction 5.
+Location I: at (10, 22) with satisfaction 10.
+Location J: at (10, 26) with satisfaction 15.
+I'll pick a loop that starts and ends at A and stays within the time budget of 27.0.
+
+When you send back the loop you want me to evaluate, just use this simple JSON shape so I can read it easily:
+
+{
+  ""solution"": [hotel_id, museum_id, ..., hotel_id]
+}
+
+This is just a sketch of the shape I expect. The ""solution"" array is the route listed in order: start at the hotel (hotel_id), visit each museum once (each museum_id), and finish back at the hotel (hotel_id again). Think of it like filling in a little travel itinerary form: the list shows the exact sequence you'll walk.
+
+Please note: the JSON above is an example of the expected format, not the actual answer. Use the exact identifiers from the instance input—do not rename them or create new labels. 
+
+Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",nl,names,"{""coordinates"": [[10, 14], [18, 15], [15, 17], [16, 19], [11, 6], [8, 5], [11, 17], [10, 18], [10, 22], [10, 26]], ""prizes"": [0, 10, 5, 10, 15, 15, 5, 5, 10, 15], ""depot"": 0, ""max_length"": 27.0, ""route_length"": 26.75612994548829, ""collected_prize"": 35.0, ""objective"": 35.0}","[0, 4, 5, 6, 0]",35.0,"{""problem_type"": ""OP"", ""num_nodes"": 10, ""nodes"": [{""id"": ""A"", ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": ""B"", ""x"": 18, ""y"": 15, ""prize"": 10}, {""id"": ""C"", ""x"": 15, ""y"": 17, ""prize"": 5}, {""id"": ""D"", ""x"": 16, ""y"": 19, ""prize"": 10}, {""id"": ""E"", ""x"": 11, ""y"": 6, ""prize"": 15}, {""id"": ""F"", ""x"": 8, ""y"": 5, ""prize"": 15}, {""id"": ""G"", ""x"": 11, ""y"": 17, ""prize"": 5}, {""id"": ""H"", ""x"": 10, ""y"": 18, ""prize"": 5}, {""id"": ""I"", ""x"": 10, ""y"": 22, ""prize"": 10}, {""id"": ""J"", ""x"": 10, ""y"": 26, ""prize"": 15}], ""depot"": ""A"", ""max_length"": 27.0, ""route_length"": 26.75612994548829, ""collected_prize"": 35.0, ""objective"": 35.0}","[""A"", ""E"", ""F"", ""G"", ""A""]"
+OP_S_004,OP,S,4,"This morning the courier schedule called for one complete loop beginning and ending at the depot, hitting some pickup locations to collect parcels. Every pickup location lists a value, and the total for the trip is found by adding together the values of the places visited — each pickup can only be done once. Since there’s a cap on how far the loop can go, the aim is to choose stops that give the biggest possible total value without exceeding that cap. The exact details (which pickups, their values, and the distance/time limit) follow below.
+
+There are 7 locations in total, the depot is 1, and the round trip must not exceed 18.0.
+Location 1 at (19, 24) lists a pickup value of 0.
+Location 2 at (12, 26) lists a pickup value of 20.
+Location 3 at (12, 22) lists a pickup value of 20.
+Location 4 at (19, 15) lists a pickup value of 30.
+Location 5 at (11, 18) lists a pickup value of 30.
+Location 6 at (16, 21) lists a pickup value of 10.
+Location 7 at (15, 23) lists a pickup value of 10.
+Choose the subset of stops that yields the highest total pickup value without exceeding the 18.0 limit for the courier's loop.
+
+If you send the route back, just stick to this simple JSON shape so it's easy to parse:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+This just means: put the depot first, list the pickup locations in the order the courier will visit them, and finish at the depot again. It's just a sketch of the shape I need, not the actual answer — the real reply should replace those placeholders with the exact IDs from the instance.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels. 
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,one_based,"{""coordinates"": [[19, 24], [12, 26], [12, 22], [19, 15], [11, 18], [16, 21], [15, 23]], ""prizes"": [0, 20, 20, 30, 30, 10, 10], ""depot"": 0, ""max_length"": 18.0, ""route_length"": 16.921096214067973, ""collected_prize"": 40.0, ""objective"": 40.0}","[0, 5, 6, 2, 0]",40.0,"{""problem_type"": ""OP"", ""num_nodes"": 7, ""nodes"": [{""id"": 1, ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": 2, ""x"": 12, ""y"": 26, ""prize"": 20}, {""id"": 3, ""x"": 12, ""y"": 22, ""prize"": 20}, {""id"": 4, ""x"": 19, ""y"": 15, ""prize"": 30}, {""id"": 5, ""x"": 11, ""y"": 18, ""prize"": 30}, {""id"": 6, ""x"": 16, ""y"": 21, ""prize"": 10}, {""id"": 7, ""x"": 15, ""y"": 23, ""prize"": 10}], ""depot"": 1, ""max_length"": 18.0, ""route_length"": 16.921096214067973, ""collected_prize"": 40.0, ""objective"": 40.0}","[1, 6, 7, 3, 1]"
+OP_S_005,OP,S,5,"Picture a greenhouse and a handful of plant shops scattered around town, each with a little usefulness score attached. The plan is to draw one loop out and back that visits selected shops only once, stays inside the allowed travel distance, and ends up with the biggest possible total usefulness—the total being the sum of the ratings of the shops visited. The concrete list of suppliers, distances and usefulness numbers is shown below.
+
+{
+  ""total_locations_including_greenhouse"": 6,
+  ""nodes"": [
+    {
+      ""location_id"": ""A"",
+      ""x_coord"": 10,
+      ""y_coord"": 14,
+      ""usefulness_score"": 0
+    },
+    {
+      ""location_id"": ""B"",
+      ""x_coord"": 15,
+      ""y_coord"": 11,
+      ""usefulness_score"": 10
+    },
+    {
+      ""location_id"": ""C"",
+      ""x_coord"": 16,
+      ""y_coord"": 19,
+      ""usefulness_score"": 10
+    },
+    {
+      ""location_id"": ""D"",
+      ""x_coord"": 14,
+      ""y_coord"": 15,
+      ""usefulness_score"": 5
+    },
+    {
+      ""location_id"": ""E"",
+      ""x_coord"": 11,
+      ""y_coord"": 20,
+      ""usefulness_score"": 10
+    },
+    {
+      ""location_id"": ""F"",
+      ""x_coord"": 5,
+      ""y_coord"": 11,
+      ""usefulness_score"": 10
+    }
+  ],
+  ""greenhouse_node_id"": ""A"",
+  ""max_route_distance"": 17.0
+}
+
+Oh, and when you send back the loop, please use this simple JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [""greenhouse_id"", ""shop_id"", ""..."", ""greenhouse_id""]
+}
+
+Think of it like a little form: ""solution"" holds the ordered loop — start at the greenhouse, list each shop you plan to visit (once each), and finish back at the greenhouse. The ""..."" just means you can have as many shops in the middle as fit the route.
+
+This is just a sketch of the expected shape, not the actual answer. Be sure to use the exact identifiers from the instance input — do not rename them or invent new labels.  
+- Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,names,"{""coordinates"": [[10, 14], [15, 11], [16, 19], [14, 15], [11, 20], [5, 11]], ""prizes"": [0, 10, 10, 5, 10, 10], ""depot"": 0, ""max_length"": 17.0, ""route_length"": 16.036820050761182, ""collected_prize"": 15.0, ""objective"": 15.0}","[0, 4, 3, 0]",15.0,"{""problem_type"": ""OP"", ""num_nodes"": 6, ""nodes"": [{""id"": ""A"", ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": ""B"", ""x"": 15, ""y"": 11, ""prize"": 10}, {""id"": ""C"", ""x"": 16, ""y"": 19, ""prize"": 10}, {""id"": ""D"", ""x"": 14, ""y"": 15, ""prize"": 5}, {""id"": ""E"", ""x"": 11, ""y"": 20, ""prize"": 10}, {""id"": ""F"", ""x"": 5, ""y"": 11, ""prize"": 10}], ""depot"": ""A"", ""max_length"": 17.0, ""route_length"": 16.036820050761182, ""collected_prize"": 15.0, ""objective"": 15.0}","[""A"", ""E"", ""D"", ""A""]"
+OP_S_006,OP,S,6,"We’ve got an office-based inspector who has to build one closed inspection route: leave the office, check a handful of locations (each tagged with a priority score), and return to the office without going over the allowed route length. The trick is picking which spots to check so that when all their priority numbers are added together the total is as high as possible, making sure no site is checked twice and the whole trip stays within the limit. The specific sites, their scores and the route limit are listed below.
+
+We’ve got 6 locations in total, the office is node A, and the closed route must not exceed 19.0 in length.
+
+| location_id | x_coordinate | y_coordinate | priority_score |
+|---|---|---|---|
+| A | 19 | 24 | 0 |
+| B | 16 | 28 | 20 |
+| C | 20 | 28 | 20 |
+| D | 17 | 28 | 30 |
+| E | 15 | 8 | 40 |
+| F | 10 | 21 | 20 |
+
+We must choose which sites to visit so our closed tour (starting and ending at node A) maximizes total priority without exceeding 19.0.
+
+Oh, and when you send back the chosen route, please use a tiny JSON snippet like this so it's easy to parse:
+
+{
+  ""solution"": [office_id, site_id, ..., office_id]
+}
+
+Think of this as a simple form: ""solution"" is the ordered list of stops on the closed route — start at the office, visit the places you pick (each at most once), and finish back at the office. The JSON above is just a sketch of the shape I need, not the final answer itself.
+
+Also, make sure you use the exact identifiers from the instance input — don’t rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[19, 24], [16, 28], [20, 28], [17, 28], [15, 8], [10, 21]], ""prizes"": [0, 20, 20, 30, 40, 20], ""depot"": 0, ""max_length"": 19.0, ""route_length"": 13.595241580617241, ""collected_prize"": 70.0, ""objective"": 70.0}","[0, 3, 1, 2, 0]",70.0,"{""problem_type"": ""OP"", ""num_nodes"": 6, ""nodes"": [{""id"": ""A"", ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": ""B"", ""x"": 16, ""y"": 28, ""prize"": 20}, {""id"": ""C"", ""x"": 20, ""y"": 28, ""prize"": 20}, {""id"": ""D"", ""x"": 17, ""y"": 28, ""prize"": 30}, {""id"": ""E"", ""x"": 15, ""y"": 8, ""prize"": 40}, {""id"": ""F"", ""x"": 10, ""y"": 21, ""prize"": 20}], ""depot"": ""A"", ""max_length"": 19.0, ""route_length"": 13.595241580617241, ""collected_prize"": 70.0, ""objective"": 70.0}","[""A"", ""D"", ""B"", ""C"", ""A""]"
+OP_S_007,OP,S,7,"Many people on the team prefer a single circular run from the branch that hits selected prospects once and ends where it started, without blowing past the travel allowance. The ideal run is the one that nets the highest combined potential sales — add up each visited client’s value to see the total — as long as the total travel stays under the limit and nobody is visited twice. The concrete details and numbers are shown below.
+
+The scenario lists 10 locations (including the branch A), and the tour must start and end at that branch while keeping total travel under 25.0.
+
+| location_id | x_coordinate | y_coordinate | potential_sales_value |
+|---|---|---|---|
+| A | 4 | 7 | 0 |
+| B | 4 | 12 | 20 |
+| C | 2 | 14 | 30 |
+| D | 3 | 10 | 15 |
+| E | 3 | 9 | 15 |
+| F | 7 | 11 | 20 |
+| G | 5 | 8 | 10 |
+| H | 5 | 6 | 10 |
+| I | 6 | 5 | 25 |
+| J | 11 | 13 | 30 |
+
+These numbers let the team compare candidate circular runs that start and end at A and must not exceed 25.0.
+
+Also — to keep things machine-friendly, just send the chosen run back in this little JSON shape so it's easy to read:
+
+{
+  ""solution"": [""branch_id"", ""prospect_id"", ""..."", ""branch_id""]
+}
+
+Think of it like a quick form: ""solution"" is the ordered circular run, the array lists the branch (start/end) and each prospect you hit in order, and it ends back at the branch. This is only the expected shape — not the actual route yet.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — no renaming and no invented labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,names,"{""coordinates"": [[4, 7], [4, 12], [2, 14], [3, 10], [3, 9], [7, 11], [5, 8], [5, 6], [6, 5], [11, 13]], ""prizes"": [0, 20, 30, 15, 15, 20, 10, 10, 25, 30], ""depot"": 0, ""max_length"": 25.0, ""route_length"": 22.94613444841058, ""collected_prize"": 145.0, ""objective"": 145.0}","[0, 4, 3, 2, 1, 5, 6, 8, 7, 0]",145.0,"{""problem_type"": ""OP"", ""num_nodes"": 10, ""nodes"": [{""id"": ""A"", ""x"": 4, ""y"": 7, ""prize"": 0}, {""id"": ""B"", ""x"": 4, ""y"": 12, ""prize"": 20}, {""id"": ""C"", ""x"": 2, ""y"": 14, ""prize"": 30}, {""id"": ""D"", ""x"": 3, ""y"": 10, ""prize"": 15}, {""id"": ""E"", ""x"": 3, ""y"": 9, ""prize"": 15}, {""id"": ""F"", ""x"": 7, ""y"": 11, ""prize"": 20}, {""id"": ""G"", ""x"": 5, ""y"": 8, ""prize"": 10}, {""id"": ""H"", ""x"": 5, ""y"": 6, ""prize"": 10}, {""id"": ""I"", ""x"": 6, ""y"": 5, ""prize"": 25}, {""id"": ""J"", ""x"": 11, ""y"": 13, ""prize"": 30}], ""depot"": ""A"", ""max_length"": 25.0, ""route_length"": 22.94613444841058, ""collected_prize"": 145.0, ""objective"": 145.0}","[""A"", ""E"", ""D"", ""C"", ""B"", ""F"", ""G"", ""I"", ""H"", ""A""]"
+OP_S_008,OP,S,8,"Someone in dispatch needs to pick a one-loop route for a messenger that starts and ends at the hub and hits a selection of customer drops. Each visit earns a fee, and the better route is the one that finishes the loop with the highest total of those fees (just add up the fees for the stops you actually make). The messenger can’t exceed the allotted ride distance, and each drop can only be done once. The full details — addresses, fees, and the distance limit — are shown below.
+
+# total_locations=7
+# hub_id=1
+# max_ride_distance=17.0
+location_id,map_x,map_y,drop_fee
+1,10,14,0
+2,16,13,5
+3,16,19,10
+4,14,15,5
+5,8,5,15
+6,10,22,10
+7,8,13,10
+
+If you could return the chosen loop in a tiny JSON snippet that’d be perfect — something like this:
+
+{
+  ""solution"": [hub_id, drop_id, ..., hub_id]
+}
+
+This just means ""solution"" should be an ordered list of identifiers: the first and last entry are the hub, and the items in between are the customer drops the messenger will visit. It's a sketch of the shape I expect, not the actual answer — fill in the real IDs from the instance when you submit the route.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — don’t rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""coordinates"": [[10, 14], [16, 13], [16, 19], [14, 15], [8, 5], [10, 22], [8, 13]], ""prizes"": [0, 5, 10, 5, 15, 10, 10], ""depot"": 0, ""max_length"": 17.0, ""route_length"": 16.31883050779801, ""collected_prize"": 15.0, ""objective"": 15.0}","[0, 6, 1, 0]",15.0,"{""problem_type"": ""OP"", ""num_nodes"": 7, ""nodes"": [{""id"": 1, ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": 2, ""x"": 16, ""y"": 13, ""prize"": 5}, {""id"": 3, ""x"": 16, ""y"": 19, ""prize"": 10}, {""id"": 4, ""x"": 14, ""y"": 15, ""prize"": 5}, {""id"": 5, ""x"": 8, ""y"": 5, ""prize"": 15}, {""id"": 6, ""x"": 10, ""y"": 22, ""prize"": 10}, {""id"": 7, ""x"": 8, ""y"": 13, ""prize"": 10}], ""depot"": 1, ""max_length"": 17.0, ""route_length"": 16.31883050779801, ""collected_prize"": 15.0, ""objective"": 15.0}","[1, 7, 2, 1]"
+OP_S_009,OP,S,9,"On Saturday the plan is to drive out from the family home, visit a handful of local shops, then head back home — all without visiting a shop more than once and keeping the total drive under a preset cap. The task is choosing which shops to hit and the route between them so the trip stays within the mileage limit. Each shop offers a utility value, and the trip’s value is just the sum of the utilities of the shops visited, so better plans are those with higher summed utility. The exact shop list, distances, and scores are shown below.
+
+# total_locations_including_home=8
+# home_node_id=0
+# max_trip_distance=11.0
+location_id,x_coordinate,y_coordinate,shop_utility
+0,4,7,0
+1,2,14,30
+2,4,8,10
+3,7,11,20
+4,8,9,20
+5,7,8,20
+6,11,13,30
+7,9,18,50
+
+Oh, and when you send back the route, please use this little JSON layout so it's easy to read and parse:
+
+{
+  ""solution"": [home_id, shop_id, ..., home_id]
+}
+
+Think of ""solution"" as the ordered list of place IDs for the drive: start at home, list each shop in the order you visit them (don’t repeat shops), and finish back at home. This block is just a sketch of the shape I’m expecting, not the actual answer.
+
+Please use the exact identifiers from the instance input — don’t rename them or invent new ones.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""coordinates"": [[4, 7], [2, 14], [4, 8], [7, 11], [8, 9], [7, 8], [11, 13], [9, 18]], ""prizes"": [0, 30, 10, 20, 20, 20, 30, 50], ""depot"": 0, ""max_length"": 11.0, ""route_length"": 9.699596848159135, ""collected_prize"": 50.0, ""objective"": 50.0}","[0, 2, 4, 5, 0]",50.0,"{""problem_type"": ""OP"", ""num_nodes"": 8, ""nodes"": [{""id"": 0, ""x"": 4, ""y"": 7, ""prize"": 0}, {""id"": 1, ""x"": 2, ""y"": 14, ""prize"": 30}, {""id"": 2, ""x"": 4, ""y"": 8, ""prize"": 10}, {""id"": 3, ""x"": 7, ""y"": 11, ""prize"": 20}, {""id"": 4, ""x"": 8, ""y"": 9, ""prize"": 20}, {""id"": 5, ""x"": 7, ""y"": 8, ""prize"": 20}, {""id"": 6, ""x"": 11, ""y"": 13, ""prize"": 30}, {""id"": 7, ""x"": 9, ""y"": 18, ""prize"": 50}], ""depot"": 0, ""max_length"": 11.0, ""route_length"": 9.699596848159135, ""collected_prize"": 50.0, ""objective"": 50.0}","[0, 2, 4, 5, 0]"
+OP_S_010,OP,S,10,"Someone in the dorm council is putting together a campus scavenger circuit: the route must be a loop that leaves from and returns to the dorm, picks a handful of checkpoints (each with its own point value), and never goes to the same checkpoint twice. The goal is to rack up as many points as possible — the total is just the sum of the point values at the stops visited — while making sure the whole loop can be completed within the hunt’s time allowance. The practical choices are which checkpoints to include and the order to visit them so the tour stays within time and doesn’t duplicate stops. The precise checkpoint locations, scores, and time limit are shown below.
+
+# total_locations_including_dorm=8
+# dorm_location_id=0
+# maximum_route_budget=27.0
+checkpoint_id,map_x_coordinate,map_y_coordinate,checkpoint_points
+0,19,24,0
+1,22,17,30
+2,11,18,30
+3,15,8,40
+4,18,25,10
+5,16,21,10
+6,18,26,10
+7,17,28,10
+
+Oh, and when you send a proposed loop back, please use this simple JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [""dorm_id"", ""checkpoint_id"", ""..."", ""dorm_id""]
+}
+
+Think of ""solution"" as the ordered loop: the first item is the dorm where you start, the last item is the dorm where you finish, and everything in between are the checkpoints in the order you visit them. The example values are just placeholders to show the shape — not a real route.
+
+Please make sure to use the exact identifiers from the instance input (don't rename them or invent new ones). 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""coordinates"": [[19, 24], [22, 17], [11, 18], [15, 8], [18, 25], [16, 21], [18, 26], [17, 28]], ""prizes"": [0, 30, 30, 40, 10, 10, 10, 10], ""depot"": 0, ""max_length"": 27.0, ""route_length"": 26.933425226959425, ""collected_prize"": 70.0, ""objective"": 70.0}","[0, 6, 7, 4, 5, 1, 0]",70.0,"{""problem_type"": ""OP"", ""num_nodes"": 8, ""nodes"": [{""id"": 0, ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": 1, ""x"": 22, ""y"": 17, ""prize"": 30}, {""id"": 2, ""x"": 11, ""y"": 18, ""prize"": 30}, {""id"": 3, ""x"": 15, ""y"": 8, ""prize"": 40}, {""id"": 4, ""x"": 18, ""y"": 25, ""prize"": 10}, {""id"": 5, ""x"": 16, ""y"": 21, ""prize"": 10}, {""id"": 6, ""x"": 18, ""y"": 26, ""prize"": 10}, {""id"": 7, ""x"": 17, ""y"": 28, ""prize"": 10}], ""depot"": 0, ""max_length"": 27.0, ""route_length"": 26.933425226959425, ""collected_prize"": 70.0, ""objective"": 70.0}","[0, 6, 7, 4, 5, 1, 0]"
+OP_S_011,OP,S,11,"Imagine the maintenance crew needs a single tidy loop out of their depot to service a selection of sites and then return home. The objective is to pick stops that give the biggest combined benefit — simply add together the benefit numbers of the visited sites to get the route’s score. The whole trip has to stay under the set distance cap and no location can be visited twice. The concrete details (site locations, benefits and the travel cap) are provided below.
+
+# total_locations=7
+# depot_id=A
+# max_route_length=27.0
+site_id,x_coord,y_coord,benefit_score
+A,19,24,0
+B,12,22,20
+C,11,18,30
+D,17,28,30
+E,13,33,40
+F,21,25,50
+G,17,19,20
+
+Just drop your chosen loop into a simple JSON sketch like this when you send the solution:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Here ""solution"" is the ordered list of stops for the loop — start at the depot, visit each chosen site once (if at all), then come back to the depot. Think of it like filling in a little travel itinerary form: the array shows the route in order. This is only the shape I expect, not the actual route you must provide.
+
+Please make sure you use the exact identifiers from the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"{""coordinates"": [[19, 24], [12, 22], [11, 18], [17, 28], [13, 33], [21, 25], [17, 19]], ""prizes"": [0, 20, 30, 30, 40, 50, 20], ""depot"": 0, ""max_length"": 27.0, ""route_length"": 24.45584604132461, ""collected_prize"": 120.0, ""objective"": 120.0}","[0, 4, 3, 5, 0]",120.0,"{""problem_type"": ""OP"", ""num_nodes"": 7, ""nodes"": [{""id"": ""A"", ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": ""B"", ""x"": 12, ""y"": 22, ""prize"": 20}, {""id"": ""C"", ""x"": 11, ""y"": 18, ""prize"": 30}, {""id"": ""D"", ""x"": 17, ""y"": 28, ""prize"": 30}, {""id"": ""E"", ""x"": 13, ""y"": 33, ""prize"": 40}, {""id"": ""F"", ""x"": 21, ""y"": 25, ""prize"": 50}, {""id"": ""G"", ""x"": 17, ""y"": 19, ""prize"": 20}], ""depot"": ""A"", ""max_length"": 27.0, ""route_length"": 24.45584604132461, ""collected_prize"": 120.0, ""objective"": 120.0}","[""A"", ""E"", ""D"", ""F"", ""A""]"
+OP_S_012,OP,S,12,"We’ve got one circular flight window for a drone that must launch and land at the local airstrip, and the job is to pick which locations to shoot so the flight collects the most useful information. Each candidate site has an intelligence value and the success of a route is just the sum of the values for the places visited. The drone must return to base on the same flight, can’t go beyond its permitted range, and no site should be photographed more than once. The concrete list of spots, distances, and values appears below.
+
+{
+  ""total_sites_including_airstrip"": 9,
+  ""nodes"": [
+    {
+      ""site_id"": ""A"",
+      ""map_x_coordinate"": 10,
+      ""map_y_coordinate"": 14,
+      ""intelligence_value"": 0
+    },
+    {
+      ""site_id"": ""B"",
+      ""map_x_coordinate"": 14,
+      ""map_y_coordinate"": 13,
+      ""intelligence_value"": 5
+    },
+    {
+      ""site_id"": ""C"",
+      ""map_x_coordinate"": 15,
+      ""map_y_coordinate"": 17,
+      ""intelligence_value"": 5
+    },
+    {
+      ""site_id"": ""D"",
+      ""map_x_coordinate"": 16,
+      ""map_y_coordinate"": 19,
+      ""intelligence_value"": 10
+    },
+    {
+      ""site_id"": ""E"",
+      ""map_x_coordinate"": 11,
+      ""map_y_coordinate"": 17,
+      ""intelligence_value"": 5
+    },
+    {
+      ""site_id"": ""F"",
+      ""map_x_coordinate"": 10,
+      ""map_y_coordinate"": 18,
+      ""intelligence_value"": 5
+    },
+    {
+      ""site_id"": ""G"",
+      ""map_x_coordinate"": 7,
+      ""map_y_coordinate"": 24,
+      ""intelligence_value"": 15
+    },
+    {
+      ""site_id"": ""H"",
+      ""map_x_coordinate"": 8,
+      ""map_y_coordinate"": 13,
+      ""intelligence_value"": 10
+    },
+    {
+      ""site_id"": ""I"",
+      ""map_x_coordinate"": 5,
+      ""map_y_coordinate"": 11,
+      ""intelligence_value"": 10
+    }
+  ],
+  ""airstrip_node_id"": ""A"",
+  ""max_flight_range"": 13.0
+}
+
+When you send back the chosen route, just use this simple JSON shape so I can read it automatically:
+
+{
+  ""solution"": [airstrip_id, site_id, ..., airstrip_id]
+}
+
+""solution"" is the ordered list of place IDs the drone will visit on the flight — start at the airstrip, go through the listed sites (each at most once), and return to the airstrip. This is just a sketch of the format I expect, not the actual route.
+
+Please use the exact identifiers from the instance input — don't rename them or make up new labels.
+
+for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""coordinates"": [[10, 14], [14, 13], [15, 17], [16, 19], [11, 17], [10, 18], [7, 24], [8, 13], [5, 11]], ""prizes"": [0, 5, 5, 10, 5, 5, 15, 10, 10], ""depot"": 0, ""max_length"": 13.0, ""route_length"": 12.650281539872886, ""collected_prize"": 20.0, ""objective"": 20.0}","[0, 5, 4, 7, 0]",20.0,"{""problem_type"": ""OP"", ""num_nodes"": 9, ""nodes"": [{""id"": ""A"", ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": ""B"", ""x"": 14, ""y"": 13, ""prize"": 5}, {""id"": ""C"", ""x"": 15, ""y"": 17, ""prize"": 5}, {""id"": ""D"", ""x"": 16, ""y"": 19, ""prize"": 10}, {""id"": ""E"", ""x"": 11, ""y"": 17, ""prize"": 5}, {""id"": ""F"", ""x"": 10, ""y"": 18, ""prize"": 5}, {""id"": ""G"", ""x"": 7, ""y"": 24, ""prize"": 15}, {""id"": ""H"", ""x"": 8, ""y"": 13, ""prize"": 10}, {""id"": ""I"", ""x"": 5, ""y"": 11, ""prize"": 10}], ""depot"": ""A"", ""max_length"": 13.0, ""route_length"": 12.650281539872886, ""collected_prize"": 20.0, ""objective"": 20.0}","[""A"", ""F"", ""E"", ""H"", ""A""]"
+OP_S_013,OP,S,13,"On weekends the goal is often to get the most out of a short walk—pick a circuit that starts and ends at the house and visits specialty stores so that the sum of their desirability scores is as high as possible, without going over the allowed walking distance. Don’t stop at the same store twice, and keep it one continuous loop. The exact store locations, desirability numbers and distances are shown below.
+
+{
+  ""total_locations"": 9,
+  ""nodes"": [
+    {
+      ""location_id"": ""A"",
+      ""x_coordinate"": 19,
+      ""y_coordinate"": 24,
+      ""desirability_score"": 0
+    },
+    {
+      ""location_id"": ""B"",
+      ""x_coordinate"": 14,
+      ""y_coordinate"": 28,
+      ""desirability_score"": 20
+    },
+    {
+      ""location_id"": ""C"",
+      ""x_coordinate"": 16,
+      ""y_coordinate"": 28,
+      ""desirability_score"": 20
+    },
+    {
+      ""location_id"": ""D"",
+      ""x_coordinate"": 12,
+      ""y_coordinate"": 26,
+      ""desirability_score"": 20
+    },
+    {
+      ""location_id"": ""E"",
+      ""x_coordinate"": 22,
+      ""y_coordinate"": 17,
+      ""desirability_score"": 30
+    },
+    {
+      ""location_id"": ""F"",
+      ""x_coordinate"": 12,
+      ""y_coordinate"": 29,
+      ""desirability_score"": 30
+    },
+    {
+      ""location_id"": ""G"",
+      ""x_coordinate"": 13,
+      ""y_coordinate"": 33,
+      ""desirability_score"": 40
+    },
+    {
+      ""location_id"": ""H"",
+      ""x_coordinate"": 19,
+      ""y_coordinate"": 10,
+      ""desirability_score"": 40
+    },
+    {
+      ""location_id"": ""I"",
+      ""x_coordinate"": 16,
+      ""y_coordinate"": 21,
+      ""desirability_score"": 10
+    }
+  ],
+  ""home_id"": ""A"",
+  ""max_walking_distance"": 17.0
+}
+
+Also, when you send back your chosen loop, please use this simple JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [home_id, store_id, ..., home_id]
+}
+
+""solution"" is just the ordered list of places in the circuit: start at your home placeholder (home_id), visit each store placeholder once in the order shown, and come back to the same home_id at the end. Think of it like filling in a short form — this block is only a sketch of the shape I need, not the actual route.
+
+Please use the exact identifiers from the instance input — don’t rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""coordinates"": [[19, 24], [14, 28], [16, 28], [12, 26], [22, 17], [12, 29], [13, 33], [19, 10], [16, 21]], ""prizes"": [0, 20, 20, 20, 30, 30, 40, 40, 10], ""depot"": 0, ""max_length"": 17.0, ""route_length"": 13.403124237432849, ""collected_prize"": 40.0, ""objective"": 40.0}","[0, 2, 1, 0]",40.0,"{""problem_type"": ""OP"", ""num_nodes"": 9, ""nodes"": [{""id"": ""A"", ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": ""B"", ""x"": 14, ""y"": 28, ""prize"": 20}, {""id"": ""C"", ""x"": 16, ""y"": 28, ""prize"": 20}, {""id"": ""D"", ""x"": 12, ""y"": 26, ""prize"": 20}, {""id"": ""E"", ""x"": 22, ""y"": 17, ""prize"": 30}, {""id"": ""F"", ""x"": 12, ""y"": 29, ""prize"": 30}, {""id"": ""G"", ""x"": 13, ""y"": 33, ""prize"": 40}, {""id"": ""H"", ""x"": 19, ""y"": 10, ""prize"": 40}, {""id"": ""I"", ""x"": 16, ""y"": 21, ""prize"": 10}], ""depot"": ""A"", ""max_length"": 17.0, ""route_length"": 13.403124237432849, ""collected_prize"": 40.0, ""objective"": 40.0}","[""A"", ""C"", ""B"", ""A""]"
+OP_S_014,OP,S,14,"Someone organized a weekend donation run: a volunteer will drive out from the community center, stop at various homes to collect promised items, and then return to the starting point. The trick is choosing stops that give the biggest haul — add up the contribution values of the chosen homes — without driving over the allowed mileage and without visiting any house twice. The detailed list of stops, their values, and the distance limit are shown below.
+
+There are 6 locations listed (including the community center); the volunteer must start and finish at 0, and the total driving distance must not exceed 25.0.
+House 0 at (10, 14) offers 0 in donations.
+House 1 at (16, 13) offers 5 in donations.
+House 2 at (11, 6) offers 15 in donations.
+House 3 at (11, 20) offers 10 in donations.
+House 4 at (9, 23) offers 10 in donations.
+House 5 at (8, 17) offers 10 in donations.
+Plan the volunteer's round trip to pick the combination of stops that yields the largest haul without exceeding 25.0.
+
+You can send the final route back in a tiny JSON snippet so it's easy to check. Something like this:
+
+{
+  ""solution"": [community_center_id, home_id, ..., community_center_id]
+}
+
+This just means: list the stops in order inside the ""solution"" array, starting and ending at the community center, with each house you visit shown once in between. It's just a sketch of the shape I want — not the real answer itself.
+
+Please make sure to use the exact identifiers from the problem input, with no renaming or extra labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""coordinates"": [[10, 14], [16, 13], [11, 6], [11, 20], [9, 23], [8, 17]], ""prizes"": [0, 5, 15, 10, 10, 10], ""depot"": 0, ""max_length"": 25.0, ""route_length"": 19.376627611524416, ""collected_prize"": 30.0, ""objective"": 30.0}","[0, 5, 4, 3, 0]",30.0,"{""problem_type"": ""OP"", ""num_nodes"": 6, ""nodes"": [{""id"": 0, ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": 1, ""x"": 16, ""y"": 13, ""prize"": 5}, {""id"": 2, ""x"": 11, ""y"": 6, ""prize"": 15}, {""id"": 3, ""x"": 11, ""y"": 20, ""prize"": 10}, {""id"": 4, ""x"": 9, ""y"": 23, ""prize"": 10}, {""id"": 5, ""x"": 8, ""y"": 17, ""prize"": 10}], ""depot"": 0, ""max_length"": 25.0, ""route_length"": 19.376627611524416, ""collected_prize"": 30.0, ""objective"": 30.0}","[0, 5, 4, 3, 0]"
+OP_S_015,OP,S,15,"Recently the rangers talked about crafting a patrol loop that leaves from the station, inspects a handful of trail stretches, and returns without retracing any one stretch. Each stretch has a monitoring value, so the effectiveness of the loop is just the sum of those values, and the whole route has to fit within the maximum patrol length. The detailed list of segments, their scores, and the distance cap appear below.
+
+{
+  ""total_locations_including_station"": 6,
+  ""nodes"": [
+    {
+      ""location_id"": 0,
+      ""coord_x"": 4,
+      ""coord_y"": 7,
+      ""monitoring_score"": 0
+    },
+    {
+      ""location_id"": 1,
+      ""coord_x"": 5,
+      ""coord_y"": 11,
+      ""monitoring_score"": 20
+    },
+    {
+      ""location_id"": 2,
+      ""coord_x"": 7,
+      ""coord_y"": 8,
+      ""monitoring_score"": 20
+    },
+    {
+      ""location_id"": 3,
+      ""coord_x"": 5,
+      ""coord_y"": 8,
+      ""monitoring_score"": 10
+    },
+    {
+      ""location_id"": 4,
+      ""coord_x"": 14,
+      ""coord_y"": 14,
+      ""monitoring_score"": 40
+    },
+    {
+      ""location_id"": 5,
+      ""coord_x"": 9,
+      ""coord_y"": 16,
+      ""monitoring_score"": 30
+    }
+  ],
+  ""ranger_station_id"": 0,
+  ""max_patrol_length"": 17.0
+}
+
+Oh, and when you send your chosen patrol back, please use a tiny JSON snippet like this so it's easy to read:
+
+{
+  ""solution"": [""station_id"", ""trail_id"", ""..."", ""station_id""]
+}
+
+Think of that as a simple form: ""solution"" holds the loop as a list, starting and ending at the station, with any trail stretches you want to visit in the middle. The ""station_id"" and ""trail_id"" entries are just placeholders showing the shape — replace them with the actual identifiers from the instance when you reply.
+
+This JSON is just a sketch of the expected shape, not the real answer itself. Also, please make sure you use the identifiers exactly as they appear in the instance input — don't rename them and don't invent new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".""",json,zero_based,"{""coordinates"": [[4, 7], [5, 11], [7, 8], [5, 8], [14, 14], [9, 16]], ""prizes"": [0, 20, 20, 10, 40, 30], ""depot"": 0, ""max_length"": 17.0, ""route_length"": 12.28538328578604, ""collected_prize"": 50.0, ""objective"": 50.0}","[0, 2, 3, 1, 0]",50.0,"{""problem_type"": ""OP"", ""num_nodes"": 6, ""nodes"": [{""id"": 0, ""x"": 4, ""y"": 7, ""prize"": 0}, {""id"": 1, ""x"": 5, ""y"": 11, ""prize"": 20}, {""id"": 2, ""x"": 7, ""y"": 8, ""prize"": 20}, {""id"": 3, ""x"": 5, ""y"": 8, ""prize"": 10}, {""id"": 4, ""x"": 14, ""y"": 14, ""prize"": 40}, {""id"": 5, ""x"": 9, ""y"": 16, ""prize"": 30}], ""depot"": 0, ""max_length"": 17.0, ""route_length"": 12.28538328578604, ""collected_prize"": 50.0, ""objective"": 50.0}","[0, 2, 3, 1, 0]"
+OP_S_016,OP,S,16,"On game day the task is to sketch out one loop from the venue, hitting certain street teams that each carry an influence score — the smarter route is the one that brings in the highest total influence, which you calculate by adding the scores of the teams you visit. The outing must begin and end at the venue, never revisit a position, and keep the total travel under the allowed distance. The specific map and influence figures appear below.
+
+They are: 6 locations (including the venue 0), maximum allowed route distance 22.0.
+
+| location_id | x_coordinate | y_coordinate | influence_score |
+|---|---|---|---|
+| 0 | 19 | 24 | 0 |
+| 1 | 20 | 28 | 20 |
+| 2 | 19 | 15 | 30 |
+| 3 | 11 | 18 | 30 |
+| 4 | 21 | 25 | 50 |
+| 5 | 16 | 21 | 10 |
+
+Plan one closed loop starting and ending at 0, visiting distinct locations and keeping total travel under 22.0.
+
+When you send your chosen loop back, just use this simple JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [venue_id, team_id, ..., venue_id]
+}
+
+Think of ""solution"" as the ordered list that shows the loop: start at the venue, list each street team you plan to visit in order (no repeats), and finish back at the venue. The placeholders venue_id and team_id are just stand-ins for whatever exact IDs appear in the instance — swap them out for the real IDs when you answer.
+
+This JSON is only a sketch of the expected shape, not the final route — be sure to replace the placeholders with the real identifiers from the instance, used exactly as given. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""
+
+Do not rename IDs or invent new labels — use the instance's identifiers exactly as they appear.",markdown_table,zero_based,"{""coordinates"": [[19, 24], [20, 28], [19, 15], [11, 18], [21, 25], [16, 21]], ""prizes"": [0, 20, 30, 30, 50, 10], ""depot"": 0, ""max_length"": 22.0, ""route_length"": 21.43410700468536, ""collected_prize"": 80.0, ""objective"": 80.0}","[0, 4, 2, 0]",80.0,"{""problem_type"": ""OP"", ""num_nodes"": 6, ""nodes"": [{""id"": 0, ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": 1, ""x"": 20, ""y"": 28, ""prize"": 20}, {""id"": 2, ""x"": 19, ""y"": 15, ""prize"": 30}, {""id"": 3, ""x"": 11, ""y"": 18, ""prize"": 30}, {""id"": 4, ""x"": 21, ""y"": 25, ""prize"": 50}, {""id"": 5, ""x"": 16, ""y"": 21, ""prize"": 10}], ""depot"": 0, ""max_length"": 22.0, ""route_length"": 21.43410700468536, ""collected_prize"": 80.0, ""objective"": 80.0}","[0, 4, 2, 0]"
+OP_S_017,OP,S,17,"Many local photographers plan shoots the same way: pick a circular route from the studio, visit several distinct views, and head home — all without repeating locations. The aim is to collect as much artistic value as possible along that single loop; the total is simply the sum of the values for the places that are actually visited. The plan must fit into the allowed travel time, cannot include the same spot twice, and must start and end at the studio. The concrete locations, their scores, and travel times follow below.
+
+There are 8 locations listed, with the studio at node 1 and a maximum allowed loop travel of 10.0.
+Location 1 sits at (4, 7) and yields artistic value 0.
+Location 2 sits at (5, 11) and yields artistic value 20.
+Location 3 sits at (4, 12) and yields artistic value 20.
+Location 4 sits at (4, 8) and yields artistic value 10.
+Location 5 sits at (7, 8) and yields artistic value 20.
+Location 6 sits at (5, 8) and yields artistic value 10.
+Location 7 sits at (14, 14) and yields artistic value 40.
+Location 8 sits at (9, 16) and yields artistic value 30.
+The entries that follow describe each location for composing a single looped route that starts and ends at node 1 and fits within the 10.0 travel limit.
+
+If you want to hand me a planned loop, just send it in this simple JSON shape — nothing fancy, just the stops in order.
+
+{
+  ""solution"": [studio_id, view_id, ..., studio_id]
+}
+
+This just says: ""solution"" is the ordered list of stops, starting and finishing at the studio. studio_id is the studio/start point, view_id are the viewpoints you visit, and the ""..."" means any other stops in between. It's only a sketch of the shape I expect, not the actual route.
+
+Please use the exact identifiers from the instance input when you fill this in — do not rename or invent new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"{""coordinates"": [[4, 7], [5, 11], [4, 12], [4, 8], [7, 8], [5, 8], [14, 14], [9, 16]], ""prizes"": [0, 20, 20, 10, 20, 10, 40, 30], ""depot"": 0, ""max_length"": 10.0, ""route_length"": 7.16227766016838, ""collected_prize"": 40.0, ""objective"": 40.0}","[0, 3, 5, 4, 0]",40.0,"{""problem_type"": ""OP"", ""num_nodes"": 8, ""nodes"": [{""id"": 1, ""x"": 4, ""y"": 7, ""prize"": 0}, {""id"": 2, ""x"": 5, ""y"": 11, ""prize"": 20}, {""id"": 3, ""x"": 4, ""y"": 12, ""prize"": 20}, {""id"": 4, ""x"": 4, ""y"": 8, ""prize"": 10}, {""id"": 5, ""x"": 7, ""y"": 8, ""prize"": 20}, {""id"": 6, ""x"": 5, ""y"": 8, ""prize"": 10}, {""id"": 7, ""x"": 14, ""y"": 14, ""prize"": 40}, {""id"": 8, ""x"": 9, ""y"": 16, ""prize"": 30}], ""depot"": 1, ""max_length"": 10.0, ""route_length"": 7.16227766016838, ""collected_prize"": 40.0, ""objective"": 40.0}","[1, 4, 6, 5, 1]"
+OP_S_018,OP,S,18,"In our town the fundraiser team wants to plan a single outing that leaves from headquarters, visits a selection of donor addresses (each tagged with a possible donation amount), and returns home, all within a fixed travel budget. The aim is to pick the combination of stops that yields the highest total of those tagged amounts — you find that by adding together the donation numbers for the stops you take. Each donor can only be visited once, the journey must both start and end at HQ, and the total travel can't exceed the set limit. The concrete locations, donation tags, and travel limit are listed below.
+
+There are 8 locations in total (including headquarters A), and the round trip must not exceed 21.0.
+Location A at (19, 24) carries a potential donation of 0.
+Location B at (12, 26) carries a potential donation of 20.
+Location C at (21, 27) carries a potential donation of 20.
+Location D at (12, 22) carries a potential donation of 20.
+Location E at (12, 29) carries a potential donation of 30.
+Location F at (15, 8) carries a potential donation of 40.
+Location G at (7, 36) carries a potential donation of 50.
+Location H at (16, 21) carries a potential donation of 10.
+Choose the combination of stops that maximizes the sum of donations while keeping the round trip from and back to A within 21.0.
+
+Oh, and when you’re ready to tell me the route, just drop it in a tiny JSON snippet like this so it’s easy to parse:
+
+{
+  ""solution"": [hq_id, donor_id, ..., hq_id]
+}
+
+This just represents the tour as a simple list: start at HQ (the first hq_id), visit each donor in order (each donor_id is a stop you want to include), and finish back at HQ (the last hq_id). Think of it like filling out a short form — not the final answer itself, just the shape I expect.
+
+Please use the exact identifiers from the instance input, with no renaming and no extra labels — they have to match character-for-character. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,names,"{""coordinates"": [[19, 24], [12, 26], [21, 27], [12, 22], [12, 29], [15, 8], [7, 36], [16, 21]], ""prizes"": [0, 20, 20, 20, 30, 40, 50, 10], ""depot"": 0, ""max_length"": 21.0, ""route_length"": 19.645856202017463, ""collected_prize"": 50.0, ""objective"": 50.0}","[0, 7, 3, 1, 0]",50.0,"{""problem_type"": ""OP"", ""num_nodes"": 8, ""nodes"": [{""id"": ""A"", ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": ""B"", ""x"": 12, ""y"": 26, ""prize"": 20}, {""id"": ""C"", ""x"": 21, ""y"": 27, ""prize"": 20}, {""id"": ""D"", ""x"": 12, ""y"": 22, ""prize"": 20}, {""id"": ""E"", ""x"": 12, ""y"": 29, ""prize"": 30}, {""id"": ""F"", ""x"": 15, ""y"": 8, ""prize"": 40}, {""id"": ""G"", ""x"": 7, ""y"": 36, ""prize"": 50}, {""id"": ""H"", ""x"": 16, ""y"": 21, ""prize"": 10}], ""depot"": ""A"", ""max_length"": 21.0, ""route_length"": 19.645856202017463, ""collected_prize"": 50.0, ""objective"": 50.0}","[""A"", ""H"", ""D"", ""B"", ""A""]"
+OP_S_019,OP,S,19,"Imagine a food truck plotting one neat circuit: out from the kitchen, through a few festival spots, and back home for the night. The decision is which stops to hit so the combined promised sales from those chosen events is as large as it can be. You judge a route by summing the sales scores of every stop you include — that sum is the expected revenue — and by summing the distances of each segment of the loop (kitchen to first stop, between stops, and back) to get the total drive length. You can’t stop at the same event twice, and the whole loop must stay inside the allowed driving distance, so pick a round trip made of different events that maximizes the total sales without busting the distance limit. The exact spots, scores, and distances are listed below.
+
+You have 10 locations listed, the kitchen is 0, and the whole round trip must stay within 24.0 total driving distance.
+Location 0 is at (10, 14) with expected sales 0.
+Location 1 is at (18, 15) with expected sales 10.
+Location 2 is at (18, 13) with expected sales 10.
+Location 3 is at (15, 11) with expected sales 10.
+Location 4 is at (15, 17) with expected sales 5.
+Location 5 is at (15, 20) with expected sales 10.
+Location 6 is at (13, 20) with expected sales 10.
+Location 7 is at (14, 15) with expected sales 5.
+Location 8 is at (7, 9) with expected sales 10.
+Location 9 is at (7, 24) with expected sales 15.
+Pick a loop of distinct events that maximizes the summed expected sales without exceeding 24.0.
+
+When you want to send me your chosen loop, just pop it into this little JSON shape so it's easy to read:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of ""solution"" as the ordered list of stops in your loop: start at the depot, visit each event once in the order listed, and then finish back at the depot. This JSON is just a sketch of the expected shape — not the actual answer itself — so fill in real IDs from the instance when you give the final route.
+
+Please use the exact identifiers from the instance input — don't rename them and don't invent new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""coordinates"": [[10, 14], [18, 15], [18, 13], [15, 11], [15, 17], [15, 20], [13, 20], [14, 15], [7, 9], [7, 24]], ""prizes"": [0, 10, 10, 10, 5, 10, 10, 5, 10, 15], ""depot"": 0, ""max_length"": 24.0, ""route_length"": 23.436860833581022, ""collected_prize"": 40.0, ""objective"": 40.0}","[0, 6, 5, 4, 1, 7, 0]",40.0,"{""problem_type"": ""OP"", ""num_nodes"": 10, ""nodes"": [{""id"": 0, ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": 1, ""x"": 18, ""y"": 15, ""prize"": 10}, {""id"": 2, ""x"": 18, ""y"": 13, ""prize"": 10}, {""id"": 3, ""x"": 15, ""y"": 11, ""prize"": 10}, {""id"": 4, ""x"": 15, ""y"": 17, ""prize"": 5}, {""id"": 5, ""x"": 15, ""y"": 20, ""prize"": 10}, {""id"": 6, ""x"": 13, ""y"": 20, ""prize"": 10}, {""id"": 7, ""x"": 14, ""y"": 15, ""prize"": 5}, {""id"": 8, ""x"": 7, ""y"": 9, ""prize"": 10}, {""id"": 9, ""x"": 7, ""y"": 24, ""prize"": 15}], ""depot"": 0, ""max_length"": 24.0, ""route_length"": 23.436860833581022, ""collected_prize"": 40.0, ""objective"": 40.0}","[0, 6, 5, 4, 1, 7, 0]"
+OP_S_020,OP,S,20,"I’m imagining an urban explorer who wants to plan a single little loop that starts and ends at the subway station, drops by a handful of murals and landmarks, and gets back before time runs out. The choice to make is which places to include and in what order so the whole loop stays under the available exploring time, never visits the same spot twice, and brings the most fun. Treat each mural or landmark like a tiny happiness number — add up the enjoyment scores of the spots visited, and the best loop is the one with the biggest total while still finishing at the subway on time. The concrete details for the spots, their enjoyment numbers, and the time limit are shown below.
+
+There are 10 locations on the map (including the subway station 0), and I need the whole loop to finish within 7.0 units of exploring time.
+
+| location_id | x_coordinate | y_coordinate | enjoyment_score |
+|---|---|---|---|
+| 0 | 10 | 14 | 0 |
+| 1 | 16 | 9 | 10 |
+| 2 | 14 | 13 | 5 |
+| 3 | 7 | 9 | 10 |
+| 4 | 11 | 17 | 5 |
+| 5 | 9 | 23 | 10 |
+| 6 | 7 | 24 | 15 |
+| 7 | 8 | 19 | 15 |
+| 8 | 8 | 13 | 10 |
+| 9 | 7 | 18 | 10 |
+
+I’ll choose a route that starts and ends at 0 and stays under 7.0 time to maximize total enjoyment.
+
+Oh, and when you send back the chosen loop, please use a tiny JSON snippet so it's easy to read and check. Something like this:
+
+{
+  ""solution"": [station_id, spot_id, ..., station_id]
+}
+
+This just means: ""solution"" is the loop, and the list is the order of places you visit starting and ending at the subway station. The placeholders above are just showing the shape — replace them with the exact IDs from the puzzle when you answer.
+
+Make sure to use the instance’s identifiers exactly as given — no renaming and no invented labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"{""coordinates"": [[10, 14], [16, 9], [14, 13], [7, 9], [11, 17], [9, 23], [7, 24], [8, 19], [8, 13], [7, 18]], ""prizes"": [0, 10, 5, 10, 5, 10, 15, 15, 10, 10], ""depot"": 0, ""max_length"": 7.0, ""route_length"": 4.47213595499958, ""collected_prize"": 10.0, ""objective"": 10.0}","[0, 8, 0]",10.0,"{""problem_type"": ""OP"", ""num_nodes"": 10, ""nodes"": [{""id"": 0, ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": 1, ""x"": 16, ""y"": 9, ""prize"": 10}, {""id"": 2, ""x"": 14, ""y"": 13, ""prize"": 5}, {""id"": 3, ""x"": 7, ""y"": 9, ""prize"": 10}, {""id"": 4, ""x"": 11, ""y"": 17, ""prize"": 5}, {""id"": 5, ""x"": 9, ""y"": 23, ""prize"": 10}, {""id"": 6, ""x"": 7, ""y"": 24, ""prize"": 15}, {""id"": 7, ""x"": 8, ""y"": 19, ""prize"": 15}, {""id"": 8, ""x"": 8, ""y"": 13, ""prize"": 10}, {""id"": 9, ""x"": 7, ""y"": 18, ""prize"": 10}], ""depot"": 0, ""max_length"": 7.0, ""route_length"": 4.47213595499958, ""collected_prize"": 10.0, ""objective"": 10.0}","[0, 8, 0]"
+OP_S_021,OP,S,21,"There’s a small sandwich cart that rolls out from a commissary every morning and needs a single round trip: pick which street corners and pop-up events to visit, don’t go to the same spot twice, and make sure the whole trip fits the allotted driving time. The goal is simple — pick the combination of stops whose estimated sales add up to the biggest total — by summing each stop’s expected income — without blowing the time budget. The concrete stop list and numbers are shown below.
+
+Below are the 9 locations (the commissary is node 0) and the maximum allowed route length 10.0; pick the combination of stops that yields the highest total sales without exceeding the limit.
+
+| stop_id | x_coordinate_on_map | y_coordinate_on_map | expected_sales_at_stop |
+|---|---|---|---|
+| 0 | 19 | 24 | 0 |
+| 1 | 12 | 22 | 20 |
+| 2 | 19 | 15 | 30 |
+| 3 | 9 | 29 | 40 |
+| 4 | 19 | 10 | 40 |
+| 5 | 15 | 8 | 40 |
+| 6 | 7 | 36 | 50 |
+| 7 | 21 | 21 | 10 |
+| 8 | 14 | 19 | 20 |
+
+Start and finish at 0, visit each stop at most once, and keep the entire trip within 10.0.
+
+When you send back the chosen route, just use a tiny JSON shape like this so it's easy to read and parse:
+
+{
+  ""solution"": [cart_depot, corner_id, ..., cart_depot]
+}
+
+Think of that array as the trip: start at the commissary (the first item), list each corner or event you want to hit in order, and finish back at the commissary (the last item). It's just a simple form — the sketch above shows the shape I expect, not the actual stops.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels.  
+Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",markdown_table,zero_based,"{""coordinates"": [[19, 24], [12, 22], [19, 15], [9, 29], [19, 10], [15, 8], [7, 36], [21, 21], [14, 19]], ""prizes"": [0, 20, 30, 40, 40, 40, 50, 10, 20], ""depot"": 0, ""max_length"": 10.0, ""route_length"": 7.211102550927978, ""collected_prize"": 10.0, ""objective"": 10.0}","[0, 7, 0]",10.0,"{""problem_type"": ""OP"", ""num_nodes"": 9, ""nodes"": [{""id"": 0, ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": 1, ""x"": 12, ""y"": 22, ""prize"": 20}, {""id"": 2, ""x"": 19, ""y"": 15, ""prize"": 30}, {""id"": 3, ""x"": 9, ""y"": 29, ""prize"": 40}, {""id"": 4, ""x"": 19, ""y"": 10, ""prize"": 40}, {""id"": 5, ""x"": 15, ""y"": 8, ""prize"": 40}, {""id"": 6, ""x"": 7, ""y"": 36, ""prize"": 50}, {""id"": 7, ""x"": 21, ""y"": 21, ""prize"": 10}, {""id"": 8, ""x"": 14, ""y"": 19, ""prize"": 20}], ""depot"": 0, ""max_length"": 10.0, ""route_length"": 7.211102550927978, ""collected_prize"": 10.0, ""objective"": 10.0}","[0, 7, 0]"
+OP_S_022,OP,S,22,"Recently a docent was asked to design a casual gallery circuit: it must leave the museum, hit a handful of galleries without returning to any already seen, and then circle back to the museum. The point is to choose stops that, when their interest scores are added up, give the highest total possible, all while the total walk doesn’t exceed the allowed distance. The concrete details will be shown below.
+
+{
+  ""total_locations"": 7,
+  ""nodes"": [
+    {
+      ""location_id"": ""A"",
+      ""x_coord"": 19,
+      ""y_coord"": 24,
+      ""interest_score"": 0
+    },
+    {
+      ""location_id"": ""B"",
+      ""x_coord"": 12,
+      ""y_coord"": 29,
+      ""interest_score"": 30
+    },
+    {
+      ""location_id"": ""C"",
+      ""x_coord"": 17,
+      ""y_coord"": 28,
+      ""interest_score"": 30
+    },
+    {
+      ""location_id"": ""D"",
+      ""x_coord"": 10,
+      ""y_coord"": 32,
+      ""interest_score"": 40
+    },
+    {
+      ""location_id"": ""E"",
+      ""x_coord"": 19,
+      ""y_coord"": 10,
+      ""interest_score"": 40
+    },
+    {
+      ""location_id"": ""F"",
+      ""x_coord"": 21,
+      ""y_coord"": 25,
+      ""interest_score"": 50
+    },
+    {
+      ""location_id"": ""G"",
+      ""x_coord"": 18,
+      ""y_coord"": 25,
+      ""interest_score"": 10
+    }
+  ],
+  ""museum_node"": ""A"",
+  ""max_walk_distance"": 14.0
+}
+
+If you want to return the chosen circuit, a neat, minimal way to do it is with a tiny JSON snippet like this:
+
+{
+  ""solution"": [museum_id, gallery_id, ..., museum_id]
+}
+
+Here ""solution"" is just the ordered list of stops on the walk — start at the museum, list each gallery you visit (at most once), and finish back at the museum. Think of it like filling in a simple itinerary form: the items inside the brackets are the place identifiers in visit order. This is only a sketch of the shape I expect, not the actual route.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""coordinates"": [[19, 24], [12, 29], [17, 28], [10, 32], [19, 10], [21, 25], [18, 25]], ""prizes"": [0, 30, 30, 40, 40, 50, 10], ""depot"": 0, ""max_length"": 14.0, ""route_length"": 11.812559200041266, ""collected_prize"": 90.0, ""objective"": 90.0}","[0, 5, 2, 6, 0]",90.0,"{""problem_type"": ""OP"", ""num_nodes"": 7, ""nodes"": [{""id"": ""A"", ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": ""B"", ""x"": 12, ""y"": 29, ""prize"": 30}, {""id"": ""C"", ""x"": 17, ""y"": 28, ""prize"": 30}, {""id"": ""D"", ""x"": 10, ""y"": 32, ""prize"": 40}, {""id"": ""E"", ""x"": 19, ""y"": 10, ""prize"": 40}, {""id"": ""F"", ""x"": 21, ""y"": 25, ""prize"": 50}, {""id"": ""G"", ""x"": 18, ""y"": 25, ""prize"": 10}], ""depot"": ""A"", ""max_length"": 14.0, ""route_length"": 11.812559200041266, ""collected_prize"": 90.0, ""objective"": 90.0}","[""A"", ""F"", ""C"", ""G"", ""A""]"
+OP_S_023,OP,S,23,"Back at the community center the challenge is to map a single circular tour that starts and stops at base, visits some neighborhoods without repeating any stop, and finishes within the shift’s time allowance. The way to tell which tour is better is by how much donation total it collects — simply sum the donations from every neighborhood visited — and only those tours that keep the full drive under the time cap count. The detailed list of locations, travel times, and donation estimates appears below.
+
+There are 9 locations including the community center 1; any feasible circular tour must start and end at 1 and finish within the shift time 12.0.
+Location 1 sits at (10, 14) and has an estimated donation of 0.
+Location 2 sits at (18, 15) and has an estimated donation of 10.
+Location 3 sits at (16, 9) and has an estimated donation of 10.
+Location 4 sits at (15, 17) and has an estimated donation of 5.
+Location 5 sits at (13, 20) and has an estimated donation of 10.
+Location 6 sits at (11, 17) and has an estimated donation of 5.
+Location 7 sits at (10, 18) and has an estimated donation of 5.
+Location 8 sits at (8, 17) and has an estimated donation of 10.
+Location 9 sits at (7, 18) and has an estimated donation of 10.
+Only tours that return to 1 and keep the total drive under 12.0 count toward the summed donations from these 9 locations.
+
+When you give the route back, just use this simple JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+This is just a sketch of the shape I need: the ""solution"" entry is an ordered list of stops on the circular tour, starting and ending at base (the first and last entries are the depot), and the items in between are the neighborhoods you plan to visit. Treat the placeholders as placeholders — replace them with the exact identifiers from the instance when you send the real answer.
+
+Please make sure you use the identifiers exactly as they appear in the input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,one_based,"{""coordinates"": [[10, 14], [18, 15], [16, 9], [15, 17], [13, 20], [11, 17], [10, 18], [8, 17], [7, 18]], ""prizes"": [0, 10, 10, 5, 10, 5, 5, 10, 10], ""depot"": 0, ""max_length"": 12.0, ""route_length"": 10.019764837837084, ""collected_prize"": 20.0, ""objective"": 20.0}","[0, 7, 8, 0]",20.0,"{""problem_type"": ""OP"", ""num_nodes"": 9, ""nodes"": [{""id"": 1, ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": 2, ""x"": 18, ""y"": 15, ""prize"": 10}, {""id"": 3, ""x"": 16, ""y"": 9, ""prize"": 10}, {""id"": 4, ""x"": 15, ""y"": 17, ""prize"": 5}, {""id"": 5, ""x"": 13, ""y"": 20, ""prize"": 10}, {""id"": 6, ""x"": 11, ""y"": 17, ""prize"": 5}, {""id"": 7, ""x"": 10, ""y"": 18, ""prize"": 5}, {""id"": 8, ""x"": 8, ""y"": 17, ""prize"": 10}, {""id"": 9, ""x"": 7, ""y"": 18, ""prize"": 10}], ""depot"": 1, ""max_length"": 12.0, ""route_length"": 10.019764837837084, ""collected_prize"": 20.0, ""objective"": 20.0}","[1, 8, 9, 1]"
+OP_S_024,OP,S,24,"There’s a freelance photographer trying to squeeze the most out of a single daylight walk: start at the hotel, visit a handful of landmarks (each only once), and return to the hotel before the light fades. The comparison between possible routes comes down to total artistic value — just add the value numbers for each visited landmark — and any route that goes over the available walking time or repeats a spot is out. The specific places, their scores, and time estimates are listed below.
+
+There are 8 locations including the hotel (node 1); the entire round trip must not exceed 21.0.
+
+| site_id | x_coordinate_map | y_coordinate_map | artistic_value_score |
+|---|---|---|---|
+| 1 | 10 | 14 | 0 |
+| 2 | 14 | 13 | 5 |
+| 3 | 16 | 17 | 5 |
+| 4 | 15 | 17 | 5 |
+| 5 | 16 | 19 | 10 |
+| 6 | 7 | 9 | 10 |
+| 7 | 11 | 17 | 5 |
+| 8 | 9 | 23 | 10 |
+
+Plan routes that start and end at node 1 and maximize summed artistic value without exceeding 21.0.
+
+Also, when you give me the chosen route, please stick to this simple JSON shape so it’s easy to read and machine-friendly:
+
+{
+  ""solution"": [""hotel_id"", ""landmark_id"", ..., ""hotel_id""]
+}
+
+Think of this like a short form: ""solution"" is the ordered list of stops — start at the hotel, list each landmark you want to visit (each at most once), and finish back at the hotel. This JSON is just a sketch of the shape I expect, not the actual answer.
+
+Please use the exact identifiers from the instance input — don’t rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""coordinates"": [[10, 14], [14, 13], [16, 17], [15, 17], [16, 19], [7, 9], [11, 17], [9, 23]], ""prizes"": [0, 5, 5, 5, 10, 10, 5, 10], ""depot"": 0, ""max_length"": 21.0, ""route_length"": 19.793653718538206, ""collected_prize"": 30.0, ""objective"": 30.0}","[0, 6, 4, 2, 3, 1, 0]",30.0,"{""problem_type"": ""OP"", ""num_nodes"": 8, ""nodes"": [{""id"": 1, ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": 2, ""x"": 14, ""y"": 13, ""prize"": 5}, {""id"": 3, ""x"": 16, ""y"": 17, ""prize"": 5}, {""id"": 4, ""x"": 15, ""y"": 17, ""prize"": 5}, {""id"": 5, ""x"": 16, ""y"": 19, ""prize"": 10}, {""id"": 6, ""x"": 7, ""y"": 9, ""prize"": 10}, {""id"": 7, ""x"": 11, ""y"": 17, ""prize"": 5}, {""id"": 8, ""x"": 9, ""y"": 23, ""prize"": 10}], ""depot"": 1, ""max_length"": 21.0, ""route_length"": 19.793653718538206, ""collected_prize"": 30.0, ""objective"": 30.0}","[1, 7, 5, 3, 4, 2, 1]"
+OP_S_025,OP,S,25,"Out on the road with the bookmobile, the plan is to run one continuous loop from the depot and back, skipping any repeat visits to the same cluster and keeping the total miles within the daily cap. What matters most is the total number of books checked out along that loop — just add the expected checkouts at each visited cluster to get that score. The exact stops and their expected checkouts are listed below.
+
+{
+  ""total_locations_including_depot"": 10,
+  ""nodes"": [
+    {
+      ""cluster_id"": 1,
+      ""x_coordinate_miles"": 19,
+      ""y_coordinate_miles"": 24,
+      ""expected_checkouts"": 0
+    },
+    {
+      ""cluster_id"": 2,
+      ""x_coordinate_miles"": 20,
+      ""y_coordinate_miles"": 28,
+      ""expected_checkouts"": 20
+    },
+    {
+      ""cluster_id"": 3,
+      ""x_coordinate_miles"": 12,
+      ""y_coordinate_miles"": 22,
+      ""expected_checkouts"": 20
+    },
+    {
+      ""cluster_id"": 4,
+      ""x_coordinate_miles"": 22,
+      ""y_coordinate_miles"": 17,
+      ""expected_checkouts"": 30
+    },
+    {
+      ""cluster_id"": 5,
+      ""x_coordinate_miles"": 9,
+      ""y_coordinate_miles"": 29,
+      ""expected_checkouts"": 40
+    },
+    {
+      ""cluster_id"": 6,
+      ""x_coordinate_miles"": 13,
+      ""y_coordinate_miles"": 33,
+      ""expected_checkouts"": 40
+    },
+    {
+      ""cluster_id"": 7,
+      ""x_coordinate_miles"": 18,
+      ""y_coordinate_miles"": 25,
+      ""expected_checkouts"": 10
+    },
+    {
+      ""cluster_id"": 8,
+      ""x_coordinate_miles"": 16,
+      ""y_coordinate_miles"": 21,
+      ""expected_checkouts"": 10
+    },
+    {
+      ""cluster_id"": 9,
+      ""x_coordinate_miles"": 18,
+      ""y_coordinate_miles"": 26,
+      ""expected_checkouts"": 10
+    },
+    {
+      ""cluster_id"": 10,
+      ""x_coordinate_miles"": 10,
+      ""y_coordinate_miles"": 21,
+      ""expected_checkouts"": 20
+    }
+  ],
+  ""library_depot_id"": 1,
+  ""daily_mileage_cap"": 20.0
+}
+
+Oh — and when you send the chosen loop back, please use this simple JSON shape so it's easy to read by whatever's checking it:
+
+{
+  ""solution"": [""depot_id"", ""location_id"", ""..."", ""depot_id""]
+}
+
+Think of it like a little form: the solution array lists the stops in order, starting and ending at the depot, with any intermediate clusters in the middle (the ""..."" just stands in for however many stops you pick). This is just a sketch of the expected shape — not the actual route.
+
+Please make sure to use the exact stop identifiers from the instance input — do not rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"{""coordinates"": [[19, 24], [20, 28], [12, 22], [22, 17], [9, 29], [13, 33], [18, 25], [16, 21], [18, 26], [10, 21]], ""prizes"": [0, 20, 20, 30, 40, 40, 10, 10, 10, 20], ""depot"": 0, ""max_length"": 20.0, ""route_length"": 19.845318452877393, ""collected_prize"": 50.0, ""objective"": 50.0}","[0, 9, 2, 6, 0]",50.0,"{""problem_type"": ""OP"", ""num_nodes"": 10, ""nodes"": [{""id"": 1, ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": 2, ""x"": 20, ""y"": 28, ""prize"": 20}, {""id"": 3, ""x"": 12, ""y"": 22, ""prize"": 20}, {""id"": 4, ""x"": 22, ""y"": 17, ""prize"": 30}, {""id"": 5, ""x"": 9, ""y"": 29, ""prize"": 40}, {""id"": 6, ""x"": 13, ""y"": 33, ""prize"": 40}, {""id"": 7, ""x"": 18, ""y"": 25, ""prize"": 10}, {""id"": 8, ""x"": 16, ""y"": 21, ""prize"": 10}, {""id"": 9, ""x"": 18, ""y"": 26, ""prize"": 10}, {""id"": 10, ""x"": 10, ""y"": 21, ""prize"": 20}], ""depot"": 1, ""max_length"": 20.0, ""route_length"": 19.845318452877393, ""collected_prize"": 50.0, ""objective"": 50.0}","[1, 10, 3, 7, 1]"
+OP_S_026,OP,S,26,"There’s a simple challenge at the research cabin: figure out a circular route that starts and ends there, checks several plant plots without stopping at the same plot twice, and fits inside the team’s fuel range. The measure of a good trip is the total rarity collected — sum up the rarity ratings of the visited plots, and the bigger that sum, the better the trip. The specific details (plots, distances, fuel cap, and rarity scores) appear below.
+
+# total_locations_count=9
+# research_cabin_id=0
+# fuel_range_limit=18.0
+plot_id,x_coordinate_on_map,y_coordinate_on_map,rarity_score
+0,4,7,0
+1,5,11,20
+2,4,12,20
+3,3,10,15
+4,4,8,10
+5,7,11,20
+6,5,6,10
+7,13,13,40
+8,14,14,40
+
+When you send the route back, just stick to a tiny JSON sketch like this so it's easy to read and parse:
+
+{
+  ""solution"": [cabin_id, plot_id, ..., cabin_id]
+}
+
+Think of that as a simple form: ""solution"" is the list that spells out the circular trip — start at the cabin_id, then list the plot_id values you visit in order (each plot at most once), and finish by returning to the same cabin_id. This block is only a sketch of the shape I expect, not the actual route.
+
+Please use the exact identifiers from the instance input — do not rename them and don't invent new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""coordinates"": [[4, 7], [5, 11], [4, 12], [3, 10], [4, 8], [7, 11], [5, 6], [13, 13], [14, 14]], ""prizes"": [0, 20, 20, 15, 10, 20, 10, 40, 40], ""depot"": 0, ""max_length"": 18.0, ""route_length"": 17.373182497877814, ""collected_prize"": 95.0, ""objective"": 95.0}","[0, 3, 2, 5, 1, 4, 6, 0]",95.0,"{""problem_type"": ""OP"", ""num_nodes"": 9, ""nodes"": [{""id"": 0, ""x"": 4, ""y"": 7, ""prize"": 0}, {""id"": 1, ""x"": 5, ""y"": 11, ""prize"": 20}, {""id"": 2, ""x"": 4, ""y"": 12, ""prize"": 20}, {""id"": 3, ""x"": 3, ""y"": 10, ""prize"": 15}, {""id"": 4, ""x"": 4, ""y"": 8, ""prize"": 10}, {""id"": 5, ""x"": 7, ""y"": 11, ""prize"": 20}, {""id"": 6, ""x"": 5, ""y"": 6, ""prize"": 10}, {""id"": 7, ""x"": 13, ""y"": 13, ""prize"": 40}, {""id"": 8, ""x"": 14, ""y"": 14, ""prize"": 40}], ""depot"": 0, ""max_length"": 18.0, ""route_length"": 17.373182497877814, ""collected_prize"": 95.0, ""objective"": 95.0}","[0, 3, 2, 5, 1, 4, 6, 0]"
+OP_S_027,OP,S,27,"Lately I’ve been trying to plan a one-loop street-music route that starts and ends at my home base, plays at selected plazas a single time each, and never revisits a plaza after a performance. The choice that’s better is the one that brings the highest total tips — you calculate that by summing the expected tips at each plaza you include in the loop. The entire walk must stay within my maximum walking-time budget so I can actually complete the loop. The exact list of plazas, their expected tips, and the walking times between them are listed below.
+
+Here are the 6 locations (including my home base 1), and my max total walking time is 11.0.
+Location 1 at (10, 14) with expected tips 0.
+Location 2 at (14, 13) with expected tips 5.
+Location 3 at (16, 17) with expected tips 5.
+Location 4 at (11, 6) with expected tips 15.
+Location 5 at (8, 5) with expected tips 15.
+Location 6 at (11, 17) with expected tips 5.
+I’ll use these details to pick the single-loop route that brings the highest total tips while staying within 11.0.
+
+Oh, and when you send back the chosen loop, a tiny JSON layout makes it super easy to read — something like this:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of that as a simple form: ""solution"" is the ordered list of stops in the loop, starting at your home base (the depot), listing each plaza you play at once, and then returning to the home base to close the loop. The example above just shows the shape I need — not your actual tour.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. 
+
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,one_based,"{""coordinates"": [[10, 14], [14, 13], [16, 17], [11, 6], [8, 5], [11, 17]], ""prizes"": [0, 5, 5, 15, 15, 5], ""depot"": 0, ""max_length"": 11.0, ""route_length"": 8.246211251235321, ""collected_prize"": 5.0, ""objective"": 5.0}","[0, 1, 0]",5.0,"{""problem_type"": ""OP"", ""num_nodes"": 6, ""nodes"": [{""id"": 1, ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": 2, ""x"": 14, ""y"": 13, ""prize"": 5}, {""id"": 3, ""x"": 16, ""y"": 17, ""prize"": 5}, {""id"": 4, ""x"": 11, ""y"": 6, ""prize"": 15}, {""id"": 5, ""x"": 8, ""y"": 5, ""prize"": 15}, {""id"": 6, ""x"": 11, ""y"": 17, ""prize"": 5}], ""depot"": 1, ""max_length"": 11.0, ""route_length"": 8.246211251235321, ""collected_prize"": 5.0, ""objective"": 5.0}","[1, 2, 1]"
+OP_S_028,OP,S,28,"On a typical morning the electrician plans a single run: depart the workshop, hit a handful of customers, then return, all before the driving window closes. The aim is to choose stops that make the largest total bill — add up each chosen job’s fee to get that total — while never exceeding the available driving time and never visiting the same customer twice. The specific job list and timing details are shown below.
+
+# total_locations_including_workshop=7
+# workshop_node_id=0
+# available_driving_time=19.0
+location_id,x_coordinate,y_coordinate,job_fee
+0,4,7,0
+1,5,11,20
+2,2,14,30
+3,3,10,15
+4,8,9,20
+5,5,8,10
+6,14,14,40
+
+And when you want to tell me the chosen run, just hand it back in a tiny JSON snippet like this — super simple and friendly to read:
+
+{
+  ""solution"": [workshop_id, customer_id, ..., workshop_id]
+}
+
+Think of that as a little form: ""solution"" is the ordered list of stops — start at the workshop, go through each customer once in the given order, and finish back at the workshop. The placeholders there are just examples of the shape I expect, not real IDs.
+
+Please use the exact identifiers from the instance input — no renaming and no new labels. 
+- for example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,zero_based,"{""coordinates"": [[4, 7], [5, 11], [2, 14], [3, 10], [8, 9], [5, 8], [14, 14]], ""prizes"": [0, 20, 30, 15, 20, 10, 40], ""depot"": 0, ""max_length"": 19.0, ""route_length"": 17.763403819659917, ""collected_prize"": 75.0, ""objective"": 75.0}","[0, 5, 2, 1, 3, 0]",75.0,"{""problem_type"": ""OP"", ""num_nodes"": 7, ""nodes"": [{""id"": 0, ""x"": 4, ""y"": 7, ""prize"": 0}, {""id"": 1, ""x"": 5, ""y"": 11, ""prize"": 20}, {""id"": 2, ""x"": 2, ""y"": 14, ""prize"": 30}, {""id"": 3, ""x"": 3, ""y"": 10, ""prize"": 15}, {""id"": 4, ""x"": 8, ""y"": 9, ""prize"": 20}, {""id"": 5, ""x"": 5, ""y"": 8, ""prize"": 10}, {""id"": 6, ""x"": 14, ""y"": 14, ""prize"": 40}], ""depot"": 0, ""max_length"": 19.0, ""route_length"": 17.763403819659917, ""collected_prize"": 75.0, ""objective"": 75.0}","[0, 5, 2, 1, 3, 0]"
+OP_S_029,OP,S,29,"Someone on the team is coordinating delivery routes: the van leaves the farm, visits chosen market spots one time only, and returns to the farm before running out of fuel. What makes one route better than another is how much money it brings in — add up the projected sales at every market on the route to get the total. Practical requirements are clear: start and finish at the farm, don’t visit the same market twice, and don’t blow past the vehicle’s fuel budget. The specific stop options and fuel details follow below.
+
+# total_locations_including_farm=9
+# farm_node_id=0
+# max_route_distance=10.0
+location_id,x_coord,y_coord,projected_sales
+0,10,14,0
+1,18,15,10
+2,16,19,10
+3,15,20,10
+4,14,5,10
+5,11,6,15
+6,8,5,15
+7,8,17,10
+8,7,18,10
+
+Oh, and when you send the chosen route, please follow this simple JSON layout so whoever’s reading it can parse it easily:
+
+{
+  ""solution"": [farm_id, market_id, ..., farm_id]
+}
+
+This just shows the shape I expect: ""solution"" is an ordered list of stops — start at the farm, list each market you plan to visit (once each), and finish back at the farm. It’s just a sketch of the format, not the actual route.
+
+Please use the exact identifiers from the instance input — don’t rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""coordinates"": [[10, 14], [18, 15], [16, 19], [15, 20], [14, 5], [11, 6], [8, 5], [8, 17], [7, 18]], ""prizes"": [0, 10, 10, 10, 10, 15, 15, 10, 10], ""depot"": 0, ""max_length"": 10.0, ""route_length"": 7.211102550927978, ""collected_prize"": 10.0, ""objective"": 10.0}","[0, 7, 0]",10.0,"{""problem_type"": ""OP"", ""num_nodes"": 9, ""nodes"": [{""id"": 0, ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": 1, ""x"": 18, ""y"": 15, ""prize"": 10}, {""id"": 2, ""x"": 16, ""y"": 19, ""prize"": 10}, {""id"": 3, ""x"": 15, ""y"": 20, ""prize"": 10}, {""id"": 4, ""x"": 14, ""y"": 5, ""prize"": 10}, {""id"": 5, ""x"": 11, ""y"": 6, ""prize"": 15}, {""id"": 6, ""x"": 8, ""y"": 5, ""prize"": 15}, {""id"": 7, ""x"": 8, ""y"": 17, ""prize"": 10}, {""id"": 8, ""x"": 7, ""y"": 18, ""prize"": 10}], ""depot"": 0, ""max_length"": 10.0, ""route_length"": 7.211102550927978, ""collected_prize"": 10.0, ""objective"": 10.0}","[0, 7, 0]"
+OP_S_030,OP,S,30,"Out on a shift, the plan is to start at the shelter, make a single loop through some of the mapped stray hotspots (no revisits allowed), and be back within the time allocated for the patrol. The choice is which hotspots to include and how to order them so the route stays inside the time window; routes are valued by the sum of the rescue-priority scores of the places visited — add those numbers up to see how good a route is — and the aim is to get as big a total as possible while keeping within the time. The full list of hotspots, their scores, and the time cap are below.
+
+# total_locations_including_shelter=10
+# shelter_node_id=A
+# max_patrol_duration=27.0
+location_node_id,map_x,map_y,rescue_priority_score
+A,19,24,0
+B,14,28,20
+C,12,26,20
+D,12,22,20
+E,14,15,30
+F,13,33,40
+G,15,8,40
+H,14,31,50
+I,21,21,10
+J,17,19,20
+
+Also, when you send the chosen loop back, please stick to a simple JSON layout so it's easy to parse. Something like this will do:
+
+{
+  ""solution"": [shelter_id, hotspot_id, ..., shelter_id]
+}
+
+This just means ""solution"" is the single patrol loop written as a list of location identifiers, starting and ending at the shelter. The names in the array are placeholders (shelter_id for the depot, hotspot_id for the places you visit) and the ""..."" just indicates other stops go in between. It's only a sketch of the shape I want — not the actual route.
+
+Use the exact identifiers from the instance input when you fill that in — don't rename them or invent new ones. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"{""coordinates"": [[19, 24], [14, 28], [12, 26], [12, 22], [14, 15], [13, 33], [15, 8], [14, 31], [21, 21], [17, 19]], ""prizes"": [0, 20, 20, 20, 30, 40, 40, 50, 10, 20], ""depot"": 0, ""max_length"": 27.0, ""route_length"": 26.045949772161908, ""collected_prize"": 130.0, ""objective"": 130.0}","[0, 2, 1, 5, 7, 0]",130.0,"{""problem_type"": ""OP"", ""num_nodes"": 10, ""nodes"": [{""id"": ""A"", ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": ""B"", ""x"": 14, ""y"": 28, ""prize"": 20}, {""id"": ""C"", ""x"": 12, ""y"": 26, ""prize"": 20}, {""id"": ""D"", ""x"": 12, ""y"": 22, ""prize"": 20}, {""id"": ""E"", ""x"": 14, ""y"": 15, ""prize"": 30}, {""id"": ""F"", ""x"": 13, ""y"": 33, ""prize"": 40}, {""id"": ""G"", ""x"": 15, ""y"": 8, ""prize"": 40}, {""id"": ""H"", ""x"": 14, ""y"": 31, ""prize"": 50}, {""id"": ""I"", ""x"": 21, ""y"": 21, ""prize"": 10}, {""id"": ""J"", ""x"": 17, ""y"": 19, ""prize"": 20}], ""depot"": ""A"", ""max_length"": 27.0, ""route_length"": 26.045949772161908, ""collected_prize"": 130.0, ""objective"": 130.0}","[""A"", ""C"", ""B"", ""F"", ""H"", ""A""]"
+OP_S_031,OP,S,31,"There’s an artisan ice cream cart that needs to run one clean loop from the storage garage and back, hitting a selection of parks and events without repeating any stop. The decision is which stops to include so the cart stays within the allotted vending hours and travel time and brings in the most expected sales. The winner is the route with the highest total expected ice cream sales — you calculate that by adding together the expected sales for every stop visited — while making sure nothing is visited twice and the whole trip fits the time limit. The full list of places, their expected sales, and the time/travel numbers are shown below.
+
+{
+  ""total_locations_including_garage"": 6,
+  ""nodes"": [
+    {
+      ""location_id"": 1,
+      ""x_coordinate"": 19,
+      ""y_coordinate"": 24,
+      ""expected_ice_cream_sales"": 0
+    },
+    {
+      ""location_id"": 2,
+      ""x_coordinate"": 14,
+      ""y_coordinate"": 28,
+      ""expected_ice_cream_sales"": 20
+    },
+    {
+      ""location_id"": 3,
+      ""x_coordinate"": 13,
+      ""y_coordinate"": 33,
+      ""expected_ice_cream_sales"": 40
+    },
+    {
+      ""location_id"": 4,
+      ""x_coordinate"": 19,
+      ""y_coordinate"": 10,
+      ""expected_ice_cream_sales"": 40
+    },
+    {
+      ""location_id"": 5,
+      ""x_coordinate"": 14,
+      ""y_coordinate"": 31,
+      ""expected_ice_cream_sales"": 50
+    },
+    {
+      ""location_id"": 6,
+      ""x_coordinate"": 10,
+      ""y_coordinate"": 21,
+      ""expected_ice_cream_sales"": 20
+    }
+  ],
+  ""storage_garage_id"": 1,
+  ""max_allowed_trip_time"": 15.0
+}
+
+Oh, and to keep things machine- and human-friendly, please return the chosen tour in this simple JSON shape — just the garage (depot), the stops in order, and the garage again at the end:
+
+{
+  ""solution"": [""garage_id"", ""park_id"", ..., ""garage_id""]
+}
+
+Think of ""solution"" as the ordered checklist: start at the garage, then the parks/events you plan to visit in order, and finish back at the garage. The quoted placeholders are just showing the shape I need — replace them with the actual IDs from the instance when you give the answer.
+
+Important: use the exact identifiers as they appear in the instance input — do not rename them or invent new labels.  
+Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",json,one_based,"{""coordinates"": [[19, 24], [14, 28], [13, 33], [19, 10], [14, 31], [10, 21]], ""prizes"": [0, 20, 40, 40, 50, 20], ""depot"": 0, ""max_length"": 15.0, ""route_length"": 12.806248474865697, ""collected_prize"": 20.0, ""objective"": 20.0}","[0, 1, 0]",20.0,"{""problem_type"": ""OP"", ""num_nodes"": 6, ""nodes"": [{""id"": 1, ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": 2, ""x"": 14, ""y"": 28, ""prize"": 20}, {""id"": 3, ""x"": 13, ""y"": 33, ""prize"": 40}, {""id"": 4, ""x"": 19, ""y"": 10, ""prize"": 40}, {""id"": 5, ""x"": 14, ""y"": 31, ""prize"": 50}, {""id"": 6, ""x"": 10, ""y"": 21, ""prize"": 20}], ""depot"": 1, ""max_length"": 15.0, ""route_length"": 12.806248474865697, ""collected_prize"": 20.0, ""objective"": 20.0}","[1, 2, 1]"
+OP_S_032,OP,S,32,"There’s a single-day promotion to plan: leave the publishing office, drop into a handful of indie bookshops (no repeats), and loop back to the office before the day runs out. Every shop has a publicity value — just add up the values for the shops on a given route to see how much publicity that route delivers; the higher the total, the better. The route must begin and end at the office, visit each shop at most once, and stay within the day’s travel limit. Details about each shop and the travel limit are shown below.
+
+# total_locations_including_office=10
+# publishing_office_id=A
+# day_travel_limit=6.0
+location_id,x_coordinate,y_coordinate,publicity_score
+A,10,14,0
+B,16,9,10
+C,16,13,5
+D,15,17,5
+E,11,12,5
+F,11,20,10
+G,9,23,10
+H,8,17,10
+I,5,11,10
+J,4,18,10
+
+When you’ve picked the shops for the day, just send the route back in this simple JSON shape so it’s easy to check:
+
+{
+  ""solution"": [office_id, shop_id, ..., office_id]
+}
+
+""solution"" is just the ordered list of places you’ll visit, starting and ending at the office; each item is either the office identifier or a shop identifier, listed in the order you’ll travel. Think of it as a short itinerary — first is where you leave from, last is where you return. This is just a sketch of the shape I need, not the actual answer.
+
+Please use the exact identifiers that appear in the instance input — don’t rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"{""coordinates"": [[10, 14], [16, 9], [16, 13], [15, 17], [11, 12], [11, 20], [9, 23], [8, 17], [5, 11], [4, 18]], ""prizes"": [0, 10, 5, 5, 5, 10, 10, 10, 10, 10], ""depot"": 0, ""max_length"": 6.0, ""route_length"": 4.47213595499958, ""collected_prize"": 5.0, ""objective"": 5.0}","[0, 4, 0]",5.0,"{""problem_type"": ""OP"", ""num_nodes"": 10, ""nodes"": [{""id"": ""A"", ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": ""B"", ""x"": 16, ""y"": 9, ""prize"": 10}, {""id"": ""C"", ""x"": 16, ""y"": 13, ""prize"": 5}, {""id"": ""D"", ""x"": 15, ""y"": 17, ""prize"": 5}, {""id"": ""E"", ""x"": 11, ""y"": 12, ""prize"": 5}, {""id"": ""F"", ""x"": 11, ""y"": 20, ""prize"": 10}, {""id"": ""G"", ""x"": 9, ""y"": 23, ""prize"": 10}, {""id"": ""H"", ""x"": 8, ""y"": 17, ""prize"": 10}, {""id"": ""I"", ""x"": 5, ""y"": 11, ""prize"": 10}, {""id"": ""J"", ""x"": 4, ""y"": 18, ""prize"": 10}], ""depot"": ""A"", ""max_length"": 6.0, ""route_length"": 4.47213595499958, ""collected_prize"": 5.0, ""objective"": 5.0}","[""A"", ""E"", ""A""]"
+OP_S_033,OP,S,33,"Many mornings the mobile bike tech wants to plan one route that starts and ends at the workshop, touches a selection of repair locations once each, and finishes within the technician’s travel window. The decision is which customers to visit and the order to visit them; the better route is simply the one that brings in the most repair fees, calculated by adding up the fee at each visited stop. The whole loop has to fit inside the time/distance the tech has, and repeats aren’t allowed. The exact details are given below.
+
+{
+  ""total_locations_including_workshop"": 9,
+  ""nodes"": [
+    {
+      ""location_id"": 0,
+      ""map_x_coordinate"": 10,
+      ""map_y_coordinate"": 14,
+      ""repair_fee_at_location"": 0
+    },
+    {
+      ""location_id"": 1,
+      ""map_x_coordinate"": 18,
+      ""map_y_coordinate"": 13,
+      ""repair_fee_at_location"": 10
+    },
+    {
+      ""location_id"": 2,
+      ""map_x_coordinate"": 16,
+      ""map_y_coordinate"": 9,
+      ""repair_fee_at_location"": 10
+    },
+    {
+      ""location_id"": 3,
+      ""map_x_coordinate"": 15,
+      ""map_y_coordinate"": 17,
+      ""repair_fee_at_location"": 5
+    },
+    {
+      ""location_id"": 4,
+      ""map_x_coordinate"": 11,
+      ""map_y_coordinate"": 6,
+      ""repair_fee_at_location"": 15
+    },
+    {
+      ""location_id"": 5,
+      ""map_x_coordinate"": 10,
+      ""map_y_coordinate"": 18,
+      ""repair_fee_at_location"": 5
+    },
+    {
+      ""location_id"": 6,
+      ""map_x_coordinate"": 11,
+      ""map_y_coordinate"": 20,
+      ""repair_fee_at_location"": 10
+    },
+    {
+      ""location_id"": 7,
+      ""map_x_coordinate"": 9,
+      ""map_y_coordinate"": 23,
+      ""repair_fee_at_location"": 10
+    },
+    {
+      ""location_id"": 8,
+      ""map_x_coordinate"": 5,
+      ""map_y_coordinate"": 11,
+      ""repair_fee_at_location"": 10
+    }
+  ],
+  ""workshop_location_id"": 0,
+  ""max_route_length_allowed"": 23.0
+}
+
+If you'd like the route back in a predictable shape, just send it in this simple layout:
+
+{
+  ""solution"": [workshop_id, customer_id, ..., workshop_id]
+}
+
+Think of ""solution"" as the ordered loop: the first entry is the workshop where the tech starts, the middle entries are the customers visited (each at most once), and the final entry is the workshop again. The ""..."" just means any number of customer stops in between. This is just a sketch of the shape I expect, not the actual route.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new ones. 
+For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""coordinates"": [[10, 14], [18, 13], [16, 9], [15, 17], [11, 6], [10, 18], [11, 20], [9, 23], [5, 11]], ""prizes"": [0, 10, 10, 5, 15, 5, 10, 10, 10], ""depot"": 0, ""max_length"": 23.0, ""route_length"": 21.703459319050502, ""collected_prize"": 25.0, ""objective"": 25.0}","[0, 4, 8, 0]",25.0,"{""problem_type"": ""OP"", ""num_nodes"": 9, ""nodes"": [{""id"": 0, ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": 1, ""x"": 18, ""y"": 13, ""prize"": 10}, {""id"": 2, ""x"": 16, ""y"": 9, ""prize"": 10}, {""id"": 3, ""x"": 15, ""y"": 17, ""prize"": 5}, {""id"": 4, ""x"": 11, ""y"": 6, ""prize"": 15}, {""id"": 5, ""x"": 10, ""y"": 18, ""prize"": 5}, {""id"": 6, ""x"": 11, ""y"": 20, ""prize"": 10}, {""id"": 7, ""x"": 9, ""y"": 23, ""prize"": 10}, {""id"": 8, ""x"": 5, ""y"": 11, ""prize"": 10}], ""depot"": 0, ""max_length"": 23.0, ""route_length"": 21.703459319050502, ""collected_prize"": 25.0, ""objective"": 25.0}","[0, 4, 8, 0]"
+OP_S_034,OP,S,34,"Recently the campus botanists decided to do a looped survey starting and ending at their lab, sampling several grassy and planted areas along the way. The planning question is which places to include on that loop so each gets visited at most once, the entire walk stays within the team’s max distance, and the total ecological importance (simply the sum of the scores for the spots actually visited) is as high as it can be. The full list of sites and numbers is shown below.
+
+{
+  ""total_sites_including_lab"": 10,
+  ""nodes"": [
+    {
+      ""site_id"": 0,
+      ""x_coordinate"": 19,
+      ""y_coordinate"": 24,
+      ""ecological_importance_score"": 0
+    },
+    {
+      ""site_id"": 1,
+      ""x_coordinate"": 12,
+      ""y_coordinate"": 22,
+      ""ecological_importance_score"": 20
+    },
+    {
+      ""site_id"": 2,
+      ""x_coordinate"": 22,
+      ""y_coordinate"": 17,
+      ""ecological_importance_score"": 30
+    },
+    {
+      ""site_id"": 3,
+      ""x_coordinate"": 19,
+      ""y_coordinate"": 15,
+      ""ecological_importance_score"": 30
+    },
+    {
+      ""site_id"": 4,
+      ""x_coordinate"": 11,
+      ""y_coordinate"": 18,
+      ""ecological_importance_score"": 30
+    },
+    {
+      ""site_id"": 5,
+      ""x_coordinate"": 18,
+      ""y_coordinate"": 25,
+      ""ecological_importance_score"": 10
+    },
+    {
+      ""site_id"": 6,
+      ""x_coordinate"": 19,
+      ""y_coordinate"": 24,
+      ""ecological_importance_score"": 10
+    },
+    {
+      ""site_id"": 7,
+      ""x_coordinate"": 17,
+      ""y_coordinate"": 19,
+      ""ecological_importance_score"": 20
+    },
+    {
+      ""site_id"": 8,
+      ""x_coordinate"": 10,
+      ""y_coordinate"": 21,
+      ""ecological_importance_score"": 20
+    },
+    {
+      ""site_id"": 9,
+      ""x_coordinate"": 15,
+      ""y_coordinate"": 23,
+      ""ecological_importance_score"": 10
+    }
+  ],
+  ""lab_node_id"": 0,
+  ""max_survey_distance"": 21.0
+}
+
+If you want to hand me the planned loop, just drop it into a little JSON snippet like this so it's easy to read and parse:
+
+{
+  ""solution"": [""lab_id"", ""site_id"", ""..."", ""lab_id""]
+}
+
+Here ""solution"" should be the tour: the first entry is the lab where you start, the last is the same lab (since it's a loop), and the things in between are the sites you visit in order. Think of it like filling in a simple form: list the lab, then the spots you’ll walk to (each at most once), then back to the lab.
+
+This is just the shape I expect — a sketch, not the actual answer. Please use the exact identifiers from the instance input; do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""coordinates"": [[19, 24], [12, 22], [22, 17], [19, 15], [11, 18], [18, 25], [19, 24], [17, 19], [10, 21], [15, 23]], ""prizes"": [0, 20, 30, 30, 30, 10, 10, 20, 20, 10], ""depot"": 0, ""max_length"": 21.0, ""route_length"": 20.221324381327896, ""collected_prize"": 70.0, ""objective"": 70.0}","[0, 6, 2, 3, 0]",70.0,"{""problem_type"": ""OP"", ""num_nodes"": 10, ""nodes"": [{""id"": 0, ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": 1, ""x"": 12, ""y"": 22, ""prize"": 20}, {""id"": 2, ""x"": 22, ""y"": 17, ""prize"": 30}, {""id"": 3, ""x"": 19, ""y"": 15, ""prize"": 30}, {""id"": 4, ""x"": 11, ""y"": 18, ""prize"": 30}, {""id"": 5, ""x"": 18, ""y"": 25, ""prize"": 10}, {""id"": 6, ""x"": 19, ""y"": 24, ""prize"": 10}, {""id"": 7, ""x"": 17, ""y"": 19, ""prize"": 20}, {""id"": 8, ""x"": 10, ""y"": 21, ""prize"": 20}, {""id"": 9, ""x"": 15, ""y"": 23, ""prize"": 10}], ""depot"": 0, ""max_length"": 21.0, ""route_length"": 20.221324381327896, ""collected_prize"": 70.0, ""objective"": 70.0}","[0, 6, 2, 3, 0]"
+OP_S_035,OP,S,35,"We operate a soup-kitchen van that always starts and finishes at the kitchen, and on any run we decide which places to visit to hand out meals. Each stop gets served once and we don’t go back to the same spot later. The route has to fit into the outreach time we’ve got — driving plus the serving time at each stop — and the better route is the one that results in the highest total number of meals delivered, adding up the meals at each chosen stop and giving more weight to locations with greater need. Concrete stop-by-stop details are listed below.
+
+We list 9 locations including the kitchen at node A; every route must fit within 26.0 total outreach time.
+
+| location_id | coord_x | coord_y | weighted_meals_at_location |
+|---|---|---|---|
+| A | 10 | 14 | 0 |
+| B | 18 | 15 | 10 |
+| C | 16 | 9 | 10 |
+| D | 15 | 20 | 10 |
+| E | 13 | 20 | 10 |
+| F | 8 | 5 | 15 |
+| G | 10 | 22 | 10 |
+| H | 8 | 19 | 15 |
+| I | 5 | 11 | 10 |
+
+We will plan routes that start and finish at node A, visit each chosen location once, and not exceed 26.0 across the 9 locations.
+
+Oh, and one more practical thing — when you send back the chosen route, please put it in this simple JSON layout so it's easy to read and process:
+
+{
+  ""solution"": [""kitchen_id"", ""stop_id"", ..., ""kitchen_id""]
+}
+
+This just shows the shape I need: ""solution"" holds the ordered list of place IDs starting and ending at the kitchen, with each stop listed once in the order we visit it. It's just a sketch of the expected shape, not the actual answer — replace the placeholders with the exact IDs from the instance.
+
+Please make sure you use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[10, 14], [18, 15], [16, 9], [15, 20], [13, 20], [8, 5], [10, 22], [8, 19], [5, 11]], ""prizes"": [0, 10, 10, 10, 10, 15, 10, 15, 10], ""depot"": 0, ""max_length"": 26.0, ""route_length"": 22.406517033969138, ""collected_prize"": 45.0, ""objective"": 45.0}","[0, 7, 6, 4, 3, 0]",45.0,"{""problem_type"": ""OP"", ""num_nodes"": 9, ""nodes"": [{""id"": ""A"", ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": ""B"", ""x"": 18, ""y"": 15, ""prize"": 10}, {""id"": ""C"", ""x"": 16, ""y"": 9, ""prize"": 10}, {""id"": ""D"", ""x"": 15, ""y"": 20, ""prize"": 10}, {""id"": ""E"", ""x"": 13, ""y"": 20, ""prize"": 10}, {""id"": ""F"", ""x"": 8, ""y"": 5, ""prize"": 15}, {""id"": ""G"", ""x"": 10, ""y"": 22, ""prize"": 10}, {""id"": ""H"", ""x"": 8, ""y"": 19, ""prize"": 15}, {""id"": ""I"", ""x"": 5, ""y"": 11, ""prize"": 10}], ""depot"": ""A"", ""max_length"": 26.0, ""route_length"": 22.406517033969138, ""collected_prize"": 45.0, ""objective"": 45.0}","[""A"", ""H"", ""G"", ""E"", ""D"", ""A""]"
+OP_S_036,OP,S,36,"There's a small mobile charging kiosk that needs to do one round trip from its depot, plug in at selected festival zones, and return home, and it can't stop at the same zone more than once. What makes a route better is how much money it earns: add up the charging fees from every stop to get the total, and the plan must keep the total driving and swap time under the allowed limit. Concrete details follow below.
+
+There are 8 locations in this instance, the depot is 1, and the maximum allowed trip time (driving plus swap) is 10.0.
+Location 1 is at (4, 7) with charging fee 0.
+Location 2 is at (5, 11) with charging fee 20.
+Location 3 is at (7, 8) with charging fee 20.
+Location 4 is at (6, 7) with charging fee 15.
+Location 5 is at (5, 8) with charging fee 10.
+Location 6 is at (13, 13) with charging fee 40.
+Location 7 is at (14, 14) with charging fee 40.
+Location 8 is at (9, 18) with charging fee 50.
+Plan one round trip that starts and finishes at 1, visits each zone at most once, and keeps total driving plus swap time ≤ 10.0.
+
+When you send back the chosen trip, please use a tiny JSON snippet like this so it's easy to read and plug into the schedule:
+
+{
+  ""solution"": [""depot_zone"", ""zone_1"", ""zone_3"", ""zone_2"", ""depot_zone""]
+}
+
+This just means: ""solution"" is the ordered list of stops for the round trip — the first and last entries are the depot, and everything in between are the festival zones you'll visit (none repeated). It's just a sketch of the shape I need, not the actual route you should send.
+
+Please be sure to use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"{""coordinates"": [[4, 7], [5, 11], [7, 8], [6, 7], [5, 8], [13, 13], [14, 14], [9, 18]], ""prizes"": [0, 20, 20, 15, 10, 40, 40, 50], ""depot"": 0, ""max_length"": 10.0, ""route_length"": 7.404918347287666, ""collected_prize"": 45.0, ""objective"": 45.0}","[0, 4, 3, 2, 0]",45.0,"{""problem_type"": ""OP"", ""num_nodes"": 8, ""nodes"": [{""id"": 1, ""x"": 4, ""y"": 7, ""prize"": 0}, {""id"": 2, ""x"": 5, ""y"": 11, ""prize"": 20}, {""id"": 3, ""x"": 7, ""y"": 8, ""prize"": 20}, {""id"": 4, ""x"": 6, ""y"": 7, ""prize"": 15}, {""id"": 5, ""x"": 5, ""y"": 8, ""prize"": 10}, {""id"": 6, ""x"": 13, ""y"": 13, ""prize"": 40}, {""id"": 7, ""x"": 14, ""y"": 14, ""prize"": 40}, {""id"": 8, ""x"": 9, ""y"": 18, ""prize"": 50}], ""depot"": 1, ""max_length"": 10.0, ""route_length"": 7.404918347287666, ""collected_prize"": 45.0, ""objective"": 45.0}","[1, 5, 4, 3, 1]"
+OP_S_037,OP,S,37,"I run a little farmstand and plan a single loop that leaves from and comes back to the stand, picking which neighborhood blocks to visit along the way. The choice is about which stops to include so the total expected sales from those stops — just add up the sales estimate for each block visited — is as large as possible, while the whole drive stays inside the day’s mileage/time limit and no block is visited more than once. The exact blocks, distances, and sales estimates are shown below.
+
+{
+  ""total_locations_including_stand"": 8,
+  ""nodes"": [
+    {
+      ""block_node_id"": 0,
+      ""block_x_coord"": 19,
+      ""block_y_coord"": 24,
+      ""expected_sales"": 0
+    },
+    {
+      ""block_node_id"": 1,
+      ""block_x_coord"": 20,
+      ""block_y_coord"": 28,
+      ""expected_sales"": 20
+    },
+    {
+      ""block_node_id"": 2,
+      ""block_x_coord"": 12,
+      ""block_y_coord"": 26,
+      ""expected_sales"": 20
+    },
+    {
+      ""block_node_id"": 3,
+      ""block_x_coord"": 19,
+      ""block_y_coord"": 15,
+      ""expected_sales"": 30
+    },
+    {
+      ""block_node_id"": 4,
+      ""block_x_coord"": 21,
+      ""block_y_coord"": 21,
+      ""expected_sales"": 10
+    },
+    {
+      ""block_node_id"": 5,
+      ""block_x_coord"": 17,
+      ""block_y_coord"": 28,
+      ""expected_sales"": 10
+    },
+    {
+      ""block_node_id"": 6,
+      ""block_x_coord"": 17,
+      ""block_y_coord"": 19,
+      ""expected_sales"": 20
+    },
+    {
+      ""block_node_id"": 7,
+      ""block_x_coord"": 15,
+      ""block_y_coord"": 23,
+      ""expected_sales"": 10
+    }
+  ],
+  ""farmstand_node_id"": 0,
+  ""daily_distance_limit"": 8.0
+}
+
+Also, when you give me the route, a tiny JSON snippet like this works best — just an ordered list of stops, starting and ending at the stand.
+
+{
+  ""solution"": [""stand_id"", ""block_id"", ""..."", ""stand_id""]
+}
+
+This simply means: the array lists the stops in order (first item is the stand where you leave from, the last item is the same stand when you come back). ""stand_id"" is just the depot/stand placeholder and ""block_id"" stands in for any neighborhood block you visit; the ""..."" just shows there can be more stops in between. It's a sketch of the shape I need, not the actual route.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""coordinates"": [[19, 24], [20, 28], [12, 26], [19, 15], [21, 21], [17, 28], [17, 19], [15, 23]], ""prizes"": [0, 20, 20, 30, 10, 10, 20, 10], ""depot"": 0, ""max_length"": 8.0, ""route_length"": 7.211102550927978, ""collected_prize"": 10.0, ""objective"": 10.0}","[0, 4, 0]",10.0,"{""problem_type"": ""OP"", ""num_nodes"": 8, ""nodes"": [{""id"": 0, ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": 1, ""x"": 20, ""y"": 28, ""prize"": 20}, {""id"": 2, ""x"": 12, ""y"": 26, ""prize"": 20}, {""id"": 3, ""x"": 19, ""y"": 15, ""prize"": 30}, {""id"": 4, ""x"": 21, ""y"": 21, ""prize"": 10}, {""id"": 5, ""x"": 17, ""y"": 28, ""prize"": 10}, {""id"": 6, ""x"": 17, ""y"": 19, ""prize"": 20}, {""id"": 7, ""x"": 15, ""y"": 23, ""prize"": 10}], ""depot"": 0, ""max_length"": 8.0, ""route_length"": 7.211102550927978, ""collected_prize"": 10.0, ""objective"": 10.0}","[0, 4, 0]"
+OP_S_038,OP,S,38,"Many people rely on these outreach stops, so the clinic’s schedule needs to be a single round trip: start at the clinic, visit some neighborhood centers (each at most once), and come back to the clinic without exceeding our travel-time budget. The aim is to maximize the overall screening impact — every center has a number of screenings and a need rating, and the total is the sum of each center’s screenings multiplied by its need score for all stops on the route. The plan can’t include repeat visits or go over the travel-time cap. The exact locations, their need weights, and the travel-time limit are listed below.
+
+{
+  ""total_locations_including_clinic"": 10,
+  ""nodes"": [
+    {
+      ""center_id"": 0,
+      ""x_coordinate"": 10,
+      ""y_coordinate"": 14,
+      ""weighted_screenings"": 0
+    },
+    {
+      ""center_id"": 1,
+      ""x_coordinate"": 16,
+      ""y_coordinate"": 17,
+      ""weighted_screenings"": 5
+    },
+    {
+      ""center_id"": 2,
+      ""x_coordinate"": 16,
+      ""y_coordinate"": 19,
+      ""weighted_screenings"": 10
+    },
+    {
+      ""center_id"": 3,
+      ""x_coordinate"": 15,
+      ""y_coordinate"": 20,
+      ""weighted_screenings"": 10
+    },
+    {
+      ""center_id"": 4,
+      ""x_coordinate"": 13,
+      ""y_coordinate"": 20,
+      ""weighted_screenings"": 10
+    },
+    {
+      ""center_id"": 5,
+      ""x_coordinate"": 11,
+      ""y_coordinate"": 20,
+      ""weighted_screenings"": 10
+    },
+    {
+      ""center_id"": 6,
+      ""x_coordinate"": 10,
+      ""y_coordinate"": 22,
+      ""weighted_screenings"": 10
+    },
+    {
+      ""center_id"": 7,
+      ""x_coordinate"": 9,
+      ""y_coordinate"": 23,
+      ""weighted_screenings"": 10
+    },
+    {
+      ""center_id"": 8,
+      ""x_coordinate"": 10,
+      ""y_coordinate"": 26,
+      ""weighted_screenings"": 15
+    },
+    {
+      ""center_id"": 9,
+      ""x_coordinate"": 5,
+      ""y_coordinate"": 11,
+      ""weighted_screenings"": 10
+    }
+  ],
+  ""clinic_depot_id"": 0,
+  ""max_travel_time"": 13.0
+}
+
+Oh, and when you give the final route, please stick to a tiny JSON sketch like this so it's easy to read and check:
+
+{
+  ""solution"": [clinic_id, center_id, ..., clinic_id]
+}
+
+This just shows the shape I need: the ""solution"" array lists the stops in order — start at the clinic, visit the neighborhood centers in the order you choose (each at most once), and come back to the clinic. It's only a template, not the actual answer.
+
+Please be sure to use the exact identifiers from the instance input — don't rename or invent labels. For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""coordinates"": [[10, 14], [16, 17], [16, 19], [15, 20], [13, 20], [11, 20], [10, 22], [9, 23], [10, 26], [5, 11]], ""prizes"": [0, 5, 10, 10, 10, 10, 10, 10, 15, 10], ""depot"": 0, ""max_length"": 13.0, ""route_length"": 11.661903789690601, ""collected_prize"": 10.0, ""objective"": 10.0}","[0, 9, 0]",10.0,"{""problem_type"": ""OP"", ""num_nodes"": 10, ""nodes"": [{""id"": 0, ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": 1, ""x"": 16, ""y"": 17, ""prize"": 5}, {""id"": 2, ""x"": 16, ""y"": 19, ""prize"": 10}, {""id"": 3, ""x"": 15, ""y"": 20, ""prize"": 10}, {""id"": 4, ""x"": 13, ""y"": 20, ""prize"": 10}, {""id"": 5, ""x"": 11, ""y"": 20, ""prize"": 10}, {""id"": 6, ""x"": 10, ""y"": 22, ""prize"": 10}, {""id"": 7, ""x"": 9, ""y"": 23, ""prize"": 10}, {""id"": 8, ""x"": 10, ""y"": 26, ""prize"": 15}, {""id"": 9, ""x"": 5, ""y"": 11, ""prize"": 10}], ""depot"": 0, ""max_length"": 13.0, ""route_length"": 11.661903789690601, ""collected_prize"": 10.0, ""objective"": 10.0}","[0, 9, 0]"
+OP_S_039,OP,S,39,"On a busy morning a guide must stitch together one circular route from the visitor center, choosing different attractions to visit once each and making sure the total walking time doesn’t exceed the allowance. Each proposed route’s worth is the total of its stops’ guest satisfaction scores, so just add those scores to compare options; bigger totals mean happier guests. The concrete details are listed below.
+
+# total_locations_including_visitor_center=10
+# visitor_center_id=1
+# max_walking_time=13.0
+location_id,map_x,map_y,guest_satisfaction_score
+1,4,7,0
+2,5,11,20
+3,4,12,20
+4,2,14,30
+5,4,8,10
+6,7,8,20
+7,5,8,10
+8,13,13,40
+9,14,14,40
+10,9,18,50
+
+Also, when you send the final route, please use this simple JSON shape so it's easy to read and validate:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Here ""solution"" is just the ordered circular route: start with the visitor center's ID, list each attraction you plan to visit once (in order), and finish back at the visitor center. Think of the placeholders as blanks you fill in with the exact IDs from the instance.
+
+This is only a sketch of the expected shape — not the actual answer.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""coordinates"": [[4, 7], [5, 11], [4, 12], [2, 14], [4, 8], [7, 8], [5, 8], [13, 13], [14, 14], [9, 18]], ""prizes"": [0, 20, 20, 30, 10, 20, 10, 40, 40, 50], ""depot"": 0, ""max_length"": 13.0, ""route_length"": 11.99070478491457, ""collected_prize"": 60.0, ""objective"": 60.0}","[0, 2, 1, 4, 6, 0]",60.0,"{""problem_type"": ""OP"", ""num_nodes"": 10, ""nodes"": [{""id"": 1, ""x"": 4, ""y"": 7, ""prize"": 0}, {""id"": 2, ""x"": 5, ""y"": 11, ""prize"": 20}, {""id"": 3, ""x"": 4, ""y"": 12, ""prize"": 20}, {""id"": 4, ""x"": 2, ""y"": 14, ""prize"": 30}, {""id"": 5, ""x"": 4, ""y"": 8, ""prize"": 10}, {""id"": 6, ""x"": 7, ""y"": 8, ""prize"": 20}, {""id"": 7, ""x"": 5, ""y"": 8, ""prize"": 10}, {""id"": 8, ""x"": 13, ""y"": 13, ""prize"": 40}, {""id"": 9, ""x"": 14, ""y"": 14, ""prize"": 40}, {""id"": 10, ""x"": 9, ""y"": 18, ""prize"": 50}], ""depot"": 1, ""max_length"": 13.0, ""route_length"": 11.99070478491457, ""collected_prize"": 60.0, ""objective"": 60.0}","[1, 3, 2, 5, 7, 1]"
+OP_S_040,OP,S,40,"Many people do a quick mental puzzle every dinner shift: as the restaurant’s driver, choose a single round-trip that leaves from the kitchen, visits some customers exactly once, and returns before the evening’s driving allowance is used up. Better choices are the ones that collect more in tips — you get that number by adding the tips from the customers you actually visit. The route must stay within the shift’s distance limit, start and end at the kitchen, and never visit the same address twice; the concrete details are shown below.
+
+There are 8 total locations listed; the kitchen is 1, and your maximum driving distance for the shift is 28.0.
+At location 1 (x=10, y=14) you can collect a tip of 0.
+At location 2 (x=18, y=15) you can collect a tip of 10.
+At location 3 (x=15, y=11) you can collect a tip of 10.
+At location 4 (x=11, y=6) you can collect a tip of 15.
+At location 5 (x=8, y=5) you can collect a tip of 15.
+At location 6 (x=11, y=17) you can collect a tip of 5.
+At location 7 (x=10, y=26) you can collect a tip of 15.
+At location 8 (x=4, y=18) you can collect a tip of 10.
+Choose one loop that starts and ends at 1, visits each address at most once, and stays within 28.0 so you maximize the tips you collect.
+
+If you want the route written up in a machine-friendly way, just send it back in a tiny JSON shape like this — it's just a plain list showing the stops in order:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of that as a simple form: ""solution"" is the round-trip, the items in the array are the place IDs you visit in order (start at the kitchen/depot, visit each customer once, and come back to the kitchen). This is just the expected shape — not the actual answer.
+
+Please make sure you use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"{""coordinates"": [[10, 14], [18, 15], [15, 11], [11, 6], [8, 5], [11, 17], [10, 26], [4, 18]], ""prizes"": [0, 10, 10, 15, 15, 5, 15, 10], ""depot"": 0, ""max_length"": 28.0, ""route_length"": 24.615898249739416, ""collected_prize"": 40.0, ""objective"": 40.0}","[0, 2, 3, 4, 0]",40.0,"{""problem_type"": ""OP"", ""num_nodes"": 8, ""nodes"": [{""id"": 1, ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": 2, ""x"": 18, ""y"": 15, ""prize"": 10}, {""id"": 3, ""x"": 15, ""y"": 11, ""prize"": 10}, {""id"": 4, ""x"": 11, ""y"": 6, ""prize"": 15}, {""id"": 5, ""x"": 8, ""y"": 5, ""prize"": 15}, {""id"": 6, ""x"": 11, ""y"": 17, ""prize"": 5}, {""id"": 7, ""x"": 10, ""y"": 26, ""prize"": 15}, {""id"": 8, ""x"": 4, ""y"": 18, ""prize"": 10}], ""depot"": 1, ""max_length"": 28.0, ""route_length"": 24.615898249739416, ""collected_prize"": 40.0, ""objective"": 40.0}","[1, 3, 4, 5, 1]"
+OP_S_041,OP,S,41,"I’m the bookmobile librarian mapping out today’s run: pick a single loop that leaves from the depot and brings the van back there at the end of the day, stop at neighborhood spots only once each, and keep the whole drive inside the day’s mileage limit. The best route is the one that brings in the most loans and patron visits — you’d figure that by adding up the expected loans and visits at each stop you include. The route can’t hit the same neighborhood stop twice and the total miles driven can’t go over the allowance. The concrete stops, distances, and expected loan/visit numbers are shown below.
+
+{
+  ""total_locations"": 6,
+  ""nodes"": [
+    {
+      ""stop_id"": 0,
+      ""map_x"": 19,
+      ""map_y"": 24,
+      ""expected_loans_and_visits"": 0
+    },
+    {
+      ""stop_id"": 1,
+      ""map_x"": 14,
+      ""map_y"": 28,
+      ""expected_loans_and_visits"": 20
+    },
+    {
+      ""stop_id"": 2,
+      ""map_x"": 12,
+      ""map_y"": 29,
+      ""expected_loans_and_visits"": 30
+    },
+    {
+      ""stop_id"": 3,
+      ""map_x"": 15,
+      ""map_y"": 8,
+      ""expected_loans_and_visits"": 40
+    },
+    {
+      ""stop_id"": 4,
+      ""map_x"": 14,
+      ""map_y"": 31,
+      ""expected_loans_and_visits"": 50
+    },
+    {
+      ""stop_id"": 5,
+      ""map_x"": 17,
+      ""map_y"": 28,
+      ""expected_loans_and_visits"": 10
+    }
+  ],
+  ""depot_node"": 0,
+  ""mileage_allowance"": 9.0
+}
+
+Oh — and when you tell me which loop you picked, drop it into a tiny JSON snippet like this so I can read it easily:
+
+{
+  ""solution"": [depot_stop_id, stop_id, ..., depot_stop_id]
+}
+
+This just means ""solution"" holds the stops in order: start at the depot, list each neighborhood stop you visit (once each), and finish back at the depot. It's just a sketch of the shape I need, not the actual answer — I'll expect the real stop identifiers from the instance.
+
+Please use the identifiers exactly as they appear in the instance input — don't rename them or invent new labels.
+
+For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""coordinates"": [[19, 24], [14, 28], [12, 29], [15, 8], [14, 31], [17, 28]], ""prizes"": [0, 20, 30, 40, 50, 10], ""depot"": 0, ""max_length"": 9.0, ""route_length"": 8.94427190999916, ""collected_prize"": 10.0, ""objective"": 10.0}","[0, 5, 0]",10.0,"{""problem_type"": ""OP"", ""num_nodes"": 6, ""nodes"": [{""id"": 0, ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": 1, ""x"": 14, ""y"": 28, ""prize"": 20}, {""id"": 2, ""x"": 12, ""y"": 29, ""prize"": 30}, {""id"": 3, ""x"": 15, ""y"": 8, ""prize"": 40}, {""id"": 4, ""x"": 14, ""y"": 31, ""prize"": 50}, {""id"": 5, ""x"": 17, ""y"": 28, ""prize"": 10}], ""depot"": 0, ""max_length"": 9.0, ""route_length"": 8.94427190999916, ""collected_prize"": 10.0, ""objective"": 10.0}","[0, 5, 0]"
+OP_S_042,OP,S,42,"Recently the service office sent out a technician who had to decide on one clean loop: depart the office, visit selected customers without repeating any address, and come back before the shift’s travel budget expires. Success is measured by how much billable repair income is gathered — simply total the fees from each visited customer — and the route must respect the no-repeat rule and the time cap. The detailed customer list, fees, and travel times are shown below.
+
+There are 10 locations in total: the office is node 1, and the technician's maximum allowed travel time for the loop is 18.0.
+
+| site_id | coord_x | coord_y | billable_fee |
+|---|---|---|---|
+| 1 | 10 | 14 | 0 |
+| 2 | 18 | 13 | 10 |
+| 3 | 14 | 13 | 5 |
+| 4 | 16 | 17 | 5 |
+| 5 | 15 | 20 | 10 |
+| 6 | 14 | 15 | 5 |
+| 7 | 9 | 23 | 10 |
+| 8 | 8 | 17 | 10 |
+| 9 | 8 | 13 | 10 |
+| 10 | 4 | 18 | 10 |
+
+Use these site entries to assemble a single office-starting loop that collects fees without repeating addresses and stays within the 18.0 travel-time budget.
+
+Oh, and when you send the chosen loop back, please use a tiny JSON layout so it's easy to read and machine-friendly. For example:
+
+{
+  ""solution"": [""office_id"", ""customer_id"", ..., ""office_id""]
+}
+
+That ""solution"" array is just the tour in order: start at the office, list each customer you plan to visit once (in the visiting order), and finish back at the office. Think of it like filling out a short form — which stops you visit and in what order. This JSON is only a sketch of the expected shape, not the actual route.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""coordinates"": [[10, 14], [18, 13], [14, 13], [16, 17], [15, 20], [14, 15], [9, 23], [8, 17], [8, 13], [4, 18]], ""prizes"": [0, 10, 5, 5, 10, 5, 10, 10, 10, 10], ""depot"": 0, ""max_length"": 18.0, ""route_length"": 17.57027615404543, ""collected_prize"": 30.0, ""objective"": 30.0}","[0, 8, 7, 9, 0]",30.0,"{""problem_type"": ""OP"", ""num_nodes"": 10, ""nodes"": [{""id"": 1, ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": 2, ""x"": 18, ""y"": 13, ""prize"": 10}, {""id"": 3, ""x"": 14, ""y"": 13, ""prize"": 5}, {""id"": 4, ""x"": 16, ""y"": 17, ""prize"": 5}, {""id"": 5, ""x"": 15, ""y"": 20, ""prize"": 10}, {""id"": 6, ""x"": 14, ""y"": 15, ""prize"": 5}, {""id"": 7, ""x"": 9, ""y"": 23, ""prize"": 10}, {""id"": 8, ""x"": 8, ""y"": 17, ""prize"": 10}, {""id"": 9, ""x"": 8, ""y"": 13, ""prize"": 10}, {""id"": 10, ""x"": 4, ""y"": 18, ""prize"": 10}], ""depot"": 1, ""max_length"": 18.0, ""route_length"": 17.57027615404543, ""collected_prize"": 30.0, ""objective"": 30.0}","[1, 9, 8, 10, 1]"
+OP_S_043,OP,S,43,"There’s a simple plan to make: start at the museum’s storage garage, drive a single circuit that returns to that same garage, and choose some stops along the way. The trick is to never visit an event more than once, keep the total distance under the vehicle’s limit, and collect as much money as possible — the score is just the sum of donations from the stops visited. The concrete event list, travel distances, and donation amounts are shown below.
+
+Below are 7 locations (including the museum garage A); start and end the single circuit at A and keep the total distance ≤ 10.0.
+Location A at (10, 14) — donation 0.
+Location B at (18, 15) — donation 10.
+Location C at (16, 13) — donation 5.
+Location D at (11, 6) — donation 15.
+Location E at (8, 17) — donation 10.
+Location F at (5, 11) — donation 10.
+Location G at (7, 18) — donation 10.
+Plan stops so the circuit returns to A, stays within 10.0, and visits each location at most once.
+
+When you're ready to give me the planned circuit, just use this tiny JSON shape so it's easy to parse:
+
+{
+  ""solution"": [garage_id, event_id, ..., garage_id]
+}
+
+Think of this as a simple form: ""solution"" holds the ordered list of stops for the one round trip — start at the storage garage, list each event you want to visit in the order you'll visit them, and finish back at the same garage. This block is only a sketch of the shape I expect, not the actual route.
+
+Please make sure you use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"{""coordinates"": [[10, 14], [18, 15], [16, 13], [11, 6], [8, 17], [5, 11], [7, 18]], ""prizes"": [0, 10, 5, 15, 10, 10, 10], ""depot"": 0, ""max_length"": 10.0, ""route_length"": 7.211102550927978, ""collected_prize"": 10.0, ""objective"": 10.0}","[0, 4, 0]",10.0,"{""problem_type"": ""OP"", ""num_nodes"": 7, ""nodes"": [{""id"": ""A"", ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": ""B"", ""x"": 18, ""y"": 15, ""prize"": 10}, {""id"": ""C"", ""x"": 16, ""y"": 13, ""prize"": 5}, {""id"": ""D"", ""x"": 11, ""y"": 6, ""prize"": 15}, {""id"": ""E"", ""x"": 8, ""y"": 17, ""prize"": 10}, {""id"": ""F"", ""x"": 5, ""y"": 11, ""prize"": 10}, {""id"": ""G"", ""x"": 7, ""y"": 18, ""prize"": 10}], ""depot"": ""A"", ""max_length"": 10.0, ""route_length"": 7.211102550927978, ""collected_prize"": 10.0, ""objective"": 10.0}","[""A"", ""E"", ""A""]"
+OP_S_044,OP,S,44,"There’s a day where the freelance photographer has a studio start and end point and a handful of shoot spots scattered around town; the task is to arrange one continuous loop that hits some of those spots once each and returns to the studio without exceeding the day’s travel allowance. A better choice is simply the route that earns the highest total in booking fees — calculated by summing the fees for every location visited — provided the whole trip stays within the allowed travel limit. The exact addresses, fees, and travel times are shown below.
+
+{
+  ""num_locations_total"": 8,
+  ""nodes"": [
+    {
+      ""location_id"": 1,
+      ""x_coord"": 4,
+      ""y_coord"": 7,
+      ""booking_fee"": 0
+    },
+    {
+      ""location_id"": 2,
+      ""x_coord"": 5,
+      ""y_coord"": 11,
+      ""booking_fee"": 20
+    },
+    {
+      ""location_id"": 3,
+      ""x_coord"": 3,
+      ""y_coord"": 10,
+      ""booking_fee"": 15
+    },
+    {
+      ""location_id"": 4,
+      ""x_coord"": 4,
+      ""y_coord"": 8,
+      ""booking_fee"": 10
+    },
+    {
+      ""location_id"": 5,
+      ""x_coord"": 7,
+      ""y_coord"": 11,
+      ""booking_fee"": 20
+    },
+    {
+      ""location_id"": 6,
+      ""x_coord"": 8,
+      ""y_coord"": 9,
+      ""booking_fee"": 20
+    },
+    {
+      ""location_id"": 7,
+      ""x_coord"": 7,
+      ""y_coord"": 8,
+      ""booking_fee"": 20
+    },
+    {
+      ""location_id"": 8,
+      ""x_coord"": 13,
+      ""y_coord"": 13,
+      ""booking_fee"": 40
+    }
+  ],
+  ""studio_id"": 1,
+  ""max_travel_allowance"": 30.0
+}
+
+Oh, and when you send back the chosen loop, just pop it into a tiny JSON snippet like this so it's easy to read and machine-friendly:
+
+{
+  ""solution"": [studio_id, spot_id, ..., studio_id]
+}
+
+That's just a simple sketch — ""studio_id"" is the start/end (your photographer's studio) and the ""spot_id"" entries are the shoot locations in the order you'd visit them, finishing back at the studio. Think of it like filling in a little form: list the studio, then the spots you want to hit once each, and end with the studio again.
+
+Please make sure you use the exact identifiers from the instance input when you fill this in — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"{""coordinates"": [[4, 7], [5, 11], [3, 10], [4, 8], [7, 11], [8, 9], [7, 8], [13, 13]], ""prizes"": [0, 20, 15, 10, 20, 20, 20, 40], ""depot"": 0, ""max_length"": 30.0, ""route_length"": 28.61083786437515, ""collected_prize"": 145.0, ""objective"": 145.0}","[0, 3, 2, 1, 5, 4, 7, 6, 0]",145.0,"{""problem_type"": ""OP"", ""num_nodes"": 8, ""nodes"": [{""id"": 1, ""x"": 4, ""y"": 7, ""prize"": 0}, {""id"": 2, ""x"": 5, ""y"": 11, ""prize"": 20}, {""id"": 3, ""x"": 3, ""y"": 10, ""prize"": 15}, {""id"": 4, ""x"": 4, ""y"": 8, ""prize"": 10}, {""id"": 5, ""x"": 7, ""y"": 11, ""prize"": 20}, {""id"": 6, ""x"": 8, ""y"": 9, ""prize"": 20}, {""id"": 7, ""x"": 7, ""y"": 8, ""prize"": 20}, {""id"": 8, ""x"": 13, ""y"": 13, ""prize"": 40}], ""depot"": 1, ""max_length"": 30.0, ""route_length"": 28.61083786437515, ""collected_prize"": 145.0, ""objective"": 145.0}","[1, 4, 3, 2, 6, 5, 8, 7, 1]"
+OP_S_045,OP,S,45,"Someone who buys antiques on the road has to plan a single loop from the workshop that checks houses, buys items if worthwhile, and finishes back at the workshop without doubling back to any house. The aim is to bring home as much appraised value as possible — add up the appraised prices from each visited stop to measure that — but the trip must fit the planned distance limit and each house can only be checked one time. The specific stops, distances, and appraisals are given below.
+
+There are 9 total locations including the workshop 1; the single loop must return to the workshop and stay within 11.0 total distance.
+
+| location_id | x_coordinate | y_coordinate | appraised_value |
+|---|---|---|---|
+| 1 | 10 | 14 | 0 |
+| 2 | 18 | 15 | 10 |
+| 3 | 15 | 17 | 5 |
+| 4 | 15 | 20 | 10 |
+| 5 | 14 | 15 | 5 |
+| 6 | 8 | 5 | 15 |
+| 7 | 8 | 19 | 15 |
+| 8 | 8 | 17 | 10 |
+| 9 | 8 | 13 | 10 |
+
+The buyer must choose one nonrevisiting loop starting and ending at 1 that maximizes total appraised value without exceeding 11.0.
+
+If you want to hand me a candidate route, just drop it in a tiny JSON snippet like the one below — makes it easy to read and keeps everything tidy.
+
+{
+  ""solution"": [workshop_id, house_id, ..., workshop_id]
+}
+
+This little block is just a sketch of the shape I expect: ""solution"" is the whole loop, the list of stops starting and ending at the workshop. Use the workshop placeholder for your starting/ending spot and the house placeholders for any houses you check along the way; the ""..."" just stands for whatever other stops you want to include. It's only an example of the format, not the actual answer.
+
+Please be sure to use the exact identifiers from the instance input (don't rename them or invent new labels).
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""coordinates"": [[10, 14], [18, 15], [15, 17], [15, 20], [14, 15], [8, 5], [8, 19], [8, 17], [8, 13]], ""prizes"": [0, 10, 5, 10, 5, 15, 15, 10, 10], ""depot"": 0, ""max_length"": 11.0, ""route_length"": 10.990716082598492, ""collected_prize"": 25.0, ""objective"": 25.0}","[0, 6, 7, 0]",25.0,"{""problem_type"": ""OP"", ""num_nodes"": 9, ""nodes"": [{""id"": 1, ""x"": 10, ""y"": 14, ""prize"": 0}, {""id"": 2, ""x"": 18, ""y"": 15, ""prize"": 10}, {""id"": 3, ""x"": 15, ""y"": 17, ""prize"": 5}, {""id"": 4, ""x"": 15, ""y"": 20, ""prize"": 10}, {""id"": 5, ""x"": 14, ""y"": 15, ""prize"": 5}, {""id"": 6, ""x"": 8, ""y"": 5, ""prize"": 15}, {""id"": 7, ""x"": 8, ""y"": 19, ""prize"": 15}, {""id"": 8, ""x"": 8, ""y"": 17, ""prize"": 10}, {""id"": 9, ""x"": 8, ""y"": 13, ""prize"": 10}], ""depot"": 1, ""max_length"": 11.0, ""route_length"": 10.990716082598492, ""collected_prize"": 25.0, ""objective"": 25.0}","[1, 7, 8, 1]"
+OP_S_046,OP,S,46,"Many people on the expedition pitch in to plan one continuous circuit that departs and ends at base camp, visiting chosen sampling spots. The choice that counts is the one that brings in the largest total scientific value — just total up the scores of the sites visited — while avoiding duplicate sampling at any location and keeping the entire route inside our travel/time allowance. The concrete sites, their scores, and the allowable route length are detailed below.
+
+{
+  ""total_sites_including_base"": 7,
+  ""nodes"": [
+    {
+      ""site_id"": 1,
+      ""x_coord"": 4,
+      ""y_coord"": 7,
+      ""scientific_value"": 0
+    },
+    {
+      ""site_id"": 2,
+      ""x_coord"": 2,
+      ""y_coord"": 14,
+      ""scientific_value"": 30
+    },
+    {
+      ""site_id"": 3,
+      ""x_coord"": 7,
+      ""y_coord"": 8,
+      ""scientific_value"": 20
+    },
+    {
+      ""site_id"": 4,
+      ""x_coord"": 5,
+      ""y_coord"": 8,
+      ""scientific_value"": 10
+    },
+    {
+      ""site_id"": 5,
+      ""x_coord"": 5,
+      ""y_coord"": 6,
+      ""scientific_value"": 10
+    },
+    {
+      ""site_id"": 6,
+      ""x_coord"": 9,
+      ""y_coord"": 16,
+      ""scientific_value"": 30
+    },
+    {
+      ""site_id"": 7,
+      ""x_coord"": 4,
+      ""y_coord"": 16,
+      ""scientific_value"": 30
+    }
+  ],
+  ""base_camp_id"": 1,
+  ""max_route_length"": 15.0
+}
+
+When you're ready, just send back the chosen loop in a tiny JSON object like this:
+
+{
+  ""solution"": [""basecamp_id"", ""site_id"", ..., ""basecamp_id""]
+}
+
+Think of that as a simple form: ""solution"" is the ordered sequence of place IDs (start at base camp, visit each picked site once, and return to base camp). The example above is just a sketch of the shape I expect — it isn't the actual answer.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them and do not invent new labels.
+
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,one_based,"{""coordinates"": [[4, 7], [2, 14], [7, 8], [5, 8], [5, 6], [9, 16], [4, 16]], ""prizes"": [0, 30, 20, 10, 10, 30, 30], ""depot"": 0, ""max_length"": 15.0, ""route_length"": 8.576491222541474, ""collected_prize"": 40.0, ""objective"": 40.0}","[0, 4, 3, 2, 0]",40.0,"{""problem_type"": ""OP"", ""num_nodes"": 7, ""nodes"": [{""id"": 1, ""x"": 4, ""y"": 7, ""prize"": 0}, {""id"": 2, ""x"": 2, ""y"": 14, ""prize"": 30}, {""id"": 3, ""x"": 7, ""y"": 8, ""prize"": 20}, {""id"": 4, ""x"": 5, ""y"": 8, ""prize"": 10}, {""id"": 5, ""x"": 5, ""y"": 6, ""prize"": 10}, {""id"": 6, ""x"": 9, ""y"": 16, ""prize"": 30}, {""id"": 7, ""x"": 4, ""y"": 16, ""prize"": 30}], ""depot"": 1, ""max_length"": 15.0, ""route_length"": 8.576491222541474, ""collected_prize"": 40.0, ""objective"": 40.0}","[1, 5, 4, 3, 1]"
+OP_S_047,OP,S,47,"Someone organizing outreach needs to map a single circuit that starts and ends at the health center, hits a selection of outreach points (each no more than once), and stays inside the team’s travel budget for the day. The aim is straightforward: choose the stops that, when the patient counts at those stops are summed, give the highest total number of vaccinations possible without going over the travel allowance. The specific stops, patient counts, and travel constraints are listed below.
+
+There are 9 locations (including the health center 0); the single circuit must start and end at 0 and stay within the travel budget of 22.0.
+Outreach point 0 at (19, 24) expects 0 patients.
+Outreach point 1 at (12, 24) expects 20 patients.
+Outreach point 2 at (14, 28) expects 20 patients.
+Outreach point 3 at (20, 28) expects 20 patients.
+Outreach point 4 at (21, 27) expects 20 patients.
+Outreach point 5 at (19, 15) expects 30 patients.
+Outreach point 6 at (11, 18) expects 30 patients.
+Outreach point 7 at (14, 31) expects 50 patients.
+Outreach point 8 at (14, 19) expects 20 patients.
+List each outreach point below; the organizer will select the subset that maximizes total expected vaccinations without exceeding the 22.0 travel budget.
+
+You can send the answer in a very simple JSON shape like this — just to show the order of stops on the circuit:
+
+{
+  ""solution"": [""health_center_id"", ""outreach_point_id"", ""..."", ""health_center_id""]
+}
+
+Think of that as a little form: ""solution"" is the ordered list of places the team will visit, starting and ending at the health center. The placeholders in the example stand in for the actual identifiers you'll pick from the instance (start at the health center, list each outreach stop you plan to hit once in order, then return to the health center). This block is only a sketch of the expected shape, not the actual route.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""coordinates"": [[19, 24], [12, 24], [14, 28], [20, 28], [21, 27], [19, 15], [11, 18], [14, 31], [14, 19]], ""prizes"": [0, 20, 20, 20, 20, 30, 30, 50, 20], ""depot"": 0, ""max_length"": 22.0, ""route_length"": 21.1310930077693, ""collected_prize"": 110.0, ""objective"": 110.0}","[0, 2, 7, 3, 4, 0]",110.0,"{""problem_type"": ""OP"", ""num_nodes"": 9, ""nodes"": [{""id"": 0, ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": 1, ""x"": 12, ""y"": 24, ""prize"": 20}, {""id"": 2, ""x"": 14, ""y"": 28, ""prize"": 20}, {""id"": 3, ""x"": 20, ""y"": 28, ""prize"": 20}, {""id"": 4, ""x"": 21, ""y"": 27, ""prize"": 20}, {""id"": 5, ""x"": 19, ""y"": 15, ""prize"": 30}, {""id"": 6, ""x"": 11, ""y"": 18, ""prize"": 30}, {""id"": 7, ""x"": 14, ""y"": 31, ""prize"": 50}, {""id"": 8, ""x"": 14, ""y"": 19, ""prize"": 20}], ""depot"": 0, ""max_length"": 22.0, ""route_length"": 21.1310930077693, ""collected_prize"": 110.0, ""objective"": 110.0}","[0, 2, 7, 3, 4, 0]"
+OP_S_048,OP,S,48,"Many people think route planning is about going everywhere, but here the trick is to build one neat round trip from the press that never goes through the same block twice, only visits each non-press location once, and stays inside the permitted delivery distance. The route that’s “best” is the one that gathers the largest total of subscriptions and single-issue sales when the numbers at each visited stop are added together. The detailed list of stops, distances and sales is right below.
+
+{
+  ""total_stops_including_press"": 6,
+  ""nodes"": [
+    {
+      ""block_id"": 0,
+      ""block_x_coordinate"": 19,
+      ""block_y_coordinate"": 24,
+      ""expected_sales_count"": 0
+    },
+    {
+      ""block_id"": 1,
+      ""block_x_coordinate"": 11,
+      ""block_y_coordinate"": 18,
+      ""expected_sales_count"": 30
+    },
+    {
+      ""block_id"": 2,
+      ""block_x_coordinate"": 12,
+      ""block_y_coordinate"": 29,
+      ""expected_sales_count"": 30
+    },
+    {
+      ""block_id"": 3,
+      ""block_x_coordinate"": 9,
+      ""block_y_coordinate"": 29,
+      ""expected_sales_count"": 40
+    },
+    {
+      ""block_id"": 4,
+      ""block_x_coordinate"": 21,
+      ""block_y_coordinate"": 21,
+      ""expected_sales_count"": 10
+    },
+    {
+      ""block_id"": 5,
+      ""block_x_coordinate"": 18,
+      ""block_y_coordinate"": 26,
+      ""expected_sales_count"": 10
+    }
+  ],
+  ""press_node_id"": 0,
+  ""max_delivery_distance"": 18.0
+}
+
+Also, when you send the route back, just stick to this simple JSON shape so it’s easy to read and check:
+
+{
+  ""solution"": [""press_id"", ""stop_id"", ..., ""press_id""]
+}
+
+Pretty straightforward: ""solution"" is the ordered list of stops on the round trip, with the first and last entry being the press (depot). The entries in the array are placeholders for the actual stop identifiers from the instance — think of them as the labels you’ll replace with the real ones when you give the final route. This block is just a sketch of the expected shape, not the actual answer.
+
+Please be sure to use the identifiers exactly as they appear in the instance input — do not rename them and don’t invent new labels.
+
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"{""coordinates"": [[19, 24], [11, 18], [12, 29], [9, 29], [21, 21], [18, 26]], ""prizes"": [0, 30, 30, 40, 10, 10], ""depot"": 0, ""max_length"": 18.0, ""route_length"": 17.546597177041786, ""collected_prize"": 40.0, ""objective"": 40.0}","[0, 2, 5, 0]",40.0,"{""problem_type"": ""OP"", ""num_nodes"": 6, ""nodes"": [{""id"": 0, ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": 1, ""x"": 11, ""y"": 18, ""prize"": 30}, {""id"": 2, ""x"": 12, ""y"": 29, ""prize"": 30}, {""id"": 3, ""x"": 9, ""y"": 29, ""prize"": 40}, {""id"": 4, ""x"": 21, ""y"": 21, ""prize"": 10}, {""id"": 5, ""x"": 18, ""y"": 26, ""prize"": 10}], ""depot"": 0, ""max_length"": 18.0, ""route_length"": 17.546597177041786, ""collected_prize"": 40.0, ""objective"": 40.0}","[0, 2, 5, 0]"
+OP_S_049,OP,S,49,"I run a one-person home repair shop and need to plan a single loop that leaves the workshop in the morning and comes back at the end of the day, stopping at a handful of clients along the way. The choice is which clients to visit so the day brings in the most cash — the total pay is just the sum of the service fees for every job actually completed on that loop. The route can’t go over the daily travel allowance, and once a client’s job is done the crew doesn’t double back to that same address later, so each client can only be visited once. The exact list of clients, their fees and the distances are shown below.
+
+# total_locations_including_workshop=10
+# workshop_node=A
+# daily_travel_limit=8.0
+location_id,x_coordinate,y_coordinate,service_fee
+A,19,24,0
+B,12,24,20
+C,14,28,20
+D,12,22,20
+E,19,15,30
+F,17,28,30
+G,9,29,40
+H,14,31,50
+I,19,24,10
+J,17,19,20
+
+Oh, and to keep things machine-friendly, please send the planned loop in a tiny JSON sketch like this:
+
+{
+  ""solution"": [workshop_id, client_id, ..., workshop_id]
+}
+
+Think of ""solution"" as the ordered list of stops for the day: the first and last entry are your workshop, and everything in between are the clients you visit in order. This is just the expected shape of the answer — a quick form, not the actual route.
+
+Please be careful to use the exact identifiers from the instance input — don't rename them and don't invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"{""coordinates"": [[19, 24], [12, 24], [14, 28], [12, 22], [19, 15], [17, 28], [9, 29], [14, 31], [19, 24], [17, 19]], ""prizes"": [0, 20, 20, 20, 30, 30, 40, 50, 10, 20], ""depot"": 0, ""max_length"": 8.0, ""route_length"": 0.0, ""collected_prize"": 10.0, ""objective"": 10.0}","[0, 8, 0]",10.0,"{""problem_type"": ""OP"", ""num_nodes"": 10, ""nodes"": [{""id"": ""A"", ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": ""B"", ""x"": 12, ""y"": 24, ""prize"": 20}, {""id"": ""C"", ""x"": 14, ""y"": 28, ""prize"": 20}, {""id"": ""D"", ""x"": 12, ""y"": 22, ""prize"": 20}, {""id"": ""E"", ""x"": 19, ""y"": 15, ""prize"": 30}, {""id"": ""F"", ""x"": 17, ""y"": 28, ""prize"": 30}, {""id"": ""G"", ""x"": 9, ""y"": 29, ""prize"": 40}, {""id"": ""H"", ""x"": 14, ""y"": 31, ""prize"": 50}, {""id"": ""I"", ""x"": 19, ""y"": 24, ""prize"": 10}, {""id"": ""J"", ""x"": 17, ""y"": 19, ""prize"": 20}], ""depot"": ""A"", ""max_length"": 8.0, ""route_length"": 0.0, ""collected_prize"": 10.0, ""objective"": 10.0}","[""A"", ""I"", ""A""]"
+OP_S_050,OP,S,50,"Many vendors face the same routine: start at the storage depot, do one loop of the neighborhood, and return before the shift is up. The job is to pick a list of vending spots and an order to visit them so each place is visited no more than once, the whole trip stays within the shift’s travel allowance, and total revenue — the sum of money from all visited stops — is as large as possible. The exact data for the stops and travel limits are listed below.
+
+There are 10 locations including depot 0; the shift travel allowance is 26.0.
+Stop 0 at (19, 24) offers expected sales revenue 0.
+Stop 1 at (16, 28) offers expected sales revenue 20.
+Stop 2 at (12, 22) offers expected sales revenue 20.
+Stop 3 at (12, 29) offers expected sales revenue 30.
+Stop 4 at (9, 29) offers expected sales revenue 40.
+Stop 5 at (18, 25) offers expected sales revenue 10.
+Stop 6 at (21, 21) offers expected sales revenue 10.
+Stop 7 at (14, 19) offers expected sales revenue 20.
+Stop 8 at (10, 21) offers expected sales revenue 20.
+Stop 9 at (15, 23) offers expected sales revenue 10.
+These entries describe the locations to consider for a single round trip from depot 0 within the shift travel allowance 26.0.
+
+If you want to hand me the chosen loop, a neat way is to put it in a tiny JSON snippet like this:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Pretty simple: ""solution"" holds the ordered list of stops (start at the depot, visit each chosen vending spot at most once, and come back to the depot). Think of it like filling out a short form — the array is the route in the order you'd drive it.
+
+This JSON is just a sketch of the shape I expect, not the actual filled-in answer.
+
+Please use the exact identifiers from the instance input when you fill it in — do not rename or invent labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""coordinates"": [[19, 24], [16, 28], [12, 22], [12, 29], [9, 29], [18, 25], [21, 21], [14, 19], [10, 21], [15, 23]], ""prizes"": [0, 20, 20, 30, 40, 10, 10, 20, 20, 10], ""depot"": 0, ""max_length"": 26.0, ""route_length"": 24.751257463310978, ""collected_prize"": 110.0, ""objective"": 110.0}","[0, 5, 1, 3, 4, 9, 0]",110.0,"{""problem_type"": ""OP"", ""num_nodes"": 10, ""nodes"": [{""id"": 0, ""x"": 19, ""y"": 24, ""prize"": 0}, {""id"": 1, ""x"": 16, ""y"": 28, ""prize"": 20}, {""id"": 2, ""x"": 12, ""y"": 22, ""prize"": 20}, {""id"": 3, ""x"": 12, ""y"": 29, ""prize"": 30}, {""id"": 4, ""x"": 9, ""y"": 29, ""prize"": 40}, {""id"": 5, ""x"": 18, ""y"": 25, ""prize"": 10}, {""id"": 6, ""x"": 21, ""y"": 21, ""prize"": 10}, {""id"": 7, ""x"": 14, ""y"": 19, ""prize"": 20}, {""id"": 8, ""x"": 10, ""y"": 21, ""prize"": 20}, {""id"": 9, ""x"": 15, ""y"": 23, ""prize"": 10}], ""depot"": 0, ""max_length"": 26.0, ""route_length"": 24.751257463310978, ""collected_prize"": 110.0, ""objective"": 110.0}","[0, 5, 1, 3, 4, 9, 0]"

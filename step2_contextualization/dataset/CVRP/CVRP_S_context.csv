@@ -1,0 +1,1491 @@
+id,task_id,difficulty_tier,example_index,prompt,surface_format,indexing_scheme,instance_canonical_json,reference_solution_canonical_json,reference_objective_value,instance_surface_json,reference_solution_surface_json
+CVRP_S_001,CVRP,S,1,"Someone from the store is lining up the drivers and thinking about how to split the work: every driver should start at the shop, cover a set of houses with their requested groceries exactly once, and return to the shop without exceeding the van’s load limit. To pick the best way, add up the distance each van travels and choose the arrangement with the smallest total distance. The concrete list of stops, quantities, and van capacities follows below.
+
+There are 10 locations in total; the shop is node A, and each van can carry up to 100 units.
+
+| location_id | location_x_coordinate | location_y_coordinate | grocery_demand_units |
+|---|---|---|---|
+| A | 0 | 71 | 0 |
+| B | 62 | 6 | 12 |
+| C | 71 | 8 | 24 |
+| D | 62 | 90 | 3 |
+| E | 76 | 9 | 14 |
+| F | 87 | 59 | 19 |
+| G | 70 | 0 | 4 |
+| H | 100 | 31 | 24 |
+| I | 75 | 100 | 19 |
+| J | 68 | 98 | 2 |
+
+Assign routes so each van starts and ends at node A, never exceeds 100 units, and the overall distance is minimized.
+
+Also, to keep things tidy, when you send back the routes just stick to a simple JSON shape like this so I can read it straight away:
+
+{
+  ""solution"": [[shop_id, house_id, ... , shop_id], [shop_id, house_id, ... , shop_id], ...]
+}
+
+Pretty much: ""solution"" is a list of routes; each route is an array that starts and ends with the shop_id and lists the houses (house_id) visited in order. It's just an example of the shape I expect—don't treat these placeholders as real answers.
+
+Please use the exact identifiers from the instance input — no renaming and no made-up labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[0, 71], [62, 6], [71, 8], [62, 90], [76, 9], [87, 59], [70, 0], [100, 31], [75, 100], [68, 98]], ""depot"": 0, ""demands"": [0, 12, 24, 3, 14, 19, 4, 24, 19, 2], ""capacity"": 100, ""num_vehicles"": 2, ""total_distance"": 425.93241582495574, ""objective"": 425.93241582495574}","[[0, 3, 8, 9, 0], [0, 1, 6, 2, 4, 7, 5, 0]]",425.93241582495574,"{""problem_type"": ""CVRP"", ""num_nodes"": 10, ""nodes"": [{""id"": ""A"", ""x"": 0, ""y"": 71, ""demand"": 0}, {""id"": ""B"", ""x"": 62, ""y"": 6, ""demand"": 12}, {""id"": ""C"", ""x"": 71, ""y"": 8, ""demand"": 24}, {""id"": ""D"", ""x"": 62, ""y"": 90, ""demand"": 3}, {""id"": ""E"", ""x"": 76, ""y"": 9, ""demand"": 14}, {""id"": ""F"", ""x"": 87, ""y"": 59, ""demand"": 19}, {""id"": ""G"", ""x"": 70, ""y"": 0, ""demand"": 4}, {""id"": ""H"", ""x"": 100, ""y"": 31, ""demand"": 24}, {""id"": ""I"", ""x"": 75, ""y"": 100, ""demand"": 19}, {""id"": ""J"", ""x"": 68, ""y"": 98, ""demand"": 2}], ""depot"": ""A"", ""capacity"": 100, ""num_vehicles"": 2, ""total_distance"": 425.93241582495574, ""objective"": 425.93241582495574}","[[""A"", ""D"", ""I"", ""J"", ""A""], [""A"", ""B"", ""G"", ""C"", ""E"", ""H"", ""F"", ""A""]]"
+CVRP_S_002,CVRP,S,2,"We’re coordinating the day’s routes so a handful of carriers can hand over every piece of mail one time and then return to the post office. The choice is which streets and houses each carrier covers, keeping each route’s total mail within the capacity of that carrier’s bag. The goal is to keep the overall driving low: take each carrier’s route length, add them up, and the plan with the lowest total miles is best. The concrete stop-by-stop details appear below.
+
+# total_stops_including_post_office=9
+# post_office_stop_id=A
+# carrier_mailbag_capacity=100
+stop_id,map_x_coordinate,map_y_coordinate,mail_items_to_deliver
+A,83,76,0
+B,50,5,20
+C,100,14,26
+D,21,0,17
+E,60,25,20
+F,78,41,20
+G,56,92,12
+H,0,40,26
+I,81,100,16
+
+Also, when you send the planned routes back, please use this simple JSON shape so it's easy to read and parse:
+
+{
+  ""solution"": [[post_office_id, house_id, ... , post_office_id], [post_office_id, house_id, ... , post_office_id], ...]
+}
+
+This shows the general layout: ""solution"" is a list of routes, each inner list is the sequence of stops a single carrier will follow (starting and ending at the post office). It's just a sketch of the expected shape — not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"{""coordinates"": [[83, 76], [50, 5], [100, 14], [21, 0], [60, 25], [78, 41], [56, 92], [0, 40], [81, 100]], ""depot"": 0, ""demands"": [0, 20, 26, 17, 20, 20, 12, 26, 16], ""capacity"": 100, ""num_vehicles"": 2, ""total_distance"": 443.0575013950785, ""objective"": 443.0575013950785}","[[0, 4, 1, 3, 7, 6, 0], [0, 5, 2, 8, 0]]",443.0575013950785,"{""problem_type"": ""CVRP"", ""num_nodes"": 9, ""nodes"": [{""id"": ""A"", ""x"": 83, ""y"": 76, ""demand"": 0}, {""id"": ""B"", ""x"": 50, ""y"": 5, ""demand"": 20}, {""id"": ""C"", ""x"": 100, ""y"": 14, ""demand"": 26}, {""id"": ""D"", ""x"": 21, ""y"": 0, ""demand"": 17}, {""id"": ""E"", ""x"": 60, ""y"": 25, ""demand"": 20}, {""id"": ""F"", ""x"": 78, ""y"": 41, ""demand"": 20}, {""id"": ""G"", ""x"": 56, ""y"": 92, ""demand"": 12}, {""id"": ""H"", ""x"": 0, ""y"": 40, ""demand"": 26}, {""id"": ""I"", ""x"": 81, ""y"": 100, ""demand"": 16}], ""depot"": ""A"", ""capacity"": 100, ""num_vehicles"": 2, ""total_distance"": 443.0575013950785, ""objective"": 443.0575013950785}","[[""A"", ""E"", ""B"", ""D"", ""H"", ""G"", ""A""], [""A"", ""F"", ""C"", ""I"", ""A""]]"
+CVRP_S_003,CVRP,S,3,"A small school district wants to set up bus runs that begin and end at the district garage, pick up every child exactly once, and never put more kids on a bus than it can seat. The task is to figure out which students go on which bus and the order of stops for each run so nobody is missed or picked up more than once. The measure of a good plan is simple: the less the entire fleet has to drive, the better — add together the distances of all the bus routes to get that total, and try to reduce it. The concrete list of stops, student counts, and vehicle capacities appears below.
+
+There are 9 total stops including the garage; the garage stop id is 0; each bus has a seating capacity of 100 students.
+
+| stop_id | map_x_coordinate | map_y_coordinate | students_waiting |
+|---|---|---|---|
+| 0 | 83 | 24 | 0 |
+| 1 | 0 | 52 | 19 |
+| 2 | 54 | 66 | 26 |
+| 3 | 52 | 100 | 19 |
+| 4 | 33 | 45 | 10 |
+| 5 | 27 | 69 | 20 |
+| 6 | 100 | 90 | 8 |
+| 7 | 95 | 6 | 18 |
+| 8 | 80 | 0 | 21 |
+
+All routes must start and end at garage 0, visit every one of the 9 stops exactly once, and never carry more than 100 students on a run.
+
+Also, when you reply, it'd be great if you follow a simple JSON layout so it's easy to read and check. Something like this:
+
+{
+  ""solution"": [[garage_id, stop_id, ... , garage_id], [garage_id, stop_id, ... , garage_id], ...]
+}
+
+This is just a sketch of the shape I expect: ""solution"" is a list of bus runs, each run is an ordered list of stop identifiers that starts and ends at the garage. Use the actual stop IDs from the instance for the garage and each stop — don't invent new names. The JSON above is only the shape, not the real plan.
+
+Please use the exact identifiers given in the problem input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"{""coordinates"": [[83, 24], [0, 52], [54, 66], [52, 100], [33, 45], [27, 69], [100, 90], [95, 6], [80, 0]], ""depot"": 0, ""demands"": [0, 19, 26, 19, 10, 20, 8, 18, 21], ""capacity"": 100, ""num_vehicles"": 2, ""total_distance"": 436.6454044420979, ""objective"": 436.6454044420979}","[[0, 6, 3, 5, 1, 4, 0], [0, 7, 8, 2, 0]]",436.6454044420979,"{""problem_type"": ""CVRP"", ""num_nodes"": 9, ""nodes"": [{""id"": 0, ""x"": 83, ""y"": 24, ""demand"": 0}, {""id"": 1, ""x"": 0, ""y"": 52, ""demand"": 19}, {""id"": 2, ""x"": 54, ""y"": 66, ""demand"": 26}, {""id"": 3, ""x"": 52, ""y"": 100, ""demand"": 19}, {""id"": 4, ""x"": 33, ""y"": 45, ""demand"": 10}, {""id"": 5, ""x"": 27, ""y"": 69, ""demand"": 20}, {""id"": 6, ""x"": 100, ""y"": 90, ""demand"": 8}, {""id"": 7, ""x"": 95, ""y"": 6, ""demand"": 18}, {""id"": 8, ""x"": 80, ""y"": 0, ""demand"": 21}], ""depot"": 0, ""capacity"": 100, ""num_vehicles"": 2, ""total_distance"": 436.6454044420979, ""objective"": 436.6454044420979}","[[0, 6, 3, 5, 1, 4, 0], [0, 7, 8, 2, 0]]"
+CVRP_S_004,CVRP,S,4,"Recently the kitchen had a full day of events and had to split up deliveries: the decision was how to group stops for each van so every event gets its drop exactly once, all routes begin and end at the kitchen, and loads stay within each vehicle’s limit. The clearer winner was the plan with the least total driving — just add up the distance of each round trip to see which plan wins. The concrete details follow below.
+
+There were 5 locations including the kitchen at node 1, and each van had a capacity of 100 units.
+
+| location_id | location_x | location_y | order_quantity |
+|---|---|---|---|
+| 1 | 0 | 25 | 0 |
+| 2 | 30 | 0 | 5 |
+| 3 | 32 | 100 | 13 |
+| 4 | 100 | 22 | 4 |
+| 5 | 43 | 94 | 7 |
+
+With these specifics, the plan with the least total round-trip distance was the winner.
+
+If you want to hand me the route plan, a nice compact way is this JSON shape — just a top-level ""solution"" with a list of round trips:
+
+{
+  ""solution"": [[kitchen_id, stop_id, ... , kitchen_id], [kitchen_id, stop_id, ... , kitchen_id], ...]
+}
+
+Think of it like a little form: each inner list is one van's round trip (start at the kitchen, visit the listed stops in order, then return to the kitchen), and the outer list is the whole set of vans/routes. This is just a sketch of the shape I expect, not the actual answer.
+
+Please use the exact identifiers from the instance input — no renaming and no extra labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,one_based,"{""coordinates"": [[0, 25], [30, 0], [32, 100], [100, 22], [43, 94]], ""depot"": 0, ""demands"": [0, 5, 13, 4, 7], ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 298.32972549472004, ""objective"": 298.32972549472004}","[[0, 1, 3, 4, 2, 0]]",298.32972549472004,"{""problem_type"": ""CVRP"", ""num_nodes"": 5, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 25, ""demand"": 0}, {""id"": 2, ""x"": 30, ""y"": 0, ""demand"": 5}, {""id"": 3, ""x"": 32, ""y"": 100, ""demand"": 13}, {""id"": 4, ""x"": 100, ""y"": 22, ""demand"": 4}, {""id"": 5, ""x"": 43, ""y"": 94, ""demand"": 7}], ""depot"": 1, ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 298.32972549472004, ""objective"": 298.32972549472004}","[[1, 2, 4, 5, 3, 1]]"
+CVRP_S_005,CVRP,S,5,"There’s a routine to organize: nurses head out from the clinic, call on a list of patients, and then end the day back at the same clinic, with no patient getting more than one visit. Vehicles carry limited equipment, so each tour must fit within that load limit. The winning setup is the one that produces the fewest total miles driven (just add up the distance of every tour), and the concrete details — who’s where and how much they need, plus vehicle limits — appear below.
+
+{
+  ""num_locations_including_clinic"": 6,
+  ""nodes"": [
+    {
+      ""location_node_id"": 1,
+      ""x_coordinate"": 56,
+      ""y_coordinate"": 23,
+      ""equipment_demand"": 0
+    },
+    {
+      ""location_node_id"": 2,
+      ""x_coordinate"": 46,
+      ""y_coordinate"": 73,
+      ""equipment_demand"": 16
+    },
+    {
+      ""location_node_id"": 3,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 0,
+      ""equipment_demand"": 12
+    },
+    {
+      ""location_node_id"": 4,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 100,
+      ""equipment_demand"": 31
+    },
+    {
+      ""location_node_id"": 5,
+      ""x_coordinate"": 18,
+      ""y_coordinate"": 59,
+      ""equipment_demand"": 17
+    },
+    {
+      ""location_node_id"": 6,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 14,
+      ""equipment_demand"": 5
+    }
+  ],
+  ""clinic_node_id"": 1,
+  ""vehicle_equipment_capacity"": 220
+}
+
+When you send the routes back, just use a little JSON sketch like this so it's easy to read and parse:
+
+{
+  ""solution"": [[""clinic_id"", ""patient_id"", ... , ""clinic_id""], [""clinic_id"", ""patient_id"", ... , ""clinic_id""], ...]
+}
+
+Each inner list is one nurse's round: start at the clinic, visit the listed patients in order, then finish back at the clinic. Think of it like filling out a simple route sheet — it's just the order of stops for each vehicle. The block above is only an example of the shape I need, not the actual routes.
+
+Please use the exact identifiers from the instance input — don't rename them or make up new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”"".",json,one_based,"{""coordinates"": [[56, 23], [46, 73], [100, 0], [100, 100], [18, 59], [0, 14]], ""depot"": 0, ""demands"": [0, 16, 12, 31, 17, 5], ""capacity"": 220, ""num_vehicles"": 1, ""total_distance"": 346.5126403408765, ""objective"": 346.5126403408765}","[[0, 2, 3, 1, 4, 5, 0]]",346.5126403408765,"{""problem_type"": ""CVRP"", ""num_nodes"": 6, ""nodes"": [{""id"": 1, ""x"": 56, ""y"": 23, ""demand"": 0}, {""id"": 2, ""x"": 46, ""y"": 73, ""demand"": 16}, {""id"": 3, ""x"": 100, ""y"": 0, ""demand"": 12}, {""id"": 4, ""x"": 100, ""y"": 100, ""demand"": 31}, {""id"": 5, ""x"": 18, ""y"": 59, ""demand"": 17}, {""id"": 6, ""x"": 0, ""y"": 14, ""demand"": 5}], ""depot"": 1, ""capacity"": 220, ""num_vehicles"": 1, ""total_distance"": 346.5126403408765, ""objective"": 346.5126403408765}","[[1, 3, 4, 2, 5, 6, 1]]"
+CVRP_S_006,CVRP,S,6,"Someone from the shop is mapping out routes so the delivery vans can drop off all the orders — each address visited only once — then head back to base, making sure no van carries more bouquets than it’s supposed to. The decision is which stops to bundle on each van and in what sequence; the winning plan is the one with the smallest total driving distance, computed by totalling every van’s round-trip kilometres. The full list of addresses, demands and vehicle limits is shown below.
+
+There are 7 total locations, the shop is node 1, and each van may carry up to 135 bouquets.
+
+| address_node_id | x_coordinate_km | y_coordinate_km | bouquets_required |
+|---|---|---|---|
+| 1 | 48 | 19 | 0 |
+| 2 | 36 | 0 | 19 |
+| 3 | 74 | 100 | 37 |
+| 4 | 16 | 6 | 19 |
+| 5 | 66 | 19 | 19 |
+| 6 | 0 | 13 | 5 |
+| 7 | 100 | 97 | 24 |
+
+Ensure routes visit all 7 locations, start and end at node 1, and never exceed 135 bouquets per van.
+
+You can just send back the routes in a little JSON shape like this — nothing fancy, just a quick sketch of the layout I expect:
+
+{
+  ""solution"": [[""shop_id"", ""address_id"", ""..."", ""shop_id""], [""shop_id"", ""address_id"", ""..."", ""shop_id""], ""...""]
+}
+
+Here ""solution"" is a list of van routes, each route itself is a list that starts and ends at the shop (the depot) and has the stops in the visiting order. Think of it like filling out a form: one inner list per van, each inner list showing the sequence of IDs the van will visit, returning to the shop at the end. This is only the expected shape — not the actual answer.
+
+Please make sure every identifier you use matches the instance input exactly — do not rename any IDs or invent new ones. For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,one_based,"{""coordinates"": [[48, 19], [36, 0], [74, 100], [16, 6], [66, 19], [0, 13], [100, 97]], ""depot"": 0, ""demands"": [0, 19, 37, 19, 19, 5, 24], ""capacity"": 135, ""num_vehicles"": 1, ""total_distance"": 304.2924715558466, ""objective"": 304.2924715558466}","[[0, 4, 6, 2, 5, 3, 1, 0]]",304.2924715558466,"{""problem_type"": ""CVRP"", ""num_nodes"": 7, ""nodes"": [{""id"": 1, ""x"": 48, ""y"": 19, ""demand"": 0}, {""id"": 2, ""x"": 36, ""y"": 0, ""demand"": 19}, {""id"": 3, ""x"": 74, ""y"": 100, ""demand"": 37}, {""id"": 4, ""x"": 16, ""y"": 6, ""demand"": 19}, {""id"": 5, ""x"": 66, ""y"": 19, ""demand"": 19}, {""id"": 6, ""x"": 0, ""y"": 13, ""demand"": 5}, {""id"": 7, ""x"": 100, ""y"": 97, ""demand"": 24}], ""depot"": 1, ""capacity"": 135, ""num_vehicles"": 1, ""total_distance"": 304.2924715558466, ""objective"": 304.2924715558466}","[[1, 5, 7, 3, 6, 4, 2, 1]]"
+CVRP_S_007,CVRP,S,7,"Recently the city wanted to tidy up its collection plan: every truck departs from the depot, empties a selection of pickup points, and returns at the end of the run. Planners must decide how to group stops into circuits so every pickup gets emptied once and no truck is overloaded. The simplest way to compare plans is to look at the fleet’s total miles — sum the distance of each truck’s route and pick the plan with the smallest total. The concrete route details are shown below.
+
+{
+  ""num_locations_including_depot"": 9,
+  ""nodes"": [
+    {
+      ""location_id"": 1,
+      ""x_coordinate"": 8,
+      ""y_coordinate"": 15,
+      ""pickup_demand"": 0
+    },
+    {
+      ""location_id"": 2,
+      ""x_coordinate"": 61,
+      ""y_coordinate"": 41,
+      ""pickup_demand"": 30
+    },
+    {
+      ""location_id"": 3,
+      ""x_coordinate"": 69,
+      ""y_coordinate"": 85,
+      ""pickup_demand"": 16
+    },
+    {
+      ""location_id"": 4,
+      ""x_coordinate"": 69,
+      ""y_coordinate"": 18,
+      ""pickup_demand"": 15
+    },
+    {
+      ""location_id"": 5,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 97,
+      ""pickup_demand"": 7
+    },
+    {
+      ""location_id"": 6,
+      ""x_coordinate"": 44,
+      ""y_coordinate"": 94,
+      ""pickup_demand"": 14
+    },
+    {
+      ""location_id"": 7,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 100,
+      ""pickup_demand"": 6
+    },
+    {
+      ""location_id"": 8,
+      ""x_coordinate"": 50,
+      ""y_coordinate"": 0,
+      ""pickup_demand"": 15
+    },
+    {
+      ""location_id"": 9,
+      ""x_coordinate"": 14,
+      ""y_coordinate"": 12,
+      ""pickup_demand"": 5
+    }
+  ],
+  ""depot_node_id"": 1,
+  ""vehicle_capacity"": 40
+}
+
+You can just send the routes in a little JSON shape like this:
+
+{
+  ""solution"": [[""depot_id"", ""location_id"", ... , ""depot_id""], [""depot_id"", ""location_id"", ... , ""depot_id""], ...]
+}
+
+Each inner list is one truck’s circuit — start at the depot, list the pickup points in visit order, and come back to the depot at the end. Think of it like filling in a form: the outer array is the fleet, each inner array is a route.
+
+This is just a sketch of the expected shape, not the actual answer. Please use the exact identifiers from the problem input — don’t rename them or invent new ones. 
+- for example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,one_based,"{""coordinates"": [[8, 15], [61, 41], [69, 85], [69, 18], [0, 97], [44, 94], [100, 100], [50, 0], [14, 12]], ""depot"": 0, ""demands"": [0, 30, 16, 15, 7, 14, 6, 15, 5], ""capacity"": 40, ""num_vehicles"": 3, ""total_distance"": 626.556078822982, ""objective"": 626.556078822982}","[[0, 3, 7, 8, 0], [0, 2, 6, 5, 0], [0, 1, 4, 0]]",626.556078822982,"{""problem_type"": ""CVRP"", ""num_nodes"": 9, ""nodes"": [{""id"": 1, ""x"": 8, ""y"": 15, ""demand"": 0}, {""id"": 2, ""x"": 61, ""y"": 41, ""demand"": 30}, {""id"": 3, ""x"": 69, ""y"": 85, ""demand"": 16}, {""id"": 4, ""x"": 69, ""y"": 18, ""demand"": 15}, {""id"": 5, ""x"": 0, ""y"": 97, ""demand"": 7}, {""id"": 6, ""x"": 44, ""y"": 94, ""demand"": 14}, {""id"": 7, ""x"": 100, ""y"": 100, ""demand"": 6}, {""id"": 8, ""x"": 50, ""y"": 0, ""demand"": 15}, {""id"": 9, ""x"": 14, ""y"": 12, ""demand"": 5}], ""depot"": 1, ""capacity"": 40, ""num_vehicles"": 3, ""total_distance"": 626.556078822982, ""objective"": 626.556078822982}","[[1, 4, 8, 9, 1], [1, 3, 7, 6, 1], [1, 2, 5, 1]]"
+CVRP_S_008,CVRP,S,8,"On a busy morning the dispatch team must assign each truck a set of retailers to visit, with every truck leaving from and coming back to the warehouse and carrying only up to its allowed load. The decision is which shops go on which truck runs so no store is skipped or double-served and no vehicle is overloaded. The preferred plan is the one with the lowest total distance traveled by the whole fleet — you figure that by summing the distance of each round-trip — and the specific instance details are listed below.
+
+There are 6 locations in total; the warehouse is node A; each truck may carry up to 3000 units.
+
+| location_id | x_coordinate | y_coordinate | demand_units |
+|---|---|---|---|
+| A | 49 | 2 | 0 |
+| B | 6 | 100 | 800 |
+| C | 0 | 95 | 1400 |
+| D | 40 | 62 | 100 |
+| E | 100 | 55 | 500 |
+| F | 3 | 0 | 1300 |
+
+Routes must start and end at node A, serve each location exactly once, and never exceed the 3000-unit truck limit.
+
+Oh, and when you send back the planned runs, please follow this simple JSON shape so I can read it automatically:
+
+{
+  ""solution"": [[warehouse_id, retailer_id, ... , warehouse_id], [warehouse_id, retailer_id, ... , warehouse_id], ...]
+}
+
+Think of it like a form: ""solution"" holds a list of truck routes, each route is the round-trip sequence starting and ending at the warehouse (warehouse_id) and listing the shops (retailer_id) in the order they're visited. The ellipses just mean you can have as many stops as needed. This is only a sketch of the expected shape — not the actual answer.
+
+Please be sure to use the exact identifiers from the instance input — don't rename them or add new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[49, 2], [6, 100], [0, 95], [40, 62], [100, 55], [3, 0]], ""depot"": 0, ""demands"": [0, 800, 1400, 100, 500, 1300], ""capacity"": 3000, ""num_vehicles"": 2, ""total_distance"": 389.96599592163744, ""objective"": 389.96599592163744}","[[0, 2, 1, 3, 4, 0], [0, 5, 0]]",389.96599592163744,"{""problem_type"": ""CVRP"", ""num_nodes"": 6, ""nodes"": [{""id"": ""A"", ""x"": 49, ""y"": 2, ""demand"": 0}, {""id"": ""B"", ""x"": 6, ""y"": 100, ""demand"": 800}, {""id"": ""C"", ""x"": 0, ""y"": 95, ""demand"": 1400}, {""id"": ""D"", ""x"": 40, ""y"": 62, ""demand"": 100}, {""id"": ""E"", ""x"": 100, ""y"": 55, ""demand"": 500}, {""id"": ""F"", ""x"": 3, ""y"": 0, ""demand"": 1300}], ""depot"": ""A"", ""capacity"": 3000, ""num_vehicles"": 2, ""total_distance"": 389.96599592163744, ""objective"": 389.96599592163744}","[[""A"", ""C"", ""B"", ""D"", ""E"", ""A""], [""A"", ""F"", ""A""]]"
+CVRP_S_009,CVRP,S,9,"I run the bookmobile for a small branch and need to plan the day so each neighborhood stop gets a visit exactly once. The job is to pick which vans go to which stops, making sure no van takes more books than its shelves can hold, and every route starts and ends back at the branch. The better plan is simply the one that keeps the overall driving down — add up the distance of each van’s loop and aim for the smallest total. The exact stops, distances, and vehicle shelving limits are shown below.
+
+I have 8 locations including the branch 0, and each van can carry up to 125 books.
+I have stop 0 at (82, 94) requiring 0 books.
+I have stop 1 at (8, 54) requiring 60 books.
+I have stop 2 at (85, 27) requiring 60 books.
+I have stop 3 at (100, 53) requiring 7 books.
+I have stop 4 at (55, 0) requiring 10 books.
+I have stop 5 at (58, 31) requiring 9 books.
+I have stop 6 at (27, 65) requiring 1 books.
+I have stop 7 at (0, 100) requiring 7 books.
+I'll use these details to assign vans and minimize total driving while respecting the van shelving capacity of 125.
+
+Also, when you send me the plan, keep it in this simple JSON layout so it's easy to read and plug in:
+
+{
+  ""solution"": [[branch_id, stop_id, ... , branch_id], [branch_id, stop_id, ... , branch_id], ...]
+}
+
+Here ""solution"" is a list of routes. Each route is a list of place identifiers starting and ending at the branch (the first and last entry in each inner list). Think of each inner list as one van's loop: branch → stop → stop → … → branch. This snippet is just a sketch of the shape I expect — not the actual plan.
+
+Please make sure you use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""coordinates"": [[82, 94], [8, 54], [85, 27], [100, 53], [55, 0], [58, 31], [27, 65], [0, 100]], ""depot"": 0, ""demands"": [0, 60, 60, 7, 10, 9, 1, 7], ""capacity"": 125, ""num_vehicles"": 2, ""total_distance"": 426.75755261386445, ""objective"": 426.75755261386445}","[[0, 6, 1, 7, 0], [0, 5, 4, 2, 3, 0]]",426.75755261386445,"{""problem_type"": ""CVRP"", ""num_nodes"": 8, ""nodes"": [{""id"": 0, ""x"": 82, ""y"": 94, ""demand"": 0}, {""id"": 1, ""x"": 8, ""y"": 54, ""demand"": 60}, {""id"": 2, ""x"": 85, ""y"": 27, ""demand"": 60}, {""id"": 3, ""x"": 100, ""y"": 53, ""demand"": 7}, {""id"": 4, ""x"": 55, ""y"": 0, ""demand"": 10}, {""id"": 5, ""x"": 58, ""y"": 31, ""demand"": 9}, {""id"": 6, ""x"": 27, ""y"": 65, ""demand"": 1}, {""id"": 7, ""x"": 0, ""y"": 100, ""demand"": 7}], ""depot"": 0, ""capacity"": 125, ""num_vehicles"": 2, ""total_distance"": 426.75755261386445, ""objective"": 426.75755261386445}","[[0, 6, 1, 7, 0], [0, 5, 4, 2, 3, 0]]"
+CVRP_S_010,CVRP,S,10,"We need to lay out pickup runs from the lab for several couriers: each run starts at the lab, visits some clinics, then returns to the lab, and every clinic must be visited once and only once. Each courier’s cooler has a maximum load, so the number of specimens per run has to fit, and the better plan is the one where the sum of all route distances is lowest — simply total the miles of every courier’s circuit to compare plans. The specific clinics, sample counts, cooler capacities, and route distances are listed below.
+
+# total_locations_including_lab=9
+# lab_node_id=A
+# cooler_capacity_specimens=125
+location_id,x_coordinate_miles,y_coordinate_miles,specimens_to_pickup
+A,72,92,0
+B,100,0,54
+C,0,76,96
+D,20,100,3
+E,33,10,8
+F,58,88,6
+G,60,66,8
+H,6,35,2
+I,92,53,8
+
+Also, when you send back the plan, please stick to this simple JSON layout so it's easy for the system to pick up:
+
+{
+  ""solution"": [[lab_id, clinic_id, ... , lab_id], [lab_id, clinic_id, ... , lab_id], ...]
+}
+
+Pretty straightforward: ""solution"" is a list of runs, each inner list is one courier's circuit that starts and ends at the lab (lab_id), with the clinic ids visited in between — the ... just means you can have more clinic ids in that spot. This is just the shape I expect, not the actual answer.
+
+One more thing: use the exact identifiers from the instance input — don't rename them or invent new ones. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”. Use those exact labels when you give the real routes.",csv,names,"{""coordinates"": [[72, 92], [100, 0], [0, 76], [20, 100], [33, 10], [58, 88], [60, 66], [6, 35], [92, 53]], ""depot"": 0, ""demands"": [0, 54, 96, 3, 8, 6, 8, 2, 8], ""capacity"": 125, ""num_vehicles"": 2, ""total_distance"": 448.2852495407329, ""objective"": 448.2852495407329}","[[0, 5, 3, 2, 7, 4, 6, 0], [0, 1, 8, 0]]",448.2852495407329,"{""problem_type"": ""CVRP"", ""num_nodes"": 9, ""nodes"": [{""id"": ""A"", ""x"": 72, ""y"": 92, ""demand"": 0}, {""id"": ""B"", ""x"": 100, ""y"": 0, ""demand"": 54}, {""id"": ""C"", ""x"": 0, ""y"": 76, ""demand"": 96}, {""id"": ""D"", ""x"": 20, ""y"": 100, ""demand"": 3}, {""id"": ""E"", ""x"": 33, ""y"": 10, ""demand"": 8}, {""id"": ""F"", ""x"": 58, ""y"": 88, ""demand"": 6}, {""id"": ""G"", ""x"": 60, ""y"": 66, ""demand"": 8}, {""id"": ""H"", ""x"": 6, ""y"": 35, ""demand"": 2}, {""id"": ""I"", ""x"": 92, ""y"": 53, ""demand"": 8}], ""depot"": ""A"", ""capacity"": 125, ""num_vehicles"": 2, ""total_distance"": 448.2852495407329, ""objective"": 448.2852495407329}","[[""A"", ""F"", ""D"", ""C"", ""H"", ""E"", ""G"", ""A""], [""A"", ""B"", ""I"", ""A""]]"
+CVRP_S_011,CVRP,S,11,"We’ve got a press, a stack of bundles, and a bunch of newsstands scattered around town; the challenge is figuring the runs for each carrier so each stand gets a single bundle and every runner comes back to the press. Every round has to respect what a carrier’s bag can hold, and nothing can be handed out twice or left out. The best way to judge two different sets of rounds is by how short their combined travel is — add up the distance of every round and the smaller total wins. The specific addresses, demands, and capacities are shown below.
+
+There are 5 locations in total, the press is node 1, and each carrier's bag holds up to 100 bundles.
+
+| location_id | x_coordinate | y_coordinate | bundles_required |
+|---|---|---|---|
+| 1 | 65 | 70 | 0 |
+| 2 | 100 | 9 | 21 |
+| 3 | 100 | 100 | 10 |
+| 4 | 0 | 0 | 15 |
+| 5 | 98 | 64 | 19 |
+
+Routes must start and end at the press, respect the 100 bag limit, and minimize combined travel.
+
+Oh — and when you hand me the routes back, please use this easy JSON shape so I can parse the runs without guessing:
+
+{
+  ""solution"": [[press_id, stand_id, ... , press_id], [press_id, stand_id, ... , press_id], ...]
+}
+
+Each inner list is one carrier’s run: it starts at the press (press_id), visits the stands in the order listed (stand_id placeholders), and returns to the press. The outer list collects all the runs. This is just a sketch of the shape I expect, not the actual answer.
+
+Please be sure to use the exact identifiers from the instance input — don’t rename them or add new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""coordinates"": [[65, 70], [100, 9], [100, 100], [0, 0], [98, 64]], ""depot"": 0, ""demands"": [0, 21, 10, 15, 19], ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 333.1186357168723, ""objective"": 333.1186357168723}","[[0, 2, 4, 1, 3, 0]]",333.1186357168723,"{""problem_type"": ""CVRP"", ""num_nodes"": 5, ""nodes"": [{""id"": 1, ""x"": 65, ""y"": 70, ""demand"": 0}, {""id"": 2, ""x"": 100, ""y"": 9, ""demand"": 21}, {""id"": 3, ""x"": 100, ""y"": 100, ""demand"": 10}, {""id"": 4, ""x"": 0, ""y"": 0, ""demand"": 15}, {""id"": 5, ""x"": 98, ""y"": 64, ""demand"": 19}], ""depot"": 1, ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 333.1186357168723, ""objective"": 333.1186357168723}","[[1, 3, 5, 2, 4, 1]]"
+CVRP_S_012,CVRP,S,12,"At the warehouse the crew lays out routes so every truck leaves, performs one delivery at each assigned house, and comes back to base. The decision makers need to decide which addresses go on which truck and in what sequence so nobody gets skipped or double-served and vehicle load limits aren’t exceeded. The better routing is simply the one with the lowest total distance — add up the distance for every truck’s round trip and the smallest total wins. The concrete details for the loads and addresses are shown below.
+
+# total_locations_including_warehouse=5
+# warehouse_node_id=A
+# truck_load_capacity=160
+address_node_id,map_x_coordinate,map_y_coordinate,delivery_load_demand
+A,36,90,0
+B,0,100,21
+C,100,100,8
+D,40,0,9
+E,40,85,5
+
+Oh, and when you hand in the routes, please follow this simple JSON layout so it's easy to read by the system:
+
+{
+  ""solution"": [[""warehouse_id"", ""location_id"", ... , ""warehouse_id""], [""warehouse_id"", ""location_id"", ... , ""warehouse_id""], ...]
+}
+
+This is just a sketch of the shape I expect: ""solution"" is a list of the trucks' round-trip routes, each route is a list of stop IDs that starts and ends at the depot (here labeled as ""warehouse_id"" in the example), and each inner list shows the sequence of addresses visited on that truck's trip. It's informal — think of it as filling out a short form that says which stops go on which truck and in what order.
+
+Please be sure to use the exact identifiers from the instance input — don't rename them and don't invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"{""coordinates"": [[36, 90], [0, 100], [100, 100], [40, 0], [40, 85]], ""depot"": 0, ""demands"": [0, 21, 8, 9, 5], ""capacity"": 160, ""num_vehicles"": 1, ""total_distance"": 329.9351260458327, ""objective"": 329.9351260458327}","[[0, 1, 3, 2, 4, 0]]",329.9351260458327,"{""problem_type"": ""CVRP"", ""num_nodes"": 5, ""nodes"": [{""id"": ""A"", ""x"": 36, ""y"": 90, ""demand"": 0}, {""id"": ""B"", ""x"": 0, ""y"": 100, ""demand"": 21}, {""id"": ""C"", ""x"": 100, ""y"": 100, ""demand"": 8}, {""id"": ""D"", ""x"": 40, ""y"": 0, ""demand"": 9}, {""id"": ""E"", ""x"": 40, ""y"": 85, ""demand"": 5}], ""depot"": ""A"", ""capacity"": 160, ""num_vehicles"": 1, ""total_distance"": 329.9351260458327, ""objective"": 329.9351260458327}","[[""A"", ""B"", ""D"", ""C"", ""E"", ""A""]]"
+CVRP_S_013,CVRP,S,13,"Many stores depend on a single pet supply hub, so the practical job is to split them into truck routes and choose the visit order so each shop is visited exactly once. Every trip must begin at the hub and return there, and no truck can carry more than its allowed load. The winner among possible plans is the one with the smallest combined mileage for all trucks — total distance equals the sum of each route’s length — and the detailed store and vehicle info is provided below.
+
+Total locations: 10; hub node: 1; truck capacity: 35 units.
+
+| location_id | coord_x | coord_y | store_demand_units |
+|---|---|---|---|
+| 1 | 0 | 0 | 0 |
+| 2 | 36 | 100 | 9 |
+| 3 | 100 | 63 | 9 |
+| 4 | 58 | 76 | 10 |
+| 5 | 46 | 72 | 10 |
+| 6 | 98 | 63 | 7 |
+| 7 | 64 | 77 | 8 |
+| 8 | 26 | 64 | 6 |
+| 9 | 96 | 69 | 5 |
+| 10 | 46 | 40 | 9 |
+
+Every route must start and end at the hub and never exceed the truck capacity 35.
+
+Also, when you send the plan back, just follow this simple JSON layout so I can read the routes programmatically:
+
+{
+  ""solution"": [[hub_id, store_id, ... , hub_id], [hub_id, store_id, ... , hub_id], ...]
+}
+
+This means ""solution"" is a list of truck trips. Each inner list is one trip: it starts at the hub, lists the stores in the order they’ll be visited, and ends back at the hub. Think of the JSON above as just the shape I want — a sketch, not the actual routing.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename anything and don’t invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""coordinates"": [[0, 0], [36, 100], [100, 63], [58, 76], [46, 72], [98, 63], [64, 77], [26, 64], [96, 69], [46, 40]], ""depot"": 0, ""demands"": [0, 9, 9, 10, 10, 7, 8, 6, 5, 9], ""capacity"": 35, ""num_vehicles"": 3, ""total_distance"": 617.8316304283204, ""objective"": 617.8316304283204}","[[0, 9, 0], [0, 7, 1, 3, 4, 0], [0, 5, 2, 8, 6, 0]]",617.8316304283204,"{""problem_type"": ""CVRP"", ""num_nodes"": 10, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 0, ""demand"": 0}, {""id"": 2, ""x"": 36, ""y"": 100, ""demand"": 9}, {""id"": 3, ""x"": 100, ""y"": 63, ""demand"": 9}, {""id"": 4, ""x"": 58, ""y"": 76, ""demand"": 10}, {""id"": 5, ""x"": 46, ""y"": 72, ""demand"": 10}, {""id"": 6, ""x"": 98, ""y"": 63, ""demand"": 7}, {""id"": 7, ""x"": 64, ""y"": 77, ""demand"": 8}, {""id"": 8, ""x"": 26, ""y"": 64, ""demand"": 6}, {""id"": 9, ""x"": 96, ""y"": 69, ""demand"": 5}, {""id"": 10, ""x"": 46, ""y"": 40, ""demand"": 9}], ""depot"": 1, ""capacity"": 35, ""num_vehicles"": 3, ""total_distance"": 617.8316304283204, ""objective"": 617.8316304283204}","[[1, 10, 1], [1, 8, 2, 4, 5, 1], [1, 6, 3, 9, 7, 1]]"
+CVRP_S_014,CVRP,S,14,"I’m picturing the maintenance yard dispatching trucks each morning to drop off tool kits to work crews around town. The task is to pick which crews each truck will visit so that every crew gets their delivery exactly once, every truck leaves from and returns to the yard, and no truck carries more weight than it can handle. The “best” way here is the one that keeps the fleet’s total miles driven as small as possible — you measure that by adding up the round-trip distance for every truck. The concrete details for the route plan and loads are shown below.
+
+# total_locations_incl_yard=7
+# yard_node_id=1
+# truck_capacity_weight=180
+location_id,location_x,location_y,tool_kit_weight
+1,58,52,0
+2,77,67,15
+3,49,69,16
+4,100,28,8
+5,0,76,13
+6,11,0,28
+7,91,100,37
+
+Also, to keep things simple when you send the routes back, use this little JSON shape for the plan:
+
+{
+  ""solution"": [[yard_id, crew_id, ... , yard_id], [yard_id, crew_id, ... , yard_id], ...]
+}
+
+""solution"" is a list of routes. Each inner list is one truck’s round trip: it starts at the yard (yard_id), lists the crews to visit (crew_id) in the order they’ll be visited, and comes back to the yard. The ""..."" just means any number of stops can go there. This is just a sketch of the shape I expect — not the filled-in answer.
+
+Please make sure you use the exact identifiers from the instance input — don’t rename things or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""coordinates"": [[58, 52], [77, 67], [49, 69], [100, 28], [0, 76], [11, 0], [91, 100]], ""depot"": 0, ""demands"": [0, 15, 16, 8, 13, 28, 37], ""capacity"": 180, ""num_vehicles"": 1, ""total_distance"": 371.4400281644852, ""objective"": 371.4400281644852}","[[0, 1, 6, 3, 5, 4, 2, 0]]",371.4400281644852,"{""problem_type"": ""CVRP"", ""num_nodes"": 7, ""nodes"": [{""id"": 1, ""x"": 58, ""y"": 52, ""demand"": 0}, {""id"": 2, ""x"": 77, ""y"": 67, ""demand"": 15}, {""id"": 3, ""x"": 49, ""y"": 69, ""demand"": 16}, {""id"": 4, ""x"": 100, ""y"": 28, ""demand"": 8}, {""id"": 5, ""x"": 0, ""y"": 76, ""demand"": 13}, {""id"": 6, ""x"": 11, ""y"": 0, ""demand"": 28}, {""id"": 7, ""x"": 91, ""y"": 100, ""demand"": 37}], ""depot"": 1, ""capacity"": 180, ""num_vehicles"": 1, ""total_distance"": 371.4400281644852, ""objective"": 371.4400281644852}","[[1, 2, 7, 4, 6, 5, 3, 1]]"
+CVRP_S_015,CVRP,S,15,"Out at the yard, the vans get loaded, each with a limit on how many parts they can carry, and they’ll each head out and later return to the same service center to cover a list of repair calls. The planning question is which calls each van should take and in what order so every single call is handled once and no van leaves overloaded. The simple aim is to cut down the fleet’s total driving — the total is just the sum of the distances of every van’s circuit, and the smaller that sum, the better the plan. The concrete stops, part requirements, and vehicle limits are shown below.
+
+Here are the instance details: 6 stops including the service center, service center id A, each van has a limit of 13 parts.
+
+| stop_id | x_coordinate_meters | y_coordinate_meters | parts_required |
+|---|---|---|---|
+| A | 0 | 0 | 0 |
+| B | 38 | 94 | 1 |
+| C | 17 | 96 | 1 |
+| D | 54 | 92 | 1 |
+| E | 100 | 19 | 1 |
+| F | 6 | 100 | 1 |
+
+Make routes so every stop is visited once, no van carries more than 13 parts, and the fleet’s total driving is kept as small as possible.
+
+Also, when you hand the plan back, keep it in a tiny, predictable JSON shape so I can read it easily. Something like this:
+
+{
+  ""solution"": [[depot_id, location_id, ... , depot_id], [depot_id, location_id, ... , depot_id], ...]
+}
+
+Here ""solution"" is a list of van circuits. Each inner list is the sequence of stops for one van, starting and ending at the depot (so the first and last entry in each route are the depot_id). The placeholders depot_id and location_id stand for the identifiers used in the instance — think of them like the names on the schedule rather than actual addresses. This is just the skeleton of the format I need, not the real plan.
+
+Please make sure to use the exact identifiers from the instance input — do not rename them or invent new labels. For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,names,"{""coordinates"": [[0, 0], [38, 94], [17, 96], [54, 92], [100, 19], [6, 100]], ""depot"": 0, ""demands"": [0, 1, 1, 1, 1, 1], ""capacity"": 13, ""num_vehicles"": 1, ""total_distance"": 337.17748767321746, ""objective"": 337.17748767321746}","[[0, 5, 2, 1, 3, 4, 0]]",337.17748767321746,"{""problem_type"": ""CVRP"", ""num_nodes"": 6, ""nodes"": [{""id"": ""A"", ""x"": 0, ""y"": 0, ""demand"": 0}, {""id"": ""B"", ""x"": 38, ""y"": 94, ""demand"": 1}, {""id"": ""C"", ""x"": 17, ""y"": 96, ""demand"": 1}, {""id"": ""D"", ""x"": 54, ""y"": 92, ""demand"": 1}, {""id"": ""E"", ""x"": 100, ""y"": 19, ""demand"": 1}, {""id"": ""F"", ""x"": 6, ""y"": 100, ""demand"": 1}], ""depot"": ""A"", ""capacity"": 13, ""num_vehicles"": 1, ""total_distance"": 337.17748767321746, ""objective"": 337.17748767321746}","[[""A"", ""F"", ""C"", ""B"", ""D"", ""E"", ""A""]]"
+CVRP_S_016,CVRP,S,16,"Recently the freezer team had to plan a set of runs to refill trucks across the city: each restock vehicle departs the cold storage, visits a selection of ice cream trucks once apiece, and then comes back. The constraint is that no vehicle can carry more ice cream than its freezer holds, and success is measured by how little total distance all the vans cover — the total is the sum of every route’s distance. The full list of truck demands and vehicle capacities is listed below.
+
+There were 5 total locations including depot 1, and each restock vehicle had freezer capacity 39.
+Location 1 at (0, 0) had demand 0.
+Location 2 at (8, 22) had demand 8.
+Location 3 at (100, 100) had demand 9.
+Location 4 at (61, 76) had demand 6.
+Location 5 at (83, 17) had demand 10.
+These records supported the team's route planning that started and ended at depot 1.
+
+Also, when you give me the planned runs, a simple JSON reply in this shape works best — something casual like the example below.
+
+{
+  ""solution"": [[cold_storage_id, truck_id, ... , cold_storage_id], [cold_storage_id, truck_id, ... , cold_storage_id], ...]
+}
+
+Each inner list is one van’s route: it starts at the cold storage, lists the trucks visited in order, and returns to the cold storage. This JSON is just a sketch of the shape I need — not the actual answer. Please make sure to use the exact identifiers from the instance input when you fill it in (don’t rename or invent new labels).
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"{""coordinates"": [[0, 0], [8, 22], [100, 100], [61, 76], [83, 17]], ""depot"": 0, ""demands"": [0, 8, 9, 6, 10], ""capacity"": 39, ""num_vehicles"": 1, ""total_distance"": 314.31229878076937, ""objective"": 314.31229878076937}","[[0, 1, 3, 2, 4, 0]]",314.31229878076937,"{""problem_type"": ""CVRP"", ""num_nodes"": 5, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 0, ""demand"": 0}, {""id"": 2, ""x"": 8, ""y"": 22, ""demand"": 8}, {""id"": 3, ""x"": 100, ""y"": 100, ""demand"": 9}, {""id"": 4, ""x"": 61, ""y"": 76, ""demand"": 6}, {""id"": 5, ""x"": 83, ""y"": 17, ""demand"": 10}], ""depot"": 1, ""capacity"": 39, ""num_vehicles"": 1, ""total_distance"": 314.31229878076937, ""objective"": 314.31229878076937}","[[1, 2, 4, 3, 5, 1]]"
+CVRP_S_017,CVRP,S,17,"Back at the kitchen the morning routine is to send vans out, have each driver leave and return to base, drop a single meal kit at each subscriber’s address, and never exceed the vehicle’s carrying limit. The practical question is who goes where and in which order so each home is visited once and only once and no van is overloaded. To compare options, simply total up the distance driven by every van — the plan with the smallest total kilometers is the one to use. The concrete details are listed below.
+
+There are 10 locations in total, with the fulfillment kitchen at 1; each van may carry up to 9 kits.
+
+| location_id | coord_x | coord_y | kits_required |
+|---|---|---|---|
+| 1 | 33 | 22 | 0 |
+| 2 | 100 | 52 | 1 |
+| 3 | 48 | 88 | 1 |
+| 4 | 61 | 92 | 1 |
+| 5 | 0 | 0 | 1 |
+| 6 | 23 | 100 | 1 |
+| 7 | 2 | 86 | 1 |
+| 8 | 24 | 79 | 1 |
+| 9 | 86 | 32 | 1 |
+| 10 | 7 | 92 | 1 |
+
+Routes must be arranged so every location is visited once, each route returns to 1, and no van exceeds 9 kits.
+
+Also, to keep things machine-friendly, please lay out your proposed plan in this simple JSON shape so I can parse it easily:
+
+{
+  ""solution"": [[""kitchen_id"", ""subscriber_id"", ... , ""kitchen_id""], [""kitchen_id"", ""subscriber_id"", ... , ""kitchen_id""], ...]
+}
+
+Think of ""solution"" as a list of van routes. Each inner list is one van's trip: start at the kitchen_id, visit the subscriber_id placeholders in order, and come back to the kitchen_id. This is just a sketch of the expected shape — don't treat the placeholders as the real labels.
+
+Please use the exact identifiers given in the instance input when you fill this out — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""coordinates"": [[33, 22], [100, 52], [48, 88], [61, 92], [0, 0], [23, 100], [2, 86], [24, 79], [86, 32], [7, 92]], ""depot"": 0, ""demands"": [0, 1, 1, 1, 1, 1, 1, 1, 1, 1], ""capacity"": 9, ""num_vehicles"": 1, ""total_distance"": 345.8545563487201, ""objective"": 345.8545563487201}","[[0, 4, 6, 9, 5, 7, 2, 3, 1, 8, 0]]",345.8545563487201,"{""problem_type"": ""CVRP"", ""num_nodes"": 10, ""nodes"": [{""id"": 1, ""x"": 33, ""y"": 22, ""demand"": 0}, {""id"": 2, ""x"": 100, ""y"": 52, ""demand"": 1}, {""id"": 3, ""x"": 48, ""y"": 88, ""demand"": 1}, {""id"": 4, ""x"": 61, ""y"": 92, ""demand"": 1}, {""id"": 5, ""x"": 0, ""y"": 0, ""demand"": 1}, {""id"": 6, ""x"": 23, ""y"": 100, ""demand"": 1}, {""id"": 7, ""x"": 2, ""y"": 86, ""demand"": 1}, {""id"": 8, ""x"": 24, ""y"": 79, ""demand"": 1}, {""id"": 9, ""x"": 86, ""y"": 32, ""demand"": 1}, {""id"": 10, ""x"": 7, ""y"": 92, ""demand"": 1}], ""depot"": 1, ""capacity"": 9, ""num_vehicles"": 1, ""total_distance"": 345.8545563487201, ""objective"": 345.8545563487201}","[[1, 5, 7, 10, 6, 8, 3, 4, 2, 9, 1]]"
+CVRP_S_018,CVRP,S,18,"In our town the plan is to dispatch the blood vans from the hospital, have each one serve a sequence of community sites (no site repeated), return to base, and keep every van’s refrigerator within its capacity. What needs deciding is which sites go together on which trip so that the overall driving — computed by adding up the distance of every route — is as low as it can be. The exact details about stops, demand at each site, and fridge capacities are provided below.
+
+Below are the instance parameters: total_locations_count 7, hospital_node 1, van_refrigerator_capacity 138.
+Location 1 at (0, 0) requires 0 units.
+Location 2 at (45, 53) requires 3 units.
+Location 3 at (96, 91) requires 10 units.
+Location 4 at (84, 92) requires 4 units.
+Location 5 at (44, 89) requires 3 units.
+Location 6 at (50, 61) requires 7 units.
+Location 7 at (100, 100) requires 5 units.
+Assign the listed sites to van routes so each van's load ≤ 138 and the sum of route distances is as low as possible.
+
+Also, when you send the actual routes back, a simple JSON layout like this works best — just a list of trips, each trip an ordered list that starts and ends at the hospital:
+
+{
+  ""solution"": [[hospital_id, site_id, ... , hospital_id], [hospital_id, site_id, ... , hospital_id], ...]
+}
+
+Think of it like a little form: ""solution"" is the whole set of drives; each inner array is one van’s trip (it should start and end with the hospital ID and list the community site IDs in the order they’re visited). This is just a sketch of the shape I’m expecting, not the real routes.
+
+Please use the exact identifiers from the instance input — don’t rename them or make up new ones. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"{""coordinates"": [[0, 0], [45, 53], [96, 91], [84, 92], [44, 89], [50, 61], [100, 100]], ""depot"": 0, ""demands"": [0, 3, 10, 4, 3, 7, 5], ""capacity"": 138, ""num_vehicles"": 1, ""total_distance"": 301.011244481882, ""objective"": 301.011244481882}","[[0, 4, 3, 6, 2, 5, 1, 0]]",301.011244481882,"{""problem_type"": ""CVRP"", ""num_nodes"": 7, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 0, ""demand"": 0}, {""id"": 2, ""x"": 45, ""y"": 53, ""demand"": 3}, {""id"": 3, ""x"": 96, ""y"": 91, ""demand"": 10}, {""id"": 4, ""x"": 84, ""y"": 92, ""demand"": 4}, {""id"": 5, ""x"": 44, ""y"": 89, ""demand"": 3}, {""id"": 6, ""x"": 50, ""y"": 61, ""demand"": 7}, {""id"": 7, ""x"": 100, ""y"": 100, ""demand"": 5}], ""depot"": 1, ""capacity"": 138, ""num_vehicles"": 1, ""total_distance"": 301.011244481882, ""objective"": 301.011244481882}","[[1, 5, 4, 7, 3, 6, 2, 1]]"
+CVRP_S_019,CVRP,S,19,"I run the parts delivery team and my job is to send vans out from the central warehouse so every technician gets the parts they need—once and only once—before the vans return to base. The tricky part is deciding which technicians each van should visit and in what order so that no vehicle leaves with more parts than it can carry and the whole crew drives as few miles as possible; total distance is just the sum of the miles for all of the vans’ round trips. The exact list of technician stops, their part requirements, and the vehicle capacities are shown below.
+
+# total_locations_including_warehouse=6
+# warehouse_location_id=0
+# vehicle_capacity_parts=10
+location_id,x_coordinate_map,y_coordinate_map,parts_required
+0,76,46,0
+1,100,98,1
+2,36,80,1
+3,76,0,1
+4,0,100,1
+5,92,74,1
+
+Also, when you send the routes back, just stick to this simple JSON layout so it's easy to parse:
+
+{
+  ""solution"": [[depot_id, location_id, ... , depot_id], [depot_id, location_id, ... , depot_id], ...]
+}
+
+This just means ""solution"" holds a list of van routes; each route is written as a list that starts and ends with the depot_id and has the technician stops (location_id) in visit order — the ""..."" just shows there can be more stops. It's only a sketch of the expected shape, not the actual answer.
+
+Please make sure you use the exact identifiers from the instance input — no renaming and no new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""coordinates"": [[76, 46], [100, 98], [36, 80], [76, 0], [0, 100], [92, 74]], ""depot"": 0, ""demands"": [0, 1, 1, 1, 1, 1], ""capacity"": 10, ""num_vehicles"": 1, ""total_distance"": 334.1924899388807, ""objective"": 334.1924899388807}","[[0, 5, 1, 4, 2, 3, 0]]",334.1924899388807,"{""problem_type"": ""CVRP"", ""num_nodes"": 6, ""nodes"": [{""id"": 0, ""x"": 76, ""y"": 46, ""demand"": 0}, {""id"": 1, ""x"": 100, ""y"": 98, ""demand"": 1}, {""id"": 2, ""x"": 36, ""y"": 80, ""demand"": 1}, {""id"": 3, ""x"": 76, ""y"": 0, ""demand"": 1}, {""id"": 4, ""x"": 0, ""y"": 100, ""demand"": 1}, {""id"": 5, ""x"": 92, ""y"": 74, ""demand"": 1}], ""depot"": 0, ""capacity"": 10, ""num_vehicles"": 1, ""total_distance"": 334.1924899388807, ""objective"": 334.1924899388807}","[[0, 5, 1, 4, 2, 3, 0]]"
+CVRP_S_020,CVRP,S,20,"I run a little bakery that sends out a few vans every morning to drop off bread and pastries. The job is to plan which stops each van will make so that every customer gets their delivery exactly once, every driver leaves from the bakery and comes back to the bakery at the end of their run, and no van carries more than it can hold. A better plan is the one that keeps the total driving as low as possible — you figure that total by adding up the miles (or minutes) of all the individual runs. The specific addresses, order sizes, and van limits are shown below.
+
+There are 7 locations in total (the bakery is node A), and each van can carry up to 100 units.
+Location A is at coordinates (86, 39) and has an order size of 0.
+Location B is at coordinates (92, 35) and has an order size of 10.
+Location C is at coordinates (98, 17) and has an order size of 22.
+Location D is at coordinates (74, 100) and has an order size of 5.
+Location E is at coordinates (100, 38) and has an order size of 7.
+Location F is at coordinates (89, 14) and has an order size of 12.
+Location G is at coordinates (0, 0) and has an order size of 19.
+Use these details to plan routes that serve every customer exactly once and bring each van back to node A without exceeding the 100-unit limit.
+
+Also, when you send back a proposed plan, just stick to this simple JSON shape so I can read it easily:
+
+{
+  ""solution"": [[bakery_id, stop_id, ... , bakery_id], [bakery_id, stop_id, ... , bakery_id], ...]
+}
+
+This is just a quick sketch of the shape I expect — each inner list is one van’s route: it starts at the bakery, lists the stops that van makes, and returns to the bakery at the end. bakery_id is the placeholder for the bakery/depot identifier from the instance, and stop_id stands in for each customer location identifier. Don’t worry about extra fields or anything fancy — just the routes in that list-of-lists form.
+
+Please make sure every identifier you use matches exactly the ones in the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,names,"{""coordinates"": [[86, 39], [92, 35], [98, 17], [74, 100], [100, 38], [89, 14], [0, 0]], ""depot"": 0, ""demands"": [0, 10, 22, 5, 7, 12, 19], ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 323.00305381882356, ""objective"": 323.00305381882356}","[[0, 1, 4, 2, 5, 6, 3, 0]]",323.00305381882356,"{""problem_type"": ""CVRP"", ""num_nodes"": 7, ""nodes"": [{""id"": ""A"", ""x"": 86, ""y"": 39, ""demand"": 0}, {""id"": ""B"", ""x"": 92, ""y"": 35, ""demand"": 10}, {""id"": ""C"", ""x"": 98, ""y"": 17, ""demand"": 22}, {""id"": ""D"", ""x"": 74, ""y"": 100, ""demand"": 5}, {""id"": ""E"", ""x"": 100, ""y"": 38, ""demand"": 7}, {""id"": ""F"", ""x"": 89, ""y"": 14, ""demand"": 12}, {""id"": ""G"", ""x"": 0, ""y"": 0, ""demand"": 19}], ""depot"": ""A"", ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 323.00305381882356, ""objective"": 323.00305381882356}","[[""A"", ""B"", ""E"", ""C"", ""F"", ""G"", ""D"", ""A""]]"
+CVRP_S_021,CVRP,S,21,"Out on the dairy route, the problem is deciding which farms to group into each haul and in what sequence so the truck can head out from the silo, visit every farm one time, and come back for the next load without ever taking on more milk than it can handle. The better the plan, the less total driving across all those runs — total driving is computed by adding up the length of each trip. The exact farm list, their milk amounts, and truck capacity are shown below.
+
+# total_locations_including_silo=8
+# silo_node_id=A
+# truck_capacity_volume=100
+location_id,map_x_coordinate,map_y_coordinate,milk_volume_demand
+A,13,14,0
+B,93,20,14
+C,100,0,7
+D,0,20,10
+E,42,18,20
+F,18,66,13
+G,27,100,18
+H,98,16,11
+
+Oh, and when you send the plan back, just use this simple JSON layout so I can read the routes easily:
+
+{
+  ""solution"": [[""depot_id"", ""location_id"", ... , ""depot_id""], [""depot_id"", ""location_id"", ... , ""depot_id""], ...]
+}
+
+Think of ""solution"" as a list of runs. Each inner list is one truck trip: start at the depot, visit the farms in order (each shown by its identifier), and come back to the depot. This block is just a sketch of the shape I expect—not the actual answer.
+
+Please use the exact identifiers from the instance input — don’t rename them or make up new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”. """,csv,names,"{""coordinates"": [[13, 14], [93, 20], [100, 0], [0, 20], [42, 18], [18, 66], [27, 100], [98, 16]], ""depot"": 0, ""demands"": [0, 14, 7, 10, 20, 13, 18, 11], ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 315.12743316743627, ""objective"": 315.12743316743627}","[[0, 3, 5, 6, 1, 7, 2, 4, 0]]",315.12743316743627,"{""problem_type"": ""CVRP"", ""num_nodes"": 8, ""nodes"": [{""id"": ""A"", ""x"": 13, ""y"": 14, ""demand"": 0}, {""id"": ""B"", ""x"": 93, ""y"": 20, ""demand"": 14}, {""id"": ""C"", ""x"": 100, ""y"": 0, ""demand"": 7}, {""id"": ""D"", ""x"": 0, ""y"": 20, ""demand"": 10}, {""id"": ""E"", ""x"": 42, ""y"": 18, ""demand"": 20}, {""id"": ""F"", ""x"": 18, ""y"": 66, ""demand"": 13}, {""id"": ""G"", ""x"": 27, ""y"": 100, ""demand"": 18}, {""id"": ""H"", ""x"": 98, ""y"": 16, ""demand"": 11}], ""depot"": ""A"", ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 315.12743316743627, ""objective"": 315.12743316743627}","[[""A"", ""D"", ""F"", ""G"", ""B"", ""H"", ""C"", ""E"", ""A""]]"
+CVRP_S_022,CVRP,S,22,"Back at the warehouse the morning plan is simple to explain: make a collection of round trips that start and end at the distribution center and make sure every vending machine gets one visit and only one. The decisions are grouping the stops into trips and loading each trip within the vehicle’s capacity so nothing is missed or doubled up. The winning plan is the one that results in the least overall driving — total distance is computed by summing every trip’s length. The concrete instance details follow below.
+
+It specifies 9 locations including depot A and a vehicle capacity of 100.
+
+| location_id | x_coordinate | y_coordinate | restock_quantity |
+|---|---|---|---|
+| A | 0 | 47 | 0 |
+| B | 56 | 55 | 7 |
+| C | 40 | 8 | 11 |
+| D | 40 | 7 | 9 |
+| E | 100 | 40 | 18 |
+| F | 73 | 100 | 24 |
+| G | 91 | 48 | 19 |
+| H | 91 | 0 | 12 |
+| I | 26 | 55 | 2 |
+
+Every trip must start and end at A, respect the vehicle capacity of 100, and together cover all 9 locations exactly once.
+
+Also, when you hand over the plan, a short JSON snippet like this makes it easy to read and check:
+
+{
+  ""solution"": [[warehouse_id, machine_id, ... , warehouse_id], [warehouse_id, machine_id, ... , warehouse_id], ...]
+}
+
+This just means ""solution"" contains a list of round trips. Each inner list is one trip that starts and ends at the distribution center (here shown as warehouse_id) and lists the stops you visit in order (machine_id placeholders). It's just a sketch of the shape I expect — not the real answer.
+
+Please make sure to use the exact identifiers from the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[0, 47], [56, 55], [40, 8], [40, 7], [100, 40], [73, 100], [91, 48], [91, 0], [26, 55]], ""depot"": 0, ""demands"": [0, 7, 11, 9, 18, 24, 19, 12, 2], ""capacity"": 100, ""num_vehicles"": 2, ""total_distance"": 375.49140055945975, ""objective"": 375.49140055945975}","[[0, 1, 5, 6, 4, 7, 3, 2, 0], [0, 8, 0]]",375.49140055945975,"{""problem_type"": ""CVRP"", ""num_nodes"": 9, ""nodes"": [{""id"": ""A"", ""x"": 0, ""y"": 47, ""demand"": 0}, {""id"": ""B"", ""x"": 56, ""y"": 55, ""demand"": 7}, {""id"": ""C"", ""x"": 40, ""y"": 8, ""demand"": 11}, {""id"": ""D"", ""x"": 40, ""y"": 7, ""demand"": 9}, {""id"": ""E"", ""x"": 100, ""y"": 40, ""demand"": 18}, {""id"": ""F"", ""x"": 73, ""y"": 100, ""demand"": 24}, {""id"": ""G"", ""x"": 91, ""y"": 48, ""demand"": 19}, {""id"": ""H"", ""x"": 91, ""y"": 0, ""demand"": 12}, {""id"": ""I"", ""x"": 26, ""y"": 55, ""demand"": 2}], ""depot"": ""A"", ""capacity"": 100, ""num_vehicles"": 2, ""total_distance"": 375.49140055945975, ""objective"": 375.49140055945975}","[[""A"", ""B"", ""F"", ""G"", ""E"", ""H"", ""D"", ""C"", ""A""], [""A"", ""I"", ""A""]]"
+CVRP_S_023,CVRP,S,23,"On a busy morning the dispatch desk needs to parcel out deliveries: bundle clinic stops into routes so each clinic gets exactly one delivery, every driver departs from and returns to the pharmacy, and each vehicle stays within its load allowance. The clear measure of success is the least amount of driving across the fleet — total mileage equals the sum of the distances of all routes. The full list of locations, demands, and vehicle capacities is given below.
+
+Below are 6 locations: the pharmacy is node A and vehicle capacity is 100.
+
+| location_id | x_coordinate | y_coordinate | clinic_demand |
+|---|---|---|---|
+| A | 14 | 0 | 0 |
+| B | 0 | 92 | 7 |
+| C | 58 | 69 | 8 |
+| D | 100 | 36 | 25 |
+| E | 0 | 100 | 11 |
+| F | 96 | 50 | 16 |
+
+Assign each clinic exactly once, start and end every route at the pharmacy A, respect the capacity 100, and minimize total fleet mileage.
+
+When you send the routes back, just stick to this simple JSON layout so it's easy to plug into the dispatcher:
+
+{
+  ""solution"": [[""pharmacy_id"", ""clinic_id"", ..., ""pharmacy_id""], [""pharmacy_id"", ""clinic_id"", ..., ""pharmacy_id""], ...]
+}
+
+Think of it like a form: ""solution"" holds a list of routes; each route is an ordered list that starts and ends at the pharmacy and lists the clinic stops in the order the driver will visit them. This block is just a sketch of the expected shape — not the actual answer.
+
+Please make sure to use the exact identifiers given in the instance input — do not rename them or invent new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[14, 0], [0, 92], [58, 69], [100, 36], [0, 100], [96, 50]], ""depot"": 0, ""demands"": [0, 7, 8, 25, 11, 16], ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 317.10026070039464, ""objective"": 317.10026070039464}","[[0, 3, 5, 2, 4, 1, 0]]",317.10026070039464,"{""problem_type"": ""CVRP"", ""num_nodes"": 6, ""nodes"": [{""id"": ""A"", ""x"": 14, ""y"": 0, ""demand"": 0}, {""id"": ""B"", ""x"": 0, ""y"": 92, ""demand"": 7}, {""id"": ""C"", ""x"": 58, ""y"": 69, ""demand"": 8}, {""id"": ""D"", ""x"": 100, ""y"": 36, ""demand"": 25}, {""id"": ""E"", ""x"": 0, ""y"": 100, ""demand"": 11}, {""id"": ""F"", ""x"": 96, ""y"": 50, ""demand"": 16}], ""depot"": ""A"", ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 317.10026070039464, ""objective"": 317.10026070039464}","[[""A"", ""D"", ""F"", ""C"", ""E"", ""B"", ""A""]]"
+CVRP_S_024,CVRP,S,24,"I run the logistics side of a grocery wholesaler and the job is to plan pickup-and-delivery loops from our central depot to a bunch of stores. The choice to make is which stores go on which truck and in what order, making sure every store gets its delivery once and only once, each truck leaves the depot and comes back to it, and no truck is loaded beyond what it can safely carry. A better plan is the one where all the trucks together drive the fewest miles — you figure that by adding up the distance each truck travels on its route. The exact list of stores, how much they need, and the truck capacities are shown below.
+
+I list 9 locations including the central depot 0, and each truck can carry up to 142 units.
+
+| location_node_id | map_x_coordinate | map_y_coordinate | store_demand_units |
+|---|---|---|---|
+| 0 | 0 | 0 | 0 |
+| 1 | 100 | 89 | 6 |
+| 2 | 76 | 76 | 3 |
+| 3 | 88 | 100 | 8 |
+| 4 | 76 | 15 | 5 |
+| 5 | 76 | 6 | 6 |
+| 6 | 30 | 66 | 9 |
+| 7 | 26 | 92 | 7 |
+| 8 | 18 | 75 | 9 |
+
+I will plan routes so every location is delivered once and no truck exceeds 142 units.
+
+Also, I'll hand the plan back in a simple JSON shape so it's easy to plug into other tools or maps. It follows this layout:
+
+{
+  ""solution"": [[depot_id, location_id, ... , depot_id], [depot_id, location_id, ... , depot_id], ...]
+}
+
+Think of ""solution"" as just a list of routes. Each route is a list that starts at the depot, lists the store locations visited in order, and ends back at the depot. This little JSON is just a sketch of the shape I’ll deliver in — it’s not the actual routes yet.
+
+Please use the exact identifiers from the problem input when we fill this in — don't rename any locations or invent new labels. 
+- for example: Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",markdown_table,zero_based,"{""coordinates"": [[0, 0], [100, 89], [76, 76], [88, 100], [76, 15], [76, 6], [30, 66], [26, 92], [18, 75]], ""depot"": 0, ""demands"": [0, 6, 3, 8, 5, 6, 9, 7, 9], ""capacity"": 142, ""num_vehicles"": 1, ""total_distance"": 358.6105514361702, ""objective"": 358.6105514361702}","[[0, 6, 8, 7, 3, 1, 2, 4, 5, 0]]",358.6105514361702,"{""problem_type"": ""CVRP"", ""num_nodes"": 9, ""nodes"": [{""id"": 0, ""x"": 0, ""y"": 0, ""demand"": 0}, {""id"": 1, ""x"": 100, ""y"": 89, ""demand"": 6}, {""id"": 2, ""x"": 76, ""y"": 76, ""demand"": 3}, {""id"": 3, ""x"": 88, ""y"": 100, ""demand"": 8}, {""id"": 4, ""x"": 76, ""y"": 15, ""demand"": 5}, {""id"": 5, ""x"": 76, ""y"": 6, ""demand"": 6}, {""id"": 6, ""x"": 30, ""y"": 66, ""demand"": 9}, {""id"": 7, ""x"": 26, ""y"": 92, ""demand"": 7}, {""id"": 8, ""x"": 18, ""y"": 75, ""demand"": 9}], ""depot"": 0, ""capacity"": 142, ""num_vehicles"": 1, ""total_distance"": 358.6105514361702, ""objective"": 358.6105514361702}","[[0, 6, 8, 7, 3, 1, 2, 4, 5, 0]]"
+CVRP_S_025,CVRP,S,25,"We need to map out routes for a recycling crew leaving from the central depot so each collection spot is collected exactly one time and every route loops back to the depot. The teams must be assigned so that the load picked up on any single loop never exceeds that truck’s capacity, and the whole day's travel should be as short as possible — the total distance is just the sum of all individual trip distances. Nothing can be skipped or doubled up. The exact addresses, quantities, and vehicle sizes are listed below.
+
+There are 8 locations in total (including headquarters node A), and each truck's capacity is 267.
+
+| location_node_id | x_coordinate | y_coordinate | recyclables_amount |
+|---|---|---|---|
+| A | 0 | 0 | 0 |
+| B | 55 | 66 | 99 |
+| C | 100 | 58 | 88 |
+| D | 13 | 16 | 61 |
+| E | 44 | 87 | 23 |
+| F | 43 | 95 | 12 |
+| G | 64 | 100 | 79 |
+| H | 86 | 89 | 87 |
+
+We will assign routes so each spot is visited exactly once, every route starts and ends at node A, and no route's load exceeds 267.
+
+Also, when you hand me the routes, just stick to this simple JSON layout so it's easy to read and validate:
+
+{
+  ""solution"": [[depot_id, location_id, ... , depot_id], [depot_id, location_id, ... , depot_id], ...]
+}
+
+This shows a ""solution"" as a list of routes. Each route is itself a list of stops that starts and ends with the depot_id; the middle entries are the collection locations on that loop. Think of it like filling out a little route card for each truck — nothing fancy, just the order of stops.
+
+This JSON is just a sketch of the shape I expect, not the actual answer. Please make sure to use the exact identifiers from the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[0, 0], [55, 66], [100, 58], [13, 16], [44, 87], [43, 95], [64, 100], [86, 89]], ""depot"": 0, ""demands"": [0, 99, 88, 61, 23, 12, 79, 87], ""capacity"": 267, ""num_vehicles"": 2, ""total_distance"": 507.19469277604406, ""objective"": 507.19469277604406}","[[0, 3, 1, 4, 0], [0, 5, 6, 7, 2, 0]]",507.19469277604406,"{""problem_type"": ""CVRP"", ""num_nodes"": 8, ""nodes"": [{""id"": ""A"", ""x"": 0, ""y"": 0, ""demand"": 0}, {""id"": ""B"", ""x"": 55, ""y"": 66, ""demand"": 99}, {""id"": ""C"", ""x"": 100, ""y"": 58, ""demand"": 88}, {""id"": ""D"", ""x"": 13, ""y"": 16, ""demand"": 61}, {""id"": ""E"", ""x"": 44, ""y"": 87, ""demand"": 23}, {""id"": ""F"", ""x"": 43, ""y"": 95, ""demand"": 12}, {""id"": ""G"", ""x"": 64, ""y"": 100, ""demand"": 79}, {""id"": ""H"", ""x"": 86, ""y"": 89, ""demand"": 87}], ""depot"": ""A"", ""capacity"": 267, ""num_vehicles"": 2, ""total_distance"": 507.19469277604406, ""objective"": 507.19469277604406}","[[""A"", ""D"", ""B"", ""E"", ""A""], [""A"", ""F"", ""G"", ""H"", ""C"", ""A""]]"
+CVRP_S_026,CVRP,S,26,"Recently the outreach team asked for a clean way to schedule mobile donation visits: split the community stops into runs that start and end at the clinic, make sure each stop gets one visit only, and don’t overload any van beyond its seating or storage. The winning schedule is the one with the smallest total driving distance — just add together all the route lengths to see which is shortest. The detailed list of stops and capacities is shown below.
+
+There are 9 locations in this instance, the clinic is 1, and each van can carry up to 23 donors.
+
+| location_id | x_coord | y_coord | expected_donors |
+|---|---|---|---|
+| 1 | 0 | 0 | 0 |
+| 2 | 82 | 5 | 1 |
+| 3 | 100 | 4 | 1 |
+| 4 | 93 | 100 | 1 |
+| 5 | 98 | 66 | 1 |
+| 6 | 56 | 84 | 1 |
+| 7 | 68 | 4 | 1 |
+| 8 | 21 | 73 | 1 |
+| 9 | 97 | 35 | 1 |
+
+Routes must start and end at clinic 1, respect the 23-donor limit, and the winning schedule minimizes the sum of all route distances over the 9 locations.
+
+Oh, and when you hand the schedule back, please use this simple JSON shape so it's easy to parse:
+
+{
+  ""solution"": [[clinic_id, stop_id, ... , clinic_id], [clinic_id, stop_id, ... , clinic_id], ...]
+}
+
+""solution"" is just a list of runs. Each inner list is one run that starts and ends at the clinic (that's the first and last placeholder), with the stops visited in between. It's just a quick sketch of the format I need — not the actual answer.
+
+Please use the exact identifiers from the instance input when filling this in — do not rename them or add new labels. For example: Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",markdown_table,one_based,"{""coordinates"": [[0, 0], [82, 5], [100, 4], [93, 100], [98, 66], [56, 84], [68, 4], [21, 73], [97, 35]], ""depot"": 0, ""demands"": [0, 1, 1, 1, 1, 1, 1, 1, 1], ""capacity"": 23, ""num_vehicles"": 1, ""total_distance"": 349.6672765433723, ""objective"": 349.6672765433723}","[[0, 6, 1, 2, 8, 4, 3, 5, 7, 0]]",349.6672765433723,"{""problem_type"": ""CVRP"", ""num_nodes"": 9, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 0, ""demand"": 0}, {""id"": 2, ""x"": 82, ""y"": 5, ""demand"": 1}, {""id"": 3, ""x"": 100, ""y"": 4, ""demand"": 1}, {""id"": 4, ""x"": 93, ""y"": 100, ""demand"": 1}, {""id"": 5, ""x"": 98, ""y"": 66, ""demand"": 1}, {""id"": 6, ""x"": 56, ""y"": 84, ""demand"": 1}, {""id"": 7, ""x"": 68, ""y"": 4, ""demand"": 1}, {""id"": 8, ""x"": 21, ""y"": 73, ""demand"": 1}, {""id"": 9, ""x"": 97, ""y"": 35, ""demand"": 1}], ""depot"": 1, ""capacity"": 23, ""num_vehicles"": 1, ""total_distance"": 349.6672765433723, ""objective"": 349.6672765433723}","[[1, 7, 2, 3, 9, 5, 4, 6, 8, 1]]"
+CVRP_S_027,CVRP,S,27,"We need a straightforward pickup schedule: assign which truck goes to which compost sites so every site is covered once, every run starts and ends at the yard, and no truck is overloaded. The winning schedule is the one with the least total driving distance — you get that by summing the length of every truck’s route from the yard out through its stops and back again. Concrete details about the locations, their amounts, and the truck limits follow below.
+
+{
+  ""total_locations_including_yard"": 5,
+  ""nodes"": [
+    {
+      ""site_id"": 0,
+      ""site_x_coordinate"": 67,
+      ""site_y_coordinate"": 56,
+      ""pickup_amount"": 0
+    },
+    {
+      ""site_id"": 1,
+      ""site_x_coordinate"": 100,
+      ""site_y_coordinate"": 0,
+      ""pickup_amount"": 21
+    },
+    {
+      ""site_id"": 2,
+      ""site_x_coordinate"": 26,
+      ""site_y_coordinate"": 44,
+      ""pickup_amount"": 19
+    },
+    {
+      ""site_id"": 3,
+      ""site_x_coordinate"": 0,
+      ""site_y_coordinate"": 100,
+      ""pickup_amount"": 13
+    },
+    {
+      ""site_id"": 4,
+      ""site_x_coordinate"": 37,
+      ""site_y_coordinate"": 25,
+      ""pickup_amount"": 27
+    }
+  ],
+  ""yard_node_id"": 0,
+  ""truck_capacity"": 70
+}
+
+Also, when you send the actual plan back, keep it in this simple JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [[yard_id, site_id, ... , yard_id], [yard_id, site_id, ... , yard_id], ...]
+}
+
+Think of ""solution"" as a list of runs. Each run is a list that starts and ends at the yard, with the compost sites visited in between — those placeholders just show the shape, not the real IDs or the final routes. This is only a sketch of the expected format, not the finished answer.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""coordinates"": [[67, 56], [100, 0], [26, 44], [0, 100], [37, 25]], ""depot"": 0, ""demands"": [0, 21, 19, 13, 27], ""capacity"": 70, ""num_vehicles"": 2, ""total_distance"": 336.9913014914857, ""objective"": 336.9913014914857}","[[0, 1, 0], [0, 4, 2, 3, 0]]",336.9913014914857,"{""problem_type"": ""CVRP"", ""num_nodes"": 5, ""nodes"": [{""id"": 0, ""x"": 67, ""y"": 56, ""demand"": 0}, {""id"": 1, ""x"": 100, ""y"": 0, ""demand"": 21}, {""id"": 2, ""x"": 26, ""y"": 44, ""demand"": 19}, {""id"": 3, ""x"": 0, ""y"": 100, ""demand"": 13}, {""id"": 4, ""x"": 37, ""y"": 25, ""demand"": 27}], ""depot"": 0, ""capacity"": 70, ""num_vehicles"": 2, ""total_distance"": 336.9913014914857, ""objective"": 336.9913014914857}","[[0, 1, 0], [0, 4, 2, 3, 0]]"
+CVRP_S_028,CVRP,S,28,"Someone on the logistics team needs to assign which truck goes to which gigs this weekend. The plan must make sure every venue gets its gear exactly once, every truck starts out from the depot and returns there when it’s done, and loads never exceed a truck’s weight limit. The simplest way to judge a plan is by total driving distance — total it up by summing each truck’s route, and the lower the total the better. The exact orders, weights, and truck capacities are detailed below.
+
+There are 10 locations including the depot 1, and each truck has a capacity of 69.
+Location 1 at (0, 82) requires 0 weight of gear.
+Location 2 at (85, 0) requires 5 weight of gear.
+Location 3 at (21, 46) requires 10 weight of gear.
+Location 4 at (100, 59) requires 5 weight of gear.
+Location 5 at (39, 100) requires 10 weight of gear.
+Location 6 at (39, 2) requires 8 weight of gear.
+Location 7 at (46, 5) requires 7 weight of gear.
+Location 8 at (36, 93) requires 6 weight of gear.
+Location 9 at (40, 100) requires 5 weight of gear.
+Location 10 at (50, 31) requires 8 weight of gear.
+Confirm every venue is listed exactly once and every route starts and ends at 1, staying within the 69 limit.
+
+Oh, and one more thing — when you send the plan back, please use this simple JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [[depot_id, location_id, ... , depot_id], [depot_id, location_id, ... , depot_id], ...]
+}
+
+Think of it like a form: each inner list is one truck's trip (start at the depot, visit the venues in order, come back to the depot), and the outer list is the set of all trucks/routes. The placeholders (like depot_id and location_id) stand for the actual identifiers you'll use for the depot and the venues.
+
+This is just a sketch of the shape I want, not the actual answers — fill it with the real IDs from the instance when you reply. Please make sure all identifiers are used exactly as they appear in the instance input — do not rename them or invent new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"{""coordinates"": [[0, 82], [85, 0], [21, 46], [100, 59], [39, 100], [39, 2], [46, 5], [36, 93], [40, 100], [50, 31]], ""depot"": 0, ""demands"": [0, 5, 10, 5, 10, 8, 7, 6, 5, 8], ""capacity"": 69, ""num_vehicles"": 1, ""total_distance"": 333.3586343687445, ""objective"": 333.3586343687445}","[[0, 2, 9, 5, 6, 1, 3, 4, 8, 7, 0]]",333.3586343687445,"{""problem_type"": ""CVRP"", ""num_nodes"": 10, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 82, ""demand"": 0}, {""id"": 2, ""x"": 85, ""y"": 0, ""demand"": 5}, {""id"": 3, ""x"": 21, ""y"": 46, ""demand"": 10}, {""id"": 4, ""x"": 100, ""y"": 59, ""demand"": 5}, {""id"": 5, ""x"": 39, ""y"": 100, ""demand"": 10}, {""id"": 6, ""x"": 39, ""y"": 2, ""demand"": 8}, {""id"": 7, ""x"": 46, ""y"": 5, ""demand"": 7}, {""id"": 8, ""x"": 36, ""y"": 93, ""demand"": 6}, {""id"": 9, ""x"": 40, ""y"": 100, ""demand"": 5}, {""id"": 10, ""x"": 50, ""y"": 31, ""demand"": 8}], ""depot"": 1, ""capacity"": 69, ""num_vehicles"": 1, ""total_distance"": 333.3586343687445, ""objective"": 333.3586343687445}","[[1, 3, 10, 6, 7, 2, 4, 5, 9, 8, 1]]"
+CVRP_S_029,CVRP,S,29,"There’s a courier team that runs morning drops out of the sorting office and the challenge is to draw up routes so every mailbox is covered exactly once. Each trip has to leave and return to the sorting office, a vehicle can’t be packed beyond its carrying limit, and the whole set of trips should rack up as few miles as possible — that is checked by summing the distance of every route. The specific stops and mail loads are shown below.
+
+Below are the 6 locations (sorting office 1) and the vehicle capacity 18.
+Location 1: coordinates (0, 0) miles, mail demand 0.
+Location 2: coordinates (40, 34) miles, mail demand 1.
+Location 3: coordinates (100, 100) miles, mail demand 1.
+Location 4: coordinates (18, 67) miles, mail demand 1.
+Location 5: coordinates (68, 33) miles, mail demand 1.
+Location 6: coordinates (96, 65) miles, mail demand 1.
+Routes must start and end at 1, serve each location exactly once, and never exceed vehicle capacity 18.
+
+When you send the routes back, just use this simple JSON layout so it's easy to read and plug into the system:
+
+{
+  ""solution"": [[sorting_office_id, mailbox_id, ... , sorting_office_id], [sorting_office_id, mailbox_id, ... , sorting_office_id], ...]
+}
+
+This is just a sketch of the shape I expect: ""solution"" is the list of trips, each inner list is one round trip that starts and ends at the sorting office, and the placeholders (like sorting_office_id and mailbox_id) show where you'll drop in the actual stop IDs from the instance. It's an example, not the real answer — plug in the real identifiers for each stop.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — don't rename them and don't invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"{""coordinates"": [[0, 0], [40, 34], [100, 100], [18, 67], [68, 33], [96, 65]], ""depot"": 0, ""demands"": [0, 1, 1, 1, 1, 1], ""capacity"": 18, ""num_vehicles"": 1, ""total_distance"": 316.0308479184258, ""objective"": 316.0308479184258}","[[0, 1, 4, 5, 2, 3, 0]]",316.0308479184258,"{""problem_type"": ""CVRP"", ""num_nodes"": 6, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 0, ""demand"": 0}, {""id"": 2, ""x"": 40, ""y"": 34, ""demand"": 1}, {""id"": 3, ""x"": 100, ""y"": 100, ""demand"": 1}, {""id"": 4, ""x"": 18, ""y"": 67, ""demand"": 1}, {""id"": 5, ""x"": 68, ""y"": 33, ""demand"": 1}, {""id"": 6, ""x"": 96, ""y"": 65, ""demand"": 1}], ""depot"": 1, ""capacity"": 18, ""num_vehicles"": 1, ""total_distance"": 316.0308479184258, ""objective"": 316.0308479184258}","[[1, 2, 5, 6, 3, 4, 1]]"
+CVRP_S_030,CVRP,S,30,"Back at the office the crew needs to map out supply runs so each build site gets a single delivery, with every trip launching from the yard and finishing there, and no vehicle carrying more than it’s rated for. The key comparison between different plans is how much driving they cause: take each route’s distance, add them up, and the lower that grand total the better the plan. The full instance details — which sites, how much material, and vehicle capacities — are listed below.
+
+# total_locations_including_yard=8
+# yard_node_id=1
+# vehicle_capacity=280
+location_id,x_coord,y_coord,material_demand
+1,56,55,0
+2,74,70,15
+3,83,62,16
+4,96,47,12
+5,81,52,19
+6,83,80,22
+7,0,100,7
+8,100,0,13
+
+Also, when you send the plan back, just use this simple JSON layout so I can read the routes programmatically — nothing fancy needed:
+
+{
+  ""solution"": [[yard_id, site_id, ... , yard_id], [yard_id, site_id, ... , yard_id], ...]
+}
+
+This just means: ""solution"" is a list of routes, each route is a list that starts and ends at the yard and lists the sites visited in order. Think of it like filling out a form where each row is one round-trip from the yard to a few sites and back.
+
+This JSON is only a sketch of the expected shape — not the actual answer.
+
+Please make sure you use the exact identifiers from the instance input, with no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""coordinates"": [[56, 55], [74, 70], [83, 62], [96, 47], [81, 52], [83, 80], [0, 100], [100, 0]], ""depot"": 0, ""demands"": [0, 15, 16, 12, 19, 22, 7, 13], ""capacity"": 280, ""num_vehicles"": 1, ""total_distance"": 326.324659002551, ""objective"": 326.324659002551}","[[0, 7, 3, 4, 2, 1, 5, 6, 0]]",326.324659002551,"{""problem_type"": ""CVRP"", ""num_nodes"": 8, ""nodes"": [{""id"": 1, ""x"": 56, ""y"": 55, ""demand"": 0}, {""id"": 2, ""x"": 74, ""y"": 70, ""demand"": 15}, {""id"": 3, ""x"": 83, ""y"": 62, ""demand"": 16}, {""id"": 4, ""x"": 96, ""y"": 47, ""demand"": 12}, {""id"": 5, ""x"": 81, ""y"": 52, ""demand"": 19}, {""id"": 6, ""x"": 83, ""y"": 80, ""demand"": 22}, {""id"": 7, ""x"": 0, ""y"": 100, ""demand"": 7}, {""id"": 8, ""x"": 100, ""y"": 0, ""demand"": 13}], ""depot"": 1, ""capacity"": 280, ""num_vehicles"": 1, ""total_distance"": 326.324659002551, ""objective"": 326.324659002551}","[[1, 8, 4, 5, 3, 2, 6, 7, 1]]"
+CVRP_S_031,CVRP,S,31,"There’s a bottling plant that fills trucks and sends them out to a list of bars, and the goal is to plan the runs so every bar gets served exactly once and each driver returns to the plant at the end of the day. The decisions are about grouping nearby bars into routes without overstuffing any truck — each route can only carry so much product. Better plans are the ones that reduce overall driving: compute the sum of the distances of all routes and aim for the smallest possible total. The concrete details are shown below.
+
+Instance details: the instance has 10 locations including the plant, the plant is node A, and each truck can carry up to 80 units.
+Location A at (61, 33) requires 0 units.
+Location B at (79, 56) requires 15 units.
+Location C at (36, 76) requires 29 units.
+Location D at (100, 22) requires 12 units.
+Location E at (27, 24) requires 19 units.
+Location F at (82, 2) requires 13 units.
+Location G at (88, 56) requires 10 units.
+Location H at (86, 29) requires 19 units.
+Location I at (7, 100) requires 7 units.
+Location J at (0, 0) requires 26 units.
+Plan routes that serve every bar once, return each driver to the plant A, and do not exceed truck capacity 80 while minimizing total driving distance.
+
+Oh, and one more thing — when you give the routes back, please use this simple JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [[plant_id, bar_id, ... , plant_id], [plant_id, bar_id, ... , plant_id], ...]
+}
+
+Think of it like a little form: ""solution"" is a list of routes, each route is the sequence of stops starting and ending at the plant (plant_id) with the bars (bar_id) visited in order. The ""..."" just means there can be more stops in between. This is only a sketch of the shape I expect, not the actual routes.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"{""coordinates"": [[61, 33], [79, 56], [36, 76], [100, 22], [27, 24], [82, 2], [88, 56], [86, 29], [7, 100], [0, 0]], ""depot"": 0, ""demands"": [0, 15, 29, 12, 19, 13, 10, 19, 7, 26], ""capacity"": 80, ""num_vehicles"": 2, ""total_distance"": 453.25997188833605, ""objective"": 453.25997188833605}","[[0, 3, 5, 9, 4, 0], [0, 8, 2, 1, 6, 7, 0]]",453.25997188833605,"{""problem_type"": ""CVRP"", ""num_nodes"": 10, ""nodes"": [{""id"": ""A"", ""x"": 61, ""y"": 33, ""demand"": 0}, {""id"": ""B"", ""x"": 79, ""y"": 56, ""demand"": 15}, {""id"": ""C"", ""x"": 36, ""y"": 76, ""demand"": 29}, {""id"": ""D"", ""x"": 100, ""y"": 22, ""demand"": 12}, {""id"": ""E"", ""x"": 27, ""y"": 24, ""demand"": 19}, {""id"": ""F"", ""x"": 82, ""y"": 2, ""demand"": 13}, {""id"": ""G"", ""x"": 88, ""y"": 56, ""demand"": 10}, {""id"": ""H"", ""x"": 86, ""y"": 29, ""demand"": 19}, {""id"": ""I"", ""x"": 7, ""y"": 100, ""demand"": 7}, {""id"": ""J"", ""x"": 0, ""y"": 0, ""demand"": 26}], ""depot"": ""A"", ""capacity"": 80, ""num_vehicles"": 2, ""total_distance"": 453.25997188833605, ""objective"": 453.25997188833605}","[[""A"", ""D"", ""F"", ""J"", ""E"", ""A""], [""A"", ""I"", ""C"", ""B"", ""G"", ""H"", ""A""]]"
+CVRP_S_032,CVRP,S,32,"I help organize the creamery’s pickup runs: there’s a set of farms that need milk picked up, and the job is to group them into truck trips so every farm gets visited exactly once. Each truck leaves the creamery, visits the farms on its list, and then returns to the creamery, and no trip can carry more milk than the tanker holds. A better plan is one that cuts down on total driving — measured by adding up the miles for every trip — so the goal is to pick routes that keep that total as small as possible. Concrete details are shown below.
+
+# total_locations=8
+# creamery_id=A
+# tanker_capacity=100
+location_id,x_coordinate,y_coordinate,milk_amount
+A,19,100,0
+B,9,41,19
+C,91,40,10
+D,22,15,6
+E,90,0,17
+F,93,80,16
+G,0,6,3
+H,100,40,12
+
+When you’re ready to send me a plan, just put it in this simple JSON layout so I can read the routes cleanly:
+
+{
+  ""solution"": [[creamery_id, farm_id, ... , creamery_id], [creamery_id, farm_id, ... , creamery_id], ...]
+}
+
+This is just a quick sketch of the shape I’m expecting: ""solution"" is a list of routes, each route is a list that starts and ends at the creamery and lists the farms visited in between. Think of it like filling out a little itinerary form for each truck.
+
+This JSON is only an outline of the format — not the actual routes. Please use the exact identifiers from the instance input when you fill it in: don’t rename them or invent new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"{""coordinates"": [[19, 100], [9, 41], [91, 40], [22, 15], [90, 0], [93, 80], [0, 6], [100, 40]], ""depot"": 0, ""demands"": [0, 19, 10, 6, 17, 16, 3, 12], ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 356.32066591504355, ""objective"": 356.32066591504355}","[[0, 1, 6, 3, 4, 7, 2, 5, 0]]",356.32066591504355,"{""problem_type"": ""CVRP"", ""num_nodes"": 8, ""nodes"": [{""id"": ""A"", ""x"": 19, ""y"": 100, ""demand"": 0}, {""id"": ""B"", ""x"": 9, ""y"": 41, ""demand"": 19}, {""id"": ""C"", ""x"": 91, ""y"": 40, ""demand"": 10}, {""id"": ""D"", ""x"": 22, ""y"": 15, ""demand"": 6}, {""id"": ""E"", ""x"": 90, ""y"": 0, ""demand"": 17}, {""id"": ""F"", ""x"": 93, ""y"": 80, ""demand"": 16}, {""id"": ""G"", ""x"": 0, ""y"": 6, ""demand"": 3}, {""id"": ""H"", ""x"": 100, ""y"": 40, ""demand"": 12}], ""depot"": ""A"", ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 356.32066591504355, ""objective"": 356.32066591504355}","[[""A"", ""B"", ""G"", ""D"", ""E"", ""H"", ""C"", ""F"", ""A""]]"
+CVRP_S_033,CVRP,S,33,"Recently the office asked for a simpler way to send crews out: every technician should start and finish at the central hub, visit each service location only once, and only carry what fits in their van. The trick is picking which stops go on each technician’s run and the order they’ll be visited, while never exceeding any van’s load and never leaving a site unvisited or visited twice. The scoring is straightforward — total miles driven by the whole team, calculated by adding up each route’s distance — and the exact instance details follow below.
+
+Instance details: 9 locations (including central hub 0); van capacity 100.
+Location 0 at (64, 59) with demand 0.
+Location 1 at (100, 100) with demand 1.
+Location 2 at (83, 58) with demand 3.
+Location 3 at (27, 76) with demand 18.
+Location 4 at (34, 76) with demand 23.
+Location 5 at (93, 36) with demand 13.
+Location 6 at (77, 85) with demand 7.
+Location 7 at (0, 0) with demand 23.
+Location 8 at (94, 27) with demand 22.
+Every location is listed once so technician routes can be formed without exceeding van capacity and total miles can be computed.
+
+Also, when you send the route plan back, just stick to this simple JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [[hub_id, site_id, ... , hub_id], [hub_id, site_id, ... , hub_id], ...]
+}
+
+Think of it like a little form: the outer list is the whole day's set of runs, each inner list is one technician's trip that starts and ends at the hub and lists the service sites in visit order. This block is just a sketch of the shape I want — fill it with the actual route lists for the instance.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”"".",nl,zero_based,"{""coordinates"": [[64, 59], [100, 100], [83, 58], [27, 76], [34, 76], [93, 36], [77, 85], [0, 0], [94, 27]], ""depot"": 0, ""demands"": [0, 1, 3, 18, 23, 13, 7, 23, 22], ""capacity"": 100, ""num_vehicles"": 2, ""total_distance"": 386.8694584523867, ""objective"": 386.8694584523867}","[[0, 5, 8, 7, 3, 4, 0], [0, 6, 1, 2, 0]]",386.8694584523867,"{""problem_type"": ""CVRP"", ""num_nodes"": 9, ""nodes"": [{""id"": 0, ""x"": 64, ""y"": 59, ""demand"": 0}, {""id"": 1, ""x"": 100, ""y"": 100, ""demand"": 1}, {""id"": 2, ""x"": 83, ""y"": 58, ""demand"": 3}, {""id"": 3, ""x"": 27, ""y"": 76, ""demand"": 18}, {""id"": 4, ""x"": 34, ""y"": 76, ""demand"": 23}, {""id"": 5, ""x"": 93, ""y"": 36, ""demand"": 13}, {""id"": 6, ""x"": 77, ""y"": 85, ""demand"": 7}, {""id"": 7, ""x"": 0, ""y"": 0, ""demand"": 23}, {""id"": 8, ""x"": 94, ""y"": 27, ""demand"": 22}], ""depot"": 0, ""capacity"": 100, ""num_vehicles"": 2, ""total_distance"": 386.8694584523867, ""objective"": 386.8694584523867}","[[0, 5, 8, 7, 3, 4, 0], [0, 6, 1, 2, 0]]"
+CVRP_S_034,CVRP,S,34,"Picture this: a fleet of vans leaves and returns to the same downtown hub, and the challenge is to bundle customer stops into those loops so everyone gets one delivery, no one gets served twice, and each loop only carries as many parcels as the van can handle. The plan that’s preferred is the one with the least total mileage — just sum the lengths of all the loops and aim for the smallest number. The concrete numbers and locations follow below.
+
+There are 6 locations including the downtown hub 1, and each van can carry up to 18 parcels.
+
+| location_id | x_coordinate | y_coordinate | parcels_required |
+|---|---|---|---|
+| 1 | 100 | 68 | 0 |
+| 2 | 50 | 0 | 10 |
+| 3 | 0 | 66 | 5 |
+| 4 | 81 | 56 | 4 |
+| 5 | 77 | 100 | 2 |
+| 6 | 4 | 90 | 2 |
+
+Use these lines to assemble loops that start and end at 1 while respecting the 18-parcel limit.
+
+Oh, and when you send the route plan back, just use this simple JSON shape:
+
+{
+  ""solution"": [[depot_id, location_id, ... , depot_id], [depot_id, location_id, ... , depot_id], ...]
+}
+
+Here ""solution"" is a list of routes; each route is a loop that starts and ends at the depot_id, and the location_id entries in between are the stops in visit order. Think of it like filling out a little route form — it's only a sketch of the shape I need, not the actual routes for this instance.
+
+Please make sure to use the exact identifiers that appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""coordinates"": [[100, 68], [50, 0], [0, 66], [81, 56], [77, 100], [4, 90]], ""depot"": 0, ""demands"": [0, 10, 5, 4, 2, 2], ""capacity"": 18, ""num_vehicles"": 2, ""total_distance"": 396.0861558145978, ""objective"": 396.0861558145978}","[[0, 5, 2, 1, 0], [0, 4, 3, 0]]",396.0861558145978,"{""problem_type"": ""CVRP"", ""num_nodes"": 6, ""nodes"": [{""id"": 1, ""x"": 100, ""y"": 68, ""demand"": 0}, {""id"": 2, ""x"": 50, ""y"": 0, ""demand"": 10}, {""id"": 3, ""x"": 0, ""y"": 66, ""demand"": 5}, {""id"": 4, ""x"": 81, ""y"": 56, ""demand"": 4}, {""id"": 5, ""x"": 77, ""y"": 100, ""demand"": 2}, {""id"": 6, ""x"": 4, ""y"": 90, ""demand"": 2}], ""depot"": 1, ""capacity"": 18, ""num_vehicles"": 2, ""total_distance"": 396.0861558145978, ""objective"": 396.0861558145978}","[[1, 6, 3, 2, 1], [1, 5, 4, 1]]"
+CVRP_S_035,CVRP,S,35,"Many teachers asked for deliveries, so the logistics team is setting up a handful of runs from the main store where each route departs from and returns to the store and stops at each classroom exactly once. The practical choice is grouping stops per run so each vehicle stays under its load limit, and the goal is to keep the combined driving distance — just the total of all the trip distances — as low as possible. Concrete details are provided below.
+
+The logistics team will plan routes for 7 locations, with the central store at 0 and a vehicle capacity of 944.
+
+| location_id | x_coordinate | y_coordinate | supply_demand |
+|---|---|---|---|
+| 0 | 0 | 96 | 0 |
+| 1 | 76 | 0 | 72 |
+| 2 | 100 | 100 | 22 |
+| 3 | 32 | 85 | 27 |
+| 4 | 44 | 68 | 91 |
+| 5 | 88 | 11 | 12 |
+| 6 | 11 | 22 | 31 |
+
+These details let the logistics team form feasible routes from 0 for 7 locations under capacity 944.
+
+Oh, and one quick thing — when you send back the set of runs, please use this simple JSON layout so it's easy to read and parse:
+
+{
+  ""solution"": [[store_id, classroom_id, ... , store_id], [store_id, classroom_id, ... , store_id], ...]
+}
+
+This just shows the shape I need: ""solution"" is a list of routes, each route is a list that starts and ends with the store and has the classrooms visited in order. Think of it like filling out a short form for each run. It's just a sketch of the format, not the actual routes.
+
+Please use the exact identifiers from the instance input — no renaming and no new labels.
+
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,zero_based,"{""coordinates"": [[0, 96], [76, 0], [100, 100], [32, 85], [44, 68], [88, 11], [11, 22]], ""depot"": 0, ""demands"": [0, 72, 22, 27, 91, 12, 31], ""capacity"": 944, ""num_vehicles"": 1, ""total_distance"": 368.6639826273214, ""objective"": 368.6639826273214}","[[0, 3, 4, 2, 5, 1, 6, 0]]",368.6639826273214,"{""problem_type"": ""CVRP"", ""num_nodes"": 7, ""nodes"": [{""id"": 0, ""x"": 0, ""y"": 96, ""demand"": 0}, {""id"": 1, ""x"": 76, ""y"": 0, ""demand"": 72}, {""id"": 2, ""x"": 100, ""y"": 100, ""demand"": 22}, {""id"": 3, ""x"": 32, ""y"": 85, ""demand"": 27}, {""id"": 4, ""x"": 44, ""y"": 68, ""demand"": 91}, {""id"": 5, ""x"": 88, ""y"": 11, ""demand"": 12}, {""id"": 6, ""x"": 11, ""y"": 22, ""demand"": 31}], ""depot"": 0, ""capacity"": 944, ""num_vehicles"": 1, ""total_distance"": 368.6639826273214, ""objective"": 368.6639826273214}","[[0, 3, 4, 2, 5, 1, 6, 0]]"
+CVRP_S_036,CVRP,S,36,"We have a dry-cleaning shop that needs a few pickup routes: each route starts at the shop, goes to several customers, and returns to the shop when done. Every address needs a single pickup (no skipping or double-picking), and the bags collected on any route must fit inside the van. The idea is to arrange the stops so the total driving distance — the sum of all the round-trip miles for every route — is as small as possible. Concrete details like customer addresses, bag counts, and the van limit are shown below.
+
+{
+  ""total_locations_including_shop"": 10,
+  ""nodes"": [
+    {
+      ""location_id"": 0,
+      ""x_coordinate"": 95,
+      ""y_coordinate"": 18,
+      ""bags_needed_pickup"": 0
+    },
+    {
+      ""location_id"": 1,
+      ""x_coordinate"": 20,
+      ""y_coordinate"": 18,
+      ""bags_needed_pickup"": 7
+    },
+    {
+      ""location_id"": 2,
+      ""x_coordinate"": 75,
+      ""y_coordinate"": 32,
+      ""bags_needed_pickup"": 10
+    },
+    {
+      ""location_id"": 3,
+      ""x_coordinate"": 41,
+      ""y_coordinate"": 54,
+      ""bags_needed_pickup"": 8
+    },
+    {
+      ""location_id"": 4,
+      ""x_coordinate"": 24,
+      ""y_coordinate"": 33,
+      ""bags_needed_pickup"": 5
+    },
+    {
+      ""location_id"": 5,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 47,
+      ""bags_needed_pickup"": 5
+    },
+    {
+      ""location_id"": 6,
+      ""x_coordinate"": 48,
+      ""y_coordinate"": 65,
+      ""bags_needed_pickup"": 5
+    },
+    {
+      ""location_id"": 7,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 0,
+      ""bags_needed_pickup"": 6
+    },
+    {
+      ""location_id"": 8,
+      ""x_coordinate"": 26,
+      ""y_coordinate"": 2,
+      ""bags_needed_pickup"": 8
+    },
+    {
+      ""location_id"": 9,
+      ""x_coordinate"": 10,
+      ""y_coordinate"": 100,
+      ""bags_needed_pickup"": 7
+    }
+  ],
+  ""shop_node_id"": 0,
+  ""van_capacity_bags"": 44
+}
+
+Also, when you send the actual routes back, please use this little JSON layout so I can read it easily:
+
+{
+  ""solution"": [[shop_id, customer_id, ... , shop_id], [shop_id, customer_id, ... , shop_id], ...]
+}
+
+Think of ""solution"" as a list of routes. Each inner list is one round-trip that starts and ends at the shop (shop_id) and lists the customers visited (customer_id) in order. This block is just a sketch of the shape I expect, not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — no renaming, no extra labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""coordinates"": [[95, 18], [20, 18], [75, 32], [41, 54], [24, 33], [100, 47], [48, 65], [0, 0], [26, 2], [10, 100]], ""depot"": 0, ""demands"": [0, 7, 10, 8, 5, 5, 5, 6, 8, 7], ""capacity"": 44, ""num_vehicles"": 2, ""total_distance"": 468.404473912992, ""objective"": 468.404473912992}","[[0, 2, 3, 9, 6, 5, 0], [0, 4, 1, 7, 8, 0]]",468.404473912992,"{""problem_type"": ""CVRP"", ""num_nodes"": 10, ""nodes"": [{""id"": 0, ""x"": 95, ""y"": 18, ""demand"": 0}, {""id"": 1, ""x"": 20, ""y"": 18, ""demand"": 7}, {""id"": 2, ""x"": 75, ""y"": 32, ""demand"": 10}, {""id"": 3, ""x"": 41, ""y"": 54, ""demand"": 8}, {""id"": 4, ""x"": 24, ""y"": 33, ""demand"": 5}, {""id"": 5, ""x"": 100, ""y"": 47, ""demand"": 5}, {""id"": 6, ""x"": 48, ""y"": 65, ""demand"": 5}, {""id"": 7, ""x"": 0, ""y"": 0, ""demand"": 6}, {""id"": 8, ""x"": 26, ""y"": 2, ""demand"": 8}, {""id"": 9, ""x"": 10, ""y"": 100, ""demand"": 7}], ""depot"": 0, ""capacity"": 44, ""num_vehicles"": 2, ""total_distance"": 468.404473912992, ""objective"": 468.404473912992}","[[0, 2, 3, 9, 6, 5, 0], [0, 4, 1, 7, 8, 0]]"
+CVRP_S_037,CVRP,S,37,"We need to sort out routes from the farm yard so the spreader trucks leave the yard, visit a bunch of fields (each field just once), and return to the yard without overfilling any spreader. The decision is which fields to group on each outing and the order to visit them, with the trade-off being keeping every trip within load limits while driving as few miles as possible. To compare plans, simply total the miles for every trip — the lower that sum, the better the plan. The concrete list of fields, their fertilizer needs, and the spreader capacity will be shown below.
+
+{
+  ""total_locations_count"": 5,
+  ""nodes"": [
+    {
+      ""location_node_id"": 0,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 100,
+      ""fertilizer_demand"": 0
+    },
+    {
+      ""location_node_id"": 1,
+      ""x_coordinate"": 63,
+      ""y_coordinate"": 38,
+      ""fertilizer_demand"": 6
+    },
+    {
+      ""location_node_id"": 2,
+      ""x_coordinate"": 70,
+      ""y_coordinate"": 62,
+      ""fertilizer_demand"": 7
+    },
+    {
+      ""location_node_id"": 3,
+      ""x_coordinate"": 26,
+      ""y_coordinate"": 40,
+      ""fertilizer_demand"": 9
+    },
+    {
+      ""location_node_id"": 4,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 0,
+      ""fertilizer_demand"": 3
+    }
+  ],
+  ""farm_yard_node"": 0,
+  ""spreader_capacity"": 131
+}
+
+Also, when you send the plan back, just put the routes into a little JSON object like this:
+
+{
+  ""solution"": [[""yard_id"", ""field_id"", ..., ""yard_id""], [""yard_id"", ""field_id"", ..., ""yard_id""], ...]
+}
+
+This just shows the shape I want: ""solution"" is a list of trips, and each trip is an ordered list that starts and ends at the yard and lists the fields visited in between. Treat the placeholders as examples — you'll replace them with the real IDs from the instance when you give the actual plan. The JSON above is only a sketch of the shape I expect, not the final answer.
+
+Please be careful to use the exact identifiers from the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"{""coordinates"": [[0, 100], [63, 38], [70, 62], [26, 40], [100, 0]], ""depot"": 0, ""demands"": [0, 6, 7, 9, 3], ""capacity"": 131, ""num_vehicles"": 1, ""total_distance"": 304.0088003869393, ""objective"": 304.0088003869393}","[[0, 2, 4, 1, 3, 0]]",304.0088003869393,"{""problem_type"": ""CVRP"", ""num_nodes"": 5, ""nodes"": [{""id"": 0, ""x"": 0, ""y"": 100, ""demand"": 0}, {""id"": 1, ""x"": 63, ""y"": 38, ""demand"": 6}, {""id"": 2, ""x"": 70, ""y"": 62, ""demand"": 7}, {""id"": 3, ""x"": 26, ""y"": 40, ""demand"": 9}, {""id"": 4, ""x"": 100, ""y"": 0, ""demand"": 3}], ""depot"": 0, ""capacity"": 131, ""num_vehicles"": 1, ""total_distance"": 304.0088003869393, ""objective"": 304.0088003869393}","[[0, 2, 4, 1, 3, 0]]"
+CVRP_S_038,CVRP,S,38,"On a busy morning the mobile grooming van has to be scheduled so each customer gets visited once and the van always goes out from and back to the shop, with each outing carrying only as much equipment as the van can hold. The decision is which customers to put together on each trip and in what sequence. The best-looking schedule is the one with the fewest total miles driven — just total the distance of every route to see that — and the detailed stops and supply needs appear below.
+
+There are 8 locations including the groomer’s base 1, and the van's equipment capacity is 585 units.
+Location 1 at coordinates (43, 53) requires 0 equipment units.
+Location 2 at coordinates (66, 82) requires 53 equipment units.
+Location 3 at coordinates (7, 100) requires 66 equipment units.
+Location 4 at coordinates (65, 29) requires 53 equipment units.
+Location 5 at coordinates (46, 0) requires 85 equipment units.
+Location 6 at coordinates (41, 44) requires 84 equipment units.
+Location 7 at coordinates (100, 25) requires 89 equipment units.
+Location 8 at coordinates (0, 0) requires 88 equipment units.
+Each route must start and end at 1 and keep the total required equipment per outing at or below 585 units.
+
+And just so we're on the same page about how I'd like the final reply formatted, please follow this simple JSON shape when you give the routes — nothing fancy, just a list of routes where each route is a list of stops that starts and ends at the shop.
+
+{
+  ""solution"": [[""shop_id"", ""customer_id"", ... , ""shop_id""], [""shop_id"", ""customer_id"", ... , ""shop_id""], ...]
+}
+
+Think of ""solution"" as the whole schedule, each inner list as one trip the van takes (first item is the shop, then the customers in visit order, then back to the shop). This is just a sketch of the expected shape, not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"{""coordinates"": [[43, 53], [66, 82], [7, 100], [65, 29], [46, 0], [41, 44], [100, 25], [0, 0]], ""depot"": 0, ""demands"": [0, 53, 66, 53, 85, 84, 89, 88], ""capacity"": 585, ""num_vehicles"": 1, ""total_distance"": 372.5166423664567, ""objective"": 372.5166423664567}","[[0, 2, 1, 6, 3, 4, 7, 5, 0]]",372.5166423664567,"{""problem_type"": ""CVRP"", ""num_nodes"": 8, ""nodes"": [{""id"": 1, ""x"": 43, ""y"": 53, ""demand"": 0}, {""id"": 2, ""x"": 66, ""y"": 82, ""demand"": 53}, {""id"": 3, ""x"": 7, ""y"": 100, ""demand"": 66}, {""id"": 4, ""x"": 65, ""y"": 29, ""demand"": 53}, {""id"": 5, ""x"": 46, ""y"": 0, ""demand"": 85}, {""id"": 6, ""x"": 41, ""y"": 44, ""demand"": 84}, {""id"": 7, ""x"": 100, ""y"": 25, ""demand"": 89}, {""id"": 8, ""x"": 0, ""y"": 0, ""demand"": 88}], ""depot"": 1, ""capacity"": 585, ""num_vehicles"": 1, ""total_distance"": 372.5166423664567, ""objective"": 372.5166423664567}","[[1, 3, 2, 7, 4, 5, 8, 6, 1]]"
+CVRP_S_039,CVRP,S,39,"Someone has to schedule the refill deliveries so every department is visited one time, each route starts and ends at the central office, and no single trip carries more than the truck’s capacity. The decision is about which departments to group together on each run to make the total distance as small as possible — the total distance is just the sum of all individual trip distances. Details for the specific case are shown below.
+
+For this instance there are 10 locations in total, the central office is 1, and the truck's capacity is 112.
+
+| location_id | location_x | location_y | department_demand |
+|---|---|---|---|
+| 1 | 54 | 41 | 0 |
+| 2 | 33 | 33 | 3 |
+| 3 | 22 | 93 | 12 |
+| 4 | 0 | 16 | 19 |
+| 5 | 54 | 100 | 23 |
+| 6 | 37 | 55 | 9 |
+| 7 | 74 | 10 | 9 |
+| 8 | 85 | 0 | 18 |
+| 9 | 93 | 55 | 14 |
+| 10 | 100 | 45 | 6 |
+
+Assign every department exactly once so each route starts and ends at 1 and no route's total demand exceeds 112.
+
+Oh, and one more thing — when you give the planned trips back, please follow this simple JSON layout so it's easy to read and use:
+
+{
+  ""solution"": [[central_office_id, department_id, ... , central_office_id], [central_office_id, department_id, ... , central_office_id], ...]
+}
+
+Think of each inner list as one run for the truck: it starts at the central office, lists the departments visited in order, and ends back at the central office. This is just a sketch of the shape I need, not the actual set of stops.
+
+Please make sure to use the exact identifiers from the problem input — don't rename them or invent new ones.  
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,one_based,"{""coordinates"": [[54, 41], [33, 33], [22, 93], [0, 16], [54, 100], [37, 55], [74, 10], [85, 0], [93, 55], [100, 45]], ""depot"": 0, ""demands"": [0, 3, 12, 19, 23, 9, 9, 18, 14, 6], ""capacity"": 112, ""num_vehicles"": 2, ""total_distance"": 385.6795427943363, ""objective"": 385.6795427943363}","[[0, 3, 1, 0], [0, 5, 2, 4, 8, 9, 7, 6, 0]]",385.6795427943363,"{""problem_type"": ""CVRP"", ""num_nodes"": 10, ""nodes"": [{""id"": 1, ""x"": 54, ""y"": 41, ""demand"": 0}, {""id"": 2, ""x"": 33, ""y"": 33, ""demand"": 3}, {""id"": 3, ""x"": 22, ""y"": 93, ""demand"": 12}, {""id"": 4, ""x"": 0, ""y"": 16, ""demand"": 19}, {""id"": 5, ""x"": 54, ""y"": 100, ""demand"": 23}, {""id"": 6, ""x"": 37, ""y"": 55, ""demand"": 9}, {""id"": 7, ""x"": 74, ""y"": 10, ""demand"": 9}, {""id"": 8, ""x"": 85, ""y"": 0, ""demand"": 18}, {""id"": 9, ""x"": 93, ""y"": 55, ""demand"": 14}, {""id"": 10, ""x"": 100, ""y"": 45, ""demand"": 6}], ""depot"": 1, ""capacity"": 112, ""num_vehicles"": 2, ""total_distance"": 385.6795427943363, ""objective"": 385.6795427943363}","[[1, 4, 2, 1], [1, 6, 3, 5, 9, 10, 8, 7, 1]]"
+CVRP_S_040,CVRP,S,40,"Recently the town asked for a cleaner schedule of tanker runs to top up community water points. The task is to pick which taps go together on each roundtrip out of the municipal yard so that each tap is served exactly once, each trip stays within the tanker’s carrying limit, and the total amount of driving across all trips is as small as it can be. To compare options, simply total the distance driven on every trip — the one with the lowest total is preferred. Concrete details about stops, demand amounts, and tanker capacity follow below.
+
+There are 8 locations in this instance, the municipal yard is node 0, and each tanker can carry up to 487 units.
+
+| location_id | map_x_coordinate | map_y_coordinate | tap_refill_volume |
+|---|---|---|---|
+| 0 | 16 | 5 | 0 |
+| 1 | 100 | 83 | 98 |
+| 2 | 0 | 100 | 88 |
+| 3 | 47 | 20 | 62 |
+| 4 | 13 | 0 | 77 |
+| 5 | 68 | 66 | 76 |
+| 6 | 50 | 22 | 52 |
+| 7 | 72 | 46 | 73 |
+
+Use these details to form roundtrips that start and end at 0, visit every location once, and never exceed the tanker capacity of 487.
+
+When you send back the proposed rounds, just stick to a simple JSON shape like this:
+
+{
+  ""solution"": [[yard_id, tap_id, ... , yard_id], [yard_id, tap_id, ... , yard_id], ...]
+}
+
+This little sketch means: ""solution"" is a list of trips, each trip is an ordered list of stop identifiers that starts and ends at the municipal yard. The placeholders here (yard_id, tap_id) just show the shape — replace them with the actual stop IDs from the instance. This is only an example of the format, not the actual plan.
+
+Please make sure to use the exact identifiers given in the instance input — do not rename them or invent new ones.
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,zero_based,"{""coordinates"": [[16, 5], [100, 83], [0, 100], [47, 20], [13, 0], [68, 66], [50, 22], [72, 46]], ""depot"": 0, ""demands"": [0, 98, 88, 62, 77, 76, 52, 73], ""capacity"": 487, ""num_vehicles"": 2, ""total_distance"": 336.66752178802545, ""objective"": 336.66752178802545}","[[0, 3, 6, 7, 5, 1, 2, 0], [0, 4, 0]]",336.66752178802545,"{""problem_type"": ""CVRP"", ""num_nodes"": 8, ""nodes"": [{""id"": 0, ""x"": 16, ""y"": 5, ""demand"": 0}, {""id"": 1, ""x"": 100, ""y"": 83, ""demand"": 98}, {""id"": 2, ""x"": 0, ""y"": 100, ""demand"": 88}, {""id"": 3, ""x"": 47, ""y"": 20, ""demand"": 62}, {""id"": 4, ""x"": 13, ""y"": 0, ""demand"": 77}, {""id"": 5, ""x"": 68, ""y"": 66, ""demand"": 76}, {""id"": 6, ""x"": 50, ""y"": 22, ""demand"": 52}, {""id"": 7, ""x"": 72, ""y"": 46, ""demand"": 73}], ""depot"": 0, ""capacity"": 487, ""num_vehicles"": 2, ""total_distance"": 336.66752178802545, ""objective"": 336.66752178802545}","[[0, 3, 6, 7, 5, 1, 2, 0], [0, 4, 0]]"
+CVRP_S_041,CVRP,S,41,"Recently the dispatchers had to put together a set of patrol runs: vans leaving and returning to the same garage, each one equipped for certain calls. They need to decide who goes where so every reported vehicle gets serviced exactly once, no van’s equipment load exceeds what it can hold, and the whole day has the fewest miles possible — compute that by summing every route’s distance and choosing the smallest total. Concrete details will be shown below.
+
+{
+  ""total_locations_including_garage"": 6,
+  ""nodes"": [
+    {
+      ""location_node_id"": 1,
+      ""x_map_coordinate"": 32,
+      ""y_map_coordinate"": 52,
+      ""equipment_load_required"": 0
+    },
+    {
+      ""location_node_id"": 2,
+      ""x_map_coordinate"": 100,
+      ""y_map_coordinate"": 100,
+      ""equipment_load_required"": 14
+    },
+    {
+      ""location_node_id"": 3,
+      ""x_map_coordinate"": 73,
+      ""y_map_coordinate"": 71,
+      ""equipment_load_required"": 14
+    },
+    {
+      ""location_node_id"": 4,
+      ""x_map_coordinate"": 64,
+      ""y_map_coordinate"": 86,
+      ""equipment_load_required"": 30
+    },
+    {
+      ""location_node_id"": 5,
+      ""x_map_coordinate"": 0,
+      ""y_map_coordinate"": 55,
+      ""equipment_load_required"": 19
+    },
+    {
+      ""location_node_id"": 6,
+      ""x_map_coordinate"": 11,
+      ""y_map_coordinate"": 0,
+      ""equipment_load_required"": 12
+    }
+  ],
+  ""garage_node_id"": 1,
+  ""van_equipment_capacity"": 200
+}
+
+Also, when you send the routes back, just use this little JSON layout so everything is easy to read and machine-friendly:
+
+{
+  ""solution"": [[garage_id, call_id, ... , garage_id], [garage_id, call_id, ... , garage_id], ...]
+}
+
+Think of ""solution"" as the form field: it holds a list of runs. Each inner list is one van’s trip — it starts at the garage, lists the service calls in visit order, and finishes back at the garage. The placeholders above are just showing the shape, not the actual IDs you should use.
+
+This JSON is only a sketch of the expected shape, not the final answer. Make sure to use the exact identifiers from the instance input — do not rename them or make up new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"{""coordinates"": [[32, 52], [100, 100], [73, 71], [64, 86], [0, 55], [11, 0]], ""depot"": 0, ""demands"": [0, 14, 14, 30, 19, 12], ""capacity"": 200, ""num_vehicles"": 1, ""total_distance"": 306.72023646575843, ""objective"": 306.72023646575843}","[[0, 2, 1, 3, 4, 5, 0]]",306.72023646575843,"{""problem_type"": ""CVRP"", ""num_nodes"": 6, ""nodes"": [{""id"": 1, ""x"": 32, ""y"": 52, ""demand"": 0}, {""id"": 2, ""x"": 100, ""y"": 100, ""demand"": 14}, {""id"": 3, ""x"": 73, ""y"": 71, ""demand"": 14}, {""id"": 4, ""x"": 64, ""y"": 86, ""demand"": 30}, {""id"": 5, ""x"": 0, ""y"": 55, ""demand"": 19}, {""id"": 6, ""x"": 11, ""y"": 0, ""demand"": 12}], ""depot"": 1, ""capacity"": 200, ""num_vehicles"": 1, ""total_distance"": 306.72023646575843, ""objective"": 306.72023646575843}","[[1, 3, 2, 4, 5, 6, 1]]"
+CVRP_S_042,CVRP,S,42,"Someone needs to assign the daily delivery runs from the DC so no house is missed or receives two parcels. The decision is about which addresses each van will cover and the order they’re visited, with each run starting and ending at the center and no van overloaded beyond what it can hold. The quality of a plan is judged by total travel distance: sum the distances of all runs and aim for the smallest total. The concrete details follow below.
+
+# total_locations_including_depot=8
+# distribution_center_id=0
+# van_capacity_in_parcels=100
+location_id,x_coordinate,y_coordinate,parcel_demand
+0,58,71,0
+1,21,20,18
+2,90,14,21
+3,79,100,15
+4,65,31,22
+5,100,0,14
+6,38,100,33
+7,0,66,5
+
+Oh, and when you send the actual plan back, please put it in a little JSON sketch like this so it's easy to read and use:
+
+{
+  ""solution"": [[depot_id, location_id, ... , depot_id], [depot_id, location_id, ... , depot_id], ...]
+}
+
+This just shows the shape I want: ""solution"" is a list of runs, each inner list is one van's route starting and ending at the depot_id, with the customer location_ids in visit order in between. It's an easy form — think of each inner list as the sequence a driver will follow. Note this is only an example of the expected shape, not the actual answer.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""coordinates"": [[58, 71], [21, 20], [90, 14], [79, 100], [65, 31], [100, 0], [38, 100], [0, 66]], ""depot"": 0, ""demands"": [0, 18, 21, 15, 22, 14, 33, 5], ""capacity"": 100, ""num_vehicles"": 2, ""total_distance"": 390.3520587037055, ""objective"": 390.3520587037055}","[[0, 3, 6, 0], [0, 4, 2, 5, 1, 7, 0]]",390.3520587037055,"{""problem_type"": ""CVRP"", ""num_nodes"": 8, ""nodes"": [{""id"": 0, ""x"": 58, ""y"": 71, ""demand"": 0}, {""id"": 1, ""x"": 21, ""y"": 20, ""demand"": 18}, {""id"": 2, ""x"": 90, ""y"": 14, ""demand"": 21}, {""id"": 3, ""x"": 79, ""y"": 100, ""demand"": 15}, {""id"": 4, ""x"": 65, ""y"": 31, ""demand"": 22}, {""id"": 5, ""x"": 100, ""y"": 0, ""demand"": 14}, {""id"": 6, ""x"": 38, ""y"": 100, ""demand"": 33}, {""id"": 7, ""x"": 0, ""y"": 66, ""demand"": 5}], ""depot"": 0, ""capacity"": 100, ""num_vehicles"": 2, ""total_distance"": 390.3520587037055, ""objective"": 390.3520587037055}","[[0, 3, 6, 0], [0, 4, 2, 5, 1, 7, 0]]"
+CVRP_S_043,CVRP,S,43,"Someone in the transportation office needs to sketch the bus schedules: choose which stops go together on each trip and the order to visit them so no stop is missed or visited twice, each trip starts and finishes at the depot, and no bus is overloaded beyond its seats. The win here is fewer miles on the road — add up the route distances for all buses and try to make that sum as small as possible. Exact stop locations and numbers are shown below.
+
+{
+  ""total_locations"": 5,
+  ""nodes"": [
+    {
+      ""location_id"": 0,
+      ""x_coord"": 39,
+      ""y_coord"": 0,
+      ""student_demand"": 0
+    },
+    {
+      ""location_id"": 1,
+      ""x_coord"": 0,
+      ""y_coord"": 46,
+      ""student_demand"": 86
+    },
+    {
+      ""location_id"": 2,
+      ""x_coord"": 44,
+      ""y_coord"": 26,
+      ""student_demand"": 82
+    },
+    {
+      ""location_id"": 3,
+      ""x_coord"": 15,
+      ""y_coord"": 65,
+      ""student_demand"": 5
+    },
+    {
+      ""location_id"": 4,
+      ""x_coord"": 100,
+      ""y_coord"": 100,
+      ""student_demand"": 57
+    }
+  ],
+  ""depot_id"": 0,
+  ""bus_seating_capacity"": 248
+}
+
+Also, when you send the planned trips back, just use this simple JSON shape so it's easy to parse:
+
+{
+  ""solution"": [[depot_id, location_id, ... , depot_id], [depot_id, location_id, ... , depot_id], ...]
+}
+
+Think of ""solution"" as a list of bus trips. Each inner list is one trip: the first item is the depot, then the stops in the order the bus will visit them, and then the depot again at the end. It's just a sketch of the shape I need, not the actual answer.
+
+Please make sure to use the exact stop and depot identifiers from the instance input — don't rename them or invent new ones. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""coordinates"": [[39, 0], [0, 46], [44, 26], [15, 65], [100, 100]], ""depot"": 0, ""demands"": [0, 86, 82, 5, 57], ""capacity"": 248, ""num_vehicles"": 1, ""total_distance"": 295.7161302160389, ""objective"": 295.7161302160389}","[[0, 1, 3, 4, 2, 0]]",295.7161302160389,"{""problem_type"": ""CVRP"", ""num_nodes"": 5, ""nodes"": [{""id"": 0, ""x"": 39, ""y"": 0, ""demand"": 0}, {""id"": 1, ""x"": 0, ""y"": 46, ""demand"": 86}, {""id"": 2, ""x"": 44, ""y"": 26, ""demand"": 82}, {""id"": 3, ""x"": 15, ""y"": 65, ""demand"": 5}, {""id"": 4, ""x"": 100, ""y"": 100, ""demand"": 57}], ""depot"": 0, ""capacity"": 248, ""num_vehicles"": 1, ""total_distance"": 295.7161302160389, ""objective"": 295.7161302160389}","[[0, 1, 3, 4, 2, 0]]"
+CVRP_S_044,CVRP,S,44,"There’s a simple challenge on the table: route our fleet from the central hub to drop off each clinic’s vaccine allocation once, make sure each truck returns to the hub and never carries more than its safe load. One delivery plan beats another if it results in less total driving — compute that by adding the distance of every truck’s loop and comparing totals. The specific clinic addresses, demand numbers and truck capacities are shown below.
+
+We have 7 locations including the hub 0, and each truck's safe load is 100.
+
+| location_id | x_coordinate_km | y_coordinate_km | vaccine_units_required |
+|---|---|---|---|
+| 0 | 20 | 66 | 0 |
+| 1 | 0 | 13 | 14 |
+| 2 | 47 | 0 | 6 |
+| 3 | 49 | 100 | 11 |
+| 4 | 100 | 94 | 21 |
+| 5 | 49 | 70 | 7 |
+| 6 | 88 | 20 | 25 |
+
+Assign routes so every truck starts and ends at 0 and never exceeds 100 in delivered units.
+
+Oh, and when you send the delivery plan back, it'd be easiest if you stick to a simple JSON shape like this:
+
+{
+  ""solution"": [[hub_id, clinic_id, ... , hub_id], [hub_id, clinic_id, ... , hub_id], ...]
+}
+
+This just means ""solution"" holds a list of routes. Each route is a list that starts and ends at the hub_id and has the clinic_id values in the order they should be visited. Think of it as a quick form — it shows the layout we expect, not the actual route choices.
+
+Important: use the exact identifiers from the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"{""coordinates"": [[20, 66], [0, 13], [47, 0], [49, 100], [100, 94], [49, 70], [88, 20]], ""depot"": 0, ""demands"": [0, 14, 6, 11, 21, 7, 25], ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 336.623706324294, ""objective"": 336.623706324294}","[[0, 1, 2, 6, 4, 3, 5, 0]]",336.623706324294,"{""problem_type"": ""CVRP"", ""num_nodes"": 7, ""nodes"": [{""id"": 0, ""x"": 20, ""y"": 66, ""demand"": 0}, {""id"": 1, ""x"": 0, ""y"": 13, ""demand"": 14}, {""id"": 2, ""x"": 47, ""y"": 0, ""demand"": 6}, {""id"": 3, ""x"": 49, ""y"": 100, ""demand"": 11}, {""id"": 4, ""x"": 100, ""y"": 94, ""demand"": 21}, {""id"": 5, ""x"": 49, ""y"": 70, ""demand"": 7}, {""id"": 6, ""x"": 88, ""y"": 20, ""demand"": 25}], ""depot"": 0, ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 336.623706324294, ""objective"": 336.623706324294}","[[0, 1, 2, 6, 4, 3, 5, 0]]"
+CVRP_S_045,CVRP,S,45,"Someone needs to sequence the pickup runs for several household moves starting from the yard: assign each pickup to a run so it’s visited one time only, make sure every run begins and ends at the yard, and don’t put more cargo on a truck than it can hold. The better plan is the one with the lowest combined driving distance — just total the distance of all runs and try to shrink that number. Details about the pickups and loads are given below.
+
+There are 10 locations in total, the yard node is 0, and each truck can carry up to 150.
+Serve location 0 at (43, 54) with pickup demand 0; assign it once to a run that departs from and returns to the yard.
+Serve location 1 at (55, 73) with pickup demand 7; assign it once to a run that departs from and returns to the yard.
+Serve location 2 at (21, 90) with pickup demand 19; assign it once to a run that departs from and returns to the yard.
+Serve location 3 at (81, 43) with pickup demand 11; assign it once to a run that departs from and returns to the yard.
+Serve location 4 at (38, 27) with pickup demand 3; assign it once to a run that departs from and returns to the yard.
+Serve location 5 at (90, 83) with pickup demand 28; assign it once to a run that departs from and returns to the yard.
+Serve location 6 at (97, 43) with pickup demand 26; assign it once to a run that departs from and returns to the yard.
+Serve location 7 at (100, 100) with pickup demand 6; assign it once to a run that departs from and returns to the yard.
+Serve location 8 at (0, 0) with pickup demand 7; assign it once to a run that departs from and returns to the yard.
+Serve location 9 at (28, 6) with pickup demand 13; assign it once to a run that departs from and returns to the yard.
+Aim to minimize the combined driving distance of all runs.
+
+Also, when you send the pickup plan back, just stick to this simple JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [[yard_id, pickup_id, ... , yard_id], [yard_id, pickup_id, ... , yard_id], ...]
+}
+
+Think of it like a short form: ""solution"" is the list of runs, each inner list is one run that starts at the yard, visits the pickups in order, and returns to the yard. The placeholders (yard_id, pickup_id) just stand in for the actual labels you'll use — this block is just a sketch of the expected shape, not the actual answer.
+
+Please use the exact identifiers from the instance input when you fill this in — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""coordinates"": [[43, 54], [55, 73], [21, 90], [81, 43], [38, 27], [90, 83], [97, 43], [100, 100], [0, 0], [28, 6]], ""depot"": 0, ""demands"": [0, 7, 19, 11, 3, 28, 26, 6, 7, 13], ""capacity"": 150, ""num_vehicles"": 1, ""total_distance"": 375.8170400576579, ""objective"": 375.8170400576579}","[[0, 8, 9, 4, 3, 6, 5, 7, 1, 2, 0]]",375.8170400576579,"{""problem_type"": ""CVRP"", ""num_nodes"": 10, ""nodes"": [{""id"": 0, ""x"": 43, ""y"": 54, ""demand"": 0}, {""id"": 1, ""x"": 55, ""y"": 73, ""demand"": 7}, {""id"": 2, ""x"": 21, ""y"": 90, ""demand"": 19}, {""id"": 3, ""x"": 81, ""y"": 43, ""demand"": 11}, {""id"": 4, ""x"": 38, ""y"": 27, ""demand"": 3}, {""id"": 5, ""x"": 90, ""y"": 83, ""demand"": 28}, {""id"": 6, ""x"": 97, ""y"": 43, ""demand"": 26}, {""id"": 7, ""x"": 100, ""y"": 100, ""demand"": 6}, {""id"": 8, ""x"": 0, ""y"": 0, ""demand"": 7}, {""id"": 9, ""x"": 28, ""y"": 6, ""demand"": 13}], ""depot"": 0, ""capacity"": 150, ""num_vehicles"": 1, ""total_distance"": 375.8170400576579, ""objective"": 375.8170400576579}","[[0, 8, 9, 4, 3, 6, 5, 7, 1, 2, 0]]"
+CVRP_S_046,CVRP,S,46,"I picture a day where a fleet of trucks fills up jerrycans at the reservoir and makes rounds to deliver water to every farm — each farm gets served one time only, and every truck drives out from the reservoir and comes back empty or with whatever’s left. The trick is to decide which farms each truck should visit so the total distance driven by all trucks is as small as possible; that total is just the sum of the miles each truck covers. Nothing can be skipped or visited twice, and no truck carries more water than it can hold. The specific farm stops, demands, and truck capacities are listed below.
+
+Below I list 5 locations; the reservoir node is 1, and each truck can carry up to 100 jerrycans.
+
+| location_id | location_x | location_y | water_demand_jerrycans |
+|---|---|---|---|
+| 1 | 61 | 100 | 0 |
+| 2 | 0 | 38 | 16 |
+| 3 | 61 | 22 | 16 |
+| 4 | 0 | 41 | 14 |
+| 5 | 100 | 0 | 15 |
+
+I have listed all 5 locations for routing from reservoir 1 with trucks that hold up to 100 jerrycans.
+
+If you want the answer in a neat, machine-friendly form, just return the routes in this simple JSON shape — nothing fancy, just a list of runs for the trucks.
+
+{
+  ""solution"": [[""reservoir_id"", ""farm_id"", ... , ""reservoir_id""], [""reservoir_id"", ""farm_id"", ... , ""reservoir_id""], ...]
+}
+
+Think of ""solution"" as a list of truck trips. Each inner list is one trip: it starts at the reservoir (reservoir_id), then lists the farms visited (farm_id) in order, and finishes back at the reservoir. This is just the expected shape — a sketch of how I want the answer formatted, not the actual routes.
+
+Please make sure to use the exact identifiers given in the instance input — do not rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""coordinates"": [[61, 100], [0, 38], [61, 22], [0, 41], [100, 0]], ""depot"": 0, ""demands"": [0, 16, 16, 14, 15], ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 303.041205787147, ""objective"": 303.041205787147}","[[0, 4, 2, 1, 3, 0]]",303.041205787147,"{""problem_type"": ""CVRP"", ""num_nodes"": 5, ""nodes"": [{""id"": 1, ""x"": 61, ""y"": 100, ""demand"": 0}, {""id"": 2, ""x"": 0, ""y"": 38, ""demand"": 16}, {""id"": 3, ""x"": 61, ""y"": 22, ""demand"": 16}, {""id"": 4, ""x"": 0, ""y"": 41, ""demand"": 14}, {""id"": 5, ""x"": 100, ""y"": 0, ""demand"": 15}], ""depot"": 1, ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 303.041205787147, ""objective"": 303.041205787147}","[[1, 5, 3, 2, 4, 1]]"
+CVRP_S_047,CVRP,S,47,"There’s a neighborhood vendor who stages the freezer van in a garage and needs to lay out routes so every customer gets served once and only once. Each circuit has to leave from and return to the garage, and the van can only hold a limited amount on any single outing, so no run can go over that capacity. The better routing setup is the one that results in less overall driving; you can check that by totaling the distance of every circuit and picking the smallest sum. The concrete stop list, demands, and capacity details are shown below.
+
+The instance has 7 locations, the garage is A, and the van can carry up to 12 on any outing.
+
+| location_id | x_coordinate | y_coordinate | ice_cream_demand |
+|---|---|---|---|
+| A | 47 | 55 | 0 |
+| B | 0 | 41 | 1 |
+| C | 100 | 42 | 1 |
+| D | 71 | 25 | 1 |
+| E | 21 | 17 | 1 |
+| F | 19 | 0 | 1 |
+| G | 84 | 100 | 1 |
+
+Routes must start and end at A, respect the 12 limit, and together serve all 7 listed locations with minimal total driving.
+
+Also, when you send the actual routes back, please use a simple JSON shape like this so it's easy to parse.
+
+{
+  ""solution"": [[garage_id, customer_id, ... , garage_id], [garage_id, customer_id, ... , garage_id], ...]
+}
+
+This just shows the shape I expect: ""solution"" is a list of trips (each trip is an ordered list of stops that starts and ends at the garage). The placeholder names (garage_id, customer_id) are just examples to show the pattern — it's a sketch of the format, not the real answer.
+
+Please be sure to use the exact identifiers from the instance input when you list stops — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[47, 55], [0, 41], [100, 42], [71, 25], [21, 17], [19, 0], [84, 100]], ""depot"": 0, ""demands"": [0, 1, 1, 1, 1, 1, 1], ""capacity"": 12, ""num_vehicles"": 1, ""total_distance"": 307.7859216032178, ""objective"": 307.7859216032178}","[[0, 6, 2, 3, 5, 4, 1, 0]]",307.7859216032178,"{""problem_type"": ""CVRP"", ""num_nodes"": 7, ""nodes"": [{""id"": ""A"", ""x"": 47, ""y"": 55, ""demand"": 0}, {""id"": ""B"", ""x"": 0, ""y"": 41, ""demand"": 1}, {""id"": ""C"", ""x"": 100, ""y"": 42, ""demand"": 1}, {""id"": ""D"", ""x"": 71, ""y"": 25, ""demand"": 1}, {""id"": ""E"", ""x"": 21, ""y"": 17, ""demand"": 1}, {""id"": ""F"", ""x"": 19, ""y"": 0, ""demand"": 1}, {""id"": ""G"", ""x"": 84, ""y"": 100, ""demand"": 1}], ""depot"": ""A"", ""capacity"": 12, ""num_vehicles"": 1, ""total_distance"": 307.7859216032178, ""objective"": 307.7859216032178}","[[""A"", ""G"", ""C"", ""D"", ""F"", ""E"", ""B"", ""A""]]"
+CVRP_S_048,CVRP,S,48,"There’s a parts manager trying to plan the day: assign which truck visits which repair sites so nobody gets missed or gets two deliveries. Each run needs to leave from the depot and return there, and no truck should be packed beyond its limit. The measure of a good plan is simple — total miles driven across all runs — so the trick is to make that total as low as it can be by choosing smart routes. The concrete details are shown below.
+
+The parts manager sees 7 locations; the depot is 1, and each truck can carry up to 10 parts.
+Repair site 1 at (53, 34) requires 0 parts.
+Repair site 2 at (14, 100) requires 1 parts.
+Repair site 3 at (0, 75) requires 1 parts.
+Repair site 4 at (9, 82) requires 1 parts.
+Repair site 5 at (63, 64) requires 1 parts.
+Repair site 6 at (100, 30) requires 1 parts.
+Repair site 7 at (52, 0) requires 1 parts.
+Plan routes that start and end at depot 1, cover all 7 locations, and never exceed the truck capacity of 10 while minimizing total miles.
+
+Also, when you send the plan back, please follow this simple JSON layout so I can parse it easily:
+
+{
+  ""solution"": [[""depot_id"", ""site_id"", ""depot_id""], [""depot_id"", ""site_id"", ""site_id"", ""depot_id""]]
+}
+
+This is just a quick sketch of the shape I expect: ""solution"" is a list of truck runs, each run is an ordered list that starts and ends at the depot (the first and last entry), and the names in the middle are the repair sites the truck will visit that day. Think of it like filling out a form — each inner list is one truck’s trip, in order.
+
+This JSON is only the shape I want, not the actual answer — replace those placeholders with the exact identifiers from the instance when you submit your plan. Please do not rename or invent labels: use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"{""coordinates"": [[53, 34], [14, 100], [0, 75], [9, 82], [63, 64], [100, 30], [52, 0]], ""depot"": 0, ""demands"": [0, 1, 1, 1, 1, 1, 1], ""capacity"": 10, ""num_vehicles"": 1, ""total_distance"": 298.76168626983963, ""objective"": 298.76168626983963}","[[0, 2, 3, 1, 4, 5, 6, 0]]",298.76168626983963,"{""problem_type"": ""CVRP"", ""num_nodes"": 7, ""nodes"": [{""id"": 1, ""x"": 53, ""y"": 34, ""demand"": 0}, {""id"": 2, ""x"": 14, ""y"": 100, ""demand"": 1}, {""id"": 3, ""x"": 0, ""y"": 75, ""demand"": 1}, {""id"": 4, ""x"": 9, ""y"": 82, ""demand"": 1}, {""id"": 5, ""x"": 63, ""y"": 64, ""demand"": 1}, {""id"": 6, ""x"": 100, ""y"": 30, ""demand"": 1}, {""id"": 7, ""x"": 52, ""y"": 0, ""demand"": 1}], ""depot"": 1, ""capacity"": 10, ""num_vehicles"": 1, ""total_distance"": 298.76168626983963, ""objective"": 298.76168626983963}","[[1, 3, 4, 2, 5, 6, 7, 1]]"
+CVRP_S_049,CVRP,S,49,"Someone at the blood bank has to lay out the routes for the day, deciding which hospitals each vehicle should visit so nobody gets left out or served twice, every route begins and ends at the bank, and each cooler stays within its load limit. The practical aim is to keep the whole operation as short as possible in terms of driving: add up the miles of every route, and the plan with the lowest total is the preferred one. The exact run details and quantities appear below.
+
+Run details for this instance: 5 total locations, depot 1, vehicle capacity 100.
+
+| location_id | x_coordinate | y_coordinate | blood_units_required |
+|---|---|---|---|
+| 1 | 83 | 76 | 0 |
+| 2 | 26 | 91 | 7 |
+| 3 | 0 | 0 | 14 |
+| 4 | 100 | 5 | 12 |
+| 5 | 4 | 100 | 24 |
+
+Someone must ensure every hospital is visited exactly once, every route starts and ends at depot 1, and no route exceeds the vehicle capacity 100.
+
+I'll just lay out the shape I want the answer to take in case it helps — a simple JSON sketch showing the routes.
+
+{
+  ""solution"": [[bank_id, hospital_id, ... , bank_id], [bank_id, hospital_id, ... , bank_id], ...]
+}
+
+This means ""solution"" is a list of vehicle routes. Each inner list is one route: it starts at the bank (bank_id), lists the hospitals visited (hospital_id placeholders) in the order they are driven to, and then returns to the bank (bank_id). The ""..."" just indicates any number of stops on a route. It's just a plain sketch of the expected shape, not the actual plan.
+
+Please use the exact identifiers from the instance input when you give the real routes — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""coordinates"": [[83, 76], [26, 91], [0, 0], [100, 5], [4, 100]], ""depot"": 0, ""demands"": [0, 7, 14, 12, 24], ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 355.92211575302923, ""objective"": 355.92211575302923}","[[0, 1, 4, 2, 3, 0]]",355.92211575302923,"{""problem_type"": ""CVRP"", ""num_nodes"": 5, ""nodes"": [{""id"": 1, ""x"": 83, ""y"": 76, ""demand"": 0}, {""id"": 2, ""x"": 26, ""y"": 91, ""demand"": 7}, {""id"": 3, ""x"": 0, ""y"": 0, ""demand"": 14}, {""id"": 4, ""x"": 100, ""y"": 5, ""demand"": 12}, {""id"": 5, ""x"": 4, ""y"": 100, ""demand"": 24}], ""depot"": 1, ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 355.92211575302923, ""objective"": 355.92211575302923}","[[1, 2, 5, 3, 4, 1]]"
+CVRP_S_050,CVRP,S,50,"In the neighborhood the collection center coordinates a handful of pickup runs: each run must start and end at the center, and every residence must be visited one time only. The question is how to assign houses to runs so each run’s bag total fits under the van’s capacity and no house is served more than once or missed. The preferred arrangement is the one that keeps total driving to a minimum — you get that number by adding the lengths of all the routes together. The specific list of stops, their bag demands and the van capacity are shown below.
+
+Below are 7 locations, with the collection center at A and a van capacity of 100 bags.
+Stop A at (89, 72) requires 0 bags to be collected.
+Stop B at (0, 0) requires 3 bags to be collected.
+Stop C at (84, 30) requires 2 bags to be collected.
+Stop D at (100, 100) requires 12 bags to be collected.
+Stop E at (5, 8) requires 20 bags to be collected.
+Stop F at (100, 85) requires 24 bags to be collected.
+Stop G at (81, 40) requires 3 bags to be collected.
+Routes should start and end at A, must not exceed 100 bags, and must visit each stop exactly once.
+
+Also, when you send back the plan, please stick to this simple JSON layout so I can easily pick apart each pickup run:
+
+{
+  ""solution"": [[center_id, house_id, ... , center_id], [center_id, house_id, ... , center_id], ...]
+}
+
+This little sketch means ""solution"" is a list of runs. Each inner list is one run that starts and ends at the collection center (center_id) and lists the houses visited in order (house_id, ...). Think of it like filling in a form: one array per van trip, with the center shown first and last.
+
+This is just the shape I need, not the actual answer — please use it to return the real runs for the instance.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"{""coordinates"": [[89, 72], [0, 0], [84, 30], [100, 100], [5, 8], [100, 85], [81, 40]], ""depot"": 0, ""demands"": [0, 3, 2, 12, 20, 24, 3], ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 306.33091442150436, ""objective"": 306.33091442150436}","[[0, 6, 2, 1, 4, 3, 5, 0]]",306.33091442150436,"{""problem_type"": ""CVRP"", ""num_nodes"": 7, ""nodes"": [{""id"": ""A"", ""x"": 89, ""y"": 72, ""demand"": 0}, {""id"": ""B"", ""x"": 0, ""y"": 0, ""demand"": 3}, {""id"": ""C"", ""x"": 84, ""y"": 30, ""demand"": 2}, {""id"": ""D"", ""x"": 100, ""y"": 100, ""demand"": 12}, {""id"": ""E"", ""x"": 5, ""y"": 8, ""demand"": 20}, {""id"": ""F"", ""x"": 100, ""y"": 85, ""demand"": 24}, {""id"": ""G"", ""x"": 81, ""y"": 40, ""demand"": 3}], ""depot"": ""A"", ""capacity"": 100, ""num_vehicles"": 1, ""total_distance"": 306.33091442150436, ""objective"": 306.33091442150436}","[[""A"", ""G"", ""C"", ""B"", ""E"", ""D"", ""F"", ""A""]]"

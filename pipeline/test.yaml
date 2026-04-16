@@ -1,0 +1,13 @@
+seed: 42
+
+output_root: outputs
+
+# ===== step1 =====
+step1:
+  n_instances: 10
+  viz: false
+
+# ===== step2 contextualization =====
+step2:
+  k_per_call: 5
+  n_target: 10

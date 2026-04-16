@@ -1,0 +1,15 @@
+problem: SMTWT
+scale: L
+seed: 43
+step1:
+  n_jobs: 21-30
+
+  n_instances: 50
+  output: step1_instance_creation/generated_data/SMTWT/SMTWT_L.json
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/SMTWT/SMTWT_contexts.json
+  instance_dir: step1_instance_creation/generated_data/SMTWT
+  output_root_dir: step2_contextualization/dataset/SMTWT
+  k_per_call: 20
+  n_target: 30

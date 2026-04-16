@@ -1,0 +1,19 @@
+problem: KP
+scale: L
+seed: 43
+step1:
+  n_items: 21-30
+  n_instances: 50
+  output: step1_instance_creation/generated_data/KP/KP_L.json
+  params:
+    alpha: 0.5
+    R: 100
+    time_limit: 60
+    threads: 8
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/KP/KP_contexts.json
+  instance_dir: step1_instance_creation/generated_data/KP
+  output_root_dir: step2_contextualization/dataset/KP
+  k_per_call: 20
+  n_target: 30

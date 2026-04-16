@@ -1,0 +1,5266 @@
+[
+  {
+    "problem_type": "MKP",
+    "weights": [
+      78,
+      66,
+      44,
+      44,
+      86
+    ],
+    "profits": [
+      9,
+      70,
+      21,
+      10,
+      53
+    ],
+    "capacities": [
+      159
+    ],
+    "assignment": [
+      -1,
+      0,
+      -1,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        0,
+        0,
+        1
+      ]
+    ],
+    "objective": 123,
+    "solve_time": 0.003538370132446289,
+    "n_items": 5,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 0
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      74,
+      77,
+      72,
+      79,
+      52,
+      13,
+      84,
+      46,
+      51,
+      38
+    ],
+    "profits": [
+      19,
+      93,
+      79,
+      65,
+      41,
+      83,
+      55,
+      45,
+      46,
+      23
+    ],
+    "capacities": [
+      293
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      -1,
+      -1,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ]
+    ],
+    "objective": 366,
+    "solve_time": 0.0006456375122070312,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 1
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      56,
+      89,
+      7,
+      86,
+      83
+    ],
+    "profits": [
+      28,
+      64,
+      17,
+      76,
+      71
+    ],
+    "capacities": [
+      160
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 121,
+    "solve_time": 0.0003447532653808594,
+    "n_items": 5,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 2
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      7,
+      98,
+      45,
+      90,
+      68,
+      78,
+      76
+    ],
+    "profits": [
+      20,
+      37,
+      47,
+      50,
+      5,
+      55,
+      16
+    ],
+    "capacities": [
+      231
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ]
+    ],
+    "objective": 172,
+    "solve_time": 0.0003898143768310547,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 3
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      69,
+      93,
+      75,
+      37,
+      97,
+      42,
+      33,
+      91,
+      38
+    ],
+    "profits": [
+      8,
+      47,
+      80,
+      19,
+      47,
+      13,
+      69,
+      48,
+      34
+    ],
+    "capacities": [
+      288
+    ],
+    "assignment": [
+      -1,
+      -1,
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    ],
+    "objective": 250,
+    "solve_time": 0.0004379749298095703,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 4
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      57,
+      67,
+      95,
+      44,
+      17,
+      84
+    ],
+    "profits": [
+      63,
+      71,
+      10,
+      32,
+      77,
+      84
+    ],
+    "capacities": [
+      182
+    ],
+    "assignment": [
+      -1,
+      0,
+      -1,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 232,
+    "solve_time": 0.00035762786865234375,
+    "n_items": 6,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 5
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      81,
+      85,
+      39,
+      90,
+      29,
+      24,
+      69
+    ],
+    "profits": [
+      64,
+      14,
+      84,
+      20,
+      81,
+      1,
+      80
+    ],
+    "capacities": [
+      208
+    ],
+    "assignment": [
+      -1,
+      -1,
+      0,
+      -1,
+      0,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ]
+    ],
+    "objective": 246,
+    "solve_time": 0.0005576610565185547,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 6
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      79,
+      67,
+      48,
+      71,
+      28,
+      79,
+      56,
+      46,
+      51
+    ],
+    "profits": [
+      57,
+      4,
+      14,
+      25,
+      12,
+      44,
+      67,
+      66,
+      48
+    ],
+    "capacities": [
+      262
+    ],
+    "assignment": [
+      0,
+      -1,
+      -1,
+      -1,
+      0,
+      -1,
+      0,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ]
+    ],
+    "objective": 250,
+    "solve_time": 0.00091552734375,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 7
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      57,
+      8,
+      77,
+      58,
+      64,
+      57,
+      56,
+      10,
+      56,
+      80
+    ],
+    "profits": [
+      31,
+      61,
+      4,
+      35,
+      44,
+      99,
+      22,
+      28,
+      41,
+      100
+    ],
+    "capacities": [
+      262
+    ],
+    "assignment": [
+      -1,
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      -1,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 336,
+    "solve_time": 0.00047516822814941406,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 8
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      4,
+      24,
+      83,
+      6,
+      86,
+      29,
+      92,
+      30,
+      44,
+      67
+    ],
+    "profits": [
+      13,
+      56,
+      51,
+      79,
+      100,
+      67,
+      41,
+      41,
+      42,
+      82
+    ],
+    "capacities": [
+      232
+    ],
+    "assignment": [
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 398,
+    "solve_time": 0.0004456043243408203,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 9
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      17,
+      34,
+      3,
+      11,
+      10,
+      78
+    ],
+    "profits": [
+      73,
+      70,
+      47,
+      72,
+      17,
+      91
+    ],
+    "capacities": [
+      76
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 279,
+    "solve_time": 0.0003466606140136719,
+    "n_items": 6,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 10
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      94,
+      16,
+      50,
+      70,
+      50,
+      45,
+      17,
+      39
+    ],
+    "profits": [
+      24,
+      31,
+      69,
+      64,
+      61,
+      37,
+      96,
+      9
+    ],
+    "capacities": [
+      190
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 294,
+    "solve_time": 0.0004229545593261719,
+    "n_items": 8,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 11
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      12,
+      34,
+      97,
+      37,
+      91,
+      50,
+      70
+    ],
+    "profits": [
+      46,
+      27,
+      77,
+      97,
+      27,
+      78,
+      27
+    ],
+    "capacities": [
+      196
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ]
+    ],
+    "objective": 298,
+    "solve_time": 0.0003867149353027344,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 12
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      79,
+      45,
+      74,
+      28,
+      8,
+      10,
+      45,
+      91,
+      13
+    ],
+    "profits": [
+      46,
+      71,
+      21,
+      73,
+      31,
+      81,
+      58,
+      55,
+      18
+    ],
+    "capacities": [
+      196
+    ],
+    "assignment": [
+      -1,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1
+      ]
+    ],
+    "objective": 332,
+    "solve_time": 0.0010268688201904297,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 13
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      86,
+      2,
+      76,
+      50,
+      72,
+      67,
+      44
+    ],
+    "profits": [
+      31,
+      63,
+      15,
+      59,
+      10,
+      65,
+      63
+    ],
+    "capacities": [
+      198
+    ],
+    "assignment": [
+      -1,
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 250,
+    "solve_time": 0.0003955364227294922,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 14
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      76,
+      42,
+      79,
+      5,
+      18
+    ],
+    "profits": [
+      50,
+      19,
+      33,
+      67,
+      15
+    ],
+    "capacities": [
+      110
+    ],
+    "assignment": [
+      0,
+      -1,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 132,
+    "solve_time": 0.0003604888916015625,
+    "n_items": 5,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 15
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      11,
+      18,
+      59,
+      80,
+      18,
+      30,
+      93,
+      99,
+      59
+    ],
+    "profits": [
+      45,
+      35,
+      62,
+      60,
+      30,
+      3,
+      16,
+      96,
+      42
+    ],
+    "capacities": [
+      234
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      -1,
+      0,
+      -1,
+      -1,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ]
+    ],
+    "objective": 268,
+    "solve_time": 0.0004353523254394531,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 16
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      47,
+      79,
+      7,
+      9,
+      28,
+      49,
+      68
+    ],
+    "profits": [
+      50,
+      45,
+      94,
+      17,
+      58,
+      55,
+      48
+    ],
+    "capacities": [
+      144
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 274,
+    "solve_time": 0.00037026405334472656,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 17
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      27,
+      96,
+      34,
+      55,
+      53,
+      85,
+      44,
+      29,
+      3
+    ],
+    "profits": [
+      37,
+      83,
+      1,
+      90,
+      55,
+      15,
+      31,
+      56,
+      32
+    ],
+    "capacities": [
+      213
+    ],
+    "assignment": [
+      0,
+      -1,
+      -1,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ]
+    ],
+    "objective": 301,
+    "solve_time": 0.0003826618194580078,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 18
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      67,
+      68,
+      12,
+      29,
+      25
+    ],
+    "profits": [
+      66,
+      74,
+      73,
+      94,
+      77
+    ],
+    "capacities": [
+      100
+    ],
+    "assignment": [
+      -1,
+      -1,
+      0,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    ],
+    "objective": 244,
+    "solve_time": 0.0003056526184082031,
+    "n_items": 5,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 19
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      11,
+      62,
+      92,
+      98,
+      24,
+      24
+    ],
+    "profits": [
+      4,
+      15,
+      56,
+      55,
+      38,
+      31
+    ],
+    "capacities": [
+      156
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 129,
+    "solve_time": 0.00035262107849121094,
+    "n_items": 6,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 20
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      47,
+      81,
+      97,
+      32,
+      21,
+      96,
+      64,
+      30,
+      63
+    ],
+    "profits": [
+      52,
+      91,
+      26,
+      100,
+      94,
+      19,
+      17,
+      54,
+      5
+    ],
+    "capacities": [
+      266
+    ],
+    "assignment": [
+      0,
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ]
+    ],
+    "objective": 391,
+    "solve_time": 0.00044989585876464844,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 21
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      44,
+      97,
+      100,
+      16,
+      90,
+      10
+    ],
+    "profits": [
+      75,
+      85,
+      90,
+      23,
+      90,
+      12
+    ],
+    "capacities": [
+      178
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1
+      ]
+    ],
+    "objective": 200,
+    "solve_time": 0.0005314350128173828,
+    "n_items": 6,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 22
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      47,
+      32,
+      3,
+      78,
+      34,
+      67,
+      42,
+      38
+    ],
+    "profits": [
+      89,
+      10,
+      74,
+      75,
+      38,
+      27,
+      1,
+      94
+    ],
+    "capacities": [
+      170
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      -1,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "objective": 332,
+    "solve_time": 0.0004677772521972656,
+    "n_items": 8,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 23
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      25,
+      4,
+      13,
+      7,
+      84,
+      90,
+      16,
+      75,
+      18,
+      37
+    ],
+    "profits": [
+      60,
+      72,
+      88,
+      5,
+      20,
+      29,
+      32,
+      100,
+      78,
+      33
+    ],
+    "capacities": [
+      184
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      -1,
+      0,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    ],
+    "objective": 436,
+    "solve_time": 0.0005867481231689453,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 24
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      50,
+      51,
+      44,
+      15,
+      94,
+      2,
+      18,
+      23,
+      28,
+      14
+    ],
+    "profits": [
+      2,
+      68,
+      97,
+      13,
+      30,
+      51,
+      93,
+      70,
+      77,
+      59
+    ],
+    "capacities": [
+      170
+    ],
+    "assignment": [
+      -1,
+      -1,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    ],
+    "objective": 460,
+    "solve_time": 0.0005342960357666016,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 25
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      20,
+      87,
+      81,
+      3,
+      72,
+      9,
+      74
+    ],
+    "profits": [
+      83,
+      14,
+      44,
+      13,
+      57,
+      93,
+      9
+    ],
+    "capacities": [
+      173
+    ],
+    "assignment": [
+      0,
+      -1,
+      -1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 246,
+    "solve_time": 0.0004372596740722656,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 26
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      98,
+      31,
+      14,
+      49,
+      51,
+      67,
+      32
+    ],
+    "profits": [
+      96,
+      53,
+      29,
+      97,
+      93,
+      50,
+      3
+    ],
+    "capacities": [
+      171
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      -1
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    ],
+    "objective": 272,
+    "solve_time": 0.0004630088806152344,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 27
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      56,
+      15,
+      64,
+      85,
+      11,
+      73,
+      15,
+      75
+    ],
+    "profits": [
+      42,
+      1,
+      97,
+      17,
+      60,
+      19,
+      94,
+      74
+    ],
+    "capacities": [
+      197
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 326,
+    "solve_time": 0.00047206878662109375,
+    "n_items": 8,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 28
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      44,
+      47,
+      64,
+      79,
+      85,
+      2,
+      67,
+      11,
+      29
+    ],
+    "profits": [
+      83,
+      26,
+      80,
+      47,
+      24,
+      34,
+      54,
+      77,
+      61
+    ],
+    "capacities": [
+      214
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 361,
+    "solve_time": 0.0004990100860595703,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 29
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      87,
+      76,
+      61,
+      29,
+      42,
+      12,
+      38,
+      93,
+      43,
+      12
+    ],
+    "profits": [
+      66,
+      97,
+      87,
+      28,
+      46,
+      54,
+      25,
+      27,
+      24,
+      100
+    ],
+    "capacities": [
+      246
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "objective": 412,
+    "solve_time": 0.000537872314453125,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 30
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      85,
+      82,
+      96,
+      11,
+      89,
+      7,
+      48,
+      60,
+      36
+    ],
+    "profits": [
+      15,
+      20,
+      83,
+      32,
+      32,
+      93,
+      15,
+      92,
+      93
+    ],
+    "capacities": [
+      257
+    ],
+    "assignment": [
+      -1,
+      -1,
+      0,
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 393,
+    "solve_time": 0.0005242824554443359,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 31
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      17,
+      16,
+      29,
+      58,
+      16,
+      46,
+      12,
+      55
+    ],
+    "profits": [
+      3,
+      71,
+      6,
+      20,
+      18,
+      84,
+      6,
+      43
+    ],
+    "capacities": [
+      124
+    ],
+    "assignment": [
+      -1,
+      0,
+      -1,
+      -1,
+      -1,
+      0,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ]
+    ],
+    "objective": 198,
+    "solve_time": 0.0005075931549072266,
+    "n_items": 8,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 32
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      52,
+      69,
+      81,
+      40,
+      83,
+      32,
+      99,
+      51
+    ],
+    "profits": [
+      74,
+      88,
+      80,
+      86,
+      54,
+      5,
+      50,
+      19
+    ],
+    "capacities": [
+      254
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "objective": 328,
+    "solve_time": 0.0005185604095458984,
+    "n_items": 8,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 33
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      24,
+      23,
+      25,
+      65,
+      58,
+      95,
+      42,
+      29,
+      5,
+      1
+    ],
+    "profits": [
+      38,
+      93,
+      53,
+      90,
+      11,
+      10,
+      84,
+      11,
+      6,
+      41
+    ],
+    "capacities": [
+      184
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      -1,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ]
+    ],
+    "objective": 399,
+    "solve_time": 0.0005719661712646484,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 34
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      69,
+      10,
+      84,
+      85,
+      81,
+      91,
+      24,
+      98,
+      33,
+      81
+    ],
+    "profits": [
+      58,
+      78,
+      63,
+      65,
+      62,
+      78,
+      74,
+      14,
+      83,
+      54
+    ],
+    "capacities": [
+      328
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ]
+    ],
+    "objective": 441,
+    "solve_time": 0.000583648681640625,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 35
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      52,
+      97,
+      86,
+      84,
+      47,
+      79
+    ],
+    "profits": [
+      39,
+      69,
+      64,
+      25,
+      27,
+      7
+    ],
+    "capacities": [
+      222
+    ],
+    "assignment": [
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ]
+    ],
+    "objective": 135,
+    "solve_time": 0.0004258155822753906,
+    "n_items": 6,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 36
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      44,
+      48,
+      17,
+      42,
+      61
+    ],
+    "profits": [
+      24,
+      34,
+      37,
+      51,
+      37
+    ],
+    "capacities": [
+      106
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 112,
+    "solve_time": 0.0003693103790283203,
+    "n_items": 5,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 37
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      33,
+      44,
+      38,
+      19,
+      69,
+      24,
+      30,
+      80,
+      95
+    ],
+    "profits": [
+      68,
+      92,
+      86,
+      49,
+      78,
+      33,
+      47,
+      54,
+      97
+    ],
+    "capacities": [
+      216
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ]
+    ],
+    "objective": 375,
+    "solve_time": 0.0004870891571044922,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 38
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      49,
+      66,
+      21,
+      81,
+      56,
+      54,
+      77,
+      64,
+      8,
+      29
+    ],
+    "profits": [
+      18,
+      74,
+      4,
+      21,
+      60,
+      70,
+      51,
+      87,
+      92,
+      14
+    ],
+    "capacities": [
+      252
+    ],
+    "assignment": [
+      -1,
+      0,
+      -1,
+      -1,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 383,
+    "solve_time": 0.0005195140838623047,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 39
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      62,
+      64,
+      10,
+      63,
+      73,
+      59,
+      9,
+      53,
+      94,
+      73
+    ],
+    "profits": [
+      14,
+      96,
+      96,
+      17,
+      81,
+      41,
+      60,
+      45,
+      79,
+      100
+    ],
+    "capacities": [
+      280
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1
+      ]
+    ],
+    "objective": 438,
+    "solve_time": 0.0004992485046386719,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 40
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      94,
+      95,
+      10,
+      26,
+      73,
+      60,
+      6,
+      10,
+      53
+    ],
+    "profits": [
+      62,
+      17,
+      18,
+      13,
+      57,
+      1,
+      58,
+      48,
+      47
+    ],
+    "capacities": [
+      214
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    ],
+    "objective": 246,
+    "solve_time": 0.0004811286926269531,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 41
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      53,
+      73,
+      77,
+      93,
+      80,
+      52,
+      50,
+      24,
+      60
+    ],
+    "profits": [
+      14,
+      94,
+      85,
+      12,
+      79,
+      12,
+      73,
+      9,
+      49
+    ],
+    "capacities": [
+      281
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      -1,
+      -1
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    ],
+    "objective": 331,
+    "solve_time": 0.0004889965057373047,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 42
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      73,
+      42,
+      93,
+      78,
+      21,
+      68,
+      74,
+      34
+    ],
+    "profits": [
+      74,
+      90,
+      82,
+      77,
+      64,
+      28,
+      80,
+      37
+    ],
+    "capacities": [
+      242
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ]
+    ],
+    "objective": 316,
+    "solve_time": 0.0004553794860839844,
+    "n_items": 8,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 43
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      32,
+      32,
+      16,
+      97,
+      15,
+      9,
+      94,
+      56
+    ],
+    "profits": [
+      44,
+      74,
+      39,
+      13,
+      73,
+      18,
+      56,
+      95
+    ],
+    "capacities": [
+      176
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1
+      ]
+    ],
+    "objective": 343,
+    "solve_time": 0.0004718303680419922,
+    "n_items": 8,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 44
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      37,
+      79,
+      62,
+      48,
+      14,
+      38,
+      66,
+      99,
+      1,
+      72
+    ],
+    "profits": [
+      85,
+      96,
+      43,
+      12,
+      28,
+      86,
+      88,
+      64,
+      13,
+      13
+    ],
+    "capacities": [
+      258
+    ],
+    "assignment": [
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ]
+    ],
+    "objective": 396,
+    "solve_time": 0.0004956722259521484,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 45
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      59,
+      4,
+      69,
+      55,
+      2,
+      10,
+      46
+    ],
+    "profits": [
+      73,
+      83,
+      44,
+      30,
+      97,
+      46,
+      32
+    ],
+    "capacities": [
+      122
+    ],
+    "assignment": [
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    ],
+    "objective": 331,
+    "solve_time": 0.000446319580078125,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 46
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      2,
+      31,
+      52,
+      92,
+      74,
+      79,
+      55
+    ],
+    "profits": [
+      12,
+      40,
+      100,
+      5,
+      88,
+      69,
+      29
+    ],
+    "capacities": [
+      192
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      -1,
+      0,
+      -1,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    ],
+    "objective": 240,
+    "solve_time": 0.0004680156707763672,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 47
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      84,
+      5,
+      11,
+      67,
+      100,
+      3,
+      67,
+      14,
+      66
+    ],
+    "profits": [
+      63,
+      10,
+      69,
+      90,
+      87,
+      3,
+      25,
+      25,
+      46
+    ],
+    "capacities": [
+      208
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ]
+    ],
+    "objective": 284,
+    "solve_time": 0.0004832744598388672,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 48
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      86,
+      78,
+      81,
+      20,
+      2
+    ],
+    "profits": [
+      92,
+      29,
+      66,
+      91,
+      4
+    ],
+    "capacities": [
+      134
+    ],
+    "assignment": [
+      0,
+      -1,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 187,
+    "solve_time": 0.00035881996154785156,
+    "n_items": 5,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 49
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      1,
+      16,
+      6,
+      82,
+      61
+    ],
+    "profits": [
+      99,
+      81,
+      97,
+      24,
+      29
+    ],
+    "capacities": [
+      83
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      -1,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    ],
+    "objective": 277,
+    "solve_time": 0.0003745555877685547,
+    "n_items": 5,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 50
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      25,
+      6,
+      67,
+      81,
+      97,
+      93,
+      13,
+      78,
+      85,
+      70
+    ],
+    "profits": [
+      82,
+      84,
+      45,
+      5,
+      46,
+      21,
+      12,
+      13,
+      70,
+      51
+    ],
+    "capacities": [
+      308
+    ],
+    "assignment": [
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 345,
+    "solve_time": 0.0008070468902587891,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 51
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      75,
+      55,
+      64,
+      9,
+      86,
+      45,
+      16,
+      82
+    ],
+    "profits": [
+      74,
+      6,
+      20,
+      2,
+      28,
+      10,
+      71,
+      53
+    ],
+    "capacities": [
+      216
+    ],
+    "assignment": [
+      0,
+      -1,
+      -1,
+      0,
+      -1,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 200,
+    "solve_time": 0.00039458274841308594,
+    "n_items": 8,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 52
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      75,
+      62,
+      51,
+      6,
+      8,
+      62,
+      1,
+      5,
+      22,
+      89
+    ],
+    "profits": [
+      46,
+      71,
+      42,
+      18,
+      38,
+      10,
+      78,
+      19,
+      38,
+      99
+    ],
+    "capacities": [
+      190
+    ],
+    "assignment": [
+      -1,
+      0,
+      -1,
+      -1,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    ],
+    "objective": 343,
+    "solve_time": 0.0003459453582763672,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 53
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      46,
+      55,
+      79,
+      26,
+      64,
+      88,
+      58,
+      45
+    ],
+    "profits": [
+      15,
+      25,
+      95,
+      55,
+      31,
+      42,
+      58,
+      54
+    ],
+    "capacities": [
+      230
+    ],
+    "assignment": [
+      -1,
+      -1,
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 262,
+    "solve_time": 0.0002892017364501953,
+    "n_items": 8,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 54
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      26,
+      65,
+      45,
+      95,
+      16,
+      15,
+      47,
+      51,
+      70
+    ],
+    "profits": [
+      41,
+      92,
+      48,
+      13,
+      12,
+      98,
+      14,
+      95,
+      28
+    ],
+    "capacities": [
+      215
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      -1,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ]
+    ],
+    "objective": 374,
+    "solve_time": 0.00031638145446777344,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 55
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      31,
+      62,
+      43,
+      79,
+      62
+    ],
+    "profits": [
+      41,
+      64,
+      98,
+      42,
+      16
+    ],
+    "capacities": [
+      138
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      -1,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    ],
+    "objective": 203,
+    "solve_time": 0.00027251243591308594,
+    "n_items": 5,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 56
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      85,
+      22,
+      95,
+      59,
+      61,
+      32,
+      93
+    ],
+    "profits": [
+      4,
+      30,
+      42,
+      48,
+      48,
+      15,
+      23
+    ],
+    "capacities": [
+      224
+    ],
+    "assignment": [
+      -1,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 141,
+    "solve_time": 0.0002810955047607422,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 57
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      58,
+      36,
+      57,
+      59,
+      71
+    ],
+    "profits": [
+      55,
+      65,
+      59,
+      66,
+      62
+    ],
+    "capacities": [
+      140
+    ],
+    "assignment": [
+      -1,
+      0,
+      -1,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        0,
+        1,
+        0
+      ]
+    ],
+    "objective": 131,
+    "solve_time": 0.0002536773681640625,
+    "n_items": 5,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 58
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      25,
+      79,
+      35,
+      55,
+      20,
+      44
+    ],
+    "profits": [
+      53,
+      63,
+      53,
+      37,
+      97,
+      52
+    ],
+    "capacities": [
+      129
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 255,
+    "solve_time": 0.0002589225769042969,
+    "n_items": 6,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 59
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      74,
+      56,
+      89,
+      13,
+      93,
+      86,
+      51,
+      74,
+      53
+    ],
+    "profits": [
+      27,
+      80,
+      25,
+      32,
+      52,
+      84,
+      39,
+      50,
+      5
+    ],
+    "capacities": [
+      294
+    ],
+    "assignment": [
+      -1,
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 285,
+    "solve_time": 0.00030994415283203125,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 60
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      6,
+      8,
+      87,
+      85,
+      83
+    ],
+    "profits": [
+      6,
+      8,
+      29,
+      57,
+      34
+    ],
+    "capacities": [
+      134
+    ],
+    "assignment": [
+      0,
+      0,
+      -1,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        0,
+        1,
+        0
+      ]
+    ],
+    "objective": 71,
+    "solve_time": 0.0002465248107910156,
+    "n_items": 5,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 61
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      18,
+      74,
+      32,
+      7,
+      75,
+      91,
+      2
+    ],
+    "profits": [
+      44,
+      83,
+      71,
+      86,
+      42,
+      38,
+      71
+    ],
+    "capacities": [
+      150
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1
+      ]
+    ],
+    "objective": 355,
+    "solve_time": 0.0002689361572265625,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 62
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      24,
+      61,
+      67,
+      12,
+      51
+    ],
+    "profits": [
+      37,
+      51,
+      96,
+      8,
+      100
+    ],
+    "capacities": [
+      108
+    ],
+    "assignment": [
+      0,
+      -1,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 145,
+    "solve_time": 0.0002231597900390625,
+    "n_items": 5,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 63
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      78,
+      43,
+      32,
+      78,
+      69,
+      15,
+      71
+    ],
+    "profits": [
+      76,
+      39,
+      93,
+      65,
+      34,
+      2,
+      68
+    ],
+    "capacities": [
+      193
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      -1,
+      -1,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "objective": 237,
+    "solve_time": 0.0002694129943847656,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 64
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      76,
+      53,
+      47,
+      17,
+      72,
+      17
+    ],
+    "profits": [
+      42,
+      84,
+      93,
+      99,
+      96,
+      56
+    ],
+    "capacities": [
+      141
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        1,
+        0,
+        1
+      ]
+    ],
+    "objective": 332,
+    "solve_time": 0.0002684593200683594,
+    "n_items": 6,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 65
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      84,
+      81,
+      100,
+      66,
+      15,
+      51
+    ],
+    "profits": [
+      45,
+      85,
+      40,
+      33,
+      9,
+      84
+    ],
+    "capacities": [
+      198
+    ],
+    "assignment": [
+      -1,
+      0,
+      -1,
+      0,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1
+      ]
+    ],
+    "objective": 202,
+    "solve_time": 0.00026488304138183594,
+    "n_items": 6,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 66
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      5,
+      44,
+      48,
+      47,
+      92,
+      16,
+      31,
+      19,
+      25
+    ],
+    "profits": [
+      91,
+      95,
+      5,
+      64,
+      24,
+      20,
+      30,
+      20,
+      50
+    ],
+    "capacities": [
+      164
+    ],
+    "assignment": [
+      0,
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 340,
+    "solve_time": 0.0003159046173095703,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 67
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      59,
+      73,
+      50,
+      2,
+      9,
+      27,
+      25,
+      85,
+      85,
+      86
+    ],
+    "profits": [
+      64,
+      56,
+      65,
+      41,
+      68,
+      80,
+      77,
+      62,
+      6,
+      73
+    ],
+    "capacities": [
+      250
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "objective": 451,
+    "solve_time": 0.000308990478515625,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 68
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      75,
+      54,
+      89,
+      34,
+      94,
+      85,
+      34
+    ],
+    "profits": [
+      49,
+      54,
+      77,
+      69,
+      86,
+      37,
+      51
+    ],
+    "capacities": [
+      232
+    ],
+    "assignment": [
+      -1,
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1
+      ]
+    ],
+    "objective": 260,
+    "solve_time": 0.0002770423889160156,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 69
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      91,
+      31,
+      59,
+      13,
+      86,
+      39,
+      35
+    ],
+    "profits": [
+      59,
+      50,
+      85,
+      54,
+      52,
+      11,
+      3
+    ],
+    "capacities": [
+      177
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 203,
+    "solve_time": 0.0002627372741699219,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 70
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      100,
+      92,
+      63,
+      64,
+      40,
+      18,
+      1
+    ],
+    "profits": [
+      34,
+      32,
+      20,
+      26,
+      3,
+      61,
+      93
+    ],
+    "capacities": [
+      189
+    ],
+    "assignment": [
+      0,
+      -1,
+      -1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 214,
+    "solve_time": 0.0002872943878173828,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 71
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      45,
+      43,
+      31,
+      15,
+      60,
+      57,
+      1,
+      42,
+      28
+    ],
+    "profits": [
+      18,
+      71,
+      53,
+      64,
+      72,
+      99,
+      81,
+      63,
+      88
+    ],
+    "capacities": [
+      161
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    ],
+    "objective": 420,
+    "solve_time": 0.00029921531677246094,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 72
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      99,
+      77,
+      66,
+      91,
+      52,
+      73,
+      29
+    ],
+    "profits": [
+      97,
+      63,
+      79,
+      47,
+      87,
+      8,
+      12
+    ],
+    "capacities": [
+      244
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      -1,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    ],
+    "objective": 263,
+    "solve_time": 0.00025963783264160156,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 73
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      74,
+      81,
+      45,
+      65,
+      56,
+      97,
+      66,
+      42
+    ],
+    "profits": [
+      97,
+      11,
+      99,
+      16,
+      29,
+      83,
+      74,
+      98
+    ],
+    "capacities": [
+      263
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      -1,
+      -1,
+      0,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1
+      ]
+    ],
+    "objective": 377,
+    "solve_time": 0.0002529621124267578,
+    "n_items": 8,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 74
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      64,
+      35,
+      1,
+      13,
+      30,
+      5,
+      51,
+      78,
+      97
+    ],
+    "profits": [
+      49,
+      88,
+      99,
+      86,
+      47,
+      33,
+      98,
+      25,
+      42
+    ],
+    "capacities": [
+      187
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ]
+    ],
+    "objective": 453,
+    "solve_time": 0.00030493736267089844,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 75
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      80,
+      65,
+      9,
+      23,
+      56
+    ],
+    "profits": [
+      55,
+      81,
+      27,
+      93,
+      45
+    ],
+    "capacities": [
+      116
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 201,
+    "solve_time": 0.00022268295288085938,
+    "n_items": 5,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 76
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      24,
+      4,
+      6,
+      38,
+      96,
+      5,
+      37,
+      11,
+      94
+    ],
+    "profits": [
+      68,
+      77,
+      72,
+      66,
+      78,
+      1,
+      87,
+      74,
+      74
+    ],
+    "capacities": [
+      158
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 445,
+    "solve_time": 0.00029397010803222656,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 77
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      81,
+      39,
+      5,
+      91,
+      24,
+      11,
+      63
+    ],
+    "profits": [
+      24,
+      86,
+      45,
+      1,
+      96,
+      52,
+      27
+    ],
+    "capacities": [
+      157
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ]
+    ],
+    "objective": 306,
+    "solve_time": 0.00025773048400878906,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 78
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      54,
+      3,
+      76,
+      41,
+      70,
+      90,
+      62,
+      68,
+      26
+    ],
+    "profits": [
+      24,
+      42,
+      86,
+      53,
+      35,
+      78,
+      86,
+      91,
+      30
+    ],
+    "capacities": [
+      245
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      -1,
+      -1,
+      -1,
+      0,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    ],
+    "objective": 335,
+    "solve_time": 0.00027942657470703125,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 79
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      60,
+      45,
+      40,
+      12,
+      28,
+      55,
+      89,
+      87,
+      19
+    ],
+    "profits": [
+      68,
+      9,
+      68,
+      35,
+      45,
+      72,
+      43,
+      81,
+      54
+    ],
+    "capacities": [
+      218
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1
+      ]
+    ],
+    "objective": 342,
+    "solve_time": 0.00030303001403808594,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 80
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      64,
+      30,
+      78,
+      41,
+      54,
+      14,
+      12,
+      58,
+      19,
+      100
+    ],
+    "profits": [
+      86,
+      71,
+      74,
+      60,
+      7,
+      40,
+      50,
+      92,
+      22,
+      50
+    ],
+    "capacities": [
+      235
+    ],
+    "assignment": [
+      0,
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    ],
+    "objective": 399,
+    "solve_time": 0.0002999305725097656,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 81
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      14,
+      11,
+      37,
+      9,
+      7,
+      36,
+      21
+    ],
+    "profits": [
+      56,
+      2,
+      31,
+      46,
+      97,
+      64,
+      89
+    ],
+    "capacities": [
+      68
+    ],
+    "assignment": [
+      0,
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1
+      ]
+    ],
+    "objective": 290,
+    "solve_time": 0.0002651214599609375,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 82
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      45,
+      43,
+      89,
+      96,
+      97,
+      76,
+      51
+    ],
+    "profits": [
+      55,
+      99,
+      29,
+      35,
+      90,
+      39,
+      24
+    ],
+    "capacities": [
+      248
+    ],
+    "assignment": [
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1
+      ]
+    ],
+    "objective": 268,
+    "solve_time": 0.00027942657470703125,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 83
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      33,
+      90,
+      91,
+      31,
+      53,
+      99,
+      75,
+      22
+    ],
+    "profits": [
+      60,
+      62,
+      66,
+      3,
+      30,
+      86,
+      25,
+      30
+    ],
+    "capacities": [
+      247
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      -1,
+      -1,
+      0,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1
+      ]
+    ],
+    "objective": 242,
+    "solve_time": 0.00028777122497558594,
+    "n_items": 8,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 84
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      18,
+      16,
+      35,
+      88,
+      1,
+      29
+    ],
+    "profits": [
+      7,
+      57,
+      26,
+      80,
+      59,
+      79
+    ],
+    "capacities": [
+      94
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 221,
+    "solve_time": 0.000270843505859375,
+    "n_items": 6,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 85
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      44,
+      87,
+      48,
+      95,
+      100,
+      59,
+      68,
+      26
+    ],
+    "profits": [
+      82,
+      68,
+      91,
+      27,
+      79,
+      48,
+      19,
+      18
+    ],
+    "capacities": [
+      264
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1
+      ]
+    ],
+    "objective": 307,
+    "solve_time": 0.0002944469451904297,
+    "n_items": 8,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 86
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      32,
+      11,
+      43,
+      66,
+      32,
+      96,
+      78,
+      52
+    ],
+    "profits": [
+      94,
+      44,
+      14,
+      4,
+      94,
+      96,
+      74,
+      11
+    ],
+    "capacities": [
+      205
+    ],
+    "assignment": [
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      0,
+      -1,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ]
+    ],
+    "objective": 328,
+    "solve_time": 0.00026679039001464844,
+    "n_items": 8,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 87
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      5,
+      6,
+      25,
+      58,
+      7,
+      99
+    ],
+    "profits": [
+      46,
+      27,
+      52,
+      80,
+      32,
+      5
+    ],
+    "capacities": [
+      100
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 210,
+    "solve_time": 0.00025177001953125,
+    "n_items": 6,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 88
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      86,
+      12,
+      64,
+      39,
+      78
+    ],
+    "profits": [
+      7,
+      90,
+      70,
+      45,
+      21
+    ],
+    "capacities": [
+      140
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 205,
+    "solve_time": 0.0002288818359375,
+    "n_items": 5,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 89
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      31,
+      50,
+      40,
+      24,
+      42,
+      16,
+      1,
+      29,
+      12,
+      42
+    ],
+    "profits": [
+      87,
+      17,
+      1,
+      12,
+      51,
+      28,
+      49,
+      3,
+      34,
+      42
+    ],
+    "capacities": [
+      144
+    ],
+    "assignment": [
+      0,
+      -1,
+      -1,
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 291,
+    "solve_time": 0.0003037452697753906,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 90
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      56,
+      79,
+      47,
+      85,
+      53,
+      27,
+      23
+    ],
+    "profits": [
+      33,
+      60,
+      25,
+      92,
+      48,
+      87,
+      69
+    ],
+    "capacities": [
+      185
+    ],
+    "assignment": [
+      -1,
+      -1,
+      0,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 273,
+    "solve_time": 0.0002739429473876953,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 91
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      23,
+      75,
+      34,
+      25,
+      94,
+      49,
+      5
+    ],
+    "profits": [
+      50,
+      47,
+      87,
+      72,
+      20,
+      16,
+      61
+    ],
+    "capacities": [
+      152
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 286,
+    "solve_time": 0.000278472900390625,
+    "n_items": 7,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 92
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      32,
+      14,
+      3,
+      92,
+      9
+    ],
+    "profits": [
+      1,
+      94,
+      19,
+      82,
+      4
+    ],
+    "capacities": [
+      75
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        0,
+        1
+      ]
+    ],
+    "objective": 118,
+    "solve_time": 0.000217437744140625,
+    "n_items": 5,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 93
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      12,
+      71,
+      63,
+      48,
+      25
+    ],
+    "profits": [
+      9,
+      57,
+      24,
+      60,
+      69
+    ],
+    "capacities": [
+      110
+    ],
+    "assignment": [
+      0,
+      -1,
+      -1,
+      0,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    ],
+    "objective": 138,
+    "solve_time": 0.00022649765014648438,
+    "n_items": 5,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 94
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      50,
+      1,
+      29,
+      86,
+      54,
+      62,
+      46,
+      17,
+      90,
+      78
+    ],
+    "profits": [
+      100,
+      86,
+      30,
+      26,
+      25,
+      92,
+      56,
+      46,
+      97,
+      61
+    ],
+    "capacities": [
+      256
+    ],
+    "assignment": [
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      -1,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 451,
+    "solve_time": 0.00045990943908691406,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 95
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      99,
+      8,
+      37,
+      74,
+      82,
+      15,
+      32,
+      55,
+      80,
+      12
+    ],
+    "profits": [
+      61,
+      30,
+      22,
+      52,
+      42,
+      64,
+      32,
+      83,
+      8,
+      87
+    ],
+    "capacities": [
+      247
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1
+      ]
+    ],
+    "objective": 370,
+    "solve_time": 0.0006184577941894531,
+    "n_items": 10,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 96
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      74,
+      35,
+      39,
+      2,
+      71
+    ],
+    "profits": [
+      17,
+      66,
+      73,
+      85,
+      71
+    ],
+    "capacities": [
+      110
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 224,
+    "solve_time": 0.0003180503845214844,
+    "n_items": 5,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 97
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      74,
+      83,
+      32,
+      13,
+      90,
+      15
+    ],
+    "profits": [
+      60,
+      24,
+      13,
+      78,
+      15,
+      68
+    ],
+    "capacities": [
+      154
+    ],
+    "assignment": [
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "x_matrix": [
+      [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1
+      ]
+    ],
+    "objective": 219,
+    "solve_time": 0.00031876564025878906,
+    "n_items": 6,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 98
+  },
+  {
+    "problem_type": "MKP",
+    "weights": [
+      7,
+      18,
+      80,
+      51,
+      13,
+      100,
+      27,
+      1,
+      93
+    ],
+    "profits": [
+      2,
+      56,
+      100,
+      58,
+      59,
+      39,
+      13,
+      58,
+      90
+    ],
+    "capacities": [
+      195
+    ],
+    "assignment": [
+      -1,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      -1
+    ],
+    "x_matrix": [
+      [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    ],
+    "objective": 344,
+    "solve_time": 0.0003294944763183594,
+    "n_items": 9,
+    "m_knapsacks": 1,
+    "R": 100,
+    "instance_idx": 99
+  }
+]

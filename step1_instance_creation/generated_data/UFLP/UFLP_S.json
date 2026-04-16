@@ -1,0 +1,2499 @@
+[
+  {
+    "instance": {
+      "opening_costs": [
+        1035,
+        1123
+      ],
+      "connection_costs": [
+        [
+          907,
+          615,
+          966,
+          376,
+          783
+        ],
+        [
+          46,
+          206,
+          401,
+          644,
+          478
+        ]
+      ],
+      "objective": 2898.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 2898.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        6266,
+        2140
+      ],
+      "connection_costs": [
+        [
+          954,
+          354,
+          145,
+          408,
+          207
+        ],
+        [
+          665,
+          93,
+          569,
+          616,
+          549
+        ]
+      ],
+      "objective": 4632.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 4632.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          456,
+          345,
+          235,
+          796,
+          527,
+          823
+        ],
+        [
+          924,
+          363,
+          638,
+          112,
+          986,
+          432
+        ]
+      ],
+      "objective": 5182.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 5182.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1244,
+        1295,
+        1434
+      ],
+      "connection_costs": [
+        [
+          475,
+          251,
+          838,
+          367,
+          765,
+          254,
+          950
+        ],
+        [
+          527,
+          573,
+          300,
+          315,
+          798,
+          648,
+          927
+        ],
+        [
+          78,
+          217,
+          691,
+          609,
+          73,
+          808,
+          798
+        ]
+      ],
+      "objective": 4708.0
+    },
+    "solution": {
+      "open_facilities": [
+        2
+      ],
+      "assignments": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "obj": 4708.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          192,
+          355,
+          448,
+          826,
+          593
+        ],
+        [
+          476,
+          647,
+          363,
+          979,
+          417
+        ]
+      ],
+      "objective": 4414.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 4414.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        7637,
+        9350,
+        1987
+      ],
+      "connection_costs": [
+        [
+          272,
+          443,
+          443,
+          314,
+          602,
+          286,
+          306
+        ],
+        [
+          813,
+          963,
+          689,
+          509,
+          802,
+          839,
+          102
+        ],
+        [
+          489,
+          727,
+          90,
+          529,
+          224,
+          200,
+          143
+        ]
+      ],
+      "objective": 4389.0
+    },
+    "solution": {
+      "open_facilities": [
+        2
+      ],
+      "assignments": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "obj": 4389.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1000,
+        1000,
+        1000
+      ],
+      "connection_costs": [
+        [
+          996,
+          548,
+          363,
+          859,
+          857,
+          132,
+          353,
+          718
+        ],
+        [
+          235,
+          831,
+          627,
+          763,
+          211,
+          260,
+          498,
+          373
+        ],
+        [
+          42,
+          117,
+          984,
+          943,
+          102,
+          453,
+          648,
+          921
+        ]
+      ],
+      "objective": 4686.0
+    },
+    "solution": {
+      "open_facilities": [
+        0,
+        2
+      ],
+      "assignments": [
+        2,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 4686.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000,
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          369,
+          941,
+          524,
+          324,
+          597,
+          415,
+          427,
+          876
+        ],
+        [
+          69,
+          730,
+          135,
+          162,
+          714,
+          835,
+          193,
+          495
+        ],
+        [
+          622,
+          625,
+          798,
+          829,
+          696,
+          416,
+          98,
+          993
+        ],
+        [
+          59,
+          124,
+          619,
+          247,
+          26,
+          9,
+          881,
+          866
+        ]
+      ],
+      "objective": 4831.0
+    },
+    "solution": {
+      "open_facilities": [
+        3
+      ],
+      "assignments": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    },
+    "obj": 4831.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          326,
+          74,
+          123,
+          675,
+          451,
+          738,
+          704
+        ],
+        [
+          340,
+          165,
+          797,
+          199,
+          577,
+          944,
+          636
+        ],
+        [
+          343,
+          864,
+          58,
+          86,
+          579,
+          335,
+          545
+        ]
+      ],
+      "objective": 4810.0
+    },
+    "solution": {
+      "open_facilities": [
+        2
+      ],
+      "assignments": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "obj": 4810.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1000,
+        1000,
+        1000
+      ],
+      "connection_costs": [
+        [
+          175,
+          707,
+          626,
+          410,
+          179,
+          963,
+          418
+        ],
+        [
+          964,
+          990,
+          334,
+          345,
+          612,
+          425,
+          304
+        ],
+        [
+          805,
+          62,
+          3,
+          983,
+          459,
+          313,
+          819
+        ]
+      ],
+      "objective": 3560.0
+    },
+    "solution": {
+      "open_facilities": [
+        0,
+        2
+      ],
+      "assignments": [
+        0,
+        2,
+        2,
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    "obj": 3560.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1499,
+        1348
+      ],
+      "connection_costs": [
+        [
+          716,
+          683,
+          637,
+          519,
+          62
+        ],
+        [
+          332,
+          350,
+          394,
+          806,
+          884
+        ]
+      ],
+      "objective": 4114.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 4114.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        9182,
+        1373,
+        4548
+      ],
+      "connection_costs": [
+        [
+          689,
+          742,
+          898,
+          681,
+          661,
+          438,
+          210
+        ],
+        [
+          465,
+          317,
+          669,
+          727,
+          907,
+          973,
+          206
+        ],
+        [
+          1,
+          280,
+          6,
+          324,
+          131,
+          698,
+          691
+        ]
+      ],
+      "objective": 5637.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 5637.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1361,
+        1833
+      ],
+      "connection_costs": [
+        [
+          900,
+          420,
+          851,
+          528,
+          892
+        ],
+        [
+          364,
+          81,
+          709,
+          840,
+          186
+        ]
+      ],
+      "objective": 4013.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 4013.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1731,
+        1397
+      ],
+      "connection_costs": [
+        [
+          571,
+          761,
+          359,
+          299,
+          283
+        ],
+        [
+          817,
+          449,
+          121,
+          299,
+          695
+        ]
+      ],
+      "objective": 3778.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 3778.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          817,
+          926,
+          361,
+          608,
+          924,
+          783
+        ],
+        [
+          191,
+          371,
+          200,
+          4,
+          855,
+          463
+        ],
+        [
+          86,
+          563,
+          146,
+          499,
+          814,
+          648
+        ]
+      ],
+      "objective": 4084.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 4084.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          508,
+          378,
+          287,
+          706,
+          544,
+          127
+        ],
+        [
+          461,
+          368,
+          654,
+          341,
+          205,
+          620
+        ],
+        [
+          363,
+          957,
+          148,
+          435,
+          702,
+          794
+        ]
+      ],
+      "objective": 4550.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 4550.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          875,
+          51,
+          711,
+          331,
+          38,
+          362
+        ],
+        [
+          859,
+          625,
+          127,
+          547,
+          991,
+          255
+        ],
+        [
+          520,
+          793,
+          623,
+          331,
+          353,
+          241
+        ]
+      ],
+      "objective": 4368.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 4368.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1530,
+        1780,
+        1433,
+        1638
+      ],
+      "connection_costs": [
+        [
+          691,
+          899,
+          993,
+          62,
+          635,
+          265,
+          216,
+          628
+        ],
+        [
+          693,
+          866,
+          729,
+          426,
+          470,
+          435,
+          455,
+          721
+        ],
+        [
+          499,
+          376,
+          481,
+          290,
+          435,
+          966,
+          302,
+          503
+        ],
+        [
+          908,
+          933,
+          294,
+          328,
+          863,
+          224,
+          693,
+          312
+        ]
+      ],
+      "objective": 5285.0
+    },
+    "solution": {
+      "open_facilities": [
+        2
+      ],
+      "assignments": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "obj": 5285.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2139,
+        9278
+      ],
+      "connection_costs": [
+        [
+          429,
+          393,
+          476,
+          235,
+          750
+        ],
+        [
+          826,
+          514,
+          844,
+          812,
+          775
+        ]
+      ],
+      "objective": 4422.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 4422.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          560,
+          625,
+          469,
+          353,
+          749,
+          692
+        ],
+        [
+          256,
+          38,
+          864,
+          70,
+          654,
+          344
+        ],
+        [
+          599,
+          889,
+          674,
+          667,
+          98,
+          598
+        ]
+      ],
+      "objective": 4226.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 4226.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1000,
+        1000,
+        1000
+      ],
+      "connection_costs": [
+        [
+          513,
+          435,
+          467,
+          305,
+          376,
+          152,
+          427
+        ],
+        [
+          121,
+          448,
+          114,
+          325,
+          583,
+          307,
+          910
+        ],
+        [
+          764,
+          746,
+          284,
+          44,
+          40,
+          443,
+          140
+        ]
+      ],
+      "objective": 3214.0
+    },
+    "solution": {
+      "open_facilities": [
+        1,
+        2
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        2
+      ]
+    },
+    "obj": 3214.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        6680,
+        1941,
+        7239
+      ],
+      "connection_costs": [
+        [
+          348,
+          559,
+          952,
+          970,
+          615,
+          859
+        ],
+        [
+          942,
+          162,
+          937,
+          462,
+          68,
+          70
+        ],
+        [
+          392,
+          965,
+          694,
+          699,
+          288,
+          257
+        ]
+      ],
+      "objective": 4582.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 4582.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          100,
+          954,
+          299,
+          587,
+          675
+        ],
+        [
+          859,
+          691,
+          25,
+          356,
+          19
+        ]
+      ],
+      "objective": 3950.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 3950.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "connection_costs": [
+        [
+          977,
+          562,
+          257,
+          810,
+          909,
+          5,
+          691,
+          852
+        ],
+        [
+          17,
+          635,
+          81,
+          864,
+          747,
+          971,
+          638,
+          723
+        ],
+        [
+          814,
+          543,
+          684,
+          456,
+          503,
+          773,
+          4,
+          122
+        ],
+        [
+          594,
+          368,
+          416,
+          219,
+          940,
+          251,
+          816,
+          762
+        ]
+      ],
+      "objective": 4477.0
+    },
+    "solution": {
+      "open_facilities": [
+        2,
+        3
+      ],
+      "assignments": [
+        3,
+        3,
+        3,
+        3,
+        2,
+        3,
+        2,
+        2
+      ]
+    },
+    "obj": 4477.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1880,
+        1974,
+        1670
+      ],
+      "connection_costs": [
+        [
+          126,
+          49,
+          835,
+          506,
+          880,
+          787
+        ],
+        [
+          691,
+          682,
+          214,
+          100,
+          292,
+          568
+        ],
+        [
+          447,
+          909,
+          652,
+          896,
+          625,
+          16
+        ]
+      ],
+      "objective": 4521.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 4521.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          103,
+          174,
+          349,
+          896,
+          735,
+          225,
+          197,
+          641
+        ],
+        [
+          897,
+          244,
+          402,
+          953,
+          477,
+          208,
+          659,
+          687
+        ],
+        [
+          491,
+          754,
+          260,
+          391,
+          337,
+          619,
+          363,
+          72
+        ]
+      ],
+      "objective": 5287.0
+    },
+    "solution": {
+      "open_facilities": [
+        2
+      ],
+      "assignments": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "obj": 5287.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2140,
+        4636,
+        2117
+      ],
+      "connection_costs": [
+        [
+          574,
+          242,
+          819,
+          278,
+          959,
+          750
+        ],
+        [
+          653,
+          38,
+          135,
+          997,
+          182,
+          591
+        ],
+        [
+          906,
+          246,
+          900,
+          642,
+          418,
+          513
+        ]
+      ],
+      "objective": 5742.0
+    },
+    "solution": {
+      "open_facilities": [
+        2
+      ],
+      "assignments": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "obj": 5742.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1000,
+        1000
+      ],
+      "connection_costs": [
+        [
+          200,
+          608,
+          584,
+          226,
+          653,
+          781
+        ],
+        [
+          812,
+          258,
+          916,
+          40,
+          580,
+          233
+        ]
+      ],
+      "objective": 3839.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 3839.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          378,
+          235,
+          194,
+          403,
+          706
+        ],
+        [
+          715,
+          93,
+          863,
+          376,
+          516
+        ]
+      ],
+      "objective": 3916.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 3916.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1060,
+        1291,
+        1755
+      ],
+      "connection_costs": [
+        [
+          740,
+          776,
+          608,
+          119,
+          768,
+          296,
+          954
+        ],
+        [
+          179,
+          352,
+          816,
+          671,
+          491,
+          169,
+          758
+        ],
+        [
+          950,
+          866,
+          561,
+          477,
+          111,
+          435,
+          761
+        ]
+      ],
+      "objective": 4727.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 4727.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          832,
+          325,
+          869,
+          365,
+          186
+        ],
+        [
+          19,
+          933,
+          753,
+          542,
+          701
+        ]
+      ],
+      "objective": 4577.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 4577.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          75,
+          449,
+          492,
+          712,
+          22,
+          433
+        ],
+        [
+          363,
+          837,
+          696,
+          574,
+          836,
+          610
+        ],
+        [
+          842,
+          52,
+          44,
+          331,
+          859,
+          333
+        ]
+      ],
+      "objective": 4183.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 4183.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1812,
+        1161
+      ],
+      "connection_costs": [
+        [
+          650,
+          887,
+          786,
+          145,
+          915
+        ],
+        [
+          779,
+          922,
+          542,
+          979,
+          954
+        ]
+      ],
+      "objective": 5195.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 5195.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          325,
+          981,
+          332,
+          457,
+          452,
+          856
+        ],
+        [
+          534,
+          599,
+          238,
+          432,
+          610,
+          9
+        ]
+      ],
+      "objective": 4422.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 4422.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          901,
+          390,
+          81,
+          769,
+          315
+        ],
+        [
+          780,
+          348,
+          695,
+          82,
+          630
+        ]
+      ],
+      "objective": 4456.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 4456.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1550,
+        1374
+      ],
+      "connection_costs": [
+        [
+          984,
+          377,
+          321,
+          950,
+          625
+        ],
+        [
+          95,
+          781,
+          600,
+          567,
+          411
+        ]
+      ],
+      "objective": 3828.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 3828.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        6399,
+        8454,
+        2329
+      ],
+      "connection_costs": [
+        [
+          854,
+          556,
+          45,
+          759,
+          613,
+          981,
+          37,
+          186
+        ],
+        [
+          136,
+          553,
+          462,
+          513,
+          578,
+          862,
+          352,
+          496
+        ],
+        [
+          905,
+          541,
+          908,
+          257,
+          605,
+          326,
+          729,
+          830
+        ]
+      ],
+      "objective": 7430.0
+    },
+    "solution": {
+      "open_facilities": [
+        2
+      ],
+      "assignments": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "obj": 7430.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        3074,
+        4989
+      ],
+      "connection_costs": [
+        [
+          629,
+          217,
+          881,
+          421,
+          950,
+          780
+        ],
+        [
+          252,
+          593,
+          282,
+          160,
+          960,
+          235
+        ]
+      ],
+      "objective": 6952.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 6952.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1001,
+        1781,
+        1777
+      ],
+      "connection_costs": [
+        [
+          182,
+          386,
+          395,
+          900,
+          215,
+          275
+        ],
+        [
+          565,
+          775,
+          756,
+          636,
+          922,
+          454
+        ],
+        [
+          933,
+          824,
+          691,
+          619,
+          222,
+          770
+        ]
+      ],
+      "objective": 3354.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 3354.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          946,
+          845,
+          248,
+          505,
+          515,
+          678,
+          991,
+          569
+        ],
+        [
+          988,
+          34,
+          225,
+          956,
+          887,
+          708,
+          714,
+          593
+        ],
+        [
+          302,
+          622,
+          267,
+          578,
+          52,
+          719,
+          884,
+          765
+        ]
+      ],
+      "objective": 6189.0
+    },
+    "solution": {
+      "open_facilities": [
+        2
+      ],
+      "assignments": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "obj": 6189.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          415,
+          259,
+          818,
+          61,
+          372,
+          657,
+          875
+        ],
+        [
+          896,
+          250,
+          867,
+          369,
+          79,
+          549,
+          963
+        ],
+        [
+          698,
+          858,
+          889,
+          557,
+          825,
+          873,
+          514
+        ]
+      ],
+      "objective": 5457.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 5457.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        7095,
+        4049,
+        1987
+      ],
+      "connection_costs": [
+        [
+          329,
+          601,
+          48,
+          309,
+          439,
+          837
+        ],
+        [
+          514,
+          791,
+          23,
+          60,
+          139,
+          14
+        ],
+        [
+          558,
+          205,
+          336,
+          56,
+          301,
+          772
+        ]
+      ],
+      "objective": 4215.0
+    },
+    "solution": {
+      "open_facilities": [
+        2
+      ],
+      "assignments": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "obj": 4215.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1000,
+        1000,
+        1000
+      ],
+      "connection_costs": [
+        [
+          293,
+          415,
+          518,
+          514,
+          794,
+          484,
+          282
+        ],
+        [
+          512,
+          361,
+          433,
+          447,
+          127,
+          890,
+          689
+        ],
+        [
+          553,
+          982,
+          641,
+          842,
+          897,
+          260,
+          715
+        ]
+      ],
+      "objective": 4300.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 4300.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2090,
+        3751,
+        6554
+      ],
+      "connection_costs": [
+        [
+          290,
+          434,
+          680,
+          231,
+          448,
+          783,
+          133
+        ],
+        [
+          337,
+          961,
+          369,
+          691,
+          560,
+          470,
+          772
+        ],
+        [
+          903,
+          463,
+          756,
+          901,
+          187,
+          43,
+          284
+        ]
+      ],
+      "objective": 5089.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 5089.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          728,
+          457,
+          245,
+          594,
+          923,
+          617,
+          679,
+          983
+        ],
+        [
+          317,
+          883,
+          858,
+          733,
+          162,
+          136,
+          711,
+          12
+        ],
+        [
+          792,
+          385,
+          647,
+          469,
+          909,
+          205,
+          862,
+          684
+        ]
+      ],
+      "objective": 5812.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 5812.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        3757,
+        3209
+      ],
+      "connection_costs": [
+        [
+          569,
+          311,
+          937,
+          235,
+          798,
+          391
+        ],
+        [
+          412,
+          180,
+          152,
+          479,
+          343,
+          15
+        ]
+      ],
+      "objective": 4790.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 4790.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          289,
+          161,
+          926,
+          561,
+          616,
+          480,
+          727,
+          28
+        ],
+        [
+          498,
+          112,
+          793,
+          128,
+          559,
+          812,
+          167,
+          193
+        ],
+        [
+          783,
+          807,
+          169,
+          176,
+          662,
+          906,
+          764,
+          427
+        ]
+      ],
+      "objective": 5262.0
+    },
+    "solution": {
+      "open_facilities": [
+        1
+      ],
+      "assignments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "obj": 5262.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        2000,
+        2000
+      ],
+      "connection_costs": [
+        [
+          349,
+          63,
+          624,
+          138,
+          405,
+          434
+        ],
+        [
+          951,
+          263,
+          853,
+          5,
+          462,
+          44
+        ]
+      ],
+      "objective": 4013.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 4013.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1000,
+        1000,
+        1000
+      ],
+      "connection_costs": [
+        [
+          146,
+          295,
+          693,
+          766,
+          99,
+          47,
+          303
+        ],
+        [
+          690,
+          707,
+          915,
+          275,
+          668,
+          130,
+          106
+        ],
+        [
+          357,
+          276,
+          63,
+          953,
+          566,
+          467,
+          307
+        ]
+      ],
+      "objective": 3349.0
+    },
+    "solution": {
+      "open_facilities": [
+        0
+      ],
+      "assignments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "obj": 3349.0,
+    "problem_type": "UFLP"
+  },
+  {
+    "instance": {
+      "opening_costs": [
+        1925,
+        1348,
+        1194
+      ],
+      "connection_costs": [
+        [
+          826,
+          363,
+          974,
+          636,
+          719,
+          499,
+          769
+        ],
+        [
+          688,
+          697,
+          736,
+          269,
+          113,
+          321,
+          362
+        ],
+        [
+          196,
+          210,
+          297,
+          922,
+          390,
+          530,
+          462
+        ]
+      ],
+      "objective": 4201.0
+    },
+    "solution": {
+      "open_facilities": [
+        2
+      ],
+      "assignments": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "obj": 4201.0,
+    "problem_type": "UFLP"
+  }
+]

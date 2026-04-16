@@ -1,0 +1,2069 @@
+id,task_id,difficulty_tier,example_index,prompt,surface_format,indexing_scheme,instance_canonical_json,reference_solution_canonical_json,reference_objective_value,instance_surface_json,reference_solution_surface_json
+HSP_S_001,HSP,S,1,"We just moved in and want to standardize detectors: each room can accept certain models, and the plan is to decide on the fewest different detector models that still appear in every room’s acceptable list. The “best” plan is the one with the lowest number of distinct models — you measure that by counting how many model types are chosen. It’s important that no room is left without one of the chosen models, and the choice is a set of distinct models (no duplicates). The specific room-by-model options are shown below.
+
+- **total_detector_models**: 8
+- **total_rooms**: 8
+
+| room_id | acceptable_models |
+|---|---|
+| S1 | 1 5 6 8 |
+| S2 | 5 6 7 |
+| S3 | 4 6 |
+| S4 | 3 6 7 8 |
+| S5 | 1 3 5 6 7 |
+| S6 | 1 2 3 4 5 7 8 |
+| S7 | 3 4 5 6 |
+| S8 | 1 3 4 5 6 8 |
+
+Also, when you send back your choice, just follow this simple JSON shape so it's easy to parse:
+
+{
+  ""solution"": [""model_id"", ...]
+}
+
+Pretty straightforward: ""solution"" is a list (an array) of the detector model identifiers you picked — one per model type. Think of it like a short form where you just list the model labels that should appear in every room's acceptable list. This is just the expected shape, not the actual answer; fill in the real model IDs from the instance when you reply.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 8, ""num_sets"": 8, ""density"": 0.546875, ""sets"": [{""id"": 1, ""elements"": [1, 5, 6, 8]}, {""id"": 2, ""elements"": [5, 6, 7]}, {""id"": 3, ""elements"": [4, 6]}, {""id"": 4, ""elements"": [3, 6, 7, 8]}, {""id"": 5, ""elements"": [1, 3, 5, 6, 7]}, {""id"": 6, ""elements"": [1, 2, 3, 4, 5, 7, 8]}, {""id"": 7, ""elements"": [3, 4, 5, 6]}, {""id"": 8, ""elements"": [1, 3, 4, 5, 6, 8]}], ""graph"": {""num_nodes"": 8, ""edges"": [{""u"": 5, ""v"": 2}, {""u"": 5, ""v"": 6}, {""u"": 5, ""v"": 7}, {""u"": 6, ""v"": 1}, {""u"": 6, ""v"": 3}, {""u"": 6, ""v"": 8}, {""u"": 8, ""v"": 4}, {""u"": 7, ""v"": 3}, {""u"": 3, ""v"": 4}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0000.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0000.png""}","[6, 8]",2.0,"{""num_elements"": 8, ""num_sets"": 8, ""sets"": [{""id"": ""S1"", ""elements"": [1, 5, 6, 8]}, {""id"": ""S2"", ""elements"": [5, 6, 7]}, {""id"": ""S3"", ""elements"": [4, 6]}, {""id"": ""S4"", ""elements"": [3, 6, 7, 8]}, {""id"": ""S5"", ""elements"": [1, 3, 5, 6, 7]}, {""id"": ""S6"", ""elements"": [1, 2, 3, 4, 5, 7, 8]}, {""id"": ""S7"", ""elements"": [3, 4, 5, 6]}, {""id"": ""S8"", ""elements"": [1, 3, 4, 5, 6, 8]}]}","[6, 8]"
+HSP_S_002,HSP,S,2,"There’s a stack of reading lists that need clearer labeling, so the librarian wants to keep only a tiny set of subject tags. The trick is to pick as few tags as necessary, but every reading list must include at least one of those kept tags. The “result” is just the count of tags kept — fewer tags is better — and every list has to be covered with no lists left out and each kept tag only counts once. The exact lists and tag options appear below.
+
+There are 8 distinct subject tags available and 8 reading lists to cover.
+Reading list S1 labeled with tags 1 2.
+Reading list S2 labeled with tags 1 2 3 6 7.
+Reading list S3 labeled with tags 2 5.
+Reading list S4 labeled with tags 2 5 6 7.
+Reading list S5 labeled with tags 2 4 5 6.
+Reading list S6 labeled with tags 2 4 5 6 7.
+Reading list S7 labeled with tags 2 5 6.
+Reading list S8 labeled with tags 2 4 8.
+Keep as few tags as necessary; the result is the count of kept tags.
+
+Oh, and when you reply, please use this little JSON shape so I can read the picks easily:
+
+{
+  ""solution"": [""tag_id"", ...]
+}
+
+Think of ""solution"" as the list of tag IDs you decided to keep for the librarian — each entry is just the ID of one tag (the same IDs that show up in the instance). This block is just a sketch of the expected shape, not the actual answer.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels. For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 8, ""num_sets"": 8, ""density"": 0.4375, ""sets"": [{""id"": 1, ""elements"": [1, 2]}, {""id"": 2, ""elements"": [1, 2, 3, 6, 7]}, {""id"": 3, ""elements"": [2, 5]}, {""id"": 4, ""elements"": [2, 5, 6, 7]}, {""id"": 5, ""elements"": [2, 4, 5, 6]}, {""id"": 6, ""elements"": [2, 4, 5, 6, 7]}, {""id"": 7, ""elements"": [2, 5, 6]}, {""id"": 8, ""elements"": [2, 4, 8]}], ""graph"": {""num_nodes"": 8, ""edges"": [{""u"": 7, ""v"": 2}, {""u"": 8, ""v"": 4}, {""u"": 1, ""v"": 6}, {""u"": 5, ""v"": 2}, {""u"": 5, ""v"": 3}, {""u"": 2, ""v"": 4}, {""u"": 2, ""v"": 6}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0001.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0001.png""}",[2],1.0,"{""num_elements"": 8, ""num_sets"": 8, ""sets"": [{""id"": ""S1"", ""elements"": [1, 2]}, {""id"": ""S2"", ""elements"": [1, 2, 3, 6, 7]}, {""id"": ""S3"", ""elements"": [2, 5]}, {""id"": ""S4"", ""elements"": [2, 5, 6, 7]}, {""id"": ""S5"", ""elements"": [2, 4, 5, 6]}, {""id"": ""S6"", ""elements"": [2, 4, 5, 6, 7]}, {""id"": ""S7"", ""elements"": [2, 5, 6]}, {""id"": ""S8"", ""elements"": [2, 4, 8]}]}",[2]
+HSP_S_003,HSP,S,3,"We handle talent for a bunch of weekend parties and want to hire as few musicians as possible while still appearing in every lineup somewhere. The job is to choose which people to book so that every scheduled bill has at least one of our hires; plans are compared by simply counting the number of musicians booked — the lower the count, the better. Every event must have at least one booked performer, and a single musician can cover many events but won’t be counted twice to make the roster look smaller. The specific lineups are listed below.
+
+{
+  ""total_musicians"": 10,
+  ""total_parties"": 9,
+  ""sets"": [
+    {
+      ""party_id"": ""S1"",
+      ""musicians_in_lineup"": [
+        ""A"",
+        ""B"",
+        ""D"",
+        ""J""
+      ]
+    },
+    {
+      ""party_id"": ""S2"",
+      ""musicians_in_lineup"": [
+        ""C"",
+        ""D"",
+        ""H"",
+        ""I""
+      ]
+    },
+    {
+      ""party_id"": ""S3"",
+      ""musicians_in_lineup"": [
+        ""B"",
+        ""C"",
+        ""J""
+      ]
+    },
+    {
+      ""party_id"": ""S4"",
+      ""musicians_in_lineup"": [
+        ""C"",
+        ""E"",
+        ""H""
+      ]
+    },
+    {
+      ""party_id"": ""S5"",
+      ""musicians_in_lineup"": [
+        ""D"",
+        ""F"",
+        ""J""
+      ]
+    },
+    {
+      ""party_id"": ""S6"",
+      ""musicians_in_lineup"": [
+        ""G"",
+        ""H"",
+        ""I""
+      ]
+    },
+    {
+      ""party_id"": ""S7"",
+      ""musicians_in_lineup"": [
+        ""A"",
+        ""D"",
+        ""E"",
+        ""G"",
+        ""H"",
+        ""I"",
+        ""J""
+      ]
+    },
+    {
+      ""party_id"": ""S8"",
+      ""musicians_in_lineup"": [
+        ""C"",
+        ""E"",
+        ""G"",
+        ""H"",
+        ""I""
+      ]
+    },
+    {
+      ""party_id"": ""S9"",
+      ""musicians_in_lineup"": [
+        ""A"",
+        ""D"",
+        ""H""
+      ]
+    }
+  ]
+}
+
+Oh, and when you send back the plan, please follow this simple JSON layout so it's easy to read by whatever's checking our roster:
+
+{
+  ""solution"": [""musician_id"", ...]
+}
+
+""solution"" is just the list of musician identifiers you're booking — each string in that array is a placeholder for a musician's id from the event data. Think of it like filling in a short form: list the people you're hiring so every lineup has at least one of them. This JSON is only a sketch of the shape I expect, not the actual answer.
+
+Also, make sure to use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”"".",json,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 10, ""num_sets"": 9, ""density"": 0.3888888888888889, ""sets"": [{""id"": 1, ""elements"": [1, 2, 4, 10]}, {""id"": 2, ""elements"": [3, 4, 8, 9]}, {""id"": 3, ""elements"": [2, 3, 10]}, {""id"": 4, ""elements"": [3, 5, 8]}, {""id"": 5, ""elements"": [4, 6, 10]}, {""id"": 6, ""elements"": [7, 8, 9]}, {""id"": 7, ""elements"": [1, 4, 5, 7, 8, 9, 10]}, {""id"": 8, ""elements"": [3, 5, 7, 8, 9]}, {""id"": 9, ""elements"": [1, 4, 8]}], ""graph"": {""num_nodes"": 10, ""edges"": [{""u"": 1, ""v"": 2}, {""u"": 1, ""v"": 4}, {""u"": 3, ""v"": 5}, {""u"": 3, ""v"": 7}, {""u"": 3, ""v"": 8}, {""u"": 3, ""v"": 9}, {""u"": 4, ""v"": 8}, {""u"": 4, ""v"": 10}, {""u"": 6, ""v"": 10}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0002.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0002.png""}","[8, 10]",2.0,"{""num_elements"": 10, ""num_sets"": 9, ""sets"": [{""id"": ""S1"", ""elements"": [""A"", ""B"", ""D"", ""J""]}, {""id"": ""S2"", ""elements"": [""C"", ""D"", ""H"", ""I""]}, {""id"": ""S3"", ""elements"": [""B"", ""C"", ""J""]}, {""id"": ""S4"", ""elements"": [""C"", ""E"", ""H""]}, {""id"": ""S5"", ""elements"": [""D"", ""F"", ""J""]}, {""id"": ""S6"", ""elements"": [""G"", ""H"", ""I""]}, {""id"": ""S7"", ""elements"": [""A"", ""D"", ""E"", ""G"", ""H"", ""I"", ""J""]}, {""id"": ""S8"", ""elements"": [""C"", ""E"", ""G"", ""H"", ""I""]}, {""id"": ""S9"", ""elements"": [""A"", ""D"", ""H""]}]}","[""H"", ""J""]"
+HSP_S_004,HSP,S,4,"In the office the goal is to avoid bloated installs by picking a compact set of applications that still lets every user group run at least one compatible package. The decision is which specific packages to install so every group has at least one match. The better pick is always the one with the smaller number of installed packages — evaluate by counting how many distinct programs are chosen. Practical constraints: every group must be covered, duplicates don’t give extra credit, and every picked package must be useful to some group. The concrete instance information appears below.
+
+- **total_packages_available**: 9
+- **total_user_groups**: 7
+
+| user_group_id | compatible_packages |
+|---|---|
+| S1 | A D H |
+| S2 | B E I |
+| S3 | A D F I |
+| S4 | E G H I |
+| S5 | D F H |
+| S6 | A C D E F I |
+| S7 | A B E G H |
+
+Just drop your chosen package IDs into a tiny JSON object like this when you reply — nice and simple.
+
+{
+  ""solution"": [""package_id"", ...]
+}
+
+Here ""solution"" is the list of packages to install (one entry per chosen package). Think of ""package_id"" as a placeholder for whatever identifier the instance uses for a package. This JSON is just a sketch showing the shape I expect, not the actual answer.
+
+Quick reminder: all identifiers you use must match the instance exactly — do not rename them or invent new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 9, ""num_sets"": 7, ""density"": 0.4444444444444444, ""sets"": [{""id"": 1, ""elements"": [1, 4, 8]}, {""id"": 2, ""elements"": [2, 5, 9]}, {""id"": 3, ""elements"": [1, 4, 6, 9]}, {""id"": 4, ""elements"": [5, 7, 8, 9]}, {""id"": 5, ""elements"": [4, 6, 8]}, {""id"": 6, ""elements"": [1, 3, 4, 5, 6, 9]}, {""id"": 7, ""elements"": [1, 2, 5, 7, 8]}], ""graph"": {""num_nodes"": 9, ""edges"": [{""u"": 8, ""v"": 1}, {""u"": 8, ""v"": 4}, {""u"": 8, ""v"": 9}, {""u"": 6, ""v"": 4}, {""u"": 7, ""v"": 2}, {""u"": 7, ""v"": 5}, {""u"": 3, ""v"": 9}, {""u"": 9, ""v"": 5}, {""u"": 5, ""v"": 2}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0003.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0003.png""}","[8, 9]",2.0,"{""num_elements"": 9, ""num_sets"": 7, ""sets"": [{""id"": ""S1"", ""elements"": [""A"", ""D"", ""H""]}, {""id"": ""S2"", ""elements"": [""B"", ""E"", ""I""]}, {""id"": ""S3"", ""elements"": [""A"", ""D"", ""F"", ""I""]}, {""id"": ""S4"", ""elements"": [""E"", ""G"", ""H"", ""I""]}, {""id"": ""S5"", ""elements"": [""D"", ""F"", ""H""]}, {""id"": ""S6"", ""elements"": [""A"", ""C"", ""D"", ""E"", ""F"", ""I""]}, {""id"": ""S7"", ""elements"": [""A"", ""B"", ""E"", ""G"", ""H""]}]}","[""H"", ""I""]"
+HSP_S_005,HSP,S,5,"Many people on the committee want a minimal shared reading list: pick a small set of book titles so that each course’s syllabus has at least one of those titles. The decision boils down to which specific titles to pick; one choice beats another if it uses fewer different books while still matching every syllabus. You evaluate a pick by counting the chosen titles — aim for the smallest count — and make sure every course is represented and titles aren’t duplicated in the count. The exact course lists are provided below.
+
+There are 9 distinct titles across 8 course syllabi; the following lines enumerate each course's titles.
+For course S1, the syllabus lists: 1 7 8.
+For course S2, the syllabus lists: 2 5 6.
+For course S3, the syllabus lists: 5 6.
+For course S4, the syllabus lists: 3 4 6 7 8.
+For course S5, the syllabus lists: 2 3 5 6 7.
+For course S6, the syllabus lists: 2 3 4 6.
+For course S7, the syllabus lists: 1 5 7 8.
+For course S8, the syllabus lists: 7 9.
+Aim to choose the smallest number of distinct titles that cover all 8 courses.
+
+Oh, and when you send back the chosen titles, please use this simple JSON shape so it's easy to check:
+
+{
+  ""solution"": [""title_id"", ...]
+}
+
+This just means ""solution"" should be an array listing the identifiers for the books you picked (the placeholder ""title_id"" just shows the kind of thing to put there). Think of it like filling in a short form: the array holds the IDs of the selected titles. The JSON above is only a sketch of the expected shape, not the actual answer.
+
+Important: Use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+
+- for example: Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",nl,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 9, ""num_sets"": 8, ""density"": 0.3888888888888889, ""sets"": [{""id"": 1, ""elements"": [1, 7, 8]}, {""id"": 2, ""elements"": [2, 5, 6]}, {""id"": 3, ""elements"": [5, 6]}, {""id"": 4, ""elements"": [3, 4, 6, 7, 8]}, {""id"": 5, ""elements"": [2, 3, 5, 6, 7]}, {""id"": 6, ""elements"": [2, 3, 4, 6]}, {""id"": 7, ""elements"": [1, 5, 7, 8]}, {""id"": 8, ""elements"": [7, 9]}], ""graph"": {""num_nodes"": 9, ""edges"": [{""u"": 7, ""v"": 4}, {""u"": 7, ""v"": 8}, {""u"": 8, ""v"": 1}, {""u"": 8, ""v"": 9}, {""u"": 6, ""v"": 2}, {""u"": 6, ""v"": 5}, {""u"": 3, ""v"": 5}, {""u"": 4, ""v"": 5}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0004.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0004.png""}","[6, 7]",2.0,"{""num_elements"": 9, ""num_sets"": 8, ""sets"": [{""id"": ""S1"", ""elements"": [1, 7, 8]}, {""id"": ""S2"", ""elements"": [2, 5, 6]}, {""id"": ""S3"", ""elements"": [5, 6]}, {""id"": ""S4"", ""elements"": [3, 4, 6, 7, 8]}, {""id"": ""S5"", ""elements"": [2, 3, 5, 6, 7]}, {""id"": ""S6"", ""elements"": [2, 3, 4, 6]}, {""id"": ""S7"", ""elements"": [1, 5, 7, 8]}, {""id"": ""S8"", ""elements"": [7, 9]}]}","[6, 7]"
+HSP_S_006,HSP,S,6,"I run a tiny kitchen and try to keep the pantry as simple as possible: pick the smallest set of staple ingredients so every dish on the menu has at least one of them to call on. The decision is which ingredients to stock, and better choices are the ones that let the shelf list be as short as possible — success is just counting how many different staples are on the shelf. Every recipe has to be covered by at least one stocked item, and stocking the same thing twice doesn’t make the list any shorter. The exact menu and ingredient lists are shown below.
+
+- **num_ingredients**: 9
+- **num_recipes**: 8
+
+| recipe_id | recipe_ingredients |
+|---|---|
+| S1 | A H |
+| S2 | F G |
+| S3 | C E H |
+| S4 | A H I |
+| S5 | A B D F G |
+| S6 | A B F |
+| S7 | A C D H I |
+| S8 | D H |
+
+If you want to hand me the pantry pick in a neat little package, just send it back as JSON like this:
+
+{
+  ""solution"": [""ingredient_id"", ...]
+}
+
+Think of ""solution"" as the list of staples you'd stock on the shelf. Each entry like ""ingredient_id"" is a placeholder for one ingredient from the menu — when you fill it in, put the exact identifier shown in the instance. This block is just a sketch of the shape I expect, not the actual answer itself.
+
+Please use the identifiers exactly as they appear in the input — no renaming and no new labels. Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",markdown_table,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 9, ""num_sets"": 8, ""density"": 0.3472222222222222, ""sets"": [{""id"": 1, ""elements"": [1, 8]}, {""id"": 2, ""elements"": [6, 7]}, {""id"": 3, ""elements"": [3, 5, 8]}, {""id"": 4, ""elements"": [1, 8, 9]}, {""id"": 5, ""elements"": [1, 2, 4, 6, 7]}, {""id"": 6, ""elements"": [1, 2, 6]}, {""id"": 7, ""elements"": [1, 3, 4, 8, 9]}, {""id"": 8, ""elements"": [4, 8]}], ""graph"": {""num_nodes"": 9, ""edges"": [{""u"": 8, ""v"": 3}, {""u"": 8, ""v"": 4}, {""u"": 8, ""v"": 9}, {""u"": 6, ""v"": 1}, {""u"": 6, ""v"": 7}, {""u"": 5, ""v"": 3}, {""u"": 7, ""v"": 2}, {""u"": 1, ""v"": 4}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0005.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0005.png""}","[6, 8]",2.0,"{""num_elements"": 9, ""num_sets"": 8, ""sets"": [{""id"": ""S1"", ""elements"": [""A"", ""H""]}, {""id"": ""S2"", ""elements"": [""F"", ""G""]}, {""id"": ""S3"", ""elements"": [""C"", ""E"", ""H""]}, {""id"": ""S4"", ""elements"": [""A"", ""H"", ""I""]}, {""id"": ""S5"", ""elements"": [""A"", ""B"", ""D"", ""F"", ""G""]}, {""id"": ""S6"", ""elements"": [""A"", ""B"", ""F""]}, {""id"": ""S7"", ""elements"": [""A"", ""C"", ""D"", ""H"", ""I""]}, {""id"": ""S8"", ""elements"": [""D"", ""H""]}]}","[""F"", ""H""]"
+HSP_S_007,HSP,S,7,"Recently the allotment group decided to downsize the variety in each bed: pick a minimal set of plant types such that every bed has at least one of those types. A simpler setup is better — fewer different species is the goal — so judge options by how many species are kept. Every bed must contain at least one chosen species, and planting duplicates won’t change the score since each species only counts once. The concrete details will be shown below.
+
+# total_species=8
+# num_beds=8
+bed_id,bed_species
+S1,1 2 3 4 5 6
+S2,0 1 4
+S3,0 3 5
+S4,0 2 4 5
+S5,1 3 4 5 7
+S6,2 3 4 5
+S7,0 6 7
+S8,0 4 6 7
+
+Oh, and to keep things tidy, please send the final pick in this little JSON shape so I can read it automatically:
+
+{
+  ""solution"": [""plant_type_id"", ...]
+}
+
+""solution"" should be the list of plant types you're keeping — each entry is the identifier for a species (matching the labels from the instance). This is just a sketch of the expected shape, not the actual answer.
+
+Please make sure to use the exact identifiers from the input, with no renaming or new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,zero_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 8, ""num_sets"": 8, ""density"": 0.5, ""sets"": [{""id"": 1, ""elements"": [2, 3, 4, 5, 6, 7]}, {""id"": 2, ""elements"": [1, 2, 5]}, {""id"": 3, ""elements"": [1, 4, 6]}, {""id"": 4, ""elements"": [1, 3, 5, 6]}, {""id"": 5, ""elements"": [2, 4, 5, 6, 8]}, {""id"": 6, ""elements"": [3, 4, 5, 6]}, {""id"": 7, ""elements"": [1, 7, 8]}, {""id"": 8, ""elements"": [1, 5, 7, 8]}], ""graph"": {""num_nodes"": 8, ""edges"": [{""u"": 4, ""v"": 5}, {""u"": 4, ""v"": 6}, {""u"": 1, ""v"": 5}, {""u"": 1, ""v"": 6}, {""u"": 1, ""v"": 8}, {""u"": 6, ""v"": 3}, {""u"": 7, ""v"": 8}, {""u"": 5, ""v"": 2}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0006.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0006.png""}","[1, 5]",2.0,"{""num_elements"": 8, ""num_sets"": 8, ""sets"": [{""id"": ""S1"", ""elements"": [1, 2, 3, 4, 5, 6]}, {""id"": ""S2"", ""elements"": [0, 1, 4]}, {""id"": ""S3"", ""elements"": [0, 3, 5]}, {""id"": ""S4"", ""elements"": [0, 2, 4, 5]}, {""id"": ""S5"", ""elements"": [1, 3, 4, 5, 7]}, {""id"": ""S6"", ""elements"": [2, 3, 4, 5]}, {""id"": ""S7"", ""elements"": [0, 6, 7]}, {""id"": ""S8"", ""elements"": [0, 4, 6, 7]}]}","[0, 4]"
+HSP_S_008,HSP,S,8,"There’s a simple planning task on the table: choose which kinds of vehicles to have available so that every neighborhood can be matched with at least one of them. The trick is to pick as few different kinds as needed — plans are judged by how many unique vehicle types they use, so count the different types to see which plan is leaner. Each neighborhood must be matched by at least one chosen type (no gaps allowed), and duplicates don’t help since only distinct types count. The specific neighborhood-vehicle listings are shown below.
+
+There are 12 distinct vehicle types available and 10 neighborhoods to cover.
+Neighborhood S1: A B I.
+Neighborhood S2: A B C E I K.
+Neighborhood S3: C E.
+Neighborhood S4: D G L.
+Neighborhood S5: C E F K.
+Neighborhood S6: A B C E F I L.
+Neighborhood S7: D I.
+Neighborhood S8: D G H L.
+Neighborhood S9: B E F G K.
+Neighborhood S10: E F H I J.
+Choose as few distinct vehicle types as possible so all 10 neighborhoods are covered from the 12 available.
+
+Oh, and when you send the plan back, just drop it into this simple JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [""vehicle_type_id"", ...]
+}
+
+Think of it like a tiny form: ""solution"" is the list of vehicle types you picked so every neighborhood has at least one match. Each entry in the array is a single vehicle-type identifier (just put the exact identifier the instance uses). This JSON is just a sketch of the shape I need — not the final answer itself.
+
+One more thing: use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 12, ""num_sets"": 10, ""density"": 0.3416666666666667, ""sets"": [{""id"": 1, ""elements"": [1, 2, 9]}, {""id"": 2, ""elements"": [1, 2, 3, 5, 9, 11]}, {""id"": 3, ""elements"": [3, 5]}, {""id"": 4, ""elements"": [4, 7, 12]}, {""id"": 5, ""elements"": [3, 5, 6, 11]}, {""id"": 6, ""elements"": [1, 2, 3, 5, 6, 9, 12]}, {""id"": 7, ""elements"": [4, 9]}, {""id"": 8, ""elements"": [4, 7, 8, 12]}, {""id"": 9, ""elements"": [2, 5, 6, 7, 11]}, {""id"": 10, ""elements"": [5, 6, 8, 9, 10]}], ""graph"": {""num_nodes"": 12, ""edges"": [{""u"": 4, ""v"": 7}, {""u"": 4, ""v"": 8}, {""u"": 1, ""v"": 6}, {""u"": 12, ""v"": 7}, {""u"": 12, ""v"": 9}, {""u"": 12, ""v"": 10}, {""u"": 5, ""v"": 2}, {""u"": 5, ""v"": 9}, {""u"": 5, ""v"": 11}, {""u"": 8, ""v"": 10}, {""u"": 3, ""v"": 2}, {""u"": 2, ""v"": 6}, {""u"": 6, ""v"": 9}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0007.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0007.png""}","[4, 5, 9]",3.0,"{""num_elements"": 12, ""num_sets"": 10, ""sets"": [{""id"": ""S1"", ""elements"": [""A"", ""B"", ""I""]}, {""id"": ""S2"", ""elements"": [""A"", ""B"", ""C"", ""E"", ""I"", ""K""]}, {""id"": ""S3"", ""elements"": [""C"", ""E""]}, {""id"": ""S4"", ""elements"": [""D"", ""G"", ""L""]}, {""id"": ""S5"", ""elements"": [""C"", ""E"", ""F"", ""K""]}, {""id"": ""S6"", ""elements"": [""A"", ""B"", ""C"", ""E"", ""F"", ""I"", ""L""]}, {""id"": ""S7"", ""elements"": [""D"", ""I""]}, {""id"": ""S8"", ""elements"": [""D"", ""G"", ""H"", ""L""]}, {""id"": ""S9"", ""elements"": [""B"", ""E"", ""F"", ""G"", ""K""]}, {""id"": ""S10"", ""elements"": [""E"", ""F"", ""H"", ""I"", ""J""]}]}","[""D"", ""E"", ""I""]"
+HSP_S_009,HSP,S,9,"Many people on the merchandising floor are trying to distill the booth’s colors down to the essentials so every outfit has at least one of those essentials showing. The choice is which specific hues make the cut; excellence here is measured by the fewest hues chosen — just count the selected colors and prefer the smaller total. No outfit may be left without one of the kept hues, and picking the same color twice doesn’t help. Full lists of outfits and candidate colors are listed below.
+
+- **total_colors**: 8
+- **total_outfits**: 7
+
+| outfit_id | colors_in_outfit |
+|---|---|
+| S1 | 1 3 4 6 |
+| S2 | 0 1 2 3 5 6 7 |
+| S3 | 1 2 |
+| S4 | 0 1 4 7 |
+| S5 | 0 1 |
+| S6 | 1 6 |
+| S7 | 1 3 4 |
+
+If you're ready to send the chosen hues, just use this little JSON shape so I know exactly where to look:
+
+{
+  ""solution"": [""hue_id"", ...]
+}
+
+""solution"" is the list of kept hues for the booth — each entry is a placeholder for one color identifier from the instance. Think of ""hue_id"" as the spot where you drop a real color label; the JSON above is just a sketch of the expected shape, not the actual answer.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.
+
+That's all — fill the array with the exact IDs and we'll be set.",markdown_table,zero_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 8, ""num_sets"": 7, ""density"": 0.42857142857142855, ""sets"": [{""id"": 1, ""elements"": [2, 4, 5, 7]}, {""id"": 2, ""elements"": [1, 2, 3, 4, 6, 7, 8]}, {""id"": 3, ""elements"": [2, 3]}, {""id"": 4, ""elements"": [1, 2, 5, 8]}, {""id"": 5, ""elements"": [1, 2]}, {""id"": 6, ""elements"": [2, 7]}, {""id"": 7, ""elements"": [2, 4, 5]}], ""graph"": {""num_nodes"": 8, ""edges"": [{""u"": 7, ""v"": 1}, {""u"": 4, ""v"": 2}, {""u"": 2, ""v"": 1}, {""u"": 2, ""v"": 5}, {""u"": 2, ""v"": 8}, {""u"": 8, ""v"": 3}, {""u"": 5, ""v"": 6}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0008.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0008.png""}",[2],1.0,"{""num_elements"": 8, ""num_sets"": 7, ""sets"": [{""id"": ""S1"", ""elements"": [1, 3, 4, 6]}, {""id"": ""S2"", ""elements"": [0, 1, 2, 3, 5, 6, 7]}, {""id"": ""S3"", ""elements"": [1, 2]}, {""id"": ""S4"", ""elements"": [0, 1, 4, 7]}, {""id"": ""S5"", ""elements"": [0, 1]}, {""id"": ""S6"", ""elements"": [1, 6]}, {""id"": ""S7"", ""elements"": [1, 3, 4]}]}",[1]
+HSP_S_010,HSP,S,10,"At the purchasing desk the aim is to assemble a tiny supplier team so every shelf category still has at least one product from someone on that team. What makes one plan superior is simply the headcount of distinct suppliers — smaller is preferable, so tally the unique suppliers to compare options. Every category must be covered at least once, and duplicates don’t improve the score. The concrete supplier-category details are given below.
+
+There are 12 distinct suppliers available and 10 shelf categories to cover.
+Category S1: supplied by 2 3 6 9 10.
+Category S2: supplied by 2 3 5 8.
+Category S3: supplied by 1 4 12.
+Category S4: supplied by 3 8 10.
+Category S5: supplied by 6 9 10 12.
+Category S6: supplied by 3 5 8 10.
+Category S7: supplied by 2 6 7 9.
+Category S8: supplied by 3 5 8 12.
+Category S9: supplied by 1 11 12.
+Category S10: supplied by 1 4 6 10.
+Plans are compared solely by the distinct-supplier headcount covering the 10 categories.
+
+Also, when you give the final pick, please follow this simple JSON shape so it's easy to check what you chose.
+
+{
+  ""solution"": [""supplier_id"", ...]
+}
+
+This just means ""solution"" is a list of the supplier IDs you picked to cover every shelf category. Think of ""supplier_id"" as a placeholder — replace it with the actual supplier identifiers from the instance. It's just a sketch of the shape I expect, not the real answer.
+
+Please use the identifiers exactly as they appear in the input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”"".",nl,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 12, ""num_sets"": 10, ""density"": 0.31666666666666665, ""sets"": [{""id"": 1, ""elements"": [2, 3, 6, 9, 10]}, {""id"": 2, ""elements"": [2, 3, 5, 8]}, {""id"": 3, ""elements"": [1, 4, 12]}, {""id"": 4, ""elements"": [3, 8, 10]}, {""id"": 5, ""elements"": [6, 9, 10, 12]}, {""id"": 6, ""elements"": [3, 5, 8, 10]}, {""id"": 7, ""elements"": [2, 6, 7, 9]}, {""id"": 8, ""elements"": [3, 5, 8, 12]}, {""id"": 9, ""elements"": [1, 11, 12]}, {""id"": 10, ""elements"": [1, 4, 6, 10]}], ""graph"": {""num_nodes"": 12, ""edges"": [{""u"": 3, ""v"": 5}, {""u"": 3, ""v"": 8}, {""u"": 3, ""v"": 10}, {""u"": 11, ""v"": 1}, {""u"": 10, ""v"": 2}, {""u"": 12, ""v"": 1}, {""u"": 12, ""v"": 2}, {""u"": 7, ""v"": 6}, {""u"": 9, ""v"": 6}, {""u"": 4, ""v"": 1}, {""u"": 6, ""v"": 2}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0009.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0009.png""}","[2, 10, 12]",3.0,"{""num_elements"": 12, ""num_sets"": 10, ""sets"": [{""id"": ""S1"", ""elements"": [2, 3, 6, 9, 10]}, {""id"": ""S2"", ""elements"": [2, 3, 5, 8]}, {""id"": ""S3"", ""elements"": [1, 4, 12]}, {""id"": ""S4"", ""elements"": [3, 8, 10]}, {""id"": ""S5"", ""elements"": [6, 9, 10, 12]}, {""id"": ""S6"", ""elements"": [3, 5, 8, 10]}, {""id"": ""S7"", ""elements"": [2, 6, 7, 9]}, {""id"": ""S8"", ""elements"": [3, 5, 8, 12]}, {""id"": ""S9"", ""elements"": [1, 11, 12]}, {""id"": ""S10"", ""elements"": [1, 4, 6, 10]}]}","[2, 10, 12]"
+HSP_S_011,HSP,S,11,"Recently the organizing crew decided to streamline bookings by finding the smallest group of headline acts that still appear on every stage’s lineup. The winning plan is whichever uses the fewest distinct hires, and that’s found by counting the booked acts and picking the list with the lowest total. No stage can be left without at least one of those acts on its roster, and an act that appears on several stages only adds one to the total. The detailed stage lineups follow below.
+
+{
+  ""total_unique_acts"": 11,
+  ""stages_count"": 11,
+  ""sets"": [
+    {
+      ""stage_id"": ""S1"",
+      ""stage_lineup_acts"": [
+        1,
+        4,
+        5,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      ""stage_id"": ""S2"",
+      ""stage_lineup_acts"": [
+        1,
+        4,
+        8,
+        10
+      ]
+    },
+    {
+      ""stage_id"": ""S3"",
+      ""stage_lineup_acts"": [
+        3,
+        11
+      ]
+    },
+    {
+      ""stage_id"": ""S4"",
+      ""stage_lineup_acts"": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        8
+      ]
+    },
+    {
+      ""stage_id"": ""S5"",
+      ""stage_lineup_acts"": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        11
+      ]
+    },
+    {
+      ""stage_id"": ""S6"",
+      ""stage_lineup_acts"": [
+        6,
+        11
+      ]
+    },
+    {
+      ""stage_id"": ""S7"",
+      ""stage_lineup_acts"": [
+        5,
+        6
+      ]
+    },
+    {
+      ""stage_id"": ""S8"",
+      ""stage_lineup_acts"": [
+        4,
+        8
+      ]
+    },
+    {
+      ""stage_id"": ""S9"",
+      ""stage_lineup_acts"": [
+        1,
+        8,
+        9
+      ]
+    },
+    {
+      ""stage_id"": ""S10"",
+      ""stage_lineup_acts"": [
+        1,
+        2,
+        10
+      ]
+    },
+    {
+      ""stage_id"": ""S11"",
+      ""stage_lineup_acts"": [
+        3,
+        5,
+        11
+      ]
+    }
+  ]
+}
+
+Oh, and when you send the actual pick, please stick to this simple JSON layout so it's easy to parse:
+
+{
+  ""solution"": [""act_id"", ...]
+}
+
+Here ""solution"" is just the list of headline acts you'll hire — each entry is an act identifier (a placeholder here is shown as ""act_id""). Think of it like a short form where you drop in the exact act labels that cover every stage. This block is just a sketch of the shape I want, not the real answer itself.
+
+Also, a gentle reminder: use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".""",json,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 11, ""num_sets"": 11, ""density"": 0.3305785123966942, ""sets"": [{""id"": 1, ""elements"": [1, 4, 5, 8, 9, 10]}, {""id"": 2, ""elements"": [1, 4, 8, 10]}, {""id"": 3, ""elements"": [3, 11]}, {""id"": 4, ""elements"": [1, 2, 4, 5, 6, 8]}, {""id"": 5, ""elements"": [1, 3, 4, 5, 6, 7, 11]}, {""id"": 6, ""elements"": [6, 11]}, {""id"": 7, ""elements"": [5, 6]}, {""id"": 8, ""elements"": [4, 8]}, {""id"": 9, ""elements"": [1, 8, 9]}, {""id"": 10, ""elements"": [1, 2, 10]}, {""id"": 11, ""elements"": [3, 5, 11]}], ""graph"": {""num_nodes"": 11, ""edges"": [{""u"": 1, ""v"": 2}, {""u"": 1, ""v"": 4}, {""u"": 1, ""v"": 8}, {""u"": 8, ""v"": 9}, {""u"": 7, ""v"": 6}, {""u"": 2, ""v"": 10}, {""u"": 3, ""v"": 11}, {""u"": 6, ""v"": 5}, {""u"": 11, ""v"": 5}, {""u"": 4, ""v"": 5}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0010.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0010.png""}","[1, 5, 8, 11]",4.0,"{""num_elements"": 11, ""num_sets"": 11, ""sets"": [{""id"": ""S1"", ""elements"": [1, 4, 5, 8, 9, 10]}, {""id"": ""S2"", ""elements"": [1, 4, 8, 10]}, {""id"": ""S3"", ""elements"": [3, 11]}, {""id"": ""S4"", ""elements"": [1, 2, 4, 5, 6, 8]}, {""id"": ""S5"", ""elements"": [1, 3, 4, 5, 6, 7, 11]}, {""id"": ""S6"", ""elements"": [6, 11]}, {""id"": ""S7"", ""elements"": [5, 6]}, {""id"": ""S8"", ""elements"": [4, 8]}, {""id"": ""S9"", ""elements"": [1, 8, 9]}, {""id"": ""S10"", ""elements"": [1, 2, 10]}, {""id"": ""S11"", ""elements"": [3, 5, 11]}]}","[1, 5, 8, 11]"
+HSP_S_012,HSP,S,12,"I’m imagining a photographer getting ready for a busy season, trying to decide which lenses to toss in the bag so every type of shoot on the calendar can be handled. The task is to pick a small pile of lenses so that for every shoot type there’s at least one lens in the bag that works — the better the decision, the fewer lenses packed while still covering every shoot. Measure how good a choice is simply by counting how many lenses are included: lower count is better, but a kit only counts as okay if every shoot has at least one suitable lens and there are no pointless duplicates. Concrete details are shown below.
+
+- **total_distinct_lenses**: 8
+- **total_shoot_types**: 8
+
+| shoot_type_id | compatible_lenses |
+|---|---|
+| S1 | A B E G H |
+| S2 | B F |
+| S3 | C D E F G |
+| S4 | A D E G |
+| S5 | C D E G |
+| S6 | A B C F H |
+| S7 | A D G |
+| S8 | A H |
+
+You can just send back the answer in a tiny JSON snippet like this so it’s easy to read and check.
+
+{
+  ""solution"": [""lens_id"", ...]
+}
+
+Here, ""solution"" is the list of lenses you’d pack — each entry is the identifier for a single lens that covers at least one shoot type. Think of it as the names you’d write on a packing list; the JSON is just a simple sketch of the shape I’m expecting, not the real answer itself.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 8, ""num_sets"": 8, ""density"": 0.46875, ""sets"": [{""id"": 1, ""elements"": [1, 2, 5, 7, 8]}, {""id"": 2, ""elements"": [2, 6]}, {""id"": 3, ""elements"": [3, 4, 5, 6, 7]}, {""id"": 4, ""elements"": [1, 4, 5, 7]}, {""id"": 5, ""elements"": [3, 4, 5, 7]}, {""id"": 6, ""elements"": [1, 2, 3, 6, 8]}, {""id"": 7, ""elements"": [1, 4, 7]}, {""id"": 8, ""elements"": [1, 8]}], ""graph"": {""num_nodes"": 8, ""edges"": [{""u"": 7, ""v"": 3}, {""u"": 6, ""v"": 1}, {""u"": 6, ""v"": 2}, {""u"": 6, ""v"": 8}, {""u"": 3, ""v"": 1}, {""u"": 3, ""v"": 4}, {""u"": 3, ""v"": 5}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0011.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0011.png""}","[1, 6, 7]",3.0,"{""num_elements"": 8, ""num_sets"": 8, ""sets"": [{""id"": ""S1"", ""elements"": [""A"", ""B"", ""E"", ""G"", ""H""]}, {""id"": ""S2"", ""elements"": [""B"", ""F""]}, {""id"": ""S3"", ""elements"": [""C"", ""D"", ""E"", ""F"", ""G""]}, {""id"": ""S4"", ""elements"": [""A"", ""D"", ""E"", ""G""]}, {""id"": ""S5"", ""elements"": [""C"", ""D"", ""E"", ""G""]}, {""id"": ""S6"", ""elements"": [""A"", ""B"", ""C"", ""F"", ""H""]}, {""id"": ""S7"", ""elements"": [""A"", ""D"", ""G""]}, {""id"": ""S8"", ""elements"": [""A"", ""H""]}]}","[""A"", ""F"", ""G""]"
+HSP_S_013,HSP,S,13,"Someone on the casting team wants to build the smallest possible company of performers that still covers every role category the show needs. The decision to make is which performers to sign; better decisions are those that result in fewer people on the roster. The way to check is just to count hires (smaller is better), and every role category must have at least one of those hires — no role gets skipped and each hire is counted only once. The full breakdown of roles and actors is shown below.
+
+- **total_actors**: 8
+- **total_role_categories**: 8
+
+| role_id | actors_for_role |
+|---|---|
+| S1 | 1 2 4 5 6 |
+| S2 | 2 3 4 7 8 |
+| S3 | 3 4 8 |
+| S4 | 1 3 4 5 7 8 |
+| S5 | 1 4 5 |
+| S6 | 1 6 |
+| S7 | 1 4 7 |
+| S8 | 2 3 4 8 |
+
+Oh, and one small thing — when you send back your pick, please follow this simple JSON layout so it's easy to read by the team:
+
+{
+  ""solution"": [""performer_id"", ...]
+}
+
+Think of this as a little form: ""solution"" is the list of the performers you'd sign, and each entry in that array should be one performer identifier (just the IDs, nothing else). This is just the shape I expect — not the actual hires yet, just the expected format.
+
+Please use the exact identifiers from the instance input — don't invent new labels or rename them. Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",markdown_table,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 8, ""num_sets"": 8, ""density"": 0.484375, ""sets"": [{""id"": 1, ""elements"": [1, 2, 4, 5, 6]}, {""id"": 2, ""elements"": [2, 3, 4, 7, 8]}, {""id"": 3, ""elements"": [3, 4, 8]}, {""id"": 4, ""elements"": [1, 3, 4, 5, 7, 8]}, {""id"": 5, ""elements"": [1, 4, 5]}, {""id"": 6, ""elements"": [1, 6]}, {""id"": 7, ""elements"": [1, 4, 7]}, {""id"": 8, ""elements"": [2, 3, 4, 8]}], ""graph"": {""num_nodes"": 8, ""edges"": [{""u"": 7, ""v"": 4}, {""u"": 8, ""v"": 2}, {""u"": 5, ""v"": 1}, {""u"": 1, ""v"": 4}, {""u"": 1, ""v"": 6}, {""u"": 2, ""v"": 3}, {""u"": 2, ""v"": 4}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0012.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0012.png""}","[1, 4]",2.0,"{""num_elements"": 8, ""num_sets"": 8, ""sets"": [{""id"": ""S1"", ""elements"": [1, 2, 4, 5, 6]}, {""id"": ""S2"", ""elements"": [2, 3, 4, 7, 8]}, {""id"": ""S3"", ""elements"": [3, 4, 8]}, {""id"": ""S4"", ""elements"": [1, 3, 4, 5, 7, 8]}, {""id"": ""S5"", ""elements"": [1, 4, 5]}, {""id"": ""S6"", ""elements"": [1, 6]}, {""id"": ""S7"", ""elements"": [1, 4, 7]}, {""id"": ""S8"", ""elements"": [2, 3, 4, 8]}]}","[1, 4]"
+HSP_S_014,HSP,S,14,"We’ve got a pile of master cards and a list of secured areas, and someone has to pick which cards to activate and distribute. The task is to pick a set of cards that between them open every area, and the aim is to use as few unique cards as possible. You measure success simply by counting how many different cards are issued — the lower that count, the better — and every area must be reachable by at least one chosen card, so nothing can be missed and duplicate copies don’t help. The specific assignments are listed below.
+
+# total_master_cards_available=9
+# total_secured_areas=9
+secured_area_id,cards_that_open_area
+S1,0 1 3 6
+S2,0 1
+S3,0 2 3 6
+S4,2 3 5 6 7 8
+S5,5 6 7
+S6,4 5 8
+S7,0 1 3 5 7
+S8,3 6 7 8
+S9,3 7
+
+Just so we're on the same page, when you send the answer back, please use this simple JSON layout so it's easy to check which cards you picked.
+
+{
+  ""solution"": [""card_id"", ...]
+}
+
+This little JSON means: ""solution"" is a list of card IDs — the unique cards you choose to activate and hand out so every area can be opened. Think of each entry in the array as one card label you’re selecting; the JSON is just a sketch of the shape I need, not your final choices.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename them or invent new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 9, ""num_sets"": 9, ""density"": 0.4074074074074074, ""sets"": [{""id"": 1, ""elements"": [1, 2, 4, 7]}, {""id"": 2, ""elements"": [1, 2]}, {""id"": 3, ""elements"": [1, 3, 4, 7]}, {""id"": 4, ""elements"": [3, 4, 6, 7, 8, 9]}, {""id"": 5, ""elements"": [6, 7, 8]}, {""id"": 6, ""elements"": [5, 6, 9]}, {""id"": 7, ""elements"": [1, 2, 4, 6, 8]}, {""id"": 8, ""elements"": [4, 7, 8, 9]}, {""id"": 9, ""elements"": [4, 8]}], ""graph"": {""num_nodes"": 9, ""edges"": [{""u"": 9, ""v"": 6}, {""u"": 9, ""v"": 8}, {""u"": 1, ""v"": 2}, {""u"": 1, ""v"": 7}, {""u"": 6, ""v"": 4}, {""u"": 6, ""v"": 8}, {""u"": 3, ""v"": 7}, {""u"": 7, ""v"": 4}, {""u"": 5, ""v"": 4}, {""u"": 4, ""v"": 8}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0013.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0013.png""}","[1, 6, 8]",3.0,"{""num_elements"": 9, ""num_sets"": 9, ""sets"": [{""id"": ""S1"", ""elements"": [0, 1, 3, 6]}, {""id"": ""S2"", ""elements"": [0, 1]}, {""id"": ""S3"", ""elements"": [0, 2, 3, 6]}, {""id"": ""S4"", ""elements"": [2, 3, 5, 6, 7, 8]}, {""id"": ""S5"", ""elements"": [5, 6, 7]}, {""id"": ""S6"", ""elements"": [4, 5, 8]}, {""id"": ""S7"", ""elements"": [0, 1, 3, 5, 7]}, {""id"": ""S8"", ""elements"": [3, 6, 7, 8]}, {""id"": ""S9"", ""elements"": [3, 7]}]}","[0, 5, 7]"
+HSP_S_015,HSP,S,15,"Someone in a neighborhood shop decides to slim down their parts cabinet to just the essentials. The decision is which part types to keep so that for each common fix there’s at least one part available to do the job. One plan beats another if it uses fewer unique parts yet still lets every listed repair be completed with a stocked item; count the distinct parts to compare plans, and don’t leave any repair without coverage. The specific repair-to-part options follow below.
+
+- **total_part_types**: 9
+- **total_repairs**: 7
+
+| repair_id | compatible_part_ids |
+|---|---|
+| S1 | A B D E G H I |
+| S2 | A B E H |
+| S3 | A D F I |
+| S4 | A B G H |
+| S5 | A C E F G I |
+| S6 | A E F G |
+| S7 | A C |
+
+Oh, and just so we stay consistent, please put your answer in this simple JSON shape when you hand it back — nothing fancy, just a list of the parts you’d keep:
+
+{
+  ""solution"": [""part_id"", ...]
+}
+
+This means ""solution"" is where you list the part types to keep on the shelf — each entry is a placeholder for a single part identifier. It’s just a sketch of the expected shape, not the actual final pick; replace the placeholders with the real identifiers from the instance.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 9, ""num_sets"": 7, ""density"": 0.49206349206349204, ""sets"": [{""id"": 1, ""elements"": [1, 2, 4, 5, 7, 8, 9]}, {""id"": 2, ""elements"": [1, 2, 5, 8]}, {""id"": 3, ""elements"": [1, 4, 6, 9]}, {""id"": 4, ""elements"": [1, 2, 7, 8]}, {""id"": 5, ""elements"": [1, 3, 5, 6, 7, 9]}, {""id"": 6, ""elements"": [1, 5, 6, 7]}, {""id"": 7, ""elements"": [1, 3]}], ""graph"": {""num_nodes"": 9, ""edges"": [{""u"": 2, ""v"": 5}, {""u"": 3, ""v"": 9}, {""u"": 6, ""v"": 1}, {""u"": 6, ""v"": 4}, {""u"": 6, ""v"": 9}, {""u"": 1, ""v"": 5}, {""u"": 1, ""v"": 7}, {""u"": 5, ""v"": 8}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0014.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0014.png""}",[1],1.0,"{""num_elements"": 9, ""num_sets"": 7, ""sets"": [{""id"": ""S1"", ""elements"": [""A"", ""B"", ""D"", ""E"", ""G"", ""H"", ""I""]}, {""id"": ""S2"", ""elements"": [""A"", ""B"", ""E"", ""H""]}, {""id"": ""S3"", ""elements"": [""A"", ""D"", ""F"", ""I""]}, {""id"": ""S4"", ""elements"": [""A"", ""B"", ""G"", ""H""]}, {""id"": ""S5"", ""elements"": [""A"", ""C"", ""E"", ""F"", ""G"", ""I""]}, {""id"": ""S6"", ""elements"": [""A"", ""E"", ""F"", ""G""]}, {""id"": ""S7"", ""elements"": [""A"", ""C""]}]}","[""A""]"
+HSP_S_016,HSP,S,16,"Many parents face the same little puzzle: choose a tiny variety of snacks so that every child can spot something they enjoy. The winning approach is the one with the least number of distinct snack types, which can be checked by counting the unique kinds bought. No child can be left without a liked option, and buying multiple of the same kind doesn’t increase how many kids are satisfied. See the list below for who likes which snacks.
+
+{
+  ""total_snack_types"": 12,
+  ""num_children"": 10,
+  ""sets"": [
+    {
+      ""child_id"": ""S1"",
+      ""liked_snacks"": [
+        0,
+        3,
+        5,
+        8,
+        11
+      ]
+    },
+    {
+      ""child_id"": ""S2"",
+      ""liked_snacks"": [
+        1,
+        4,
+        6,
+        7,
+        9,
+        10
+      ]
+    },
+    {
+      ""child_id"": ""S3"",
+      ""liked_snacks"": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      ""child_id"": ""S4"",
+      ""liked_snacks"": [
+        0,
+        3,
+        5
+      ]
+    },
+    {
+      ""child_id"": ""S5"",
+      ""liked_snacks"": [
+        1,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      ""child_id"": ""S6"",
+      ""liked_snacks"": [
+        1,
+        4,
+        6,
+        7,
+        9
+      ]
+    },
+    {
+      ""child_id"": ""S7"",
+      ""liked_snacks"": [
+        1,
+        4,
+        7,
+        8,
+        11
+      ]
+    },
+    {
+      ""child_id"": ""S8"",
+      ""liked_snacks"": [
+        0,
+        4,
+        7,
+        11
+      ]
+    },
+    {
+      ""child_id"": ""S9"",
+      ""liked_snacks"": [
+        1,
+        6,
+        9,
+        10
+      ]
+    },
+    {
+      ""child_id"": ""S10"",
+      ""liked_snacks"": [
+        3,
+        8,
+        11
+      ]
+    }
+  ]
+}
+
+Also, when you reply with your choice, please use this simple JSON layout so it's easy to read by whatever's checking it:
+
+{
+  ""solution"": [""snack_id"", ...]
+}
+
+Here ""solution"" is the list of snack identifiers you picked — one entry per snack type. ""snack_id"" is just a placeholder name for whatever identifier the instance uses (and the ""..."" means you can list as many ids as needed). This JSON is only a sketch of the shape I expect, not the actual answer.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 12, ""num_sets"": 10, ""density"": 0.375, ""sets"": [{""id"": 1, ""elements"": [1, 4, 6, 9, 12]}, {""id"": 2, ""elements"": [2, 5, 7, 8, 10, 11]}, {""id"": 3, ""elements"": [3, 4, 6]}, {""id"": 4, ""elements"": [1, 4, 6]}, {""id"": 5, ""elements"": [2, 5, 7, 8, 9, 10, 11]}, {""id"": 6, ""elements"": [2, 5, 7, 8, 10]}, {""id"": 7, ""elements"": [2, 5, 8, 9, 12]}, {""id"": 8, ""elements"": [1, 5, 8, 12]}, {""id"": 9, ""elements"": [2, 7, 10, 11]}, {""id"": 10, ""elements"": [4, 9, 12]}], ""graph"": {""num_nodes"": 12, ""edges"": [{""u"": 3, ""v"": 6}, {""u"": 4, ""v"": 1}, {""u"": 4, ""v"": 6}, {""u"": 5, ""v"": 2}, {""u"": 5, ""v"": 7}, {""u"": 5, ""v"": 8}, {""u"": 7, ""v"": 10}, {""u"": 8, ""v"": 9}, {""u"": 10, ""v"": 11}, {""u"": 9, ""v"": 12}, {""u"": 1, ""v"": 12}, {""u"": 2, ""v"": 11}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0015.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0015.png""}","[2, 4, 12]",3.0,"{""num_elements"": 12, ""num_sets"": 10, ""sets"": [{""id"": ""S1"", ""elements"": [0, 3, 5, 8, 11]}, {""id"": ""S2"", ""elements"": [1, 4, 6, 7, 9, 10]}, {""id"": ""S3"", ""elements"": [2, 3, 5]}, {""id"": ""S4"", ""elements"": [0, 3, 5]}, {""id"": ""S5"", ""elements"": [1, 4, 6, 7, 8, 9, 10]}, {""id"": ""S6"", ""elements"": [1, 4, 6, 7, 9]}, {""id"": ""S7"", ""elements"": [1, 4, 7, 8, 11]}, {""id"": ""S8"", ""elements"": [0, 4, 7, 11]}, {""id"": ""S9"", ""elements"": [1, 6, 9, 10]}, {""id"": ""S10"", ""elements"": [3, 8, 11]}]}","[1, 3, 11]"
+HSP_S_017,HSP,S,17,"At the agency, the whiteboard lists dozens of itineraries and dozens of attractions, and the assignment is straightforward: decide which attraction tickets to buy so each itinerary contains at least one that’s covered. The aim is to buy as few distinct tickets as possible — the plan is evaluated by that ticket count — while guaranteeing every itinerary gets at least one covered attraction and avoiding unnecessary duplicate purchases. The concrete details are shown below.
+
+# total_attractions=12
+# total_itineraries=12
+itinerary_id,attractions_in_itinerary
+S1,3 4
+S2,1 2 6 9
+S3,1 2 5 6
+S4,0 3 4 8 11
+S5,0 3 4 8
+S6,1 5 7 9 10
+S7,1 9
+S8,5 6 7 10
+S9,0 3 8
+S10,1 2 5 6 9
+S11,3 5 7
+S12,7 8 10 11
+
+I'll keep the answer shape simple so it's easy to fill in: the reply should be a tiny JSON object listing which tickets (attractions) to buy. Here's the format I expect you to return:
+
+{
+  ""solution"": [""attraction_id"", ...]
+}
+
+This means ""solution"" is a list of attraction identifiers — one entry per distinct ticket you plan to buy. Think of each placeholder like a blank on a form where you drop in the actual attraction ID from the instance. The JSON above is just a sketch of the shape I want, not the real answer.
+
+Please make sure you use the exact identifiers from the instance input — do not rename them or invent new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”"".",csv,zero_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 12, ""num_sets"": 12, ""density"": 0.3125, ""sets"": [{""id"": 1, ""elements"": [4, 5]}, {""id"": 2, ""elements"": [2, 3, 7, 10]}, {""id"": 3, ""elements"": [2, 3, 6, 7]}, {""id"": 4, ""elements"": [1, 4, 5, 9, 12]}, {""id"": 5, ""elements"": [1, 4, 5, 9]}, {""id"": 6, ""elements"": [2, 6, 8, 10, 11]}, {""id"": 7, ""elements"": [2, 10]}, {""id"": 8, ""elements"": [6, 7, 8, 11]}, {""id"": 9, ""elements"": [1, 4, 9]}, {""id"": 10, ""elements"": [2, 3, 6, 7, 10]}, {""id"": 11, ""elements"": [4, 6, 8]}, {""id"": 12, ""elements"": [8, 9, 11, 12]}], ""graph"": {""num_nodes"": 12, ""edges"": [{""u"": 4, ""v"": 9}, {""u"": 4, ""v"": 12}, {""u"": 8, ""v"": 6}, {""u"": 8, ""v"": 11}, {""u"": 12, ""v"": 11}, {""u"": 6, ""v"": 7}, {""u"": 7, ""v"": 2}, {""u"": 7, ""v"": 3}, {""u"": 7, ""v"": 10}, {""u"": 1, ""v"": 9}, {""u"": 9, ""v"": 5}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0016.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0016.png""}","[2, 4, 8]",3.0,"{""num_elements"": 12, ""num_sets"": 12, ""sets"": [{""id"": ""S1"", ""elements"": [3, 4]}, {""id"": ""S2"", ""elements"": [1, 2, 6, 9]}, {""id"": ""S3"", ""elements"": [1, 2, 5, 6]}, {""id"": ""S4"", ""elements"": [0, 3, 4, 8, 11]}, {""id"": ""S5"", ""elements"": [0, 3, 4, 8]}, {""id"": ""S6"", ""elements"": [1, 5, 7, 9, 10]}, {""id"": ""S7"", ""elements"": [1, 9]}, {""id"": ""S8"", ""elements"": [5, 6, 7, 10]}, {""id"": ""S9"", ""elements"": [0, 3, 8]}, {""id"": ""S10"", ""elements"": [1, 2, 5, 6, 9]}, {""id"": ""S11"", ""elements"": [3, 5, 7]}, {""id"": ""S12"", ""elements"": [7, 8, 10, 11]}]}","[1, 3, 7]"
+HSP_S_018,HSP,S,18,"At a small museum meeting, the brief was clear: put together the smallest possible collection of pieces so that every themed gallery has at least one item from that collection. The job is to choose which artworks make the cut; success is read off the checklist — the fewer pieces on it, the better. Each themed gallery must be represented by at least one chosen artwork, and duplicate entries of the same work don’t help. The detailed gallery-by-artwork information follows below.
+
+# total_artworks=8
+# total_galleries=8
+gallery_id,gallery_artworks
+S1,5 6
+S2,2 3 5 6 8
+S3,2 3 4
+S4,3 4 6
+S5,1 2
+S6,2 3 4 5 6 8
+S7,3 4 6 7
+S8,2 6 8
+
+Just a quick note — when you send your final pick, please use this simple JSON layout so it's clear which artworks made the cut.
+
+{
+  ""solution"": [""artwork_id"", ...]
+}
+
+""solution"" should be a list of the chosen artwork identifiers (one entry per selected piece). Think of it like a short checklist: each string is the ID of an artwork you picked to represent one or more galleries. This JSON is just a sketch of the expected shape, not the actual answer — replace the placeholder entries with the real IDs from the instance.
+
+Please use the exact identifiers from the instance input — no renaming and no new labels. 
+for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 8, ""num_sets"": 8, ""density"": 0.4375, ""sets"": [{""id"": 1, ""elements"": [5, 6]}, {""id"": 2, ""elements"": [2, 3, 5, 6, 8]}, {""id"": 3, ""elements"": [2, 3, 4]}, {""id"": 4, ""elements"": [3, 4, 6]}, {""id"": 5, ""elements"": [1, 2]}, {""id"": 6, ""elements"": [2, 3, 4, 5, 6, 8]}, {""id"": 7, ""elements"": [3, 4, 6, 7]}, {""id"": 8, ""elements"": [2, 6, 8]}], ""graph"": {""num_nodes"": 8, ""edges"": [{""u"": 1, ""v"": 2}, {""u"": 4, ""v"": 3}, {""u"": 5, ""v"": 2}, {""u"": 7, ""v"": 3}, {""u"": 2, ""v"": 6}, {""u"": 8, ""v"": 6}, {""u"": 3, ""v"": 6}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0017.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0017.png""}","[2, 6]",2.0,"{""num_elements"": 8, ""num_sets"": 8, ""sets"": [{""id"": ""S1"", ""elements"": [5, 6]}, {""id"": ""S2"", ""elements"": [2, 3, 5, 6, 8]}, {""id"": ""S3"", ""elements"": [2, 3, 4]}, {""id"": ""S4"", ""elements"": [3, 4, 6]}, {""id"": ""S5"", ""elements"": [1, 2]}, {""id"": ""S6"", ""elements"": [2, 3, 4, 5, 6, 8]}, {""id"": ""S7"", ""elements"": [3, 4, 6, 7]}, {""id"": ""S8"", ""elements"": [2, 6, 8]}]}","[2, 6]"
+HSP_S_019,HSP,S,19,"There’s a small charity drive where the aim is to assemble a tiny but capable team so that every task has at least one person who can take it on. The choice comes down to which candidates to bring in; the preferable choice is the one that gets every task covered using the fewest recruits. Success is checked by counting how many people end up on the team — the smaller that number, the better — and it’s essential that no task is left without someone and nobody is duplicated on the roster. The full list of tasks and volunteers appears below.
+
+# total_volunteers=12
+# total_tasks=12
+task_id,eligible_volunteers
+S1,1 5 7 8 11
+S2,2 6 7 8 11 12
+S3,2 3 8 9 11 12
+S4,1 10
+S5,1 4 5 7 9 10
+S6,3 7 12
+S7,1 2 4 5 6 7 9 10 12
+S8,1 2 3 7 8 11
+S9,3 5 7 9 10 12
+S10,1 3 4 9 10 11
+S11,1 2 3 8 9 11
+S12,3 5 6 7 12
+
+Oh, and when you send your pick, please use this little JSON layout so it's easy to read by both people and machines:
+
+{
+  ""solution"": [""volunteer_id"", ...]
+}
+
+Think of ""solution"" as the roster — the array should contain the identifiers of the people you’re bringing in. The placeholder ""volunteer_id"" stands in for whatever ID each candidate has in the instance. This block is just a sketch of the shape I expect, not the final answer itself.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 12, ""num_sets"": 12, ""density"": 0.4583333333333333, ""sets"": [{""id"": 1, ""elements"": [1, 5, 7, 8, 11]}, {""id"": 2, ""elements"": [2, 6, 7, 8, 11, 12]}, {""id"": 3, ""elements"": [2, 3, 8, 9, 11, 12]}, {""id"": 4, ""elements"": [1, 10]}, {""id"": 5, ""elements"": [1, 4, 5, 7, 9, 10]}, {""id"": 6, ""elements"": [3, 7, 12]}, {""id"": 7, ""elements"": [1, 2, 4, 5, 6, 7, 9, 10, 12]}, {""id"": 8, ""elements"": [1, 2, 3, 7, 8, 11]}, {""id"": 9, ""elements"": [3, 5, 7, 9, 10, 12]}, {""id"": 10, ""elements"": [1, 3, 4, 9, 10, 11]}, {""id"": 11, ""elements"": [1, 2, 3, 8, 9, 11]}, {""id"": 12, ""elements"": [3, 5, 6, 7, 12]}], ""graph"": {""num_nodes"": 12, ""edges"": [{""u"": 11, ""v"": 1}, {""u"": 11, ""v"": 7}, {""u"": 11, ""v"": 8}, {""u"": 3, ""v"": 2}, {""u"": 3, ""v"": 6}, {""u"": 3, ""v"": 7}, {""u"": 3, ""v"": 12}, {""u"": 2, ""v"": 8}, {""u"": 1, ""v"": 10}, {""u"": 5, ""v"": 9}, {""u"": 5, ""v"": 10}, {""u"": 10, ""v"": 4}, {""u"": 10, ""v"": 7}, {""u"": 7, ""v"": 9}, {""u"": 12, ""v"": 9}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0018.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0018.png""}","[1, 12]",2.0,"{""num_elements"": 12, ""num_sets"": 12, ""sets"": [{""id"": ""S1"", ""elements"": [1, 5, 7, 8, 11]}, {""id"": ""S2"", ""elements"": [2, 6, 7, 8, 11, 12]}, {""id"": ""S3"", ""elements"": [2, 3, 8, 9, 11, 12]}, {""id"": ""S4"", ""elements"": [1, 10]}, {""id"": ""S5"", ""elements"": [1, 4, 5, 7, 9, 10]}, {""id"": ""S6"", ""elements"": [3, 7, 12]}, {""id"": ""S7"", ""elements"": [1, 2, 4, 5, 6, 7, 9, 10, 12]}, {""id"": ""S8"", ""elements"": [1, 2, 3, 7, 8, 11]}, {""id"": ""S9"", ""elements"": [3, 5, 7, 9, 10, 12]}, {""id"": ""S10"", ""elements"": [1, 3, 4, 9, 10, 11]}, {""id"": ""S11"", ""elements"": [1, 2, 3, 8, 9, 11]}, {""id"": ""S12"", ""elements"": [3, 5, 6, 7, 12]}]}","[1, 12]"
+HSP_S_020,HSP,S,20,"A small-town wedding planner is trying to simplify purchases: choose a tiny roster of flower types so that each bouquet design includes at least one type from that roster. The best roster is the one with the fewest different kinds of flowers — simply count the distinct varieties chosen. It’s required that every bouquet design be covered (none can be left without a match), and ordering duplicates of a particular flower doesn’t reduce how many different types are used. The detailed bouquet breakdown is shown below.
+
+There are 9 distinct flower varieties available and 7 bouquet designs that must each be covered.
+Bouquet S1: 1 3 — ordering any one of these flower types will cover this design.
+Bouquet S2: 2 7 8 — ordering any one of these flower types will cover this design.
+Bouquet S3: 1 3 5 6 7 — ordering any one of these flower types will cover this design.
+Bouquet S4: 1 3 4 7 — ordering any one of these flower types will cover this design.
+Bouquet S5: 0 5 7 — ordering any one of these flower types will cover this design.
+Bouquet S6: 2 3 5 6 8 — ordering any one of these flower types will cover this design.
+Bouquet S7: 2 3 4 5 7 8 — ordering any one of these flower types will cover this design.
+The planner will choose the smallest possible roster that covers all 7 designs.
+
+Oh, and just to keep things tidy, please return your chosen roster in a tiny JSON snippet like this:
+
+{
+  ""solution"": [""flower_type_id"", ...]
+}
+
+Think of it like a simple form: ""solution"" is the short list of flower types you're picking for the supplier order, and each item in the array is a placeholder for a flower type identifier from the instance (the ""flower_type_id"" spots). The ""..."" just means you can list as many as needed. This is only the expected shape of the reply — it's a sketch, not the actual answer filled in.
+
+Please use the exact identifiers given in the instance input when you fill that array — don't rename them or invent new labels.  
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 9, ""num_sets"": 7, ""density"": 0.4444444444444444, ""sets"": [{""id"": 1, ""elements"": [2, 4]}, {""id"": 2, ""elements"": [3, 8, 9]}, {""id"": 3, ""elements"": [2, 4, 6, 7, 8]}, {""id"": 4, ""elements"": [2, 4, 5, 8]}, {""id"": 5, ""elements"": [1, 6, 8]}, {""id"": 6, ""elements"": [3, 4, 6, 7, 9]}, {""id"": 7, ""elements"": [3, 4, 5, 6, 8, 9]}], ""graph"": {""num_nodes"": 9, ""edges"": [{""u"": 6, ""v"": 1}, {""u"": 6, ""v"": 8}, {""u"": 7, ""v"": 3}, {""u"": 7, ""v"": 8}, {""u"": 7, ""v"": 9}, {""u"": 4, ""v"": 2}, {""u"": 4, ""v"": 5}, {""u"": 4, ""v"": 8}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0019.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0019.png""}","[4, 8]",2.0,"{""num_elements"": 9, ""num_sets"": 7, ""sets"": [{""id"": ""S1"", ""elements"": [1, 3]}, {""id"": ""S2"", ""elements"": [2, 7, 8]}, {""id"": ""S3"", ""elements"": [1, 3, 5, 6, 7]}, {""id"": ""S4"", ""elements"": [1, 3, 4, 7]}, {""id"": ""S5"", ""elements"": [0, 5, 7]}, {""id"": ""S6"", ""elements"": [2, 3, 5, 6, 8]}, {""id"": ""S7"", ""elements"": [2, 3, 4, 5, 7, 8]}]}","[3, 7]"
+HSP_S_021,HSP,S,21,"There's a shelf full of different titles and the task is to pick a handful of descriptive keywords so that each title matches at least one of them. The goal is to make that handful as short as possible — measure success by counting the keywords you actually pick. Nothing on the shelf can be left without a matching keyword, and repeats don’t add value. The specific books and keyword options are listed below.
+
+# total_keywords_available=12
+# num_books_on_shelf=12
+book_id,book_keywords
+S1,A B H
+S2,A I K L
+S3,D E I
+S4,C I J K
+S5,C E I L
+S6,F G K
+S7,G I
+S8,A B H I
+S9,A C E G H I K L
+S10,D J L
+S11,B F G I J K L
+S12,C E I J
+
+Also, when you reply, just use this little JSON layout so it's easy to check:
+
+{
+  ""solution"": [""keyword_id"", ...]
+}
+
+""solution"" is the list of the keyword IDs you pick from the shelf — one entry for each chosen keyword. Think of it as a simple form: put the exact IDs you select inside that array. This is only a sketch of the shape I expect, not the actual answer itself.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them and do not invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 12, ""num_sets"": 12, ""density"": 0.3402777777777778, ""sets"": [{""id"": 1, ""elements"": [1, 2, 8]}, {""id"": 2, ""elements"": [1, 9, 11, 12]}, {""id"": 3, ""elements"": [4, 5, 9]}, {""id"": 4, ""elements"": [3, 9, 10, 11]}, {""id"": 5, ""elements"": [3, 5, 9, 12]}, {""id"": 6, ""elements"": [6, 7, 11]}, {""id"": 7, ""elements"": [7, 9]}, {""id"": 8, ""elements"": [1, 2, 8, 9]}, {""id"": 9, ""elements"": [1, 3, 5, 7, 8, 9, 11, 12]}, {""id"": 10, ""elements"": [4, 10, 12]}, {""id"": 11, ""elements"": [2, 6, 7, 9, 10, 11, 12]}, {""id"": 12, ""elements"": [3, 5, 9, 10]}], ""graph"": {""num_nodes"": 12, ""edges"": [{""u"": 3, ""v"": 10}, {""u"": 3, ""v"": 12}, {""u"": 10, ""v"": 4}, {""u"": 5, ""v"": 12}, {""u"": 6, ""v"": 7}, {""u"": 7, ""v"": 11}, {""u"": 11, ""v"": 4}, {""u"": 11, ""v"": 9}, {""u"": 8, ""v"": 2}, {""u"": 2, ""v"": 1}, {""u"": 2, ""v"": 9}, {""u"": 9, ""v"": 12}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0020.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0020.png""}","[2, 7, 9, 12]",4.0,"{""num_elements"": 12, ""num_sets"": 12, ""sets"": [{""id"": ""S1"", ""elements"": [""A"", ""B"", ""H""]}, {""id"": ""S2"", ""elements"": [""A"", ""I"", ""K"", ""L""]}, {""id"": ""S3"", ""elements"": [""D"", ""E"", ""I""]}, {""id"": ""S4"", ""elements"": [""C"", ""I"", ""J"", ""K""]}, {""id"": ""S5"", ""elements"": [""C"", ""E"", ""I"", ""L""]}, {""id"": ""S6"", ""elements"": [""F"", ""G"", ""K""]}, {""id"": ""S7"", ""elements"": [""G"", ""I""]}, {""id"": ""S8"", ""elements"": [""A"", ""B"", ""H"", ""I""]}, {""id"": ""S9"", ""elements"": [""A"", ""C"", ""E"", ""G"", ""H"", ""I"", ""K"", ""L""]}, {""id"": ""S10"", ""elements"": [""D"", ""J"", ""L""]}, {""id"": ""S11"", ""elements"": [""B"", ""F"", ""G"", ""I"", ""J"", ""K"", ""L""]}, {""id"": ""S12"", ""elements"": [""C"", ""E"", ""I"", ""J""]}]}","[""B"", ""G"", ""I"", ""L""]"
+HSP_S_022,HSP,S,22,"On a typical day the operations crew has to choose which monitoring agents to install so every service has some watchful eye. The goal is to use as few different agents as possible — success is measured by the total count of agents deployed — while making sure every application ends up monitored at least once, and avoiding unnecessary duplicates that don’t expand coverage. The concrete instance details appear below.
+
+- **total_agents**: 11
+- **num_applications**: 9
+
+| application_id | candidate_agent_ids |
+|---|---|
+| S1 | A E G |
+| S2 | B G J K |
+| S3 | C H I |
+| S4 | C K |
+| S5 | A F G |
+| S6 | A B G K |
+| S7 | C D I K |
+| S8 | B K |
+| S9 | D G H I K |
+
+Just hand the chosen agents back to me using this little JSON shape so I can read it programmatically:
+
+{
+  ""solution"": [""agent_id"", ...]
+}
+
+Think of ""solution"" as the form field that holds the list of agents you'll install. The ""agent_id"" entry is just a placeholder for whatever actual identifiers the instance uses — swap it for the real IDs when you answer. This is only a sketch of the expected shape, not the actual selection.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — don't rename them or invent new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 11, ""num_sets"": 9, ""density"": 0.30303030303030304, ""sets"": [{""id"": 1, ""elements"": [1, 5, 7]}, {""id"": 2, ""elements"": [2, 7, 10, 11]}, {""id"": 3, ""elements"": [3, 8, 9]}, {""id"": 4, ""elements"": [3, 11]}, {""id"": 5, ""elements"": [1, 6, 7]}, {""id"": 6, ""elements"": [1, 2, 7, 11]}, {""id"": 7, ""elements"": [3, 4, 9, 11]}, {""id"": 8, ""elements"": [2, 11]}, {""id"": 9, ""elements"": [4, 7, 8, 9, 11]}], ""graph"": {""num_nodes"": 11, ""edges"": [{""u"": 10, ""v"": 2}, {""u"": 10, ""v"": 7}, {""u"": 10, ""v"": 11}, {""u"": 6, ""v"": 1}, {""u"": 11, ""v"": 3}, {""u"": 11, ""v"": 8}, {""u"": 7, ""v"": 1}, {""u"": 7, ""v"": 5}, {""u"": 9, ""v"": 3}, {""u"": 3, ""v"": 4}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0021.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0021.png""}","[7, 9, 11]",3.0,"{""num_elements"": 11, ""num_sets"": 9, ""sets"": [{""id"": ""S1"", ""elements"": [""A"", ""E"", ""G""]}, {""id"": ""S2"", ""elements"": [""B"", ""G"", ""J"", ""K""]}, {""id"": ""S3"", ""elements"": [""C"", ""H"", ""I""]}, {""id"": ""S4"", ""elements"": [""C"", ""K""]}, {""id"": ""S5"", ""elements"": [""A"", ""F"", ""G""]}, {""id"": ""S6"", ""elements"": [""A"", ""B"", ""G"", ""K""]}, {""id"": ""S7"", ""elements"": [""C"", ""D"", ""I"", ""K""]}, {""id"": ""S8"", ""elements"": [""B"", ""K""]}, {""id"": ""S9"", ""elements"": [""D"", ""G"", ""H"", ""I"", ""K""]}]}","[""G"", ""I"", ""K""]"
+HSP_S_023,HSP,S,23,"As part of trimming the supervision list, the office must pick teachers to cover all student clubs, making sure each club has at least one supervisor assigned. The goal is to keep the roster short: the better assignment is the one with the smallest number of different teachers, and that is determined by counting how many unique teachers are used. No club can be left out, teachers can supervise multiple clubs, and each teacher is only counted once even if they’re listed for several groups. The particular details are provided below.
+
+- **total_teachers**: 11
+- **total_clubs**: 9
+
+| club_id | eligible_teachers |
+|---|---|
+| S1 | 4 7 |
+| S2 | 4 7 8 9 |
+| S3 | 3 5 |
+| S4 | 1 3 4 7 8 9 10 |
+| S5 | 2 3 4 9 |
+| S6 | 9 10 11 |
+| S7 | 2 4 |
+| S8 | 2 4 5 6 7 9 10 |
+| S9 | 4 6 9 10 11 |
+
+Oh, and when you reply with the chosen supervisors, please stick to this simple JSON shape so I can read it easily:
+
+{
+  ""solution"": [""teacher_id"", ...]
+}
+
+This just means ""solution"" should be an array listing the teacher identifiers you picked. Each entry is the exact teacher id from the instance (replace the placeholder teacher_id with the real id). Think of it like a tiny form: the solution array is the roster of teachers who will supervise the clubs. This is only a sketch of the expected shape, not the actual answer.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 11, ""num_sets"": 9, ""density"": 0.36363636363636365, ""sets"": [{""id"": 1, ""elements"": [4, 7]}, {""id"": 2, ""elements"": [4, 7, 8, 9]}, {""id"": 3, ""elements"": [3, 5]}, {""id"": 4, ""elements"": [1, 3, 4, 7, 8, 9, 10]}, {""id"": 5, ""elements"": [2, 3, 4, 9]}, {""id"": 6, ""elements"": [9, 10, 11]}, {""id"": 7, ""elements"": [2, 4]}, {""id"": 8, ""elements"": [2, 4, 5, 6, 7, 9, 10]}, {""id"": 9, ""elements"": [4, 6, 9, 10, 11]}], ""graph"": {""num_nodes"": 11, ""edges"": [{""u"": 10, ""v"": 6}, {""u"": 10, ""v"": 9}, {""u"": 10, ""v"": 11}, {""u"": 2, ""v"": 4}, {""u"": 2, ""v"": 8}, {""u"": 3, ""v"": 5}, {""u"": 9, ""v"": 4}, {""u"": 7, ""v"": 1}, {""u"": 7, ""v"": 4}, {""u"": 4, ""v"": 5}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0022.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0022.png""}","[4, 5, 9]",3.0,"{""num_elements"": 11, ""num_sets"": 9, ""sets"": [{""id"": ""S1"", ""elements"": [4, 7]}, {""id"": ""S2"", ""elements"": [4, 7, 8, 9]}, {""id"": ""S3"", ""elements"": [3, 5]}, {""id"": ""S4"", ""elements"": [1, 3, 4, 7, 8, 9, 10]}, {""id"": ""S5"", ""elements"": [2, 3, 4, 9]}, {""id"": ""S6"", ""elements"": [9, 10, 11]}, {""id"": ""S7"", ""elements"": [2, 4]}, {""id"": ""S8"", ""elements"": [2, 4, 5, 6, 7, 9, 10]}, {""id"": ""S9"", ""elements"": [4, 6, 9, 10, 11]}]}","[4, 5, 9]"
+HSP_S_024,HSP,S,24,"On the farm today, the decision is which fertilizer types to stock so that every field receives at least one type from the chosen set, but with as few different types on the shopping list as possible. Performance is simple to check: count how many distinct fertilizer types were chosen — lower is better. In practice that means every field must be covered by at least one of the selected types and there’s no benefit to buying duplicate or extra varieties. The specific instance information is provided below.
+
+- **total_fertilizer_types**: 12
+- **total_fields**: 11
+
+| field_id | applicable_fertilizer_types |
+|---|---|
+| S1 | C D E H K |
+| S2 | H K |
+| S3 | A C E F K |
+| S4 | A E F H |
+| S5 | A C E |
+| S6 | B D F H L |
+| S7 | G I J |
+| S8 | A B D F H K |
+| S9 | I J |
+| S10 | A B C F H I K |
+| S11 | F G I J K L |
+
+Also, when you report which fertilizer types you're choosing, please use this simple JSON layout so it's easy to read and parse:
+
+{
+  ""solution"": [""fertilizer_id"", ...]
+}
+
+This shows that ""solution"" is a list of the fertilizer type identifiers you’re picking for the shopping list. The placeholder ""fertilizer_id"" is just an example of the sort of entry each item in the list should be — one identifier per chosen fertilizer type. Think of it like filling out a short form: one field called solution, and inside it a list of the selected fertilizer IDs.
+
+This JSON is only a sketch of the expected shape, not the actual answer.
+
+Please remember to use the exact identifiers from the instance input — do not rename them and do not invent new labels.
+
+For example: Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",markdown_table,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 12, ""num_sets"": 11, ""density"": 0.36363636363636365, ""sets"": [{""id"": 1, ""elements"": [3, 4, 5, 8, 11]}, {""id"": 2, ""elements"": [8, 11]}, {""id"": 3, ""elements"": [1, 3, 5, 6, 11]}, {""id"": 4, ""elements"": [1, 5, 6, 8]}, {""id"": 5, ""elements"": [1, 3, 5]}, {""id"": 6, ""elements"": [2, 4, 6, 8, 12]}, {""id"": 7, ""elements"": [7, 9, 10]}, {""id"": 8, ""elements"": [1, 2, 4, 6, 8, 11]}, {""id"": 9, ""elements"": [9, 10]}, {""id"": 10, ""elements"": [1, 2, 3, 6, 8, 9, 11]}, {""id"": 11, ""elements"": [6, 7, 9, 10, 11, 12]}], ""graph"": {""num_nodes"": 12, ""edges"": [{""u"": 11, ""v"": 3}, {""u"": 11, ""v"": 6}, {""u"": 11, ""v"": 12}, {""u"": 12, ""v"": 9}, {""u"": 2, ""v"": 6}, {""u"": 8, ""v"": 4}, {""u"": 8, ""v"": 6}, {""u"": 3, ""v"": 1}, {""u"": 1, ""v"": 4}, {""u"": 1, ""v"": 5}, {""u"": 9, ""v"": 7}, {""u"": 9, ""v"": 10}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0023.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0023.png""}","[1, 8, 9]",3.0,"{""num_elements"": 12, ""num_sets"": 11, ""sets"": [{""id"": ""S1"", ""elements"": [""C"", ""D"", ""E"", ""H"", ""K""]}, {""id"": ""S2"", ""elements"": [""H"", ""K""]}, {""id"": ""S3"", ""elements"": [""A"", ""C"", ""E"", ""F"", ""K""]}, {""id"": ""S4"", ""elements"": [""A"", ""E"", ""F"", ""H""]}, {""id"": ""S5"", ""elements"": [""A"", ""C"", ""E""]}, {""id"": ""S6"", ""elements"": [""B"", ""D"", ""F"", ""H"", ""L""]}, {""id"": ""S7"", ""elements"": [""G"", ""I"", ""J""]}, {""id"": ""S8"", ""elements"": [""A"", ""B"", ""D"", ""F"", ""H"", ""K""]}, {""id"": ""S9"", ""elements"": [""I"", ""J""]}, {""id"": ""S10"", ""elements"": [""A"", ""B"", ""C"", ""F"", ""H"", ""I"", ""K""]}, {""id"": ""S11"", ""elements"": [""F"", ""G"", ""I"", ""J"", ""K"", ""L""]}]}","[""A"", ""H"", ""I""]"
+HSP_S_025,HSP,S,25,"There’s this classic party puzzle: assemble the tiniest menu that still gives every guest at least one dish they can eat — no guest left without an option. The trick is to select the minimum number of different dishes that together cover every dietary preference; evaluate any menu by counting how many distinct items it contains, and smaller counts are better. Make sure every preference shows up in at least one chosen dish, and don’t count the same dish multiple times. The concrete list of guests’ preferences and dish choices appears below.
+
+- **total_menu_items**: 10
+- **num_guest_preferences**: 9
+
+| preference_id | acceptable_dishes |
+|---|---|
+| S1 | A F I |
+| S2 | G H |
+| S3 | C G J |
+| S4 | D H |
+| S5 | C E G |
+| S6 | A F J |
+| S7 | B C E |
+| S8 | A D F G I J |
+| S9 | A B C F G H |
+
+Oh, and when you send your answer, just stick to this little JSON layout so it's easy to read programmatically:
+
+{
+  ""solution"": [""dish_id"", ...]
+}
+
+Think of ""solution"" as the tiny menu: it's the list of dish IDs you picked so every guest has at least one thing they can eat. Each ""dish_id"" is a placeholder showing where an actual dish identifier would go — it's just the shape of the reply, not the real menu.
+
+This JSON is only a sketch of the expected shape, not the actual answer. Please use the exact identifiers from the instance input — do not rename them or invent new labels. 
+
+for example: ""Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".""",markdown_table,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 10, ""num_sets"": 9, ""density"": 0.34444444444444444, ""sets"": [{""id"": 1, ""elements"": [1, 6, 9]}, {""id"": 2, ""elements"": [7, 8]}, {""id"": 3, ""elements"": [3, 7, 10]}, {""id"": 4, ""elements"": [4, 8]}, {""id"": 5, ""elements"": [3, 5, 7]}, {""id"": 6, ""elements"": [1, 6, 10]}, {""id"": 7, ""elements"": [2, 3, 5]}, {""id"": 8, ""elements"": [1, 4, 6, 7, 9, 10]}, {""id"": 9, ""elements"": [1, 2, 3, 6, 7, 8]}], ""graph"": {""num_nodes"": 10, ""edges"": [{""u"": 5, ""v"": 7}, {""u"": 4, ""v"": 6}, {""u"": 1, ""v"": 8}, {""u"": 1, ""v"": 9}, {""u"": 2, ""v"": 10}, {""u"": 8, ""v"": 6}, {""u"": 8, ""v"": 10}, {""u"": 10, ""v"": 7}, {""u"": 7, ""v"": 3}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0024.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0024.png""}","[1, 3, 8]",3.0,"{""num_elements"": 10, ""num_sets"": 9, ""sets"": [{""id"": ""S1"", ""elements"": [""A"", ""F"", ""I""]}, {""id"": ""S2"", ""elements"": [""G"", ""H""]}, {""id"": ""S3"", ""elements"": [""C"", ""G"", ""J""]}, {""id"": ""S4"", ""elements"": [""D"", ""H""]}, {""id"": ""S5"", ""elements"": [""C"", ""E"", ""G""]}, {""id"": ""S6"", ""elements"": [""A"", ""F"", ""J""]}, {""id"": ""S7"", ""elements"": [""B"", ""C"", ""E""]}, {""id"": ""S8"", ""elements"": [""A"", ""D"", ""F"", ""G"", ""I"", ""J""]}, {""id"": ""S9"", ""elements"": [""A"", ""B"", ""C"", ""F"", ""G"", ""H""]}]}","[""A"", ""C"", ""H""]"
+HSP_S_026,HSP,S,26,"Picture this: a handful of pallet types on the floor, enough so that every truck load can use at least one of them. The trick is to make that handful as small as possible — quality here is defined by using the fewest distinct pallet types, which is simply counted — and still make sure no outgoing shipment is left without a usable pallet; repeating the same pallet type is redundant. The specific shipments and pallet choices will be listed below.
+
+# total_pallet_types_available=8
+# total_outbound_shipments=6
+shipment_id,acceptable_pallet_types
+S1,A B D F
+S2,A B F
+S3,A C D E H
+S4,A D F G
+S5,A B D F G
+S6,E F G
+
+And hey, when you send back the chosen pallet types, just stick to this little JSON shape so it's easy to read:
+
+{
+  ""solution"": [""pallet_type_id"", ...]
+}
+
+Just so it's clear in plain terms: ""solution"" is the list of pallet types you're keeping on the floor so every shipment has at least one usable pallet. Each entry in that array is a placeholder for one pallet type identifier (so replace those placeholders with the actual IDs from the instance). This is just a sketch of the shape I expect, not your final answer.
+
+Please make sure to use the exact identifiers given in the problem input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 8, ""num_sets"": 6, ""density"": 0.5, ""sets"": [{""id"": 1, ""elements"": [1, 2, 4, 6]}, {""id"": 2, ""elements"": [1, 2, 6]}, {""id"": 3, ""elements"": [1, 3, 4, 5, 8]}, {""id"": 4, ""elements"": [1, 4, 6, 7]}, {""id"": 5, ""elements"": [1, 2, 4, 6, 7]}, {""id"": 6, ""elements"": [5, 6, 7]}], ""graph"": {""num_nodes"": 8, ""edges"": [{""u"": 3, ""v"": 4}, {""u"": 3, ""v"": 8}, {""u"": 7, ""v"": 5}, {""u"": 2, ""v"": 1}, {""u"": 5, ""v"": 6}, {""u"": 6, ""v"": 1}, {""u"": 6, ""v"": 4}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0025.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0025.png""}","[5, 6]",2.0,"{""num_elements"": 8, ""num_sets"": 6, ""sets"": [{""id"": ""S1"", ""elements"": [""A"", ""B"", ""D"", ""F""]}, {""id"": ""S2"", ""elements"": [""A"", ""B"", ""F""]}, {""id"": ""S3"", ""elements"": [""A"", ""C"", ""D"", ""E"", ""H""]}, {""id"": ""S4"", ""elements"": [""A"", ""D"", ""F"", ""G""]}, {""id"": ""S5"", ""elements"": [""A"", ""B"", ""D"", ""F"", ""G""]}, {""id"": ""S6"", ""elements"": [""E"", ""F"", ""G""]}]}","[""E"", ""F""]"
+HSP_S_027,HSP,S,27,"We had a group of kids with very specific tastes, and the challenge was to bring the smallest number of different toys that still gives each child at least one option they’d be happy with. The “score” is simply the number of distinct toys chosen, so smaller is better; a single toy can satisfy several kids, but the same toy isn’t counted multiple times. Every child must be covered — none can be left out — and the details of who likes what are shown below.
+
+{
+  ""num_toys"": 9,
+  ""num_children"": 8,
+  ""sets"": [
+    {
+      ""child_id"": ""S1"",
+      ""liked_toys"": [
+        1,
+        2,
+        7
+      ]
+    },
+    {
+      ""child_id"": ""S2"",
+      ""liked_toys"": [
+        1,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      ""child_id"": ""S3"",
+      ""liked_toys"": [
+        5,
+        8,
+        9
+      ]
+    },
+    {
+      ""child_id"": ""S4"",
+      ""liked_toys"": [
+        4,
+        5,
+        9
+      ]
+    },
+    {
+      ""child_id"": ""S5"",
+      ""liked_toys"": [
+        3,
+        4,
+        5,
+        8,
+        9
+      ]
+    },
+    {
+      ""child_id"": ""S6"",
+      ""liked_toys"": [
+        1,
+        2,
+        6,
+        8
+      ]
+    },
+    {
+      ""child_id"": ""S7"",
+      ""liked_toys"": [
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      ""child_id"": ""S8"",
+      ""liked_toys"": [
+        2,
+        3,
+        5,
+        6,
+        8
+      ]
+    }
+  ]
+}
+
+I'll sketch the shape of the reply in a little JSON — nothing fancy, just the layout I'll follow:
+
+{
+  ""solution"": [""toy_id"", ...]
+}
+
+Here ""solution"" will hold an array of the toys we plan to bring (one string per toy). Think of each entry as the exact label for a toy that shows up in the instance — that's what I'll use to say which toys cover all the kids. This block is just a template of the shape I’ll return, not the final selection.
+
+Please use the same identifiers exactly as they appear in the input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 9, ""num_sets"": 8, ""density"": 0.4166666666666667, ""sets"": [{""id"": 1, ""elements"": [1, 2, 7]}, {""id"": 2, ""elements"": [1, 7, 8, 9]}, {""id"": 3, ""elements"": [5, 8, 9]}, {""id"": 4, ""elements"": [4, 5, 9]}, {""id"": 5, ""elements"": [3, 4, 5, 8, 9]}, {""id"": 6, ""elements"": [1, 2, 6, 8]}, {""id"": 7, ""elements"": [1, 2, 6]}, {""id"": 8, ""elements"": [2, 3, 5, 6, 8]}], ""graph"": {""num_nodes"": 9, ""edges"": [{""u"": 3, ""v"": 9}, {""u"": 1, ""v"": 6}, {""u"": 9, ""v"": 5}, {""u"": 9, ""v"": 8}, {""u"": 4, ""v"": 5}, {""u"": 6, ""v"": 2}, {""u"": 6, ""v"": 7}, {""u"": 2, ""v"": 8}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0026.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0026.png""}","[2, 9]",2.0,"{""num_elements"": 9, ""num_sets"": 8, ""sets"": [{""id"": ""S1"", ""elements"": [1, 2, 7]}, {""id"": ""S2"", ""elements"": [1, 7, 8, 9]}, {""id"": ""S3"", ""elements"": [5, 8, 9]}, {""id"": ""S4"", ""elements"": [4, 5, 9]}, {""id"": ""S5"", ""elements"": [3, 4, 5, 8, 9]}, {""id"": ""S6"", ""elements"": [1, 2, 6, 8]}, {""id"": ""S7"", ""elements"": [1, 2, 6]}, {""id"": ""S8"", ""elements"": [2, 3, 5, 6, 8]}]}","[2, 9]"
+HSP_S_028,HSP,S,28,"I run a little restaurant and have to decide which ingredients to keep in the pantry so every dish on the menu uses at least one of them. The trick is to make that pantry list as short as possible — you can compare options by counting how many distinct ingredients are on each list, and the shorter the count the better. Every menu item must be covered by at least one stocked ingredient, nothing can be left without a match, and stocking the same ingredient twice doesn’t change the count. The concrete menu and ingredient details are shown below.
+
+# total_ingredients=11
+# total_menu_dishes=11
+dish_id,dish_ingredients
+S1,1 2 4 5 7 9 10
+S2,1 2 6 8 9 10
+S3,4 9 10 11
+S4,4 6 9 10
+S5,4 5 9 10
+S6,3 6 8 10
+S7,1 2 7 9
+S8,2 6 8
+S9,1 2 3 4 5 6 7 9 10 11
+S10,1 2 3 4 5 6 8 9 10
+S11,3 4 9 11
+
+Oh, and when you send your answer back, just use this little JSON layout so I can read it cleanly:
+
+{
+  ""solution"": [""ingredient_id"", ...]
+}
+
+""solution"" is the top-level field, and the array should list the ingredient identifiers you want to keep in the pantry. The item ""ingredient_id"" is just a placeholder showing the shape — replace each placeholder with the exact ingredient identifiers from the instance when you submit your choice. This snippet is only a sketch of the expected shape, not the actual pantry list.
+
+Please make sure all identifiers are used exactly as they appear in the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 11, ""num_sets"": 11, ""density"": 0.48760330578512395, ""sets"": [{""id"": 1, ""elements"": [1, 2, 4, 5, 7, 9, 10]}, {""id"": 2, ""elements"": [1, 2, 6, 8, 9, 10]}, {""id"": 3, ""elements"": [4, 9, 10, 11]}, {""id"": 4, ""elements"": [4, 6, 9, 10]}, {""id"": 5, ""elements"": [4, 5, 9, 10]}, {""id"": 6, ""elements"": [3, 6, 8, 10]}, {""id"": 7, ""elements"": [1, 2, 7, 9]}, {""id"": 8, ""elements"": [2, 6, 8]}, {""id"": 9, ""elements"": [1, 2, 3, 4, 5, 6, 7, 9, 10, 11]}, {""id"": 10, ""elements"": [1, 2, 3, 4, 5, 6, 8, 9, 10]}, {""id"": 11, ""elements"": [3, 4, 9, 11]}], ""graph"": {""num_nodes"": 11, ""edges"": [{""u"": 2, ""v"": 1}, {""u"": 2, ""v"": 10}, {""u"": 11, ""v"": 4}, {""u"": 3, ""v"": 4}, {""u"": 3, ""v"": 6}, {""u"": 9, ""v"": 1}, {""u"": 9, ""v"": 4}, {""u"": 9, ""v"": 5}, {""u"": 9, ""v"": 10}, {""u"": 7, ""v"": 1}, {""u"": 6, ""v"": 10}, {""u"": 8, ""v"": 10}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0027.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0027.png""}","[6, 9]",2.0,"{""num_elements"": 11, ""num_sets"": 11, ""sets"": [{""id"": ""S1"", ""elements"": [1, 2, 4, 5, 7, 9, 10]}, {""id"": ""S2"", ""elements"": [1, 2, 6, 8, 9, 10]}, {""id"": ""S3"", ""elements"": [4, 9, 10, 11]}, {""id"": ""S4"", ""elements"": [4, 6, 9, 10]}, {""id"": ""S5"", ""elements"": [4, 5, 9, 10]}, {""id"": ""S6"", ""elements"": [3, 6, 8, 10]}, {""id"": ""S7"", ""elements"": [1, 2, 7, 9]}, {""id"": ""S8"", ""elements"": [2, 6, 8]}, {""id"": ""S9"", ""elements"": [1, 2, 3, 4, 5, 6, 7, 9, 10, 11]}, {""id"": ""S10"", ""elements"": [1, 2, 3, 4, 5, 6, 8, 9, 10]}, {""id"": ""S11"", ""elements"": [3, 4, 9, 11]}]}","[6, 9]"
+HSP_S_029,HSP,S,29,"Out in the field, the editor asked for a tight interview roster: pick the smallest set of people who collectively know all the topics we need. The choice is who makes the cut; the better choice is the one with fewer people that still gives every topic at least one expert. You measure a lineup by counting chosen interviewees and ensuring each topic has at least one assigned person, and make sure no topic is missed or duplicated. The concrete details will be shown below.
+
+- **total_experts**: 10
+- **total_topics**: 7
+
+| topic_id | experts_for_topic |
+|---|---|
+| S1 | D I J |
+| S2 | B C H |
+| S3 | A D F I J |
+| S4 | A D F G H |
+| S5 | D E |
+| S6 | G H |
+| S7 | A C E G H |
+
+Also, before we dive in, just drop your final pick in this simple JSON shape so it's easy to parse:
+
+{
+  ""solution"": [""person_id"", ...]
+}
+
+Here ""solution"" is just the list of chosen interviewees — put each interviewee's identifier in that array. Think of it like filling out a sign-up sheet: each entry is the ID of someone you want on the roster. This JSON is only a sketch of the expected shape, not the actual answer—I'll expect the real IDs from the instance.
+
+Please use the identifiers exactly as they appear in the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 10, ""num_sets"": 7, ""density"": 0.35714285714285715, ""sets"": [{""id"": 1, ""elements"": [4, 9, 10]}, {""id"": 2, ""elements"": [2, 3, 8]}, {""id"": 3, ""elements"": [1, 4, 6, 9, 10]}, {""id"": 4, ""elements"": [1, 4, 6, 7, 8]}, {""id"": 5, ""elements"": [4, 5]}, {""id"": 6, ""elements"": [7, 8]}, {""id"": 7, ""elements"": [1, 3, 5, 7, 8]}], ""graph"": {""num_nodes"": 10, ""edges"": [{""u"": 10, ""v"": 4}, {""u"": 3, ""v"": 2}, {""u"": 6, ""v"": 1}, {""u"": 4, ""v"": 1}, {""u"": 4, ""v"": 9}, {""u"": 2, ""v"": 8}, {""u"": 1, ""v"": 5}, {""u"": 5, ""v"": 8}, {""u"": 8, ""v"": 7}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0028.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0028.png""}","[4, 8]",2.0,"{""num_elements"": 10, ""num_sets"": 7, ""sets"": [{""id"": ""S1"", ""elements"": [""D"", ""I"", ""J""]}, {""id"": ""S2"", ""elements"": [""B"", ""C"", ""H""]}, {""id"": ""S3"", ""elements"": [""A"", ""D"", ""F"", ""I"", ""J""]}, {""id"": ""S4"", ""elements"": [""A"", ""D"", ""F"", ""G"", ""H""]}, {""id"": ""S5"", ""elements"": [""D"", ""E""]}, {""id"": ""S6"", ""elements"": [""G"", ""H""]}, {""id"": ""S7"", ""elements"": [""A"", ""C"", ""E"", ""G"", ""H""]}]}","[""D"", ""H""]"
+HSP_S_030,HSP,S,30,"I’m running the show and trying to put together the tiniest team of understudies so every lead has at least one person who can step in. The job is to choose actual people to hire as understudies (not to pick which roles to cover), make sure no principal is left without backup, and keep the headcount as small as possible — the score is simply how many understudies are on the list. Nobody can be counted twice and every role needs at least one capable understudy. The exact cast list and who can cover which parts are shown below.
+
+I have 10 distinct understudy candidates and 10 principal roles to cover:
+For S1, I can hire any of 1 2 5 6 7 as the understudy.
+For S2, I can hire any of 1 3 5 6 7 8 as the understudy.
+For S3, I can hire any of 1 2 3 6 as the understudy.
+For S4, I can hire any of 4 5 8 9 as the understudy.
+For S5, I can hire any of 1 2 4 7 as the understudy.
+For S6, I can hire any of 1 2 3 6 10 as the understudy.
+For S7, I can hire any of 2 5 7 as the understudy.
+For S8, I can hire any of 2 4 5 8 as the understudy.
+For S9, I can hire any of 5 8 as the understudy.
+For S10, I can hire any of 1 6 as the understudy.
+I'll pick the smallest roster from those 10 people so each of the 10 principals has at least one backup.
+
+Also, just to keep things tidy, when you send the answer please use a tiny JSON snippet like this to show who you’d pick.
+
+{
+  ""solution"": [""understudy_id"", ...]
+}
+
+This is just a sketch of the shape I want: ""solution"" is the list of understudy identifiers (the people you’d hire as backups). Each entry in that array should be an identifier for a person who can cover at least one lead. Think of it like filling out a short form — nothing fancy, just the IDs.
+
+This JSON is only the expected shape, not the actual solution — don’t put made-up labels or change the IDs. Use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 10, ""num_sets"": 10, ""density"": 0.39, ""sets"": [{""id"": 1, ""elements"": [1, 2, 5, 6, 7]}, {""id"": 2, ""elements"": [1, 3, 5, 6, 7, 8]}, {""id"": 3, ""elements"": [1, 2, 3, 6]}, {""id"": 4, ""elements"": [4, 5, 8, 9]}, {""id"": 5, ""elements"": [1, 2, 4, 7]}, {""id"": 6, ""elements"": [1, 2, 3, 6, 10]}, {""id"": 7, ""elements"": [2, 5, 7]}, {""id"": 8, ""elements"": [2, 4, 5, 8]}, {""id"": 9, ""elements"": [5, 8]}, {""id"": 10, ""elements"": [1, 6]}], ""graph"": {""num_nodes"": 10, ""edges"": [{""u"": 1, ""v"": 2}, {""u"": 1, ""v"": 3}, {""u"": 1, ""v"": 6}, {""u"": 2, ""v"": 5}, {""u"": 2, ""v"": 7}, {""u"": 10, ""v"": 6}, {""u"": 4, ""v"": 8}, {""u"": 4, ""v"": 9}, {""u"": 5, ""v"": 8}, {""u"": 8, ""v"": 9}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0029.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0029.png""}","[1, 5]",2.0,"{""num_elements"": 10, ""num_sets"": 10, ""sets"": [{""id"": ""S1"", ""elements"": [1, 2, 5, 6, 7]}, {""id"": ""S2"", ""elements"": [1, 3, 5, 6, 7, 8]}, {""id"": ""S3"", ""elements"": [1, 2, 3, 6]}, {""id"": ""S4"", ""elements"": [4, 5, 8, 9]}, {""id"": ""S5"", ""elements"": [1, 2, 4, 7]}, {""id"": ""S6"", ""elements"": [1, 2, 3, 6, 10]}, {""id"": ""S7"", ""elements"": [2, 5, 7]}, {""id"": ""S8"", ""elements"": [2, 4, 5, 8]}, {""id"": ""S9"", ""elements"": [5, 8]}, {""id"": ""S10"", ""elements"": [1, 6]}]}","[1, 5]"
+HSP_S_031,HSP,S,31,"I run a little museum and I’m trying to put together a team of guides who speak the visitors’ languages. The job is to pick the smallest number of multilingual guides so that every language any visitor might use is spoken by at least one person on the team — you check how well a choice does simply by counting the guides you picked and making sure each language is covered. It’s important nothing gets left out (every language must be supported) and picking extra guides who don’t add new languages is pointless. The concrete details will be shown below.
+
+{
+  ""total_guides"": 9,
+  ""total_languages"": 7,
+  ""sets"": [
+    {
+      ""language_id"": ""S1"",
+      ""guide_ids_who_speak"": [
+        2,
+        7
+      ]
+    },
+    {
+      ""language_id"": ""S2"",
+      ""guide_ids_who_speak"": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      ""language_id"": ""S3"",
+      ""guide_ids_who_speak"": [
+        2,
+        3,
+        4,
+        5,
+        7
+      ]
+    },
+    {
+      ""language_id"": ""S4"",
+      ""guide_ids_who_speak"": [
+        3,
+        5,
+        6
+      ]
+    },
+    {
+      ""language_id"": ""S5"",
+      ""guide_ids_who_speak"": [
+        2,
+        5
+      ]
+    },
+    {
+      ""language_id"": ""S6"",
+      ""guide_ids_who_speak"": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        9
+      ]
+    },
+    {
+      ""language_id"": ""S7"",
+      ""guide_ids_who_speak"": [
+        1,
+        2,
+        7
+      ]
+    }
+  ]
+}
+
+Also, when you send the actual answer, please use this simple JSON layout so it’s easy to read by whatever’s checking it.
+
+{
+  ""solution"": [""guide_id"", ...]
+}
+
+Here ""solution"" is just the list of guide IDs — the people you’d pick for the team. Think of each string in that array as the identifier for a chosen guide (just the ID, not a name or extra info). This block is only a sketch of the expected shape, not the actual final answer.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — don’t rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 9, ""num_sets"": 7, ""density"": 0.4444444444444444, ""sets"": [{""id"": 1, ""elements"": [2, 7]}, {""id"": 2, ""elements"": [1, 2, 3, 4, 5, 7, 8]}, {""id"": 3, ""elements"": [2, 3, 4, 5, 7]}, {""id"": 4, ""elements"": [3, 5, 6]}, {""id"": 5, ""elements"": [2, 5]}, {""id"": 6, ""elements"": [1, 2, 4, 5, 6, 9]}, {""id"": 7, ""elements"": [1, 2, 7]}], ""graph"": {""num_nodes"": 9, ""edges"": [{""u"": 8, ""v"": 2}, {""u"": 6, ""v"": 4}, {""u"": 1, ""v"": 2}, {""u"": 2, ""v"": 7}, {""u"": 4, ""v"": 7}, {""u"": 3, ""v"": 7}, {""u"": 5, ""v"": 7}, {""u"": 5, ""v"": 9}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0030.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0030.png""}","[2, 5]",2.0,"{""num_elements"": 9, ""num_sets"": 7, ""sets"": [{""id"": ""S1"", ""elements"": [2, 7]}, {""id"": ""S2"", ""elements"": [1, 2, 3, 4, 5, 7, 8]}, {""id"": ""S3"", ""elements"": [2, 3, 4, 5, 7]}, {""id"": ""S4"", ""elements"": [3, 5, 6]}, {""id"": ""S5"", ""elements"": [2, 5]}, {""id"": ""S6"", ""elements"": [1, 2, 4, 5, 6, 9]}, {""id"": ""S7"", ""elements"": [1, 2, 7]}]}","[2, 5]"
+HSP_S_032,HSP,S,32,"I was handed a sketch of a neighborhood and told to figure out which lamp posts to turn on so every crosswalk has at least one light. The job is to pick actual positions from the map so no crosswalk ends up in the dark, and the better plan is the one that uses the fewest lamp positions — you judge plans by counting how many lights are chosen, the smaller the count the better. It’s also important not to pretend to use the same pole twice or leave any crossing unlit. The concrete map and available positions are shown below.
+
+{
+  ""total_light_positions"": 9,
+  ""num_crosswalks"": 8,
+  ""sets"": [
+    {
+      ""crosswalk_id"": ""S1"",
+      ""candidate_light_positions"": [
+        0,
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      ""crosswalk_id"": ""S2"",
+      ""candidate_light_positions"": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      ""crosswalk_id"": ""S3"",
+      ""candidate_light_positions"": [
+        0,
+        1,
+        2,
+        3,
+        7
+      ]
+    },
+    {
+      ""crosswalk_id"": ""S4"",
+      ""candidate_light_positions"": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ]
+    },
+    {
+      ""crosswalk_id"": ""S5"",
+      ""candidate_light_positions"": [
+        0,
+        1,
+        3,
+        4,
+        7
+      ]
+    },
+    {
+      ""crosswalk_id"": ""S6"",
+      ""candidate_light_positions"": [
+        3,
+        5,
+        7
+      ]
+    },
+    {
+      ""crosswalk_id"": ""S7"",
+      ""candidate_light_positions"": [
+        1,
+        2
+      ]
+    },
+    {
+      ""crosswalk_id"": ""S8"",
+      ""candidate_light_positions"": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8
+      ]
+    }
+  ]
+}
+
+Also, when you send me the actual plan, please stick to this simple JSON layout so it's easy to read and parse:
+
+{
+  ""solution"": [""lamp_id"", ...]
+}
+
+Here ""solution"" is the list of lamp posts you want to turn on — each entry is the identifier of a pole on the map. The example value ""lamp_id"" is just a placeholder to show the shape; swap that out with the real pole identifiers from the instance when you reply. This JSON is only a sketch of the expected shape, not the actual answer.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — no renaming and no new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 9, ""num_sets"": 8, ""density"": 0.5416666666666666, ""sets"": [{""id"": 1, ""elements"": [1, 3, 5, 7]}, {""id"": 2, ""elements"": [1, 2, 4, 6, 7, 8]}, {""id"": 3, ""elements"": [1, 2, 3, 4, 8]}, {""id"": 4, ""elements"": [2, 3, 4, 5, 6, 8]}, {""id"": 5, ""elements"": [1, 2, 4, 5, 8]}, {""id"": 6, ""elements"": [4, 6, 8]}, {""id"": 7, ""elements"": [2, 3]}, {""id"": 8, ""elements"": [1, 2, 3, 4, 5, 6, 8, 9]}], ""graph"": {""num_nodes"": 9, ""edges"": [{""u"": 7, ""v"": 2}, {""u"": 9, ""v"": 6}, {""u"": 2, ""v"": 1}, {""u"": 2, ""v"": 3}, {""u"": 2, ""v"": 8}, {""u"": 5, ""v"": 1}, {""u"": 5, ""v"": 8}, {""u"": 6, ""v"": 8}, {""u"": 8, ""v"": 4}, {""u"": 3, ""v"": 4}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0031.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0031.png""}","[3, 4]",2.0,"{""num_elements"": 9, ""num_sets"": 8, ""sets"": [{""id"": ""S1"", ""elements"": [0, 2, 4, 6]}, {""id"": ""S2"", ""elements"": [0, 1, 3, 5, 6, 7]}, {""id"": ""S3"", ""elements"": [0, 1, 2, 3, 7]}, {""id"": ""S4"", ""elements"": [1, 2, 3, 4, 5, 7]}, {""id"": ""S5"", ""elements"": [0, 1, 3, 4, 7]}, {""id"": ""S6"", ""elements"": [3, 5, 7]}, {""id"": ""S7"", ""elements"": [1, 2]}, {""id"": ""S8"", ""elements"": [0, 1, 2, 3, 4, 5, 7, 8]}]}","[2, 3]"
+HSP_S_033,HSP,S,33,"In a small town the pharmacist needs to make a practical shopping list: pick a handful of medicines so every common complaint has at least one treatment available. Effectiveness of the list is measured by the count of different medicines — fewer items is preferable — as long as every symptom category still has at least one treatment option. No category can be skipped, and keeping medicines that only duplicate existing coverage is wasteful. The exact symptom categories and possible medicines are given below.
+
+{
+  ""total_medications_available"": 10,
+  ""total_symptom_categories"": 8,
+  ""sets"": [
+    {
+      ""category_id"": ""S1"",
+      ""medication_options"": [
+        1,
+        7,
+        10
+      ]
+    },
+    {
+      ""category_id"": ""S2"",
+      ""medication_options"": [
+        2,
+        8
+      ]
+    },
+    {
+      ""category_id"": ""S3"",
+      ""medication_options"": [
+        4,
+        6
+      ]
+    },
+    {
+      ""category_id"": ""S4"",
+      ""medication_options"": [
+        3,
+        7
+      ]
+    },
+    {
+      ""category_id"": ""S5"",
+      ""medication_options"": [
+        1,
+        5,
+        7,
+        10
+      ]
+    },
+    {
+      ""category_id"": ""S6"",
+      ""medication_options"": [
+        3,
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      ""category_id"": ""S7"",
+      ""medication_options"": [
+        1,
+        4,
+        5,
+        7,
+        9,
+        10
+      ]
+    },
+    {
+      ""category_id"": ""S8"",
+      ""medication_options"": [
+        6,
+        8,
+        9
+      ]
+    }
+  ]
+}
+
+If you'd like, just give the final shopping list in a tiny JSON snippet so it's easy to read and reuse. Something like this will do:
+
+{
+  ""solution"": [""medicine_id"", ...]
+}
+
+Here ""solution"" is the list of chosen medicines — each entry is a placeholder for a medicine identifier from the instance (so ""medicine_id"" is just a stand-in, not an actual medicine name). Think of it like a simple form: the array holds the items you picked, and that's all the program needs to check coverage.
+
+This JSON is only a sketch of the expected shape, not the actual answer — replace the placeholders with the real identifiers from the instance input.
+
+Please use the identifiers exactly as they appear in the input — do not rename them or invent new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 10, ""num_sets"": 8, ""density"": 0.325, ""sets"": [{""id"": 1, ""elements"": [1, 7, 10]}, {""id"": 2, ""elements"": [2, 8]}, {""id"": 3, ""elements"": [4, 6]}, {""id"": 4, ""elements"": [3, 7]}, {""id"": 5, ""elements"": [1, 5, 7, 10]}, {""id"": 6, ""elements"": [3, 5, 7, 8]}, {""id"": 7, ""elements"": [1, 4, 5, 7, 9, 10]}, {""id"": 8, ""elements"": [6, 8, 9]}], ""graph"": {""num_nodes"": 10, ""edges"": [{""u"": 6, ""v"": 4}, {""u"": 6, ""v"": 7}, {""u"": 6, ""v"": 9}, {""u"": 1, ""v"": 5}, {""u"": 10, ""v"": 5}, {""u"": 8, ""v"": 2}, {""u"": 8, ""v"": 9}, {""u"": 3, ""v"": 4}, {""u"": 7, ""v"": 5}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0032.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0032.png""}","[6, 7, 8]",3.0,"{""num_elements"": 10, ""num_sets"": 8, ""sets"": [{""id"": ""S1"", ""elements"": [1, 7, 10]}, {""id"": ""S2"", ""elements"": [2, 8]}, {""id"": ""S3"", ""elements"": [4, 6]}, {""id"": ""S4"", ""elements"": [3, 7]}, {""id"": ""S5"", ""elements"": [1, 5, 7, 10]}, {""id"": ""S6"", ""elements"": [3, 5, 7, 8]}, {""id"": ""S7"", ""elements"": [1, 4, 5, 7, 9, 10]}, {""id"": ""S8"", ""elements"": [6, 8, 9]}]}","[6, 7, 8]"
+HSP_S_034,HSP,S,34,"In our building the goal is to pick a compact set of badge profiles so every secured entrance has at least one matching badge. Success is just the number of different profiles chosen — the smaller the number, the more streamlined the solution. Make sure every secured door is covered by at least one selected profile, and don’t treat duplicates as extra coverage because only distinct profiles matter. The exact door-by-profile details follow below.
+
+{
+  ""total_badge_profiles"": 8,
+  ""total_secured_doors"": 8,
+  ""sets"": [
+    {
+      ""door_id"": ""S1"",
+      ""allowed_badge_profiles"": [
+        0,
+        3,
+        4
+      ]
+    },
+    {
+      ""door_id"": ""S2"",
+      ""allowed_badge_profiles"": [
+        1,
+        6,
+        7
+      ]
+    },
+    {
+      ""door_id"": ""S3"",
+      ""allowed_badge_profiles"": [
+        2,
+        4,
+        5,
+        7
+      ]
+    },
+    {
+      ""door_id"": ""S4"",
+      ""allowed_badge_profiles"": [
+        0,
+        1,
+        3,
+        4,
+        7
+      ]
+    },
+    {
+      ""door_id"": ""S5"",
+      ""allowed_badge_profiles"": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      ""door_id"": ""S6"",
+      ""allowed_badge_profiles"": [
+        1,
+        2,
+        7
+      ]
+    },
+    {
+      ""door_id"": ""S7"",
+      ""allowed_badge_profiles"": [
+        5,
+        6
+      ]
+    },
+    {
+      ""door_id"": ""S8"",
+      ""allowed_badge_profiles"": [
+        2,
+        3,
+        4,
+        5,
+        7
+      ]
+    }
+  ]
+}
+
+Also, when you send back the chosen profiles, just stick to this simple JSON layout so it's easy to parse:
+
+{
+  ""solution"": [""badge_profile_id"", ...]
+}
+
+Think of it like a one-line form: ""solution"" holds a list of the distinct badge profile IDs you picked to cover every secured entrance. The JSON is just a sketch of the shape I expect — not the actual answer itself.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 8, ""num_sets"": 8, ""density"": 0.5, ""sets"": [{""id"": 1, ""elements"": [1, 4, 5]}, {""id"": 2, ""elements"": [2, 7, 8]}, {""id"": 3, ""elements"": [3, 5, 6, 8]}, {""id"": 4, ""elements"": [1, 2, 4, 5, 8]}, {""id"": 5, ""elements"": [1, 2, 3, 5, 6, 7, 8]}, {""id"": 6, ""elements"": [2, 3, 8]}, {""id"": 7, ""elements"": [6, 7]}, {""id"": 8, ""elements"": [3, 4, 5, 6, 8]}], ""graph"": {""num_nodes"": 8, ""edges"": [{""u"": 8, ""v"": 3}, {""u"": 8, ""v"": 5}, {""u"": 8, ""v"": 6}, {""u"": 4, ""v"": 1}, {""u"": 4, ""v"": 5}, {""u"": 5, ""v"": 2}, {""u"": 6, ""v"": 2}, {""u"": 2, ""v"": 7}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0033.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0033.png""}","[5, 7, 8]",3.0,"{""num_elements"": 8, ""num_sets"": 8, ""sets"": [{""id"": ""S1"", ""elements"": [0, 3, 4]}, {""id"": ""S2"", ""elements"": [1, 6, 7]}, {""id"": ""S3"", ""elements"": [2, 4, 5, 7]}, {""id"": ""S4"", ""elements"": [0, 1, 3, 4, 7]}, {""id"": ""S5"", ""elements"": [0, 1, 2, 4, 5, 6, 7]}, {""id"": ""S6"", ""elements"": [1, 2, 7]}, {""id"": ""S7"", ""elements"": [5, 6]}, {""id"": ""S8"", ""elements"": [2, 3, 4, 5, 7]}]}","[4, 6, 7]"
+HSP_S_035,HSP,S,35,"Recently the brand brief boiled down to this: find the smallest crew of influencers that still covers every audience we care about. The winning plan is obvious — it’s the one with the lowest headcount that nevertheless places at least one influencer in front of each demographic, so you judge options by counting selected influencers. Every group must be covered, and repeating the same influencer isn’t helpful. The exact roster and audience mappings follow below.
+
+There are 8 influencer candidates and 7 target demographics to cover:
+Demographic S1: any of 2 5 6 7 will cover it — you must select at least one.
+Demographic S2: any of 2 3 4 5 7 8 will cover it — you must select at least one.
+Demographic S3: any of 3 7 will cover it — you must select at least one.
+Demographic S4: any of 1 2 3 5 7 will cover it — you must select at least one.
+Demographic S5: any of 2 6 7 will cover it — you must select at least one.
+Demographic S6: any of 1 2 3 4 5 6 7 will cover it — you must select at least one.
+Demographic S7: any of 3 4 will cover it — you must select at least one.
+Keep aiming for the smallest crew: cover all 7 demographics using as few of the 8 influencers as possible.
+
+Oh, and when you hand the roster back, just use this little JSON shape so it's easy to parse:
+
+{
+  ""solution"": [""influencer_id"", ...]
+}
+
+Think of it like a simple form: ""solution"" is the list of influencers you picked (each entry is an influencer ID from the input). This block is just a sketch of the shape I expect, not the final selection itself.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".""",nl,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 8, ""num_sets"": 7, ""density"": 0.5178571428571429, ""sets"": [{""id"": 1, ""elements"": [2, 5, 6, 7]}, {""id"": 2, ""elements"": [2, 3, 4, 5, 7, 8]}, {""id"": 3, ""elements"": [3, 7]}, {""id"": 4, ""elements"": [1, 2, 3, 5, 7]}, {""id"": 5, ""elements"": [2, 6, 7]}, {""id"": 6, ""elements"": [1, 2, 3, 4, 5, 6, 7]}, {""id"": 7, ""elements"": [3, 4]}], ""graph"": {""num_nodes"": 8, ""edges"": [{""u"": 8, ""v"": 3}, {""u"": 2, ""v"": 6}, {""u"": 2, ""v"": 7}, {""u"": 4, ""v"": 3}, {""u"": 3, ""v"": 7}, {""u"": 1, ""v"": 5}, {""u"": 7, ""v"": 5}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0034.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0034.png""}","[3, 7]",2.0,"{""num_elements"": 8, ""num_sets"": 7, ""sets"": [{""id"": ""S1"", ""elements"": [2, 5, 6, 7]}, {""id"": ""S2"", ""elements"": [2, 3, 4, 5, 7, 8]}, {""id"": ""S3"", ""elements"": [3, 7]}, {""id"": ""S4"", ""elements"": [1, 2, 3, 5, 7]}, {""id"": ""S5"", ""elements"": [2, 6, 7]}, {""id"": ""S6"", ""elements"": [1, 2, 3, 4, 5, 6, 7]}, {""id"": ""S7"", ""elements"": [3, 4]}]}","[3, 7]"
+HSP_S_036,HSP,S,36,"Around here the idea is to build a tiny, efficient pollinator garden: choose the smallest variety of plants so every pollinator species has at least one flower it likes. The decision is a list of plant varieties to include, and a superior list is simply the one with the fewest different entries. The rule is straightforward — count distinct plant types in the plan; the lower the count the better — but every pollinator must be covered by at least one of those types. Planting multiple of the same type doesn’t make the list smaller, and the concrete details are below.
+
+# total_plant_varieties=11
+# total_pollinator_species=11
+pollinator_id,attractive_plant_varieties
+S1,1 2 7 8 9
+S2,2 3 5 6 10
+S3,1 3 6 8 9 11
+S4,1 4 7 8
+S5,5 7 8 11
+S6,3 6 11
+S7,1 4 5 6 7 8 11
+S8,3 7 10
+S9,1 3 9 10
+S10,2 3 10
+S11,2 3 5 6 7
+
+Oh, and when you send back your plant pick, please put it in this little JSON shape so it's easy to read by anything that needs it:
+
+{
+  ""solution"": [""plant_id"", ...]
+}
+
+Think of ""solution"" as the short list of plant varieties you picked for the garden, and each ""plant_id"" is just a placeholder for one plant identifier from the instance (one entry per variety). This is just the expected shape — a sketch of the format, not the actual answer.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 11, ""num_sets"": 11, ""density"": 0.4049586776859504, ""sets"": [{""id"": 1, ""elements"": [1, 2, 7, 8, 9]}, {""id"": 2, ""elements"": [2, 3, 5, 6, 10]}, {""id"": 3, ""elements"": [1, 3, 6, 8, 9, 11]}, {""id"": 4, ""elements"": [1, 4, 7, 8]}, {""id"": 5, ""elements"": [5, 7, 8, 11]}, {""id"": 6, ""elements"": [3, 6, 11]}, {""id"": 7, ""elements"": [1, 4, 5, 6, 7, 8, 11]}, {""id"": 8, ""elements"": [3, 7, 10]}, {""id"": 9, ""elements"": [1, 3, 9, 10]}, {""id"": 10, ""elements"": [2, 3, 10]}, {""id"": 11, ""elements"": [2, 3, 5, 6, 7]}], ""graph"": {""num_nodes"": 11, ""edges"": [{""u"": 4, ""v"": 8}, {""u"": 1, ""v"": 3}, {""u"": 1, ""v"": 8}, {""u"": 1, ""v"": 10}, {""u"": 5, ""v"": 6}, {""u"": 5, ""v"": 7}, {""u"": 5, ""v"": 11}, {""u"": 10, ""v"": 3}, {""u"": 10, ""v"": 9}, {""u"": 11, ""v"": 2}, {""u"": 3, ""v"": 2}, {""u"": 8, ""v"": 7}, {""u"": 6, ""v"": 2}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0035.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0035.png""}","[3, 7]",2.0,"{""num_elements"": 11, ""num_sets"": 11, ""sets"": [{""id"": ""S1"", ""elements"": [1, 2, 7, 8, 9]}, {""id"": ""S2"", ""elements"": [2, 3, 5, 6, 10]}, {""id"": ""S3"", ""elements"": [1, 3, 6, 8, 9, 11]}, {""id"": ""S4"", ""elements"": [1, 4, 7, 8]}, {""id"": ""S5"", ""elements"": [5, 7, 8, 11]}, {""id"": ""S6"", ""elements"": [3, 6, 11]}, {""id"": ""S7"", ""elements"": [1, 4, 5, 6, 7, 8, 11]}, {""id"": ""S8"", ""elements"": [3, 7, 10]}, {""id"": ""S9"", ""elements"": [1, 3, 9, 10]}, {""id"": ""S10"", ""elements"": [2, 3, 10]}, {""id"": ""S11"", ""elements"": [2, 3, 5, 6, 7]}]}","[3, 7]"
+HSP_S_037,HSP,S,37,"There’s a practical problem in the data center: which minimal group of maintenance tools should live in the cabinet so every likely outage can be handled by something in that group. A good selection is the one with the fewest different tools, and you check that by counting them — the winning selection is the smallest count that still leaves no failure unhandled. Nothing can be left without a capable tool, and bringing duplicate copies of the same item doesn’t help expand coverage. The concrete details follow below.
+
+# total_tool_types=8
+# total_failure_types=6
+failure_id,capable_tools
+S1,1 2 5 7 8
+S2,1 2 4 6
+S3,1 2 5
+S4,1 4 5
+S5,1 4
+S6,1 3 5 7
+
+When you tell me which tools to keep in the cabinet, just give it in this little JSON shape so it's easy to read and plug into whatever checks you run next.
+
+{
+  ""solution"": [""tool_id""]
+}
+
+Here ""solution"" is just the list of tool identifiers that make up the chosen minimal kit — each entry is the ID of a tool (I used the placeholder tool_id to match the story). Think of it like filling out a short form: the array holds the chosen items. This is only a sketch of the shape I need, not the actual selection.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 8, ""num_sets"": 6, ""density"": 0.4375, ""sets"": [{""id"": 1, ""elements"": [1, 2, 5, 7, 8]}, {""id"": 2, ""elements"": [1, 2, 4, 6]}, {""id"": 3, ""elements"": [1, 2, 5]}, {""id"": 4, ""elements"": [1, 4, 5]}, {""id"": 5, ""elements"": [1, 4]}, {""id"": 6, ""elements"": [1, 3, 5, 7]}], ""graph"": {""num_nodes"": 8, ""edges"": [{""u"": 1, ""v"": 4}, {""u"": 1, ""v"": 5}, {""u"": 3, ""v"": 7}, {""u"": 2, ""v"": 4}, {""u"": 4, ""v"": 6}, {""u"": 4, ""v"": 8}, {""u"": 5, ""v"": 7}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0036.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0036.png""}",[1],1.0,"{""num_elements"": 8, ""num_sets"": 6, ""sets"": [{""id"": ""S1"", ""elements"": [1, 2, 5, 7, 8]}, {""id"": ""S2"", ""elements"": [1, 2, 4, 6]}, {""id"": ""S3"", ""elements"": [1, 2, 5]}, {""id"": ""S4"", ""elements"": [1, 4, 5]}, {""id"": ""S5"", ""elements"": [1, 4]}, {""id"": ""S6"", ""elements"": [1, 3, 5, 7]}]}",[1]
+HSP_S_038,HSP,S,38,"There’s a toolbox of available plugins and a list of things the project must do; the plan was to grab just enough plugins so every item on the list is covered by at least one of them, and the simple way to tell which plan wins is by counting how many plugins are in it — less is better — nothing on the requirement list can be skipped and choosing the same plugin twice doesn’t help. The concrete setup is shown below.
+
+- **total_plugins_available**: 10
+- **total_project_requirements**: 8
+
+| requirement_id | plugins_covering_requirement |
+|---|---|
+| S1 | A G I J |
+| S2 | A B C E G H |
+| S3 | B C G H |
+| S4 | D F G H |
+| S5 | B E G |
+| S6 | A B C D G H I J |
+| S7 | A B C H |
+| S8 | G I J |
+
+Oh, and when you send the actual result, keep it in this simple JSON shape so it's easy to read and parse. Something like this:
+
+{
+  ""solution"": [""plugin_id"", ...]
+}
+
+""solution"" is just the list of plugins you picked — each entry is the exact identifier of a plugin to include in the plan. Think of it like filling out a short form: put the plugin IDs in that array. This JSON is only a sketch of the shape I expect, not the actual answer.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 10, ""num_sets"": 8, ""density"": 0.45, ""sets"": [{""id"": 1, ""elements"": [1, 7, 9, 10]}, {""id"": 2, ""elements"": [1, 2, 3, 5, 7, 8]}, {""id"": 3, ""elements"": [2, 3, 7, 8]}, {""id"": 4, ""elements"": [4, 6, 7, 8]}, {""id"": 5, ""elements"": [2, 5, 7]}, {""id"": 6, ""elements"": [1, 2, 3, 4, 7, 8, 9, 10]}, {""id"": 7, ""elements"": [1, 2, 3, 8]}, {""id"": 8, ""elements"": [7, 9, 10]}], ""graph"": {""num_nodes"": 10, ""edges"": [{""u"": 8, ""v"": 4}, {""u"": 8, ""v"": 6}, {""u"": 8, ""v"": 7}, {""u"": 10, ""v"": 1}, {""u"": 7, ""v"": 1}, {""u"": 7, ""v"": 2}, {""u"": 7, ""v"": 3}, {""u"": 9, ""v"": 1}, {""u"": 5, ""v"": 2}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0037.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0037.png""}","[7, 8]",2.0,"{""num_elements"": 10, ""num_sets"": 8, ""sets"": [{""id"": ""S1"", ""elements"": [""A"", ""G"", ""I"", ""J""]}, {""id"": ""S2"", ""elements"": [""A"", ""B"", ""C"", ""E"", ""G"", ""H""]}, {""id"": ""S3"", ""elements"": [""B"", ""C"", ""G"", ""H""]}, {""id"": ""S4"", ""elements"": [""D"", ""F"", ""G"", ""H""]}, {""id"": ""S5"", ""elements"": [""B"", ""E"", ""G""]}, {""id"": ""S6"", ""elements"": [""A"", ""B"", ""C"", ""D"", ""G"", ""H"", ""I"", ""J""]}, {""id"": ""S7"", ""elements"": [""A"", ""B"", ""C"", ""H""]}, {""id"": ""S8"", ""elements"": [""G"", ""I"", ""J""]}]}","[""G"", ""H""]"
+HSP_S_039,HSP,S,39,"There’s a simple home dilemma: the tool drawer can’t be endless, so which few tools should live on the workbench so any common fix can be started immediately? The aim is to collect as few different tools as possible while making sure each kind of repair has at least one suitable tool available. One selection beats another if it uses fewer distinct tools — measure that by counting the tools chosen — and nothing can be left without a corresponding tool, since duplicates won’t add coverage. The exact breakdown of tools and repair types follows below.
+
+Below are the 9 repair categories drawn from the 10 distinct tool types.
+Repair category S1 can be handled by 4 9.
+Repair category S2 can be handled by 2 3 6 7 9 10.
+Repair category S3 can be handled by 2 3 7.
+Repair category S4 can be handled by 1 9.
+Repair category S5 can be handled by 1 2 5 7 9 10.
+Repair category S6 can be handled by 3 6.
+Repair category S7 can be handled by 3 6 7 8 10.
+Repair category S8 can be handled by 6 7 8.
+Repair category S9 can be handled by 1 4 5 9.
+A minimal collection drawn from the 10 tool types should cover all 9 categories.
+
+And when you send back your pick, keep it in this simple JSON shape so it's easy to check:
+
+{
+  ""solution"": [""tool_id"", ...]
+}
+
+Here ""solution"" is just a list of the tool identifiers you want to keep on the workbench — the placeholder ""tool_id"" shows the shape, so swap that out for the actual IDs from the instance. Think of it like filling in a little form: the array is your chosen tools, and fewer entries means a smaller pile on the bench.
+
+This JSON is just a sketch of the expected shape, not the actual answer. Please use the exact identifiers given in the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 10, ""num_sets"": 9, ""density"": 0.36666666666666664, ""sets"": [{""id"": 1, ""elements"": [4, 9]}, {""id"": 2, ""elements"": [2, 3, 6, 7, 9, 10]}, {""id"": 3, ""elements"": [2, 3, 7]}, {""id"": 4, ""elements"": [1, 9]}, {""id"": 5, ""elements"": [1, 2, 5, 7, 9, 10]}, {""id"": 6, ""elements"": [3, 6]}, {""id"": 7, ""elements"": [3, 6, 7, 8, 10]}, {""id"": 8, ""elements"": [6, 7, 8]}, {""id"": 9, ""elements"": [1, 4, 5, 9]}], ""graph"": {""num_nodes"": 10, ""edges"": [{""u"": 2, ""v"": 5}, {""u"": 2, ""v"": 7}, {""u"": 2, ""v"": 10}, {""u"": 1, ""v"": 4}, {""u"": 1, ""v"": 9}, {""u"": 6, ""v"": 7}, {""u"": 6, ""v"": 8}, {""u"": 5, ""v"": 9}, {""u"": 3, ""v"": 7}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0038.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0038.png""}","[6, 7, 9]",3.0,"{""num_elements"": 10, ""num_sets"": 9, ""sets"": [{""id"": ""S1"", ""elements"": [4, 9]}, {""id"": ""S2"", ""elements"": [2, 3, 6, 7, 9, 10]}, {""id"": ""S3"", ""elements"": [2, 3, 7]}, {""id"": ""S4"", ""elements"": [1, 9]}, {""id"": ""S5"", ""elements"": [1, 2, 5, 7, 9, 10]}, {""id"": ""S6"", ""elements"": [3, 6]}, {""id"": ""S7"", ""elements"": [3, 6, 7, 8, 10]}, {""id"": ""S8"", ""elements"": [6, 7, 8]}, {""id"": ""S9"", ""elements"": [1, 4, 5, 9]}]}","[6, 7, 9]"
+HSP_S_040,HSP,S,40,"There's a class presentation to set up: students signed up for different project topics, and the challenge is to pick a minimal set of students to go on stage so that every single topic has someone presenting it. The plan is judged by how many students are picked — the lower the number the better — and every topic has to be covered at least once; pick a student only once and see the exact topic-student breakdown below.
+
+There are 12 students signed up overall and 12 topics to cover.
+Topic S1: 0 7
+Topic S2: 0 6 7 8
+Topic S3: 2 6 9
+Topic S4: 3 5 9
+Topic S5: 0 3 4 6 8 9 10 11
+Topic S6: 1 3 4 5 6 9 10
+Topic S7: 1 2 6 9 10 11
+Topic S8: 0 1 7
+Topic S9: 1 4 8
+Topic S10: 2 3 4 5 6 9 10
+Topic S11: 2 4 5 9 10
+Topic S12: 4 6 10
+Cover all 12 topics using as few of the 12 students as possible.
+
+Oh, and when you send back the chosen presenters, please follow this simple JSON shape so I can read it reliably:
+
+{
+  ""solution"": [""student_id"", ...]
+}
+
+Think of it like a tiny form: ""solution"" is the list of students you're picking to go on stage, and each entry in that array should be the exact identifier for a student (the placeholder ""student_id"" just shows the format). This block is just a sketch of the shape I expect — not the actual answer.
+
+Please use the identifiers exactly as they appear in the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 12, ""num_sets"": 12, ""density"": 0.375, ""sets"": [{""id"": 1, ""elements"": [1, 8]}, {""id"": 2, ""elements"": [1, 7, 8, 9]}, {""id"": 3, ""elements"": [3, 7, 10]}, {""id"": 4, ""elements"": [4, 6, 10]}, {""id"": 5, ""elements"": [1, 4, 5, 7, 9, 10, 11, 12]}, {""id"": 6, ""elements"": [2, 4, 5, 6, 7, 10, 11]}, {""id"": 7, ""elements"": [2, 3, 7, 10, 11, 12]}, {""id"": 8, ""elements"": [1, 2, 8]}, {""id"": 9, ""elements"": [2, 5, 9]}, {""id"": 10, ""elements"": [3, 4, 5, 6, 7, 10, 11]}, {""id"": 11, ""elements"": [3, 5, 6, 10, 11]}, {""id"": 12, ""elements"": [5, 7, 11]}], ""graph"": {""num_nodes"": 12, ""edges"": [{""u"": 2, ""v"": 1}, {""u"": 2, ""v"": 5}, {""u"": 2, ""v"": 9}, {""u"": 5, ""v"": 6}, {""u"": 5, ""v"": 7}, {""u"": 10, ""v"": 6}, {""u"": 10, ""v"": 11}, {""u"": 1, ""v"": 8}, {""u"": 7, ""v"": 11}, {""u"": 7, ""v"": 12}, {""u"": 6, ""v"": 4}, {""u"": 3, ""v"": 11}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0039.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0039.png""}","[1, 5, 10]",3.0,"{""num_elements"": 12, ""num_sets"": 12, ""sets"": [{""id"": ""S1"", ""elements"": [0, 7]}, {""id"": ""S2"", ""elements"": [0, 6, 7, 8]}, {""id"": ""S3"", ""elements"": [2, 6, 9]}, {""id"": ""S4"", ""elements"": [3, 5, 9]}, {""id"": ""S5"", ""elements"": [0, 3, 4, 6, 8, 9, 10, 11]}, {""id"": ""S6"", ""elements"": [1, 3, 4, 5, 6, 9, 10]}, {""id"": ""S7"", ""elements"": [1, 2, 6, 9, 10, 11]}, {""id"": ""S8"", ""elements"": [0, 1, 7]}, {""id"": ""S9"", ""elements"": [1, 4, 8]}, {""id"": ""S10"", ""elements"": [2, 3, 4, 5, 6, 9, 10]}, {""id"": ""S11"", ""elements"": [2, 4, 5, 9, 10]}, {""id"": ""S12"", ""elements"": [4, 6, 10]}]}","[0, 4, 9]"
+HSP_S_041,HSP,S,41,"On a slow afternoon the team decided to refresh the window display by selecting a tiny stack of books that together showcase every genre in the shop. The decision is which exact titles to include, and the better selection is the one that covers all genres using as few books as possible — compare by counting how many books are chosen, with the smaller count winning. Be sure no genre is skipped and avoid duplicating a title on the display. The exact details of genres and candidate titles are listed below.
+
+- **total_titles**: 8
+- **num_genres**: 6
+
+| genre_id | candidate_titles |
+|---|---|
+| S1 | 1 4 6 |
+| S2 | 2 4 6 8 |
+| S3 | 3 5 7 |
+| S4 | 1 2 4 6 |
+| S5 | 1 2 8 |
+| S6 | 3 6 7 |
+
+If you want to send back your choice, please put it in a tiny JSON snippet like this so it's easy to read and check:
+
+{
+  ""solution"": [""book_id"", ...]
+}
+
+Here ""solution"" is the list of chosen book identifiers for the window display — each entry is the id of a title you'd like to include. Think of this as a simple form: just drop the exact ids into that array. This JSON is only a sketch of the expected shape, not the real answer itself.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming, no new labels.  
+For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 8, ""num_sets"": 6, ""density"": 0.4166666666666667, ""sets"": [{""id"": 1, ""elements"": [1, 4, 6]}, {""id"": 2, ""elements"": [2, 4, 6, 8]}, {""id"": 3, ""elements"": [3, 5, 7]}, {""id"": 4, ""elements"": [1, 2, 4, 6]}, {""id"": 5, ""elements"": [1, 2, 8]}, {""id"": 6, ""elements"": [3, 6, 7]}], ""graph"": {""num_nodes"": 8, ""edges"": [{""u"": 6, ""v"": 1}, {""u"": 6, ""v"": 2}, {""u"": 6, ""v"": 4}, {""u"": 4, ""v"": 2}, {""u"": 2, ""v"": 8}, {""u"": 5, ""v"": 3}, {""u"": 3, ""v"": 7}, {""u"": 7, ""v"": 1}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0040.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0040.png""}","[2, 3, 6]",3.0,"{""num_elements"": 8, ""num_sets"": 6, ""sets"": [{""id"": ""S1"", ""elements"": [1, 4, 6]}, {""id"": ""S2"", ""elements"": [2, 4, 6, 8]}, {""id"": ""S3"", ""elements"": [3, 5, 7]}, {""id"": ""S4"", ""elements"": [1, 2, 4, 6]}, {""id"": ""S5"", ""elements"": [1, 2, 8]}, {""id"": ""S6"", ""elements"": [3, 6, 7]}]}","[2, 3, 6]"
+HSP_S_042,HSP,S,42,"A small team faced a classic trade-off: there are lots of possible security measures and several vulnerability buckets, and the objective was to keep the chosen measures to an absolute minimum while still touching every bucket at least once. Judging any candidate list is just a matter of counting the measures — the smaller the count, the better — and it must cover every vulnerability category without unnecessary repeats or omissions. The specific vulnerabilities and available measures are listed below.
+
+- **total_measures_available**: 11
+- **total_vulnerability_categories**: 11
+
+| vulnerability_category_id | measures_list_for_vulnerability |
+|---|---|
+| S1 | A B C D F J K |
+| S2 | A C I |
+| S3 | A B E F I |
+| S4 | C E F G H J K |
+| S5 | D G |
+| S6 | A C F J K |
+| S7 | B D H I K |
+| S8 | A D G H K |
+| S9 | A B I |
+| S10 | A D J |
+| S11 | A F G H K |
+
+You can just return the chosen measures in a tiny JSON snippet like this.
+
+{
+  ""solution"": [""measure_id"", ...]
+}
+
+""solution"" is where you list the minimal set of security measures that touch every vulnerability bucket. Each entry in the array is a placeholder for a measure identifier (so ""measure_id"" is just showing the shape — replace it with the actual IDs from the instance when you answer). This JSON is just a sketch of the expected shape, not the actual solution.
+
+Please make sure all identifiers you use match the instance exactly — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 11, ""num_sets"": 11, ""density"": 0.4132231404958678, ""sets"": [{""id"": 1, ""elements"": [1, 2, 3, 4, 6, 10, 11]}, {""id"": 2, ""elements"": [1, 3, 9]}, {""id"": 3, ""elements"": [1, 2, 5, 6, 9]}, {""id"": 4, ""elements"": [3, 5, 6, 7, 8, 10, 11]}, {""id"": 5, ""elements"": [4, 7]}, {""id"": 6, ""elements"": [1, 3, 6, 10, 11]}, {""id"": 7, ""elements"": [2, 4, 8, 9, 11]}, {""id"": 8, ""elements"": [1, 4, 7, 8, 11]}, {""id"": 9, ""elements"": [1, 2, 9]}, {""id"": 10, ""elements"": [1, 4, 10]}, {""id"": 11, ""elements"": [1, 6, 7, 8, 11]}], ""graph"": {""num_nodes"": 11, ""edges"": [{""u"": 8, ""v"": 1}, {""u"": 3, ""v"": 4}, {""u"": 3, ""v"": 5}, {""u"": 3, ""v"": 7}, {""u"": 4, ""v"": 1}, {""u"": 4, ""v"": 6}, {""u"": 4, ""v"": 10}, {""u"": 7, ""v"": 1}, {""u"": 7, ""v"": 2}, {""u"": 7, ""v"": 9}, {""u"": 6, ""v"": 11}, {""u"": 1, ""v"": 11}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0041.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0041.png""}","[7, 9, 10]",3.0,"{""num_elements"": 11, ""num_sets"": 11, ""sets"": [{""id"": ""S1"", ""elements"": [""A"", ""B"", ""C"", ""D"", ""F"", ""J"", ""K""]}, {""id"": ""S2"", ""elements"": [""A"", ""C"", ""I""]}, {""id"": ""S3"", ""elements"": [""A"", ""B"", ""E"", ""F"", ""I""]}, {""id"": ""S4"", ""elements"": [""C"", ""E"", ""F"", ""G"", ""H"", ""J"", ""K""]}, {""id"": ""S5"", ""elements"": [""D"", ""G""]}, {""id"": ""S6"", ""elements"": [""A"", ""C"", ""F"", ""J"", ""K""]}, {""id"": ""S7"", ""elements"": [""B"", ""D"", ""H"", ""I"", ""K""]}, {""id"": ""S8"", ""elements"": [""A"", ""D"", ""G"", ""H"", ""K""]}, {""id"": ""S9"", ""elements"": [""A"", ""B"", ""I""]}, {""id"": ""S10"", ""elements"": [""A"", ""D"", ""J""]}, {""id"": ""S11"", ""elements"": [""A"", ""F"", ""G"", ""H"", ""K""]}]}","[""G"", ""I"", ""J""]"
+HSP_S_043,HSP,S,43,"There’s a straightforward scheduling problem in the merch team: match product lines to all the different customer segments without bloating the catalog. The choice to make is which product lines to offer so each segment has at least one item they can buy. Success is simply measured by counting the selected product lines — the lower that count, the better the result. Make sure no segment is left without a match, and don’t double-count the same line. The concrete details follow below.
+
+{
+  ""num_product_lines"": 12,
+  ""num_customer_segments"": 11,
+  ""sets"": [
+    {
+      ""segment_id"": ""S1"",
+      ""available_product_lines"": [
+        2,
+        4,
+        5,
+        8,
+        10,
+        11
+      ]
+    },
+    {
+      ""segment_id"": ""S2"",
+      ""available_product_lines"": [
+        1,
+        4,
+        8,
+        10
+      ]
+    },
+    {
+      ""segment_id"": ""S3"",
+      ""available_product_lines"": [
+        3,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      ""segment_id"": ""S4"",
+      ""available_product_lines"": [
+        1,
+        2,
+        4,
+        10
+      ]
+    },
+    {
+      ""segment_id"": ""S5"",
+      ""available_product_lines"": [
+        2,
+        5,
+        7,
+        8,
+        12
+      ]
+    },
+    {
+      ""segment_id"": ""S6"",
+      ""available_product_lines"": [
+        2,
+        11
+      ]
+    },
+    {
+      ""segment_id"": ""S7"",
+      ""available_product_lines"": [
+        7,
+        10,
+        12
+      ]
+    },
+    {
+      ""segment_id"": ""S8"",
+      ""available_product_lines"": [
+        1,
+        2,
+        5,
+        8,
+        9
+      ]
+    },
+    {
+      ""segment_id"": ""S9"",
+      ""available_product_lines"": [
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      ""segment_id"": ""S10"",
+      ""available_product_lines"": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      ""segment_id"": ""S11"",
+      ""available_product_lines"": [
+        1,
+        6,
+        10,
+        11
+      ]
+    }
+  ]
+}
+
+Also, when you send back your pick, please use a tiny JSON layout so it's easy to read and process. Something like this:
+
+{
+  ""solution"": [""product_line_id"", ...]
+}
+
+This just means ""solution"" is the list of chosen product lines (one placeholder per selected line). The ""product_line_id"" text is a placeholder for whatever IDs you actually pick from the instance. Think of it like filling out a short form — list the IDs you want to offer so every customer segment has at least one match.
+
+This JSON is only a sketch of the expected shape, not the actual answer — replace the placeholder entries with the real IDs from the instance.
+
+Please use the identifiers exactly as they appear in the input — no renaming and no new labels. 
+for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 12, ""num_sets"": 11, ""density"": 0.3787878787878788, ""sets"": [{""id"": 1, ""elements"": [2, 4, 5, 8, 10, 11]}, {""id"": 2, ""elements"": [1, 4, 8, 10]}, {""id"": 3, ""elements"": [3, 8, 9, 10]}, {""id"": 4, ""elements"": [1, 2, 4, 10]}, {""id"": 5, ""elements"": [2, 5, 7, 8, 12]}, {""id"": 6, ""elements"": [2, 11]}, {""id"": 7, ""elements"": [7, 10, 12]}, {""id"": 8, ""elements"": [1, 2, 5, 8, 9]}, {""id"": 9, ""elements"": [8, 9, 10]}, {""id"": 10, ""elements"": [1, 2, 3, 4, 5, 6, 7, 9, 10, 11]}, {""id"": 11, ""elements"": [1, 6, 10, 11]}], ""graph"": {""num_nodes"": 12, ""edges"": [{""u"": 10, ""v"": 1}, {""u"": 10, ""v"": 2}, {""u"": 10, ""v"": 5}, {""u"": 10, ""v"": 8}, {""u"": 1, ""v"": 2}, {""u"": 1, ""v"": 4}, {""u"": 6, ""v"": 2}, {""u"": 5, ""v"": 7}, {""u"": 5, ""v"": 12}, {""u"": 2, ""v"": 11}, {""u"": 3, ""v"": 8}, {""u"": 7, ""v"": 12}, {""u"": 9, ""v"": 8}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0042.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0042.png""}","[2, 10]",2.0,"{""num_elements"": 12, ""num_sets"": 11, ""sets"": [{""id"": ""S1"", ""elements"": [2, 4, 5, 8, 10, 11]}, {""id"": ""S2"", ""elements"": [1, 4, 8, 10]}, {""id"": ""S3"", ""elements"": [3, 8, 9, 10]}, {""id"": ""S4"", ""elements"": [1, 2, 4, 10]}, {""id"": ""S5"", ""elements"": [2, 5, 7, 8, 12]}, {""id"": ""S6"", ""elements"": [2, 11]}, {""id"": ""S7"", ""elements"": [7, 10, 12]}, {""id"": ""S8"", ""elements"": [1, 2, 5, 8, 9]}, {""id"": ""S9"", ""elements"": [8, 9, 10]}, {""id"": ""S10"", ""elements"": [1, 2, 3, 4, 5, 6, 7, 9, 10, 11]}, {""id"": ""S11"", ""elements"": [1, 6, 10, 11]}]}","[2, 10]"
+HSP_S_044,HSP,S,44,"Imagine a lab tech with a checklist of symptom clusters and a drawer of tests where each test checks certain clusters — the task is to select tests that together touch every cluster. The smartest pick is the smallest collection of different tests that still covers every cluster; judge any selection by how many tests are chosen, smaller totals are preferred. No cluster can be left out, and repeating tests is pointless, so each chosen test counts once. The specific clusters and which tests cover them are shown below.
+
+{
+  ""total_tests_available"": 8,
+  ""total_symptom_clusters"": 8,
+  ""sets"": [
+    {
+      ""cluster_id"": ""S1"",
+      ""tests_covering_cluster"": [
+        4,
+        5
+      ]
+    },
+    {
+      ""cluster_id"": ""S2"",
+      ""tests_covering_cluster"": [
+        0,
+        1,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      ""cluster_id"": ""S3"",
+      ""tests_covering_cluster"": [
+        6,
+        7
+      ]
+    },
+    {
+      ""cluster_id"": ""S4"",
+      ""tests_covering_cluster"": [
+        4,
+        6,
+        7
+      ]
+    },
+    {
+      ""cluster_id"": ""S5"",
+      ""tests_covering_cluster"": [
+        1,
+        4,
+        7
+      ]
+    },
+    {
+      ""cluster_id"": ""S6"",
+      ""tests_covering_cluster"": [
+        1,
+        5
+      ]
+    },
+    {
+      ""cluster_id"": ""S7"",
+      ""tests_covering_cluster"": [
+        2,
+        6
+      ]
+    },
+    {
+      ""cluster_id"": ""S8"",
+      ""tests_covering_cluster"": [
+        3,
+        4,
+        7
+      ]
+    }
+  ]
+}
+
+If you want to send back your chosen tests, just drop them in a tiny JSON like this — super simple and easy for me to read:
+
+{
+  ""solution"": [""test_id"", ...]
+}
+
+""solution"" is the list of tests you'd pick from the drawer; each ""test_id"" is a placeholder for an actual test identifier from the instance. Think of this JSON as just the form you should fill in, not the actual answer itself.
+
+Please be sure to use the exact identifiers shown in the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 8, ""num_sets"": 8, ""density"": 0.34375, ""sets"": [{""id"": 1, ""elements"": [5, 6]}, {""id"": 2, ""elements"": [1, 2, 5, 6, 7]}, {""id"": 3, ""elements"": [7, 8]}, {""id"": 4, ""elements"": [5, 7, 8]}, {""id"": 5, ""elements"": [2, 5, 8]}, {""id"": 6, ""elements"": [2, 6]}, {""id"": 7, ""elements"": [3, 7]}, {""id"": 8, ""elements"": [4, 5, 8]}], ""graph"": {""num_nodes"": 8, ""edges"": [{""u"": 4, ""v"": 7}, {""u"": 8, ""v"": 3}, {""u"": 8, ""v"": 7}, {""u"": 7, ""v"": 5}, {""u"": 1, ""v"": 2}, {""u"": 2, ""v"": 5}, {""u"": 2, ""v"": 6}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0043.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0043.png""}","[5, 6, 7]",3.0,"{""num_elements"": 8, ""num_sets"": 8, ""sets"": [{""id"": ""S1"", ""elements"": [4, 5]}, {""id"": ""S2"", ""elements"": [0, 1, 4, 5, 6]}, {""id"": ""S3"", ""elements"": [6, 7]}, {""id"": ""S4"", ""elements"": [4, 6, 7]}, {""id"": ""S5"", ""elements"": [1, 4, 7]}, {""id"": ""S6"", ""elements"": [1, 5]}, {""id"": ""S7"", ""elements"": [2, 6]}, {""id"": ""S8"", ""elements"": [3, 4, 7]}]}","[4, 5, 6]"
+HSP_S_045,HSP,S,45,"There’s a short trip coming up with several activities on the agenda, and the goal is to pack as few different things as possible while making sure none of the activities is left without something to use. The job is to pick which items to take so each activity has at least one match; the score is simply the number of different items carried — smaller numbers win. Each activity needs at least one packed item, the same item can often cover more than one activity, and bringing unnecessary extra copies should be avoided. The specific activities and possible items appear below.
+
+There are 9 activities and 11 distinct items available.
+Activity S1: can be satisfied by 0 2 7 10.
+Activity S2: can be satisfied by 1 4 8.
+Activity S3: can be satisfied by 0 2 10.
+Activity S4: can be satisfied by 5 6 7.
+Activity S5: can be satisfied by 5 6 7 10.
+Activity S6: can be satisfied by 0 3 5 7 9 10.
+Activity S7: can be satisfied by 1 4 8 9.
+Activity S8: can be satisfied by 1 4 6.
+Activity S9: can be satisfied by 3 6 9 10.
+Aim to cover all 9 activities while using as few different items as possible from the 11 available.
+
+Oh, and when you send back the pick, just stick to a tiny JSON shape so it's easy to read and check. Something like this:
+
+{
+  ""solution"": [""item_id"", ...]
+}
+
+Here ""solution"" is the list of items you'll pack — each entry should be an identifier for one of the things that can cover activities. Think of it like filling out a short form: the array lists the item IDs you choose to bring. This JSON is only a sketch of the shape I expect, not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 11, ""num_sets"": 9, ""density"": 0.3434343434343434, ""sets"": [{""id"": 1, ""elements"": [1, 3, 8, 11]}, {""id"": 2, ""elements"": [2, 5, 9]}, {""id"": 3, ""elements"": [1, 3, 11]}, {""id"": 4, ""elements"": [6, 7, 8]}, {""id"": 5, ""elements"": [6, 7, 8, 11]}, {""id"": 6, ""elements"": [1, 4, 6, 8, 10, 11]}, {""id"": 7, ""elements"": [2, 5, 9, 10]}, {""id"": 8, ""elements"": [2, 5, 7]}, {""id"": 9, ""elements"": [4, 7, 10, 11]}], ""graph"": {""num_nodes"": 11, ""edges"": [{""u"": 5, ""v"": 9}, {""u"": 3, ""v"": 1}, {""u"": 11, ""v"": 1}, {""u"": 11, ""v"": 4}, {""u"": 11, ""v"": 8}, {""u"": 6, ""v"": 7}, {""u"": 9, ""v"": 2}, {""u"": 9, ""v"": 10}, {""u"": 8, ""v"": 7}, {""u"": 8, ""v"": 10}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0044.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0044.png""}","[5, 8, 11]",3.0,"{""num_elements"": 11, ""num_sets"": 9, ""sets"": [{""id"": ""S1"", ""elements"": [0, 2, 7, 10]}, {""id"": ""S2"", ""elements"": [1, 4, 8]}, {""id"": ""S3"", ""elements"": [0, 2, 10]}, {""id"": ""S4"", ""elements"": [5, 6, 7]}, {""id"": ""S5"", ""elements"": [5, 6, 7, 10]}, {""id"": ""S6"", ""elements"": [0, 3, 5, 7, 9, 10]}, {""id"": ""S7"", ""elements"": [1, 4, 8, 9]}, {""id"": ""S8"", ""elements"": [1, 4, 6]}, {""id"": ""S9"", ""elements"": [3, 6, 9, 10]}]}","[4, 7, 10]"
+HSP_S_046,HSP,S,46,"There’s a small editorial team trying to keep reviewer fatigue low: pick the leanest group of reviewers that still covers every incoming manuscript. Success is simple to check — count the reviewers you chose; the lower that number, the smarter the pick. At the same time, each submission must have at least one of those chosen reviewers who can handle it, and nothing should be left without a match (and repeating names won’t change the count). The concrete details are given below.
+
+- **total_reviewers_available**: 8
+- **total_manuscripts_submitted**: 7
+
+| manuscript_id | qualified_reviewers |
+|---|---|
+| S1 | 1 6 7 |
+| S2 | 2 3 4 7 8 |
+| S3 | 1 2 3 4 5 6 8 |
+| S4 | 2 5 6 |
+| S5 | 4 5 6 8 |
+| S6 | 1 3 4 5 |
+| S7 | 1 3 4 6 7 |
+
+Also, when you reply with your pick, just use this little JSON sketch so it's easy to check:
+
+{
+  ""solution"": [""reviewer_id"", ...]
+}
+
+Think of it like a tiny form: ""solution"" holds the list of reviewers you chose, and each ""reviewer_id"" is a placeholder for whatever reviewer label appears in the problem instance. It's just showing the shape I expect — not the real answer.
+
+Please be careful to use the exact identifiers from the instance input — don't rename them or invent new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 8, ""num_sets"": 7, ""density"": 0.5535714285714286, ""sets"": [{""id"": 1, ""elements"": [1, 6, 7]}, {""id"": 2, ""elements"": [2, 3, 4, 7, 8]}, {""id"": 3, ""elements"": [1, 2, 3, 4, 5, 6, 8]}, {""id"": 4, ""elements"": [2, 5, 6]}, {""id"": 5, ""elements"": [4, 5, 6, 8]}, {""id"": 6, ""elements"": [1, 3, 4, 5]}, {""id"": 7, ""elements"": [1, 3, 4, 6, 7]}], ""graph"": {""num_nodes"": 8, ""edges"": [{""u"": 1, ""v"": 6}, {""u"": 4, ""v"": 2}, {""u"": 4, ""v"": 3}, {""u"": 4, ""v"": 7}, {""u"": 2, ""v"": 8}, {""u"": 7, ""v"": 6}, {""u"": 3, ""v"": 5}, {""u"": 3, ""v"": 6}, {""u"": 5, ""v"": 8}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0045.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0045.png""}","[5, 7]",2.0,"{""num_elements"": 8, ""num_sets"": 7, ""sets"": [{""id"": ""S1"", ""elements"": [1, 6, 7]}, {""id"": ""S2"", ""elements"": [2, 3, 4, 7, 8]}, {""id"": ""S3"", ""elements"": [1, 2, 3, 4, 5, 6, 8]}, {""id"": ""S4"", ""elements"": [2, 5, 6]}, {""id"": ""S5"", ""elements"": [4, 5, 6, 8]}, {""id"": ""S6"", ""elements"": [1, 3, 4, 5]}, {""id"": ""S7"", ""elements"": [1, 3, 4, 6, 7]}]}","[5, 7]"
+HSP_S_047,HSP,S,47,"There’s a photographer trying to schedule a day to shoot many different subjects with limited time, so they want to minimize how many stops to make. The choice is which shooting locations to include so that every kind of subject has at least one place among the selected spots where it can be photographed. The idea is simple: fewer stops are better — the outcome is just the number of locations picked, and the aim is to keep that number as small as possible. No subject type can be skipped, and selecting the same location multiple times isn’t useful. The specific subjects and available locations appear below.
+
+They can choose from 12 possible stops and must photograph 12 subject types.
+For subject S1, the photographer can shoot at B E I.
+For subject S2, the photographer can shoot at B E.
+For subject S3, the photographer can shoot at A B C E F I J.
+For subject S4, the photographer can shoot at D E L.
+For subject S5, the photographer can shoot at B C D E G H I J.
+For subject S6, the photographer can shoot at C D E F I J K.
+For subject S7, the photographer can shoot at G H J.
+For subject S8, the photographer can shoot at E G H.
+For subject S9, the photographer can shoot at A D E I.
+For subject S10, the photographer can shoot at C E F G H J.
+For subject S11, the photographer can shoot at K L.
+For subject S12, the photographer can shoot at D F I K.
+The goal is to cover all 12 subjects while minimizing the number of stops chosen from the 12 available.
+
+Oh, and when you send the final answer, please use this simple JSON layout so it's easy to read and parse:
+
+{
+  ""solution"": [""location_id"", ...]
+}
+
+""solution"" should be the list of chosen shooting locations (by their IDs). The string location_id is just a placeholder showing the kind of entries expected — in your actual reply you would list the real location IDs from the instance. This JSON is just a sketch of the shape I want, not the final selection.
+
+Please be sure to use the exact identifiers from the instance input — don't rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 12, ""num_sets"": 12, ""density"": 0.3611111111111111, ""sets"": [{""id"": 1, ""elements"": [2, 5, 9]}, {""id"": 2, ""elements"": [2, 5]}, {""id"": 3, ""elements"": [1, 2, 3, 5, 6, 9, 10]}, {""id"": 4, ""elements"": [4, 5, 12]}, {""id"": 5, ""elements"": [2, 3, 4, 5, 7, 8, 9, 10]}, {""id"": 6, ""elements"": [3, 4, 5, 6, 9, 10, 11]}, {""id"": 7, ""elements"": [7, 8, 10]}, {""id"": 8, ""elements"": [5, 7, 8]}, {""id"": 9, ""elements"": [1, 4, 5, 9]}, {""id"": 10, ""elements"": [3, 5, 6, 7, 8, 10]}, {""id"": 11, ""elements"": [11, 12]}, {""id"": 12, ""elements"": [4, 6, 9, 11]}], ""graph"": {""num_nodes"": 12, ""edges"": [{""u"": 10, ""v"": 5}, {""u"": 10, ""v"": 7}, {""u"": 10, ""v"": 8}, {""u"": 6, ""v"": 4}, {""u"": 6, ""v"": 5}, {""u"": 6, ""v"": 9}, {""u"": 4, ""v"": 12}, {""u"": 11, ""v"": 9}, {""u"": 11, ""v"": 12}, {""u"": 9, ""v"": 3}, {""u"": 5, ""v"": 3}, {""u"": 1, ""v"": 3}, {""u"": 3, ""v"": 2}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0046.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0046.png""}","[5, 10, 11]",3.0,"{""num_elements"": 12, ""num_sets"": 12, ""sets"": [{""id"": ""S1"", ""elements"": [""B"", ""E"", ""I""]}, {""id"": ""S2"", ""elements"": [""B"", ""E""]}, {""id"": ""S3"", ""elements"": [""A"", ""B"", ""C"", ""E"", ""F"", ""I"", ""J""]}, {""id"": ""S4"", ""elements"": [""D"", ""E"", ""L""]}, {""id"": ""S5"", ""elements"": [""B"", ""C"", ""D"", ""E"", ""G"", ""H"", ""I"", ""J""]}, {""id"": ""S6"", ""elements"": [""C"", ""D"", ""E"", ""F"", ""I"", ""J"", ""K""]}, {""id"": ""S7"", ""elements"": [""G"", ""H"", ""J""]}, {""id"": ""S8"", ""elements"": [""E"", ""G"", ""H""]}, {""id"": ""S9"", ""elements"": [""A"", ""D"", ""E"", ""I""]}, {""id"": ""S10"", ""elements"": [""C"", ""E"", ""F"", ""G"", ""H"", ""J""]}, {""id"": ""S11"", ""elements"": [""K"", ""L""]}, {""id"": ""S12"", ""elements"": [""D"", ""F"", ""I"", ""K""]}]}","[""E"", ""J"", ""K""]"
+HSP_S_048,HSP,S,48,"Recently the band tried trimming their playlist and the challenge was to select the smallest number of songs that still hit every mood people expect. The choice is which tracks to include so each mood has at least one representative, and the best pick is the one with the fewest songs. You can compare lineups by counting the selected songs—fewer equals better—while ensuring every mood is covered and not choosing the same track twice. The full list of moods and candidate tracks is below.
+
+# total_songs_available=10
+# total_target_moods=9
+mood_id,tracks_representing_mood
+S1,1 8
+S2,2 5
+S3,3 7 8
+S4,1 3 4 7 8
+S5,5 6 7 10
+S6,2 6 7 8 10
+S7,1 2 5 7 8 10
+S8,1 4 5 6 7
+S9,7 9
+
+Oh, and when you reply with your chosen lineup, please stick to this little JSON layout so it's easy to read:
+
+{
+  ""solution"": [""track_id"", ...]
+}
+
+Here ""solution"" is just the place to list the IDs of the songs you picked — one ID per entry — and the ellipsis just means you can add as many as needed. This is only a sketch of the shape I expect, not the actual answer.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 10, ""num_sets"": 9, ""density"": 0.37777777777777777, ""sets"": [{""id"": 1, ""elements"": [1, 8]}, {""id"": 2, ""elements"": [2, 5]}, {""id"": 3, ""elements"": [3, 7, 8]}, {""id"": 4, ""elements"": [1, 3, 4, 7, 8]}, {""id"": 5, ""elements"": [5, 6, 7, 10]}, {""id"": 6, ""elements"": [2, 6, 7, 8, 10]}, {""id"": 7, ""elements"": [1, 2, 5, 7, 8, 10]}, {""id"": 8, ""elements"": [1, 4, 5, 6, 7]}, {""id"": 9, ""elements"": [7, 9]}], ""graph"": {""num_nodes"": 10, ""edges"": [{""u"": 3, ""v"": 8}, {""u"": 4, ""v"": 8}, {""u"": 9, ""v"": 10}, {""u"": 10, ""v"": 5}, {""u"": 5, ""v"": 6}, {""u"": 5, ""v"": 7}, {""u"": 6, ""v"": 2}, {""u"": 6, ""v"": 7}, {""u"": 7, ""v"": 8}, {""u"": 8, ""v"": 1}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0047.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0047.png""}","[2, 7, 8]",3.0,"{""num_elements"": 10, ""num_sets"": 9, ""sets"": [{""id"": ""S1"", ""elements"": [1, 8]}, {""id"": ""S2"", ""elements"": [2, 5]}, {""id"": ""S3"", ""elements"": [3, 7, 8]}, {""id"": ""S4"", ""elements"": [1, 3, 4, 7, 8]}, {""id"": ""S5"", ""elements"": [5, 6, 7, 10]}, {""id"": ""S6"", ""elements"": [2, 6, 7, 8, 10]}, {""id"": ""S7"", ""elements"": [1, 2, 5, 7, 8, 10]}, {""id"": ""S8"", ""elements"": [1, 4, 5, 6, 7]}, {""id"": ""S9"", ""elements"": [7, 9]}]}","[2, 7, 8]"
+HSP_S_049,HSP,S,49,"Recently the household realized the pet has several ways it likes to play, and the puzzle is which minimal set of toys will cover them all. The better move is obvious: keep the bag as small as possible — success is simply the number of toys bought, and lower is better. It’s essential that none of the play styles are left without a toy, and getting duplicate copies of a toy doesn’t help cover new behaviors. The specific items and play-style requirements are listed below.
+
+# total_toys_available=12
+# total_play_styles=12
+play_style_id,toys_covering_style
+S1,A G J
+S2,B K
+S3,A C E J K
+S4,D E F H J
+S5,C D F H J K
+S6,E F
+S7,A C I J
+S8,D E H
+S9,C G I
+S10,A C D E G H J K L
+S11,B C J L
+S12,K L
+
+Also, when you send the pick, please use a tiny JSON snippet so it's easy to read and reuse. Something like this:
+
+{
+  ""solution"": [""toy_id"", ...]
+}
+
+""solution"" is just the list of toy identifiers you'd buy to cover every play style. Keep each entry as the exact identifier from the instance (think of them like the toy's short code or SKU) — the JSON above is only the expected shape, a sketch rather than the final selection.
+
+Make sure all identifiers are used exactly as they appear in the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 12, ""num_sets"": 12, ""density"": 0.3333333333333333, ""sets"": [{""id"": 1, ""elements"": [1, 7, 10]}, {""id"": 2, ""elements"": [2, 11]}, {""id"": 3, ""elements"": [1, 3, 5, 10, 11]}, {""id"": 4, ""elements"": [4, 5, 6, 8, 10]}, {""id"": 5, ""elements"": [3, 4, 6, 8, 10, 11]}, {""id"": 6, ""elements"": [5, 6]}, {""id"": 7, ""elements"": [1, 3, 9, 10]}, {""id"": 8, ""elements"": [4, 5, 8]}, {""id"": 9, ""elements"": [3, 7, 9]}, {""id"": 10, ""elements"": [1, 3, 4, 5, 7, 8, 10, 11, 12]}, {""id"": 11, ""elements"": [2, 3, 10, 12]}, {""id"": 12, ""elements"": [11, 12]}], ""graph"": {""num_nodes"": 12, ""edges"": [{""u"": 5, ""v"": 4}, {""u"": 5, ""v"": 8}, {""u"": 5, ""v"": 10}, {""u"": 1, ""v"": 3}, {""u"": 7, ""v"": 3}, {""u"": 7, ""v"": 9}, {""u"": 12, ""v"": 2}, {""u"": 12, ""v"": 11}, {""u"": 3, ""v"": 10}, {""u"": 4, ""v"": 6}, {""u"": 10, ""v"": 11}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0048.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0048.png""}","[5, 7, 10, 11]",4.0,"{""num_elements"": 12, ""num_sets"": 12, ""sets"": [{""id"": ""S1"", ""elements"": [""A"", ""G"", ""J""]}, {""id"": ""S2"", ""elements"": [""B"", ""K""]}, {""id"": ""S3"", ""elements"": [""A"", ""C"", ""E"", ""J"", ""K""]}, {""id"": ""S4"", ""elements"": [""D"", ""E"", ""F"", ""H"", ""J""]}, {""id"": ""S5"", ""elements"": [""C"", ""D"", ""F"", ""H"", ""J"", ""K""]}, {""id"": ""S6"", ""elements"": [""E"", ""F""]}, {""id"": ""S7"", ""elements"": [""A"", ""C"", ""I"", ""J""]}, {""id"": ""S8"", ""elements"": [""D"", ""E"", ""H""]}, {""id"": ""S9"", ""elements"": [""C"", ""G"", ""I""]}, {""id"": ""S10"", ""elements"": [""A"", ""C"", ""D"", ""E"", ""G"", ""H"", ""J"", ""K"", ""L""]}, {""id"": ""S11"", ""elements"": [""B"", ""C"", ""J"", ""L""]}, {""id"": ""S12"", ""elements"": [""K"", ""L""]}]}","[""E"", ""G"", ""J"", ""K""]"
+HSP_S_050,HSP,S,50,"I’m trying to pack a tiny emergency kit for a bunch of unlikely but possible situations — the trick is to pick a handful of items so that every situation has at least one thing that would help. The decision is which specific items to put in the bag, and a better choice is simply one that uses fewer items while still giving every scenario at least one relevant item. To judge a choice, just count how many different items end up in the kit — the smaller that number, the better — and don’t include duplicates or leave any situation without something useful. The exact list of scenarios and candidate items is shown below.
+
+{
+  ""total_unique_items"": 10,
+  ""total_scenarios"": 9,
+  ""sets"": [
+    {
+      ""scenario_id"": ""S1"",
+      ""scenario_items"": [
+        ""E"",
+        ""G"",
+        ""I""
+      ]
+    },
+    {
+      ""scenario_id"": ""S2"",
+      ""scenario_items"": [
+        ""C"",
+        ""D"",
+        ""H"",
+        ""J""
+      ]
+    },
+    {
+      ""scenario_id"": ""S3"",
+      ""scenario_items"": [
+        ""B"",
+        ""C"",
+        ""D"",
+        ""G"",
+        ""J""
+      ]
+    },
+    {
+      ""scenario_id"": ""S4"",
+      ""scenario_items"": [
+        ""B"",
+        ""C"",
+        ""H""
+      ]
+    },
+    {
+      ""scenario_id"": ""S5"",
+      ""scenario_items"": [
+        ""A"",
+        ""E"",
+        ""H"",
+        ""I""
+      ]
+    },
+    {
+      ""scenario_id"": ""S6"",
+      ""scenario_items"": [
+        ""C"",
+        ""F"",
+        ""G"",
+        ""H""
+      ]
+    },
+    {
+      ""scenario_id"": ""S7"",
+      ""scenario_items"": [
+        ""A"",
+        ""C"",
+        ""E"",
+        ""I""
+      ]
+    },
+    {
+      ""scenario_id"": ""S8"",
+      ""scenario_items"": [
+        ""C"",
+        ""D"",
+        ""E"",
+        ""F"",
+        ""J""
+      ]
+    },
+    {
+      ""scenario_id"": ""S9"",
+      ""scenario_items"": [
+        ""B"",
+        ""C"",
+        ""D"",
+        ""J""
+      ]
+    }
+  ]
+}
+
+Also, when you give the actual pick, please put it in a tiny JSON snippet like this so it's easy to read:
+
+{
+  ""solution"": [""kit_item_id"", ...]
+}
+
+""solution"" is the list of item IDs you'll pack — each entry is the identifier for one thing in the kit. I used ""kit_item_id"" here as a placeholder to match the emergency-kit story; it's just to show the shape I expect, not the actual answer.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""source_file"": ""road_central.mtx"", ""k_hop"": 2, ""num_elements"": 10, ""num_sets"": 9, ""density"": 0.4, ""sets"": [{""id"": 1, ""elements"": [5, 7, 9]}, {""id"": 2, ""elements"": [3, 4, 8, 10]}, {""id"": 3, ""elements"": [2, 3, 4, 7, 10]}, {""id"": 4, ""elements"": [2, 3, 8]}, {""id"": 5, ""elements"": [1, 5, 8, 9]}, {""id"": 6, ""elements"": [3, 6, 7, 8]}, {""id"": 7, ""elements"": [1, 3, 5, 9]}, {""id"": 8, ""elements"": [3, 4, 5, 6, 10]}, {""id"": 9, ""elements"": [2, 3, 4, 10]}], ""graph"": {""num_nodes"": 10, ""edges"": [{""u"": 9, ""v"": 5}, {""u"": 7, ""v"": 5}, {""u"": 7, ""v"": 8}, {""u"": 6, ""v"": 8}, {""u"": 3, ""v"": 2}, {""u"": 3, ""v"": 4}, {""u"": 3, ""v"": 8}, {""u"": 3, ""v"": 10}, {""u"": 5, ""v"": 1}]}, ""viz_instance"": ""generated_data/HSP/viz/HSP_S/instance_0049.png"", ""viz_solution"": ""generated_data/HSP/viz/HSP_S/solution_0049.png""}","[3, 5]",2.0,"{""num_elements"": 10, ""num_sets"": 9, ""sets"": [{""id"": ""S1"", ""elements"": [""E"", ""G"", ""I""]}, {""id"": ""S2"", ""elements"": [""C"", ""D"", ""H"", ""J""]}, {""id"": ""S3"", ""elements"": [""B"", ""C"", ""D"", ""G"", ""J""]}, {""id"": ""S4"", ""elements"": [""B"", ""C"", ""H""]}, {""id"": ""S5"", ""elements"": [""A"", ""E"", ""H"", ""I""]}, {""id"": ""S6"", ""elements"": [""C"", ""F"", ""G"", ""H""]}, {""id"": ""S7"", ""elements"": [""A"", ""C"", ""E"", ""I""]}, {""id"": ""S8"", ""elements"": [""C"", ""D"", ""E"", ""F"", ""J""]}, {""id"": ""S9"", ""elements"": [""B"", ""C"", ""D"", ""J""]}]}","[""C"", ""E""]"

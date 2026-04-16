@@ -1,0 +1,10 @@
+{
+  "openai": "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "anthropic": "sk-ant-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "deepseek": "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "gemini": "AIzaSyxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "openrouter": "sk-or-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xiaomi": "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+
+  "vertex_project_id": "your-gcp-project-id"
+}

@@ -1,0 +1,1699 @@
+id,task_id,difficulty_tier,example_index,prompt,surface_format,indexing_scheme,instance_canonical_json,reference_solution_canonical_json,reference_objective_value,instance_surface_json,reference_solution_surface_json
+MLP_S_001,MLP,S,1,"There’s a single route to plan from the central sorting hub to a bunch of delivery points, and the only real choice is the order in which the driver visits them. What counts as a good plan is simple: note the time the driver reaches each address, add up all those arrival times, and aim for the smallest possible total — that means customers overall got their deliveries sooner. The van has to start at the hub and visit every address exactly once; no stops can be skipped or repeated. The specific addresses and timings are shown below.
+
+Below are the 5 nodes, with the hub as node A.
+
+| location_id | x_coordinate | y_coordinate |
+|---|---|---|
+| A | 50 | 0 |
+| B | 100 | 0 |
+| C | 0 | 33 |
+| D | 54 | 1 |
+| E | 84 | 100 |
+
+Use these coordinates to compute travel times and the cumulative arrival total, and plan the visit order that minimizes overall latency.
+
+Also, when you send back the planned route, keep it simple and put it in this tiny JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [hub_id, stop_id, ..., hub_id]
+}
+
+Here ""solution"" is just the route: start with the hub, list each delivery stop in the order the driver visits them, and finish back at the hub. The hub_id / stop_id bits are placeholders showing the expected layout — replace them with the actual IDs from the instance when you answer. This snippet is only a sketch of the shape I want, not the actual route.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"[[50, 0], [100, 0], [0, 33], [54, 1], [84, 100]]","[0, 3, 1, 4, 2, 0]",464.5165114428251,"{""problem_type"": ""MLP"", ""num_nodes"": 5, ""nodes"": [{""id"": ""A"", ""x"": 50, ""y"": 0}, {""id"": ""B"", ""x"": 100, ""y"": 0}, {""id"": ""C"", ""x"": 0, ""y"": 33}, {""id"": ""D"", ""x"": 54, ""y"": 1}, {""id"": ""E"", ""x"": 84, ""y"": 100}], ""depot"": ""A""}","[""A"", ""D"", ""B"", ""E"", ""C"", ""A""]"
+MLP_S_002,MLP,S,2,"It’s been a busy season, so the work plan starts at the equipment shed and needs a smart order for tending every street tree on the block. A good order is simply one where the trees, when you add up the time you reach each of them, come out with a smaller overall total. No tree can be left out or done twice, the trip begins at the shed, and the full list of trees and locations appears below.
+
+Start at shed 0 and visit all 6 locations.
+Visit tree 0 at (0, 0).
+Visit tree 1 at (100, 83).
+Visit tree 2 at (1, 100).
+Visit tree 3 at (98, 65).
+Visit tree 4 at (47, 96).
+Visit tree 5 at (47, 97).
+Choose an order that minimizes the sum of arrival times across the 6 locations starting from shed 0.
+
+Oh, and to keep things machine-friendly, please give the tour in this little JSON shape when you reply — nothing fancy, just the order we’ll follow:
+
+{
+  ""solution"": [shed_id, tree_id, ..., shed_id]
+}
+
+""solution"" is the visit order: start at the shed (first placeholder), list each tree/location id in the order you reach them, and come back to the shed at the end. This is just a sketch of the expected shape, not the actual tour.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.  
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,zero_based,"[[0, 0], [100, 83], [1, 100], [98, 65], [47, 96], [47, 97]]","[0, 2, 5, 4, 1, 3, 0]",814.6687679942831,"{""problem_type"": ""MLP"", ""num_nodes"": 6, ""nodes"": [{""id"": 0, ""x"": 0, ""y"": 0}, {""id"": 1, ""x"": 100, ""y"": 83}, {""id"": 2, ""x"": 1, ""y"": 100}, {""id"": 3, ""x"": 98, ""y"": 65}, {""id"": 4, ""x"": 47, ""y"": 96}, {""id"": 5, ""x"": 47, ""y"": 97}], ""depot"": 0}","[0, 2, 5, 4, 1, 3, 0]"
+MLP_S_003,MLP,S,3,"Picture this: a librarian hops into a van at the branch and has to make a handful of neighborhood calls — the goal is to arrange those calls so that if you note the time the librarian gets to each stop and add all those arrival times up, that grand total is as small as it can be. It’s a matter of ordering the visits, making sure every stop is covered exactly once, and preferring routes with a lower sum of arrival times. The concrete locations and timings are shown below.
+
+# total_locations_including_branch=5
+# branch_node_id=A
+stop_id,x_coord,y_coord
+A,100,0
+B,40,81
+C,0,88
+D,34,100
+E,55,94
+
+If you want to send the route back, keep it simple and use this little JSON shape — just a single ""solution"" list showing the depot (where the librarian starts) and the stops in the order they're visited.
+
+{
+  ""solution"": [branch_id, stop_id, ..., branch_id]
+}
+
+Think of it like a filled-in form: branch_id is the starting branch (the van's home base), each stop_id is a neighborhood call in the sequence you visit them, and the final branch_id closes the loop if you return to the branch. This is just the sketch of the shape I want, not your actual answer.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new labels.  
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"[[100, 0], [40, 81], [0, 88], [34, 100], [55, 94]]","[0, 1, 4, 3, 2, 0]",542.4916146080337,"{""problem_type"": ""MLP"", ""num_nodes"": 5, ""nodes"": [{""id"": ""A"", ""x"": 100, ""y"": 0}, {""id"": ""B"", ""x"": 40, ""y"": 81}, {""id"": ""C"", ""x"": 0, ""y"": 88}, {""id"": ""D"", ""x"": 34, ""y"": 100}, {""id"": ""E"", ""x"": 55, ""y"": 94}], ""depot"": ""A""}","[""A"", ""B"", ""E"", ""D"", ""C"", ""A""]"
+MLP_S_004,MLP,S,4,"On a typical shift the food truck departs from the kitchen and must visit a set of event locations across the city, and deciding the visiting sequence is the main puzzle. To judge a sequence, note when the truck arrives at each event, sum those arrival times, and pick the sequence whose total is the smallest — that way the whole day’s arrivals happen earlier overall. The route must include every event exactly one time, no skipping, no double visits. The concrete details of the trip are listed below.
+
+There are 9 locations in total and the route begins at kitchen 0.
+
+| location_id | map_x | map_y |
+|---|---|---|
+| 0 | 93 | 56 |
+| 1 | 20 | 0 |
+| 2 | 62 | 60 |
+| 3 | 0 | 36 |
+| 4 | 14 | 18 |
+| 5 | 68 | 72 |
+| 6 | 100 | 84 |
+| 7 | 76 | 46 |
+| 8 | 71 | 100 |
+
+Use these location entries to compute arrival times and judge routes accordingly.
+
+When you send the route back, just stick to this simple JSON shape so it's easy to parse — nothing fancy, just the sequence in order.
+
+{
+  ""solution"": [kitchen_id, event_id, ..., kitchen_id]
+}
+
+""solution"" is the array with the visiting order: start at the kitchen, list every event exactly once in the order the truck visits them, and finish back at the kitchen. This is just a sketch of the shape I expect, not the actual route.
+
+Please use the exact identifiers from the problem input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,zero_based,"[[93, 56], [20, 0], [62, 60], [0, 36], [14, 18], [68, 72], [100, 84], [76, 46], [71, 100]]","[0, 7, 2, 5, 6, 8, 3, 4, 1, 0]",1031.5837271742525,"{""problem_type"": ""MLP"", ""num_nodes"": 9, ""nodes"": [{""id"": 0, ""x"": 93, ""y"": 56}, {""id"": 1, ""x"": 20, ""y"": 0}, {""id"": 2, ""x"": 62, ""y"": 60}, {""id"": 3, ""x"": 0, ""y"": 36}, {""id"": 4, ""x"": 14, ""y"": 18}, {""id"": 5, ""x"": 68, ""y"": 72}, {""id"": 6, ""x"": 100, ""y"": 84}, {""id"": 7, ""x"": 76, ""y"": 46}, {""id"": 8, ""x"": 71, ""y"": 100}], ""depot"": 0}","[0, 7, 2, 5, 6, 8, 3, 4, 1, 0]"
+MLP_S_005,MLP,S,5,"We have a nurse leaving the clinic with several patients to check on at their homes, and the only decision is which route to take and in what order to knock on doors. A better route is one that gets people seen earlier overall — if you add up the arrival time for each patient, the best plan makes that sum as low as possible. Everyone on the list needs a visit, and nobody should be visited more than once. The concrete patient locations and specifics follow below.
+
+We have 8 locations in total, starting from the clinic at node A.
+
+| location_id | x_coordinate_map | y_coordinate_map |
+|---|---|---|
+| A | 89 | 31 |
+| B | 60 | 88 |
+| C | 100 | 72 |
+| D | 0 | 81 |
+| E | 31 | 43 |
+| F | 20 | 0 |
+| G | 81 | 100 |
+| H | 55 | 44 |
+
+We will visit each location once, starting from the clinic, and aim to minimize the sum of arrival times.
+
+Oh, and when you give me the route, a compact JSON snippet like this works great — nice and simple so I can parse it easily:
+
+{
+  ""solution"": [clinic_id, patient_id, ..., clinic_id]
+}
+
+""solution"" is the visiting order: start at the clinic, list each patient once in the order they'll be visited, and end back at the clinic. Think of the placeholders (clinic_id, patient_id, ...) as blanks you'll fill with the exact IDs from the instance. This JSON is just a template — not the real route, just the shape I need.
+
+Please make sure you use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"[[89, 31], [60, 88], [100, 72], [0, 81], [31, 43], [20, 0], [81, 100], [55, 44]]","[0, 2, 6, 1, 7, 4, 5, 3, 0]",1042.507915007583,"{""problem_type"": ""MLP"", ""num_nodes"": 8, ""nodes"": [{""id"": ""A"", ""x"": 89, ""y"": 31}, {""id"": ""B"", ""x"": 60, ""y"": 88}, {""id"": ""C"", ""x"": 100, ""y"": 72}, {""id"": ""D"", ""x"": 0, ""y"": 81}, {""id"": ""E"", ""x"": 31, ""y"": 43}, {""id"": ""F"", ""x"": 20, ""y"": 0}, {""id"": ""G"", ""x"": 81, ""y"": 100}, {""id"": ""H"", ""x"": 55, ""y"": 44}], ""depot"": ""A""}","[""A"", ""C"", ""G"", ""B"", ""H"", ""E"", ""F"", ""D"", ""A""]"
+MLP_S_006,MLP,S,6,"On the schedule is a field run that begins at the office and must include every worksite; the choice is the order to visit them so that, when each arrival time is recorded and those times are summed, that summed number is as small as possible. Each location gets a single visit (typically you can choose whether to return to the office afterwards), and the full, concrete details are listed below.
+
+There are 5 worksites to visit; the run begins at office 0.
+Worksite 0 is located at (100, 8).
+Worksite 1 is located at (0, 100).
+Worksite 2 is located at (86, 0).
+Worksite 3 is located at (73, 89).
+Worksite 4 is located at (83, 43).
+The run must visit each of the 5 worksites exactly once, starting at 0.
+
+Also, when you send the route back, just use a little JSON snippet like this so it's easy to parse:
+
+{
+  ""solution"": [""office_id"", ""worksite_id"", ..., ""office_id""]
+}
+
+This just shows the shape I expect: ""solution"" is the ordered list you plan to follow — start at the office, list each worksite in the order you arrive, and (typically) come back to the office. It’s only a sketch of the format, not the actual route.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"[[100, 8], [0, 100], [86, 0], [73, 89], [83, 43]]","[0, 2, 4, 3, 1, 0]",361.78456802858784,"{""problem_type"": ""MLP"", ""num_nodes"": 5, ""nodes"": [{""id"": 0, ""x"": 100, ""y"": 8}, {""id"": 1, ""x"": 0, ""y"": 100}, {""id"": 2, ""x"": 86, ""y"": 0}, {""id"": 3, ""x"": 73, ""y"": 89}, {""id"": 4, ""x"": 83, ""y"": 43}], ""depot"": 0}","[0, 2, 4, 3, 1, 0]"
+MLP_S_007,MLP,S,7,"We’ve got a rehearsal space as home base and a stack of venues to play, and the practical question is how to order our stops so the whole tour feels efficient. That means picking the travel order (no venue left out, no backtracking to the same spot twice) and then checking how we did by summing the arrival time at each venue — the lower that sum, the sooner the crowd hears us on average. The specific venues and times are listed below.
+
+Here are the 5 locations (the rehearsal space is A):
+Stop A: located at (100, 0) — a spot we’ll visit on the tour.
+Stop B: located at (71, 100) — a spot we’ll visit on the tour.
+Stop C: located at (8, 93) — a spot we’ll visit on the tour.
+Stop D: located at (12, 4) — a spot we’ll visit on the tour.
+Stop E: located at (0, 30) — a spot we’ll visit on the tour.
+Now we pick the order that visits each stop once and minimizes the sum of arrival times.
+
+Also, when you send back the proposed route, just drop it in this simple JSON shape so it's easy to read and validate:
+
+{
+  ""solution"": [rehearsal_space_id, venue_id, ..., rehearsal_space_id]
+}
+
+This array is just the visit order — start at the rehearsal space, list each venue's ID in the order you’d play them, and come back to the rehearsal space at the end. The placeholders above show the shape I expect; they're a sketch, not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".""",nl,names,"[[100, 0], [71, 100], [8, 93], [12, 4], [0, 30]]","[0, 3, 4, 2, 1, 0]",628.6698815498034,"{""problem_type"": ""MLP"", ""num_nodes"": 5, ""nodes"": [{""id"": ""A"", ""x"": 100, ""y"": 0}, {""id"": ""B"", ""x"": 71, ""y"": 100}, {""id"": ""C"", ""x"": 8, ""y"": 93}, {""id"": ""D"", ""x"": 12, ""y"": 4}, {""id"": ""E"", ""x"": 0, ""y"": 30}], ""depot"": ""A""}","[""A"", ""D"", ""E"", ""C"", ""B"", ""A""]"
+MLP_S_008,MLP,S,8,"One busy morning, the bakery van sets off with orders for every café and market in town, and the planner has to decide the best order to make the drops. The winning order is the one that gets most places their orders earlier — if you add together the arrival time at each stop you get a single number to compare, and lower is better. The run starts at the bakery and every place must be served exactly once; no skips, no repeats. The exact locations and their coordinates are shown below.
+
+There are 5 locations in all, and the bakery is node 1.
+Stop 1 is located at (94, 100).
+Stop 2 is located at (100, 99).
+Stop 3 is located at (0, 0).
+Stop 4 is located at (83, 2).
+Stop 5 is located at (45, 99).
+The run begins at the bakery; visit each stop once and aim to minimize the sum of arrival times.
+
+If you're going to give the route in a tidy, machine-friendly way, just stick to this simple JSON shape:
+
+{
+  ""solution"": [bakery_id, shop_id, ..., bakery_id]
+}
+
+Think of it like a little form: ""solution"" is the ordered list of stops the van will make, starting at the bakery (bakery_id), visiting each shop exactly once, and returning to the bakery. The names in the array are placeholders for the identifiers you'll see in the instance.
+
+This is only a sketch of the expected shape — don't replace these placeholder names with real values here; when you give the actual answer, use the exact identifiers from the instance input, no renaming and no new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"[[94, 100], [100, 99], [0, 0], [83, 2], [45, 99]]","[0, 1, 4, 3, 2, 0]",480.71060850101276,"{""problem_type"": ""MLP"", ""num_nodes"": 5, ""nodes"": [{""id"": 1, ""x"": 94, ""y"": 100}, {""id"": 2, ""x"": 100, ""y"": 99}, {""id"": 3, ""x"": 0, ""y"": 0}, {""id"": 4, ""x"": 83, ""y"": 2}, {""id"": 5, ""x"": 45, ""y"": 99}], ""depot"": 1}","[1, 2, 5, 4, 3, 1]"
+MLP_S_009,MLP,S,9,"I can picture a technician pulling out of headquarters with a list of repair requests across town — the goal is to decide the order to visit every house so that, when you add up the clock times at which each visit begins, that total is as small as it can be. The rule is simple: every requesting household must be visited once and only once, no skips or repeats, and different orders give different totals because some homes are reached sooner than others. The concrete details for this run are shown below.
+
+I can picture 10 total locations including the headquarters, with the technician pulling out from headquarters node A.
+
+| location_node_id | x_coordinate_map | y_coordinate_map |
+|---|---|---|
+| A | 33 | 52 |
+| B | 11 | 9 |
+| C | 99 | 0 |
+| D | 100 | 77 |
+| E | 94 | 64 |
+| F | 65 | 35 |
+| G | 0 | 97 |
+| H | 2 | 100 |
+| I | 43 | 76 |
+| J | 53 | 93 |
+
+That's the complete list of 10 locations, starting from node A.
+
+If you'd like the answer in a tidy, machine-friendly layout, just return a JSON object with the tour order. Something casual like this works fine:
+
+{
+  ""solution"": [hq_id, house_id, ..., hq_id]
+}
+
+Here ""solution"" is the visiting order: the first entry is where the van leaves from, the middle entries are each household visited once, and the final entry is the van coming back to base. Think of the placeholders (hq_id, house_id, etc.) as blanks you fill in with the actual IDs from the problem — this is just the shape I expect, not the real route.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"[[33, 52], [11, 9], [99, 0], [100, 77], [94, 64], [65, 35], [0, 97], [2, 100], [43, 76], [53, 93]]","[0, 8, 6, 7, 9, 3, 4, 5, 2, 1, 0]",1565.5410279861653,"{""problem_type"": ""MLP"", ""num_nodes"": 10, ""nodes"": [{""id"": ""A"", ""x"": 33, ""y"": 52}, {""id"": ""B"", ""x"": 11, ""y"": 9}, {""id"": ""C"", ""x"": 99, ""y"": 0}, {""id"": ""D"", ""x"": 100, ""y"": 77}, {""id"": ""E"", ""x"": 94, ""y"": 64}, {""id"": ""F"", ""x"": 65, ""y"": 35}, {""id"": ""G"", ""x"": 0, ""y"": 97}, {""id"": ""H"", ""x"": 2, ""y"": 100}, {""id"": ""I"", ""x"": 43, ""y"": 76}, {""id"": ""J"", ""x"": 53, ""y"": 93}], ""depot"": ""A""}","[""A"", ""I"", ""G"", ""H"", ""J"", ""D"", ""E"", ""F"", ""C"", ""B"", ""A""]"
+MLP_S_010,MLP,S,10,"We kick things off at the town depot, load up, and then hit every assigned bin location around the neighborhood. The main decision is the sequence of visits: pick a route that gets to high-wait stops earlier so the overall waiting time is reduced. Practically, that means take the time you arrive at each pickup and sum them up — the smaller that sum, the better the day’s plan. Each pickup point must be covered, and no stop gets skipped or doubled. Concrete details appear below.
+
+# total_pickup_points_including_depot=8
+# depot_node_id=0
+pickup_node_id,map_x_coordinate,map_y_coordinate
+0,92,52
+1,0,100
+2,48,0
+3,3,27
+4,6,2
+5,60,39
+6,100,0
+7,81,41
+
+By the way, when you send the route back, keep it in this simple JSON shape so it's easy to read and parse:
+
+{
+  ""solution"": [depot_loc, bin_loc, ..., depot_loc]
+}
+
+Think of ""solution"" as the ordered list of stops — you start at the depot, list each pickup once in the order you visit them, and finish back at the depot. The depot_loc and bin_loc bits are just placeholders showing where the actual IDs go; they should be replaced with the exact identifiers from the instance when you reply.
+
+Important: use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"[[92, 52], [0, 100], [48, 0], [3, 27], [6, 2], [60, 39], [100, 0], [81, 41]]","[0, 7, 5, 2, 4, 3, 1, 6, 0]",970.7596706953743,"{""problem_type"": ""MLP"", ""num_nodes"": 8, ""nodes"": [{""id"": 0, ""x"": 92, ""y"": 52}, {""id"": 1, ""x"": 0, ""y"": 100}, {""id"": 2, ""x"": 48, ""y"": 0}, {""id"": 3, ""x"": 3, ""y"": 27}, {""id"": 4, ""x"": 6, ""y"": 2}, {""id"": 5, ""x"": 60, ""y"": 39}, {""id"": 6, ""x"": 100, ""y"": 0}, {""id"": 7, ""x"": 81, ""y"": 41}], ""depot"": 0}","[0, 7, 5, 2, 4, 3, 1, 6, 0]"
+MLP_S_011,MLP,S,11,"There’s a small team that starts at the health center and goes out to a list of outreach sites, and they need to pick the sequence of stops. What makes one sequence better than another is straightforward: take the time they reach each site and add all those arrival times up — the plan with the smaller total is preferred. They must cover every site exactly once, with no skips or duplicate visits. The concrete details will be shown below.
+
+{
+  ""total_sites"": 10,
+  ""nodes"": [
+    {
+      ""site_id"": 0,
+      ""x_coordinate"": 90,
+      ""y_coordinate"": 0
+    },
+    {
+      ""site_id"": 1,
+      ""x_coordinate"": 56,
+      ""y_coordinate"": 72
+    },
+    {
+      ""site_id"": 2,
+      ""x_coordinate"": 88,
+      ""y_coordinate"": 45
+    },
+    {
+      ""site_id"": 3,
+      ""x_coordinate"": 63,
+      ""y_coordinate"": 84
+    },
+    {
+      ""site_id"": 4,
+      ""x_coordinate"": 14,
+      ""y_coordinate"": 74
+    },
+    {
+      ""site_id"": 5,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 6
+    },
+    {
+      ""site_id"": 6,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 11
+    },
+    {
+      ""site_id"": 7,
+      ""x_coordinate"": 8,
+      ""y_coordinate"": 54
+    },
+    {
+      ""site_id"": 8,
+      ""x_coordinate"": 80,
+      ""y_coordinate"": 3
+    },
+    {
+      ""site_id"": 9,
+      ""x_coordinate"": 97,
+      ""y_coordinate"": 100
+    }
+  ],
+  ""health_center_id"": 0
+}
+
+When you send back the route, just use this little JSON layout:
+
+{
+  ""solution"": [health_center_id, site_id, ..., health_center_id]
+}
+
+This ""solution"" array is simply the visit order: start at the health center, list each outreach site exactly once in the order the team will reach them, and finish back at the health center. The ""..."" just stands in for the other sites you’ll list — treat this as a template, not the real answer.
+
+Please be sure to use the exact identifiers given in the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"[[90, 0], [56, 72], [88, 45], [63, 84], [14, 74], [0, 6], [100, 11], [8, 54], [80, 3], [97, 100]]","[0, 8, 6, 2, 9, 3, 1, 4, 7, 5, 0]",1313.0844374913631,"{""problem_type"": ""MLP"", ""num_nodes"": 10, ""nodes"": [{""id"": 0, ""x"": 90, ""y"": 0}, {""id"": 1, ""x"": 56, ""y"": 72}, {""id"": 2, ""x"": 88, ""y"": 45}, {""id"": 3, ""x"": 63, ""y"": 84}, {""id"": 4, ""x"": 14, ""y"": 74}, {""id"": 5, ""x"": 0, ""y"": 6}, {""id"": 6, ""x"": 100, ""y"": 11}, {""id"": 7, ""x"": 8, ""y"": 54}, {""id"": 8, ""x"": 80, ""y"": 3}, {""id"": 9, ""x"": 97, ""y"": 100}], ""depot"": 0}","[0, 8, 6, 2, 9, 3, 1, 4, 7, 5, 0]"
+MLP_S_012,MLP,S,12,"Out on a calm morning the team pushes off from the ramp to inspect every mooring, and they only get to pick the sequence of checks. The aim is to make the overall waiting time low: for every mooring note the time it was first reached, add those times up, and the lower the combined number the better the route. Nothing can be left out or checked twice, and the precise coordinates and instance info are shown below.
+
+They will visit 7 locations in total, launching from ramp 1.
+Location 1 sits at (91, 100) and the team notes its arrival time when they reach it.
+Location 2 sits at (21, 33) and the team notes its arrival time when they reach it.
+Location 3 sits at (83, 69) and the team notes its arrival time when they reach it.
+Location 4 sits at (0, 0) and the team notes its arrival time when they reach it.
+Location 5 sits at (84, 44) and the team notes its arrival time when they reach it.
+Location 6 sits at (70, 67) and the team notes its arrival time when they reach it.
+Location 7 sits at (100, 81) and the team notes its arrival time when they reach it.
+The team must visit each site exactly once to minimize the summed arrival times.
+
+If you want to send the route back to me, just drop it into this little JSON shape so it's easy to pick up:
+
+{
+  ""solution"": [ramp_id, mooring_id, ..., ramp_id]
+}
+
+Here ""solution"" is an ordered list showing where the crew goes: start at the ramp, list each mooring in the order you visit them, and finish back at the ramp. The ... just means ""keep listing all the moorings"" — it's a sketch of the shape, not the actual route.
+
+Please use the exact identifiers given in the instance input — don't rename them or invent new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"[[91, 100], [21, 33], [83, 69], [0, 0], [84, 44], [70, 67], [100, 81]]","[0, 6, 2, 5, 4, 1, 3, 0]",530.5967244158364,"{""problem_type"": ""MLP"", ""num_nodes"": 7, ""nodes"": [{""id"": 1, ""x"": 91, ""y"": 100}, {""id"": 2, ""x"": 21, ""y"": 33}, {""id"": 3, ""x"": 83, ""y"": 69}, {""id"": 4, ""x"": 0, ""y"": 0}, {""id"": 5, ""x"": 84, ""y"": 44}, {""id"": 6, ""x"": 70, ""y"": 67}, {""id"": 7, ""x"": 100, ""y"": 81}], ""depot"": 1}","[1, 7, 3, 6, 5, 2, 4, 1]"
+MLP_S_013,MLP,S,13,"Many people would just pick the nearest next gig, but this performer wants the whole day to run smoothly: head out from the studio and visit every private booking in an order that keeps the total of all arrival times as low as possible — literally add up when the truck gets to each stop and prefer the plan with the smallest combined number. All events on the roster have to be covered exactly once; the specific event details are shown below.
+
+{
+  ""total_stops_including_studio"": 7,
+  ""nodes"": [
+    {
+      ""event_node_id"": 1,
+      ""x_coordinate"": 17,
+      ""y_coordinate"": 36
+    },
+    {
+      ""event_node_id"": 2,
+      ""x_coordinate"": 90,
+      ""y_coordinate"": 84
+    },
+    {
+      ""event_node_id"": 3,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 79
+    },
+    {
+      ""event_node_id"": 4,
+      ""x_coordinate"": 47,
+      ""y_coordinate"": 14
+    },
+    {
+      ""event_node_id"": 5,
+      ""x_coordinate"": 39,
+      ""y_coordinate"": 12
+    },
+    {
+      ""event_node_id"": 6,
+      ""x_coordinate"": 91,
+      ""y_coordinate"": 0
+    },
+    {
+      ""event_node_id"": 7,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 100
+    }
+  ],
+  ""studio_node_id"": 1
+}
+
+I'll keep it simple: the reply I need from you should follow this JSON shape — just a single list showing the studio first, every booking in the order you plan to visit them, and the studio again at the end.
+
+{
+  ""solution"": [studio_id, booking_id, ..., studio_id]
+}
+
+""solution"" is the visit order: start at the studio, then each booking exactly once, then back to the studio. The placeholders above (studio_id, booking_id, ...) are just that — placeholders showing where the real IDs go. This block is only a sketch of the expected shape, not the actual answer.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"[[17, 36], [90, 84], [100, 79], [47, 14], [39, 12], [91, 0], [0, 100]]","[0, 4, 3, 5, 2, 1, 6, 0]",773.5761009130364,"{""problem_type"": ""MLP"", ""num_nodes"": 7, ""nodes"": [{""id"": 1, ""x"": 17, ""y"": 36}, {""id"": 2, ""x"": 90, ""y"": 84}, {""id"": 3, ""x"": 100, ""y"": 79}, {""id"": 4, ""x"": 47, ""y"": 14}, {""id"": 5, ""x"": 39, ""y"": 12}, {""id"": 6, ""x"": 91, ""y"": 0}, {""id"": 7, ""x"": 0, ""y"": 100}], ""depot"": 1}","[1, 5, 4, 6, 3, 2, 7, 1]"
+MLP_S_014,MLP,S,14,"Someone at the florist counter is sketching routes on a napkin, trying to figure out how to drop off every bouquet without wasting customers’ time. The plan has to begin at the shop and visit each delivery point once; to compare plans, simply add up the arrival time at every stop — the route with the smallest combined arrival times is the one they’ll pick. It’s important that no stop gets skipped or delivered to more than once. The exact stops and distances are shown below.
+
+There are 7 locations on the napkin; the florist shop (start) is A.
+
+| location_id | x_coord | y_coord |
+|---|---|---|
+| A | 8 | 63 |
+| B | 4 | 0 |
+| C | 20 | 28 |
+| D | 53 | 56 |
+| E | 0 | 75 |
+| F | 68 | 8 |
+| G | 100 | 100 |
+
+Routes must start at A and visit all 7 locations exactly once.
+
+If you want to hand me a route, just drop it in this little JSON shape so it's easy to read:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+This just says: ""solution"" is the ordered list of stops — start at the shop (depot_id), visit each delivery point once (each location_id), and come back to the shop. Think of it as the form you fill out with the stop names in the order the driver will visit them.
+
+This is only a sketch of the expected shape, not the actual answer — fill in the real identifiers from the instance when you send the route. Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels. For example: ""1"" or ""23"", ""A"" or ""B"", ""A1"" or ""X7"".",markdown_table,names,"[[8, 63], [4, 0], [20, 28], [53, 56], [0, 75], [68, 8], [100, 100]]","[0, 4, 2, 1, 5, 3, 6, 0]",829.3753984222161,"{""problem_type"": ""MLP"", ""num_nodes"": 7, ""nodes"": [{""id"": ""A"", ""x"": 8, ""y"": 63}, {""id"": ""B"", ""x"": 4, ""y"": 0}, {""id"": ""C"", ""x"": 20, ""y"": 28}, {""id"": ""D"", ""x"": 53, ""y"": 56}, {""id"": ""E"", ""x"": 0, ""y"": 75}, {""id"": ""F"", ""x"": 68, ""y"": 8}, {""id"": ""G"", ""x"": 100, ""y"": 100}], ""depot"": ""A""}","[""A"", ""E"", ""C"", ""B"", ""F"", ""D"", ""G"", ""A""]"
+MLP_S_015,MLP,S,15,"Many meter readers think of the job as: leave the yard, follow an order that gets each meter read sooner rather than later, and judge a route by adding up the time of arrival at every stop — the lower that combined time, the better the plan. Every meter must be read exactly once; the specific stops are detailed below.
+
+# total_meters_including_yard=7
+# yard_node_id=0
+meter_node_id,map_x_coordinate,map_y_coordinate
+0,89,0
+1,49,67
+2,16,66
+3,100,20
+4,0,9
+5,5,100
+6,55,80
+
+When you send back the route, just use a tiny JSON layout like this so it's easy to read and machine-friendly:
+
+{
+  ""solution"": [yard_id, meter_id, ..., yard_id]
+}
+
+Think of that array as: start at the yard, list each meter stop in the order you plan to visit them, and finish back at the yard. It's just a sketch of the shape I want, not the actual route itself.
+
+Please use the exact identifiers from the instance input — don't rename them or add new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"[[89, 0], [49, 67], [16, 66], [100, 20], [0, 9], [5, 100], [55, 80]]","[0, 3, 1, 6, 2, 5, 4, 0]",827.9122772591849,"{""problem_type"": ""MLP"", ""num_nodes"": 7, ""nodes"": [{""id"": 0, ""x"": 89, ""y"": 0}, {""id"": 1, ""x"": 49, ""y"": 67}, {""id"": 2, ""x"": 16, ""y"": 66}, {""id"": 3, ""x"": 100, ""y"": 20}, {""id"": 4, ""x"": 0, ""y"": 9}, {""id"": 5, ""x"": 5, ""y"": 100}, {""id"": 6, ""x"": 55, ""y"": 80}], ""depot"": 0}","[0, 3, 1, 6, 2, 5, 4, 0]"
+MLP_S_016,MLP,S,16,"There’s a delivery day where the school sends out one vehicle to visit every partner site to drop off packets, and the question is how to sequence those stops. The goal is to pick an order so that, after recording the time of each drop and totaling those times, that combined number is as small as possible. Every partner must be visited exactly once — no skipping places or repeating them. The actual sites and their locations appear below.
+
+# total_locations_count=7
+# school_node_id=0
+site_id,x_coordinate,y_coordinate
+0,70,17
+1,67,0
+2,39,62
+3,100,79
+4,48,100
+5,48,41
+6,0,7
+
+When you’re ready to give the route, please use this simple JSON shape so it’s easy to read and check:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+The ""solution"" array should list the depot and all the partner sites in the order the vehicle visits them — start at the depot and end at the depot — just a straightforward sequence. Think of it like filling in a little form: the order you list is the route order. This block is only a sketch of the expected shape, not the actual route.
+
+Please be sure to use the exact identifiers from the instance input — don’t rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"[[70, 17], [67, 0], [39, 62], [100, 79], [48, 100], [48, 41], [0, 7]]","[0, 1, 5, 2, 4, 3, 6, 0]",773.445525521123,"{""problem_type"": ""MLP"", ""num_nodes"": 7, ""nodes"": [{""id"": 0, ""x"": 70, ""y"": 17}, {""id"": 1, ""x"": 67, ""y"": 0}, {""id"": 2, ""x"": 39, ""y"": 62}, {""id"": 3, ""x"": 100, ""y"": 79}, {""id"": 4, ""x"": 48, ""y"": 100}, {""id"": 5, ""x"": 48, ""y"": 41}, {""id"": 6, ""x"": 0, ""y"": 7}], ""depot"": 0}","[0, 1, 5, 2, 4, 3, 6, 0]"
+MLP_S_017,MLP,S,17,"Many photographers face the same puzzle: start at the studio, swing by a set of houses, and try to get all the sessions rolling quickly. The choice of route matters because you judge a route by adding up when each shoot begins — lower total start-times means a better route — and the plan should hit each client exactly once. The full list of client locations is given below.
+
+{
+  ""total_locations_including_studio"": 6,
+  ""nodes"": [
+    {
+      ""location_id"": ""A"",
+      ""location_x_coordinate"": 100,
+      ""location_y_coordinate"": 100
+    },
+    {
+      ""location_id"": ""B"",
+      ""location_x_coordinate"": 22,
+      ""location_y_coordinate"": 0
+    },
+    {
+      ""location_id"": ""C"",
+      ""location_x_coordinate"": 8,
+      ""location_y_coordinate"": 38
+    },
+    {
+      ""location_id"": ""D"",
+      ""location_x_coordinate"": 3,
+      ""location_y_coordinate"": 59
+    },
+    {
+      ""location_id"": ""E"",
+      ""location_x_coordinate"": 0,
+      ""location_y_coordinate"": 6
+    },
+    {
+      ""location_id"": ""F"",
+      ""location_x_coordinate"": 82,
+      ""location_y_coordinate"": 56
+    }
+  ],
+  ""studio_node_id"": ""A""
+}
+
+When you send back a route, just use this simple JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [studio_id, client_id, ..., studio_id]
+}
+
+Think of that as a little form: the first item is your starting studio, then list each client (house) exactly once in the order you plan to visit them, and finish with the studio again. It's just a sketch of the shape I need, not the real answer.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",json,names,"[[100, 100], [22, 0], [8, 38], [3, 59], [0, 6], [82, 56]]","[0, 5, 3, 2, 4, 1, 0]",707.4593504435662,"{""problem_type"": ""MLP"", ""num_nodes"": 6, ""nodes"": [{""id"": ""A"", ""x"": 100, ""y"": 100}, {""id"": ""B"", ""x"": 22, ""y"": 0}, {""id"": ""C"", ""x"": 8, ""y"": 38}, {""id"": ""D"", ""x"": 3, ""y"": 59}, {""id"": ""E"", ""x"": 0, ""y"": 6}, {""id"": ""F"", ""x"": 82, ""y"": 56}], ""depot"": ""A""}","[""A"", ""F"", ""D"", ""C"", ""E"", ""B"", ""A""]"
+MLP_S_018,MLP,S,18,"Someone on the maintenance team starts at the station and has to visit every signal box in turn. The idea is to arrange the stops so that, if you record the time you get to each box and add those times up, the overall tally is as low as it can be — and every box needs to be visited once without repeats or omissions. The exact positions and instance data are provided below.
+
+{
+  ""total_locations_count"": 6,
+  ""nodes"": [
+    {
+      ""location_id"": ""A"",
+      ""x_coordinate"": 31,
+      ""y_coordinate"": 24
+    },
+    {
+      ""location_id"": ""B"",
+      ""x_coordinate"": 31,
+      ""y_coordinate"": 30
+    },
+    {
+      ""location_id"": ""C"",
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 0
+    },
+    {
+      ""location_id"": ""D"",
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 16
+    },
+    {
+      ""location_id"": ""E"",
+      ""x_coordinate"": 41,
+      ""y_coordinate"": 100
+    },
+    {
+      ""location_id"": ""F"",
+      ""x_coordinate"": 31,
+      ""y_coordinate"": 27
+    }
+  ],
+  ""start_station"": ""A""
+}
+
+When you give me the route, just stick to a tiny JSON sketch like this — nice and simple:
+
+{
+  ""solution"": [""station_id"", ""box_id"", ""..."", ""station_id""]
+}
+
+Think of this as a little form: ""solution"" holds the sequence of stops — start at the station, list each signal box in the order you visit them, and finish back at the station. The example values are placeholders showing the shape, not the actual answer.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"[[31, 24], [31, 30], [0, 0], [100, 16], [41, 100], [31, 27]]","[0, 5, 1, 2, 3, 4, 0]",461.6116404836964,"{""problem_type"": ""MLP"", ""num_nodes"": 6, ""nodes"": [{""id"": ""A"", ""x"": 31, ""y"": 24}, {""id"": ""B"", ""x"": 31, ""y"": 30}, {""id"": ""C"", ""x"": 0, ""y"": 0}, {""id"": ""D"", ""x"": 100, ""y"": 16}, {""id"": ""E"", ""x"": 41, ""y"": 100}, {""id"": ""F"", ""x"": 31, ""y"": 27}], ""depot"": ""A""}","[""A"", ""F"", ""B"", ""C"", ""D"", ""E"", ""A""]"
+MLP_S_019,MLP,S,19,"A gardener leaves from the depot with a list of neighborhood beds and a hose, and has to decide which bed to water first and which to leave for later. Because walking and driving take time, each bed will be watered at a particular moment, and the whole plan is judged by summing those moments — the lower the total, the better the plan. The gardener must visit all beds exactly once (nothing omitted, nothing watered twice), and the travel times between beds determine those watering moments. The detailed locations and numbers for this run are shown below.
+
+# total_beds_including_depot=6
+# depot_id=A
+bed_id,bed_x_coord,bed_y_coord
+A,31,23
+B,12,100
+C,0,0
+D,27,88
+E,100,71
+F,24,11
+
+If you want to give the watering plan in a tidy, machine-friendly way, just follow this little JSON shape:
+
+{
+  ""solution"": [shed_id, bed_id, ..., shed_id]
+}
+
+Think of that array as the gardener's walk: start at the shed, visit each bed in the listed order, and come back to the shed at the end. It's just a sketch of the shape I expect, not the actual route — you'll fill in the real identifiers from the instance.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"[[31, 23], [12, 100], [0, 0], [27, 88], [100, 71], [24, 11]]","[0, 5, 2, 3, 1, 4, 0]",582.2859708538259,"{""problem_type"": ""MLP"", ""num_nodes"": 6, ""nodes"": [{""id"": ""A"", ""x"": 31, ""y"": 23}, {""id"": ""B"", ""x"": 12, ""y"": 100}, {""id"": ""C"", ""x"": 0, ""y"": 0}, {""id"": ""D"", ""x"": 27, ""y"": 88}, {""id"": ""E"", ""x"": 100, ""y"": 71}, {""id"": ""F"", ""x"": 24, ""y"": 11}], ""depot"": ""A""}","[""A"", ""F"", ""C"", ""D"", ""B"", ""E"", ""A""]"
+MLP_S_020,MLP,S,20,"On a typical morning a maintenance crew rolls out from the depot with a list of streetlights to inspect, and the main call is the order they follow so some lamps aren’t left waiting too long. One order beats another if, from the moment they depart, the total of all the arrival times at the lights (each light’s waiting time added together) is smaller; that total is found by summing each light’s wait from departure until inspection. The run must start at the garage and include every single light once, with no skipping or revisits. Concrete details are shown below.
+
+There are 5 nodes in this instance, and the crew departs from garage node 0.
+
+| light_node_id | x_coordinate | y_coordinate |
+|---|---|---|
+| 0 | 54 | 59 |
+| 1 | 0 | 0 |
+| 2 | 100 | 75 |
+| 3 | 12 | 55 |
+| 4 | 66 | 100 |
+
+The tour must start at 0 and visit all 5 nodes exactly once.
+
+Oh, and when you send the route back, please stick to this little JSON shape so it’s easy to read by whatever’s checking it:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of that as a simple form: the solution array is the order the crew drives in — starting from the depot, listing each light once, and finishing back at the depot. It’s just a sketch of the shape I need, not the real route.
+
+Please don’t rename any of the identifiers from the instance — use them exactly as given, and don’t invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"[[54, 59], [0, 0], [100, 75], [12, 55], [66, 100]]","[0, 2, 4, 3, 1, 0]",518.2967836126933,"{""problem_type"": ""MLP"", ""num_nodes"": 5, ""nodes"": [{""id"": 0, ""x"": 54, ""y"": 59}, {""id"": 1, ""x"": 0, ""y"": 0}, {""id"": 2, ""x"": 100, ""y"": 75}, {""id"": 3, ""x"": 12, ""y"": 55}, {""id"": 4, ""x"": 66, ""y"": 100}], ""depot"": 0}","[0, 2, 4, 3, 1, 0]"
+MLP_S_021,MLP,S,21,"Picture this: a drone lifts off from the hangar with a checklist of landmarks to photograph, and the planner has to decide which one to go to first, second, and so on. A plan that gets sites earlier is preferable, and the simple way to tell is to add together the time each landmark was reached — the smaller that total, the better the run. Every landmark on the list must be visited exactly once, with the flight beginning at the hangar. The exact site locations and other specifics appear below.
+
+{
+  ""total_locations"": 9,
+  ""nodes"": [
+    {
+      ""site_id"": ""A"",
+      ""x_coordinate"": 77,
+      ""y_coordinate"": 24
+    },
+    {
+      ""site_id"": ""B"",
+      ""x_coordinate"": 14,
+      ""y_coordinate"": 68
+    },
+    {
+      ""site_id"": ""C"",
+      ""x_coordinate"": 9,
+      ""y_coordinate"": 32
+    },
+    {
+      ""site_id"": ""D"",
+      ""x_coordinate"": 80,
+      ""y_coordinate"": 100
+    },
+    {
+      ""site_id"": ""E"",
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 6
+    },
+    {
+      ""site_id"": ""F"",
+      ""x_coordinate"": 88,
+      ""y_coordinate"": 52
+    },
+    {
+      ""site_id"": ""G"",
+      ""x_coordinate"": 25,
+      ""y_coordinate"": 0
+    },
+    {
+      ""site_id"": ""H"",
+      ""x_coordinate"": 53,
+      ""y_coordinate"": 30
+    },
+    {
+      ""site_id"": ""I"",
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 84
+    }
+  ],
+  ""hangar_id"": ""A""
+}
+
+Also, when you hand over the actual route, please use this simple JSON layout so it's easy to check automatically:
+
+{
+  ""solution"": [hangar_id, landmark_id, ..., hangar_id]
+}
+
+This just means ""solution"" is an ordered list showing where the drone goes: start at the hangar, list each landmark in the order visited, and come back to the hangar. The placeholder names (like hangar_id and landmark_id) are just sketches of the kind of labels you'll see — they show the shape the answer should have, not the real stops.
+
+Quick reminder: use the identifiers exactly as they appear in the instance input — do not rename them or invent new ones. For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,names,"[[77, 24], [14, 68], [9, 32], [80, 100], [0, 6], [88, 52], [25, 0], [53, 30], [100, 84]]","[0, 7, 6, 4, 2, 1, 3, 8, 5, 0]",1227.8214534337758,"{""problem_type"": ""MLP"", ""num_nodes"": 9, ""nodes"": [{""id"": ""A"", ""x"": 77, ""y"": 24}, {""id"": ""B"", ""x"": 14, ""y"": 68}, {""id"": ""C"", ""x"": 9, ""y"": 32}, {""id"": ""D"", ""x"": 80, ""y"": 100}, {""id"": ""E"", ""x"": 0, ""y"": 6}, {""id"": ""F"", ""x"": 88, ""y"": 52}, {""id"": ""G"", ""x"": 25, ""y"": 0}, {""id"": ""H"", ""x"": 53, ""y"": 30}, {""id"": ""I"", ""x"": 100, ""y"": 84}], ""depot"": ""A""}","[""A"", ""H"", ""G"", ""E"", ""C"", ""B"", ""D"", ""I"", ""F"", ""A""]"
+MLP_S_022,MLP,S,22,"On a busy morning the mobile groomer has to plan a route from the studio to several client houses. The decision is which house to visit first, second, and so on so that, when the time reached at each stop is recorded and those times are all added together, that overall number is kept as low as possible. A schedule with a smaller total of arrival times is the preferable one. The groomer has to include every booked home and avoid duplicating stops; the specific locations and timing info are shown below.
+
+There are 8 locations listed and the groomer's studio is node 1.
+The groomer treats location 1 at coordinates (0, 30) as a scheduled stop.
+The groomer treats location 2 at coordinates (100, 13) as a scheduled stop.
+The groomer treats location 3 at coordinates (0, 17) as a scheduled stop.
+The groomer treats location 4 at coordinates (56, 37) as a scheduled stop.
+The groomer treats location 5 at coordinates (36, 3) as a scheduled stop.
+The groomer treats location 6 at coordinates (100, 90) as a scheduled stop.
+The groomer treats location 7 at coordinates (92, 0) as a scheduled stop.
+The groomer treats location 8 at coordinates (100, 100) as a scheduled stop.
+Confirm the groomer includes all 8 locations and starts from studio node 1.
+
+I'll lay out the answer in a tiny JSON sketch so it's obvious what shape I expect the route to be.
+
+{
+  ""solution"": [studio_id, house_id, ..., studio_id]
+}
+
+Think of this like a simple form: ""solution"" is the ordered list of stops — start at the studio, list each client's house ID in the order they'll be visited, and return to the studio at the end. The names in the example are just placeholders showing where each identifier goes.
+
+This is only a template of the shape you should follow, not the actual route — fill it in with the real IDs from the instance input exactly as they appear (don't rename or invent labels).
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"[[0, 30], [100, 13], [0, 17], [56, 37], [36, 3], [100, 90], [92, 0], [100, 100]]","[0, 2, 4, 3, 6, 1, 5, 7, 0]",936.2768887767181,"{""problem_type"": ""MLP"", ""num_nodes"": 8, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 30}, {""id"": 2, ""x"": 100, ""y"": 13}, {""id"": 3, ""x"": 0, ""y"": 17}, {""id"": 4, ""x"": 56, ""y"": 37}, {""id"": 5, ""x"": 36, ""y"": 3}, {""id"": 6, ""x"": 100, ""y"": 90}, {""id"": 7, ""x"": 92, ""y"": 0}, {""id"": 8, ""x"": 100, ""y"": 100}], ""depot"": 1}","[1, 3, 5, 4, 7, 2, 6, 8, 1]"
+MLP_S_023,MLP,S,23,"There's an electrician heading out from the supply yard with a day full of outlet repairs across the neighborhood. The trick is choosing the path through the streets so that if you take the time he arrives at each repair and add them all up, that total is as low as possible — shorter arrival times earlier on reduce the grand total. Every reported outlet must be visited exactly once, no skips and no repeats. The specific stops and their coordinates are shown below.
+
+{
+  ""total_locations_including_depot"": 6,
+  ""nodes"": [
+    {
+      ""location_id"": 1,
+      ""x_coordinate"": 73,
+      ""y_coordinate"": 100
+    },
+    {
+      ""location_id"": 2,
+      ""x_coordinate"": 70,
+      ""y_coordinate"": 0
+    },
+    {
+      ""location_id"": 3,
+      ""x_coordinate"": 6,
+      ""y_coordinate"": 52
+    },
+    {
+      ""location_id"": 4,
+      ""x_coordinate"": 77,
+      ""y_coordinate"": 33
+    },
+    {
+      ""location_id"": 5,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 30
+    },
+    {
+      ""location_id"": 6,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 54
+    }
+  ],
+  ""supply_depot_id"": 1
+}
+
+Also, when you send the route back, just stick to a tiny JSON snippet in this shape so it's easy to read and parse:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Here ""solution"" is just an ordered list of the stop identifiers — the sequence the electrician will visit (starting at the supply yard and returning there if you include it at the end). Think of it like filling in a little route form: each item is the ID of a repair stop, in the order they'll be visited. This JSON is only a sketch of the expected shape, not the actual answer.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"[[73, 100], [70, 0], [6, 52], [77, 33], [0, 30], [100, 54]]","[0, 5, 3, 1, 4, 2, 0]",667.5937364609301,"{""problem_type"": ""MLP"", ""num_nodes"": 6, ""nodes"": [{""id"": 1, ""x"": 73, ""y"": 100}, {""id"": 2, ""x"": 70, ""y"": 0}, {""id"": 3, ""x"": 6, ""y"": 52}, {""id"": 4, ""x"": 77, ""y"": 33}, {""id"": 5, ""x"": 0, ""y"": 30}, {""id"": 6, ""x"": 100, ""y"": 54}], ""depot"": 1}","[1, 6, 4, 2, 5, 3, 1]"
+MLP_S_024,MLP,S,24,"We’re following a food seller who loads up at the central market and then goes from plaza to plaza around town. The choice to make is the sequence of stops after leaving the market, and a good sequence gets customers at all plazas as quickly as possible. To compare sequences, add up how long it took to reach each plaza on that trip — the lower that total, the better — and the vendor must visit every plaza, without leaving any out or visiting the same plaza twice. The specific map and stop list appear below.
+
+# total_stops_including_market=7
+# market_node_id=A
+stop_id,x_coord,y_coord
+A,100,100
+B,26,76
+C,22,80
+D,73,5
+E,17,0
+F,0,43
+G,86,75
+
+Also, when you send back your proposed route, please use this simple JSON layout so it's easy to parse:
+
+{
+  ""solution"": [market_id, plaza_id, ..., market_id]
+}
+
+This shows the order the vendor visits places: start at the market (first item), then the plazas in the middle in the order visited, and finally back to the market (last item). It's just a sketch of the shape I need — don't fill it in here.
+
+Please use the exact identifiers from the instance input; don't rename them or invent new ones.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"[[100, 100], [26, 76], [22, 80], [73, 5], [17, 0], [0, 43], [86, 75]]","[0, 6, 1, 2, 5, 4, 3, 0]",772.4269210154557,"{""problem_type"": ""MLP"", ""num_nodes"": 7, ""nodes"": [{""id"": ""A"", ""x"": 100, ""y"": 100}, {""id"": ""B"", ""x"": 26, ""y"": 76}, {""id"": ""C"", ""x"": 22, ""y"": 80}, {""id"": ""D"", ""x"": 73, ""y"": 5}, {""id"": ""E"", ""x"": 17, ""y"": 0}, {""id"": ""F"", ""x"": 0, ""y"": 43}, {""id"": ""G"", ""x"": 86, ""y"": 75}], ""depot"": ""A""}","[""A"", ""G"", ""B"", ""C"", ""F"", ""E"", ""D"", ""A""]"
+MLP_S_025,MLP,S,25,"We have a single outreach worker heading out from the charity’s office to check on several shelters around town. The decision is about the sequence of stops: different orders mean the worker arrives at each shelter at different moments, and the “score” for a route is just the sum of all those arrival moments — lower totals are better because they mean shelters were reached sooner overall. The run starts at headquarters and every shelter needs one visit, no repeats or misses allowed. Concrete details are listed below.
+
+We list 10 locations in total, beginning from headquarters node A.
+Location A is at coordinates (69, 99).
+Location B is at coordinates (0, 28).
+Location C is at coordinates (100, 0).
+Location D is at coordinates (21, 32).
+Location E is at coordinates (44, 100).
+Location F is at coordinates (12, 7).
+Location G is at coordinates (90, 96).
+Location H is at coordinates (12, 71).
+Location I is at coordinates (6, 40).
+Location J is at coordinates (90, 43).
+We start at A and will visit every listed location once across the 10 entries.
+
+I'll show the simple JSON shape I want you to follow for your answer — nothing fancy, just a single field with the ordered stops.
+
+{
+  ""solution"": [headquarters_id, shelter_id, ..., headquarters_id]
+}
+
+This shows that ""solution"" should be a list giving the visit sequence: start at the headquarters, then the shelters in the order you choose, and finally back to headquarters. The placeholders are just placeholders — swap them for the actual IDs from the instance when you give the real route. This is only a sketch of the expected shape, not the final answer.
+
+Please make sure every identifier in your final JSON matches exactly what appears in the instance input — don't rename IDs or invent new ones.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"[[69, 99], [0, 28], [100, 0], [21, 32], [44, 100], [12, 7], [90, 96], [12, 71], [6, 40], [90, 43]]","[0, 6, 4, 7, 8, 1, 5, 3, 9, 2, 0]",1479.490090793629,"{""problem_type"": ""MLP"", ""num_nodes"": 10, ""nodes"": [{""id"": ""A"", ""x"": 69, ""y"": 99}, {""id"": ""B"", ""x"": 0, ""y"": 28}, {""id"": ""C"", ""x"": 100, ""y"": 0}, {""id"": ""D"", ""x"": 21, ""y"": 32}, {""id"": ""E"", ""x"": 44, ""y"": 100}, {""id"": ""F"", ""x"": 12, ""y"": 7}, {""id"": ""G"", ""x"": 90, ""y"": 96}, {""id"": ""H"", ""x"": 12, ""y"": 71}, {""id"": ""I"", ""x"": 6, ""y"": 40}, {""id"": ""J"", ""x"": 90, ""y"": 43}], ""depot"": ""A""}","[""A"", ""G"", ""E"", ""H"", ""I"", ""B"", ""F"", ""D"", ""J"", ""C"", ""A""]"
+MLP_S_026,MLP,S,26,"Many companies face a morning where one pest-control tech has a stack of jobs and needs a sensible route out of the office. The choice is the visit order, and the score to watch is the sum of the times when each property gets treated — the lower that total, the better the plan. Every property on the list must be visited one time, starting from the office, and the specific locations and coordinates follow below.
+
+# total_locations=7
+# office_node_id=0
+location_id,x_coordinate,y_coordinate
+0,0,39
+1,100,89
+2,84,100
+3,19,0
+4,97,71
+5,36,11
+6,93,100
+
+When you send the route back, a little JSON like this is perfect and keeps everything machine-friendly:
+
+{
+  ""solution"": [office_id, property_id, ..., office_id]
+}
+
+Think of that array as the visit order: start at the office, list each property (by its identifier) in the order the tech will visit them, and finish back at the office. It's just a simple sketch of the shape I need — not the real answer itself.
+
+Please use the exact identifiers from the instance input; don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"[[0, 39], [100, 89], [84, 100], [19, 0], [97, 71], [36, 11], [93, 100]]","[0, 3, 5, 4, 1, 6, 2, 0]",793.6074692219913,"{""problem_type"": ""MLP"", ""num_nodes"": 7, ""nodes"": [{""id"": 0, ""x"": 0, ""y"": 39}, {""id"": 1, ""x"": 100, ""y"": 89}, {""id"": 2, ""x"": 84, ""y"": 100}, {""id"": 3, ""x"": 19, ""y"": 0}, {""id"": 4, ""x"": 97, ""y"": 71}, {""id"": 5, ""x"": 36, ""y"": 11}, {""id"": 6, ""x"": 93, ""y"": 100}], ""depot"": 0}","[0, 3, 5, 4, 1, 6, 2, 0]"
+MLP_S_027,MLP,S,27,"I picture a blood-collection van pulling out of the clinic in the morning and heading to a handful of community centers — the only choice to make is what order it visits them in. The plan that’s best is the one that gets the centers visited earlier on average: for any route, note the time the van arrives at each center and add all those arrival times together, and a smaller total is better. The van has to start at the clinic and stop at every center exactly once (no skipping places or circling back), and the concrete details — locations and travel times — are shown below.
+
+{
+  ""total_locations_including_clinic"": 10,
+  ""nodes"": [
+    {
+      ""location_id"": 1,
+      ""map_x_coordinate"": 9,
+      ""map_y_coordinate"": 13
+    },
+    {
+      ""location_id"": 2,
+      ""map_x_coordinate"": 79,
+      ""map_y_coordinate"": 22
+    },
+    {
+      ""location_id"": 3,
+      ""map_x_coordinate"": 60,
+      ""map_y_coordinate"": 55
+    },
+    {
+      ""location_id"": 4,
+      ""map_x_coordinate"": 67,
+      ""map_y_coordinate"": 55
+    },
+    {
+      ""location_id"": 5,
+      ""map_x_coordinate"": 27,
+      ""map_y_coordinate"": 81
+    },
+    {
+      ""location_id"": 6,
+      ""map_x_coordinate"": 50,
+      ""map_y_coordinate"": 89
+    },
+    {
+      ""location_id"": 7,
+      ""map_x_coordinate"": 66,
+      ""map_y_coordinate"": 7
+    },
+    {
+      ""location_id"": 8,
+      ""map_x_coordinate"": 100,
+      ""map_y_coordinate"": 0
+    },
+    {
+      ""location_id"": 9,
+      ""map_x_coordinate"": 0,
+      ""map_y_coordinate"": 43
+    },
+    {
+      ""location_id"": 10,
+      ""map_x_coordinate"": 100,
+      ""map_y_coordinate"": 100
+    }
+  ],
+  ""clinic_node_id"": 1
+}
+
+You can just give the route in a tiny JSON object like this so everything is machine-friendly and simple to check.
+
+{
+  ""solution"": [clinic_id, center_id, ..., clinic_id]
+}
+
+This shows the order the van would visit places: start at the clinic, then the community centers in the sequence you pick, and finish back at the clinic. It’s just a sketch of the shape I want — don’t treat the placeholders as the real answer.
+
+Please use the exact identifiers from the instance input (don’t rename them or invent new ones). 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"[[9, 13], [79, 22], [60, 55], [67, 55], [27, 81], [50, 89], [66, 7], [100, 0], [0, 43], [100, 100]]","[0, 8, 4, 5, 2, 3, 1, 6, 7, 9, 0]",1442.344459915992,"{""problem_type"": ""MLP"", ""num_nodes"": 10, ""nodes"": [{""id"": 1, ""x"": 9, ""y"": 13}, {""id"": 2, ""x"": 79, ""y"": 22}, {""id"": 3, ""x"": 60, ""y"": 55}, {""id"": 4, ""x"": 67, ""y"": 55}, {""id"": 5, ""x"": 27, ""y"": 81}, {""id"": 6, ""x"": 50, ""y"": 89}, {""id"": 7, ""x"": 66, ""y"": 7}, {""id"": 8, ""x"": 100, ""y"": 0}, {""id"": 9, ""x"": 0, ""y"": 43}, {""id"": 10, ""x"": 100, ""y"": 100}], ""depot"": 1}","[1, 9, 5, 6, 3, 4, 2, 7, 8, 10, 1]"
+MLP_S_028,MLP,S,28,"We’ve got a sales rep who starts the day at the office and needs to call on a set of leads around town. The choice is which route to take so that, if you tally the clock time when the rep gets to each lead and add them all together, that grand total is as small as it can be. The plan has to include every lead exactly once — nothing left out or repeated — and the trip begins at the branch (often ending there). The concrete stop-by-stop details are listed below.
+
+There are 10 stops listed below and our route must start at 0.
+We’ll visit stop 0 at (6, 61).
+We’ll visit stop 1 at (0, 0).
+We’ll visit stop 2 at (70, 40).
+We’ll visit stop 3 at (71, 44).
+We’ll visit stop 4 at (19, 10).
+We’ll visit stop 5 at (49, 95).
+We’ll visit stop 6 at (100, 65).
+We’ll visit stop 7 at (14, 100).
+We’ll visit stop 8 at (36, 84).
+We’ll visit stop 9 at (20, 37).
+We must visit each stop exactly once and order the visits to minimize the sum of arrival times.
+
+When you send back the route, just use this simple JSON layout so it's clear what stops go in what order.
+
+{
+  ""solution"": [""office_id"", ""lead_id"", ..., ""office_id""]
+}
+
+This is just a sketch: ""solution"" holds the ordered list of stops the rep will make, starting at the office and (usually) ending there. The placeholders are there to show the shape — replace them with the actual IDs from the instance when you reply.
+
+Please be sure to use the identifiers exactly as they appear in the instance input — don't rename them or invent new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"[[6, 61], [0, 0], [70, 40], [71, 44], [19, 10], [49, 95], [100, 65], [14, 100], [36, 84], [20, 37]]","[0, 7, 8, 5, 6, 3, 2, 9, 4, 1, 0]",1471.4485043304217,"{""problem_type"": ""MLP"", ""num_nodes"": 10, ""nodes"": [{""id"": 0, ""x"": 6, ""y"": 61}, {""id"": 1, ""x"": 0, ""y"": 0}, {""id"": 2, ""x"": 70, ""y"": 40}, {""id"": 3, ""x"": 71, ""y"": 44}, {""id"": 4, ""x"": 19, ""y"": 10}, {""id"": 5, ""x"": 49, ""y"": 95}, {""id"": 6, ""x"": 100, ""y"": 65}, {""id"": 7, ""x"": 14, ""y"": 100}, {""id"": 8, ""x"": 36, ""y"": 84}, {""id"": 9, ""x"": 20, ""y"": 37}], ""depot"": 0}","[0, 7, 8, 5, 6, 3, 2, 9, 4, 1, 0]"
+MLP_S_029,MLP,S,29,"Backstage the scheduler is figuring out how to send a crew from the studio to a handful of sites for the day’s shots, and the big decision is the order to go in. The constraint is obvious: every site must be visited and none should be visited more than once. The way to compare plans is to note the clock time of arrival at each place, sum all those times, and choose the route with the smallest summed arrival time. The concrete stop list and travel specifics are listed below.
+
+{
+  ""total_shoot_locations"": 5,
+  ""nodes"": [
+    {
+      ""site_id"": ""A"",
+      ""map_x_coordinate"": 0,
+      ""map_y_coordinate"": 92
+    },
+    {
+      ""site_id"": ""B"",
+      ""map_x_coordinate"": 96,
+      ""map_y_coordinate"": 96
+    },
+    {
+      ""site_id"": ""C"",
+      ""map_x_coordinate"": 61,
+      ""map_y_coordinate"": 73
+    },
+    {
+      ""site_id"": ""D"",
+      ""map_x_coordinate"": 100,
+      ""map_y_coordinate"": 0
+    },
+    {
+      ""site_id"": ""E"",
+      ""map_x_coordinate"": 55,
+      ""map_y_coordinate"": 100
+    }
+  ],
+  ""studio_depot_id"": ""A""
+}
+
+Oh, and when you send the plan back, just follow this simple JSON shape so I can read it straight away:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+""solution"" is just the ordered list of stops: start at the depot/studio, list each site once in the order you plan to visit them, and finish back at the depot. Think of it like filling in a little itinerary form — the placeholders are where the exact site IDs go. This is just a sketch of the shape I need, not the actual route.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"[[0, 92], [96, 96], [61, 73], [100, 0], [55, 100]]","[0, 4, 2, 1, 3, 0]",485.1358553822751,"{""problem_type"": ""MLP"", ""num_nodes"": 5, ""nodes"": [{""id"": ""A"", ""x"": 0, ""y"": 92}, {""id"": ""B"", ""x"": 96, ""y"": 96}, {""id"": ""C"", ""x"": 61, ""y"": 73}, {""id"": ""D"", ""x"": 100, ""y"": 0}, {""id"": ""E"", ""x"": 55, ""y"": 100}], ""depot"": ""A""}","[""A"", ""E"", ""C"", ""B"", ""D"", ""A""]"
+MLP_S_030,MLP,S,30,"We’re planning a morning route for a broadband tech who leaves the office and has to stop at every customer’s place. The decision is which house to go to first, second, third, etc., because a “good” plan is the one where, if you add up how long each customer waited until the tech arrived, that grand total is as low as it can be. The tech must visit every customer once (no skipping, no repeat visits) and begins the trip from the depot. Concrete details about the stops are listed below.
+
+We have 10 total stops including the depot, which is 1.
+
+| location_id | x_coordinate | y_coordinate |
+|---|---|---|
+| 1 | 100 | 50 |
+| 2 | 50 | 23 |
+| 3 | 11 | 100 |
+| 4 | 46 | 42 |
+| 5 | 90 | 97 |
+| 6 | 35 | 0 |
+| 7 | 52 | 80 |
+| 8 | 32 | 50 |
+| 9 | 54 | 21 |
+| 10 | 0 | 1 |
+
+We'll use these 10 location details (starting at 1) to pick the visit order that minimizes total customer wait.
+
+Also, when you send back the planned route, please put it in a tiny JSON snippet like this:
+
+{
+  ""solution"": [office_id, customer_id, ..., office_id]
+}
+
+Here the ""solution"" array is just the visit order: start at the office, list each customer in the order the tech will visit them, and finish back at the office. Think of it like filling in a short form — who to visit first, second, third, and so on. That JSON is only a sketch of the shape I need, not the actual route.
+
+Please be sure to use the exact identifiers from the instance input — don't rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"[[100, 50], [50, 23], [11, 100], [46, 42], [90, 97], [35, 0], [52, 80], [32, 50], [54, 21], [0, 1]]","[0, 4, 6, 7, 3, 1, 8, 5, 9, 2, 0]",1484.2063096536715,"{""problem_type"": ""MLP"", ""num_nodes"": 10, ""nodes"": [{""id"": 1, ""x"": 100, ""y"": 50}, {""id"": 2, ""x"": 50, ""y"": 23}, {""id"": 3, ""x"": 11, ""y"": 100}, {""id"": 4, ""x"": 46, ""y"": 42}, {""id"": 5, ""x"": 90, ""y"": 97}, {""id"": 6, ""x"": 35, ""y"": 0}, {""id"": 7, ""x"": 52, ""y"": 80}, {""id"": 8, ""x"": 32, ""y"": 50}, {""id"": 9, ""x"": 54, ""y"": 21}, {""id"": 10, ""x"": 0, ""y"": 1}], ""depot"": 1}","[1, 5, 7, 8, 4, 2, 9, 6, 10, 3, 1]"
+MLP_S_031,MLP,S,31,"At the community kitchen the driver has to decide the order of stops for a delivery run that must start from the kitchen and reach everyone on the recipient list. The decision is the order in which the van visits those addresses, with the simple rule that each recipient gets one visit and no one is skipped or visited twice. The way to tell which order is better is to take the time each person receives their meal, add up all those delivery times, and pick the route with the lower total — that gives the quickest overall service to the group. The detailed stop list and locations are shown below.
+
+There are 6 locations listed, with the kitchen at node 0.
+Stop 0 is at coordinates (14, 0).
+Stop 1 is at coordinates (70, 7).
+Stop 2 is at coordinates (5, 1).
+Stop 3 is at coordinates (97, 100).
+Stop 4 is at coordinates (100, 19).
+Stop 5 is at coordinates (0, 51).
+Use these locations to compute arrival times and the total delivery time for the run.
+
+Oh, and when you give the route back, just use a tiny JSON shape like this so it’s easy to read and parse:
+
+{
+  ""solution"": [kitchen_id, recipient_id, ..., kitchen_id]
+}
+
+""solution"" is the ordered list of stops: start at the kitchen, then the recipients in the order the van visits them, and finally back to the kitchen. The names in the array are placeholders showing the shape I want — they aren’t the real labels, just a sketch of the expected format.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename anything or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"[[14, 0], [70, 7], [5, 1], [97, 100], [100, 19], [0, 51]]","[0, 2, 5, 1, 4, 3, 0]",639.9922716184655,"{""problem_type"": ""MLP"", ""num_nodes"": 6, ""nodes"": [{""id"": 0, ""x"": 14, ""y"": 0}, {""id"": 1, ""x"": 70, ""y"": 7}, {""id"": 2, ""x"": 5, ""y"": 1}, {""id"": 3, ""x"": 97, ""y"": 100}, {""id"": 4, ""x"": 100, ""y"": 19}, {""id"": 5, ""x"": 0, ""y"": 51}], ""depot"": 0}","[0, 2, 5, 1, 4, 3, 0]"
+MLP_S_032,MLP,S,32,"Many people will tell you route planning can be tricky — imagine a mobile wash van pulling out of its garage with a list of cars parked all over town. The choice to make is the stop-by-stop order to cover every car. A superior plan is the one where, if you tally the arrival time at each vehicle (how long after leaving the garage it took to reach each spot) and add those times up, that grand total is smallest, meaning less aggregate waiting. Each car on the list must be served exactly once, no omissions or duplicates. The exact locations and coordinates follow below.
+
+{
+  ""total_stops_including_garage"": 5,
+  ""nodes"": [
+    {
+      ""stop_id"": 0,
+      ""x_coord"": 100,
+      ""y_coord"": 84
+    },
+    {
+      ""stop_id"": 1,
+      ""x_coord"": 100,
+      ""y_coord"": 0
+    },
+    {
+      ""stop_id"": 2,
+      ""x_coord"": 0,
+      ""y_coord"": 100
+    },
+    {
+      ""stop_id"": 3,
+      ""x_coord"": 100,
+      ""y_coord"": 4
+    },
+    {
+      ""stop_id"": 4,
+      ""x_coord"": 71,
+      ""y_coord"": 23
+    }
+  ],
+  ""garage_id"": 0
+}
+
+When you send the route back, just use this simple JSON shape so it's easy to read and plug in:
+
+{
+  ""solution"": [garage_id, car_id, ..., garage_id]
+}
+
+Quick, friendly note on what that means: ""solution"" is the stop-by-stop order — start at the garage, list each parked car exactly once in the order you plan to visit them, and finish back at the garage. The names in the example above are just placeholders showing the format, not the real IDs.
+
+This JSON is only a sketch of the expected shape, not the actual route.
+
+Please make sure to use the exact identifiers as they appear in the instance input — do not rename them or create new labels.
+
+for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"[[100, 84], [100, 0], [0, 100], [100, 4], [71, 23]]","[0, 3, 1, 4, 2, 0]",510.7647898754964,"{""problem_type"": ""MLP"", ""num_nodes"": 5, ""nodes"": [{""id"": 0, ""x"": 100, ""y"": 84}, {""id"": 1, ""x"": 100, ""y"": 0}, {""id"": 2, ""x"": 0, ""y"": 100}, {""id"": 3, ""x"": 100, ""y"": 4}, {""id"": 4, ""x"": 71, ""y"": 23}], ""depot"": 0}","[0, 3, 1, 4, 2, 0]"
+MLP_S_033,MLP,S,33,"Recently the museum scheduled a docent to start at the ticket desk and cover several exhibits around the halls. The team has to decide the visiting sequence for that docent. You measure how good a sequence is by summing the times when the docent gets to each exhibit — the lower that combined arrival-time total, the better the schedule. All exhibits must be covered, and no exhibit should be skipped or visited multiple times. The exact exhibit list and distances are shown below.
+
+{
+  ""total_locations"": 8,
+  ""nodes"": [
+    {
+      ""location_id"": 0,
+      ""hall_x_coordinate"": 43,
+      ""hall_y_coordinate"": 89
+    },
+    {
+      ""location_id"": 1,
+      ""hall_x_coordinate"": 16,
+      ""hall_y_coordinate"": 0
+    },
+    {
+      ""location_id"": 2,
+      ""hall_x_coordinate"": 0,
+      ""hall_y_coordinate"": 44
+    },
+    {
+      ""location_id"": 3,
+      ""hall_x_coordinate"": 100,
+      ""hall_y_coordinate"": 1
+    },
+    {
+      ""location_id"": 4,
+      ""hall_x_coordinate"": 15,
+      ""hall_y_coordinate"": 26
+    },
+    {
+      ""location_id"": 5,
+      ""hall_x_coordinate"": 91,
+      ""hall_y_coordinate"": 52
+    },
+    {
+      ""location_id"": 6,
+      ""hall_x_coordinate"": 49,
+      ""hall_y_coordinate"": 100
+    },
+    {
+      ""location_id"": 7,
+      ""hall_x_coordinate"": 37,
+      ""hall_y_coordinate"": 9
+    }
+  ],
+  ""ticket_office_id"": 0
+}
+
+Oh, and when you send the visiting order back, a tiny JSON snippet like this is ideal — just the tour sequence in order:
+
+{
+  ""solution"": [ticketdesk_id, exhibit_id, ..., ticketdesk_id]
+}
+
+Think of it as a simple form: ""solution"" is the ordered list the docent should follow, starting at the ticket desk (ticketdesk_id), visiting each exhibit (exhibit_id) in turn, and returning to the ticket desk at the end. This block is just a sketch of the shape I expect, not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename them or invent new ones.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"[[43, 89], [16, 0], [0, 44], [100, 1], [15, 26], [91, 52], [49, 100], [37, 9]]","[0, 6, 2, 4, 1, 7, 3, 5, 0]",1002.748310458561,"{""problem_type"": ""MLP"", ""num_nodes"": 8, ""nodes"": [{""id"": 0, ""x"": 43, ""y"": 89}, {""id"": 1, ""x"": 16, ""y"": 0}, {""id"": 2, ""x"": 0, ""y"": 44}, {""id"": 3, ""x"": 100, ""y"": 1}, {""id"": 4, ""x"": 15, ""y"": 26}, {""id"": 5, ""x"": 91, ""y"": 52}, {""id"": 6, ""x"": 49, ""y"": 100}, {""id"": 7, ""x"": 37, ""y"": 9}], ""depot"": 0}","[0, 6, 2, 4, 1, 7, 3, 5, 0]"
+MLP_S_034,MLP,S,34,"Picture this: the yard sends a single maintenance van to several private gardens and the mornings are tight. The job is to choose the visit order because each garden’s arrival time counts toward a total — note the clock time for each stop, add them all up, and the smaller that total the better the schedule. Each garden must get one visit and only one; the detailed list of gardens and their positions is shown below.
+
+# total_locations=6
+# yard_node_id=A
+garden_node_id,x_coord_meters,y_coord_meters
+A,0,100
+B,100,71
+C,46,0
+D,54,43
+E,54,86
+F,100,93
+
+Oh, and just so we're on the same page, when you send the route back think of it as a tiny JSON snippet with the visit order. Something like this:
+
+{
+  ""solution"": [garage_id, garden_id, ..., garage_id]
+}
+
+This just means ""solution"" is the list of stops in order — start at the garage (garage_id), visit each garden (garden_id, etc.), and end back at the garage. It's just a simple sketch of the shape I need, not the actual route.
+
+Please use the exact identifiers from the instance input — no renaming, no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"[[0, 100], [100, 71], [46, 0], [54, 43], [54, 86], [100, 93]]","[0, 4, 5, 1, 3, 2, 0]",682.4859072056844,"{""problem_type"": ""MLP"", ""num_nodes"": 6, ""nodes"": [{""id"": ""A"", ""x"": 0, ""y"": 100}, {""id"": ""B"", ""x"": 100, ""y"": 71}, {""id"": ""C"", ""x"": 46, ""y"": 0}, {""id"": ""D"", ""x"": 54, ""y"": 43}, {""id"": ""E"", ""x"": 54, ""y"": 86}, {""id"": ""F"", ""x"": 100, ""y"": 93}], ""depot"": ""A""}","[""A"", ""E"", ""F"", ""B"", ""D"", ""C"", ""A""]"
+MLP_S_035,MLP,S,35,"Many people forget how much the order of stops matters, but here a bike messenger leaves the dispatch hub and must visit every listed pickup point. The trick is to pick an order that brings early arrivals to most stops; the way to measure that is to add up the clock time when each stop is reached, and the smaller that sum, the better the plan. Every pickup must be visited once, and the specific addresses and map come next below.
+
+The map lists 10 total locations and the bike messenger leaves from the dispatch hub 0.
+Stop 0 is at coordinates (35, 4).
+Stop 1 is at coordinates (22, 74).
+Stop 2 is at coordinates (55, 68).
+Stop 3 is at coordinates (100, 94).
+Stop 4 is at coordinates (34, 100).
+Stop 5 is at coordinates (60, 0).
+Stop 6 is at coordinates (0, 5).
+Stop 7 is at coordinates (93, 28).
+Stop 8 is at coordinates (66, 76).
+Stop 9 is at coordinates (24, 100).
+An optimal order minimizes the sum of arrival times starting from 0 across all 10 locations.
+
+If you want to send me the planned route in a machine-friendly way, a handy little JSON sketch is perfect — something that just lists the order of stops starting and ending at the hub. For example:
+
+{
+  ""solution"": [hub_id, pickup_id, ..., hub_id]
+}
+
+Think of this as a simple form: ""solution"" holds the sequence the messenger will follow — start at the dispatch hub, visit each pickup by its identifier in order, and come back to the hub. The names in the example are placeholders showing the shape only, not the final picks.
+
+This JSON is just a sketch of the shape I expect, not the actual answer you should submit. Please use the exact identifiers from the instance input — do not rename them or invent new ones. 
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.
+
+Thanks — drop the list of IDs in that shape and I’ll take it from there.",nl,zero_based,"[[35, 4], [22, 74], [55, 68], [100, 94], [34, 100], [60, 0], [0, 5], [93, 28], [66, 76], [24, 100]]","[0, 5, 7, 8, 2, 4, 9, 1, 6, 3, 0]",1629.525842875259,"{""problem_type"": ""MLP"", ""num_nodes"": 10, ""nodes"": [{""id"": 0, ""x"": 35, ""y"": 4}, {""id"": 1, ""x"": 22, ""y"": 74}, {""id"": 2, ""x"": 55, ""y"": 68}, {""id"": 3, ""x"": 100, ""y"": 94}, {""id"": 4, ""x"": 34, ""y"": 100}, {""id"": 5, ""x"": 60, ""y"": 0}, {""id"": 6, ""x"": 0, ""y"": 5}, {""id"": 7, ""x"": 93, ""y"": 28}, {""id"": 8, ""x"": 66, ""y"": 76}, {""id"": 9, ""x"": 24, ""y"": 100}], ""depot"": 0}","[0, 5, 7, 8, 2, 4, 9, 1, 6, 3, 0]"
+MLP_S_036,MLP,S,36,"Recently the mobile barista planned a morning run: start at the truck, hit a handful of spots, and hand out coffees. The big choice is the visiting order — customers at earlier stops wait less, and customers later wait more, so the aim is to pick an order that keeps the overall wait time down; you can check that by adding up the wait for each stop (time from leaving the truck to the handoff). All scheduled stops have to be covered once, no skipping or double-serving. The full set of locations and details are listed below.
+
+{
+  ""total_stops_including_depot"": 6,
+  ""nodes"": [
+    {
+      ""stop_id"": 1,
+      ""x_coordinate"": 19,
+      ""y_coordinate"": 33
+    },
+    {
+      ""stop_id"": 2,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 78
+    },
+    {
+      ""stop_id"": 3,
+      ""x_coordinate"": 58,
+      ""y_coordinate"": 100
+    },
+    {
+      ""stop_id"": 4,
+      ""x_coordinate"": 72,
+      ""y_coordinate"": 87
+    },
+    {
+      ""stop_id"": 5,
+      ""x_coordinate"": 1,
+      ""y_coordinate"": 0
+    },
+    {
+      ""stop_id"": 6,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 68
+    }
+  ],
+  ""starting_truck_node"": 1
+}
+
+Oh — also, when you send the route back, please follow this simple JSON layout so it's easy to parse:
+
+{
+  ""solution"": [truck_id, stop_id, ..., truck_id]
+}
+
+Think of that as a little form: ""solution"" is the ordered list of places the truck will visit, starting at the truck, then each stop in the order you plan to serve them, and ending back at the truck. This JSON is just a sketch of the shape I need, not the actual route — please fill it in with the real identifiers from the instance.
+
+Please use the exact identifiers from the instance input—no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,one_based,"[[19, 33], [100, 78], [58, 100], [72, 87], [1, 0], [0, 68]]","[0, 5, 2, 3, 1, 4, 0]",706.2633935328811,"{""problem_type"": ""MLP"", ""num_nodes"": 6, ""nodes"": [{""id"": 1, ""x"": 19, ""y"": 33}, {""id"": 2, ""x"": 100, ""y"": 78}, {""id"": 3, ""x"": 58, ""y"": 100}, {""id"": 4, ""x"": 72, ""y"": 87}, {""id"": 5, ""x"": 1, ""y"": 0}, {""id"": 6, ""x"": 0, ""y"": 68}], ""depot"": 1}","[1, 6, 3, 4, 2, 5, 1]"
+MLP_S_037,MLP,S,37,"Out in the neighborhood a compact moving crew loads up at their storage yard and then needs to attend every scheduled pickup and delivery — the only choice is the order of visits. You can judge how good a plan is by summing the arrival times at all the stops; the lower that total waiting time, the better the route. No address can be left out or visited twice, and the concrete job details follow below.
+
+# total_stops_count=10
+# depot_node_id=1
+stop_id,x_coord,y_coord
+1,93,100
+2,35,0
+3,65,47
+4,0,20
+5,94,100
+6,10,77
+7,49,90
+8,8,100
+9,78,88
+10,100,66
+
+Oh, and when you send the crew’s route back, just stick to a tiny JSON shape like this so it’s easy to read and check:
+
+{
+  ""solution"": [yard_id, stop_id, ..., yard_id]
+}
+
+This says, in plain terms: ""solution"" is the ordered list of visits — start at the yard (the depot), go through each stop in the sequence, and return to the yard. The names in the array are just placeholders showing where each actual identifier from the instance should go. It’s only a sketch of the expected shape, not the actual route.
+
+Please make sure you use the exact identifiers from the instance input — don’t rename them or invent new labels.
+- for example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,one_based,"[[93, 100], [35, 0], [65, 47], [0, 20], [94, 100], [10, 77], [49, 90], [8, 100], [78, 88], [100, 66]]","[0, 4, 8, 6, 7, 5, 3, 1, 2, 9, 0]",1244.8850012539901,"{""problem_type"": ""MLP"", ""num_nodes"": 10, ""nodes"": [{""id"": 1, ""x"": 93, ""y"": 100}, {""id"": 2, ""x"": 35, ""y"": 0}, {""id"": 3, ""x"": 65, ""y"": 47}, {""id"": 4, ""x"": 0, ""y"": 20}, {""id"": 5, ""x"": 94, ""y"": 100}, {""id"": 6, ""x"": 10, ""y"": 77}, {""id"": 7, ""x"": 49, ""y"": 90}, {""id"": 8, ""x"": 8, ""y"": 100}, {""id"": 9, ""x"": 78, ""y"": 88}, {""id"": 10, ""x"": 100, ""y"": 66}], ""depot"": 1}","[1, 5, 9, 7, 8, 6, 4, 2, 3, 10, 1]"
+MLP_S_038,MLP,S,38,"I picture a librarian heading out from the main library with a stack of returns and a list of branches to visit. The librarian has to plan a single route that leaves from the main library and stops at every branch exactly once, and the way to judge one route as better than another is simple: add up the time when the librarian gets to each branch, and the route with the smaller total waiting time for all branches is preferable. Nothing can be skipped or doubled up on the list of branches. The exact branches and timings are shown below.
+
+# total_stops_including_main=9
+# main_library_id=1
+stop_id,x_coordinate,y_coordinate
+1,100,75
+2,9,41
+3,49,92
+4,94,27
+5,23,0
+6,59,33
+7,0,78
+8,36,8
+9,50,100
+
+If you want to send me the route, just drop it in a little JSON snippet like this — nothing fancy, just the order of stops:
+
+{
+  ""solution"": [library_id, branch_id, ..., library_id]
+}
+
+""solution"" is the ordered list of stops, starting and ending at the main library. The placeholders library_id and branch_id are just stand-ins showing the shape I expect — when you give the actual route, use the exact identifiers from the instance input. This JSON is only a sketch of the expected shape, not the actual answer.
+
+Please don’t rename or invent labels: use the identifiers exactly as they appear in the instance. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"[[100, 75], [9, 41], [49, 92], [94, 27], [23, 0], [59, 33], [0, 78], [36, 8], [50, 100]]","[0, 3, 5, 7, 4, 1, 6, 2, 8, 0]",1313.2252701777138,"{""problem_type"": ""MLP"", ""num_nodes"": 9, ""nodes"": [{""id"": 1, ""x"": 100, ""y"": 75}, {""id"": 2, ""x"": 9, ""y"": 41}, {""id"": 3, ""x"": 49, ""y"": 92}, {""id"": 4, ""x"": 94, ""y"": 27}, {""id"": 5, ""x"": 23, ""y"": 0}, {""id"": 6, ""x"": 59, ""y"": 33}, {""id"": 7, ""x"": 0, ""y"": 78}, {""id"": 8, ""x"": 36, ""y"": 8}, {""id"": 9, ""x"": 50, ""y"": 100}], ""depot"": 1}","[1, 4, 6, 8, 5, 2, 7, 3, 9, 1]"
+MLP_S_039,MLP,S,39,"Recently the canvassing team planned a run beginning at the community center, and now they need to pick an order for visiting every home on the list that keeps overall waiting time down. One way to tell if a plan is good is to note when each household is reached, add up all those arrival times, and prefer the plan with the least total waiting time. The route can’t skip any house or go to the same house twice, and the exact addresses and map are listed below.
+
+# total_stops_count=10
+# community_center_id=A
+stop_id,map_x,map_y
+A,0,5
+B,51,63
+C,0,30
+D,2,16
+E,25,23
+F,100,45
+G,84,100
+H,3,0
+I,59,63
+J,30,39
+
+If you'd like the answer in a predictable format, just give me a small JSON object with the visit order—nothing fancy. Something like this shows the shape I expect:
+
+{
+  ""solution"": [""community_center_id"", ""home_id"", ""..."", ""community_center_id""]
+}
+
+This just means: ""solution"" is the list of place IDs in the order you'd visit them, starting (and ending) at the community center. The ""..."" is just standing in for the rest of the stops — in your real reply you'll list every house in order.
+
+Note that the JSON above is only a sketch of the expected shape, not the actual route.
+
+Please use the exact identifiers from the instance input — no renaming and no new labels.
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"[[0, 5], [51, 63], [0, 30], [2, 16], [25, 23], [100, 45], [84, 100], [3, 0], [59, 63], [30, 39]]","[0, 7, 3, 2, 4, 9, 1, 8, 6, 5, 0]",817.4578236213029,"{""problem_type"": ""MLP"", ""num_nodes"": 10, ""nodes"": [{""id"": ""A"", ""x"": 0, ""y"": 5}, {""id"": ""B"", ""x"": 51, ""y"": 63}, {""id"": ""C"", ""x"": 0, ""y"": 30}, {""id"": ""D"", ""x"": 2, ""y"": 16}, {""id"": ""E"", ""x"": 25, ""y"": 23}, {""id"": ""F"", ""x"": 100, ""y"": 45}, {""id"": ""G"", ""x"": 84, ""y"": 100}, {""id"": ""H"", ""x"": 3, ""y"": 0}, {""id"": ""I"", ""x"": 59, ""y"": 63}, {""id"": ""J"", ""x"": 30, ""y"": 39}], ""depot"": ""A""}","[""A"", ""H"", ""D"", ""C"", ""E"", ""J"", ""B"", ""I"", ""G"", ""F"", ""A""]"
+MLP_S_040,MLP,S,40,"There’s a vendor who starts at a supplier and has to refill several market booths, and the question is which route to take first, second, third, and so on. For each possible route you can compute the total by adding up the time they arrive at each stall, and the better routes are the ones with the smallest total arrival time. The trip must start at the supplier and hit every stall exactly once (no skipping or needless backtracking), with the usual option of returning at the end. The concrete stop-by-stop details appear below.
+
+{
+  ""total_stops_including_supplier"": 8,
+  ""nodes"": [
+    {
+      ""location_id"": 1,
+      ""x_coordinate"": 76,
+      ""y_coordinate"": 30
+    },
+    {
+      ""location_id"": 2,
+      ""x_coordinate"": 70,
+      ""y_coordinate"": 94
+    },
+    {
+      ""location_id"": 3,
+      ""x_coordinate"": 79,
+      ""y_coordinate"": 0
+    },
+    {
+      ""location_id"": 4,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 19
+    },
+    {
+      ""location_id"": 5,
+      ""x_coordinate"": 45,
+      ""y_coordinate"": 30
+    },
+    {
+      ""location_id"": 6,
+      ""x_coordinate"": 87,
+      ""y_coordinate"": 51
+    },
+    {
+      ""location_id"": 7,
+      ""x_coordinate"": 17,
+      ""y_coordinate"": 14
+    },
+    {
+      ""location_id"": 8,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 100
+    }
+  ],
+  ""supplier_id"": 1
+}
+
+When you send the route back, just stick to this simple JSON shape so it’s easy to read and check.
+
+{
+  ""solution"": [supplier_id, stall_id, ..., supplier_id]
+}
+
+Think of that as a little form: ""solution"" holds the stops in order — starting at the supplier, then each stall in the order you visit them, and finishing back at the supplier. This is just the shape I expect, not the actual route — fill it in with the real IDs from the instance.
+
+Please use the exact identifiers from the instance input — don’t rename them or invent new labels. 
+
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,one_based,"[[76, 30], [70, 94], [79, 0], [0, 19], [45, 30], [87, 51], [17, 14], [100, 100]]","[0, 4, 6, 3, 2, 5, 1, 7, 0]",1102.0472359896303,"{""problem_type"": ""MLP"", ""num_nodes"": 8, ""nodes"": [{""id"": 1, ""x"": 76, ""y"": 30}, {""id"": 2, ""x"": 70, ""y"": 94}, {""id"": 3, ""x"": 79, ""y"": 0}, {""id"": 4, ""x"": 0, ""y"": 19}, {""id"": 5, ""x"": 45, ""y"": 30}, {""id"": 6, ""x"": 87, ""y"": 51}, {""id"": 7, ""x"": 17, ""y"": 14}, {""id"": 8, ""x"": 100, ""y"": 100}], ""depot"": 1}","[1, 5, 7, 4, 3, 6, 2, 8, 1]"
+MLP_S_041,MLP,S,41,"Someone from the municipal team has to leave city hall and inspect a set of locations; they must decide the sequence to hit every place exactly once. One route is better than another if, when you add up the clock times that each inspection starts, its total is smaller. The detailed list of stops and their locations appears below.
+
+# total_sites=10
+# depot_site_id=0
+site_id,map_x,map_y
+0,35,98
+1,89,0
+2,89,100
+3,33,47
+4,88,54
+5,32,91
+6,97,57
+7,0,87
+8,51,0
+9,100,7
+
+You can send back the route in this simple JSON shape when you're ready:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of ""solution"" as just the ordered list of stops: start at the depot, list each place once in the order they'll be inspected, and finish back at the depot. It's just a friendly template to show the sequence — not the final answer itself.
+
+Please make sure that when you plug in actual labels you use the exact identifiers from the instance input with no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"[[35, 98], [89, 0], [89, 100], [33, 47], [88, 54], [32, 91], [97, 57], [0, 87], [51, 0], [100, 7]]","[0, 5, 7, 3, 8, 1, 9, 4, 6, 2, 0]",1441.885029906714,"{""problem_type"": ""MLP"", ""num_nodes"": 10, ""nodes"": [{""id"": 0, ""x"": 35, ""y"": 98}, {""id"": 1, ""x"": 89, ""y"": 0}, {""id"": 2, ""x"": 89, ""y"": 100}, {""id"": 3, ""x"": 33, ""y"": 47}, {""id"": 4, ""x"": 88, ""y"": 54}, {""id"": 5, ""x"": 32, ""y"": 91}, {""id"": 6, ""x"": 97, ""y"": 57}, {""id"": 7, ""x"": 0, ""y"": 87}, {""id"": 8, ""x"": 51, ""y"": 0}, {""id"": 9, ""x"": 100, ""y"": 7}], ""depot"": 0}","[0, 5, 7, 3, 8, 1, 9, 4, 6, 2, 0]"
+MLP_S_042,MLP,S,42,"We’re thinking about a photographer who leaves the studio and needs to drop by every booked location; the better route is the one where, if you add up how long it took to reach each client, that total time is lower. That means choosing the visit sequence carefully, while making sure every client gets visited once and only once. The exact addresses and coordinates will be shown below.
+
+# total_spots_including_studio=8
+# studio_node_id=A
+stop_id,x_coord,y_coord
+A,70,58
+B,64,72
+C,0,85
+D,100,100
+E,74,0
+F,0,21
+G,92,21
+H,56,51
+
+If you want to send back the route, please use a simple JSON layout like this:
+
+{
+  ""solution"": [""studio_id"", ""client_id"", ""..."", ""studio_id""]
+}
+
+This just shows the order the photographer leaves the studio, visits each client once, and returns to the studio at the end. Think of the array as a little checklist: first item is where we start, middle items are each stop in order, and the last item closes the loop back at the studio. It's just a sketch of the shape I need—don't treat the names as the real answers.
+
+Please be careful: use the exact identifiers given in the instance input — no renaming, no invented labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"[[70, 58], [64, 72], [0, 85], [100, 100], [74, 0], [0, 21], [92, 21], [56, 51]]","[0, 1, 7, 6, 4, 5, 2, 3, 0]",1046.280935016608,"{""problem_type"": ""MLP"", ""num_nodes"": 8, ""nodes"": [{""id"": ""A"", ""x"": 70, ""y"": 58}, {""id"": ""B"", ""x"": 64, ""y"": 72}, {""id"": ""C"", ""x"": 0, ""y"": 85}, {""id"": ""D"", ""x"": 100, ""y"": 100}, {""id"": ""E"", ""x"": 74, ""y"": 0}, {""id"": ""F"", ""x"": 0, ""y"": 21}, {""id"": ""G"", ""x"": 92, ""y"": 21}, {""id"": ""H"", ""x"": 56, ""y"": 51}], ""depot"": ""A""}","[""A"", ""B"", ""H"", ""G"", ""E"", ""F"", ""C"", ""D"", ""A""]"
+MLP_S_043,MLP,S,43,"Someone driving the ice cream truck has to pick a route that leaves from the depot and drops by every planned corner on the map. The trick is choosing the sequence so customers don’t wait too long overall — add up the arrival time at each stop to see how long everyone collectively waited; a lower sum means a better route. Nothing can be left out or visited twice, and the details for this run appear below.
+
+This run has 7 stops and begins at depot A.
+Stop A is at coordinates (33, 91).
+Stop B is at coordinates (65, 2).
+Stop C is at coordinates (68, 0).
+Stop D is at coordinates (100, 67).
+Stop E is at coordinates (0, 91).
+Stop F is at coordinates (5, 100).
+Stop G is at coordinates (31, 13).
+Visit all 7 stops once, starting at A, to minimize the sum of arrival times.
+
+And if you want to send back the route, just stick to this little JSON shape so it's easy to parse:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+The ""solution"" list is just the sequence of stops the truck will make — start at the depot, go through each corner once in the order shown, and come back to the depot at the end. Think of it like filling in a route on a simple form: first entry is the depot, the middle entries are the corners in the order you visit them, and the last entry is the depot again. This JSON is only a sketch of the expected shape, not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — do not rename them or invent new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"[[33, 91], [65, 2], [68, 0], [100, 67], [0, 91], [5, 100], [31, 13]]","[0, 5, 4, 6, 1, 2, 3, 0]",752.3475298125617,"{""problem_type"": ""MLP"", ""num_nodes"": 7, ""nodes"": [{""id"": ""A"", ""x"": 33, ""y"": 91}, {""id"": ""B"", ""x"": 65, ""y"": 2}, {""id"": ""C"", ""x"": 68, ""y"": 0}, {""id"": ""D"", ""x"": 100, ""y"": 67}, {""id"": ""E"", ""x"": 0, ""y"": 91}, {""id"": ""F"", ""x"": 5, ""y"": 100}, {""id"": ""G"", ""x"": 31, ""y"": 13}], ""depot"": ""A""}","[""A"", ""F"", ""E"", ""G"", ""B"", ""C"", ""D"", ""A""]"
+MLP_S_044,MLP,S,44,"Many people see route planning as just following a map, but for this recycling run the question is which order to visit the curbside addresses so that the sum of the arrival times at those addresses ends up as low as possible. Practically that means tracking the time the truck reaches each stop, summing those times, and choosing the sequence with the lowest total — and the truck must start at the depot and hit every address on the list exactly once. The concrete route details are shown below.
+
+{
+  ""total_locations"": 9,
+  ""nodes"": [
+    {
+      ""stop_id"": 0,
+      ""x_coordinate"": 1,
+      ""y_coordinate"": 0
+    },
+    {
+      ""stop_id"": 1,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 100
+    },
+    {
+      ""stop_id"": 2,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 25
+    },
+    {
+      ""stop_id"": 3,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 82
+    },
+    {
+      ""stop_id"": 4,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 19
+    },
+    {
+      ""stop_id"": 5,
+      ""x_coordinate"": 4,
+      ""y_coordinate"": 63
+    },
+    {
+      ""stop_id"": 6,
+      ""x_coordinate"": 67,
+      ""y_coordinate"": 64
+    },
+    {
+      ""stop_id"": 7,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 26
+    },
+    {
+      ""stop_id"": 8,
+      ""x_coordinate"": 99,
+      ""y_coordinate"": 72
+    }
+  ],
+  ""depot_node_id"": 0
+}
+
+Oh, and when you send the route back, please follow this simple JSON layout so it's easy to parse:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+This means the ""solution"" value is just the visit order: start at the depot, list each curbside stop once in the sequence the truck reaches them, and end back at the depot. The placeholders above just show the shape of the reply — you'll replace them with the actual IDs from the instance when you give the real route.
+
+The JSON is only a sketch of the expected shape, not the actual answer. Make sure all identifiers are used exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"[[1, 0], [0, 100], [100, 25], [0, 82], [100, 19], [4, 63], [67, 64], [100, 26], [99, 72]]","[0, 5, 3, 1, 6, 7, 2, 4, 8, 0]",1398.1075629052,"{""problem_type"": ""MLP"", ""num_nodes"": 9, ""nodes"": [{""id"": 0, ""x"": 1, ""y"": 0}, {""id"": 1, ""x"": 0, ""y"": 100}, {""id"": 2, ""x"": 100, ""y"": 25}, {""id"": 3, ""x"": 0, ""y"": 82}, {""id"": 4, ""x"": 100, ""y"": 19}, {""id"": 5, ""x"": 4, ""y"": 63}, {""id"": 6, ""x"": 67, ""y"": 64}, {""id"": 7, ""x"": 100, ""y"": 26}, {""id"": 8, ""x"": 99, ""y"": 72}], ""depot"": 0}","[0, 5, 3, 1, 6, 7, 2, 4, 8, 0]"
+MLP_S_045,MLP,S,45,"I run a mobile shoe-repair service that starts the day at the workshop and then drives to every customer’s address. The tricky part is picking the order to visit customers so people aren’t left waiting — the best plan is the one that makes the total waiting as small as possible, which you can measure by adding up the time each person has to wait until the artisan shows up. Nothing gets skipped or visited twice — every stop has to be covered exactly once. The exact addresses and times for this run are shown below.
+
+{
+  ""total_locations"": 6,
+  ""nodes"": [
+    {
+      ""location_id"": 1,
+      ""x_coord"": 98,
+      ""y_coord"": 100
+    },
+    {
+      ""location_id"": 2,
+      ""x_coord"": 100,
+      ""y_coord"": 72
+    },
+    {
+      ""location_id"": 3,
+      ""x_coord"": 79,
+      ""y_coord"": 0
+    },
+    {
+      ""location_id"": 4,
+      ""x_coord"": 0,
+      ""y_coord"": 39
+    },
+    {
+      ""location_id"": 5,
+      ""x_coord"": 89,
+      ""y_coord"": 28
+    },
+    {
+      ""location_id"": 6,
+      ""x_coord"": 0,
+      ""y_coord"": 17
+    }
+  ],
+  ""workshop_node_id"": 1
+}
+
+I'll return the route in a tiny JSON object so it's easy to read and reuse. It should follow this layout:
+
+{
+  ""solution"": [workshop_id, customer_id, ..., workshop_id]
+}
+
+This just means ""solution"" is the visit order: start at the workshop, visit every customer once (in the order shown), and finish back at the workshop. The names in the array above are placeholders showing the shape I need — not the actual IDs.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".""",json,one_based,"[[98, 100], [100, 72], [79, 0], [0, 39], [89, 28], [0, 17]]","[0, 1, 4, 2, 5, 3, 0]",594.5865792939653,"{""problem_type"": ""MLP"", ""num_nodes"": 6, ""nodes"": [{""id"": 1, ""x"": 98, ""y"": 100}, {""id"": 2, ""x"": 100, ""y"": 72}, {""id"": 3, ""x"": 79, ""y"": 0}, {""id"": 4, ""x"": 0, ""y"": 39}, {""id"": 5, ""x"": 89, ""y"": 28}, {""id"": 6, ""x"": 0, ""y"": 17}], ""depot"": 1}","[1, 2, 5, 3, 6, 4, 1]"
+MLP_S_046,MLP,S,46,"Picture a solo musician who starts at their base and plans a round of quick performances, stopping at every planned corner along the way. The plan to make is the order of stops — every corner needs to be played once and can’t be left out or repeated. To pick the best order, note when each performance would begin under that plan and add all those start times together; the smaller that overall total is, the better the route. The detailed instance — locations and distances — is shown below.
+
+# total_corners=5
+# home_base_id=1
+corner_id,x_coord,y_coord
+1,100,72
+2,74,69
+3,0,0
+4,16,100
+5,47,1
+
+Oh, and when you send back the route, please follow this little JSON shape so I can read it easily:
+
+{
+  ""solution"": [base_id, corner_id, ..., base_id]
+}
+
+This just says, in plain terms: the ""solution"" array is the order of stops — start at your base (base_id), list each corner or stop (corner_id) in the order you'll visit them, and come back to the base at the end. It's just a sketch of the shape I expect, not the actual route — you'll fill in the real identifiers from the instance.
+
+One more thing: use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"[[100, 72], [74, 69], [0, 0], [16, 100], [47, 1]]","[0, 1, 4, 2, 3, 0]",519.4758007102258,"{""problem_type"": ""MLP"", ""num_nodes"": 5, ""nodes"": [{""id"": 1, ""x"": 100, ""y"": 72}, {""id"": 2, ""x"": 74, ""y"": 69}, {""id"": 3, ""x"": 0, ""y"": 0}, {""id"": 4, ""x"": 16, ""y"": 100}, {""id"": 5, ""x"": 47, ""y"": 1}], ""depot"": 1}","[1, 2, 5, 3, 4, 1]"
+MLP_S_047,MLP,S,47,"Across town a single service person leaves the warehouse with a stack of customer addresses and a day’s schedule to fill. The choice to make is the order of visits, because a better schedule is the one where the sum of all arrival times — literally adding the time they roll up at each house — ends up lower. They have to start from the warehouse and hit every address on the list one time only, no skips and no repeats. The concrete details are shown below.
+
+There are 8 locations in total and the tour must start at warehouse node 1.
+
+| location_id | x_coordinate | y_coordinate |
+|---|---|---|
+| 1 | 17 | 100 |
+| 2 | 43 | 12 |
+| 3 | 87 | 0 |
+| 4 | 100 | 38 |
+| 5 | 74 | 92 |
+| 6 | 46 | 58 |
+| 7 | 0 | 12 |
+| 8 | 22 | 12 |
+
+They must visit each listed location exactly once; choose the visit order that minimizes the sum of arrival times.
+
+If you want to give me the final plan in a tidy, machine-friendly way, just use this little JSON shape:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+""solution"" is simply the ordered list of stops — start at the depot, list each address once in the order they should be visited, and finish back at the depot. This block is just a sketch of the shape I expect, not the actual route — replace those placeholders with the real IDs from the instance.
+
+Please be careful to use the exact identifiers from the input file, with no renaming or made-up labels — they have to match exactly. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,one_based,"[[17, 100], [43, 12], [87, 0], [100, 38], [74, 92], [46, 58], [0, 12], [22, 12]]","[0, 5, 6, 7, 1, 2, 3, 4, 0]",1218.6760373388424,"{""problem_type"": ""MLP"", ""num_nodes"": 8, ""nodes"": [{""id"": 1, ""x"": 17, ""y"": 100}, {""id"": 2, ""x"": 43, ""y"": 12}, {""id"": 3, ""x"": 87, ""y"": 0}, {""id"": 4, ""x"": 100, ""y"": 38}, {""id"": 5, ""x"": 74, ""y"": 92}, {""id"": 6, ""x"": 46, ""y"": 58}, {""id"": 7, ""x"": 0, ""y"": 12}, {""id"": 8, ""x"": 22, ""y"": 12}], ""depot"": 1}","[1, 6, 7, 8, 2, 3, 4, 5, 1]"
+MLP_S_048,MLP,S,48,"At the start of the week the library schedules the van to leave the main branch and visit a set of community stops, and someone has to choose the visiting order. A route is judged by total waiting time — simply add the arrival times at all stops, and a smaller total means patrons waited less overall. The van must cover every listed stop, no omissions or duplicates, beginning from the main branch. The concrete list of stops and their locations appears below.
+
+There are 5 locations in total, and the van departs from A.
+Stop A is located at coordinates (9, 89).
+Stop B is located at coordinates (0, 87).
+Stop C is located at coordinates (60, 21).
+Stop D is located at coordinates (81, 100).
+Stop E is located at coordinates (100, 0).
+The route must include all 5 stops and begin at A.
+
+If you want to send the route back, just use this little JSON shape so I can read it easily:
+
+{
+  ""solution"": [main_branch_id, stop_id, ..., main_branch_id]
+}
+
+Think of it like a simple form: ""solution"" is the ordered list of IDs the van will visit, starting at the main branch, listing each community stop in the order they're visited, and returning to the main branch at the end. The names in the example are placeholders showing the shape I expect — not the real route.
+
+Please make sure to use the exact identifiers from the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"[[9, 89], [0, 87], [60, 21], [81, 100], [100, 0]]","[0, 1, 3, 2, 4, 0]",491.65233998688143,"{""problem_type"": ""MLP"", ""num_nodes"": 5, ""nodes"": [{""id"": ""A"", ""x"": 9, ""y"": 89}, {""id"": ""B"", ""x"": 0, ""y"": 87}, {""id"": ""C"", ""x"": 60, ""y"": 21}, {""id"": ""D"", ""x"": 81, ""y"": 100}, {""id"": ""E"", ""x"": 100, ""y"": 0}], ""depot"": ""A""}","[""A"", ""B"", ""D"", ""C"", ""E"", ""A""]"
+MLP_S_049,MLP,S,49,"We have one car and a pile of orders waiting on the counter; the plan is to decide which streets to hit first so the whole run starts at the pizzeria and reaches every customer. A good plan is the one that makes the sum of all customers’ delivery times as small as possible — just total up when each pie is handed over and compare totals. No address gets left out and no place gets visited more than once, and the specific addresses and times are shown below.
+
+{
+  ""total_addresses_including_pizzeria"": 6,
+  ""nodes"": [
+    {
+      ""address_id"": 0,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 95
+    },
+    {
+      ""address_id"": 1,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 10
+    },
+    {
+      ""address_id"": 2,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 0
+    },
+    {
+      ""address_id"": 3,
+      ""x_coordinate"": 88,
+      ""y_coordinate"": 38
+    },
+    {
+      ""address_id"": 4,
+      ""x_coordinate"": 25,
+      ""y_coordinate"": 100
+    },
+    {
+      ""address_id"": 5,
+      ""x_coordinate"": 88,
+      ""y_coordinate"": 86
+    }
+  ],
+  ""pizzeria_id"": 0
+}
+
+When you send back the route, just slip it into a tiny JSON blob so it's easy for everyone (and whatever's checking it) to read:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+""solution"" is the ordered list of stops — start at the depot, visit each customer once, and end up back at the depot. The names in that example are just placeholders to show the shape; replace them with the actual IDs from the instance when you reply.
+
+This JSON is only a sketch of the expected shape, not the actual answer. All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"[[100, 95], [100, 10], [0, 0], [88, 38], [25, 100], [88, 86]]","[0, 5, 3, 1, 2, 4, 0]",662.4644303332052,"{""problem_type"": ""MLP"", ""num_nodes"": 6, ""nodes"": [{""id"": 0, ""x"": 100, ""y"": 95}, {""id"": 1, ""x"": 100, ""y"": 10}, {""id"": 2, ""x"": 0, ""y"": 0}, {""id"": 3, ""x"": 88, ""y"": 38}, {""id"": 4, ""x"": 25, ""y"": 100}, {""id"": 5, ""x"": 88, ""y"": 86}], ""depot"": 0}","[0, 5, 3, 1, 2, 4, 0]"
+MLP_S_050,MLP,S,50,"There’s a postal carrier planning a loop from the post office to every mailbox nearby, and the tricky part is deciding which streets to take so mailboxes don’t wait too long. For each plan, note the moment each mailbox is arrived at and add those moments up; the plan with the smallest total arrival time is the better one. The carrier must start at the office and make sure every mailbox is visited exactly once — nothing left out, nothing duplicated. The actual addresses and distances are shown below.
+
+{
+  ""total_locations"": 9,
+  ""nodes"": [
+    {
+      ""location_id"": 1,
+      ""x_coordinate"": 50,
+      ""y_coordinate"": 87
+    },
+    {
+      ""location_id"": 2,
+      ""x_coordinate"": 71,
+      ""y_coordinate"": 76
+    },
+    {
+      ""location_id"": 3,
+      ""x_coordinate"": 43,
+      ""y_coordinate"": 71
+    },
+    {
+      ""location_id"": 4,
+      ""x_coordinate"": 34,
+      ""y_coordinate"": 79
+    },
+    {
+      ""location_id"": 5,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 83
+    },
+    {
+      ""location_id"": 6,
+      ""x_coordinate"": 73,
+      ""y_coordinate"": 100
+    },
+    {
+      ""location_id"": 7,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 0
+    },
+    {
+      ""location_id"": 8,
+      ""x_coordinate"": 88,
+      ""y_coordinate"": 56
+    },
+    {
+      ""location_id"": 9,
+      ""x_coordinate"": 86,
+      ""y_coordinate"": 29
+    }
+  ],
+  ""post_office_id"": 1
+}
+
+Oh, and when you send the plan back, just stick to this simple JSON layout so it’s easy to check automatically:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of the solution array as the carrier’s route written down in order: start at the depot, list each mailbox once in the sequence they’re visited, and finish up back at the depot. This is just a sketch of the shape I need — not your final answer — so fill it in with the actual identifiers from the instance.
+
+Please use the exact identifiers from the input as-is (don’t rename them or invent new labels). 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”. """,json,one_based,"[[50, 87], [71, 76], [43, 71], [34, 79], [100, 83], [73, 100], [0, 0], [88, 56], [86, 29]]","[0, 3, 2, 1, 5, 4, 7, 8, 6, 0]",879.6430447711571,"{""problem_type"": ""MLP"", ""num_nodes"": 9, ""nodes"": [{""id"": 1, ""x"": 50, ""y"": 87}, {""id"": 2, ""x"": 71, ""y"": 76}, {""id"": 3, ""x"": 43, ""y"": 71}, {""id"": 4, ""x"": 34, ""y"": 79}, {""id"": 5, ""x"": 100, ""y"": 83}, {""id"": 6, ""x"": 73, ""y"": 100}, {""id"": 7, ""x"": 0, ""y"": 0}, {""id"": 8, ""x"": 88, ""y"": 56}, {""id"": 9, ""x"": 86, ""y"": 29}], ""depot"": 1}","[1, 4, 3, 2, 6, 5, 8, 9, 7, 1]"

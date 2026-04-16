@@ -1,0 +1,27 @@
+problem: SP
+scale: L
+step1:
+  dataset_dir: datasets/ROAD
+  n_nodes: 19-25
+
+  seed: 43
+  n_instances: 50
+  output: step1_instance_creation/generated_data/SP/SP_L.json
+  params:
+    oversample_factor: 1.5
+    min_density: null
+    max_density: null
+    keep_prob: 0.7
+    k_hop: 2
+    steps: 10000
+    alpha: 0.15
+    min_set_size: 2
+    max_set_size: null
+    remove_duplicate_sets: true
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/SP/SP_contexts.json
+  instance_dir: step1_instance_creation/generated_data/SP
+  output_root_dir: step2_contextualization/dataset/SP
+  k_per_call: 20
+  n_target: 30

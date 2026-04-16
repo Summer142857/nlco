@@ -1,0 +1,29 @@
+problem: MkC
+scale: M
+step1:
+  dataset_dir: datasets/ROAD
+  n_nodes: 13-18
+
+  seed: 43
+  n_instances: 50
+  output: step1_instance_creation/generated_data/MkC/MkC_M.json
+  params:
+    oversample_factor: 1.5
+    min_density: null
+    max_density: null
+    keep_prob: 0.7
+    k_hop: 2
+    steps: 10000
+    alpha: 0.15
+    min_set_size: 2
+    max_set_size: null
+    budget_k: null
+    budget_ratio: 0.2
+    remove_duplicate_sets: true
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/MkC/MkC_contexts.json
+  instance_dir: step1_instance_creation/generated_data/MkC
+  output_root_dir: step2_contextualization/dataset/MkC
+  k_per_call: 20
+  n_target: 30

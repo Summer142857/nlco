@@ -1,0 +1,2780 @@
+id,task_id,difficulty_tier,example_index,prompt,surface_format,indexing_scheme,instance_canonical_json,reference_solution_canonical_json,reference_objective_value,instance_surface_json,reference_solution_surface_json
+TSP_L_001,TSP,L,1,"We have a bakery to run and a tray of deliveries to make, so the task is to choose the delivery sequence that starts at the shop, visits every customer location one time, and finishes back at the shop. What makes one sequence better than another is simple: the one that results in the least driving, measured by summing the miles between consecutive stops for the whole loop. Every stop has to be included exactly once — no skipping a house and no visiting the same house twice. The concrete addresses and coordinates are shown below.
+
+Here are the concrete coordinates for each of the 22 stops; the bakery's shop node id is A.
+Stop A: located at (95, 43) miles on our local map.
+Stop B: located at (4, 50) miles on our local map.
+Stop C: located at (46, 73) miles on our local map.
+Stop D: located at (88, 100) miles on our local map.
+Stop E: located at (59, 58) miles on our local map.
+Stop F: located at (6, 98) miles on our local map.
+Stop G: located at (0, 60) miles on our local map.
+Stop H: located at (34, 11) miles on our local map.
+Stop I: located at (5, 85) miles on our local map.
+Stop J: located at (17, 100) miles on our local map.
+Stop K: located at (74, 6) miles on our local map.
+Stop L: located at (74, 61) miles on our local map.
+Stop M: located at (68, 73) miles on our local map.
+Stop N: located at (68, 17) miles on our local map.
+Stop O: located at (67, 20) miles on our local map.
+Stop P: located at (69, 60) miles on our local map.
+Stop Q: located at (41, 1) miles on our local map.
+Stop R: located at (83, 84) miles on our local map.
+Stop S: located at (87, 52) miles on our local map.
+Stop T: located at (76, 97) miles on our local map.
+Stop U: located at (100, 15) miles on our local map.
+Stop V: located at (72, 0) miles on our local map.
+We must start and finish at A and visit all 22 stops exactly once.
+
+Also, when you send back the route, please follow this simple JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [""shop_id"", ""customer_id"", ..., ""shop_id""]
+}
+
+This just means ""solution"" should be a list showing the stops in order — start at the shop, visit each customer once, and finish back at the shop. The strings in the list are the location identifiers taken straight from the instance.
+
+This JSON is only a sketch of the shape I expect, not the actual route — I'll fill in the real identifiers when I give the final answer. Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"[[95, 43], [4, 50], [46, 73], [88, 100], [59, 58], [6, 98], [0, 60], [34, 11], [5, 85], [17, 100], [74, 6], [74, 61], [68, 73], [68, 17], [67, 20], [69, 60], [41, 1], [83, 84], [87, 52], [76, 97], [100, 15], [72, 0]]","[0, 18, 17, 3, 19, 12, 11, 15, 4, 2, 9, 5, 8, 6, 1, 7, 16, 14, 13, 21, 10, 20, 0]",423.9118547439575,"{""problem_type"": ""TSP"", ""num_nodes"": 22, ""nodes"": [{""id"": ""A"", ""x"": 95, ""y"": 43}, {""id"": ""B"", ""x"": 4, ""y"": 50}, {""id"": ""C"", ""x"": 46, ""y"": 73}, {""id"": ""D"", ""x"": 88, ""y"": 100}, {""id"": ""E"", ""x"": 59, ""y"": 58}, {""id"": ""F"", ""x"": 6, ""y"": 98}, {""id"": ""G"", ""x"": 0, ""y"": 60}, {""id"": ""H"", ""x"": 34, ""y"": 11}, {""id"": ""I"", ""x"": 5, ""y"": 85}, {""id"": ""J"", ""x"": 17, ""y"": 100}, {""id"": ""K"", ""x"": 74, ""y"": 6}, {""id"": ""L"", ""x"": 74, ""y"": 61}, {""id"": ""M"", ""x"": 68, ""y"": 73}, {""id"": ""N"", ""x"": 68, ""y"": 17}, {""id"": ""O"", ""x"": 67, ""y"": 20}, {""id"": ""P"", ""x"": 69, ""y"": 60}, {""id"": ""Q"", ""x"": 41, ""y"": 1}, {""id"": ""R"", ""x"": 83, ""y"": 84}, {""id"": ""S"", ""x"": 87, ""y"": 52}, {""id"": ""T"", ""x"": 76, ""y"": 97}, {""id"": ""U"", ""x"": 100, ""y"": 15}, {""id"": ""V"", ""x"": 72, ""y"": 0}], ""depot"": ""A""}","[""A"", ""S"", ""R"", ""D"", ""T"", ""M"", ""L"", ""P"", ""E"", ""C"", ""J"", ""F"", ""I"", ""G"", ""B"", ""H"", ""Q"", ""O"", ""N"", ""V"", ""K"", ""U"", ""A""]"
+TSP_L_002,TSP,L,2,"Recently the team needs a planned route that begins at the garage, visits all service addresses one time only, and returns to the garage at day’s end. The task is to decide the visiting order — the smarter the order, the smaller the day’s mileage. To figure that out, just add up the miles between every pair of consecutive stops in the order you pick (counting the trip out and the trip home) and prefer the order with the smallest overall total. No stops can be skipped or repeated. Exact instance details are provided below.
+
+There are 17 locations to cover, and the garage is A.
+
+| location_id | x_coordinate | y_coordinate |
+|---|---|---|
+| A | 96 | 96 |
+| B | 85 | 88 |
+| C | 41 | 100 |
+| D | 2 | 3 |
+| E | 43 | 100 |
+| F | 44 | 0 |
+| G | 78 | 0 |
+| H | 83 | 12 |
+| I | 81 | 0 |
+| J | 41 | 94 |
+| K | 38 | 18 |
+| L | 0 | 3 |
+| M | 25 | 15 |
+| N | 86 | 59 |
+| O | 29 | 61 |
+| P | 98 | 100 |
+| Q | 100 | 12 |
+
+Begin the tour at A and return there after visiting all 17 locations once.
+
+Just drop the final route into a little JSON snippet like this so it's easy to parse and check:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of ""solution"" as the ordered list of stops — start at the garage (the depot), list each service address exactly once in the order you'll visit them, and finish back at the garage. This JSON is only a sketch of the shape I need, not the actual answer itself.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"[[96, 96], [85, 88], [41, 100], [2, 3], [43, 100], [44, 0], [78, 0], [83, 12], [81, 0], [41, 94], [38, 18], [0, 3], [25, 15], [86, 59], [29, 61], [98, 100], [100, 12]]","[0, 1, 13, 16, 7, 8, 6, 5, 10, 12, 3, 11, 14, 9, 2, 4, 15, 0]",385.51481199264526,"{""problem_type"": ""TSP"", ""num_nodes"": 17, ""nodes"": [{""id"": ""A"", ""x"": 96, ""y"": 96}, {""id"": ""B"", ""x"": 85, ""y"": 88}, {""id"": ""C"", ""x"": 41, ""y"": 100}, {""id"": ""D"", ""x"": 2, ""y"": 3}, {""id"": ""E"", ""x"": 43, ""y"": 100}, {""id"": ""F"", ""x"": 44, ""y"": 0}, {""id"": ""G"", ""x"": 78, ""y"": 0}, {""id"": ""H"", ""x"": 83, ""y"": 12}, {""id"": ""I"", ""x"": 81, ""y"": 0}, {""id"": ""J"", ""x"": 41, ""y"": 94}, {""id"": ""K"", ""x"": 38, ""y"": 18}, {""id"": ""L"", ""x"": 0, ""y"": 3}, {""id"": ""M"", ""x"": 25, ""y"": 15}, {""id"": ""N"", ""x"": 86, ""y"": 59}, {""id"": ""O"", ""x"": 29, ""y"": 61}, {""id"": ""P"", ""x"": 98, ""y"": 100}, {""id"": ""Q"", ""x"": 100, ""y"": 12}], ""depot"": ""A""}","[""A"", ""B"", ""N"", ""Q"", ""H"", ""I"", ""G"", ""F"", ""K"", ""M"", ""D"", ""L"", ""O"", ""J"", ""C"", ""E"", ""P"", ""A""]"
+TSP_L_003,TSP,L,3,"On a typical morning the studio van will head out, visit a handful of shoot locations one after another, and then roll back into the studio at the end of the day. The decision is which order to pick so the van covers the least ground overall — calculate that by summing each segment between stops plus the last leg back to base. No shoot can be skipped or visited twice. The exact list of stops and their coordinates is shown below.
+
+# total_locations=25
+# studio_node_id=A
+location_id,x_coord,y_coord
+A,26,72
+B,100,11
+C,22,30
+D,36,59
+E,21,57
+F,92,19
+G,68,80
+H,80,30
+I,18,50
+J,35,29
+K,85,100
+L,17,3
+M,1,69
+N,91,100
+O,26,57
+P,10,10
+Q,37,18
+R,83,100
+S,100,96
+T,27,3
+U,61,100
+V,100,84
+W,27,0
+X,27,7
+Y,0,72
+
+Also, when you send the route back, please follow this little JSON layout so it's easy to read and process:
+
+{
+  ""solution"": [studio_id, location_id, ..., studio_id]
+}
+
+Think of ""solution"" as the ordered list the van will drive: start at the studio (studio_id), visit each shoot spot in turn (each location_id), and finally come back to the studio (the same studio_id again). It's just a template showing the shape I need — not the final tour.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"[[26, 72], [100, 11], [22, 30], [36, 59], [21, 57], [92, 19], [68, 80], [80, 30], [18, 50], [35, 29], [85, 100], [17, 3], [1, 69], [91, 100], [26, 57], [10, 10], [37, 18], [83, 100], [100, 96], [27, 3], [61, 100], [100, 84], [27, 0], [27, 7], [0, 72]]","[0, 3, 6, 20, 17, 10, 13, 18, 21, 1, 5, 7, 9, 16, 23, 19, 22, 11, 15, 2, 8, 14, 4, 12, 24, 0]",438.54097986221313,"{""problem_type"": ""TSP"", ""num_nodes"": 25, ""nodes"": [{""id"": ""A"", ""x"": 26, ""y"": 72}, {""id"": ""B"", ""x"": 100, ""y"": 11}, {""id"": ""C"", ""x"": 22, ""y"": 30}, {""id"": ""D"", ""x"": 36, ""y"": 59}, {""id"": ""E"", ""x"": 21, ""y"": 57}, {""id"": ""F"", ""x"": 92, ""y"": 19}, {""id"": ""G"", ""x"": 68, ""y"": 80}, {""id"": ""H"", ""x"": 80, ""y"": 30}, {""id"": ""I"", ""x"": 18, ""y"": 50}, {""id"": ""J"", ""x"": 35, ""y"": 29}, {""id"": ""K"", ""x"": 85, ""y"": 100}, {""id"": ""L"", ""x"": 17, ""y"": 3}, {""id"": ""M"", ""x"": 1, ""y"": 69}, {""id"": ""N"", ""x"": 91, ""y"": 100}, {""id"": ""O"", ""x"": 26, ""y"": 57}, {""id"": ""P"", ""x"": 10, ""y"": 10}, {""id"": ""Q"", ""x"": 37, ""y"": 18}, {""id"": ""R"", ""x"": 83, ""y"": 100}, {""id"": ""S"", ""x"": 100, ""y"": 96}, {""id"": ""T"", ""x"": 27, ""y"": 3}, {""id"": ""U"", ""x"": 61, ""y"": 100}, {""id"": ""V"", ""x"": 100, ""y"": 84}, {""id"": ""W"", ""x"": 27, ""y"": 0}, {""id"": ""X"", ""x"": 27, ""y"": 7}, {""id"": ""Y"", ""x"": 0, ""y"": 72}], ""depot"": ""A""}","[""A"", ""D"", ""G"", ""U"", ""R"", ""K"", ""N"", ""S"", ""V"", ""B"", ""F"", ""H"", ""J"", ""Q"", ""X"", ""T"", ""W"", ""L"", ""P"", ""C"", ""I"", ""O"", ""E"", ""M"", ""Y"", ""A""]"
+TSP_L_004,TSP,L,4,"Many of the regular patrons count on a neat bookmobile loop that starts and ends at the main branch and touches every stop only once, so the librarian wants the route that uses the least driving. The way to judge one route versus another is to add up the distance between each stop in the route, including the last stretch back to the branch — the smaller that sum, the better the route. Every stop must appear exactly once, no repeats. The exact stops and their coordinates follow below.
+
+There are 21 stops in total, and the route must start and finish at 0.
+Stop 0 lies at coordinates (19, 94).
+Stop 1 lies at coordinates (37, 87).
+Stop 2 lies at coordinates (0, 31).
+Stop 3 lies at coordinates (88, 83).
+Stop 4 lies at coordinates (100, 43).
+Stop 5 lies at coordinates (5, 92).
+Stop 6 lies at coordinates (4, 43).
+Stop 7 lies at coordinates (67, 27).
+Stop 8 lies at coordinates (67, 100).
+Stop 9 lies at coordinates (91, 70).
+Stop 10 lies at coordinates (33, 8).
+Stop 11 lies at coordinates (9, 39).
+Stop 12 lies at coordinates (23, 93).
+Stop 13 lies at coordinates (12, 13).
+Stop 14 lies at coordinates (68, 11).
+Stop 15 lies at coordinates (64, 92).
+Stop 16 lies at coordinates (67, 45).
+Stop 17 lies at coordinates (39, 83).
+Stop 18 lies at coordinates (46, 0).
+Stop 19 lies at coordinates (0, 48).
+Stop 20 lies at coordinates (28, 15).
+List each stop once so the librarian can sum the segment distances and choose the shortest loop.
+
+If you want to hand me a candidate route, just pop it into a tiny JSON snippet like this so I can read it cleanly:
+
+{
+  ""solution"": [branch_id, stop_id, ..., branch_id]
+}
+
+Think of ""solution"" as the tour: start at the main branch (branch_id), then list each stop in the order the bookmobile should visit them (stop_id placeholders), and finish back at the branch. This is just a sketch of the shape I expect, not the actual route — I'll need the real identifiers from the instance to give a concrete answer.
+
+Please use the exact identifiers from the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"[[19, 94], [37, 87], [0, 31], [88, 83], [100, 43], [5, 92], [4, 43], [67, 27], [67, 100], [91, 70], [33, 8], [9, 39], [23, 93], [12, 13], [68, 11], [64, 92], [67, 45], [39, 83], [46, 0], [0, 48], [28, 15]]","[0, 5, 19, 6, 11, 2, 13, 20, 10, 18, 14, 7, 16, 4, 9, 3, 8, 15, 17, 1, 12, 0]",364.3482913970947,"{""problem_type"": ""TSP"", ""num_nodes"": 21, ""nodes"": [{""id"": 0, ""x"": 19, ""y"": 94}, {""id"": 1, ""x"": 37, ""y"": 87}, {""id"": 2, ""x"": 0, ""y"": 31}, {""id"": 3, ""x"": 88, ""y"": 83}, {""id"": 4, ""x"": 100, ""y"": 43}, {""id"": 5, ""x"": 5, ""y"": 92}, {""id"": 6, ""x"": 4, ""y"": 43}, {""id"": 7, ""x"": 67, ""y"": 27}, {""id"": 8, ""x"": 67, ""y"": 100}, {""id"": 9, ""x"": 91, ""y"": 70}, {""id"": 10, ""x"": 33, ""y"": 8}, {""id"": 11, ""x"": 9, ""y"": 39}, {""id"": 12, ""x"": 23, ""y"": 93}, {""id"": 13, ""x"": 12, ""y"": 13}, {""id"": 14, ""x"": 68, ""y"": 11}, {""id"": 15, ""x"": 64, ""y"": 92}, {""id"": 16, ""x"": 67, ""y"": 45}, {""id"": 17, ""x"": 39, ""y"": 83}, {""id"": 18, ""x"": 46, ""y"": 0}, {""id"": 19, ""x"": 0, ""y"": 48}, {""id"": 20, ""x"": 28, ""y"": 15}], ""depot"": 0}","[0, 5, 19, 6, 11, 2, 13, 20, 10, 18, 14, 7, 16, 4, 9, 3, 8, 15, 17, 1, 12, 0]"
+TSP_L_005,TSP,L,5,"There’s a farmer who does porch-to-porch dropoffs around the neighborhood and wants a sensible route that starts and ends at the farm and doesn’t hit any stop more than once. A smarter route is simply the one that adds up to the fewest miles overall — add up every leg between stops to get the total — so the plan with the smallest sum of those legs wins. The full list of stops and their specifics appears below.
+
+{
+  ""total_stops_in_route"": 17,
+  ""nodes"": [
+    {
+      ""dropoff_id"": 1,
+      ""x_coord"": 61,
+      ""y_coord"": 73
+    },
+    {
+      ""dropoff_id"": 2,
+      ""x_coord"": 0,
+      ""y_coord"": 24
+    },
+    {
+      ""dropoff_id"": 3,
+      ""x_coord"": 38,
+      ""y_coord"": 25
+    },
+    {
+      ""dropoff_id"": 4,
+      ""x_coord"": 59,
+      ""y_coord"": 82
+    },
+    {
+      ""dropoff_id"": 5,
+      ""x_coord"": 76,
+      ""y_coord"": 9
+    },
+    {
+      ""dropoff_id"": 6,
+      ""x_coord"": 37,
+      ""y_coord"": 85
+    },
+    {
+      ""dropoff_id"": 7,
+      ""x_coord"": 74,
+      ""y_coord"": 34
+    },
+    {
+      ""dropoff_id"": 8,
+      ""x_coord"": 26,
+      ""y_coord"": 0
+    },
+    {
+      ""dropoff_id"": 9,
+      ""x_coord"": 81,
+      ""y_coord"": 35
+    },
+    {
+      ""dropoff_id"": 10,
+      ""x_coord"": 20,
+      ""y_coord"": 38
+    },
+    {
+      ""dropoff_id"": 11,
+      ""x_coord"": 99,
+      ""y_coord"": 100
+    },
+    {
+      ""dropoff_id"": 12,
+      ""x_coord"": 83,
+      ""y_coord"": 65
+    },
+    {
+      ""dropoff_id"": 13,
+      ""x_coord"": 17,
+      ""y_coord"": 64
+    },
+    {
+      ""dropoff_id"": 14,
+      ""x_coord"": 15,
+      ""y_coord"": 87
+    },
+    {
+      ""dropoff_id"": 15,
+      ""x_coord"": 100,
+      ""y_coord"": 90
+    },
+    {
+      ""dropoff_id"": 16,
+      ""x_coord"": 71,
+      ""y_coord"": 30
+    },
+    {
+      ""dropoff_id"": 17,
+      ""x_coord"": 75,
+      ""y_coord"": 52
+    }
+  ],
+  ""farm_depot_id"": 1
+}
+
+When you send the route back, just use this simple JSON layout so it's easy to read and parse:
+
+{
+  ""solution"": [farm_id, stop_id, ..., farm_id]
+}
+
+Here ""solution"" holds the ordered list of stops the farmer will make — the first entry is the farm where we start, then every porch in the order they’re visited, and the last entry is the farm again to end the loop. Think of it like filling out a short form: list the farm, then the porches, then the farm.
+
+This JSON is only a sketch of the shape I expect, not the actual route answer.
+
+Please use the exact identifiers given in the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"[[61, 73], [0, 24], [38, 25], [59, 82], [76, 9], [37, 85], [74, 34], [26, 0], [81, 35], [20, 38], [99, 100], [83, 65], [17, 64], [15, 87], [100, 90], [71, 30], [75, 52]]","[0, 3, 5, 13, 12, 9, 1, 7, 2, 4, 15, 6, 8, 16, 11, 14, 10, 0]",385.3797445297241,"{""problem_type"": ""TSP"", ""num_nodes"": 17, ""nodes"": [{""id"": 1, ""x"": 61, ""y"": 73}, {""id"": 2, ""x"": 0, ""y"": 24}, {""id"": 3, ""x"": 38, ""y"": 25}, {""id"": 4, ""x"": 59, ""y"": 82}, {""id"": 5, ""x"": 76, ""y"": 9}, {""id"": 6, ""x"": 37, ""y"": 85}, {""id"": 7, ""x"": 74, ""y"": 34}, {""id"": 8, ""x"": 26, ""y"": 0}, {""id"": 9, ""x"": 81, ""y"": 35}, {""id"": 10, ""x"": 20, ""y"": 38}, {""id"": 11, ""x"": 99, ""y"": 100}, {""id"": 12, ""x"": 83, ""y"": 65}, {""id"": 13, ""x"": 17, ""y"": 64}, {""id"": 14, ""x"": 15, ""y"": 87}, {""id"": 15, ""x"": 100, ""y"": 90}, {""id"": 16, ""x"": 71, ""y"": 30}, {""id"": 17, ""x"": 75, ""y"": 52}], ""depot"": 1}","[1, 4, 6, 14, 13, 10, 2, 8, 3, 5, 16, 7, 9, 17, 12, 15, 11, 1]"
+TSP_L_006,TSP,L,6,"I’m picturing a caterer who needs to plan a single outing that leaves the kitchen, drops off food at every booked venue, and comes back to the kitchen at the end of the day. The job is to pick the order of stops so the whole trip uses the fewest miles possible — that total is just the sum of the distances between each stop in the route, including the leg back to the kitchen — and nothing can be skipped or visited more than once. The exact list of venues and their locations is shown below.
+
+Below are the 17 locations (the kitchen is node A):
+Venue A is at coordinates (58, 0).
+Venue B is at coordinates (0, 100).
+Venue C is at coordinates (3, 49).
+Venue D is at coordinates (51, 9).
+Venue E is at coordinates (77, 43).
+Venue F is at coordinates (96, 97).
+Venue G is at coordinates (15, 34).
+Venue H is at coordinates (0, 12).
+Venue I is at coordinates (15, 23).
+Venue J is at coordinates (79, 29).
+Venue K is at coordinates (14, 60).
+Venue L is at coordinates (27, 77).
+Venue M is at coordinates (28, 16).
+Venue N is at coordinates (50, 21).
+Venue O is at coordinates (87, 69).
+Venue P is at coordinates (16, 85).
+Venue Q is at coordinates (100, 68).
+The route must start and end at A and visit all 17 locations exactly once to minimize total miles.
+
+Oh, and when you give the planned route back, a tiny JSON sketch like this is perfect — just a simple list that starts and ends at the kitchen:
+
+{
+  ""solution"": [kitchen_id, venue_id, ..., kitchen_id]
+}
+
+Think of ""solution"" as the ordered checklist: the first item is where the truck leaves (the kitchen), the middle items are the stops in the order you’ll visit them, and the last item is the kitchen again when you're done. This is just the shape I need, not the actual route.
+
+Please use the exact identifiers from the instance input — no renaming, no made-up labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"[[58, 0], [0, 100], [3, 49], [51, 9], [77, 43], [96, 97], [15, 34], [0, 12], [15, 23], [79, 29], [14, 60], [27, 77], [28, 16], [50, 21], [87, 69], [16, 85], [100, 68]]","[0, 3, 13, 12, 7, 8, 6, 2, 10, 1, 15, 11, 5, 16, 14, 4, 9, 0]",408.52488231658936,"{""problem_type"": ""TSP"", ""num_nodes"": 17, ""nodes"": [{""id"": ""A"", ""x"": 58, ""y"": 0}, {""id"": ""B"", ""x"": 0, ""y"": 100}, {""id"": ""C"", ""x"": 3, ""y"": 49}, {""id"": ""D"", ""x"": 51, ""y"": 9}, {""id"": ""E"", ""x"": 77, ""y"": 43}, {""id"": ""F"", ""x"": 96, ""y"": 97}, {""id"": ""G"", ""x"": 15, ""y"": 34}, {""id"": ""H"", ""x"": 0, ""y"": 12}, {""id"": ""I"", ""x"": 15, ""y"": 23}, {""id"": ""J"", ""x"": 79, ""y"": 29}, {""id"": ""K"", ""x"": 14, ""y"": 60}, {""id"": ""L"", ""x"": 27, ""y"": 77}, {""id"": ""M"", ""x"": 28, ""y"": 16}, {""id"": ""N"", ""x"": 50, ""y"": 21}, {""id"": ""O"", ""x"": 87, ""y"": 69}, {""id"": ""P"", ""x"": 16, ""y"": 85}, {""id"": ""Q"", ""x"": 100, ""y"": 68}], ""depot"": ""A""}","[""A"", ""D"", ""N"", ""M"", ""H"", ""I"", ""G"", ""C"", ""K"", ""B"", ""P"", ""L"", ""F"", ""Q"", ""O"", ""E"", ""J"", ""A""]"
+TSP_L_007,TSP,L,7,"We’ve got a maintenance planner trying to put together a route so a tech can leave HQ, stop at each equipment location once, and come home without backtracking. The decision is which stop to go to next at each turn, and a good decision is one that keeps the overall driving to a minimum. You measure how good a route is by totaling the miles between consecutive stops, including the leg that returns to headquarters. It’s important that every site gets exactly one visit and that none are missed or repeated. The detailed list and numbers are shown below.
+
+Below are the 18 sites, with headquarters 0.
+Site 0: located at (68, 85).
+Site 1: located at (67, 84).
+Site 2: located at (67, 44).
+Site 3: located at (75, 0).
+Site 4: located at (26, 93).
+Site 5: located at (38, 78).
+Site 6: located at (0, 7).
+Site 7: located at (51, 73).
+Site 8: located at (71, 77).
+Site 9: located at (56, 73).
+Site 10: located at (100, 96).
+Site 11: located at (37, 0).
+Site 12: located at (14, 99).
+Site 13: located at (70, 100).
+Site 14: located at (80, 27).
+Site 15: located at (29, 30).
+Site 16: located at (62, 17).
+Site 17: located at (9, 36).
+Make sure each site is visited exactly once and the tour returns to 0.
+
+When you send back the route, just use this tiny JSON layout so it's easy to plug into the planner:
+
+{
+  ""solution"": [hq_id, site_id, ..., hq_id]
+}
+
+Think of ""solution"" as the simple list of stops in order: start at HQ (the first hq_id), visit each site once (the site_id entries), and come back to HQ (the final hq_id). It's just a sketch of the shape I want, not the actual route.
+
+Please make sure you use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""
+
+That's it — drop the actual sequence of IDs into that array and we're good.",nl,zero_based,"[[68, 85], [67, 84], [67, 44], [75, 0], [26, 93], [38, 78], [0, 7], [51, 73], [71, 77], [56, 73], [100, 96], [37, 0], [14, 99], [70, 100], [80, 27], [29, 30], [62, 17], [9, 36]]","[0, 1, 9, 7, 5, 4, 12, 17, 15, 6, 11, 16, 3, 14, 2, 8, 10, 13, 0]",441.07631051540375,"{""problem_type"": ""TSP"", ""num_nodes"": 18, ""nodes"": [{""id"": 0, ""x"": 68, ""y"": 85}, {""id"": 1, ""x"": 67, ""y"": 84}, {""id"": 2, ""x"": 67, ""y"": 44}, {""id"": 3, ""x"": 75, ""y"": 0}, {""id"": 4, ""x"": 26, ""y"": 93}, {""id"": 5, ""x"": 38, ""y"": 78}, {""id"": 6, ""x"": 0, ""y"": 7}, {""id"": 7, ""x"": 51, ""y"": 73}, {""id"": 8, ""x"": 71, ""y"": 77}, {""id"": 9, ""x"": 56, ""y"": 73}, {""id"": 10, ""x"": 100, ""y"": 96}, {""id"": 11, ""x"": 37, ""y"": 0}, {""id"": 12, ""x"": 14, ""y"": 99}, {""id"": 13, ""x"": 70, ""y"": 100}, {""id"": 14, ""x"": 80, ""y"": 27}, {""id"": 15, ""x"": 29, ""y"": 30}, {""id"": 16, ""x"": 62, ""y"": 17}, {""id"": 17, ""x"": 9, ""y"": 36}], ""depot"": 0}","[0, 1, 9, 7, 5, 4, 12, 17, 15, 6, 11, 16, 3, 14, 2, 8, 10, 13, 0]"
+TSP_L_008,TSP,L,8,"On a busy morning the flower shop needs a single delivery loop: out from the storefront, one drop at every recipient, and back to the shop without visiting any address more than once. Picking the right order of stops is the task — the best order is the one that keeps the overall driving distance lowest, calculated by summing each leg of the trip including the return. Every address on the list must be visited exactly once. The specific locations are listed below.
+
+{
+  ""total_locations"": 16,
+  ""nodes"": [
+    {
+      ""location_id"": 0,
+      ""x_coord"": 36,
+      ""y_coord"": 40
+    },
+    {
+      ""location_id"": 1,
+      ""x_coord"": 34,
+      ""y_coord"": 19
+    },
+    {
+      ""location_id"": 2,
+      ""x_coord"": 40,
+      ""y_coord"": 21
+    },
+    {
+      ""location_id"": 3,
+      ""x_coord"": 21,
+      ""y_coord"": 96
+    },
+    {
+      ""location_id"": 4,
+      ""x_coord"": 10,
+      ""y_coord"": 7
+    },
+    {
+      ""location_id"": 5,
+      ""x_coord"": 45,
+      ""y_coord"": 68
+    },
+    {
+      ""location_id"": 6,
+      ""x_coord"": 29,
+      ""y_coord"": 12
+    },
+    {
+      ""location_id"": 7,
+      ""x_coord"": 44,
+      ""y_coord"": 84
+    },
+    {
+      ""location_id"": 8,
+      ""x_coord"": 81,
+      ""y_coord"": 100
+    },
+    {
+      ""location_id"": 9,
+      ""x_coord"": 5,
+      ""y_coord"": 65
+    },
+    {
+      ""location_id"": 10,
+      ""x_coord"": 65,
+      ""y_coord"": 98
+    },
+    {
+      ""location_id"": 11,
+      ""x_coord"": 80,
+      ""y_coord"": 0
+    },
+    {
+      ""location_id"": 12,
+      ""x_coord"": 0,
+      ""y_coord"": 12
+    },
+    {
+      ""location_id"": 13,
+      ""x_coord"": 49,
+      ""y_coord"": 25
+    },
+    {
+      ""location_id"": 14,
+      ""x_coord"": 37,
+      ""y_coord"": 58
+    },
+    {
+      ""location_id"": 15,
+      ""x_coord"": 100,
+      ""y_coord"": 49
+    }
+  ],
+  ""storefront_id"": 0
+}
+
+Also, when you send back the delivery order, please keep it in a tiny JSON shape like this:
+
+{
+  ""solution"": [shop_id, recipient_id, ..., shop_id]
+}
+
+This just shows the shape I’m expecting: the solution array lists the stops in order — starting at the shop, hitting every recipient once, and coming back to the shop. It’s only a sketch of the expected format, not the actual route.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"[[36, 40], [34, 19], [40, 21], [21, 96], [10, 7], [45, 68], [29, 12], [44, 84], [81, 100], [5, 65], [65, 98], [80, 0], [0, 12], [49, 25], [37, 58], [100, 49]]","[0, 12, 4, 6, 1, 2, 13, 11, 15, 8, 10, 7, 3, 9, 5, 14, 0]",421.5208206176758,"{""problem_type"": ""TSP"", ""num_nodes"": 16, ""nodes"": [{""id"": 0, ""x"": 36, ""y"": 40}, {""id"": 1, ""x"": 34, ""y"": 19}, {""id"": 2, ""x"": 40, ""y"": 21}, {""id"": 3, ""x"": 21, ""y"": 96}, {""id"": 4, ""x"": 10, ""y"": 7}, {""id"": 5, ""x"": 45, ""y"": 68}, {""id"": 6, ""x"": 29, ""y"": 12}, {""id"": 7, ""x"": 44, ""y"": 84}, {""id"": 8, ""x"": 81, ""y"": 100}, {""id"": 9, ""x"": 5, ""y"": 65}, {""id"": 10, ""x"": 65, ""y"": 98}, {""id"": 11, ""x"": 80, ""y"": 0}, {""id"": 12, ""x"": 0, ""y"": 12}, {""id"": 13, ""x"": 49, ""y"": 25}, {""id"": 14, ""x"": 37, ""y"": 58}, {""id"": 15, ""x"": 100, ""y"": 49}], ""depot"": 0}","[0, 12, 4, 6, 1, 2, 13, 11, 15, 8, 10, 7, 3, 9, 5, 14, 0]"
+TSP_L_009,TSP,L,9,"Recently the courier asked for a plan that begins at the dispatch office, visits every client one time, and returns to the office in a single loop. The choice to make is the sequence of stops; the best sequence is the one with the smallest total travel distance, computed by adding up all the distances between each stop and the next, including the return trip. Every customer must be visited exactly once. The detailed list of stops appears below.
+
+# total_stops_in_route=24
+# dispatch_office_id=A
+location_id,x_coordinate,y_coordinate
+A,0,23
+B,59,0
+C,32,79
+D,75,98
+E,7,7
+F,42,14
+G,35,86
+H,50,96
+I,1,28
+J,62,33
+K,42,41
+L,56,100
+M,27,71
+N,59,57
+O,73,80
+P,100,73
+Q,51,89
+R,31,14
+S,64,98
+T,5,34
+U,94,65
+V,0,0
+W,82,38
+X,93,88
+
+Also, when you send back the route, please use this simple JSON layout so it's easy to parse and check.
+
+{
+  ""solution"": [""dispatch_office_id"", ""client_id"", ""..."", ""dispatch_office_id""]
+}
+
+Here ""solution"" is just the tour: a list of stop identifiers in the order they should be visited, starting and ending at the dispatch office. The words in the example are placeholders showing the shape I expect — replace them with the real IDs from the instance when you give the actual route.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.  
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"[[0, 23], [59, 0], [32, 79], [75, 98], [7, 7], [42, 14], [35, 86], [50, 96], [1, 28], [62, 33], [42, 41], [56, 100], [27, 71], [59, 57], [73, 80], [100, 73], [51, 89], [31, 14], [64, 98], [5, 34], [94, 65], [0, 0], [82, 38], [93, 88]]","[0, 8, 19, 10, 13, 12, 2, 6, 16, 7, 11, 18, 3, 14, 23, 15, 20, 22, 9, 1, 5, 17, 4, 21, 0]",415.5219216346741,"{""problem_type"": ""TSP"", ""num_nodes"": 24, ""nodes"": [{""id"": ""A"", ""x"": 0, ""y"": 23}, {""id"": ""B"", ""x"": 59, ""y"": 0}, {""id"": ""C"", ""x"": 32, ""y"": 79}, {""id"": ""D"", ""x"": 75, ""y"": 98}, {""id"": ""E"", ""x"": 7, ""y"": 7}, {""id"": ""F"", ""x"": 42, ""y"": 14}, {""id"": ""G"", ""x"": 35, ""y"": 86}, {""id"": ""H"", ""x"": 50, ""y"": 96}, {""id"": ""I"", ""x"": 1, ""y"": 28}, {""id"": ""J"", ""x"": 62, ""y"": 33}, {""id"": ""K"", ""x"": 42, ""y"": 41}, {""id"": ""L"", ""x"": 56, ""y"": 100}, {""id"": ""M"", ""x"": 27, ""y"": 71}, {""id"": ""N"", ""x"": 59, ""y"": 57}, {""id"": ""O"", ""x"": 73, ""y"": 80}, {""id"": ""P"", ""x"": 100, ""y"": 73}, {""id"": ""Q"", ""x"": 51, ""y"": 89}, {""id"": ""R"", ""x"": 31, ""y"": 14}, {""id"": ""S"", ""x"": 64, ""y"": 98}, {""id"": ""T"", ""x"": 5, ""y"": 34}, {""id"": ""U"", ""x"": 94, ""y"": 65}, {""id"": ""V"", ""x"": 0, ""y"": 0}, {""id"": ""W"", ""x"": 82, ""y"": 38}, {""id"": ""X"", ""x"": 93, ""y"": 88}], ""depot"": ""A""}","[""A"", ""I"", ""T"", ""K"", ""N"", ""M"", ""C"", ""G"", ""Q"", ""H"", ""L"", ""S"", ""D"", ""O"", ""X"", ""P"", ""U"", ""W"", ""J"", ""B"", ""F"", ""R"", ""E"", ""V"", ""A""]"
+TSP_L_010,TSP,L,10,"Recently the clinic scheduled house calls across town, and the driver has to turn that schedule into a single loop: leave the clinic, visit every address exactly once, and return to the clinic at the end. The question is which route order will make the least driving — the better route is the one with the lowest sum of all the successive distances between stops, plus the trip back to base. The detailed addresses and coordinates are shown below.
+
+There are 24 locations in the loop, with the clinic designated as node A.
+
+| location_id | x_coordinate_east_west | y_coordinate_north_south |
+|---|---|---|
+| A | 69 | 87 |
+| B | 78 | 78 |
+| C | 31 | 100 |
+| D | 66 | 94 |
+| E | 33 | 12 |
+| F | 45 | 88 |
+| G | 100 | 79 |
+| H | 41 | 84 |
+| I | 65 | 47 |
+| J | 9 | 41 |
+| K | 36 | 88 |
+| L | 99 | 2 |
+| M | 29 | 2 |
+| N | 0 | 33 |
+| O | 95 | 44 |
+| P | 98 | 32 |
+| Q | 65 | 13 |
+| R | 68 | 94 |
+| S | 75 | 82 |
+| T | 31 | 0 |
+| U | 23 | 90 |
+| V | 45 | 48 |
+| W | 35 | 47 |
+| X | 85 | 84 |
+
+Use these coordinates to compute successive distances so the driver can choose the tour with the least total driving.
+
+If you want to hand me the route in a compact form, just pop it into a little JSON array like this:
+
+{
+  ""solution"": [clinic_id, house_id, ..., clinic_id]
+}
+
+This shows the tour order: the array under ""solution"" is the sequence of place identifiers to visit, starting at the clinic, then each house once, and ending back at the clinic. It's just a sketch of the shape I expect — not your actual route yet.
+
+Please make sure to use the exact identifiers from the instance input, with no renaming or made-up labels. Valid identifiers look like:
+- plain numbers such as “1” or “23”
+- single capital letters like “A” or “B”
+- a capital letter followed by digits like “A1” or “X7”
+
+Those are the kinds of IDs I need — use them exactly as given.",markdown_table,names,"[[69, 87], [78, 78], [31, 100], [66, 94], [33, 12], [45, 88], [100, 79], [41, 84], [65, 47], [9, 41], [36, 88], [99, 2], [29, 2], [0, 33], [95, 44], [98, 32], [65, 13], [68, 94], [75, 82], [31, 0], [23, 90], [45, 48], [35, 47], [85, 84]]","[0, 17, 3, 5, 2, 20, 10, 7, 8, 21, 22, 9, 13, 4, 12, 19, 16, 11, 15, 14, 6, 23, 1, 18, 0]",435.04690432548523,"{""problem_type"": ""TSP"", ""num_nodes"": 24, ""nodes"": [{""id"": ""A"", ""x"": 69, ""y"": 87}, {""id"": ""B"", ""x"": 78, ""y"": 78}, {""id"": ""C"", ""x"": 31, ""y"": 100}, {""id"": ""D"", ""x"": 66, ""y"": 94}, {""id"": ""E"", ""x"": 33, ""y"": 12}, {""id"": ""F"", ""x"": 45, ""y"": 88}, {""id"": ""G"", ""x"": 100, ""y"": 79}, {""id"": ""H"", ""x"": 41, ""y"": 84}, {""id"": ""I"", ""x"": 65, ""y"": 47}, {""id"": ""J"", ""x"": 9, ""y"": 41}, {""id"": ""K"", ""x"": 36, ""y"": 88}, {""id"": ""L"", ""x"": 99, ""y"": 2}, {""id"": ""M"", ""x"": 29, ""y"": 2}, {""id"": ""N"", ""x"": 0, ""y"": 33}, {""id"": ""O"", ""x"": 95, ""y"": 44}, {""id"": ""P"", ""x"": 98, ""y"": 32}, {""id"": ""Q"", ""x"": 65, ""y"": 13}, {""id"": ""R"", ""x"": 68, ""y"": 94}, {""id"": ""S"", ""x"": 75, ""y"": 82}, {""id"": ""T"", ""x"": 31, ""y"": 0}, {""id"": ""U"", ""x"": 23, ""y"": 90}, {""id"": ""V"", ""x"": 45, ""y"": 48}, {""id"": ""W"", ""x"": 35, ""y"": 47}, {""id"": ""X"", ""x"": 85, ""y"": 84}], ""depot"": ""A""}","[""A"", ""R"", ""D"", ""F"", ""C"", ""U"", ""K"", ""H"", ""I"", ""V"", ""W"", ""J"", ""N"", ""E"", ""M"", ""T"", ""Q"", ""L"", ""P"", ""O"", ""G"", ""X"", ""B"", ""S"", ""A""]"
+TSP_L_011,TSP,L,11,"Many people on the art team joke about the “pick-up puzzle”: the van needs to leave the gallery, swing by each lender exactly once to grab artwork, then return to base. Deciding which stop comes when is the whole point — the better the sequence, the less driving. You evaluate a sequence by adding together the lengths of each leg of the trip (including the last leg back to the gallery); the smallest total distance is what we want, with every lending venue visited once and only once. The exact stop list and coordinates are shown below.
+
+Below are the 20 locations you must include in the pickup loop, with the gallery depot at node A.
+
+| venue_node_id | x_coord | y_coord |
+|---|---|---|
+| A | 74 | 68 |
+| B | 5 | 100 |
+| C | 52 | 100 |
+| D | 29 | 100 |
+| E | 20 | 52 |
+| F | 24 | 12 |
+| G | 20 | 50 |
+| H | 95 | 9 |
+| I | 47 | 21 |
+| J | 100 | 17 |
+| K | 47 | 16 |
+| L | 74 | 5 |
+| M | 31 | 0 |
+| N | 84 | 0 |
+| O | 68 | 100 |
+| P | 74 | 51 |
+| Q | 0 | 2 |
+| R | 27 | 100 |
+| S | 41 | 9 |
+| T | 27 | 100 |
+
+Start and end the route at node A. You evaluate sequences by summing the distances between legs for all 20 locations.
+
+If you want to hand me the final route, the easiest is to drop it in a tiny JSON snippet like this so everything's clear and machine-friendly:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of that ""solution"" list as the trip sheet: start at the depot/gallery id, then list each lender once in the order the van will visit them, and finish back at the same depot id. The placeholders above are just a sketch of the shape I expect — you'll replace them with the actual IDs from the instance.
+
+Please be sure to use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"[[74, 68], [5, 100], [52, 100], [29, 100], [20, 52], [24, 12], [20, 50], [95, 9], [47, 21], [100, 17], [47, 16], [74, 5], [31, 0], [84, 0], [68, 100], [74, 51], [0, 2], [27, 100], [41, 9], [27, 100]]","[0, 14, 2, 3, 19, 17, 1, 4, 6, 16, 5, 12, 18, 10, 8, 11, 13, 7, 9, 15, 0]",393.42598724365234,"{""problem_type"": ""TSP"", ""num_nodes"": 20, ""nodes"": [{""id"": ""A"", ""x"": 74, ""y"": 68}, {""id"": ""B"", ""x"": 5, ""y"": 100}, {""id"": ""C"", ""x"": 52, ""y"": 100}, {""id"": ""D"", ""x"": 29, ""y"": 100}, {""id"": ""E"", ""x"": 20, ""y"": 52}, {""id"": ""F"", ""x"": 24, ""y"": 12}, {""id"": ""G"", ""x"": 20, ""y"": 50}, {""id"": ""H"", ""x"": 95, ""y"": 9}, {""id"": ""I"", ""x"": 47, ""y"": 21}, {""id"": ""J"", ""x"": 100, ""y"": 17}, {""id"": ""K"", ""x"": 47, ""y"": 16}, {""id"": ""L"", ""x"": 74, ""y"": 5}, {""id"": ""M"", ""x"": 31, ""y"": 0}, {""id"": ""N"", ""x"": 84, ""y"": 0}, {""id"": ""O"", ""x"": 68, ""y"": 100}, {""id"": ""P"", ""x"": 74, ""y"": 51}, {""id"": ""Q"", ""x"": 0, ""y"": 2}, {""id"": ""R"", ""x"": 27, ""y"": 100}, {""id"": ""S"", ""x"": 41, ""y"": 9}, {""id"": ""T"", ""x"": 27, ""y"": 100}], ""depot"": ""A""}","[""A"", ""O"", ""C"", ""D"", ""T"", ""R"", ""B"", ""E"", ""G"", ""Q"", ""F"", ""M"", ""S"", ""K"", ""I"", ""L"", ""N"", ""H"", ""J"", ""P"", ""A""]"
+TSP_L_012,TSP,L,12,"I run a little vintage furniture workshop and need to plan a buying trip that leaves from the shop, visits every seller on the list exactly once, and then brings me straight back to the workshop. The choice to make is the order to visit those sellers; a better plan is the one that keeps the whole drive as short as possible — add up the miles between each stop in the order chosen, including the final leg home, and that total should be as small as it can be. Nothing on the seller list can be skipped or visited twice. The exact addresses and distances are shown below.
+
+# total_stops_including_workshop=19
+# workshop_node_id=A
+location_id,map_x_coordinate,map_y_coordinate
+A,86,18
+B,54,14
+C,47,68
+D,5,34
+E,10,2
+F,64,71
+G,31,30
+H,15,100
+I,100,39
+J,0,25
+K,91,45
+L,50,36
+M,97,95
+N,68,0
+O,79,14
+P,84,45
+Q,64,63
+R,96,98
+S,21,39
+
+Also, when you send the route back, a little JSON sketch like this is perfect for me — keeps things tidy and easy to read.
+
+{
+  ""solution"": [shop_id, seller_id, ..., shop_id]
+}
+
+Think of ""solution"" as the ordered list of stops: start at the shop (the depot), visit each seller once in the middle, and finish back at the shop. The placeholders there just show the shape I need — the actual reply should replace them with the real identifiers from the instance.
+
+This JSON is only a template of the expected shape, not the actual answer. All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"[[86, 18], [54, 14], [47, 68], [5, 34], [10, 2], [64, 71], [31, 30], [15, 100], [100, 39], [0, 25], [91, 45], [50, 36], [97, 95], [68, 0], [79, 14], [84, 45], [64, 63], [96, 98], [21, 39]]","[0, 8, 10, 15, 12, 17, 5, 16, 2, 7, 18, 3, 9, 4, 6, 11, 1, 13, 14, 0]",447.10808515548706,"{""problem_type"": ""TSP"", ""num_nodes"": 19, ""nodes"": [{""id"": ""A"", ""x"": 86, ""y"": 18}, {""id"": ""B"", ""x"": 54, ""y"": 14}, {""id"": ""C"", ""x"": 47, ""y"": 68}, {""id"": ""D"", ""x"": 5, ""y"": 34}, {""id"": ""E"", ""x"": 10, ""y"": 2}, {""id"": ""F"", ""x"": 64, ""y"": 71}, {""id"": ""G"", ""x"": 31, ""y"": 30}, {""id"": ""H"", ""x"": 15, ""y"": 100}, {""id"": ""I"", ""x"": 100, ""y"": 39}, {""id"": ""J"", ""x"": 0, ""y"": 25}, {""id"": ""K"", ""x"": 91, ""y"": 45}, {""id"": ""L"", ""x"": 50, ""y"": 36}, {""id"": ""M"", ""x"": 97, ""y"": 95}, {""id"": ""N"", ""x"": 68, ""y"": 0}, {""id"": ""O"", ""x"": 79, ""y"": 14}, {""id"": ""P"", ""x"": 84, ""y"": 45}, {""id"": ""Q"", ""x"": 64, ""y"": 63}, {""id"": ""R"", ""x"": 96, ""y"": 98}, {""id"": ""S"", ""x"": 21, ""y"": 39}], ""depot"": ""A""}","[""A"", ""I"", ""K"", ""P"", ""M"", ""R"", ""F"", ""Q"", ""C"", ""H"", ""S"", ""D"", ""J"", ""E"", ""G"", ""L"", ""B"", ""N"", ""O"", ""A""]"
+TSP_L_013,TSP,L,13,"There's a simple task for the community health planner: schedule a circuit that starts at the health center, goes to every neighborhood stop exactly once, and finishes back at the health center. What matters most when comparing different circuits is how far the van has to drive in total — add up the distance between each pair of consecutive stops along the loop (including the return leg) and the route with the smallest total is the one to use. No stops can be left out or driven twice. The concrete stop locations and distances are shown below.
+
+The list below gives 17 locations, with the health center identified as A.
+
+| stop_id | x_coordinate | y_coordinate |
+|---|---|---|
+| A | 87 | 58 |
+| B | 51 | 79 |
+| C | 4 | 0 |
+| D | 100 | 12 |
+| E | 3 | 36 |
+| F | 17 | 6 |
+| G | 23 | 91 |
+| H | 22 | 100 |
+| I | 1 | 68 |
+| J | 94 | 88 |
+| K | 0 | 57 |
+| L | 22 | 4 |
+| M | 87 | 2 |
+| N | 53 | 88 |
+| O | 12 | 55 |
+| P | 37 | 89 |
+| Q | 8 | 66 |
+
+Choose the circuit with the smallest total driving distance (sum distances between consecutive stops, including the return to the health center).
+
+When you send the route back, just drop it into this simple JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [health_center_id, neighborhood_id, ..., health_center_id]
+}
+
+This is just a short sketch of the form I need: ""solution"" holds the ordered list of stops starting and ending at the health center (so the first and last placeholder are the same). Think of it like filling in a little form: put the health center identifier first, list each neighborhood once in the order the van will visit them, and finish with the health center again.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.
+
+Remember, the JSON above is just the expected shape (not the route itself).",markdown_table,names,"[[87, 58], [51, 79], [4, 0], [100, 12], [3, 36], [17, 6], [23, 91], [22, 100], [1, 68], [94, 88], [0, 57], [22, 4], [87, 2], [53, 88], [12, 55], [37, 89], [8, 66]]","[0, 3, 12, 11, 5, 2, 4, 14, 10, 8, 16, 6, 7, 15, 1, 13, 9, 0]",391.5065803527832,"{""problem_type"": ""TSP"", ""num_nodes"": 17, ""nodes"": [{""id"": ""A"", ""x"": 87, ""y"": 58}, {""id"": ""B"", ""x"": 51, ""y"": 79}, {""id"": ""C"", ""x"": 4, ""y"": 0}, {""id"": ""D"", ""x"": 100, ""y"": 12}, {""id"": ""E"", ""x"": 3, ""y"": 36}, {""id"": ""F"", ""x"": 17, ""y"": 6}, {""id"": ""G"", ""x"": 23, ""y"": 91}, {""id"": ""H"", ""x"": 22, ""y"": 100}, {""id"": ""I"", ""x"": 1, ""y"": 68}, {""id"": ""J"", ""x"": 94, ""y"": 88}, {""id"": ""K"", ""x"": 0, ""y"": 57}, {""id"": ""L"", ""x"": 22, ""y"": 4}, {""id"": ""M"", ""x"": 87, ""y"": 2}, {""id"": ""N"", ""x"": 53, ""y"": 88}, {""id"": ""O"", ""x"": 12, ""y"": 55}, {""id"": ""P"", ""x"": 37, ""y"": 89}, {""id"": ""Q"", ""x"": 8, ""y"": 66}], ""depot"": ""A""}","[""A"", ""D"", ""M"", ""L"", ""F"", ""C"", ""E"", ""O"", ""K"", ""I"", ""Q"", ""G"", ""H"", ""P"", ""B"", ""N"", ""J"", ""A""]"
+TSP_L_014,TSP,L,14,"Someone in the neighborhood organizes a vending tour: they need to leave their garage, hit every market location one time only, and return home at the end. The choice is how to order those stops; the better ordering is the one that results in the smallest total distance traveled — calculate the trip length by summing the distance between each consecutive stop, plus the legs from garage to first and last back to garage, and pick the route with the smallest sum. No market can be omitted or repeated. The full list of markets and coordinates appears below.
+
+# total_locations_count=21
+# garage_node_id=0
+location_id,x_coord,y_coord
+0,20,74
+1,2,66
+2,65,11
+3,80,0
+4,25,98
+5,40,4
+6,53,58
+7,100,95
+8,92,98
+9,52,57
+10,63,90
+11,0,94
+12,22,68
+13,44,100
+14,73,31
+15,99,97
+16,63,96
+17,19,43
+18,71,81
+19,89,93
+20,77,80
+
+Oh, and when you give the final route, please put it in a tiny JSON snippet like this so it's straightforward to read:
+
+{
+  ""solution"": [""garage_id"", ""market_id"", ..., ""garage_id""]
+}
+
+This is just a simple sketch: ""solution"" should be the ordered list of stops (start at the garage, visit every market once, and come back to the garage). Think of the placeholders as blanks you fill in with the exact IDs from the instance — don't invent new names or change the IDs. The JSON above is only the shape I expect, not the actual tour.
+
+Also, make sure to use the identifiers exactly as they appear in the input — no renaming and no extra labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"[[20, 74], [2, 66], [65, 11], [80, 0], [25, 98], [40, 4], [53, 58], [100, 95], [92, 98], [52, 57], [63, 90], [0, 94], [22, 68], [44, 100], [73, 31], [99, 97], [63, 96], [19, 43], [71, 81], [89, 93], [77, 80]]","[0, 1, 11, 4, 13, 16, 10, 19, 8, 15, 7, 20, 18, 6, 9, 14, 3, 2, 5, 17, 12, 0]",408.6442981958389,"{""problem_type"": ""TSP"", ""num_nodes"": 21, ""nodes"": [{""id"": 0, ""x"": 20, ""y"": 74}, {""id"": 1, ""x"": 2, ""y"": 66}, {""id"": 2, ""x"": 65, ""y"": 11}, {""id"": 3, ""x"": 80, ""y"": 0}, {""id"": 4, ""x"": 25, ""y"": 98}, {""id"": 5, ""x"": 40, ""y"": 4}, {""id"": 6, ""x"": 53, ""y"": 58}, {""id"": 7, ""x"": 100, ""y"": 95}, {""id"": 8, ""x"": 92, ""y"": 98}, {""id"": 9, ""x"": 52, ""y"": 57}, {""id"": 10, ""x"": 63, ""y"": 90}, {""id"": 11, ""x"": 0, ""y"": 94}, {""id"": 12, ""x"": 22, ""y"": 68}, {""id"": 13, ""x"": 44, ""y"": 100}, {""id"": 14, ""x"": 73, ""y"": 31}, {""id"": 15, ""x"": 99, ""y"": 97}, {""id"": 16, ""x"": 63, ""y"": 96}, {""id"": 17, ""x"": 19, ""y"": 43}, {""id"": 18, ""x"": 71, ""y"": 81}, {""id"": 19, ""x"": 89, ""y"": 93}, {""id"": 20, ""x"": 77, ""y"": 80}], ""depot"": 0}","[0, 1, 11, 4, 13, 16, 10, 19, 8, 15, 7, 20, 18, 6, 9, 14, 3, 2, 5, 17, 12, 0]"
+TSP_L_015,TSP,L,15,"My friend is organizing a small tour: kick off at home, play each venue once (no repeats), and finish back at home. The choice comes down to the order of shows — the best route is the one that keeps overall travel to a minimum, which you can calculate by adding the distance between every consecutive stop in the itinerary, plus the trips from home to the first stop and from the last stop back home. The concrete details for the venues are included below.
+
+Here are the 18 location records; home base is 0.
+
+| location_id | x_coord | y_coord |
+|---|---|---|
+| 0 | 20 | 90 |
+| 1 | 40 | 0 |
+| 2 | 83 | 87 |
+| 3 | 19 | 11 |
+| 4 | 24 | 100 |
+| 5 | 84 | 69 |
+| 6 | 99 | 72 |
+| 7 | 84 | 11 |
+| 8 | 95 | 100 |
+| 9 | 0 | 19 |
+| 10 | 98 | 11 |
+| 11 | 77 | 11 |
+| 12 | 61 | 27 |
+| 13 | 98 | 9 |
+| 14 | 62 | 64 |
+| 15 | 100 | 100 |
+| 16 | 2 | 12 |
+| 17 | 93 | 88 |
+
+Use these coordinates to compute distances and pick the route that minimizes overall travel.
+
+Oh — and when you reply, please use this simple JSON layout for the route:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of it like a little form: ""solution"" is the ordered list of stops starting and ending at your home base. The placeholder depot_id marks the home/depot, each location_id stands for a venue on the tour, and the ""..."" just means the rest of the stops in order. This is only a sketch of the expected shape, not the actual answer.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"[[20, 90], [40, 0], [83, 87], [19, 11], [24, 100], [84, 69], [99, 72], [84, 11], [95, 100], [0, 19], [98, 11], [77, 11], [61, 27], [98, 9], [62, 64], [100, 100], [2, 12], [93, 88]]","[0, 4, 14, 5, 2, 8, 15, 17, 6, 10, 13, 7, 11, 12, 1, 3, 16, 9, 0]",420.1385636329651,"{""problem_type"": ""TSP"", ""num_nodes"": 18, ""nodes"": [{""id"": 0, ""x"": 20, ""y"": 90}, {""id"": 1, ""x"": 40, ""y"": 0}, {""id"": 2, ""x"": 83, ""y"": 87}, {""id"": 3, ""x"": 19, ""y"": 11}, {""id"": 4, ""x"": 24, ""y"": 100}, {""id"": 5, ""x"": 84, ""y"": 69}, {""id"": 6, ""x"": 99, ""y"": 72}, {""id"": 7, ""x"": 84, ""y"": 11}, {""id"": 8, ""x"": 95, ""y"": 100}, {""id"": 9, ""x"": 0, ""y"": 19}, {""id"": 10, ""x"": 98, ""y"": 11}, {""id"": 11, ""x"": 77, ""y"": 11}, {""id"": 12, ""x"": 61, ""y"": 27}, {""id"": 13, ""x"": 98, ""y"": 9}, {""id"": 14, ""x"": 62, ""y"": 64}, {""id"": 15, ""x"": 100, ""y"": 100}, {""id"": 16, ""x"": 2, ""y"": 12}, {""id"": 17, ""x"": 93, ""y"": 88}], ""depot"": 0}","[0, 4, 14, 5, 2, 8, 15, 17, 6, 10, 13, 7, 11, 12, 1, 3, 16, 9, 0]"
+TSP_L_016,TSP,L,16,"Recently the inspector’s rounds were being reorganized: the plan is to leave the municipal office, visit each property exactly once for inspection, and end the day back at the office. The trick is picking the order so the total distance traveled is as small as possible — total distance equals the sum of distances between each stop in the chosen order. No revisits and no omissions are allowed. The concrete site details and coordinates are listed below.
+
+# total_locations_count=19
+# depot_node_id=1
+location_id,coord_x,coord_y
+1,13,74
+2,18,85
+3,29,65
+4,75,4
+5,13,87
+6,22,59
+7,97,4
+8,18,37
+9,29,39
+10,92,59
+11,32,20
+12,85,100
+13,12,100
+14,22,22
+15,100,6
+16,45,83
+17,22,74
+18,0,87
+19,21,0
+
+I'll return the planned route in a small JSON sketch so it's easy to parse — something like this is the shape I expect you to use when giving me the route:
+
+{
+  ""solution"": [""office_id"", ""property_id"", ""..."", ""office_id""]
+}
+
+In that little example, ""solution"" is the ordered list of stops: start with the office (the depot), list each property once in the inspection order, and finish back at the office. It's just a sketch of the shape I want, not the actual route.
+
+Please be sure to use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"[[13, 74], [18, 85], [29, 65], [75, 4], [13, 87], [22, 59], [97, 4], [18, 37], [29, 39], [92, 59], [32, 20], [85, 100], [12, 100], [22, 22], [100, 6], [45, 83], [22, 74], [0, 87], [21, 0]]","[0, 16, 2, 5, 8, 7, 13, 10, 18, 3, 6, 14, 9, 11, 15, 1, 4, 12, 17, 0]",410.52278900146484,"{""problem_type"": ""TSP"", ""num_nodes"": 19, ""nodes"": [{""id"": 1, ""x"": 13, ""y"": 74}, {""id"": 2, ""x"": 18, ""y"": 85}, {""id"": 3, ""x"": 29, ""y"": 65}, {""id"": 4, ""x"": 75, ""y"": 4}, {""id"": 5, ""x"": 13, ""y"": 87}, {""id"": 6, ""x"": 22, ""y"": 59}, {""id"": 7, ""x"": 97, ""y"": 4}, {""id"": 8, ""x"": 18, ""y"": 37}, {""id"": 9, ""x"": 29, ""y"": 39}, {""id"": 10, ""x"": 92, ""y"": 59}, {""id"": 11, ""x"": 32, ""y"": 20}, {""id"": 12, ""x"": 85, ""y"": 100}, {""id"": 13, ""x"": 12, ""y"": 100}, {""id"": 14, ""x"": 22, ""y"": 22}, {""id"": 15, ""x"": 100, ""y"": 6}, {""id"": 16, ""x"": 45, ""y"": 83}, {""id"": 17, ""x"": 22, ""y"": 74}, {""id"": 18, ""x"": 0, ""y"": 87}, {""id"": 19, ""x"": 21, ""y"": 0}], ""depot"": 1}","[1, 17, 3, 6, 9, 8, 14, 11, 19, 4, 7, 15, 10, 12, 16, 2, 5, 13, 18, 1]"
+TSP_L_017,TSP,L,17,"There’s a charity van that needs to go out, call on every donor once, and come back to the warehouse at the end of the day. The decision is about the order of visits: the aim is to make the route as short as possible — simply add up the length of each leg between stops, including the final trip home — and it’s important that no donor is left out or visited more than once. The concrete pickup details and location info are shown below.
+
+# total_stops=20
+# warehouse_stop_id=0
+stop_id,x_coord,y_coord
+0,33,7
+1,31,72
+2,66,24
+3,61,57
+4,5,0
+5,60,24
+6,37,53
+7,26,72
+8,42,64
+9,60,35
+10,33,85
+11,32,48
+12,82,48
+13,67,17
+14,83,100
+15,55,97
+16,43,100
+17,82,54
+18,0,60
+19,100,41
+
+Oh — one more thing: when you send the tour back, it helps to put it in a tiny JSON snippet like this so it's clear and easy to read.
+
+{
+  ""solution"": [""warehouse_id"", ""donor_id"", ""..."", ""warehouse_id""]
+}
+
+Just so it's clear: ""solution"" should be a list that starts at the warehouse, shows each donor in the order the van will visit them, and ends back at the warehouse. The strings above are placeholders — replace them with the actual IDs from the instance; this is just a sketch of the shape I expect, not the real answer.
+
+Please use the identifiers exactly as they appear in the input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,zero_based,"[[33, 7], [31, 72], [66, 24], [61, 57], [5, 0], [60, 24], [37, 53], [26, 72], [42, 64], [60, 35], [33, 85], [32, 48], [82, 48], [67, 17], [83, 100], [55, 97], [43, 100], [82, 54], [0, 60], [100, 41]]","[0, 4, 18, 11, 6, 8, 1, 7, 10, 16, 15, 14, 19, 12, 17, 3, 9, 5, 2, 13, 0]",423.78407287597656,"{""problem_type"": ""TSP"", ""num_nodes"": 20, ""nodes"": [{""id"": 0, ""x"": 33, ""y"": 7}, {""id"": 1, ""x"": 31, ""y"": 72}, {""id"": 2, ""x"": 66, ""y"": 24}, {""id"": 3, ""x"": 61, ""y"": 57}, {""id"": 4, ""x"": 5, ""y"": 0}, {""id"": 5, ""x"": 60, ""y"": 24}, {""id"": 6, ""x"": 37, ""y"": 53}, {""id"": 7, ""x"": 26, ""y"": 72}, {""id"": 8, ""x"": 42, ""y"": 64}, {""id"": 9, ""x"": 60, ""y"": 35}, {""id"": 10, ""x"": 33, ""y"": 85}, {""id"": 11, ""x"": 32, ""y"": 48}, {""id"": 12, ""x"": 82, ""y"": 48}, {""id"": 13, ""x"": 67, ""y"": 17}, {""id"": 14, ""x"": 83, ""y"": 100}, {""id"": 15, ""x"": 55, ""y"": 97}, {""id"": 16, ""x"": 43, ""y"": 100}, {""id"": 17, ""x"": 82, ""y"": 54}, {""id"": 18, ""x"": 0, ""y"": 60}, {""id"": 19, ""x"": 100, ""y"": 41}], ""depot"": 0}","[0, 4, 18, 11, 6, 8, 1, 7, 10, 16, 15, 14, 19, 12, 17, 3, 9, 5, 2, 13, 0]"
+TSP_L_018,TSP,L,18,"On a typical scouting morning the antique buyer wants a tidy route: depart the showroom, hit all the listed prospects one after another without repeating any, then return to the showroom. The choice is the order of the visits, and the measure of success is how small the total miles driven turns out to be — calculated by adding up the miles between every pair of consecutive stops along the loop (final leg back included). Every location must be checked once and only once. The exact stops and distances appear below.
+
+Below are 19 locations, with the showroom labeled 0.
+
+| location_id | x_coordinate_miles | y_coordinate_miles |
+|---|---|---|
+| 0 | 98 | 31 |
+| 1 | 96 | 89 |
+| 2 | 35 | 24 |
+| 3 | 86 | 43 |
+| 4 | 53 | 11 |
+| 5 | 61 | 37 |
+| 6 | 65 | 87 |
+| 7 | 45 | 54 |
+| 8 | 57 | 67 |
+| 9 | 43 | 41 |
+| 10 | 0 | 13 |
+| 11 | 43 | 96 |
+| 12 | 86 | 57 |
+| 13 | 100 | 9 |
+| 14 | 59 | 0 |
+| 15 | 14 | 43 |
+| 16 | 71 | 46 |
+| 17 | 31 | 41 |
+| 18 | 86 | 100 |
+
+The antique buyer needs a loop visiting each of the 19 locations once and returning to showroom 0.
+
+When you send the route back, just use a little JSON object so it's easy to parse. Something like this:
+
+{
+  ""solution"": [showroom_id, prospect_id, ..., showroom_id]
+}
+
+The ""solution"" array is simply the visit order: start at the showroom (showroom_id), list each prospect in the order you plan to visit them (each prospect_id), and finish back at the showroom. This is only a sketch of the shape I expect, not the actual route.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,zero_based,"[[98, 31], [96, 89], [35, 24], [86, 43], [53, 11], [61, 37], [65, 87], [45, 54], [57, 67], [43, 41], [0, 13], [43, 96], [86, 57], [100, 9], [59, 0], [14, 43], [71, 46], [31, 41], [86, 100]]","[0, 3, 12, 1, 18, 6, 11, 8, 16, 5, 7, 9, 17, 15, 10, 2, 4, 14, 13, 0]",432.93527603149414,"{""problem_type"": ""TSP"", ""num_nodes"": 19, ""nodes"": [{""id"": 0, ""x"": 98, ""y"": 31}, {""id"": 1, ""x"": 96, ""y"": 89}, {""id"": 2, ""x"": 35, ""y"": 24}, {""id"": 3, ""x"": 86, ""y"": 43}, {""id"": 4, ""x"": 53, ""y"": 11}, {""id"": 5, ""x"": 61, ""y"": 37}, {""id"": 6, ""x"": 65, ""y"": 87}, {""id"": 7, ""x"": 45, ""y"": 54}, {""id"": 8, ""x"": 57, ""y"": 67}, {""id"": 9, ""x"": 43, ""y"": 41}, {""id"": 10, ""x"": 0, ""y"": 13}, {""id"": 11, ""x"": 43, ""y"": 96}, {""id"": 12, ""x"": 86, ""y"": 57}, {""id"": 13, ""x"": 100, ""y"": 9}, {""id"": 14, ""x"": 59, ""y"": 0}, {""id"": 15, ""x"": 14, ""y"": 43}, {""id"": 16, ""x"": 71, ""y"": 46}, {""id"": 17, ""x"": 31, ""y"": 41}, {""id"": 18, ""x"": 86, ""y"": 100}], ""depot"": 0}","[0, 3, 12, 1, 18, 6, 11, 8, 16, 5, 7, 9, 17, 15, 10, 2, 4, 14, 13, 0]"
+TSP_L_019,TSP,L,19,"Someone managing the milk subscriptions needs a driving plan that starts at the depot, hits every household once, and then returns to where it started. The decision is really about ordering the stops so the total distance driven — obtained by adding up the lengths of all the legs between stops including the last one home — is as low as possible, while never skipping or repeating a delivery. The full set of location details appears below.
+
+There are 25 locations in total, and the depot is 0.
+
+| location_id | coord_x | coord_y |
+|---|---|---|
+| 0 | 59 | 38 |
+| 1 | 0 | 21 |
+| 2 | 1 | 68 |
+| 3 | 88 | 55 |
+| 4 | 39 | 34 |
+| 5 | 90 | 33 |
+| 6 | 58 | 69 |
+| 7 | 74 | 10 |
+| 8 | 58 | 81 |
+| 9 | 19 | 72 |
+| 10 | 94 | 91 |
+| 11 | 46 | 41 |
+| 12 | 4 | 46 |
+| 13 | 91 | 51 |
+| 14 | 69 | 47 |
+| 15 | 98 | 34 |
+| 16 | 44 | 3 |
+| 17 | 79 | 71 |
+| 18 | 84 | 64 |
+| 19 | 100 | 65 |
+| 20 | 83 | 0 |
+| 21 | 83 | 100 |
+| 22 | 4 | 98 |
+| 23 | 11 | 3 |
+| 24 | 55 | 41 |
+
+These 25 location coordinates will be used to plan the shortest round trip that starts and ends at 0.
+
+When you send the route back, just use this relaxed JSON shape so it's easy to parse:
+
+{
+  ""solution"": [milk_depot_id, household_id, ..., milk_depot_id]
+}
+
+Think of ""solution"" as the ordered list of stops: it should start at the depot, list every household once in the order you'll drive to them, and finish back at the depot. The names like milk_depot_id and household_id are placeholders showing where to drop in the actual identifiers from the instance; the ""..."" just means ""and so on"" for the rest of the stops. This is only a sketch of the expected shape, not the actual answer.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"[[59, 38], [0, 21], [1, 68], [88, 55], [39, 34], [90, 33], [58, 69], [74, 10], [58, 81], [19, 72], [94, 91], [46, 41], [4, 46], [91, 51], [69, 47], [98, 34], [44, 3], [79, 71], [84, 64], [100, 65], [83, 0], [83, 100], [4, 98], [11, 3], [55, 41]]","[0, 14, 6, 8, 21, 10, 17, 18, 19, 3, 13, 15, 5, 20, 7, 16, 23, 1, 12, 2, 22, 9, 4, 11, 24, 0]",498.9826936721802,"{""problem_type"": ""TSP"", ""num_nodes"": 25, ""nodes"": [{""id"": 0, ""x"": 59, ""y"": 38}, {""id"": 1, ""x"": 0, ""y"": 21}, {""id"": 2, ""x"": 1, ""y"": 68}, {""id"": 3, ""x"": 88, ""y"": 55}, {""id"": 4, ""x"": 39, ""y"": 34}, {""id"": 5, ""x"": 90, ""y"": 33}, {""id"": 6, ""x"": 58, ""y"": 69}, {""id"": 7, ""x"": 74, ""y"": 10}, {""id"": 8, ""x"": 58, ""y"": 81}, {""id"": 9, ""x"": 19, ""y"": 72}, {""id"": 10, ""x"": 94, ""y"": 91}, {""id"": 11, ""x"": 46, ""y"": 41}, {""id"": 12, ""x"": 4, ""y"": 46}, {""id"": 13, ""x"": 91, ""y"": 51}, {""id"": 14, ""x"": 69, ""y"": 47}, {""id"": 15, ""x"": 98, ""y"": 34}, {""id"": 16, ""x"": 44, ""y"": 3}, {""id"": 17, ""x"": 79, ""y"": 71}, {""id"": 18, ""x"": 84, ""y"": 64}, {""id"": 19, ""x"": 100, ""y"": 65}, {""id"": 20, ""x"": 83, ""y"": 0}, {""id"": 21, ""x"": 83, ""y"": 100}, {""id"": 22, ""x"": 4, ""y"": 98}, {""id"": 23, ""x"": 11, ""y"": 3}, {""id"": 24, ""x"": 55, ""y"": 41}], ""depot"": 0}","[0, 14, 6, 8, 21, 10, 17, 18, 19, 3, 13, 15, 5, 20, 7, 16, 23, 1, 12, 2, 22, 9, 4, 11, 24, 0]"
+TSP_L_020,TSP,L,20,"On a busy day the van should leave the shop, swing through every scheduled driveway once, and finish back where it started. The decision is simply which sequence to follow; the best sequence is the one that leads to the lowest overall driving distance, calculated by summing each segment between stops and the return trip. Each address must be visited one time only. The specific addresses and coordinates appear below.
+
+There are 23 locations to include in the closed route, with the shop depot identified as 0.
+Stop 0 is located at coordinates (65, 0).
+Stop 1 is located at coordinates (25, 100).
+Stop 2 is located at coordinates (40, 89).
+Stop 3 is located at coordinates (56, 32).
+Stop 4 is located at coordinates (87, 58).
+Stop 5 is located at coordinates (79, 32).
+Stop 6 is located at coordinates (83, 3).
+Stop 7 is located at coordinates (2, 0).
+Stop 8 is located at coordinates (85, 0).
+Stop 9 is located at coordinates (12, 3).
+Stop 10 is located at coordinates (2, 87).
+Stop 11 is located at coordinates (62, 3).
+Stop 12 is located at coordinates (23, 5).
+Stop 13 is located at coordinates (29, 0).
+Stop 14 is located at coordinates (0, 97).
+Stop 15 is located at coordinates (90, 37).
+Stop 16 is located at coordinates (92, 100).
+Stop 17 is located at coordinates (88, 32).
+Stop 18 is located at coordinates (69, 100).
+Stop 19 is located at coordinates (33, 87).
+Stop 20 is located at coordinates (54, 16).
+Stop 21 is located at coordinates (100, 84).
+Stop 22 is located at coordinates (71, 97).
+Use these 23 locations, starting and ending at 0, to determine the sequence that minimizes the total driving distance.
+
+When you send back the chosen sequence, just pop it into this little JSON sketch so it's easy to read and use:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+""solution"" is just the ordered list of stop IDs: start at the depot, visit each driveway once, and finish back at the depot. Think of it like filling in a simple checklist of IDs in the order the van will drive them. This JSON block is only the shape I want — it's a template, not the actual route.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,zero_based,"[[65, 0], [25, 100], [40, 89], [56, 32], [87, 58], [79, 32], [83, 3], [2, 0], [85, 0], [12, 3], [2, 87], [62, 3], [23, 5], [29, 0], [0, 97], [90, 37], [92, 100], [88, 32], [69, 100], [33, 87], [54, 16], [100, 84], [71, 97]]","[0, 8, 6, 5, 17, 15, 4, 21, 16, 22, 18, 2, 19, 1, 14, 10, 7, 9, 12, 13, 3, 20, 11, 0]",443.12386655807495,"{""problem_type"": ""TSP"", ""num_nodes"": 23, ""nodes"": [{""id"": 0, ""x"": 65, ""y"": 0}, {""id"": 1, ""x"": 25, ""y"": 100}, {""id"": 2, ""x"": 40, ""y"": 89}, {""id"": 3, ""x"": 56, ""y"": 32}, {""id"": 4, ""x"": 87, ""y"": 58}, {""id"": 5, ""x"": 79, ""y"": 32}, {""id"": 6, ""x"": 83, ""y"": 3}, {""id"": 7, ""x"": 2, ""y"": 0}, {""id"": 8, ""x"": 85, ""y"": 0}, {""id"": 9, ""x"": 12, ""y"": 3}, {""id"": 10, ""x"": 2, ""y"": 87}, {""id"": 11, ""x"": 62, ""y"": 3}, {""id"": 12, ""x"": 23, ""y"": 5}, {""id"": 13, ""x"": 29, ""y"": 0}, {""id"": 14, ""x"": 0, ""y"": 97}, {""id"": 15, ""x"": 90, ""y"": 37}, {""id"": 16, ""x"": 92, ""y"": 100}, {""id"": 17, ""x"": 88, ""y"": 32}, {""id"": 18, ""x"": 69, ""y"": 100}, {""id"": 19, ""x"": 33, ""y"": 87}, {""id"": 20, ""x"": 54, ""y"": 16}, {""id"": 21, ""x"": 100, ""y"": 84}, {""id"": 22, ""x"": 71, ""y"": 97}], ""depot"": 0}","[0, 8, 6, 5, 17, 15, 4, 21, 16, 22, 18, 2, 19, 1, 14, 10, 7, 9, 12, 13, 3, 20, 11, 0]"
+TSP_L_021,TSP,L,21,"We’ve got a weekday routine where pickups start at my house, go to each activity drop-off one time only, and then come back home, and I need to choose the order of visits. A good plan is simply the one that makes the total miles driven for the full loop as small as possible — that total is just the sum of each leg of the trip — and no location can be left out or visited twice. I’ll show the exact places and numbers down below.
+
+{
+  ""total_locations"": 18,
+  ""nodes"": [
+    {
+      ""location_id"": 0,
+      ""x_coordinate"": 67,
+      ""y_coordinate"": 35
+    },
+    {
+      ""location_id"": 1,
+      ""x_coordinate"": 82,
+      ""y_coordinate"": 100
+    },
+    {
+      ""location_id"": 2,
+      ""x_coordinate"": 98,
+      ""y_coordinate"": 75
+    },
+    {
+      ""location_id"": 3,
+      ""x_coordinate"": 54,
+      ""y_coordinate"": 37
+    },
+    {
+      ""location_id"": 4,
+      ""x_coordinate"": 79,
+      ""y_coordinate"": 74
+    },
+    {
+      ""location_id"": 5,
+      ""x_coordinate"": 38,
+      ""y_coordinate"": 50
+    },
+    {
+      ""location_id"": 6,
+      ""x_coordinate"": 62,
+      ""y_coordinate"": 0
+    },
+    {
+      ""location_id"": 7,
+      ""x_coordinate"": 56,
+      ""y_coordinate"": 94
+    },
+    {
+      ""location_id"": 8,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 15
+    },
+    {
+      ""location_id"": 9,
+      ""x_coordinate"": 75,
+      ""y_coordinate"": 39
+    },
+    {
+      ""location_id"": 10,
+      ""x_coordinate"": 71,
+      ""y_coordinate"": 79
+    },
+    {
+      ""location_id"": 11,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 25
+    },
+    {
+      ""location_id"": 12,
+      ""x_coordinate"": 35,
+      ""y_coordinate"": 98
+    },
+    {
+      ""location_id"": 13,
+      ""x_coordinate"": 99,
+      ""y_coordinate"": 37
+    },
+    {
+      ""location_id"": 14,
+      ""x_coordinate"": 91,
+      ""y_coordinate"": 100
+    },
+    {
+      ""location_id"": 15,
+      ""x_coordinate"": 5,
+      ""y_coordinate"": 64
+    },
+    {
+      ""location_id"": 16,
+      ""x_coordinate"": 75,
+      ""y_coordinate"": 37
+    },
+    {
+      ""location_id"": 17,
+      ""x_coordinate"": 90,
+      ""y_coordinate"": 5
+    }
+  ],
+  ""home_node_id"": 0
+}
+
+Also, when you give me the route, please use this simple JSON layout so it's easy to read and reuse:
+
+{
+  ""solution"": [""home_id"", ""stop_id"", ..., ""home_id""]
+}
+
+This just means ""solution"" is a list showing the order of visits: start at your house (home_id), go to each stop once (stop_id entries), and come back home. The ""..."" is just standing in for the rest of the stops in order. It's a sketch of the shape I need, not the actual route.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"[[67, 35], [82, 100], [98, 75], [54, 37], [79, 74], [38, 50], [62, 0], [56, 94], [0, 15], [75, 39], [71, 79], [100, 25], [35, 98], [99, 37], [91, 100], [5, 64], [75, 37], [90, 5]]","[0, 3, 5, 8, 15, 12, 7, 10, 4, 1, 14, 2, 13, 11, 17, 6, 16, 9, 0]",444.2071418762207,"{""problem_type"": ""TSP"", ""num_nodes"": 18, ""nodes"": [{""id"": 0, ""x"": 67, ""y"": 35}, {""id"": 1, ""x"": 82, ""y"": 100}, {""id"": 2, ""x"": 98, ""y"": 75}, {""id"": 3, ""x"": 54, ""y"": 37}, {""id"": 4, ""x"": 79, ""y"": 74}, {""id"": 5, ""x"": 38, ""y"": 50}, {""id"": 6, ""x"": 62, ""y"": 0}, {""id"": 7, ""x"": 56, ""y"": 94}, {""id"": 8, ""x"": 0, ""y"": 15}, {""id"": 9, ""x"": 75, ""y"": 39}, {""id"": 10, ""x"": 71, ""y"": 79}, {""id"": 11, ""x"": 100, ""y"": 25}, {""id"": 12, ""x"": 35, ""y"": 98}, {""id"": 13, ""x"": 99, ""y"": 37}, {""id"": 14, ""x"": 91, ""y"": 100}, {""id"": 15, ""x"": 5, ""y"": 64}, {""id"": 16, ""x"": 75, ""y"": 37}, {""id"": 17, ""x"": 90, ""y"": 5}], ""depot"": 0}","[0, 3, 5, 8, 15, 12, 7, 10, 4, 1, 14, 2, 13, 11, 17, 6, 16, 9, 0]"
+TSP_L_022,TSP,L,22,"There’s a warehouse that needs one smooth loop — the driver departs, hits every delivery point once, then returns to where they started — and the aim is to make that loop as short as possible. Concretely, that’s done by summing the distances between each pair of successive stops in the chosen route, including the final leg home, and choosing the route with the least total miles. Every address must be called exactly once. The concrete stops and distances appear below.
+
+{
+  ""total_stops"": 24,
+  ""nodes"": [
+    {
+      ""stop_id"": 0,
+      ""x_coord"": 26,
+      ""y_coord"": 31
+    },
+    {
+      ""stop_id"": 1,
+      ""x_coord"": 70,
+      ""y_coord"": 100
+    },
+    {
+      ""stop_id"": 2,
+      ""x_coord"": 54,
+      ""y_coord"": 12
+    },
+    {
+      ""stop_id"": 3,
+      ""x_coord"": 46,
+      ""y_coord"": 45
+    },
+    {
+      ""stop_id"": 4,
+      ""x_coord"": 5,
+      ""y_coord"": 65
+    },
+    {
+      ""stop_id"": 5,
+      ""x_coord"": 26,
+      ""y_coord"": 0
+    },
+    {
+      ""stop_id"": 6,
+      ""x_coord"": 97,
+      ""y_coord"": 51
+    },
+    {
+      ""stop_id"": 7,
+      ""x_coord"": 13,
+      ""y_coord"": 66
+    },
+    {
+      ""stop_id"": 8,
+      ""x_coord"": 16,
+      ""y_coord"": 17
+    },
+    {
+      ""stop_id"": 9,
+      ""x_coord"": 39,
+      ""y_coord"": 0
+    },
+    {
+      ""stop_id"": 10,
+      ""x_coord"": 57,
+      ""y_coord"": 3
+    },
+    {
+      ""stop_id"": 11,
+      ""x_coord"": 100,
+      ""y_coord"": 55
+    },
+    {
+      ""stop_id"": 12,
+      ""x_coord"": 45,
+      ""y_coord"": 86
+    },
+    {
+      ""stop_id"": 13,
+      ""x_coord"": 75,
+      ""y_coord"": 63
+    },
+    {
+      ""stop_id"": 14,
+      ""x_coord"": 30,
+      ""y_coord"": 87
+    },
+    {
+      ""stop_id"": 15,
+      ""x_coord"": 44,
+      ""y_coord"": 100
+    },
+    {
+      ""stop_id"": 16,
+      ""x_coord"": 33,
+      ""y_coord"": 87
+    },
+    {
+      ""stop_id"": 17,
+      ""x_coord"": 61,
+      ""y_coord"": 75
+    },
+    {
+      ""stop_id"": 18,
+      ""x_coord"": 88,
+      ""y_coord"": 78
+    },
+    {
+      ""stop_id"": 19,
+      ""x_coord"": 1,
+      ""y_coord"": 12
+    },
+    {
+      ""stop_id"": 20,
+      ""x_coord"": 35,
+      ""y_coord"": 83
+    },
+    {
+      ""stop_id"": 21,
+      ""x_coord"": 92,
+      ""y_coord"": 24
+    },
+    {
+      ""stop_id"": 22,
+      ""x_coord"": 73,
+      ""y_coord"": 79
+    },
+    {
+      ""stop_id"": 23,
+      ""x_coord"": 0,
+      ""y_coord"": 72
+    }
+  ],
+  ""warehouse_node_id"": 0
+}
+
+Also, when you send the route back, please use this little JSON sketch so it's easy to read and check:
+
+{
+  ""solution"": [warehouse_id, stop_id, ..., warehouse_id]
+}
+
+Here ""solution"" is just the ordered list of stops: start at the warehouse (warehouse_id), visit each delivery stop once (each stop_id), and come back to the warehouse at the end. Think of it like filling out a short form: put the starting place first, then the stops in the order the driver will visit them, and finish with the starting place again.
+
+This JSON is only a sketch of the expected shape — not the actual route answer.
+
+Please use the exact identifiers given in the instance input — do not rename them or invent new labels.  
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"[[26, 31], [70, 100], [54, 12], [46, 45], [5, 65], [26, 0], [97, 51], [13, 66], [16, 17], [39, 0], [57, 3], [100, 55], [45, 86], [75, 63], [30, 87], [44, 100], [33, 87], [61, 75], [88, 78], [1, 12], [35, 83], [92, 24], [73, 79], [0, 72]]","[0, 3, 7, 4, 23, 14, 16, 20, 12, 15, 1, 22, 17, 13, 18, 11, 6, 21, 2, 10, 9, 5, 19, 8, 0]",443.5659041404724,"{""problem_type"": ""TSP"", ""num_nodes"": 24, ""nodes"": [{""id"": 0, ""x"": 26, ""y"": 31}, {""id"": 1, ""x"": 70, ""y"": 100}, {""id"": 2, ""x"": 54, ""y"": 12}, {""id"": 3, ""x"": 46, ""y"": 45}, {""id"": 4, ""x"": 5, ""y"": 65}, {""id"": 5, ""x"": 26, ""y"": 0}, {""id"": 6, ""x"": 97, ""y"": 51}, {""id"": 7, ""x"": 13, ""y"": 66}, {""id"": 8, ""x"": 16, ""y"": 17}, {""id"": 9, ""x"": 39, ""y"": 0}, {""id"": 10, ""x"": 57, ""y"": 3}, {""id"": 11, ""x"": 100, ""y"": 55}, {""id"": 12, ""x"": 45, ""y"": 86}, {""id"": 13, ""x"": 75, ""y"": 63}, {""id"": 14, ""x"": 30, ""y"": 87}, {""id"": 15, ""x"": 44, ""y"": 100}, {""id"": 16, ""x"": 33, ""y"": 87}, {""id"": 17, ""x"": 61, ""y"": 75}, {""id"": 18, ""x"": 88, ""y"": 78}, {""id"": 19, ""x"": 1, ""y"": 12}, {""id"": 20, ""x"": 35, ""y"": 83}, {""id"": 21, ""x"": 92, ""y"": 24}, {""id"": 22, ""x"": 73, ""y"": 79}, {""id"": 23, ""x"": 0, ""y"": 72}], ""depot"": 0}","[0, 3, 7, 4, 23, 14, 16, 20, 12, 15, 1, 22, 17, 13, 18, 11, 6, 21, 2, 10, 9, 5, 19, 8, 0]"
+TSP_L_023,TSP,L,23,"Every week the salon schedules home appointments, and the task is to plan a trip that starts at the salon, stops at every client’s home one time only, and ends at the salon. The ordering matters because a better order means fewer miles on the road — total driving distance is found by adding together the lengths of all the legs of the trip, including the last leg back to the salon. The concrete client details and coordinates are listed below.
+
+There are 16 locations in total (including the salon A):
+Stop A: coordinates (57, 0).
+Stop B: coordinates (57, 39).
+Stop C: coordinates (15, 82).
+Stop D: coordinates (77, 55).
+Stop E: coordinates (100, 100).
+Stop F: coordinates (31, 91).
+Stop G: coordinates (85, 75).
+Stop H: coordinates (3, 5).
+Stop I: coordinates (18, 64).
+Stop J: coordinates (7, 82).
+Stop K: coordinates (22, 48).
+Stop L: coordinates (86, 55).
+Stop M: coordinates (0, 16).
+Stop N: coordinates (32, 84).
+Stop O: coordinates (35, 2).
+Stop P: coordinates (21, 64).
+These coordinates will be used to compute distances and determine the minimal route that starts and ends at A and visits all 16 locations exactly once.
+
+Also, when you send the route back, please stick to a simple JSON layout so it’s easy to read and plug in. Something like this:
+
+{
+  ""solution"": [salon_id, client_id, ..., salon_id]
+}
+
+This just means the ""solution"" is the trip as an ordered list: start at the salon, list each client’s location once in the order you want to visit them, and finish back at the salon. Think of the placeholders (salon_id, client_id, ...) as showing the shape of the reply — they’re not the real IDs.
+
+The JSON above is only a sketch of the expected shape, not the actual route.
+
+Please use the exact identifiers from the instance input — don’t rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"[[57, 0], [57, 39], [15, 82], [77, 55], [100, 100], [31, 91], [85, 75], [3, 5], [18, 64], [7, 82], [22, 48], [86, 55], [0, 16], [32, 84], [35, 2], [21, 64]]","[0, 1, 3, 11, 6, 4, 5, 13, 2, 9, 8, 15, 10, 12, 7, 14, 0]",369.15704345703125,"{""problem_type"": ""TSP"", ""num_nodes"": 16, ""nodes"": [{""id"": ""A"", ""x"": 57, ""y"": 0}, {""id"": ""B"", ""x"": 57, ""y"": 39}, {""id"": ""C"", ""x"": 15, ""y"": 82}, {""id"": ""D"", ""x"": 77, ""y"": 55}, {""id"": ""E"", ""x"": 100, ""y"": 100}, {""id"": ""F"", ""x"": 31, ""y"": 91}, {""id"": ""G"", ""x"": 85, ""y"": 75}, {""id"": ""H"", ""x"": 3, ""y"": 5}, {""id"": ""I"", ""x"": 18, ""y"": 64}, {""id"": ""J"", ""x"": 7, ""y"": 82}, {""id"": ""K"", ""x"": 22, ""y"": 48}, {""id"": ""L"", ""x"": 86, ""y"": 55}, {""id"": ""M"", ""x"": 0, ""y"": 16}, {""id"": ""N"", ""x"": 32, ""y"": 84}, {""id"": ""O"", ""x"": 35, ""y"": 2}, {""id"": ""P"", ""x"": 21, ""y"": 64}], ""depot"": ""A""}","[""A"", ""B"", ""D"", ""L"", ""G"", ""E"", ""F"", ""N"", ""C"", ""J"", ""I"", ""P"", ""K"", ""M"", ""H"", ""O"", ""A""]"
+TSP_L_024,TSP,L,24,"A rep needs a plan that begins at the office, touches every clinic on the list exactly once, and returns to the office at the end. The decision is the order to visit the clinics so the day isn’t wasted on extra driving. The way to compare plans is straightforward: add up the distance of every leg in the proposed route, including the trip back to the office, and prefer the route with the smallest total. Nothing can be skipped or repeated, and the exact clinic locations and distances are shown below.
+
+{
+  ""total_locations"": 20,
+  ""nodes"": [
+    {
+      ""location_id"": ""A"",
+      ""x_coordinate"": 74,
+      ""y_coordinate"": 100
+    },
+    {
+      ""location_id"": ""B"",
+      ""x_coordinate"": 17,
+      ""y_coordinate"": 80
+    },
+    {
+      ""location_id"": ""C"",
+      ""x_coordinate"": 69,
+      ""y_coordinate"": 6
+    },
+    {
+      ""location_id"": ""D"",
+      ""x_coordinate"": 16,
+      ""y_coordinate"": 24
+    },
+    {
+      ""location_id"": ""E"",
+      ""x_coordinate"": 26,
+      ""y_coordinate"": 93
+    },
+    {
+      ""location_id"": ""F"",
+      ""x_coordinate"": 66,
+      ""y_coordinate"": 0
+    },
+    {
+      ""location_id"": ""G"",
+      ""x_coordinate"": 82,
+      ""y_coordinate"": 32
+    },
+    {
+      ""location_id"": ""H"",
+      ""x_coordinate"": 84,
+      ""y_coordinate"": 63
+    },
+    {
+      ""location_id"": ""I"",
+      ""x_coordinate"": 26,
+      ""y_coordinate"": 61
+    },
+    {
+      ""location_id"": ""J"",
+      ""x_coordinate"": 1,
+      ""y_coordinate"": 47
+    },
+    {
+      ""location_id"": ""K"",
+      ""x_coordinate"": 24,
+      ""y_coordinate"": 37
+    },
+    {
+      ""location_id"": ""L"",
+      ""x_coordinate"": 41,
+      ""y_coordinate"": 45
+    },
+    {
+      ""location_id"": ""M"",
+      ""x_coordinate"": 83,
+      ""y_coordinate"": 78
+    },
+    {
+      ""location_id"": ""N"",
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 37
+    },
+    {
+      ""location_id"": ""O"",
+      ""x_coordinate"": 39,
+      ""y_coordinate"": 71
+    },
+    {
+      ""location_id"": ""P"",
+      ""x_coordinate"": 18,
+      ""y_coordinate"": 40
+    },
+    {
+      ""location_id"": ""Q"",
+      ""x_coordinate"": 68,
+      ""y_coordinate"": 48
+    },
+    {
+      ""location_id"": ""R"",
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 14
+    },
+    {
+      ""location_id"": ""S"",
+      ""x_coordinate"": 59,
+      ""y_coordinate"": 55
+    },
+    {
+      ""location_id"": ""T"",
+      ""x_coordinate"": 33,
+      ""y_coordinate"": 48
+    }
+  ],
+  ""office_id"": ""A""
+}
+
+Oh, and when you send the route back, you can just follow this simple JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [office_id, clinic_id, ..., office_id]
+}
+
+Think of it like a little form: ""solution"" is the ordered list of stops. The first and last entry are the office, and everything between is the clinics in the order you plan to visit them. This is just the expected shape — not the actual route itself.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"[[74, 100], [17, 80], [69, 6], [16, 24], [26, 93], [66, 0], [82, 32], [84, 63], [26, 61], [1, 47], [24, 37], [41, 45], [83, 78], [0, 37], [39, 71], [18, 40], [68, 48], [100, 14], [59, 55], [33, 48]]","[0, 4, 1, 14, 8, 19, 11, 10, 15, 9, 13, 3, 5, 2, 17, 6, 16, 18, 7, 12, 0]",419.70081996917725,"{""problem_type"": ""TSP"", ""num_nodes"": 20, ""nodes"": [{""id"": ""A"", ""x"": 74, ""y"": 100}, {""id"": ""B"", ""x"": 17, ""y"": 80}, {""id"": ""C"", ""x"": 69, ""y"": 6}, {""id"": ""D"", ""x"": 16, ""y"": 24}, {""id"": ""E"", ""x"": 26, ""y"": 93}, {""id"": ""F"", ""x"": 66, ""y"": 0}, {""id"": ""G"", ""x"": 82, ""y"": 32}, {""id"": ""H"", ""x"": 84, ""y"": 63}, {""id"": ""I"", ""x"": 26, ""y"": 61}, {""id"": ""J"", ""x"": 1, ""y"": 47}, {""id"": ""K"", ""x"": 24, ""y"": 37}, {""id"": ""L"", ""x"": 41, ""y"": 45}, {""id"": ""M"", ""x"": 83, ""y"": 78}, {""id"": ""N"", ""x"": 0, ""y"": 37}, {""id"": ""O"", ""x"": 39, ""y"": 71}, {""id"": ""P"", ""x"": 18, ""y"": 40}, {""id"": ""Q"", ""x"": 68, ""y"": 48}, {""id"": ""R"", ""x"": 100, ""y"": 14}, {""id"": ""S"", ""x"": 59, ""y"": 55}, {""id"": ""T"", ""x"": 33, ""y"": 48}], ""depot"": ""A""}","[""A"", ""E"", ""B"", ""O"", ""I"", ""T"", ""L"", ""K"", ""P"", ""J"", ""N"", ""D"", ""F"", ""C"", ""R"", ""G"", ""Q"", ""S"", ""H"", ""M"", ""A""]"
+TSP_L_025,TSP,L,25,"I’m planning a run to pick up a pile of antiques: start at the storage unit, swing by every seller’s address one time only, and come back to the storage unit at the end. The decision is the order to visit those seller addresses; a better order means less driving overall, which is measured by adding up the miles (or minutes) between each stop on the loop. Nothing can be skipped or visited twice, and the exact addresses and map points are shown below.
+
+There are 16 total locations, and I have the storage unit listed as node 0.
+
+| stop_node_id | longitude_like_coordinate | latitude_like_coordinate |
+|---|---|---|
+| 0 | 88 | 99 |
+| 1 | 86 | 99 |
+| 2 | 0 | 0 |
+| 3 | 49 | 31 |
+| 4 | 80 | 100 |
+| 5 | 82 | 1 |
+| 6 | 28 | 100 |
+| 7 | 100 | 99 |
+| 8 | 54 | 79 |
+| 9 | 84 | 72 |
+| 10 | 5 | 0 |
+| 11 | 18 | 84 |
+| 12 | 0 | 100 |
+| 13 | 87 | 99 |
+| 14 | 79 | 0 |
+| 15 | 64 | 91 |
+
+That's everything I need to order into a loop starting and ending at node 0 across 16 locations.
+
+Oh, and when you send the answer back, just stick to this simple JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [storage_unit_id, seller_id, ..., storage_unit_id]
+}
+
+Here ""solution"" is the loop: start at the storage unit placeholder, list each seller placeholder in the order you visit them, and end back at the storage unit placeholder. Think of it like filling in the blanks on a route card — just the sequence of stop IDs, nothing else.
+
+Quick reminder: use the exact identifiers from the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"[[88, 99], [86, 99], [0, 0], [49, 31], [80, 100], [82, 1], [28, 100], [100, 99], [54, 79], [84, 72], [5, 0], [18, 84], [0, 100], [87, 99], [79, 0], [64, 91]]","[0, 7, 9, 5, 14, 3, 10, 2, 11, 12, 6, 8, 15, 4, 1, 13, 0]",433.0107350349426,"{""problem_type"": ""TSP"", ""num_nodes"": 16, ""nodes"": [{""id"": 0, ""x"": 88, ""y"": 99}, {""id"": 1, ""x"": 86, ""y"": 99}, {""id"": 2, ""x"": 0, ""y"": 0}, {""id"": 3, ""x"": 49, ""y"": 31}, {""id"": 4, ""x"": 80, ""y"": 100}, {""id"": 5, ""x"": 82, ""y"": 1}, {""id"": 6, ""x"": 28, ""y"": 100}, {""id"": 7, ""x"": 100, ""y"": 99}, {""id"": 8, ""x"": 54, ""y"": 79}, {""id"": 9, ""x"": 84, ""y"": 72}, {""id"": 10, ""x"": 5, ""y"": 0}, {""id"": 11, ""x"": 18, ""y"": 84}, {""id"": 12, ""x"": 0, ""y"": 100}, {""id"": 13, ""x"": 87, ""y"": 99}, {""id"": 14, ""x"": 79, ""y"": 0}, {""id"": 15, ""x"": 64, ""y"": 91}], ""depot"": 0}","[0, 7, 9, 5, 14, 3, 10, 2, 11, 12, 6, 8, 15, 4, 1, 13, 0]"
+TSP_L_026,TSP,L,26,"I’m picturing the community kitchen loading up meals and sending a driver out to hit every recipient’s house once before coming back to the kitchen — the question is what order to visit the stops so the whole trip covers as few miles as possible. In practice that means choosing a route that starts at the kitchen, goes to every address exactly one time (no skipping, no doubling back), then returns to the kitchen, and the “score” of a route is just the total distance you get by adding up each stretch between consecutive stops (including the final leg home). The specific addresses and distances are shown below.
+
+# total_stops=21
+# kitchen_node=0
+stop_id,stop_x,stop_y
+0,24,85
+1,27,28
+2,0,15
+3,10,77
+4,48,88
+5,42,74
+6,45,93
+7,12,37
+8,40,83
+9,14,45
+10,90,9
+11,44,57
+12,8,100
+13,100,16
+14,13,90
+15,9,69
+16,37,0
+17,89,7
+18,12,26
+19,7,42
+20,95,92
+
+Oh, and when you reply, just toss the route into a tiny JSON snippet like this — it's just the shape I expect:
+
+{
+  ""solution"": [kitchen_id, recipient_id, ..., kitchen_id]
+}
+
+This ""solution"" array is the order the driver will visit stops: start at the kitchen, go through each recipient once, and come back to the kitchen. The first and last entries are the kitchen, and the ... just means the other stops go in between. It's just a sketch of the format — not your final answer.
+
+Important: when you fill in that JSON, use the identifiers exactly as they appear in the instance input — don't rename them or make up new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"[[24, 85], [27, 28], [0, 15], [10, 77], [48, 88], [42, 74], [45, 93], [12, 37], [40, 83], [14, 45], [90, 9], [44, 57], [8, 100], [100, 16], [13, 90], [9, 69], [37, 0], [89, 7], [12, 26], [7, 42], [95, 92]]","[0, 11, 5, 8, 6, 4, 20, 13, 10, 17, 16, 1, 18, 2, 7, 19, 9, 15, 3, 14, 12, 0]",447.9249985218048,"{""problem_type"": ""TSP"", ""num_nodes"": 21, ""nodes"": [{""id"": 0, ""x"": 24, ""y"": 85}, {""id"": 1, ""x"": 27, ""y"": 28}, {""id"": 2, ""x"": 0, ""y"": 15}, {""id"": 3, ""x"": 10, ""y"": 77}, {""id"": 4, ""x"": 48, ""y"": 88}, {""id"": 5, ""x"": 42, ""y"": 74}, {""id"": 6, ""x"": 45, ""y"": 93}, {""id"": 7, ""x"": 12, ""y"": 37}, {""id"": 8, ""x"": 40, ""y"": 83}, {""id"": 9, ""x"": 14, ""y"": 45}, {""id"": 10, ""x"": 90, ""y"": 9}, {""id"": 11, ""x"": 44, ""y"": 57}, {""id"": 12, ""x"": 8, ""y"": 100}, {""id"": 13, ""x"": 100, ""y"": 16}, {""id"": 14, ""x"": 13, ""y"": 90}, {""id"": 15, ""x"": 9, ""y"": 69}, {""id"": 16, ""x"": 37, ""y"": 0}, {""id"": 17, ""x"": 89, ""y"": 7}, {""id"": 18, ""x"": 12, ""y"": 26}, {""id"": 19, ""x"": 7, ""y"": 42}, {""id"": 20, ""x"": 95, ""y"": 92}], ""depot"": 0}","[0, 11, 5, 8, 6, 4, 20, 13, 10, 17, 16, 1, 18, 2, 7, 19, 9, 15, 3, 14, 12, 0]"
+TSP_L_027,TSP,L,27,"Someone from the moving crew put together a list of pickups and the truck has to handle them all in a single tour: depart the depot, visit each pickup location one time, and return to the depot. The task is picking the visiting order. A preferred order is the one that keeps the total driving to a minimum — total distance equals the sum of distances between each successive stop plus the final leg home. No duplicates, no skips. The exact points and coordinates are given below.
+
+There are 25 distinct stops; begin and end the tour at depot A.
+
+| location_node_id | x_coordinate | y_coordinate |
+|---|---|---|
+| A | 80 | 11 |
+| B | 97 | 100 |
+| C | 10 | 9 |
+| D | 81 | 19 |
+| E | 18 | 29 |
+| F | 72 | 37 |
+| G | 16 | 67 |
+| H | 11 | 28 |
+| I | 55 | 77 |
+| J | 20 | 78 |
+| K | 75 | 84 |
+| L | 67 | 0 |
+| M | 59 | 33 |
+| N | 28 | 88 |
+| O | 46 | 53 |
+| P | 41 | 17 |
+| Q | 0 | 97 |
+| R | 100 | 39 |
+| S | 14 | 81 |
+| T | 92 | 5 |
+| U | 81 | 75 |
+| V | 5 | 64 |
+| W | 98 | 27 |
+| X | 94 | 81 |
+| Y | 80 | 87 |
+
+Confirm the tour visits all 25 stops and returns to A.
+
+Also, when you give the answer, please stick to this simple JSON layout:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of ""solution"" as just the list of stops in order: start at the depot, go to each pickup once, and come back to the depot. The words depot_id and location_id above are placeholders — you'll replace them with the actual IDs from the instance when you provide the real route. This JSON is just a sketch of the shape I need, not the final tour.
+
+Please make sure to use the exact identifiers from the input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"[[80, 11], [97, 100], [10, 9], [81, 19], [18, 29], [72, 37], [16, 67], [11, 28], [55, 77], [20, 78], [75, 84], [67, 0], [59, 33], [28, 88], [46, 53], [41, 17], [0, 97], [100, 39], [14, 81], [92, 5], [81, 75], [5, 64], [98, 27], [94, 81], [80, 87]]","[0, 3, 22, 17, 5, 12, 14, 20, 23, 1, 24, 10, 8, 13, 16, 18, 9, 6, 21, 4, 7, 2, 15, 11, 19, 0]",502.9232153892517,"{""problem_type"": ""TSP"", ""num_nodes"": 25, ""nodes"": [{""id"": ""A"", ""x"": 80, ""y"": 11}, {""id"": ""B"", ""x"": 97, ""y"": 100}, {""id"": ""C"", ""x"": 10, ""y"": 9}, {""id"": ""D"", ""x"": 81, ""y"": 19}, {""id"": ""E"", ""x"": 18, ""y"": 29}, {""id"": ""F"", ""x"": 72, ""y"": 37}, {""id"": ""G"", ""x"": 16, ""y"": 67}, {""id"": ""H"", ""x"": 11, ""y"": 28}, {""id"": ""I"", ""x"": 55, ""y"": 77}, {""id"": ""J"", ""x"": 20, ""y"": 78}, {""id"": ""K"", ""x"": 75, ""y"": 84}, {""id"": ""L"", ""x"": 67, ""y"": 0}, {""id"": ""M"", ""x"": 59, ""y"": 33}, {""id"": ""N"", ""x"": 28, ""y"": 88}, {""id"": ""O"", ""x"": 46, ""y"": 53}, {""id"": ""P"", ""x"": 41, ""y"": 17}, {""id"": ""Q"", ""x"": 0, ""y"": 97}, {""id"": ""R"", ""x"": 100, ""y"": 39}, {""id"": ""S"", ""x"": 14, ""y"": 81}, {""id"": ""T"", ""x"": 92, ""y"": 5}, {""id"": ""U"", ""x"": 81, ""y"": 75}, {""id"": ""V"", ""x"": 5, ""y"": 64}, {""id"": ""W"", ""x"": 98, ""y"": 27}, {""id"": ""X"", ""x"": 94, ""y"": 81}, {""id"": ""Y"", ""x"": 80, ""y"": 87}], ""depot"": ""A""}","[""A"", ""D"", ""W"", ""R"", ""F"", ""M"", ""O"", ""U"", ""X"", ""B"", ""Y"", ""K"", ""I"", ""N"", ""Q"", ""S"", ""J"", ""G"", ""V"", ""E"", ""H"", ""C"", ""P"", ""L"", ""T"", ""A""]"
+TSP_L_028,TSP,L,28,"In our town the distributor needs a simple route plan: the driver leaves the regional warehouse, goes to each shop one time only, and comes back to the warehouse when finished. What separates a good plan from a bad one is how much driving it forces — compare plans by adding together the distances from stop to stop (and the final leg home); the lower that sum, the better the route — and it’s mandatory that every retail outlet is served once and only once. The exact stops and coordinates are shown below.
+
+The tour includes 20 stops and begins and ends at warehouse 1.
+Stop 1: longitude 21, latitude 54.
+Stop 2: longitude 100, latitude 16.
+Stop 3: longitude 84, latitude 0.
+Stop 4: longitude 74, latitude 71.
+Stop 5: longitude 100, latitude 14.
+Stop 6: longitude 54, latitude 2.
+Stop 7: longitude 74, latitude 56.
+Stop 8: longitude 78, latitude 100.
+Stop 9: longitude 31, latitude 3.
+Stop 10: longitude 21, latitude 73.
+Stop 11: longitude 34, latitude 0.
+Stop 12: longitude 16, latitude 100.
+Stop 13: longitude 47, latitude 13.
+Stop 14: longitude 47, latitude 16.
+Stop 15: longitude 0, latitude 100.
+Stop 16: longitude 26, latitude 100.
+Stop 17: longitude 66, latitude 10.
+Stop 18: longitude 73, latitude 51.
+Stop 19: longitude 58, latitude 100.
+Stop 20: longitude 80, latitude 7.
+Each retail outlet must be visited once and only once, and the driver returns to 1.
+
+If you want to send the route back to me, just use this little JSON sketch for the shape of the answer:
+
+{
+  ""solution"": [warehouse_id, shop_id, ..., warehouse_id]
+}
+
+Think of ""solution"" as the ordered list of stops — you start at the warehouse (the first placeholder), go to each shop once (the middle placeholders), and then come back to the warehouse (the last placeholder). This is just the expected shape of the reply, not the actual route — you'll replace those placeholders with the real IDs from the instance.
+
+Please be sure to use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"[[21, 54], [100, 16], [84, 0], [74, 71], [100, 14], [54, 2], [74, 56], [78, 100], [31, 3], [21, 73], [34, 0], [16, 100], [47, 13], [47, 16], [0, 100], [26, 100], [66, 10], [73, 51], [58, 100], [80, 7]]","[0, 9, 14, 11, 15, 18, 7, 3, 6, 17, 1, 4, 2, 19, 16, 5, 10, 8, 12, 13, 0]",377.09930086135864,"{""problem_type"": ""TSP"", ""num_nodes"": 20, ""nodes"": [{""id"": 1, ""x"": 21, ""y"": 54}, {""id"": 2, ""x"": 100, ""y"": 16}, {""id"": 3, ""x"": 84, ""y"": 0}, {""id"": 4, ""x"": 74, ""y"": 71}, {""id"": 5, ""x"": 100, ""y"": 14}, {""id"": 6, ""x"": 54, ""y"": 2}, {""id"": 7, ""x"": 74, ""y"": 56}, {""id"": 8, ""x"": 78, ""y"": 100}, {""id"": 9, ""x"": 31, ""y"": 3}, {""id"": 10, ""x"": 21, ""y"": 73}, {""id"": 11, ""x"": 34, ""y"": 0}, {""id"": 12, ""x"": 16, ""y"": 100}, {""id"": 13, ""x"": 47, ""y"": 13}, {""id"": 14, ""x"": 47, ""y"": 16}, {""id"": 15, ""x"": 0, ""y"": 100}, {""id"": 16, ""x"": 26, ""y"": 100}, {""id"": 17, ""x"": 66, ""y"": 10}, {""id"": 18, ""x"": 73, ""y"": 51}, {""id"": 19, ""x"": 58, ""y"": 100}, {""id"": 20, ""x"": 80, ""y"": 7}], ""depot"": 1}","[1, 10, 15, 12, 16, 19, 8, 4, 7, 18, 2, 5, 3, 20, 17, 6, 11, 9, 13, 14, 1]"
+TSP_L_029,TSP,L,29,"There’s a daily juggling act at the pest control office: a technician has a stack of client addresses and needs to visit each home exactly once, starting from the office and finishing back there. The trick is picking the order of visits so the van covers the least distance overall — calculate that by adding the length of each leg of the journey in the chosen order, including the return leg. No house can be left out or checked twice. The concrete details will be shown below.
+
+There are 19 stops in all, and the office is node 0.
+Location 0 is at coordinates (0, 64).
+Location 1 is at coordinates (9, 46).
+Location 2 is at coordinates (12, 89).
+Location 3 is at coordinates (72, 0).
+Location 4 is at coordinates (41, 28).
+Location 5 is at coordinates (59, 48).
+Location 6 is at coordinates (66, 96).
+Location 7 is at coordinates (94, 65).
+Location 8 is at coordinates (21, 64).
+Location 9 is at coordinates (45, 100).
+Location 10 is at coordinates (60, 25).
+Location 11 is at coordinates (37, 16).
+Location 12 is at coordinates (29, 45).
+Location 13 is at coordinates (100, 84).
+Location 14 is at coordinates (98, 75).
+Location 15 is at coordinates (28, 16).
+Location 16 is at coordinates (46, 61).
+Location 17 is at coordinates (37, 14).
+Location 18 is at coordinates (99, 60).
+Use these 19 stops to plan a minimal round trip that starts and ends at office 0.
+
+Also — when you send the route back, please follow this little JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [office_id, house_id, ..., office_id]
+}
+
+This just means ""solution"" holds the ordered list of stops: start at the office, visit each house once in the chosen order, and return to the office at the end. Think of it like filling in a simple itinerary form — the array is the visit sequence. It's just a sketch of the shape I need, not the actual route.
+
+Please make sure you use the exact identifiers from the instance input — don't rename them or invent new ones.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"[[0, 64], [9, 46], [12, 89], [72, 0], [41, 28], [59, 48], [66, 96], [94, 65], [21, 64], [45, 100], [60, 25], [37, 16], [29, 45], [100, 84], [98, 75], [28, 16], [46, 61], [37, 14], [99, 60]]","[0, 1, 12, 4, 15, 17, 11, 3, 10, 5, 16, 7, 18, 14, 13, 6, 9, 2, 8, 0]",416.7697868347168,"{""problem_type"": ""TSP"", ""num_nodes"": 19, ""nodes"": [{""id"": 0, ""x"": 0, ""y"": 64}, {""id"": 1, ""x"": 9, ""y"": 46}, {""id"": 2, ""x"": 12, ""y"": 89}, {""id"": 3, ""x"": 72, ""y"": 0}, {""id"": 4, ""x"": 41, ""y"": 28}, {""id"": 5, ""x"": 59, ""y"": 48}, {""id"": 6, ""x"": 66, ""y"": 96}, {""id"": 7, ""x"": 94, ""y"": 65}, {""id"": 8, ""x"": 21, ""y"": 64}, {""id"": 9, ""x"": 45, ""y"": 100}, {""id"": 10, ""x"": 60, ""y"": 25}, {""id"": 11, ""x"": 37, ""y"": 16}, {""id"": 12, ""x"": 29, ""y"": 45}, {""id"": 13, ""x"": 100, ""y"": 84}, {""id"": 14, ""x"": 98, ""y"": 75}, {""id"": 15, ""x"": 28, ""y"": 16}, {""id"": 16, ""x"": 46, ""y"": 61}, {""id"": 17, ""x"": 37, ""y"": 14}, {""id"": 18, ""x"": 99, ""y"": 60}], ""depot"": 0}","[0, 1, 12, 4, 15, 17, 11, 3, 10, 5, 16, 7, 18, 14, 13, 6, 9, 2, 8, 0]"
+TSP_L_030,TSP,L,30,"Many people think of delivery as just driving until the job’s done, but this press wants the truck to visit every newsstand exactly once and return, using the least total miles. The decision is the visiting order, and the performance is judged by adding up the distances along that loop (stop-to-stop and back to the press); smaller totals are better, and no stand may be skipped or doubled. The specific instance information follows below.
+
+There are 22 locations, with the press at 0.
+Location 0 is at (39, 66).
+Location 1 is at (10, 20).
+Location 2 is at (22, 41).
+Location 3 is at (84, 32).
+Location 4 is at (1, 100).
+Location 5 is at (82, 69).
+Location 6 is at (100, 86).
+Location 7 is at (98, 53).
+Location 8 is at (93, 59).
+Location 9 is at (55, 62).
+Location 10 is at (97, 32).
+Location 11 is at (80, 92).
+Location 12 is at (14, 15).
+Location 13 is at (74, 40).
+Location 14 is at (85, 88).
+Location 15 is at (46, 82).
+Location 16 is at (0, 16).
+Location 17 is at (69, 38).
+Location 18 is at (46, 16).
+Location 19 is at (79, 10).
+Location 20 is at (76, 66).
+Location 21 is at (54, 0).
+List each of the 22 locations once so the route starts and ends at 0 and the total loop miles can be computed.
+
+Also, when you send the visiting order back, just use a tiny JSON snippet like this so it's easy to parse:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+This simply shows the sequence of stops in order — the array is the order the truck visits each newsstand, starting and ending at the depot. Think of it as filling in the blanks with the labels you were given for the depot and each stand. This JSON is just a sketch of the shape I need, not your actual answer.
+
+Please be sure to use the exact identifiers from the instance input — don’t rename them or invent new labels. 
+for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"[[39, 66], [10, 20], [22, 41], [84, 32], [1, 100], [82, 69], [100, 86], [98, 53], [93, 59], [55, 62], [97, 32], [80, 92], [14, 15], [74, 40], [85, 88], [46, 82], [0, 16], [69, 38], [46, 16], [79, 10], [76, 66], [54, 0]]","[0, 9, 20, 5, 11, 14, 6, 8, 7, 10, 3, 13, 17, 19, 21, 18, 12, 16, 1, 2, 4, 15, 0]",461.23045921325684,"{""problem_type"": ""TSP"", ""num_nodes"": 22, ""nodes"": [{""id"": 0, ""x"": 39, ""y"": 66}, {""id"": 1, ""x"": 10, ""y"": 20}, {""id"": 2, ""x"": 22, ""y"": 41}, {""id"": 3, ""x"": 84, ""y"": 32}, {""id"": 4, ""x"": 1, ""y"": 100}, {""id"": 5, ""x"": 82, ""y"": 69}, {""id"": 6, ""x"": 100, ""y"": 86}, {""id"": 7, ""x"": 98, ""y"": 53}, {""id"": 8, ""x"": 93, ""y"": 59}, {""id"": 9, ""x"": 55, ""y"": 62}, {""id"": 10, ""x"": 97, ""y"": 32}, {""id"": 11, ""x"": 80, ""y"": 92}, {""id"": 12, ""x"": 14, ""y"": 15}, {""id"": 13, ""x"": 74, ""y"": 40}, {""id"": 14, ""x"": 85, ""y"": 88}, {""id"": 15, ""x"": 46, ""y"": 82}, {""id"": 16, ""x"": 0, ""y"": 16}, {""id"": 17, ""x"": 69, ""y"": 38}, {""id"": 18, ""x"": 46, ""y"": 16}, {""id"": 19, ""x"": 79, ""y"": 10}, {""id"": 20, ""x"": 76, ""y"": 66}, {""id"": 21, ""x"": 54, ""y"": 0}], ""depot"": 0}","[0, 9, 20, 5, 11, 14, 6, 8, 7, 10, 3, 13, 17, 19, 21, 18, 12, 16, 1, 2, 4, 15, 0]"
+TSP_L_031,TSP,L,31,"There's an ice cream truck driver staring at a map deciding the best sequence to visit a bunch of parks: the truck must pull out of the garage, stop at every park one time only, and end the day back at the garage. What counts as “best” is the route that uses the least amount of driving — calculated by adding the distances between each stop along the whole loop. The specific parks and distances are shown below.
+
+{
+  ""total_locations_including_garage"": 21,
+  ""nodes"": [
+    {
+      ""location_id"": 1,
+      ""map_x_coordinate"": 85,
+      ""map_y_coordinate"": 26
+    },
+    {
+      ""location_id"": 2,
+      ""map_x_coordinate"": 58,
+      ""map_y_coordinate"": 24
+    },
+    {
+      ""location_id"": 3,
+      ""map_x_coordinate"": 15,
+      ""map_y_coordinate"": 23
+    },
+    {
+      ""location_id"": 4,
+      ""map_x_coordinate"": 25,
+      ""map_y_coordinate"": 49
+    },
+    {
+      ""location_id"": 5,
+      ""map_x_coordinate"": 20,
+      ""map_y_coordinate"": 0
+    },
+    {
+      ""location_id"": 6,
+      ""map_x_coordinate"": 61,
+      ""map_y_coordinate"": 83
+    },
+    {
+      ""location_id"": 7,
+      ""map_x_coordinate"": 63,
+      ""map_y_coordinate"": 29
+    },
+    {
+      ""location_id"": 8,
+      ""map_x_coordinate"": 100,
+      ""map_y_coordinate"": 8
+    },
+    {
+      ""location_id"": 9,
+      ""map_x_coordinate"": 57,
+      ""map_y_coordinate"": 100
+    },
+    {
+      ""location_id"": 10,
+      ""map_x_coordinate"": 76,
+      ""map_y_coordinate"": 6
+    },
+    {
+      ""location_id"": 11,
+      ""map_x_coordinate"": 36,
+      ""map_y_coordinate"": 76
+    },
+    {
+      ""location_id"": 12,
+      ""map_x_coordinate"": 49,
+      ""map_y_coordinate"": 6
+    },
+    {
+      ""location_id"": 13,
+      ""map_x_coordinate"": 19,
+      ""map_y_coordinate"": 0
+    },
+    {
+      ""location_id"": 14,
+      ""map_x_coordinate"": 28,
+      ""map_y_coordinate"": 100
+    },
+    {
+      ""location_id"": 15,
+      ""map_x_coordinate"": 50,
+      ""map_y_coordinate"": 14
+    },
+    {
+      ""location_id"": 16,
+      ""map_x_coordinate"": 14,
+      ""map_y_coordinate"": 22
+    },
+    {
+      ""location_id"": 17,
+      ""map_x_coordinate"": 41,
+      ""map_y_coordinate"": 30
+    },
+    {
+      ""location_id"": 18,
+      ""map_x_coordinate"": 0,
+      ""map_y_coordinate"": 0
+    },
+    {
+      ""location_id"": 19,
+      ""map_x_coordinate"": 52,
+      ""map_y_coordinate"": 8
+    },
+    {
+      ""location_id"": 20,
+      ""map_x_coordinate"": 35,
+      ""map_y_coordinate"": 98
+    },
+    {
+      ""location_id"": 21,
+      ""map_x_coordinate"": 27,
+      ""map_y_coordinate"": 28
+    }
+  ],
+  ""garage_location_id"": 1
+}
+
+Oh, and if you want to hand me the route (or if I return one), please follow this little JSON layout so everything stays neat and machine-friendly:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of ""solution"" as a simple list that shows the loop: the first item is the depot (the garage), then every park you visit in order, and the last item is the depot again to show the truck came home. This is just the shape I expect — a sketch, not the actual answer.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"[[85, 26], [58, 24], [15, 23], [25, 49], [20, 0], [61, 83], [63, 29], [100, 8], [57, 100], [76, 6], [36, 76], [49, 6], [19, 0], [28, 100], [50, 14], [14, 22], [41, 30], [0, 0], [52, 8], [35, 98], [27, 28]]","[0, 5, 8, 19, 13, 10, 3, 16, 20, 2, 15, 17, 12, 4, 11, 18, 14, 1, 6, 9, 7, 0]",395.9625257253647,"{""problem_type"": ""TSP"", ""num_nodes"": 21, ""nodes"": [{""id"": 1, ""x"": 85, ""y"": 26}, {""id"": 2, ""x"": 58, ""y"": 24}, {""id"": 3, ""x"": 15, ""y"": 23}, {""id"": 4, ""x"": 25, ""y"": 49}, {""id"": 5, ""x"": 20, ""y"": 0}, {""id"": 6, ""x"": 61, ""y"": 83}, {""id"": 7, ""x"": 63, ""y"": 29}, {""id"": 8, ""x"": 100, ""y"": 8}, {""id"": 9, ""x"": 57, ""y"": 100}, {""id"": 10, ""x"": 76, ""y"": 6}, {""id"": 11, ""x"": 36, ""y"": 76}, {""id"": 12, ""x"": 49, ""y"": 6}, {""id"": 13, ""x"": 19, ""y"": 0}, {""id"": 14, ""x"": 28, ""y"": 100}, {""id"": 15, ""x"": 50, ""y"": 14}, {""id"": 16, ""x"": 14, ""y"": 22}, {""id"": 17, ""x"": 41, ""y"": 30}, {""id"": 18, ""x"": 0, ""y"": 0}, {""id"": 19, ""x"": 52, ""y"": 8}, {""id"": 20, ""x"": 35, ""y"": 98}, {""id"": 21, ""x"": 27, ""y"": 28}], ""depot"": 1}","[1, 6, 9, 20, 14, 11, 4, 17, 21, 3, 16, 18, 13, 5, 12, 19, 15, 2, 7, 10, 8, 1]"
+TSP_L_032,TSP,L,32,"I’ve been helping the city figure out the inspector’s day: start at city hall, swing by every construction site once (no skipping, no double-checking), and come back to city hall at the end. The choice to make is the order of the stops so the inspector doesn’t drive more than necessary — the plan that’s better is the one with the smallest total driving distance, which is just the sum of each drive between consecutive stops on the route. The exact sites and map are shown below.
+
+# total_locations_count=19
+# city_hall_id=1
+location_id,map_x_coordinate,map_y_coordinate
+1,68,46
+2,100,15
+3,99,0
+4,1,22
+5,99,82
+6,99,86
+7,28,100
+8,1,96
+9,1,14
+10,1,19
+11,1,79
+12,100,20
+13,8,60
+14,70,64
+15,6,39
+16,8,37
+17,6,59
+18,99,97
+19,0,11
+
+Oh, and when you send the planned route back, a tiny JSON snippet like this works nicely:
+
+{
+  ""solution"": [city_hall_id, site_id, ..., city_hall_id]
+}
+
+""solution"" is just the ordered list of stops: start at city hall, visit each construction site once, and come back to city hall. The placeholders (city_hall_id, site_id, ...) are just showing the shape — you'll replace them with the actual IDs from the instance when you give the real route. This is only a sketch of the format, not the actual answer.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"[[68, 46], [100, 15], [99, 0], [1, 22], [99, 82], [99, 86], [28, 100], [1, 96], [1, 14], [1, 19], [1, 79], [100, 20], [8, 60], [70, 64], [6, 39], [8, 37], [6, 59], [99, 97], [0, 11]]","[0, 11, 1, 2, 18, 8, 9, 3, 15, 14, 16, 12, 10, 7, 6, 17, 5, 4, 13, 0]",416.50267457962036,"{""problem_type"": ""TSP"", ""num_nodes"": 19, ""nodes"": [{""id"": 1, ""x"": 68, ""y"": 46}, {""id"": 2, ""x"": 100, ""y"": 15}, {""id"": 3, ""x"": 99, ""y"": 0}, {""id"": 4, ""x"": 1, ""y"": 22}, {""id"": 5, ""x"": 99, ""y"": 82}, {""id"": 6, ""x"": 99, ""y"": 86}, {""id"": 7, ""x"": 28, ""y"": 100}, {""id"": 8, ""x"": 1, ""y"": 96}, {""id"": 9, ""x"": 1, ""y"": 14}, {""id"": 10, ""x"": 1, ""y"": 19}, {""id"": 11, ""x"": 1, ""y"": 79}, {""id"": 12, ""x"": 100, ""y"": 20}, {""id"": 13, ""x"": 8, ""y"": 60}, {""id"": 14, ""x"": 70, ""y"": 64}, {""id"": 15, ""x"": 6, ""y"": 39}, {""id"": 16, ""x"": 8, ""y"": 37}, {""id"": 17, ""x"": 6, ""y"": 59}, {""id"": 18, ""x"": 99, ""y"": 97}, {""id"": 19, ""x"": 0, ""y"": 11}], ""depot"": 1}","[1, 12, 2, 3, 19, 9, 10, 4, 16, 15, 17, 13, 11, 8, 7, 18, 6, 5, 14, 1]"
+TSP_L_033,TSP,L,33,"On a typical morning the plan is to drive out from the farmhouse, check every plot one by one without doubling back, and finish at the farmhouse. Choosing the order of checks is the only decision; a smarter order trims the total driving distance, which is found by summing all the segments between stops and the final drive home. Every plot has to be included exactly once — no skipping, no repeats. The detailed plot info is provided below.
+
+# total_locations_including_farmhouse=19
+# farmhouse_node_id=1
+plot_node_id,plot_x_coordinate,plot_y_coordinate
+1,82,44
+2,97,77
+3,100,93
+4,70,97
+5,0,18
+6,47,58
+7,43,66
+8,88,8
+9,50,90
+10,28,70
+11,50,35
+12,21,7
+13,10,76
+14,94,5
+15,41,69
+16,77,45
+17,40,85
+18,2,0
+19,81,100
+
+You can just hand me the tour in a tiny JSON blob like this — nothing fancy, just the order of stops.
+
+{
+  ""solution"": [""farmhouse_id"", ""plot_id"", ..., ""farmhouse_id""]
+}
+
+Think of that array as the driving order: start at the farmhouse_id, go to each plot_id once in the listed order, and finish back at the farmhouse_id. It’s just a sketch of the shape I expect — don’t treat this as the real answer, just the format to follow when you give the route.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename them or invent new ones. 
+- for example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,one_based,"[[82, 44], [97, 77], [100, 93], [70, 97], [0, 18], [47, 58], [43, 66], [88, 8], [50, 90], [28, 70], [50, 35], [21, 7], [10, 76], [94, 5], [41, 69], [77, 45], [40, 85], [2, 0], [81, 100]]","[0, 13, 7, 10, 11, 17, 4, 12, 9, 5, 6, 14, 16, 8, 3, 18, 2, 1, 15, 0]",424.8151822090149,"{""problem_type"": ""TSP"", ""num_nodes"": 19, ""nodes"": [{""id"": 1, ""x"": 82, ""y"": 44}, {""id"": 2, ""x"": 97, ""y"": 77}, {""id"": 3, ""x"": 100, ""y"": 93}, {""id"": 4, ""x"": 70, ""y"": 97}, {""id"": 5, ""x"": 0, ""y"": 18}, {""id"": 6, ""x"": 47, ""y"": 58}, {""id"": 7, ""x"": 43, ""y"": 66}, {""id"": 8, ""x"": 88, ""y"": 8}, {""id"": 9, ""x"": 50, ""y"": 90}, {""id"": 10, ""x"": 28, ""y"": 70}, {""id"": 11, ""x"": 50, ""y"": 35}, {""id"": 12, ""x"": 21, ""y"": 7}, {""id"": 13, ""x"": 10, ""y"": 76}, {""id"": 14, ""x"": 94, ""y"": 5}, {""id"": 15, ""x"": 41, ""y"": 69}, {""id"": 16, ""x"": 77, ""y"": 45}, {""id"": 17, ""x"": 40, ""y"": 85}, {""id"": 18, ""x"": 2, ""y"": 0}, {""id"": 19, ""x"": 81, ""y"": 100}], ""depot"": 1}","[1, 14, 8, 11, 12, 18, 5, 13, 10, 6, 7, 15, 17, 9, 4, 19, 3, 2, 16, 1]"
+TSP_L_034,TSP,L,34,"There’s a practical puzzle in the dog-walking rounds: start at the central park, stop by every client’s house once without doubling back, and finish back at the park. What makes one plan better than another is how many miles you’ll end up walking — count up the distances between the consecutive stops (and don’t forget the walk out from the park and the walk back) to get that total. The specific locations and details are shown below.
+
+# total_locations_count=23
+# central_park_id=0
+location_id,x_coordinate,y_coordinate
+0,78,100
+1,76,8
+2,48,77
+3,89,2
+4,76,68
+5,51,80
+6,12,56
+7,46,3
+8,69,24
+9,0,58
+10,96,60
+11,76,0
+12,87,52
+13,22,6
+14,8,0
+15,100,18
+16,81,75
+17,96,49
+18,25,74
+19,89,92
+20,56,73
+21,0,95
+22,93,89
+
+When you send the route back, just stick to this simple JSON layout so it's easy to read and check.
+
+{
+  ""solution"": [park_id, client_id, ..., park_id]
+}
+
+""solution"" is the list of stops in the order you'll walk them: start at the park, visit each client once, and come back to the park at the end. Think of the array as the itinerary — each entry is the identifier for that spot in the sequence. This block is just a sketch of the shape I need, not the final tour itself.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"[[78, 100], [76, 8], [48, 77], [89, 2], [76, 68], [51, 80], [12, 56], [46, 3], [69, 24], [0, 58], [96, 60], [76, 0], [87, 52], [22, 6], [8, 0], [100, 18], [81, 75], [96, 49], [25, 74], [89, 92], [56, 73], [0, 95], [93, 89]]","[0, 19, 22, 16, 4, 12, 10, 17, 15, 3, 11, 1, 8, 7, 13, 14, 6, 9, 21, 18, 2, 5, 20, 0]",456.7805881500244,"{""problem_type"": ""TSP"", ""num_nodes"": 23, ""nodes"": [{""id"": 0, ""x"": 78, ""y"": 100}, {""id"": 1, ""x"": 76, ""y"": 8}, {""id"": 2, ""x"": 48, ""y"": 77}, {""id"": 3, ""x"": 89, ""y"": 2}, {""id"": 4, ""x"": 76, ""y"": 68}, {""id"": 5, ""x"": 51, ""y"": 80}, {""id"": 6, ""x"": 12, ""y"": 56}, {""id"": 7, ""x"": 46, ""y"": 3}, {""id"": 8, ""x"": 69, ""y"": 24}, {""id"": 9, ""x"": 0, ""y"": 58}, {""id"": 10, ""x"": 96, ""y"": 60}, {""id"": 11, ""x"": 76, ""y"": 0}, {""id"": 12, ""x"": 87, ""y"": 52}, {""id"": 13, ""x"": 22, ""y"": 6}, {""id"": 14, ""x"": 8, ""y"": 0}, {""id"": 15, ""x"": 100, ""y"": 18}, {""id"": 16, ""x"": 81, ""y"": 75}, {""id"": 17, ""x"": 96, ""y"": 49}, {""id"": 18, ""x"": 25, ""y"": 74}, {""id"": 19, ""x"": 89, ""y"": 92}, {""id"": 20, ""x"": 56, ""y"": 73}, {""id"": 21, ""x"": 0, ""y"": 95}, {""id"": 22, ""x"": 93, ""y"": 89}], ""depot"": 0}","[0, 19, 22, 16, 4, 12, 10, 17, 15, 3, 11, 1, 8, 7, 13, 14, 6, 9, 21, 18, 2, 5, 20, 0]"
+TSP_L_035,TSP,L,35,"At the office there’s a map with pins for each client and the task is to draw a single loop that starts and ends at the office and visits every pin exactly once. The route that’s preferred is the one with the smallest sum of driving distances along the loop — just add the distance between each consecutive stop in that order and include the drive back to the office. Every pin must be included and none can be repeated; the full coordinates and site list are below.
+
+There are 24 pins in total and the office pin is 0.
+Pin 0: coordinates (11, 60).
+Pin 1: coordinates (30, 0).
+Pin 2: coordinates (100, 15).
+Pin 3: coordinates (50, 30).
+Pin 4: coordinates (57, 18).
+Pin 5: coordinates (35, 90).
+Pin 6: coordinates (7, 2).
+Pin 7: coordinates (7, 83).
+Pin 8: coordinates (63, 87).
+Pin 9: coordinates (77, 3).
+Pin 10: coordinates (31, 53).
+Pin 11: coordinates (83, 24).
+Pin 12: coordinates (27, 100).
+Pin 13: coordinates (93, 72).
+Pin 14: coordinates (75, 24).
+Pin 15: coordinates (2, 76).
+Pin 16: coordinates (0, 75).
+Pin 17: coordinates (43, 100).
+Pin 18: coordinates (24, 17).
+Pin 19: coordinates (8, 22).
+Pin 20: coordinates (65, 1).
+Pin 21: coordinates (6, 55).
+Pin 22: coordinates (43, 41).
+Pin 23: coordinates (22, 5).
+Ensure the route visits every pin exactly once and returns to 0.
+
+Also, when you send the final loop back, just drop it into this little JSON shape so it’s easy to parse:
+
+{
+  ""solution"": [office_id, client_id, ..., office_id]
+}
+
+""solution"" is the ordered list of stops: start with the office identifier, list each client once in the order you’ll visit them, and end back at the office. Think of it like filling out a simple form — the JSON above is just a sketch of the shape I expect, not the actual answer.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.  
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,zero_based,"[[11, 60], [30, 0], [100, 15], [50, 30], [57, 18], [35, 90], [7, 2], [7, 83], [63, 87], [77, 3], [31, 53], [83, 24], [27, 100], [93, 72], [75, 24], [2, 76], [0, 75], [43, 100], [24, 17], [8, 22], [65, 1], [6, 55], [43, 41], [22, 5]]","[0, 10, 22, 3, 18, 19, 6, 23, 1, 4, 20, 9, 2, 11, 14, 13, 8, 17, 5, 12, 7, 15, 16, 21, 0]",457.678103685379,"{""problem_type"": ""TSP"", ""num_nodes"": 24, ""nodes"": [{""id"": 0, ""x"": 11, ""y"": 60}, {""id"": 1, ""x"": 30, ""y"": 0}, {""id"": 2, ""x"": 100, ""y"": 15}, {""id"": 3, ""x"": 50, ""y"": 30}, {""id"": 4, ""x"": 57, ""y"": 18}, {""id"": 5, ""x"": 35, ""y"": 90}, {""id"": 6, ""x"": 7, ""y"": 2}, {""id"": 7, ""x"": 7, ""y"": 83}, {""id"": 8, ""x"": 63, ""y"": 87}, {""id"": 9, ""x"": 77, ""y"": 3}, {""id"": 10, ""x"": 31, ""y"": 53}, {""id"": 11, ""x"": 83, ""y"": 24}, {""id"": 12, ""x"": 27, ""y"": 100}, {""id"": 13, ""x"": 93, ""y"": 72}, {""id"": 14, ""x"": 75, ""y"": 24}, {""id"": 15, ""x"": 2, ""y"": 76}, {""id"": 16, ""x"": 0, ""y"": 75}, {""id"": 17, ""x"": 43, ""y"": 100}, {""id"": 18, ""x"": 24, ""y"": 17}, {""id"": 19, ""x"": 8, ""y"": 22}, {""id"": 20, ""x"": 65, ""y"": 1}, {""id"": 21, ""x"": 6, ""y"": 55}, {""id"": 22, ""x"": 43, ""y"": 41}, {""id"": 23, ""x"": 22, ""y"": 5}], ""depot"": 0}","[0, 10, 22, 3, 18, 19, 6, 23, 1, 4, 20, 9, 2, 11, 14, 13, 8, 17, 5, 12, 7, 15, 16, 21, 0]"
+TSP_L_036,TSP,L,36,"On route-planning day the librarian sketches a loop that leaves the branch, stops at each book drop exactly once, and comes back to the branch — no repeats, no missed drops. The puzzle is ordering the stops so the van travels as little as possible; for any chosen order, the total distance is just the sum of the distances between each stop in the loop (include the first leg out of the branch and the final leg returning). The detailed list of drop locations and distances is given below.
+
+There are 23 total locations in this run, and the van begins and ends its loop at A.
+
+| location_id | x_coordinate | y_coordinate |
+|---|---|---|
+| A | 100 | 4 |
+| B | 47 | 55 |
+| C | 55 | 18 |
+| D | 3 | 100 |
+| E | 2 | 2 |
+| F | 100 | 84 |
+| G | 46 | 89 |
+| H | 55 | 30 |
+| I | 45 | 90 |
+| J | 0 | 46 |
+| K | 45 | 55 |
+| L | 55 | 3 |
+| M | 4 | 41 |
+| N | 4 | 96 |
+| O | 2 | 30 |
+| P | 2 | 18 |
+| Q | 47 | 0 |
+| R | 3 | 72 |
+| S | 51 | 12 |
+| T | 99 | 83 |
+| U | 46 | 27 |
+| V | 2 | 46 |
+| W | 55 | 61 |
+
+Ensure the list covers every location so the van visits all 23 points and returns to A.
+
+When you return the chosen loop, tuck it into this little JSON shape so it's easy to read and process:
+
+{
+  ""solution"": [branch_id, drop_id, ..., branch_id]
+}
+
+Think of that as a simple form: ""solution"" is the ordered list of stops starting from the branch, going to each book drop once, and coming back to the branch at the end. It’s just a sketch of the shape we want — replace those placeholders with the actual stop identifiers from the instance when you submit the answer.
+
+Please be sure to use the identifiers exactly as they appear in the instance input — don’t rename them or invent new labels. For example: ""Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".""",markdown_table,names,"[[100, 4], [47, 55], [55, 18], [3, 100], [2, 2], [100, 84], [46, 89], [55, 30], [45, 90], [0, 46], [45, 55], [55, 3], [4, 41], [4, 96], [2, 30], [2, 18], [47, 0], [3, 72], [51, 12], [99, 83], [46, 27], [2, 46], [55, 61]]","[0, 5, 19, 22, 1, 10, 6, 8, 3, 13, 17, 9, 21, 12, 14, 15, 4, 16, 11, 18, 2, 20, 7, 0]",466.92691588401794,"{""problem_type"": ""TSP"", ""num_nodes"": 23, ""nodes"": [{""id"": ""A"", ""x"": 100, ""y"": 4}, {""id"": ""B"", ""x"": 47, ""y"": 55}, {""id"": ""C"", ""x"": 55, ""y"": 18}, {""id"": ""D"", ""x"": 3, ""y"": 100}, {""id"": ""E"", ""x"": 2, ""y"": 2}, {""id"": ""F"", ""x"": 100, ""y"": 84}, {""id"": ""G"", ""x"": 46, ""y"": 89}, {""id"": ""H"", ""x"": 55, ""y"": 30}, {""id"": ""I"", ""x"": 45, ""y"": 90}, {""id"": ""J"", ""x"": 0, ""y"": 46}, {""id"": ""K"", ""x"": 45, ""y"": 55}, {""id"": ""L"", ""x"": 55, ""y"": 3}, {""id"": ""M"", ""x"": 4, ""y"": 41}, {""id"": ""N"", ""x"": 4, ""y"": 96}, {""id"": ""O"", ""x"": 2, ""y"": 30}, {""id"": ""P"", ""x"": 2, ""y"": 18}, {""id"": ""Q"", ""x"": 47, ""y"": 0}, {""id"": ""R"", ""x"": 3, ""y"": 72}, {""id"": ""S"", ""x"": 51, ""y"": 12}, {""id"": ""T"", ""x"": 99, ""y"": 83}, {""id"": ""U"", ""x"": 46, ""y"": 27}, {""id"": ""V"", ""x"": 2, ""y"": 46}, {""id"": ""W"", ""x"": 55, ""y"": 61}], ""depot"": ""A""}","[""A"", ""F"", ""T"", ""W"", ""B"", ""K"", ""G"", ""I"", ""D"", ""N"", ""R"", ""J"", ""V"", ""M"", ""O"", ""P"", ""E"", ""Q"", ""L"", ""S"", ""C"", ""U"", ""H"", ""A""]"
+TSP_L_037,TSP,L,37,"Recently a musician decided to do a looped busking circuit: start at home, visit a set list of plazas one by one, and then return home at the end of the day. The planning task is to pick the sequence of plazas so the total amount of walking is minimized — less total walking means more time playing and less tired feet. To see which sequence is best, go through the route and add up each stretch of walking (home to first stop, then between each stop, and finally back home); the route with the lowest total walking distance is the goal. All listed plazas must be visited exactly once before finishing the loop. The concrete route details are shown below.
+
+There are 17 locations in total and the musician's home is location A.
+
+| location_id | x_coordinate | y_coordinate |
+|---|---|---|
+| A | 40 | 45 |
+| B | 74 | 46 |
+| C | 35 | 26 |
+| D | 100 | 19 |
+| E | 63 | 0 |
+| F | 38 | 91 |
+| G | 42 | 100 |
+| H | 38 | 95 |
+| I | 56 | 23 |
+| J | 0 | 53 |
+| K | 88 | 10 |
+| L | 11 | 10 |
+| M | 74 | 28 |
+| N | 23 | 60 |
+| O | 15 | 31 |
+| P | 23 | 81 |
+| Q | 70 | 78 |
+
+Use these coordinates to compute each walking segment and find the loop with the least total walking.
+
+Oh, and when you send the answer back, please use a little JSON outline so it's easy to check automatically. Something casual like this works fine:
+
+{
+  ""solution"": [home_id, plaza_id, ..., home_id]
+}
+
+Think of ""solution"" as the ordered list of stops for the day: start with your home id, then each plaza id in the order you plan to visit them, and finish by listing your home id again. It's just a sketch of the shape I need, not the actual route.
+
+Please make sure to use the exact identifiers given in the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"[[40, 45], [74, 46], [35, 26], [100, 19], [63, 0], [38, 91], [42, 100], [38, 95], [56, 23], [0, 53], [88, 10], [11, 10], [74, 28], [23, 60], [15, 31], [23, 81], [70, 78]]","[0, 2, 11, 14, 9, 13, 15, 5, 7, 6, 16, 1, 12, 3, 10, 4, 8, 0]",376.5104603767395,"{""problem_type"": ""TSP"", ""num_nodes"": 17, ""nodes"": [{""id"": ""A"", ""x"": 40, ""y"": 45}, {""id"": ""B"", ""x"": 74, ""y"": 46}, {""id"": ""C"", ""x"": 35, ""y"": 26}, {""id"": ""D"", ""x"": 100, ""y"": 19}, {""id"": ""E"", ""x"": 63, ""y"": 0}, {""id"": ""F"", ""x"": 38, ""y"": 91}, {""id"": ""G"", ""x"": 42, ""y"": 100}, {""id"": ""H"", ""x"": 38, ""y"": 95}, {""id"": ""I"", ""x"": 56, ""y"": 23}, {""id"": ""J"", ""x"": 0, ""y"": 53}, {""id"": ""K"", ""x"": 88, ""y"": 10}, {""id"": ""L"", ""x"": 11, ""y"": 10}, {""id"": ""M"", ""x"": 74, ""y"": 28}, {""id"": ""N"", ""x"": 23, ""y"": 60}, {""id"": ""O"", ""x"": 15, ""y"": 31}, {""id"": ""P"", ""x"": 23, ""y"": 81}, {""id"": ""Q"", ""x"": 70, ""y"": 78}], ""depot"": ""A""}","[""A"", ""C"", ""L"", ""O"", ""J"", ""N"", ""P"", ""F"", ""H"", ""G"", ""Q"", ""B"", ""M"", ""D"", ""K"", ""E"", ""I"", ""A""]"
+TSP_L_038,TSP,L,38,"We’ve got an open-house circuit to arrange: start at the brokerage, swing by every property on the list exactly once, and finish back at the brokerage at the end of the day. The decision is the sequence of stops — the one that wins is the route with the least total miles or total drive time. Figure that out by summing the distances (or times) between each consecutive stop all the way around the loop. Each listing must be visited once, with no repeats and no omissions. The concrete stop details are listed below.
+
+{
+  ""total_stops"": 16,
+  ""nodes"": [
+    {
+      ""stop_id"": 0,
+      ""coord_x"": 17,
+      ""coord_y"": 0
+    },
+    {
+      ""stop_id"": 1,
+      ""coord_x"": 16,
+      ""coord_y"": 91
+    },
+    {
+      ""stop_id"": 2,
+      ""coord_x"": 71,
+      ""coord_y"": 100
+    },
+    {
+      ""stop_id"": 3,
+      ""coord_x"": 13,
+      ""coord_y"": 99
+    },
+    {
+      ""stop_id"": 4,
+      ""coord_x"": 0,
+      ""coord_y"": 4
+    },
+    {
+      ""stop_id"": 5,
+      ""coord_x"": 90,
+      ""coord_y"": 99
+    },
+    {
+      ""stop_id"": 6,
+      ""coord_x"": 70,
+      ""coord_y"": 100
+    },
+    {
+      ""stop_id"": 7,
+      ""coord_x"": 70,
+      ""coord_y"": 1
+    },
+    {
+      ""stop_id"": 8,
+      ""coord_x"": 16,
+      ""coord_y"": 1
+    },
+    {
+      ""stop_id"": 9,
+      ""coord_x"": 74,
+      ""coord_y"": 1
+    },
+    {
+      ""stop_id"": 10,
+      ""coord_x"": 100,
+      ""coord_y"": 52
+    },
+    {
+      ""stop_id"": 11,
+      ""coord_x"": 75,
+      ""coord_y"": 100
+    },
+    {
+      ""stop_id"": 12,
+      ""coord_x"": 75,
+      ""coord_y"": 99
+    },
+    {
+      ""stop_id"": 13,
+      ""coord_x"": 49,
+      ""coord_y"": 95
+    },
+    {
+      ""stop_id"": 14,
+      ""coord_x"": 13,
+      ""coord_y"": 0
+    },
+    {
+      ""stop_id"": 15,
+      ""coord_x"": 20,
+      ""coord_y"": 99
+    }
+  ],
+  ""brokerage_id"": 0
+}
+
+When you send back the route, just follow this simple JSON layout so it's easy to read and check.
+
+{
+  ""solution"": [brokerage_id, property_id, ..., brokerage_id]
+}
+
+This just shows an ordered list under ""solution"": start at the brokerage, list each property once in the order you plan to visit them, and finish back at the brokerage. Think of each placeholder as the exact stop ID from the instance — it’s just a little form to fill in with the route.
+
+The JSON above is only a sketch of the shape I expect, not the actual route.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"[[17, 0], [16, 91], [71, 100], [13, 99], [0, 4], [90, 99], [70, 100], [70, 1], [16, 1], [74, 1], [100, 52], [75, 100], [75, 99], [49, 95], [13, 0], [20, 99]]","[0, 7, 9, 10, 5, 12, 11, 2, 6, 13, 15, 3, 1, 4, 14, 8, 0]",356.3491667509079,"{""problem_type"": ""TSP"", ""num_nodes"": 16, ""nodes"": [{""id"": 0, ""x"": 17, ""y"": 0}, {""id"": 1, ""x"": 16, ""y"": 91}, {""id"": 2, ""x"": 71, ""y"": 100}, {""id"": 3, ""x"": 13, ""y"": 99}, {""id"": 4, ""x"": 0, ""y"": 4}, {""id"": 5, ""x"": 90, ""y"": 99}, {""id"": 6, ""x"": 70, ""y"": 100}, {""id"": 7, ""x"": 70, ""y"": 1}, {""id"": 8, ""x"": 16, ""y"": 1}, {""id"": 9, ""x"": 74, ""y"": 1}, {""id"": 10, ""x"": 100, ""y"": 52}, {""id"": 11, ""x"": 75, ""y"": 100}, {""id"": 12, ""x"": 75, ""y"": 99}, {""id"": 13, ""x"": 49, ""y"": 95}, {""id"": 14, ""x"": 13, ""y"": 0}, {""id"": 15, ""x"": 20, ""y"": 99}], ""depot"": 0}","[0, 7, 9, 10, 5, 12, 11, 2, 6, 13, 15, 3, 1, 4, 14, 8, 0]"
+TSP_L_039,TSP,L,39,"I’ve got to sketch out the lab van’s day: it leaves the hospital, swings by every clinic to pick up samples, and comes back to the lab at the end. The choice to make is the order the van visits those clinics — one order might be a short, efficient loop, another might double back and add lots of miles. The better plan is simply the one that results in the fewest total miles driven; that total is found by adding up the distances for each leg of the trip (from the lab to the first clinic, between each pair of clinics in sequence, and from the last clinic back to the lab). It’s also important that no clinic is skipped or visited more than once. The exact list of clinic locations and distances are shown below.
+
+So here are the stops I need to work with — 17 total stops, with the hospital lab depot identified as A.
+Stop A at longitude 37, latitude 98 — a clinic the van must visit exactly once on the daily loop.
+Stop B at longitude 48, latitude 43 — a clinic the van must visit exactly once on the daily loop.
+Stop C at longitude 100, latitude 9 — a clinic the van must visit exactly once on the daily loop.
+Stop D at longitude 55, latitude 77 — a clinic the van must visit exactly once on the daily loop.
+Stop E at longitude 24, latitude 0 — a clinic the van must visit exactly once on the daily loop.
+Stop F at longitude 19, latitude 100 — a clinic the van must visit exactly once on the daily loop.
+Stop G at longitude 23, latitude 91 — a clinic the van must visit exactly once on the daily loop.
+Stop H at longitude 37, latitude 84 — a clinic the van must visit exactly once on the daily loop.
+Stop I at longitude 43, latitude 52 — a clinic the van must visit exactly once on the daily loop.
+Stop J at longitude 28, latitude 29 — a clinic the van must visit exactly once on the daily loop.
+Stop K at longitude 58, latitude 23 — a clinic the van must visit exactly once on the daily loop.
+Stop L at longitude 50, latitude 32 — a clinic the van must visit exactly once on the daily loop.
+Stop M at longitude 50, latitude 38 — a clinic the van must visit exactly once on the daily loop.
+Stop N at longitude 72, latitude 23 — a clinic the van must visit exactly once on the daily loop.
+Stop O at longitude 36, latitude 55 — a clinic the van must visit exactly once on the daily loop.
+Stop P at longitude 39, latitude 23 — a clinic the van must visit exactly once on the daily loop.
+Stop Q at longitude 0, latitude 55 — a clinic the van must visit exactly once on the daily loop.
+I'll use these stop entries to sum the leg distances and pick the shortest loop for the van.
+
+Also, when you send back the chosen route, just use this little JSON layout so it's clear and tidy:
+
+{
+  ""solution"": [lab_id, clinic_id, ..., lab_id]
+}
+
+Here, ""solution"" is the ordered list the van will drive: start at the lab (the first lab_id), go to each clinic once (each clinic_id in order), and return to the lab at the end (the last lab_id). This block is just a sketch of the shape I’m expecting, not the actual route.
+
+Please make sure you use the exact identifiers from the instance input — don’t rename them and don’t invent new labels. 
+for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"[[37, 98], [48, 43], [100, 9], [55, 77], [24, 0], [19, 100], [23, 91], [37, 84], [43, 52], [28, 29], [58, 23], [50, 32], [50, 38], [72, 23], [36, 55], [39, 23], [0, 55]]","[0, 5, 6, 16, 9, 15, 4, 2, 13, 10, 11, 12, 1, 8, 14, 3, 7, 0]",374.4348635673523,"{""problem_type"": ""TSP"", ""num_nodes"": 17, ""nodes"": [{""id"": ""A"", ""x"": 37, ""y"": 98}, {""id"": ""B"", ""x"": 48, ""y"": 43}, {""id"": ""C"", ""x"": 100, ""y"": 9}, {""id"": ""D"", ""x"": 55, ""y"": 77}, {""id"": ""E"", ""x"": 24, ""y"": 0}, {""id"": ""F"", ""x"": 19, ""y"": 100}, {""id"": ""G"", ""x"": 23, ""y"": 91}, {""id"": ""H"", ""x"": 37, ""y"": 84}, {""id"": ""I"", ""x"": 43, ""y"": 52}, {""id"": ""J"", ""x"": 28, ""y"": 29}, {""id"": ""K"", ""x"": 58, ""y"": 23}, {""id"": ""L"", ""x"": 50, ""y"": 32}, {""id"": ""M"", ""x"": 50, ""y"": 38}, {""id"": ""N"", ""x"": 72, ""y"": 23}, {""id"": ""O"", ""x"": 36, ""y"": 55}, {""id"": ""P"", ""x"": 39, ""y"": 23}, {""id"": ""Q"", ""x"": 0, ""y"": 55}], ""depot"": ""A""}","[""A"", ""F"", ""G"", ""Q"", ""J"", ""P"", ""E"", ""C"", ""N"", ""K"", ""L"", ""M"", ""B"", ""I"", ""O"", ""D"", ""H"", ""A""]"
+TSP_L_040,TSP,L,40,"There’s a neighborhood audit coming up where an inspector will start at the town depot, walk or drive past every mailbox to inspect them, and finally head back to where they began. The choice to make is the sequence of mailboxes to visit — it needs to include every mailbox without revisiting any. A route is better if the inspector ends up covering fewer miles overall; that’s measured by adding up the lengths of each step from one stop to the next, plus the return trip to the depot. Details of the specific stops follow below.
+
+There are 18 stops in total, and the inspector will start and finish at depot A.
+
+| location_id | x_coord | y_coord |
+|---|---|---|
+| A | 77 | 1 |
+| B | 1 | 1 |
+| C | 86 | 0 |
+| D | 3 | 100 |
+| E | 100 | 100 |
+| F | 77 | 100 |
+| G | 0 | 1 |
+| H | 19 | 99 |
+| I | 83 | 1 |
+| J | 35 | 93 |
+| K | 79 | 1 |
+| L | 83 | 99 |
+| M | 44 | 32 |
+| N | 82 | 1 |
+| O | 75 | 1 |
+| P | 43 | 32 |
+| Q | 2 | 100 |
+| R | 81 | 0 |
+
+The inspector must visit all 18 stops exactly once and return to depot A.
+
+Oh, and when you send the route back, please follow this simple JSON shape so it's easy to check:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+This just means the answer should be a list: start at the depot, list each mailbox in the order you want them visited, and finish at the depot again. Think of each placeholder as the label you'll see in the instance input — it's just a little form showing the order, not the actual numbers or coordinates.
+
+The JSON above is only a sketch of the expected shape, not the real route — replace the placeholders with the exact identifiers from the instance input.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.  
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"[[77, 1], [1, 1], [86, 0], [3, 100], [100, 100], [77, 100], [0, 1], [19, 99], [83, 1], [35, 93], [79, 1], [83, 99], [44, 32], [82, 1], [75, 1], [43, 32], [2, 100], [81, 0]]","[0, 10, 17, 13, 8, 2, 4, 11, 5, 9, 7, 3, 16, 6, 1, 15, 12, 14, 0]",409.66087448596954,"{""problem_type"": ""TSP"", ""num_nodes"": 18, ""nodes"": [{""id"": ""A"", ""x"": 77, ""y"": 1}, {""id"": ""B"", ""x"": 1, ""y"": 1}, {""id"": ""C"", ""x"": 86, ""y"": 0}, {""id"": ""D"", ""x"": 3, ""y"": 100}, {""id"": ""E"", ""x"": 100, ""y"": 100}, {""id"": ""F"", ""x"": 77, ""y"": 100}, {""id"": ""G"", ""x"": 0, ""y"": 1}, {""id"": ""H"", ""x"": 19, ""y"": 99}, {""id"": ""I"", ""x"": 83, ""y"": 1}, {""id"": ""J"", ""x"": 35, ""y"": 93}, {""id"": ""K"", ""x"": 79, ""y"": 1}, {""id"": ""L"", ""x"": 83, ""y"": 99}, {""id"": ""M"", ""x"": 44, ""y"": 32}, {""id"": ""N"", ""x"": 82, ""y"": 1}, {""id"": ""O"", ""x"": 75, ""y"": 1}, {""id"": ""P"", ""x"": 43, ""y"": 32}, {""id"": ""Q"", ""x"": 2, ""y"": 100}, {""id"": ""R"", ""x"": 81, ""y"": 0}], ""depot"": ""A""}","[""A"", ""K"", ""R"", ""N"", ""I"", ""C"", ""E"", ""L"", ""F"", ""J"", ""H"", ""D"", ""Q"", ""G"", ""B"", ""P"", ""M"", ""O"", ""A""]"
+TSP_L_041,TSP,L,41,"Someone on the team is figuring out which lawns the gardeners should hit first, second, third, etc., knowing the route must start at the equipment shed and finish there after visiting every customer’s garden once. The core choice is the visit order for the day. A cleaner plan is the one that results in the fewest miles on the van, measured by summing the distance between every pair of consecutive stops in the loop, including the return leg. Every customer must be included exactly once — no omissions, no double-dips. The concrete details are shown below.
+
+{
+  ""total_stops"": 24,
+  ""nodes"": [
+    {
+      ""location_id"": 1,
+      ""x_coord"": 30,
+      ""y_coord"": 93
+    },
+    {
+      ""location_id"": 2,
+      ""x_coord"": 62,
+      ""y_coord"": 98
+    },
+    {
+      ""location_id"": 3,
+      ""x_coord"": 94,
+      ""y_coord"": 60
+    },
+    {
+      ""location_id"": 4,
+      ""x_coord"": 16,
+      ""y_coord"": 67
+    },
+    {
+      ""location_id"": 5,
+      ""x_coord"": 96,
+      ""y_coord"": 31
+    },
+    {
+      ""location_id"": 6,
+      ""x_coord"": 100,
+      ""y_coord"": 9
+    },
+    {
+      ""location_id"": 7,
+      ""x_coord"": 32,
+      ""y_coord"": 60
+    },
+    {
+      ""location_id"": 8,
+      ""x_coord"": 20,
+      ""y_coord"": 47
+    },
+    {
+      ""location_id"": 9,
+      ""x_coord"": 56,
+      ""y_coord"": 13
+    },
+    {
+      ""location_id"": 10,
+      ""x_coord"": 66,
+      ""y_coord"": 82
+    },
+    {
+      ""location_id"": 11,
+      ""x_coord"": 36,
+      ""y_coord"": 100
+    },
+    {
+      ""location_id"": 12,
+      ""x_coord"": 70,
+      ""y_coord"": 100
+    },
+    {
+      ""location_id"": 13,
+      ""x_coord"": 14,
+      ""y_coord"": 18
+    },
+    {
+      ""location_id"": 14,
+      ""x_coord"": 14,
+      ""y_coord"": 78
+    },
+    {
+      ""location_id"": 15,
+      ""x_coord"": 20,
+      ""y_coord"": 51
+    },
+    {
+      ""location_id"": 16,
+      ""x_coord"": 46,
+      ""y_coord"": 7
+    },
+    {
+      ""location_id"": 17,
+      ""x_coord"": 0,
+      ""y_coord"": 73
+    },
+    {
+      ""location_id"": 18,
+      ""x_coord"": 14,
+      ""y_coord"": 98
+    },
+    {
+      ""location_id"": 19,
+      ""x_coord"": 76,
+      ""y_coord"": 31
+    },
+    {
+      ""location_id"": 20,
+      ""x_coord"": 16,
+      ""y_coord"": 69
+    },
+    {
+      ""location_id"": 21,
+      ""x_coord"": 62,
+      ""y_coord"": 0
+    },
+    {
+      ""location_id"": 22,
+      ""x_coord"": 66,
+      ""y_coord"": 0
+    },
+    {
+      ""location_id"": 23,
+      ""x_coord"": 14,
+      ""y_coord"": 33
+    },
+    {
+      ""location_id"": 24,
+      ""x_coord"": 94,
+      ""y_coord"": 87
+    }
+  ],
+  ""equipment_shed"": 1
+}
+
+When you reply with the planned route, please use this simple JSON shape so it's easy to parse:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+""solution"" is just the ordered list of stops for the day — start at the equipment shed (the depot), visit every garden once, and finish back at the shed. The placeholders (depot_id, location_id, etc.) stand in for the actual location identifiers from the instance. This is only a sketch of the expected shape, not the real answer.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"[[30, 93], [62, 98], [94, 60], [16, 67], [96, 31], [100, 9], [32, 60], [20, 47], [56, 13], [66, 82], [36, 100], [70, 100], [14, 18], [14, 78], [20, 51], [46, 7], [0, 73], [14, 98], [76, 31], [16, 69], [62, 0], [66, 0], [14, 33], [94, 87]]","[0, 10, 1, 11, 9, 23, 2, 18, 4, 5, 21, 20, 8, 15, 12, 22, 7, 14, 6, 3, 19, 16, 13, 17, 0]",429.72327518463135,"{""problem_type"": ""TSP"", ""num_nodes"": 24, ""nodes"": [{""id"": 1, ""x"": 30, ""y"": 93}, {""id"": 2, ""x"": 62, ""y"": 98}, {""id"": 3, ""x"": 94, ""y"": 60}, {""id"": 4, ""x"": 16, ""y"": 67}, {""id"": 5, ""x"": 96, ""y"": 31}, {""id"": 6, ""x"": 100, ""y"": 9}, {""id"": 7, ""x"": 32, ""y"": 60}, {""id"": 8, ""x"": 20, ""y"": 47}, {""id"": 9, ""x"": 56, ""y"": 13}, {""id"": 10, ""x"": 66, ""y"": 82}, {""id"": 11, ""x"": 36, ""y"": 100}, {""id"": 12, ""x"": 70, ""y"": 100}, {""id"": 13, ""x"": 14, ""y"": 18}, {""id"": 14, ""x"": 14, ""y"": 78}, {""id"": 15, ""x"": 20, ""y"": 51}, {""id"": 16, ""x"": 46, ""y"": 7}, {""id"": 17, ""x"": 0, ""y"": 73}, {""id"": 18, ""x"": 14, ""y"": 98}, {""id"": 19, ""x"": 76, ""y"": 31}, {""id"": 20, ""x"": 16, ""y"": 69}, {""id"": 21, ""x"": 62, ""y"": 0}, {""id"": 22, ""x"": 66, ""y"": 0}, {""id"": 23, ""x"": 14, ""y"": 33}, {""id"": 24, ""x"": 94, ""y"": 87}], ""depot"": 1}","[1, 11, 2, 12, 10, 24, 3, 19, 5, 6, 22, 21, 9, 16, 13, 23, 8, 15, 7, 4, 20, 17, 14, 18, 1]"
+TSP_L_042,TSP,L,42,"Picture this: the municipal garage is the launch point for a sign inspection run that has to touch every sign exactly once and then come home, with no returning to any already-visited location. What’s being chosen is the visiting order, and the calm, sensible choice is the order that leads to the least total driving — the amount you’d get by adding up the distance between every consecutive stop on the tour. The detailed sign list and route data are shown below.
+
+{
+  ""total_locations"": 24,
+  ""nodes"": [
+    {
+      ""location_id"": ""A"",
+      ""x_coordinate"": 47,
+      ""y_coordinate"": 94
+    },
+    {
+      ""location_id"": ""B"",
+      ""x_coordinate"": 89,
+      ""y_coordinate"": 0
+    },
+    {
+      ""location_id"": ""C"",
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 21
+    },
+    {
+      ""location_id"": ""D"",
+      ""x_coordinate"": 88,
+      ""y_coordinate"": 100
+    },
+    {
+      ""location_id"": ""E"",
+      ""x_coordinate"": 3,
+      ""y_coordinate"": 99
+    },
+    {
+      ""location_id"": ""F"",
+      ""x_coordinate"": 24,
+      ""y_coordinate"": 100
+    },
+    {
+      ""location_id"": ""G"",
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 0
+    },
+    {
+      ""location_id"": ""H"",
+      ""x_coordinate"": 53,
+      ""y_coordinate"": 33
+    },
+    {
+      ""location_id"": ""I"",
+      ""x_coordinate"": 3,
+      ""y_coordinate"": 0
+    },
+    {
+      ""location_id"": ""J"",
+      ""x_coordinate"": 95,
+      ""y_coordinate"": 1
+    },
+    {
+      ""location_id"": ""K"",
+      ""x_coordinate"": 3,
+      ""y_coordinate"": 0
+    },
+    {
+      ""location_id"": ""L"",
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 100
+    },
+    {
+      ""location_id"": ""M"",
+      ""x_coordinate"": 1,
+      ""y_coordinate"": 1
+    },
+    {
+      ""location_id"": ""N"",
+      ""x_coordinate"": 51,
+      ""y_coordinate"": 93
+    },
+    {
+      ""location_id"": ""O"",
+      ""x_coordinate"": 6,
+      ""y_coordinate"": 1
+    },
+    {
+      ""location_id"": ""P"",
+      ""x_coordinate"": 5,
+      ""y_coordinate"": 99
+    },
+    {
+      ""location_id"": ""Q"",
+      ""x_coordinate"": 92,
+      ""y_coordinate"": 1
+    },
+    {
+      ""location_id"": ""R"",
+      ""x_coordinate"": 5,
+      ""y_coordinate"": 0
+    },
+    {
+      ""location_id"": ""S"",
+      ""x_coordinate"": 91,
+      ""y_coordinate"": 100
+    },
+    {
+      ""location_id"": ""T"",
+      ""x_coordinate"": 89,
+      ""y_coordinate"": 99
+    },
+    {
+      ""location_id"": ""U"",
+      ""x_coordinate"": 6,
+      ""y_coordinate"": 99
+    },
+    {
+      ""location_id"": ""V"",
+      ""x_coordinate"": 22,
+      ""y_coordinate"": 100
+    },
+    {
+      ""location_id"": ""W"",
+      ""x_coordinate"": 47,
+      ""y_coordinate"": 33
+    },
+    {
+      ""location_id"": ""X"",
+      ""x_coordinate"": 18,
+      ""y_coordinate"": 84
+    }
+  ],
+  ""garage_node_id"": ""A""
+}
+
+Also, when you hand the route back, just put it in this little JSON shape so it's easy to parse:
+
+{
+  ""solution"": [garage_id, sign_id, ..., garage_id]
+}
+
+Think of it like a simple form: ""solution"" is the ordered list of stops — start at the garage (garage_id), then each sign in the order you visit them (sign_id), and finally back to the garage. This is only a sketch of the expected shape, not the actual route.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new ones. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,names,"[[47, 94], [89, 0], [100, 21], [88, 100], [3, 99], [24, 100], [0, 0], [53, 33], [3, 0], [95, 1], [3, 0], [100, 100], [1, 1], [51, 93], [6, 1], [5, 99], [92, 1], [5, 0], [91, 100], [89, 99], [6, 99], [22, 100], [47, 33], [18, 84]]","[0, 5, 21, 20, 15, 4, 23, 6, 12, 10, 8, 17, 14, 22, 7, 1, 16, 9, 2, 11, 18, 19, 3, 13, 0]",426.039182305336,"{""problem_type"": ""TSP"", ""num_nodes"": 24, ""nodes"": [{""id"": ""A"", ""x"": 47, ""y"": 94}, {""id"": ""B"", ""x"": 89, ""y"": 0}, {""id"": ""C"", ""x"": 100, ""y"": 21}, {""id"": ""D"", ""x"": 88, ""y"": 100}, {""id"": ""E"", ""x"": 3, ""y"": 99}, {""id"": ""F"", ""x"": 24, ""y"": 100}, {""id"": ""G"", ""x"": 0, ""y"": 0}, {""id"": ""H"", ""x"": 53, ""y"": 33}, {""id"": ""I"", ""x"": 3, ""y"": 0}, {""id"": ""J"", ""x"": 95, ""y"": 1}, {""id"": ""K"", ""x"": 3, ""y"": 0}, {""id"": ""L"", ""x"": 100, ""y"": 100}, {""id"": ""M"", ""x"": 1, ""y"": 1}, {""id"": ""N"", ""x"": 51, ""y"": 93}, {""id"": ""O"", ""x"": 6, ""y"": 1}, {""id"": ""P"", ""x"": 5, ""y"": 99}, {""id"": ""Q"", ""x"": 92, ""y"": 1}, {""id"": ""R"", ""x"": 5, ""y"": 0}, {""id"": ""S"", ""x"": 91, ""y"": 100}, {""id"": ""T"", ""x"": 89, ""y"": 99}, {""id"": ""U"", ""x"": 6, ""y"": 99}, {""id"": ""V"", ""x"": 22, ""y"": 100}, {""id"": ""W"", ""x"": 47, ""y"": 33}, {""id"": ""X"", ""x"": 18, ""y"": 84}], ""depot"": ""A""}","[""A"", ""F"", ""V"", ""U"", ""P"", ""E"", ""X"", ""G"", ""M"", ""K"", ""I"", ""R"", ""O"", ""W"", ""H"", ""B"", ""Q"", ""J"", ""C"", ""L"", ""S"", ""T"", ""D"", ""N"", ""A""]"
+TSP_L_043,TSP,L,43,"Recently the festival team had to sort out how to restock all the stalls from one storage tent: the supplier must go out, visit each booth once to top up stock, and come straight back at the end. What counts as a smarter choice here is simply keeping the overall travel distance minimal — just add up the distances for each segment of the trip to see which route is shortest. The detailed booth coordinates and distances are provided below.
+
+# total_locations=19
+# storage_tent_id=0
+location_id,x_coord,y_coord
+0,22,2
+1,8,100
+2,90,75
+3,67,34
+4,42,100
+5,28,98
+6,97,4
+7,15,0
+8,5,100
+9,100,72
+10,19,45
+11,0,1
+12,28,86
+13,15,72
+14,76,17
+15,1,100
+16,90,51
+17,63,100
+18,62,0
+
+Also, when you send the route back, just stick to this simple JSON layout so it's easy to parse:
+
+{
+  ""solution"": [storage_tent_id, booth_id, ..., storage_tent_id]
+}
+
+""solution"" is just the ordered list of stops: start at the storage tent, list each booth once in the order you’ll visit them, and finish back at the storage tent. Think of it like filling in a little form that says ""start here, then these booths, then back here.""
+
+This is only a sketch of the shape I expect, not the actual route — please fill it in with the exact identifiers from the instance input. All identifiers must be used exactly as they appear in the input — no renaming and no new labels.
+
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,zero_based,"[[22, 2], [8, 100], [90, 75], [67, 34], [42, 100], [28, 98], [97, 4], [15, 0], [5, 100], [100, 72], [19, 45], [0, 1], [28, 86], [15, 72], [76, 17], [1, 100], [90, 51], [63, 100], [62, 0]]","[0, 7, 11, 10, 13, 15, 8, 1, 12, 5, 4, 17, 2, 9, 16, 3, 14, 6, 18, 0]",425.703830242157,"{""problem_type"": ""TSP"", ""num_nodes"": 19, ""nodes"": [{""id"": 0, ""x"": 22, ""y"": 2}, {""id"": 1, ""x"": 8, ""y"": 100}, {""id"": 2, ""x"": 90, ""y"": 75}, {""id"": 3, ""x"": 67, ""y"": 34}, {""id"": 4, ""x"": 42, ""y"": 100}, {""id"": 5, ""x"": 28, ""y"": 98}, {""id"": 6, ""x"": 97, ""y"": 4}, {""id"": 7, ""x"": 15, ""y"": 0}, {""id"": 8, ""x"": 5, ""y"": 100}, {""id"": 9, ""x"": 100, ""y"": 72}, {""id"": 10, ""x"": 19, ""y"": 45}, {""id"": 11, ""x"": 0, ""y"": 1}, {""id"": 12, ""x"": 28, ""y"": 86}, {""id"": 13, ""x"": 15, ""y"": 72}, {""id"": 14, ""x"": 76, ""y"": 17}, {""id"": 15, ""x"": 1, ""y"": 100}, {""id"": 16, ""x"": 90, ""y"": 51}, {""id"": 17, ""x"": 63, ""y"": 100}, {""id"": 18, ""x"": 62, ""y"": 0}], ""depot"": 0}","[0, 7, 11, 10, 13, 15, 8, 1, 12, 5, 4, 17, 2, 9, 16, 3, 14, 6, 18, 0]"
+TSP_L_044,TSP,L,44,"I’m picturing a bike courier leaving dispatch with a stack of pickup slips and a list of offices to visit. The job is to pick up from every office exactly once and come back to dispatch at the end, so the question is which order to ride in. A better plan is simply the one that makes the total ride shorter — add up the distances between each consecutive stop, including the ride back to dispatch, and that total should be as small as possible. Nothing can be skipped or visited twice. The concrete details will be shown below.
+
+{
+  ""total_stops_count"": 25,
+  ""nodes"": [
+    {
+      ""stop_id"": ""A"",
+      ""x_coord"": 7,
+      ""y_coord"": 100
+    },
+    {
+      ""stop_id"": ""B"",
+      ""x_coord"": 95,
+      ""y_coord"": 44
+    },
+    {
+      ""stop_id"": ""C"",
+      ""x_coord"": 93,
+      ""y_coord"": 74
+    },
+    {
+      ""stop_id"": ""D"",
+      ""x_coord"": 98,
+      ""y_coord"": 47
+    },
+    {
+      ""stop_id"": ""E"",
+      ""x_coord"": 0,
+      ""y_coord"": 47
+    },
+    {
+      ""stop_id"": ""F"",
+      ""x_coord"": 5,
+      ""y_coord"": 11
+    },
+    {
+      ""stop_id"": ""G"",
+      ""x_coord"": 7,
+      ""y_coord"": 97
+    },
+    {
+      ""stop_id"": ""H"",
+      ""x_coord"": 2,
+      ""y_coord"": 88
+    },
+    {
+      ""stop_id"": ""I"",
+      ""x_coord"": 0,
+      ""y_coord"": 88
+    },
+    {
+      ""stop_id"": ""J"",
+      ""x_coord"": 100,
+      ""y_coord"": 11
+    },
+    {
+      ""stop_id"": ""K"",
+      ""x_coord"": 7,
+      ""y_coord"": 11
+    },
+    {
+      ""stop_id"": ""L"",
+      ""x_coord"": 100,
+      ""y_coord"": 47
+    },
+    {
+      ""stop_id"": ""M"",
+      ""x_coord"": 0,
+      ""y_coord"": 35
+    },
+    {
+      ""stop_id"": ""N"",
+      ""x_coord"": 100,
+      ""y_coord"": 97
+    },
+    {
+      ""stop_id"": ""O"",
+      ""x_coord"": 0,
+      ""y_coord"": 74
+    },
+    {
+      ""stop_id"": ""P"",
+      ""x_coord"": 93,
+      ""y_coord"": 47
+    },
+    {
+      ""stop_id"": ""Q"",
+      ""x_coord"": 98,
+      ""y_coord"": 0
+    },
+    {
+      ""stop_id"": ""R"",
+      ""x_coord"": 100,
+      ""y_coord"": 61
+    },
+    {
+      ""stop_id"": ""S"",
+      ""x_coord"": 7,
+      ""y_coord"": 58
+    },
+    {
+      ""stop_id"": ""T"",
+      ""x_coord"": 93,
+      ""y_coord"": 88
+    },
+    {
+      ""stop_id"": ""U"",
+      ""x_coord"": 93,
+      ""y_coord"": 0
+    },
+    {
+      ""stop_id"": ""V"",
+      ""x_coord"": 100,
+      ""y_coord"": 35
+    },
+    {
+      ""stop_id"": ""W"",
+      ""x_coord"": 95,
+      ""y_coord"": 11
+    },
+    {
+      ""stop_id"": ""X"",
+      ""x_coord"": 2,
+      ""y_coord"": 71
+    },
+    {
+      ""stop_id"": ""Y"",
+      ""x_coord"": 7,
+      ""y_coord"": 87
+    }
+  ],
+  ""dispatch_id"": ""A""
+}
+
+While we're on the same page about what to return, it helps to have a tiny example of the shape I expect — just a simple JSON sketch that lists the stops in order. Something like this:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of ""solution"" as the ordered list of stops: start at the depot, go visit each place once in the order shown, and finish back at the depot. This little block is just the form I want — it's a sketch of the shape, not the actual route.
+
+Please make sure to use the exact identifiers from the problem input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,names,"[[7, 100], [95, 44], [93, 74], [98, 47], [0, 47], [5, 11], [7, 97], [2, 88], [0, 88], [100, 11], [7, 11], [100, 47], [0, 35], [100, 97], [0, 74], [93, 47], [98, 0], [100, 61], [7, 58], [93, 88], [93, 0], [100, 35], [95, 11], [2, 71], [7, 87]]","[0, 6, 24, 7, 8, 14, 23, 18, 4, 12, 5, 10, 20, 16, 22, 9, 21, 1, 15, 3, 11, 17, 2, 19, 13, 0]",403.4051938056946,"{""problem_type"": ""TSP"", ""num_nodes"": 25, ""nodes"": [{""id"": ""A"", ""x"": 7, ""y"": 100}, {""id"": ""B"", ""x"": 95, ""y"": 44}, {""id"": ""C"", ""x"": 93, ""y"": 74}, {""id"": ""D"", ""x"": 98, ""y"": 47}, {""id"": ""E"", ""x"": 0, ""y"": 47}, {""id"": ""F"", ""x"": 5, ""y"": 11}, {""id"": ""G"", ""x"": 7, ""y"": 97}, {""id"": ""H"", ""x"": 2, ""y"": 88}, {""id"": ""I"", ""x"": 0, ""y"": 88}, {""id"": ""J"", ""x"": 100, ""y"": 11}, {""id"": ""K"", ""x"": 7, ""y"": 11}, {""id"": ""L"", ""x"": 100, ""y"": 47}, {""id"": ""M"", ""x"": 0, ""y"": 35}, {""id"": ""N"", ""x"": 100, ""y"": 97}, {""id"": ""O"", ""x"": 0, ""y"": 74}, {""id"": ""P"", ""x"": 93, ""y"": 47}, {""id"": ""Q"", ""x"": 98, ""y"": 0}, {""id"": ""R"", ""x"": 100, ""y"": 61}, {""id"": ""S"", ""x"": 7, ""y"": 58}, {""id"": ""T"", ""x"": 93, ""y"": 88}, {""id"": ""U"", ""x"": 93, ""y"": 0}, {""id"": ""V"", ""x"": 100, ""y"": 35}, {""id"": ""W"", ""x"": 95, ""y"": 11}, {""id"": ""X"", ""x"": 2, ""y"": 71}, {""id"": ""Y"", ""x"": 7, ""y"": 87}], ""depot"": ""A""}","[""A"", ""G"", ""Y"", ""H"", ""I"", ""O"", ""X"", ""S"", ""E"", ""M"", ""F"", ""K"", ""U"", ""Q"", ""W"", ""J"", ""V"", ""B"", ""P"", ""D"", ""L"", ""R"", ""C"", ""T"", ""N"", ""A""]"
+TSP_L_045,TSP,L,45,"There’s a service van parked up that needs to go out, visit every client building one time, and then roll back to the lot — the trick is deciding in which order to visit them. The measure of success is straightforward: add up the distance traveled from stop to stop throughout the whole loop (including the return leg) and keep that total as low as you can. No building gets left out or visited twice. The concrete route details appear below.
+
+# total_locations=21
+# depot_id=A
+location_id,x_coord,y_coord
+A,19,21
+B,97,47
+C,99,0
+D,9,18
+E,96,78
+F,1,19
+G,78,98
+H,59,100
+I,41,100
+J,93,21
+K,79,98
+L,74,6
+M,23,40
+N,0,22
+O,100,67
+P,57,49
+Q,70,33
+R,7,0
+S,68,98
+T,26,24
+U,66,5
+
+Also, when you send the final route back, just use a tiny JSON snippet like this so it’s easy to check:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of ""solution"" as the ordered list of stops the van will make — start at the depot, visit each client once, and come back to the depot. The JSON above is just a sketch of the shape I expect, not the actual route.
+
+Please make sure all identifiers in that list match the instance input exactly — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"[[19, 21], [97, 47], [99, 0], [9, 18], [96, 78], [1, 19], [78, 98], [59, 100], [41, 100], [93, 21], [79, 98], [74, 6], [23, 40], [0, 22], [100, 67], [57, 49], [70, 33], [7, 0], [68, 98], [26, 24], [66, 5]]","[0, 3, 17, 5, 13, 12, 8, 7, 18, 6, 10, 4, 14, 1, 9, 2, 11, 20, 16, 15, 19, 0]",418.14160776138306,"{""problem_type"": ""TSP"", ""num_nodes"": 21, ""nodes"": [{""id"": ""A"", ""x"": 19, ""y"": 21}, {""id"": ""B"", ""x"": 97, ""y"": 47}, {""id"": ""C"", ""x"": 99, ""y"": 0}, {""id"": ""D"", ""x"": 9, ""y"": 18}, {""id"": ""E"", ""x"": 96, ""y"": 78}, {""id"": ""F"", ""x"": 1, ""y"": 19}, {""id"": ""G"", ""x"": 78, ""y"": 98}, {""id"": ""H"", ""x"": 59, ""y"": 100}, {""id"": ""I"", ""x"": 41, ""y"": 100}, {""id"": ""J"", ""x"": 93, ""y"": 21}, {""id"": ""K"", ""x"": 79, ""y"": 98}, {""id"": ""L"", ""x"": 74, ""y"": 6}, {""id"": ""M"", ""x"": 23, ""y"": 40}, {""id"": ""N"", ""x"": 0, ""y"": 22}, {""id"": ""O"", ""x"": 100, ""y"": 67}, {""id"": ""P"", ""x"": 57, ""y"": 49}, {""id"": ""Q"", ""x"": 70, ""y"": 33}, {""id"": ""R"", ""x"": 7, ""y"": 0}, {""id"": ""S"", ""x"": 68, ""y"": 98}, {""id"": ""T"", ""x"": 26, ""y"": 24}, {""id"": ""U"", ""x"": 66, ""y"": 5}], ""depot"": ""A""}","[""A"", ""D"", ""R"", ""F"", ""N"", ""M"", ""I"", ""H"", ""S"", ""G"", ""K"", ""E"", ""O"", ""B"", ""J"", ""C"", ""L"", ""U"", ""Q"", ""P"", ""T"", ""A""]"
+TSP_L_046,TSP,L,46,"Recently there’s been a request to craft a drive that starts and ends at the office, visiting each house on the showing list only once. The goal is simple in plain terms: pick the route with the smallest total miles, which you get by adding up the distances for each hop from one stop to the next and finally back to the office. Leave no house out and don’t circle back to any place. The detailed info is provided below.
+
+# total_locations=16
+# office_id=A
+stop_id,x_coord,y_coord
+A,44,63
+B,23,43
+C,16,54
+D,96,43
+E,2,11
+F,45,100
+G,52,20
+H,44,11
+I,28,28
+J,51,34
+K,16,0
+L,0,38
+M,43,34
+N,76,57
+O,30,70
+P,100,82
+
+Also, when you hand the route back, please use this simple JSON layout so it's easy to parse:
+
+{
+  ""solution"": [office_id, house_id, ..., office_id]
+}
+
+Think of this like a short form: ""solution"" holds the ordered list of stops for the drive — start at the office, go to each house on the list exactly once, and return to the office at the end. The names in the array are just placeholders showing the shape I expect; replace them with the actual stop identifiers from the instance when you give the real route.
+
+This JSON is only a sketch of the expected shape, not the actual answer. Please make sure to use the exact identifiers from the instance input — do not rename them or invent new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"[[44, 63], [23, 43], [16, 54], [96, 43], [2, 11], [45, 100], [52, 20], [44, 11], [28, 28], [51, 34], [16, 0], [0, 38], [43, 34], [76, 57], [30, 70], [100, 82]]","[0, 5, 15, 3, 13, 9, 12, 6, 7, 10, 4, 11, 8, 1, 2, 14, 0]",399.61362648010254,"{""problem_type"": ""TSP"", ""num_nodes"": 16, ""nodes"": [{""id"": ""A"", ""x"": 44, ""y"": 63}, {""id"": ""B"", ""x"": 23, ""y"": 43}, {""id"": ""C"", ""x"": 16, ""y"": 54}, {""id"": ""D"", ""x"": 96, ""y"": 43}, {""id"": ""E"", ""x"": 2, ""y"": 11}, {""id"": ""F"", ""x"": 45, ""y"": 100}, {""id"": ""G"", ""x"": 52, ""y"": 20}, {""id"": ""H"", ""x"": 44, ""y"": 11}, {""id"": ""I"", ""x"": 28, ""y"": 28}, {""id"": ""J"", ""x"": 51, ""y"": 34}, {""id"": ""K"", ""x"": 16, ""y"": 0}, {""id"": ""L"", ""x"": 0, ""y"": 38}, {""id"": ""M"", ""x"": 43, ""y"": 34}, {""id"": ""N"", ""x"": 76, ""y"": 57}, {""id"": ""O"", ""x"": 30, ""y"": 70}, {""id"": ""P"", ""x"": 100, ""y"": 82}], ""depot"": ""A""}","[""A"", ""F"", ""P"", ""D"", ""N"", ""J"", ""M"", ""G"", ""H"", ""K"", ""E"", ""L"", ""I"", ""B"", ""C"", ""O"", ""A""]"
+TSP_L_047,TSP,L,47,"On a busy morning the shop wants a single circular run: the rider leaves the shop, stops at every delivery address one time only, and then rides back to the shop. Choosing the route means picking the sequence of stops; every address must be covered exactly once and cannot be revisited. The simplest way to tell which sequence is best is to add together the distances of all the legs between stops (don’t forget the return leg) and go with the sequence that gives the smallest total distance. The concrete stop list and coordinates follow below.
+
+The list contains 22 locations, with the shop as node 0.
+
+| stop_id | x_coord | y_coord |
+|---|---|---|
+| 0 | 0 | 2 |
+| 1 | 56 | 21 |
+| 2 | 92 | 100 |
+| 3 | 24 | 69 |
+| 4 | 100 | 0 |
+| 5 | 88 | 54 |
+| 6 | 99 | 100 |
+| 7 | 28 | 12 |
+| 8 | 14 | 100 |
+| 9 | 88 | 68 |
+| 10 | 72 | 100 |
+| 11 | 83 | 100 |
+| 12 | 75 | 100 |
+| 13 | 23 | 71 |
+| 14 | 24 | 71 |
+| 15 | 67 | 71 |
+| 16 | 23 | 70 |
+| 17 | 100 | 9 |
+| 18 | 24 | 70 |
+| 19 | 17 | 100 |
+| 20 | 25 | 5 |
+| 21 | 12 | 100 |
+
+Compute straight-line distances between these 22 stops (starting and ending at node 0) to determine the shortest circular route.
+
+If you'd like the route in a simple, machine-friendly form, you can return it in this little JSON sketch:
+
+{
+  ""solution"": [shop_id, stop_id, ..., shop_id]
+}
+
+Think of ""solution"" as just the list of stops in order: start at the shop, visit every delivery once, and come back to the shop at the end. The placeholders above just show the shape — you'll replace them with the actual stop identifiers from the instance.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"[[0, 2], [56, 21], [92, 100], [24, 69], [100, 0], [88, 54], [99, 100], [28, 12], [14, 100], [88, 68], [72, 100], [83, 100], [75, 100], [23, 71], [24, 71], [67, 71], [23, 70], [100, 9], [24, 70], [17, 100], [25, 5], [12, 100]]","[0, 3, 18, 16, 14, 13, 21, 8, 19, 10, 12, 11, 2, 6, 15, 9, 5, 17, 4, 1, 7, 20, 0]",438.53102815151215,"{""problem_type"": ""TSP"", ""num_nodes"": 22, ""nodes"": [{""id"": 0, ""x"": 0, ""y"": 2}, {""id"": 1, ""x"": 56, ""y"": 21}, {""id"": 2, ""x"": 92, ""y"": 100}, {""id"": 3, ""x"": 24, ""y"": 69}, {""id"": 4, ""x"": 100, ""y"": 0}, {""id"": 5, ""x"": 88, ""y"": 54}, {""id"": 6, ""x"": 99, ""y"": 100}, {""id"": 7, ""x"": 28, ""y"": 12}, {""id"": 8, ""x"": 14, ""y"": 100}, {""id"": 9, ""x"": 88, ""y"": 68}, {""id"": 10, ""x"": 72, ""y"": 100}, {""id"": 11, ""x"": 83, ""y"": 100}, {""id"": 12, ""x"": 75, ""y"": 100}, {""id"": 13, ""x"": 23, ""y"": 71}, {""id"": 14, ""x"": 24, ""y"": 71}, {""id"": 15, ""x"": 67, ""y"": 71}, {""id"": 16, ""x"": 23, ""y"": 70}, {""id"": 17, ""x"": 100, ""y"": 9}, {""id"": 18, ""x"": 24, ""y"": 70}, {""id"": 19, ""x"": 17, ""y"": 100}, {""id"": 20, ""x"": 25, ""y"": 5}, {""id"": 21, ""x"": 12, ""y"": 100}], ""depot"": 0}","[0, 3, 18, 16, 14, 13, 21, 8, 19, 10, 12, 11, 2, 6, 15, 9, 5, 17, 4, 1, 7, 20, 0]"
+TSP_L_048,TSP,L,48,"Back when the shoot schedule was being mapped out, the brief said to start at the studio, visit each selected landmark a single time for photos, and come back to base. What makes one itinerary better than another is how little you end up driving; tally the distances between consecutive stops and the route with the smallest total is the one to pick. No repeats or omissions are allowed. The full set of landmark details is provided below.
+
+{
+  ""total_stops"": 16,
+  ""nodes"": [
+    {
+      ""stop_id"": ""A"",
+      ""x_coordinate"": 82,
+      ""y_coordinate"": 60
+    },
+    {
+      ""stop_id"": ""B"",
+      ""x_coordinate"": 21,
+      ""y_coordinate"": 28
+    },
+    {
+      ""stop_id"": ""C"",
+      ""x_coordinate"": 9,
+      ""y_coordinate"": 100
+    },
+    {
+      ""stop_id"": ""D"",
+      ""x_coordinate"": 23,
+      ""y_coordinate"": 3
+    },
+    {
+      ""stop_id"": ""E"",
+      ""x_coordinate"": 26,
+      ""y_coordinate"": 42
+    },
+    {
+      ""stop_id"": ""F"",
+      ""x_coordinate"": 60,
+      ""y_coordinate"": 75
+    },
+    {
+      ""stop_id"": ""G"",
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 11
+    },
+    {
+      ""stop_id"": ""H"",
+      ""x_coordinate"": 89,
+      ""y_coordinate"": 13
+    },
+    {
+      ""stop_id"": ""I"",
+      ""x_coordinate"": 52,
+      ""y_coordinate"": 0
+    },
+    {
+      ""stop_id"": ""J"",
+      ""x_coordinate"": 95,
+      ""y_coordinate"": 42
+    },
+    {
+      ""stop_id"": ""K"",
+      ""x_coordinate"": 1,
+      ""y_coordinate"": 4
+    },
+    {
+      ""stop_id"": ""L"",
+      ""x_coordinate"": 12,
+      ""y_coordinate"": 32
+    },
+    {
+      ""stop_id"": ""M"",
+      ""x_coordinate"": 33,
+      ""y_coordinate"": 11
+    },
+    {
+      ""stop_id"": ""N"",
+      ""x_coordinate"": 76,
+      ""y_coordinate"": 48
+    },
+    {
+      ""stop_id"": ""O"",
+      ""x_coordinate"": 71,
+      ""y_coordinate"": 60
+    },
+    {
+      ""stop_id"": ""P"",
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 80
+    }
+  ],
+  ""studio_node_id"": ""A""
+}
+
+When you send back the planned route, just use this little JSON layout so it's easy to read and parse:
+
+{
+  ""solution"": [studio_id, landmark_id, ..., studio_id]
+}
+
+This just shows the order of stops: start at the studio_id, visit each landmark_id once in the listed sequence, and return to the studio_id at the end. It's a sketch of the shape I want — not the actual route yet.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or make up new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,names,"[[82, 60], [21, 28], [9, 100], [23, 3], [26, 42], [60, 75], [100, 11], [89, 13], [52, 0], [95, 42], [1, 4], [12, 32], [33, 11], [76, 48], [71, 60], [0, 80]]","[0, 13, 9, 6, 7, 8, 12, 3, 10, 11, 1, 4, 15, 2, 5, 14, 0]",381.09532260894775,"{""problem_type"": ""TSP"", ""num_nodes"": 16, ""nodes"": [{""id"": ""A"", ""x"": 82, ""y"": 60}, {""id"": ""B"", ""x"": 21, ""y"": 28}, {""id"": ""C"", ""x"": 9, ""y"": 100}, {""id"": ""D"", ""x"": 23, ""y"": 3}, {""id"": ""E"", ""x"": 26, ""y"": 42}, {""id"": ""F"", ""x"": 60, ""y"": 75}, {""id"": ""G"", ""x"": 100, ""y"": 11}, {""id"": ""H"", ""x"": 89, ""y"": 13}, {""id"": ""I"", ""x"": 52, ""y"": 0}, {""id"": ""J"", ""x"": 95, ""y"": 42}, {""id"": ""K"", ""x"": 1, ""y"": 4}, {""id"": ""L"", ""x"": 12, ""y"": 32}, {""id"": ""M"", ""x"": 33, ""y"": 11}, {""id"": ""N"", ""x"": 76, ""y"": 48}, {""id"": ""O"", ""x"": 71, ""y"": 60}, {""id"": ""P"", ""x"": 0, ""y"": 80}], ""depot"": ""A""}","[""A"", ""N"", ""J"", ""G"", ""H"", ""I"", ""M"", ""D"", ""K"", ""L"", ""B"", ""E"", ""P"", ""C"", ""F"", ""O"", ""A""]"
+TSP_L_049,TSP,L,49,"Recently the service team needed a single-route plan: the truck should roll out from the depot, go to each customer once, and finish back at the depot. The choice to make is the sequence of customers; the most efficient sequence is the one that keeps the total driving distance as low as possible — that total is the sum of all the individual legs between stops, counting the trip home — and no address can be skipped or visited more than once. The concrete numbers and locations appear below.
+
+Below are the 22 stops, with the depot identified as 1.
+Stop 1 is located at (75, 43).
+Stop 2 is located at (26, 82).
+Stop 3 is located at (20, 31).
+Stop 4 is located at (42, 28).
+Stop 5 is located at (32, 31).
+Stop 6 is located at (27, 65).
+Stop 7 is located at (69, 14).
+Stop 8 is located at (31, 48).
+Stop 9 is located at (73, 29).
+Stop 10 is located at (69, 8).
+Stop 11 is located at (0, 61).
+Stop 12 is located at (38, 0).
+Stop 13 is located at (100, 9).
+Stop 14 is located at (28, 48).
+Stop 15 is located at (40, 100).
+Stop 16 is located at (66, 50).
+Stop 17 is located at (45, 28).
+Stop 18 is located at (88, 65).
+Stop 19 is located at (53, 31).
+Stop 20 is located at (17, 100).
+Stop 21 is located at (94, 43).
+Stop 22 is located at (14, 21).
+The optimizer should produce a single tour that visits each stop once and returns to 1.
+
+Oh, and when you send the final route back, please use this simple JSON layout so it's easy to parse:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+This just sketches the shape I need: ""solution"" is the ordered list of stops — start at the depot, list each customer in the order they should be visited, and finish at the depot again. The placeholders in the array are just that, placeholders showing the type of identifier I expect; this block is an example of the format, not the actual route.
+
+Please be sure to use the identifiers exactly as they appear in the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,one_based,"[[75, 43], [26, 82], [20, 31], [42, 28], [32, 31], [27, 65], [69, 14], [31, 48], [73, 29], [69, 8], [0, 61], [38, 0], [100, 9], [28, 48], [40, 100], [66, 50], [45, 28], [88, 65], [53, 31], [17, 100], [94, 43], [14, 21]]","[0, 8, 18, 16, 3, 4, 13, 7, 5, 1, 14, 19, 10, 2, 21, 11, 9, 6, 12, 20, 17, 15, 0]",443.9134635925293,"{""problem_type"": ""TSP"", ""num_nodes"": 22, ""nodes"": [{""id"": 1, ""x"": 75, ""y"": 43}, {""id"": 2, ""x"": 26, ""y"": 82}, {""id"": 3, ""x"": 20, ""y"": 31}, {""id"": 4, ""x"": 42, ""y"": 28}, {""id"": 5, ""x"": 32, ""y"": 31}, {""id"": 6, ""x"": 27, ""y"": 65}, {""id"": 7, ""x"": 69, ""y"": 14}, {""id"": 8, ""x"": 31, ""y"": 48}, {""id"": 9, ""x"": 73, ""y"": 29}, {""id"": 10, ""x"": 69, ""y"": 8}, {""id"": 11, ""x"": 0, ""y"": 61}, {""id"": 12, ""x"": 38, ""y"": 0}, {""id"": 13, ""x"": 100, ""y"": 9}, {""id"": 14, ""x"": 28, ""y"": 48}, {""id"": 15, ""x"": 40, ""y"": 100}, {""id"": 16, ""x"": 66, ""y"": 50}, {""id"": 17, ""x"": 45, ""y"": 28}, {""id"": 18, ""x"": 88, ""y"": 65}, {""id"": 19, ""x"": 53, ""y"": 31}, {""id"": 20, ""x"": 17, ""y"": 100}, {""id"": 21, ""x"": 94, ""y"": 43}, {""id"": 22, ""x"": 14, ""y"": 21}], ""depot"": 1}","[1, 9, 19, 17, 4, 5, 14, 8, 6, 2, 15, 20, 11, 3, 22, 12, 10, 7, 13, 21, 18, 16, 1]"
+TSP_L_050,TSP,L,50,"There’s a little plan to stroll from the flat, swing by several public squares, and return home without doubling back on any square. The choice to make is which square to go to next each time. What makes one plan better than another is simply the total distance walked — add up each segment of the walk (home to first square, each square-to-square walk, and last square back to home) and pick the plan with the smallest sum. Every listed square needs to be visited once and only once, and the walk must start and finish at the apartment. The concrete details are shown below.
+
+Below are the 24 locations; the apartment is 1.
+
+| location_id | x_coordinate | y_coordinate |
+|---|---|---|
+| 1 | 0 | 72 |
+| 2 | 100 | 100 |
+| 3 | 9 | 60 |
+| 4 | 100 | 22 |
+| 5 | 99 | 91 |
+| 6 | 100 | 79 |
+| 7 | 100 | 94 |
+| 8 | 99 | 80 |
+| 9 | 30 | 47 |
+| 10 | 1 | 90 |
+| 11 | 33 | 53 |
+| 12 | 0 | 91 |
+| 13 | 1 | 98 |
+| 14 | 0 | 20 |
+| 15 | 1 | 97 |
+| 16 | 99 | 69 |
+| 17 | 100 | 71 |
+| 18 | 100 | 0 |
+| 19 | 0 | 73 |
+| 20 | 69 | 58 |
+| 21 | 99 | 17 |
+| 22 | 0 | 94 |
+| 23 | 0 | 13 |
+| 24 | 0 | 20 |
+
+Begin and end the stroll at 1.
+
+Oh, and when you send the route back, just use this simple JSON layout so it's easy to read and use:
+
+{
+  ""solution"": [home_id, square_id, ..., home_id]
+}
+
+Here ""solution"" is just the ordered list of places in the walk: start at the apartment (home_id), hit each public square (square_id) once in the order shown, and finish back at the apartment (home_id). It's just a sketch of the shape I expect — not the actual route.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",markdown_table,one_based,"[[0, 72], [100, 100], [9, 60], [100, 22], [99, 91], [100, 79], [100, 94], [99, 80], [30, 47], [1, 90], [33, 53], [0, 91], [1, 98], [0, 20], [1, 97], [99, 69], [100, 71], [100, 0], [0, 73], [69, 58], [99, 17], [0, 94], [0, 13], [0, 20]]","[0, 2, 23, 13, 22, 8, 10, 19, 17, 20, 3, 15, 16, 5, 7, 4, 6, 1, 12, 14, 21, 11, 9, 18, 0]",443.739315032959,"{""problem_type"": ""TSP"", ""num_nodes"": 24, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 72}, {""id"": 2, ""x"": 100, ""y"": 100}, {""id"": 3, ""x"": 9, ""y"": 60}, {""id"": 4, ""x"": 100, ""y"": 22}, {""id"": 5, ""x"": 99, ""y"": 91}, {""id"": 6, ""x"": 100, ""y"": 79}, {""id"": 7, ""x"": 100, ""y"": 94}, {""id"": 8, ""x"": 99, ""y"": 80}, {""id"": 9, ""x"": 30, ""y"": 47}, {""id"": 10, ""x"": 1, ""y"": 90}, {""id"": 11, ""x"": 33, ""y"": 53}, {""id"": 12, ""x"": 0, ""y"": 91}, {""id"": 13, ""x"": 1, ""y"": 98}, {""id"": 14, ""x"": 0, ""y"": 20}, {""id"": 15, ""x"": 1, ""y"": 97}, {""id"": 16, ""x"": 99, ""y"": 69}, {""id"": 17, ""x"": 100, ""y"": 71}, {""id"": 18, ""x"": 100, ""y"": 0}, {""id"": 19, ""x"": 0, ""y"": 73}, {""id"": 20, ""x"": 69, ""y"": 58}, {""id"": 21, ""x"": 99, ""y"": 17}, {""id"": 22, ""x"": 0, ""y"": 94}, {""id"": 23, ""x"": 0, ""y"": 13}, {""id"": 24, ""x"": 0, ""y"": 20}], ""depot"": 1}","[1, 3, 24, 14, 23, 9, 11, 20, 18, 21, 4, 16, 17, 6, 8, 5, 7, 2, 13, 15, 22, 12, 10, 19, 1]"

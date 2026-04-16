@@ -1,0 +1,1860 @@
+id,task_id,difficulty_tier,example_index,prompt,surface_format,indexing_scheme,instance_canonical_json,reference_solution_canonical_json,reference_objective_value,instance_surface_json,reference_solution_surface_json
+CMP_M_001,CMP,M,1,"Someone organizing a meet-and-greet asked to arrange all guests in one straight row — everyone must be placed once, no one left out or duplicated — and to be mindful of friendship links that span the line. At each gap between two positions, count the number of friendships that connect anyone on the left side to anyone on the right side; then find the gap with the biggest count. The host prefers the lineup whose single worst gap has the fewest crossing friendships. The exact guest list and links are shown below.
+
+# guest_count=18
+# friendship_count=1
+# guest_ids=A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R
+guest_a,guest_b
+G,M
+
+Oh — and when you send the lineup back, please use this simple JSON layout so it's easy to read by whoever's collecting the responses:
+
+{
+  ""solution"": [<first_node>, <second_node>, ..., <last_node>]
+}
+
+""solution"" is just the ordered list of guests from left to right in the row — put each guest identifier in the array in the exact order you want them seated. Think of this as a little form: the JSON shows the shape I need, not the computed best order itself.
+
+Please also remember: all identifiers must be used exactly as they appear in the instance input — no renaming and no new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”"".",csv,names,"{""name"": ""gre__343.mtx.rnd_sub_18"", ""num_nodes"": 18, ""num_edges"": 1, ""edges"": [[6, 12]], ""solution"": [1, 14, 3, 16, 0, 15, 10, 9, 13, 4, 5, 6, 2, 7, 8, 12, 17, 11], ""objective"": 1.0}","[1, 14, 3, 16, 0, 15, 10, 9, 13, 4, 5, 6, 2, 7, 8, 12, 17, 11]",1.0,"{""problem_type"": ""CMP"", ""num_nodes"": 18, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M"", ""N"", ""O"", ""P"", ""Q"", ""R""], ""num_edges"": 1, ""edges"": [{""u"": ""G"", ""v"": ""M""}]}","[""B"", ""O"", ""D"", ""Q"", ""A"", ""P"", ""K"", ""J"", ""N"", ""E"", ""F"", ""G"", ""C"", ""H"", ""I"", ""M"", ""R"", ""L""]"
+CMP_M_002,CMP,M,2,"We ran into a real-world puzzle: order the servers on a rack so the worst choke point — where the most cables cross from one side of the rack to the other — is as mellow as possible. That means placing every server exactly once into a single line, then checking every gap between neighbors, counting the cables that run from someone on the left to someone on the right. The score of an ordering is the largest of those gap counts, and the better order is the one with the smallest such score. The exact server list and cable map are shown below.
+
+They are: servers 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 (13 total) with 8 cables.
+A cable runs between 2 and 1.
+A cable runs between 2 and 13.
+A cable runs between 2 and 6.
+A cable runs between 2 and 5.
+A cable runs between 2 and 7.
+A cable runs between 2 and 10.
+A cable runs between 2 and 8.
+A cable runs between 2 and 9.
+We'll place each server once to minimize the largest gap-crossing among these 8 cables.
+
+Just drop your answer into this little JSON shape when you're ready — keeps things tidy and machine-friendly while we chat like humans.
+
+{
+  ""solution"": [<first_server>, <second_server>, ..., <last_server>]
+}
+
+Here ""solution"" is the lineup from left to right on the rack: list each server identifier exactly once in the order you want them placed. This JSON is just a sketch of the shape I expect, not the actual ordering — you'll replace those placeholders with the real IDs from the instance.
+
+Please make sure you use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”"".",nl,one_based,"{""name"": ""shl____0.mtx.rnd_sub_13"", ""num_nodes"": 13, ""num_edges"": 8, ""edges"": [[1, 0], [1, 12], [1, 5], [1, 4], [1, 6], [1, 9], [1, 7], [1, 8]], ""solution"": [2, 10, 3, 12, 8, 9, 7, 1, 4, 5, 6, 0, 11], ""objective"": 4.0}","[2, 10, 3, 12, 8, 9, 7, 1, 4, 5, 6, 0, 11]",4.0,"{""problem_type"": ""CMP"", ""num_nodes"": 13, ""nodes"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], ""num_edges"": 8, ""edges"": [{""u"": 2, ""v"": 1}, {""u"": 2, ""v"": 13}, {""u"": 2, ""v"": 6}, {""u"": 2, ""v"": 5}, {""u"": 2, ""v"": 7}, {""u"": 2, ""v"": 10}, {""u"": 2, ""v"": 8}, {""u"": 2, ""v"": 9}]}","[3, 11, 4, 13, 9, 10, 8, 2, 5, 6, 7, 1, 12]"
+CMP_M_003,CMP,M,3,"Someone at the library is trying to arrange all the volumes in a single line so that, wherever you split that line, you rarely see many references reaching from the books on the left to those on the right. The only choice to make is the order — every book must appear once in the row. You evaluate any order by checking every gap, counting cross-references at that gap, and then looking at the worst (largest) count across all gaps; the lower that worst count, the better the lineup. The specific book and reference details are shown below.
+
+# total_books=14
+# total_references=12
+# book_ids=0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+book_id_a,book_id_b
+0,8
+1,3
+3,13
+4,11
+5,13
+9,10
+11,2
+4,3
+0,2
+8,7
+12,9
+2,4
+
+Oh, and when you're ready to hand me the lineup, please use this simple JSON shape so it's easy to parse and check — nothing fancy, just that one object with the order inside.
+
+{
+  ""solution"": [<first_book>, <second_book>, ..., <last_book>]
+}
+
+This block is just a friendly template: the ""solution"" array is where you list the books from leftmost to rightmost. The angle-bracket items are placeholders showing the shape — when you provide the real ordering, replace those placeholders with the actual book identifiers from the instance.
+
+Quick heads-up: the JSON above is only a sketch of the expected shape, not the final answer itself. And be sure to use the identifiers exactly as they appear in the problem input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,zero_based,"{""name"": ""p52_20_27_sub_14"", ""num_nodes"": 14, ""num_edges"": 12, ""edges"": [[0, 8], [1, 3], [3, 13], [4, 11], [5, 13], [9, 10], [11, 2], [4, 3], [0, 2], [8, 7], [12, 9], [2, 4]], ""solution"": [6, 12, 1, 9, 10, 3, 13, 5, 4, 11, 2, 0, 8, 7], ""objective"": 2.0}","[6, 12, 1, 9, 10, 3, 13, 5, 4, 11, 2, 0, 8, 7]",2.0,"{""problem_type"": ""CMP"", ""num_nodes"": 14, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], ""num_edges"": 12, ""edges"": [{""u"": 0, ""v"": 8}, {""u"": 1, ""v"": 3}, {""u"": 3, ""v"": 13}, {""u"": 4, ""v"": 11}, {""u"": 5, ""v"": 13}, {""u"": 9, ""v"": 10}, {""u"": 11, ""v"": 2}, {""u"": 4, ""v"": 3}, {""u"": 0, ""v"": 2}, {""u"": 8, ""v"": 7}, {""u"": 12, ""v"": 9}, {""u"": 2, ""v"": 4}]}","[6, 12, 1, 9, 10, 3, 13, 5, 4, 11, 2, 0, 8, 7]"
+CMP_M_004,CMP,M,4,"I was helping a festival put together a single parade line of acts, and the trick was to order everyone so that, at any spot between two performers, not too many of their past collaborations had to “stretch” across that gap. The decision is just who goes where in the one line — everyone must appear exactly once and nobody gets repeated or skipped — and a good order is one where, if someone checks every gap and counts how many collaboration links cross it, the biggest of those counts is as small as possible. The specific list of performers and which pairs have worked together will be shown below.
+
+Below are the 13 performers (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) and the 1 past collaborations between them.
+I recorded that 10 and 9 had collaborated.
+Those were the ties I had to juggle when arranging the parade order.
+
+Also, if you want to give me the ordering, a tiny JSON sketch works best — nothing fancy, just the list from the first performer to the last in a single array. For the story, I’ll use “act” in the placeholders so it reads naturally.
+
+{
+  ""solution"": [<first_act>, <second_act>, ..., <last_act>]
+}
+
+This simply means: put the parade order in the array under ""solution"", with the performer at the front first and the performer at the end last. The angle-bracketed names above are just placeholders showing the shape — when you reply, replace them with the actual performer IDs from the instance (don’t invent new keys or change the outer structure). The JSON is only a sketch of the expected shape, not the actual answer.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+- For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""name"": ""shl__200.mtx.rnd_sub_13"", ""num_nodes"": 13, ""num_edges"": 1, ""edges"": [[10, 9]], ""solution"": [4, 8, 5, 1, 9, 12, 2, 6, 0, 10, 3, 11, 7], ""objective"": 1.0}","[4, 8, 5, 1, 9, 12, 2, 6, 0, 10, 3, 11, 7]",1.0,"{""problem_type"": ""CMP"", ""num_nodes"": 13, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], ""num_edges"": 1, ""edges"": [{""u"": 10, ""v"": 9}]}","[4, 8, 5, 1, 9, 12, 2, 6, 0, 10, 3, 11, 7]"
+CMP_M_005,CMP,M,5,"On a quiet morning the team was told to arrange a lineup of artifacts down a corridor so that visitors don’t hit a point where an overwhelming number of connections leap across the aisle. The exhibits must all be placed in one single sequence, no repeats and none left out, and you check every space between items by tallying links that go from the left group to the right group. Which ordering is nicer? The one whose worst split — the highest tally among all the spaces — is as small as possible. The specific exhibits and their connections are listed below.
+
+You’ll see 13 exhibits, 15 thematic links, and the exhibit identifiers: A, B, C, D, E, F, G, H, I, J, K, L, M.
+You record a thematic link between E and H.
+You record a thematic link between F and M.
+You record a thematic link between I and J.
+You record a thematic link between J and M.
+You record a thematic link between K and M.
+You record a thematic link between L and B.
+You record a thematic link between L and D.
+You record a thematic link between F and H.
+You record a thematic link between A and D.
+You record a thematic link between M and I.
+You record a thematic link between B and G.
+You record a thematic link between J and A.
+You record a thematic link between J and F.
+You record a thematic link between K and G.
+You record a thematic link between K and A.
+Use these entries to assess sequence orderings and keep the worst split as small as possible.
+
+Oh, and one more practical thing — when you send back the ordering, please stick to this simple JSON layout so it's easy to check:
+
+{
+  ""solution"": [<first_node>, <second_node>, ..., <last_node>]
+}
+
+Here ""solution"" is just the left-to-right lineup of exhibits along the corridor; put each exhibit's identifier in order inside that array, from the first placed to the last. Think of it like filling out a form: the array lists the sequence, and that's all the judge needs to see.
+
+This JSON is just a sketch of the shape I expect — replace the placeholder items with the actual exhibit identifiers from the instance input when you give the final ordering. Please use those identifiers exactly as they appear in the instance input — do not rename or invent labels. 
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"{""name"": ""p63_21_42_sub_13"", ""num_nodes"": 13, ""num_edges"": 15, ""edges"": [[4, 7], [5, 12], [8, 9], [9, 12], [10, 12], [11, 1], [11, 3], [5, 7], [0, 3], [12, 8], [1, 6], [9, 0], [9, 5], [10, 6], [10, 0]], ""solution"": [3, 0, 10, 2, 6, 1, 11, 12, 9, 8, 5, 7, 4], ""objective"": 4.0}","[3, 0, 10, 2, 6, 1, 11, 12, 9, 8, 5, 7, 4]",4.0,"{""problem_type"": ""CMP"", ""num_nodes"": 13, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M""], ""num_edges"": 15, ""edges"": [{""u"": ""E"", ""v"": ""H""}, {""u"": ""F"", ""v"": ""M""}, {""u"": ""I"", ""v"": ""J""}, {""u"": ""J"", ""v"": ""M""}, {""u"": ""K"", ""v"": ""M""}, {""u"": ""L"", ""v"": ""B""}, {""u"": ""L"", ""v"": ""D""}, {""u"": ""F"", ""v"": ""H""}, {""u"": ""A"", ""v"": ""D""}, {""u"": ""M"", ""v"": ""I""}, {""u"": ""B"", ""v"": ""G""}, {""u"": ""J"", ""v"": ""A""}, {""u"": ""J"", ""v"": ""F""}, {""u"": ""K"", ""v"": ""G""}, {""u"": ""K"", ""v"": ""A""}]}","[""D"", ""A"", ""K"", ""C"", ""G"", ""B"", ""L"", ""M"", ""J"", ""I"", ""F"", ""H"", ""E""]"
+CMP_M_006,CMP,M,6,"Recently a foreman tried to arrange all pallets in a straight line so the single worst crossing point wouldn’t be overloaded with ties between left and right. All that had to be decided was the order of the pallets — each pallet must be in the line once, no omissions or repeats. To figure out how well an order does, check every spot between pallets, count how many dependency-lines cross that spot from left to right, then take the highest count you find; the smaller that highest number, the better the ordering. The concrete instance is shown below.
+
+Here 17 pallets must be placed in a single file, with 18 dependency lines among the labels 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16.
+A dependency line connects pallet 0 and pallet 14.
+A dependency line connects pallet 1 and pallet 12.
+A dependency line connects pallet 2 and pallet 9.
+A dependency line connects pallet 3 and pallet 14.
+A dependency line connects pallet 4 and pallet 11.
+A dependency line connects pallet 5 and pallet 7.
+A dependency line connects pallet 6 and pallet 7.
+A dependency line connects pallet 7 and pallet 8.
+A dependency line connects pallet 8 and pallet 15.
+A dependency line connects pallet 9 and pallet 14.
+A dependency line connects pallet 10 and pallet 11.
+A dependency line connects pallet 11 and pallet 16.
+A dependency line connects pallet 12 and pallet 14.
+A dependency line connects pallet 13 and pallet 14.
+A dependency line connects pallet 14 and pallet 15.
+A dependency line connects pallet 15 and pallet 16.
+A dependency line connects pallet 3 and pallet 1.
+A dependency line connects pallet 0 and pallet 4.
+These 18 dependency lines among the 17 pallets are the ties the foreman had to consider.
+
+If you'd like to hand in a proposed ordering, just toss it into a tiny JSON object like this — keeps things simple and machine-friendly.
+
+{
+  ""solution"": [<first_pallet>, <second_pallet>, <third_pallet>, <fourth_pallet>, <fifth_pallet>, <sixth_pallet>, <seventh_pallet>, <eighth_pallet>, <ninth_pallet>, <tenth_pallet>]
+}
+
+Here ""solution"" is the list of pallets in the order you want them arranged, from leftmost to rightmost. Each placeholder like <first_pallet> stands in for an actual pallet identifier from the instance — replace those placeholders with the real IDs when you submit. This JSON is just a sketch of the expected shape, not the actual answer.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.  
+Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",nl,zero_based,"{""name"": ""p28_17_18"", ""num_nodes"": 17, ""num_edges"": 18, ""edges"": [[0, 14], [1, 12], [2, 9], [3, 14], [4, 11], [5, 7], [6, 7], [7, 8], [8, 15], [9, 14], [10, 11], [11, 16], [12, 14], [13, 14], [14, 15], [15, 16], [3, 1], [0, 4]], ""solution"": [1, 12, 13, 3, 14, 0, 9, 2, 15, 16, 8, 4, 11, 7, 6, 5, 10], ""objective"": 3.0}","[1, 12, 13, 3, 14, 0, 9, 2, 15, 16, 8, 4, 11, 7, 6, 5, 10]",3.0,"{""problem_type"": ""CMP"", ""num_nodes"": 17, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], ""num_edges"": 18, ""edges"": [{""u"": 0, ""v"": 14}, {""u"": 1, ""v"": 12}, {""u"": 2, ""v"": 9}, {""u"": 3, ""v"": 14}, {""u"": 4, ""v"": 11}, {""u"": 5, ""v"": 7}, {""u"": 6, ""v"": 7}, {""u"": 7, ""v"": 8}, {""u"": 8, ""v"": 15}, {""u"": 9, ""v"": 14}, {""u"": 10, ""v"": 11}, {""u"": 11, ""v"": 16}, {""u"": 12, ""v"": 14}, {""u"": 13, ""v"": 14}, {""u"": 14, ""v"": 15}, {""u"": 15, ""v"": 16}, {""u"": 3, ""v"": 1}, {""u"": 0, ""v"": 4}]}","[1, 12, 13, 3, 14, 0, 9, 2, 15, 16, 8, 4, 11, 7, 6, 5, 10]"
+CMP_M_007,CMP,M,7,"There's a teacher who wants a neat photo lineup: all the kids in one straight line, each child exactly once. The idea is to think about every possible cut between kids—count how many friendships stretch from the front side to the back side at that cut—and then note the single biggest count you see among all those cuts. The aim is to arrange the kids so that this biggest crossing number is as low as it can be. The actual roster and friendship connections appear below.
+
+Below are the 14 students, the 5 friendships, and the student identifiers: A, B, C, D, E, F, G, H, I, J, K, L, M, N.
+The teacher notes that F and I are friends.
+The teacher notes that G and N are friends.
+The teacher notes that H and J are friends.
+The teacher notes that I and L are friends.
+The teacher notes that M and N are friends.
+The teacher will use this roster to find an ordering that minimizes the maximum number of friendships crossing any cut.
+
+Oh, and when you're ready to hand me a proposed lineup, please use this simple JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [<first_node>, <second_node>, ..., <last_node>]
+}
+
+""solution"" is just the ordered list of kids from left/front of the photo to right/back. Treat each placeholder there as where you'd put the exact identifier for a kid from the instance — that list is a sketch of the shape I expect, not the actual answer.
+
+Please make sure you use the identifiers exactly as they appear in the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,names,"{""name"": ""p84_23_26_sub_14"", ""num_nodes"": 14, ""num_edges"": 5, ""edges"": [[5, 8], [6, 13], [7, 9], [8, 11], [12, 13]], ""solution"": [1, 0, 12, 2, 3, 13, 4, 6, 7, 9, 11, 8, 5, 10], ""objective"": 1.0}","[1, 0, 12, 2, 3, 13, 4, 6, 7, 9, 11, 8, 5, 10]",1.0,"{""problem_type"": ""CMP"", ""num_nodes"": 14, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M"", ""N""], ""num_edges"": 5, ""edges"": [{""u"": ""F"", ""v"": ""I""}, {""u"": ""G"", ""v"": ""N""}, {""u"": ""H"", ""v"": ""J""}, {""u"": ""I"", ""v"": ""L""}, {""u"": ""M"", ""v"": ""N""}]}","[""B"", ""A"", ""M"", ""C"", ""D"", ""N"", ""E"", ""G"", ""H"", ""J"", ""L"", ""I"", ""F"", ""K""]"
+CMP_M_008,CMP,M,8,"At rehearsal the leader sketched out the songs on the whiteboard and said, we need one playlist where nothing’s left out or repeated, and no slice of the show is overwhelmed by links reaching across to the rest. The choice is the exact sequence of all songs, and the way to compare sequences is to walk every gap, count how many song-pairs jump from before the gap to after it, then take the maximum count among those gaps; the aim is to keep that maximum down. The concrete setup is shown below.
+
+Below we list the 14 transitions among the 13 songs; the song identifiers are 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12.
+We marked a link between song 0 and song 12.
+We marked a link between song 1 and song 11.
+We marked a link between song 2 and song 3.
+We marked a link between song 3 and song 8.
+We marked a link between song 4 and song 6.
+We marked a link between song 5 and song 11.
+We marked a link between song 6 and song 10.
+We marked a link between song 7 and song 12.
+We marked a link between song 8 and song 12.
+We marked a link between song 9 and song 10.
+We marked a link between song 11 and song 12.
+We marked a link between song 1 and song 12.
+We marked a link between song 9 and song 3.
+We marked a link between song 4 and song 12.
+That's the complete link list; we'll arrange the 13 songs into a single playlist that keeps the maximum gap cut as low as we can.
+
+And when you’re ready to hand over the ordering, just pop it into this little JSON wrapper so it’s clear and tidy:
+
+{
+  ""solution"": [<first_node>, <second_node>, ..., <last_node>]
+}
+
+Think of ""solution"" as the playlist: the array lists the songs (nodes) from the very first to the very last. Replace each placeholder with the actual node identifier from the instance — this is just the shape I expect, not the final answer itself.
+
+Please use the identifiers exactly as they appear in the input — don’t rename them or invent new labels. For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,zero_based,"{""name"": ""p20_16_18_sub_13"", ""num_nodes"": 13, ""num_edges"": 14, ""edges"": [[0, 12], [1, 11], [2, 3], [3, 8], [4, 6], [5, 11], [6, 10], [7, 12], [8, 12], [9, 10], [11, 12], [1, 12], [9, 3], [4, 12]], ""solution"": [2, 3, 9, 10, 8, 6, 4, 7, 12, 1, 11, 0, 5], ""objective"": 3.0}","[2, 3, 9, 10, 8, 6, 4, 7, 12, 1, 11, 0, 5]",3.0,"{""problem_type"": ""CMP"", ""num_nodes"": 13, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], ""num_edges"": 14, ""edges"": [{""u"": 0, ""v"": 12}, {""u"": 1, ""v"": 11}, {""u"": 2, ""v"": 3}, {""u"": 3, ""v"": 8}, {""u"": 4, ""v"": 6}, {""u"": 5, ""v"": 11}, {""u"": 6, ""v"": 10}, {""u"": 7, ""v"": 12}, {""u"": 8, ""v"": 12}, {""u"": 9, ""v"": 10}, {""u"": 11, ""v"": 12}, {""u"": 1, ""v"": 12}, {""u"": 9, ""v"": 3}, {""u"": 4, ""v"": 12}]}","[2, 3, 9, 10, 8, 6, 4, 7, 12, 1, 11, 0, 5]"
+CMP_M_009,CMP,M,9,"We’re picturing a boutique where the manager asks for all the clothes to be hung one after another on a single rail, and the challenge is arranging them so the most awkward split — the spot where the largest number of style connections cross from one side to the other — is kept as small as possible. Every garment needs to appear once on that rail, no repeats, no omissions; for every place you could split the row you tally how many connections go across, then take the highest tally, and the aim is to keep that highest tally low. The concrete setup is listed below.
+
+# num_garments=18
+# num_style_links=19
+# garment_ids=A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R
+garment_endpoint_a,garment_endpoint_b
+A,R
+B,J
+C,E
+E,G
+F,H
+G,J
+H,R
+I,P
+K,O
+L,N
+M,O
+N,P
+O,R
+P,Q
+Q,R
+O,Q
+B,Q
+E,R
+B,F
+
+Also, when you hand the ordering back, just drop it into this little JSON layout so it's easy to read and use:
+
+{
+  ""solution"": [<first_node>, <second_node>, ..., <last_node>]
+}
+
+Think of ""solution"" as the rail: the array is the garments from the very first hook to the very last. Each placeholder like <first_node> is where you'll put the actual item identifier from the instance — the exact one you see in the input. This JSON is just a sketch of the shape I want, not the final answer itself.
+
+Please make sure all identifiers are used exactly as they appear in the instance input — no renaming and no new labels.  
+Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",csv,names,"{""name"": ""p75_22_25_sub_18"", ""num_nodes"": 18, ""num_edges"": 19, ""edges"": [[0, 17], [1, 9], [2, 4], [4, 6], [5, 7], [6, 9], [7, 17], [8, 15], [10, 14], [11, 13], [12, 14], [13, 15], [14, 17], [15, 16], [16, 17], [14, 16], [1, 16], [4, 17], [1, 5]], ""solution"": [11, 13, 9, 6, 8, 15, 2, 4, 3, 1, 16, 5, 7, 17, 14, 10, 0, 12], ""objective"": 4.0}","[11, 13, 9, 6, 8, 15, 2, 4, 3, 1, 16, 5, 7, 17, 14, 10, 0, 12]",4.0,"{""problem_type"": ""CMP"", ""num_nodes"": 18, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M"", ""N"", ""O"", ""P"", ""Q"", ""R""], ""num_edges"": 19, ""edges"": [{""u"": ""A"", ""v"": ""R""}, {""u"": ""B"", ""v"": ""J""}, {""u"": ""C"", ""v"": ""E""}, {""u"": ""E"", ""v"": ""G""}, {""u"": ""F"", ""v"": ""H""}, {""u"": ""G"", ""v"": ""J""}, {""u"": ""H"", ""v"": ""R""}, {""u"": ""I"", ""v"": ""P""}, {""u"": ""K"", ""v"": ""O""}, {""u"": ""L"", ""v"": ""N""}, {""u"": ""M"", ""v"": ""O""}, {""u"": ""N"", ""v"": ""P""}, {""u"": ""O"", ""v"": ""R""}, {""u"": ""P"", ""v"": ""Q""}, {""u"": ""Q"", ""v"": ""R""}, {""u"": ""O"", ""v"": ""Q""}, {""u"": ""B"", ""v"": ""Q""}, {""u"": ""E"", ""v"": ""R""}, {""u"": ""B"", ""v"": ""F""}]}","[""L"", ""N"", ""J"", ""G"", ""I"", ""P"", ""C"", ""E"", ""D"", ""B"", ""Q"", ""F"", ""H"", ""R"", ""O"", ""K"", ""A"", ""M""]"
+CMP_M_010,CMP,M,10,"Many people on the crew prefer a cut that doesn’t throw too many threads across a single edit, so the editor asked for one straight sequence using every scene once. At every possible splice the number of threads that jump from earlier to later scenes was checked, and the whole sequence is judged by whichever splice has the most jumps. The aim then becomes arranging the scenes so the busiest splice carries as few crossing threads as possible. The concrete scene list and links are shown below.
+
+{
+  ""total_scenes"": 16,
+  ""total_threads"": 3,
+  ""scene_list"": [
+    ""A"",
+    ""B"",
+    ""C"",
+    ""D"",
+    ""E"",
+    ""F"",
+    ""G"",
+    ""H"",
+    ""I"",
+    ""J"",
+    ""K"",
+    ""L"",
+    ""M"",
+    ""N"",
+    ""O"",
+    ""P""
+  ],
+  ""edges"": [
+    {
+      ""scene_a"": ""J"",
+      ""scene_b"": ""E""
+    },
+    {
+      ""scene_a"": ""B"",
+      ""scene_b"": ""P""
+    },
+    {
+      ""scene_a"": ""O"",
+      ""scene_b"": ""P""
+    }
+  ]
+}
+
+If you want to hand me the final ordering, just drop it into the little JSON shape below — nothing fancy, just the sequence in the order you want the scenes to appear.
+
+{
+  ""solution"": [<first_node>, <second_node>, ..., <last_node>]
+}
+
+This simply means: put every scene ID in that array in the exact order you want them played. The first entry is the opening scene, the next is what comes after, and so on down to the last entry. It’s just a sketch of the shape I expect — the real answer would be a filled-in list of the scene IDs.
+
+Please be sure to use the identifiers exactly as they appear in the instance input — don’t rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""name"": ""plskz362.mtx.rnd_sub_16"", ""num_nodes"": 16, ""num_edges"": 3, ""edges"": [[9, 4], [1, 15], [14, 15]], ""solution"": [10, 7, 11, 2, 8, 6, 0, 5, 12, 9, 4, 3, 14, 15, 1, 13], ""objective"": 1.0}","[10, 7, 11, 2, 8, 6, 0, 5, 12, 9, 4, 3, 14, 15, 1, 13]",1.0,"{""problem_type"": ""CMP"", ""num_nodes"": 16, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M"", ""N"", ""O"", ""P""], ""num_edges"": 3, ""edges"": [{""u"": ""J"", ""v"": ""E""}, {""u"": ""B"", ""v"": ""P""}, {""u"": ""O"", ""v"": ""P""}]}","[""K"", ""H"", ""L"", ""C"", ""I"", ""G"", ""A"", ""F"", ""M"", ""J"", ""E"", ""D"", ""O"", ""P"", ""B"", ""N""]"
+CMP_M_011,CMP,M,11,"Many people don’t think about ordering furniture, but when everything must be placed in one long row inside a truck, the order matters if items are connected. Walk along the row and count, at each split, how many connections go from left to right; whichever split has the most connections is the one that matters most, and the task is to pick an order that makes that maximum crossing number as low as possible. No piece can be skipped or repeated. The actual instance details follow below.
+
+# num_items=13
+# num_dependencies=13
+# item_ids=0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+item_a,item_b
+1,10
+2,4
+3,10
+5,11
+6,12
+7,8
+8,11
+9,11
+10,11
+11,12
+0,1
+8,1
+2,7
+
+Oh, and when you send the final ordering back, please use this simple JSON layout so it's easy to parse:
+
+{
+  ""solution"": [<first_item>, <second_item>, ..., <last_item>]
+}
+
+Think of that array as the truck row from front to back — list the items in the order they should appear, first to last. This JSON is just a little sketch of the shape I expect, not the actual answer itself.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""name"": ""p33_18_21_sub_13"", ""num_nodes"": 13, ""num_edges"": 13, ""edges"": [[1, 10], [2, 4], [3, 10], [5, 11], [6, 12], [7, 8], [8, 11], [9, 11], [10, 11], [11, 12], [0, 1], [8, 1], [2, 7]], ""solution"": [4, 0, 2, 7, 8, 1, 10, 3, 11, 5, 9, 12, 6], ""objective"": 3.0}","[4, 0, 2, 7, 8, 1, 10, 3, 11, 5, 9, 12, 6]",3.0,"{""problem_type"": ""CMP"", ""num_nodes"": 13, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], ""num_edges"": 13, ""edges"": [{""u"": 1, ""v"": 10}, {""u"": 2, ""v"": 4}, {""u"": 3, ""v"": 10}, {""u"": 5, ""v"": 11}, {""u"": 6, ""v"": 12}, {""u"": 7, ""v"": 8}, {""u"": 8, ""v"": 11}, {""u"": 9, ""v"": 11}, {""u"": 10, ""v"": 11}, {""u"": 11, ""v"": 12}, {""u"": 0, ""v"": 1}, {""u"": 8, ""v"": 1}, {""u"": 2, ""v"": 7}]}","[4, 0, 2, 7, 8, 1, 10, 3, 11, 5, 9, 12, 6]"
+CMP_M_012,CMP,M,12,"We had a roadmap to build and the lead wanted a single ordered checklist of all the work items, no duplicates and nothing missing. Picture cutting that list at any point: some dependencies will jump from the earlier items to the later ones — for every cut you count how many jumps there are, and then look at the largest of those counts across all cuts; the idea is to order the items so that this largest number is kept as low as possible. Every task has to be placed once and only once. Concrete details are shown below.
+
+# num_tasks=17
+# num_dependencies=3
+# task_ids=0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
+task_u,task_v
+16,8
+8,13
+3,14
+
+Also, just so we're on the same page about the reply format, please return the ordering in this casual JSON layout — nothing fancy, just a single list showing the checklist in the exact order you'd put the items.
+
+{
+  ""solution"": [<first_task>, <second_task>, <third_task>, <fourth_task>, <last_task>]
+}
+
+Think of that array as the ordered checklist from start to finish: the leftmost placeholder is the first item to do, the next is the second, and so on until the last one. This JSON is just a sketch of the shape I expect, not the actual filled-in answer.
+
+One important note: use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,zero_based,"{""name"": ""plskz362.mtx.rnd_sub_17"", ""num_nodes"": 17, ""num_edges"": 3, ""edges"": [[16, 8], [8, 13], [3, 14]], ""solution"": [2, 0, 9, 15, 10, 1, 7, 5, 11, 6, 14, 4, 3, 12, 16, 8, 13], ""objective"": 1.0}","[2, 0, 9, 15, 10, 1, 7, 5, 11, 6, 14, 4, 3, 12, 16, 8, 13]",1.0,"{""problem_type"": ""CMP"", ""num_nodes"": 17, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], ""num_edges"": 3, ""edges"": [{""u"": 16, ""v"": 8}, {""u"": 8, ""v"": 13}, {""u"": 3, ""v"": 14}]}","[2, 0, 9, 15, 10, 1, 7, 5, 11, 6, 14, 4, 3, 12, 16, 8, 13]"
+CMP_M_013,CMP,M,13,"Imagine organizing a one-room-style lineup of talks and caring more about the biggest shuffle than average comfort: place every talk in a single order, then for each possible break count the audience members who’d have to cross from one side to the other because they’re tied to talks on both sides; find the break with the highest count — that’s the worst-case shuffle — and pick the ordering that makes that worst-case as small as possible. All talks must be included once, no skips or repeats. The exact talks and who’s interested in what appear below.
+
+There are 17 talks (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16) and 4 audience overlaps listed below:
+Count one audience member who cares about talks 12 and 0.
+Count one audience member who cares about talks 0 and 9.
+Count one audience member who cares about talks 8 and 5.
+Count one audience member who cares about talks 6 and 7.
+Use these 4 pairs to evaluate every cut and pick the ordering that minimizes the worst-case shuffle.
+
+Oh, and when you send the ordering back, please use this simple JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [<first_node>, <second_node>, ..., <last_node>]
+}
+
+Here the ""solution"" array is just the lineup from the very first talk/node to the very last — list the identifiers in the order you want them to appear. Think of it like filling in a form: each slot gets one identifier.
+
+This JSON is only a sketch of the shape I expect, not the actual answer itself. One more thing: all identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”"".",nl,zero_based,"{""name"": ""impcol_a.mtx.rnd_sub_17"", ""num_nodes"": 17, ""num_edges"": 4, ""edges"": [[12, 0], [0, 9], [8, 5], [6, 7]], ""solution"": [10, 4, 3, 16, 14, 15, 8, 5, 6, 2, 1, 13, 7, 11, 9, 0, 12], ""objective"": 1.0}","[10, 4, 3, 16, 14, 15, 8, 5, 6, 2, 1, 13, 7, 11, 9, 0, 12]",1.0,"{""problem_type"": ""CMP"", ""num_nodes"": 17, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], ""num_edges"": 4, ""edges"": [{""u"": 12, ""v"": 0}, {""u"": 0, ""v"": 9}, {""u"": 8, ""v"": 5}, {""u"": 6, ""v"": 7}]}","[10, 4, 3, 16, 14, 15, 8, 5, 6, 2, 1, 13, 7, 11, 9, 0, 12]"
+CMP_M_014,CMP,M,14,"Someone mentioned a gardener laying out a single flower bed and worrying that roots from early-planted items keep reaching across to later ones. The task is just the order of the plants — no plant is left out and none are repeated — and every time you split the row into an earlier group and a later group you count how many root connections cross the gap. You then look at the split with the highest count; the whole point is to arrange things so that this highest crossing count is as low as it can be. The exact instance — which plants and who connects to whom — appears below.
+
+{
+  ""plant_count"": 15,
+  ""root_connection_count"": 10,
+  ""plant_ids"": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  ""edges"": [
+    {
+      ""plant_u"": 0,
+      ""plant_v"": 1
+    },
+    {
+      ""plant_u"": 2,
+      ""plant_v"": 5
+    },
+    {
+      ""plant_u"": 4,
+      ""plant_v"": 14
+    },
+    {
+      ""plant_u"": 5,
+      ""plant_v"": 13
+    },
+    {
+      ""plant_u"": 7,
+      ""plant_v"": 10
+    },
+    {
+      ""plant_u"": 8,
+      ""plant_v"": 13
+    },
+    {
+      ""plant_u"": 13,
+      ""plant_v"": 14
+    },
+    {
+      ""plant_u"": 9,
+      ""plant_v"": 13
+    },
+    {
+      ""plant_u"": 3,
+      ""plant_v"": 5
+    },
+    {
+      ""plant_u"": 8,
+      ""plant_v"": 12
+    }
+  ]
+}
+
+When you send back the final ordering, just drop it into a tiny JSON sketch like this so it's easy to read and parse:
+
+{
+  ""solution"": [<first_node>, <second_node>, ..., <last_node>]
+}
+
+That ""solution"" array is simply the plants in the order you want them planted — left/earlier first, right/later last. The angle-bracket placeholders are where the actual node identifiers go; think of it like filling out a form, not a complicated file format. This JSON is just the shape I'm expecting, not your final answer itself.
+
+Please make sure you use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"{""name"": ""p68_21_27_sub_15"", ""num_nodes"": 15, ""num_edges"": 10, ""edges"": [[0, 1], [2, 5], [4, 14], [5, 13], [7, 10], [8, 13], [13, 14], [9, 13], [3, 5], [8, 12]], ""solution"": [0, 6, 10, 7, 4, 14, 1, 11, 12, 8, 13, 9, 5, 2, 3], ""objective"": 2.0}","[0, 6, 10, 7, 4, 14, 1, 11, 12, 8, 13, 9, 5, 2, 3]",2.0,"{""problem_type"": ""CMP"", ""num_nodes"": 15, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], ""num_edges"": 10, ""edges"": [{""u"": 0, ""v"": 1}, {""u"": 2, ""v"": 5}, {""u"": 4, ""v"": 14}, {""u"": 5, ""v"": 13}, {""u"": 7, ""v"": 10}, {""u"": 8, ""v"": 13}, {""u"": 13, ""v"": 14}, {""u"": 9, ""v"": 13}, {""u"": 3, ""v"": 5}, {""u"": 8, ""v"": 12}]}","[0, 6, 10, 7, 4, 14, 1, 11, 12, 8, 13, 9, 5, 2, 3]"
+CMP_M_015,CMP,M,15,"Someone in the test kitchen asked for a single, ordered procedure so prepping and cooking could move forward without too many ingredients being passed back and forth. To compare different orders, slide an imaginary line between any two consecutive steps and tally how many ingredients are used by steps on both sides of that line; then look at the worst such tally across the whole sequence. The nicer the order, the lower that worst tally will be. The rule was firm: each step appears exactly once, and the concrete recipe details appear below.
+
+There are 14 distinct procedural steps, 24 undirected ingredient links, and the steps are 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14.
+
+| step_a | step_b |
+|---|---|
+| 11 | 8 |
+| 11 | 13 |
+| 11 | 10 |
+| 4 | 10 |
+| 8 | 13 |
+| 8 | 10 |
+| 8 | 5 |
+| 8 | 9 |
+| 8 | 2 |
+| 13 | 10 |
+| 13 | 1 |
+| 10 | 1 |
+| 10 | 2 |
+| 5 | 9 |
+| 5 | 1 |
+| 5 | 14 |
+| 9 | 1 |
+| 1 | 14 |
+| 2 | 14 |
+| 2 | 6 |
+| 14 | 6 |
+| 14 | 12 |
+| 14 | 7 |
+| 6 | 7 |
+
+Treat this list as definitive: each of the 14 steps appears once, and the 24 links mark ingredients that can cross any cut.
+
+If you'd like to hand in an ordering, just drop it in this relaxed JSON layout so everything's clear and easy to read:
+
+{
+  ""solution"": [<first_step>, <second_step>, ..., <last_step>]
+}
+
+This just means ""solution"" is the ordered list of steps — the first entry is what you do first, the next is what you do second, and so on until the last entry. Think of the angle-bracket placeholders as placeholders only: replace them with the actual step identifiers from the instance input (don't spell out the story words like ""first_step"" as a literal).
+
+This JSON is only a sketch of the shape I expect, not the actual ordering answer.
+
+Please make sure to use the exact identifiers from the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,one_based,"{""name"": ""bcsstk04.mtx.rnd_sub_14"", ""num_nodes"": 14, ""num_edges"": 24, ""edges"": [[10, 7], [10, 12], [10, 9], [3, 9], [7, 12], [7, 9], [7, 4], [7, 8], [7, 1], [12, 9], [12, 0], [9, 0], [9, 1], [4, 8], [4, 0], [4, 13], [8, 0], [0, 13], [1, 13], [1, 5], [13, 5], [13, 11], [13, 6], [5, 6]], ""solution"": [3, 10, 9, 12, 7, 8, 4, 1, 0, 5, 13, 6, 2, 11], ""objective"": 7.0}","[3, 10, 9, 12, 7, 8, 4, 1, 0, 5, 13, 6, 2, 11]",7.0,"{""problem_type"": ""CMP"", ""num_nodes"": 14, ""nodes"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], ""num_edges"": 24, ""edges"": [{""u"": 11, ""v"": 8}, {""u"": 11, ""v"": 13}, {""u"": 11, ""v"": 10}, {""u"": 4, ""v"": 10}, {""u"": 8, ""v"": 13}, {""u"": 8, ""v"": 10}, {""u"": 8, ""v"": 5}, {""u"": 8, ""v"": 9}, {""u"": 8, ""v"": 2}, {""u"": 13, ""v"": 10}, {""u"": 13, ""v"": 1}, {""u"": 10, ""v"": 1}, {""u"": 10, ""v"": 2}, {""u"": 5, ""v"": 9}, {""u"": 5, ""v"": 1}, {""u"": 5, ""v"": 14}, {""u"": 9, ""v"": 1}, {""u"": 1, ""v"": 14}, {""u"": 2, ""v"": 14}, {""u"": 2, ""v"": 6}, {""u"": 14, ""v"": 6}, {""u"": 14, ""v"": 12}, {""u"": 14, ""v"": 7}, {""u"": 6, ""v"": 7}]}","[4, 11, 10, 13, 8, 9, 5, 2, 1, 6, 14, 7, 3, 12]"
+CMP_M_016,CMP,M,16,"We hear about a planner trying to put all attractions into a single route so visitors follow them one by one, never skipping or repeating any. At every point along that route, some places are behind and some lie ahead; for each of those moments you can total up the number of connections that still link the visited side to the unvisited side. The route that’s preferred is the one whose biggest such total (the peak number of crossing connections encountered anywhere along the tour) is lower than for other orders. The concrete map details are listed below.
+
+We list the 14 landmarks, the 15 undirected connections between them, and their identifiers 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14.
+
+| landmark_a | landmark_b |
+|---|---|
+| 3 | 6 |
+| 5 | 8 |
+| 6 | 9 |
+| 7 | 10 |
+| 8 | 13 |
+| 9 | 13 |
+| 10 | 13 |
+| 11 | 14 |
+| 12 | 13 |
+| 13 | 14 |
+| 14 | 7 |
+| 8 | 2 |
+| 2 | 1 |
+| 1 | 11 |
+| 3 | 14 |
+
+We will use these concrete map details to judge which tour minimizes the peak number of crossing connections.
+
+If you want to hand me the route in a tidy way, just follow this simple JSON shape when you reply — nothing fancy, just the order I should use.
+
+{
+  ""solution"": [<first_node>, <second_node>, ..., <last_node>]
+}
+
+This little JSON is just a sketch of the shape I expect: the solution array is where you list every attraction in the exact order they should be visited, from the very first one on the left to the very last one on the right. Think of each placeholder as a slot for a single attraction identifier.
+
+Remember: this is just the expected format, not the actual answer itself. Also, all identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+- Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",markdown_table,one_based,"{""name"": ""p87_23_30_sub_14"", ""num_nodes"": 14, ""num_edges"": 15, ""edges"": [[2, 5], [4, 7], [5, 8], [6, 9], [7, 12], [8, 12], [9, 12], [10, 13], [11, 12], [12, 13], [13, 6], [7, 1], [1, 0], [0, 10], [2, 13]], ""solution"": [4, 1, 3, 7, 0, 10, 11, 12, 8, 13, 2, 6, 9, 5], ""objective"": 4.0}","[4, 1, 3, 7, 0, 10, 11, 12, 8, 13, 2, 6, 9, 5]",4.0,"{""problem_type"": ""CMP"", ""num_nodes"": 14, ""nodes"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], ""num_edges"": 15, ""edges"": [{""u"": 3, ""v"": 6}, {""u"": 5, ""v"": 8}, {""u"": 6, ""v"": 9}, {""u"": 7, ""v"": 10}, {""u"": 8, ""v"": 13}, {""u"": 9, ""v"": 13}, {""u"": 10, ""v"": 13}, {""u"": 11, ""v"": 14}, {""u"": 12, ""v"": 13}, {""u"": 13, ""v"": 14}, {""u"": 14, ""v"": 7}, {""u"": 8, ""v"": 2}, {""u"": 2, ""v"": 1}, {""u"": 1, ""v"": 11}, {""u"": 3, ""v"": 14}]}","[5, 2, 4, 8, 1, 11, 12, 13, 9, 14, 3, 7, 10, 6]"
+CMP_M_017,CMP,M,17,"At the boutique the brief was simple — one straight shelf of accessories, ordered so that no single divider chops through too many linked styles. That means lining up every piece exactly once, checking every boundary between neighboring items to count how many style links hop from left to right, and judging the lineup by the largest of those counts — smaller is preferable. The specific accessories and their connections will be shown below.
+
+# num_accessories=13
+# num_style_pairings=8
+# accessory_ids=1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+accessory_a,accessory_b
+1,7
+2,10
+3,13
+6,9
+7,13
+9,10
+10,13
+11,13
+
+If you want to hand me a lineup, just pop it into this little JSON shape so I can read it cleanly — nothing fancy, just the order from left to right.
+
+{
+  ""solution"": [<first_node>, <second_node>, ..., <last_node>]
+}
+
+Think of ""solution"" as the shelf order: list each accessory (node) once, in the exact left-to-right order you want. This block is just a sketch of the shape I expect, not the actual ordering you need to produce.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""name"": ""p69_21_23_sub_13"", ""num_nodes"": 13, ""num_edges"": 8, ""edges"": [[0, 6], [1, 9], [2, 12], [5, 8], [6, 12], [8, 9], [9, 12], [10, 12]], ""solution"": [3, 0, 6, 2, 12, 10, 11, 1, 4, 9, 8, 7, 5], ""objective"": 2.0}","[3, 0, 6, 2, 12, 10, 11, 1, 4, 9, 8, 7, 5]",2.0,"{""problem_type"": ""CMP"", ""num_nodes"": 13, ""nodes"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], ""num_edges"": 8, ""edges"": [{""u"": 1, ""v"": 7}, {""u"": 2, ""v"": 10}, {""u"": 3, ""v"": 13}, {""u"": 6, ""v"": 9}, {""u"": 7, ""v"": 13}, {""u"": 9, ""v"": 10}, {""u"": 10, ""v"": 13}, {""u"": 11, ""v"": 13}]}","[4, 1, 7, 3, 13, 11, 12, 2, 5, 10, 9, 8, 6]"
+CMP_M_018,CMP,M,18,"Someone suggested putting all students in a single row so that, whenever the line is cut at any point, as few friendships as possible stretch across that cut — and every student has to appear once, no duplicates. The way to check a seating is to walk every boundary between seats, count how many social links cross from left to right at that place, and then note the biggest of those counts; the nicer seatings are the ones where that biggest number is lower. The exact student list and their connections are listed below.
+
+# num_students=14
+# num_social_links=1
+# student_ids=1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
+student_u,student_v
+2,6
+
+If you want to hand me a seating order, just drop it into this little JSON shape so it's clear and machine-friendly:
+
+{
+  ""solution"": [<first_student>, <second_student>, ..., <last_student>]
+}
+
+This just sketches the shape I expect: the ""solution"" array lists every student once, in the order they should stand from left to right. The angle-bracket placeholders are just showing where each student's identifier goes — it's a template, not the actual answer.
+
+Please remember to use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels. 
+- ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""name"": ""dwt__503.mtx.rnd_sub_14"", ""num_nodes"": 14, ""num_edges"": 1, ""edges"": [[1, 5]], ""solution"": [0, 6, 12, 10, 2, 3, 11, 7, 4, 1, 8, 5, 13, 9], ""objective"": 1.0}","[0, 6, 12, 10, 2, 3, 11, 7, 4, 1, 8, 5, 13, 9]",1.0,"{""problem_type"": ""CMP"", ""num_nodes"": 14, ""nodes"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], ""num_edges"": 1, ""edges"": [{""u"": 2, ""v"": 6}]}","[1, 7, 13, 11, 3, 4, 12, 8, 5, 2, 9, 6, 14, 10]"
+CMP_M_019,CMP,M,19,"Back at the transit office the challenge was framed plainly: list every shuttle stop exactly once in a single loop, and then for each cut in that list count trips that start on one side and end on the other. The sequence that wins is the one whose toughest cut — the one with the largest number of crossing trips — is smaller than the rest. The concrete route and trip information follow below.
+
+There are 14 distinct shuttle stops, 9 undirected passenger trips, and the stop identifiers are 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13.
+Passenger trip between 0 and 10.
+Passenger trip between 10 and 12.
+Passenger trip between 12 and 1.
+Passenger trip between 12 and 2.
+Passenger trip between 2 and 7.
+Passenger trip between 2 and 3.
+Passenger trip between 7 and 13.
+Passenger trip between 7 and 3.
+Passenger trip between 3 and 11.
+The lines below enumerate the 9 trips to be considered in the cut calculations.
+
+When you send the final route, just stick to this little JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [<first_stop>, <second_stop>, ..., <last_stop>]
+}
+
+Think of ""solution"" as the single list of shuttle stops in travel order — the first entry is where the line starts and the last is where it ends. It's just a sketch of the shape I need, not your final answer.
+
+Quick reminder: use the exact stop identifiers from the instance input — don't rename them or invent new labels.  
+- Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",nl,zero_based,"{""name"": ""mcca.mtx.rnd_sub_14"", ""num_nodes"": 14, ""num_edges"": 9, ""edges"": [[0, 10], [10, 12], [12, 1], [12, 2], [2, 7], [2, 3], [7, 13], [7, 3], [3, 11]], ""solution"": [4, 5, 0, 6, 13, 10, 12, 1, 2, 7, 3, 9, 8, 11], ""objective"": 3.0}","[4, 5, 0, 6, 13, 10, 12, 1, 2, 7, 3, 9, 8, 11]",3.0,"{""problem_type"": ""CMP"", ""num_nodes"": 14, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], ""num_edges"": 9, ""edges"": [{""u"": 0, ""v"": 10}, {""u"": 10, ""v"": 12}, {""u"": 12, ""v"": 1}, {""u"": 12, ""v"": 2}, {""u"": 2, ""v"": 7}, {""u"": 2, ""v"": 3}, {""u"": 7, ""v"": 13}, {""u"": 7, ""v"": 3}, {""u"": 3, ""v"": 11}]}","[4, 5, 0, 6, 13, 10, 12, 1, 2, 7, 3, 9, 8, 11]"
+CMP_M_020,CMP,M,20,"We’re putting an entire collection on a single wall and trying to make the lineup feel smooth: place each painting exactly once in a row so that, when you look at every space between pieces, the number of story-connections that cross that space is as calm as it can be. Practically that means for each divide you count how many thematic ties go from any left-hand painting to any right-hand one, and you care most about the divide that has the highest such count — the aim is to make that highest count as small as you can. The concrete details follow below.
+
+We have 16 paintings and 1 thematic connections; their identifiers are 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15.
+We note a thematic tie between painting 0 and painting 1.
+We'll use these ties to arrange the lineup so the worst crossing at any gap is as small as possible.
+
+You can just send the ordering in a tiny JSON snippet like this — keeps things simple and machine-friendly.
+
+{
+  ""solution"": [<first_painting>, <second_painting>, <third_painting>, ..., <last_painting>]
+}
+
+""solution"" is the left-to-right lineup for the wall; each placeholder in the list is where you’d put one painting’s identifier from the instance (fill those with the actual IDs). This JSON is just the shape I expect, not the final answer.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.  
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""name"": ""shl__400.mtx.rnd_sub_16"", ""num_nodes"": 16, ""num_edges"": 1, ""edges"": [[0, 1]], ""solution"": [11, 7, 10, 15, 4, 3, 2, 14, 1, 9, 5, 0, 8, 13, 6, 12], ""objective"": 1.0}","[11, 7, 10, 15, 4, 3, 2, 14, 1, 9, 5, 0, 8, 13, 6, 12]",1.0,"{""problem_type"": ""CMP"", ""num_nodes"": 16, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], ""num_edges"": 1, ""edges"": [{""u"": 0, ""v"": 1}]}","[11, 7, 10, 15, 4, 3, 2, 14, 1, 9, 5, 0, 8, 13, 6, 12]"
+CMP_M_021,CMP,M,21,"Recently the town decided to order all the trees along the new promenade in a single straight lineup, and the requirement is to place each tree exactly once in that lineup. For every possible slice through the row, count how many irrigation connections cross from trees on one side to trees on the other; then the score for an arrangement is the biggest of those crossing counts. The aim is to arrange the trees so that this worst-case crossing number is as small as you can make it. The actual instance details are shown below.
+
+There are 17 trees, 2 irrigation pipes, and the trees are labeled 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16.
+
+| tree_u | tree_v |
+|---|---|
+| 0 | 11 |
+| 6 | 4 |
+
+Arrange the 17 trees to make the worst-case number of crossing irrigation pipes (out of 2) as small as possible.
+
+You can just send the final lineup in a tiny JSON snippet so it's easy to parse. Something casual like this works:
+
+{
+  ""solution"": [""<first_tree>"", ""<second_tree>"", ..., ""<last_tree>""]
+}
+
+This is just a sketch of the shape I expect: ""solution"" holds an ordered list from the leftmost tree to the rightmost tree. Each entry in that list should be the exact identifier for a tree (as given in the instance) — think of it like filling out a simple form that reads left-to-right. The JSON above is only the shape I want, not the real ordering.
+
+Please be careful to use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"{""name"": ""plskz362.mtx.rnd_sub_17"", ""num_nodes"": 17, ""num_edges"": 2, ""edges"": [[0, 11], [6, 4]], ""solution"": [1, 10, 9, 8, 7, 2, 3, 5, 16, 15, 14, 13, 12, 0, 11, 6, 4], ""objective"": 1.0}","[1, 10, 9, 8, 7, 2, 3, 5, 16, 15, 14, 13, 12, 0, 11, 6, 4]",1.0,"{""problem_type"": ""CMP"", ""num_nodes"": 17, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], ""num_edges"": 2, ""edges"": [{""u"": 0, ""v"": 11}, {""u"": 6, ""v"": 4}]}","[1, 10, 9, 8, 7, 2, 3, 5, 16, 15, 14, 13, 12, 0, 11, 6, 4]"
+CMP_M_022,CMP,M,22,"Recently the team decided to put every study volume onto one long shelf and wondered if there’s a way to line them up so that the biggest number of cross-references crossing any split is kept low. The only thing to choose is the sequence — each book must be placed exactly once. For every possible gap between books, count the cross-references that start in any book on the left and end in any book on the right; the arrangement’s score is the largest of those counts across all gaps. A better lineup is one with a smaller score. The concrete instance (which books and which cross-references) will be shown below.
+
+# total_books=17
+# total_cross_references=1
+# book_ids=1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17
+book_u,book_v
+15,2
+
+Also, when you send back your lineup, please use this simple JSON layout for the solution so it's easy to parse:
+
+{
+  ""solution"": [<first_node>, <second_node>, ..., <last_node>]
+}
+
+Think of ""solution"" as the sequence of books from left to right on the shelf — list every book exactly once in the order you'd place them. This JSON is just the shape I expect, a sketch of the format rather than the actual ordering.
+
+Please make sure all identifiers you use in that list match the instance input exactly — don't rename them or introduce new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,one_based,"{""name"": ""dwt__592.mtx.rnd_sub_17"", ""num_nodes"": 17, ""num_edges"": 1, ""edges"": [[14, 1]], ""solution"": [0, 2, 7, 5, 11, 12, 4, 8, 15, 9, 6, 10, 16, 14, 3, 13, 1], ""objective"": 1.0}","[0, 2, 7, 5, 11, 12, 4, 8, 15, 9, 6, 10, 16, 14, 3, 13, 1]",1.0,"{""problem_type"": ""CMP"", ""num_nodes"": 17, ""nodes"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], ""num_edges"": 1, ""edges"": [{""u"": 15, ""v"": 2}]}","[1, 3, 8, 6, 12, 13, 5, 9, 16, 10, 7, 11, 17, 15, 4, 14, 2]"
+CMP_M_023,CMP,M,23,"Recently the fair layout team had to decide the order of visiting booths and they wanted to avoid any single choke point of collaborations. The simple test was to walk along the row and, at each gap, count how many vendor collaborations jump from the left side to the right side. Then note the highest of those counts — that’s the number they want to keep as low as possible by changing the order. Every booth must be included once and only once. The precise booth and collaboration data appear below.
+
+There were 17 booths and 10 collaborations; the booth labels to order were 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16.
+A collaboration connected booth 13 and booth 2.
+A collaboration connected booth 13 and booth 15.
+A collaboration connected booth 13 and booth 16.
+A collaboration connected booth 2 and booth 15.
+A collaboration connected booth 2 and booth 16.
+A collaboration connected booth 14 and booth 15.
+A collaboration connected booth 12 and booth 11.
+A collaboration connected booth 6 and booth 8.
+A collaboration connected booth 6 and booth 10.
+A collaboration connected booth 3 and booth 8.
+Those 10 collaborations among the 17 booths were what they counted at each gap.
+
+You can just send me the final ordering in a tiny JSON snippet like this — nothing fancy, just a simple list that goes from the first booth you visit to the last.
+
+{
+  ""solution"": [""<first_booth>"", ""<second_booth>"", ""<third_booth>"", ""<fourth_booth>"", ""<fifth_booth>"", ""<sixth_booth>"", ""<seventh_booth>"", ""<eighth_booth>"", ""<ninth_booth>"", ""<tenth_booth>"", ""<last_booth>""]
+}
+
+Think of ""solution"" as the visiting sequence: the array lists booths in order from left to right along the row. The angle-bracket placeholders are just examples of the shape I expect — replace them with the actual booth identifiers when you give the real answer. This JSON is just a sketch of the expected shape, not the actual ordering.
+
+Please use the exact identifiers from the instance input — do not rename or invent labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,zero_based,"{""name"": ""steam1.mtx.rnd_sub_17"", ""num_nodes"": 17, ""num_edges"": 10, ""edges"": [[13, 2], [13, 15], [13, 16], [2, 15], [2, 16], [14, 15], [12, 11], [6, 8], [6, 10], [3, 8]], ""solution"": [0, 5, 1, 7, 9, 11, 12, 3, 6, 8, 10, 14, 15, 2, 13, 16, 4], ""objective"": 3.0}","[0, 5, 1, 7, 9, 11, 12, 3, 6, 8, 10, 14, 15, 2, 13, 16, 4]",3.0,"{""problem_type"": ""CMP"", ""num_nodes"": 17, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], ""num_edges"": 10, ""edges"": [{""u"": 13, ""v"": 2}, {""u"": 13, ""v"": 15}, {""u"": 13, ""v"": 16}, {""u"": 2, ""v"": 15}, {""u"": 2, ""v"": 16}, {""u"": 14, ""v"": 15}, {""u"": 12, ""v"": 11}, {""u"": 6, ""v"": 8}, {""u"": 6, ""v"": 10}, {""u"": 3, ""v"": 8}]}","[0, 5, 1, 7, 9, 11, 12, 3, 6, 8, 10, 14, 15, 2, 13, 16, 4]"
+CMP_M_024,CMP,M,24,"Recently the family agreed to line up all the photos along the mantel so nothing feels cluttered, and the idea is to pick a single order that keeps the biggest number of cross-shelf connections at any one spot down. The decision is the ordering of all frames in one straight sequence. To evaluate an order, for each break between earlier and later frames count how many ties go across it, then take the highest count you find — the aim is to make that highest number as small as possible. Include every frame, once and only once. The precise details about which frames and which links exist appear below.
+
+# num_frames=17
+# num_ties=17
+# frame_ids=1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17
+frame_u,frame_v
+1,13
+2,11
+3,7
+4,11
+6,7
+8,9
+9,11
+10,13
+11,12
+12,17
+13,16
+14,16
+15,17
+16,17
+1,10
+1,3
+17,8
+
+If you want to show the ordering, a simple JSON sketch works well — just list the frames in order under the ""solution"" key. Here's the shape I expect you to follow:
+
+{
+  ""solution"": [<first_frame>, <second_frame>, ..., <last_frame>]
+}
+
+This is just a sketch of the shape: ""solution"" holds the sequence of frames from leftmost to rightmost on the mantel. Each placeholder like <first_frame> or <second_frame> represents one frame identifier from the instance, in the order you want them placed. Replace those placeholders with the actual identifiers when you give the final ordering.
+
+Please be sure to use the exact identifiers from the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""name"": ""p43_19_22_sub_17"", ""num_nodes"": 17, ""num_edges"": 17, ""edges"": [[0, 12], [1, 10], [2, 6], [3, 10], [5, 6], [7, 8], [8, 10], [9, 12], [10, 11], [11, 16], [12, 15], [13, 15], [14, 16], [15, 16], [0, 9], [0, 2], [16, 7]], ""solution"": [2, 4, 6, 5, 0, 9, 12, 13, 15, 14, 16, 7, 11, 8, 10, 1, 3], ""objective"": 2.0}","[2, 4, 6, 5, 0, 9, 12, 13, 15, 14, 16, 7, 11, 8, 10, 1, 3]",2.0,"{""problem_type"": ""CMP"", ""num_nodes"": 17, ""nodes"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], ""num_edges"": 17, ""edges"": [{""u"": 1, ""v"": 13}, {""u"": 2, ""v"": 11}, {""u"": 3, ""v"": 7}, {""u"": 4, ""v"": 11}, {""u"": 6, ""v"": 7}, {""u"": 8, ""v"": 9}, {""u"": 9, ""v"": 11}, {""u"": 10, ""v"": 13}, {""u"": 11, ""v"": 12}, {""u"": 12, ""v"": 17}, {""u"": 13, ""v"": 16}, {""u"": 14, ""v"": 16}, {""u"": 15, ""v"": 17}, {""u"": 16, ""v"": 17}, {""u"": 1, ""v"": 10}, {""u"": 1, ""v"": 3}, {""u"": 17, ""v"": 8}]}","[3, 5, 7, 6, 1, 10, 13, 14, 16, 15, 17, 8, 12, 9, 11, 2, 4]"
+CMP_M_025,CMP,M,25,"Imagine arranging every card from the board into one continuous sequence, with every card showing up exactly one time and none left off. Slide a divider along the sequence — at each spot count how many dependencies point from the earlier group to the later group. The sequence gets evaluated by its heaviest split, meaning the split with the most crossings; the goal is to organize the cards so that this heaviest crossing count is as low as possible. The specific instance and its links are provided below.
+
+There are 15 task cards, 18 dependency links, and the task identifiers are 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14.
+
+| task_endpoint_u | task_endpoint_v |
+|---|---|
+| 0 | 5 |
+| 1 | 11 |
+| 2 | 14 |
+| 3 | 14 |
+| 4 | 8 |
+| 5 | 7 |
+| 6 | 9 |
+| 7 | 8 |
+| 8 | 12 |
+| 9 | 11 |
+| 10 | 13 |
+| 11 | 13 |
+| 12 | 13 |
+| 13 | 14 |
+| 10 | 14 |
+| 14 | 8 |
+| 7 | 9 |
+| 2 | 13 |
+
+Organize the sequence to minimize the heaviest split.
+
+Also, when you send the actual ordering back, please use this simple JSON shape so it's easy to parse and check:
+
+{
+  ""solution"": [<first_node>, <second_node>, ..., <last_node>]
+}
+
+This just means ""solution"" should contain a single list with the cards (nodes) in the order you want them placed: <first_node> is the one at the far left, <second_node> comes next, and so on until <last_node> at the far right. Think of it like filling a form — the JSON above is just the outline, not the final filled answer.
+
+A quick reminder: use the exact identifiers from the instance input — do not rename or invent labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"{""name"": ""p19_16_19_sub_15"", ""num_nodes"": 15, ""num_edges"": 18, ""edges"": [[0, 5], [1, 11], [2, 14], [3, 14], [4, 8], [5, 7], [6, 9], [7, 8], [8, 12], [9, 11], [10, 13], [11, 13], [12, 13], [13, 14], [10, 14], [14, 8], [7, 9], [2, 13]], ""solution"": [6, 1, 9, 11, 4, 7, 8, 12, 5, 0, 13, 2, 14, 3, 10], ""objective"": 4.0}","[6, 1, 9, 11, 4, 7, 8, 12, 5, 0, 13, 2, 14, 3, 10]",4.0,"{""problem_type"": ""CMP"", ""num_nodes"": 15, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], ""num_edges"": 18, ""edges"": [{""u"": 0, ""v"": 5}, {""u"": 1, ""v"": 11}, {""u"": 2, ""v"": 14}, {""u"": 3, ""v"": 14}, {""u"": 4, ""v"": 8}, {""u"": 5, ""v"": 7}, {""u"": 6, ""v"": 9}, {""u"": 7, ""v"": 8}, {""u"": 8, ""v"": 12}, {""u"": 9, ""v"": 11}, {""u"": 10, ""v"": 13}, {""u"": 11, ""v"": 13}, {""u"": 12, ""v"": 13}, {""u"": 13, ""v"": 14}, {""u"": 10, ""v"": 14}, {""u"": 14, ""v"": 8}, {""u"": 7, ""v"": 9}, {""u"": 2, ""v"": 13}]}","[6, 1, 9, 11, 4, 7, 8, 12, 5, 0, 13, 2, 14, 3, 10]"
+CMP_M_026,CMP,M,26,"Back at the gallery there’s a challenge to put all works into one straight sequence, with no repeats and nothing left out. Certain works have pairwise pairings, and at every possible cut point you can tally how many of those pairings run from the left-hand items to the right-hand items. The whole arrangement is judged by the single largest tally among those cuts — the smaller that top crossing number, the better the lineup. The particular artworks and their pairings are shown below.
+
+Below are the 13 artworks (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) and the 13 pairings to consider.
+
+| artwork_a | artwork_b |
+|---|---|
+| 0 | 9 |
+| 1 | 12 |
+| 2 | 11 |
+| 3 | 6 |
+| 5 | 8 |
+| 6 | 12 |
+| 7 | 10 |
+| 9 | 12 |
+| 3 | 5 |
+| 1 | 0 |
+| 11 | 5 |
+| 4 | 6 |
+| 12 | 3 |
+
+Arrange the 13 artworks so the top crossing number across the 13 pairings is as small as possible.
+
+Oh, and when you send the final lineup back, please use this simple JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [<first_node>, <second_node>, ..., <last_node>]
+}
+
+Here ""solution"" is where you list the works in the exact left-to-right order you propose — each placeholder above stands in for one node identifier from the instance (so the first entry is the leftmost piece, the last is the rightmost). This is just the shape I expect, not the actual ordering.
+
+Please make sure to use the identifiers exactly as they appear in the problem input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"{""name"": ""p51_20_28_sub_13"", ""num_nodes"": 13, ""num_edges"": 13, ""edges"": [[0, 9], [1, 12], [2, 11], [3, 6], [5, 8], [6, 12], [7, 10], [9, 12], [3, 5], [1, 0], [11, 5], [4, 6], [12, 3]], ""solution"": [2, 11, 5, 8, 0, 1, 9, 12, 3, 6, 4, 7, 10], ""objective"": 3.0}","[2, 11, 5, 8, 0, 1, 9, 12, 3, 6, 4, 7, 10]",3.0,"{""problem_type"": ""CMP"", ""num_nodes"": 13, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], ""num_edges"": 13, ""edges"": [{""u"": 0, ""v"": 9}, {""u"": 1, ""v"": 12}, {""u"": 2, ""v"": 11}, {""u"": 3, ""v"": 6}, {""u"": 5, ""v"": 8}, {""u"": 6, ""v"": 12}, {""u"": 7, ""v"": 10}, {""u"": 9, ""v"": 12}, {""u"": 3, ""v"": 5}, {""u"": 1, ""v"": 0}, {""u"": 11, ""v"": 5}, {""u"": 4, ""v"": 6}, {""u"": 12, ""v"": 3}]}","[2, 11, 5, 8, 0, 1, 9, 12, 3, 6, 4, 7, 10]"
+CMP_M_027,CMP,M,27,"In a little downtown experiment the idea was to order every café and store into one long row, every venue included once, because certain spots send customers back and forth through loyalty links. To judge an order, try every cut point, count how many links go from one side to the other at that cut, and take the largest count you find — the aim is to pick an ordering where that largest crossing count is kept low. The concrete list of places and their loyalty ties is provided below.
+
+They are the 13 storefronts to place and the 2 loyalty ties between them: A, B, C, D, E, F, G, H, I, J, K, L, M.
+
+| endpoint_store_a | endpoint_store_b |
+|---|---|
+| G | B |
+| L | F |
+
+The aim is an ordering that keeps the maximum number of ties crossing any cut as low as possible.
+
+If you want to hand me the ordering, the easiest is to stick to a tiny JSON sketch like this so it's clear and machine-friendly.
+
+{
+  ""solution"": [<first_place>, <second_place>, ..., <last_place>]
+}
+
+This just means: put the venues in the array in the order you'd line them up from left to right. It's just a shape guide — replace the placeholders with the actual venue identifiers from the instance when you give the real answer.
+
+Please make sure you use the exact identifiers from the input — don't rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""name"": ""lns__511.mtx.rnd_sub_13"", ""num_nodes"": 13, ""num_edges"": 2, ""edges"": [[6, 1], [11, 5]], ""solution"": [2, 8, 10, 0, 12, 1, 9, 3, 4, 6, 11, 5, 7], ""objective"": 1.0}","[2, 8, 10, 0, 12, 1, 9, 3, 4, 6, 11, 5, 7]",1.0,"{""problem_type"": ""CMP"", ""num_nodes"": 13, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M""], ""num_edges"": 2, ""edges"": [{""u"": ""G"", ""v"": ""B""}, {""u"": ""L"", ""v"": ""F""}]}","[""C"", ""I"", ""K"", ""A"", ""M"", ""B"", ""J"", ""D"", ""E"", ""G"", ""L"", ""F"", ""H""]"
+CMP_M_028,CMP,M,28,"Many people think about seating problems, but here the goal is simple: place every student exactly once along one long bench so that if you check every possible split and count friend-links crossing it, the largest crossing count across all splits is kept as small as possible. The concrete instance information is provided below.
+
+There are 13 students, 7 friendships, and the student identifiers are 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13.
+A friend-link connects 3 and 13.
+A friend-link connects 4 and 7.
+A friend-link connects 5 and 8.
+A friend-link connects 6 and 7.
+A friend-link connects 7 and 12.
+A friend-link connects 8 and 12.
+A friend-link connects 9 and 10.
+These items fully specify the instance for the seating problem.
+
+If you want to give me a seating order, just stick it in this little JSON shape so I can read it easily:
+
+{
+  ""solution"": [<first_seat>, <second_seat>, ..., <last_seat>]
+}
+
+Here ""solution"" is the whole lineup from left to right — the first element is the student on the far left of the bench, the next is the one next to them, and so on until the last element on the far right. Think of it like filling out a single row on a form: one entry per seat in order.
+
+This JSON is just a sketch of the shape I expect, not the actual answer itself. Please be sure to use the exact identifiers from the instance input for every student — do not rename them or invent new labels. To be clear, valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,one_based,"{""name"": ""p57_20_24_sub_13"", ""num_nodes"": 13, ""num_edges"": 7, ""edges"": [[2, 12], [3, 6], [4, 7], [5, 6], [6, 11], [7, 11], [8, 9]], ""solution"": [0, 8, 9, 11, 7, 4, 6, 3, 5, 1, 2, 12, 10], ""objective"": 2.0}","[0, 8, 9, 11, 7, 4, 6, 3, 5, 1, 2, 12, 10]",2.0,"{""problem_type"": ""CMP"", ""num_nodes"": 13, ""nodes"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], ""num_edges"": 7, ""edges"": [{""u"": 3, ""v"": 13}, {""u"": 4, ""v"": 7}, {""u"": 5, ""v"": 8}, {""u"": 6, ""v"": 7}, {""u"": 7, ""v"": 12}, {""u"": 8, ""v"": 12}, {""u"": 9, ""v"": 10}]}","[1, 9, 10, 12, 8, 5, 7, 4, 6, 2, 3, 13, 11]"
+CMP_M_029,CMP,M,29,"Someone at the warehouse suggested arranging all the parcels into one neat row — every parcel gets used once, nothing twice — but there’s an extra wrinkle: parcels are connected by routing ties and those ties will straddle whatever split you pick along the row. To evaluate any order, scan each gap and tally how many ties cross from the earlier side to the later side, then note the worst gap (the one with the most crossings). The better arrangements are the ones whose worst-gap crossing count is smaller. The full list of packages and ties is shown below.
+
+# num_packages=16
+# num_routing_ties=6
+# package_ids=0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+tie_package_a,tie_package_b
+9,4
+9,1
+2,15
+3,10
+0,6
+13,11
+
+If you want to hand me an ordering (or for me to return one), just drop it in this simple JSON shape so it's easy to read and reuse.
+
+{
+  ""solution"": [<first_parcel>, <second_parcel>, ..., <last_parcel>]
+}
+
+This little block is just saying: put the parcels in a list from the one at the far left of the row to the one at the far right. Think of each placeholder as a single parcel label from the instance — it's a sketch of the shape I expect, not the final ordering itself.
+
+Please use the parcel/node identifiers exactly as they appear in the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""name"": ""bcsstm07.mtx.rnd_sub_16"", ""num_nodes"": 16, ""num_edges"": 6, ""edges"": [[9, 4], [9, 1], [2, 15], [3, 10], [0, 6], [13, 11]], ""solution"": [8, 12, 7, 15, 2, 13, 11, 3, 10, 5, 6, 0, 4, 9, 1, 14], ""objective"": 1.0}","[8, 12, 7, 15, 2, 13, 11, 3, 10, 5, 6, 0, 4, 9, 1, 14]",1.0,"{""problem_type"": ""CMP"", ""num_nodes"": 16, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], ""num_edges"": 6, ""edges"": [{""u"": 9, ""v"": 4}, {""u"": 9, ""v"": 1}, {""u"": 2, ""v"": 15}, {""u"": 3, ""v"": 10}, {""u"": 0, ""v"": 6}, {""u"": 13, ""v"": 11}]}","[8, 12, 7, 15, 2, 13, 11, 3, 10, 5, 6, 0, 4, 9, 1, 14]"
+CMP_M_030,CMP,M,30,"Imagine arranging a series of brochure panels in a straight line so each panel shows up one time and none are skipped. Now, think about pausing the sequence at any point and counting how many links go from the panels on the left to the ones on the right; do that for every pause and keep track of the single biggest count you see. The better arrangements are the ones where that maximum crossing count is smaller. The concrete section list and their links are listed below.
+
+# num_sections=16
+# num_cross_references=6
+# section_ids=A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P
+section_a,section_b
+K,G
+H,I
+H,O
+I,O
+E,M
+M,P
+
+When you send back your ordering, please use this simple JSON layout so it's easy to parse and check — just a single list showing the panels (or sections) from leftmost to rightmost.
+
+{
+  ""solution"": [<first_panel>, <second_panel>, ..., <last_panel>]
+}
+
+This shows the shape I expect: ""solution"" is a list, and each entry is the ID of a panel in the order you want them arranged (first to last). Think of <first_panel> as the placeholder for whatever identifier you put in the first position, <second_panel> for the next one, and so on. It's just a sketch of the format, not the actual ordering — you'll fill it in with the real IDs from the instance.
+
+Please make sure to use the exact identifiers provided in the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"{""name"": ""can__292.mtx.rnd_sub_16"", ""num_nodes"": 16, ""num_edges"": 6, ""edges"": [[10, 6], [7, 8], [7, 14], [8, 14], [4, 12], [12, 15]], ""solution"": [3, 0, 13, 5, 9, 1, 11, 4, 15, 12, 2, 6, 10, 7, 14, 8], ""objective"": 2.0}","[3, 0, 13, 5, 9, 1, 11, 4, 15, 12, 2, 6, 10, 7, 14, 8]",2.0,"{""problem_type"": ""CMP"", ""num_nodes"": 16, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M"", ""N"", ""O"", ""P""], ""num_edges"": 6, ""edges"": [{""u"": ""K"", ""v"": ""G""}, {""u"": ""H"", ""v"": ""I""}, {""u"": ""H"", ""v"": ""O""}, {""u"": ""I"", ""v"": ""O""}, {""u"": ""E"", ""v"": ""M""}, {""u"": ""M"", ""v"": ""P""}]}","[""D"", ""A"", ""N"", ""F"", ""J"", ""B"", ""L"", ""E"", ""P"", ""M"", ""C"", ""G"", ""K"", ""H"", ""O"", ""I""]"
+CMP_M_031,CMP,M,31,"Many people treat their balcony as a tiny puzzle: a set of pots with drip lines between certain pairs, and the challenge is to lay them out in one single line so the hoses are as unobtrusive as possible. Every pot must appear in the row exactly once, and for each spot where the row could be split the number of hoses going from left to right is counted. The lineup’s worst crossing number is the biggest of those counts across all splits, and the idea is to pick an order that makes that worst number as small as it can be. The concrete details of which pots connect to which come next.
+
+Below are the 4 drip lines among the 16 pots, listed as A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P.
+A drip line connects pot B and pot C.
+A drip line connects pot C and pot N.
+A drip line connects pot E and pot O.
+A drip line connects pot O and pot H.
+These 4 connections enumerate the hoses to consider when arranging the 16 pots.
+
+If you want to hand me an ordering, just drop it in this simple JSON shape so I know which pot goes where along the rail:
+
+{
+  ""solution"": [<first_pot>, <second_pot>, ..., <last_pot>]
+}
+
+Think of that ""solution"" array as the row of pots from left to right: each placeholder is where you'd put one of the pots (use the exact pot identifier from the instance). This JSON is just the shape I expect — a sketch, not the final lineup — so replace those placeholders with the actual identifiers when you send the real answer.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".""",nl,names,"{""name"": ""pores_3.mtx.rnd_sub_16"", ""num_nodes"": 16, ""num_edges"": 4, ""edges"": [[1, 2], [2, 13], [4, 14], [14, 7]], ""solution"": [5, 10, 9, 11, 12, 4, 14, 7, 0, 8, 1, 2, 3, 13, 6, 15], ""objective"": 1.0}","[5, 10, 9, 11, 12, 4, 14, 7, 0, 8, 1, 2, 3, 13, 6, 15]",1.0,"{""problem_type"": ""CMP"", ""num_nodes"": 16, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M"", ""N"", ""O"", ""P""], ""num_edges"": 4, ""edges"": [{""u"": ""B"", ""v"": ""C""}, {""u"": ""C"", ""v"": ""N""}, {""u"": ""E"", ""v"": ""O""}, {""u"": ""O"", ""v"": ""H""}]}","[""F"", ""K"", ""J"", ""L"", ""M"", ""E"", ""O"", ""H"", ""A"", ""I"", ""B"", ""C"", ""D"", ""N"", ""G"", ""P""]"
+CMP_M_032,CMP,M,32,"I was playing with the idea of lining up every playlist in the app into one long row. At every place you could split that row into an earlier bunch and a later bunch, count how many tracks are shared between at least one playlist on the left and at least one on the right — the biggest of those counts across all possible splits is the number we care about, and the aim is to make that biggest crossing as small as possible. Every playlist has to appear exactly once, no repeats and no missing ones. The exact playlist list and which tracks overlap will be shown below.
+
+{
+  ""num_playlists"": 15,
+  ""num_shared_pairs"": 18,
+  ""playlist_ids"": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  ""edges"": [
+    {
+      ""playlist_a"": 0,
+      ""playlist_b"": 8
+    },
+    {
+      ""playlist_a"": 1,
+      ""playlist_b"": 4
+    },
+    {
+      ""playlist_a"": 4,
+      ""playlist_b"": 14
+    },
+    {
+      ""playlist_a"": 5,
+      ""playlist_b"": 8
+    },
+    {
+      ""playlist_a"": 6,
+      ""playlist_b"": 7
+    },
+    {
+      ""playlist_a"": 7,
+      ""playlist_b"": 12
+    },
+    {
+      ""playlist_a"": 9,
+      ""playlist_b"": 14
+    },
+    {
+      ""playlist_a"": 10,
+      ""playlist_b"": 13
+    },
+    {
+      ""playlist_a"": 11,
+      ""playlist_b"": 13
+    },
+    {
+      ""playlist_a"": 12,
+      ""playlist_b"": 13
+    },
+    {
+      ""playlist_a"": 13,
+      ""playlist_b"": 14
+    },
+    {
+      ""playlist_a"": 7,
+      ""playlist_b"": 5
+    },
+    {
+      ""playlist_a"": 3,
+      ""playlist_b"": 4
+    },
+    {
+      ""playlist_a"": 2,
+      ""playlist_b"": 8
+    },
+    {
+      ""playlist_a"": 12,
+      ""playlist_b"": 0
+    },
+    {
+      ""playlist_a"": 13,
+      ""playlist_b"": 3
+    },
+    {
+      ""playlist_a"": 13,
+      ""playlist_b"": 8
+    },
+    {
+      ""playlist_a"": 14,
+      ""playlist_b"": 1
+    }
+  ]
+}
+
+Oh, and when you send back the ordering, just stick to a tiny JSON sketch like this so it's easy to parse:
+
+{
+  ""solution"": [<first_playlist>, <second_playlist>, ..., <last_playlist>]
+}
+
+Here ""solution"" is the ordered list — each item is one playlist placed in that left-to-right order. Think of the placeholders like blanks you fill with the actual playlist identifiers from the instance (that's why they look like <first_playlist> etc.). This JSON is just the shape I expect, not the final answer itself.
+
+Please make sure to use the exact playlist identifiers from the instance input — no renaming and no new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"{""name"": ""p77_22_37_sub_15"", ""num_nodes"": 15, ""num_edges"": 18, ""edges"": [[0, 8], [1, 4], [4, 14], [5, 8], [6, 7], [7, 12], [9, 14], [10, 13], [11, 13], [12, 13], [13, 14], [7, 5], [3, 4], [2, 8], [12, 0], [13, 3], [13, 8], [14, 1]], ""solution"": [1, 4, 14, 9, 11, 3, 13, 10, 2, 8, 5, 0, 12, 7, 6], ""objective"": 3.0}","[1, 4, 14, 9, 11, 3, 13, 10, 2, 8, 5, 0, 12, 7, 6]",3.0,"{""problem_type"": ""CMP"", ""num_nodes"": 15, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], ""num_edges"": 18, ""edges"": [{""u"": 0, ""v"": 8}, {""u"": 1, ""v"": 4}, {""u"": 4, ""v"": 14}, {""u"": 5, ""v"": 8}, {""u"": 6, ""v"": 7}, {""u"": 7, ""v"": 12}, {""u"": 9, ""v"": 14}, {""u"": 10, ""v"": 13}, {""u"": 11, ""v"": 13}, {""u"": 12, ""v"": 13}, {""u"": 13, ""v"": 14}, {""u"": 7, ""v"": 5}, {""u"": 3, ""v"": 4}, {""u"": 2, ""v"": 8}, {""u"": 12, ""v"": 0}, {""u"": 13, ""v"": 3}, {""u"": 13, ""v"": 8}, {""u"": 14, ""v"": 1}]}","[1, 4, 14, 9, 11, 3, 13, 10, 2, 8, 5, 0, 12, 7, 6]"
+CMP_M_033,CMP,M,33,"Someone in charge of onboarding wanted a single, tidy order of all the museum audio guides, with no guide omitted or repeated, and a simple rule for judging orders: for each place the list could be split, count how many links run from guides before the split to guides after it, then take the highest of those counts — the aim was to keep that highest crossing number as low as possible. The specifics about which guides and which links are given below.
+
+There were 13 guides, 12 links, and the guide identifiers were A, B, C, D, E, F, G, H, I, J, K, L, M.
+
+| guide_u | guide_v |
+|---|---|
+| A | C |
+| C | I |
+| D | F |
+| F | G |
+| G | M |
+| H | M |
+| I | J |
+| J | L |
+| K | M |
+| K | A |
+| C | K |
+| L | M |
+
+Those links were to be counted when evaluating any split to determine the ordering's maximum crossing number.
+
+Oh, and when you send the ordering back, just stick to this simple JSON shape so it's easy to parse:
+
+{
+  ""solution"": [<first_guide>, <second_guide>, ..., <last_guide>]
+}
+
+Think of ""solution"" as a plain list that goes from the first guide in the lineup to the last. Each placeholder in the array should be replaced by the exact guide identifier from the instance (that's the ID you were given for each audio guide). This block is just a sketch of the shape I need, not the final answer itself.
+
+Please remember to use the original identifiers exactly as they appear in the instance input — do not rename them or invent new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""name"": ""p50_19_25_sub_13"", ""num_nodes"": 13, ""num_edges"": 12, ""edges"": [[0, 2], [2, 8], [3, 5], [5, 6], [6, 12], [7, 12], [8, 9], [9, 11], [10, 12], [10, 0], [2, 10], [11, 12]], ""solution"": [7, 4, 6, 5, 12, 1, 3, 11, 9, 10, 0, 2, 8], ""objective"": 3.0}","[7, 4, 6, 5, 12, 1, 3, 11, 9, 10, 0, 2, 8]",3.0,"{""problem_type"": ""CMP"", ""num_nodes"": 13, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M""], ""num_edges"": 12, ""edges"": [{""u"": ""A"", ""v"": ""C""}, {""u"": ""C"", ""v"": ""I""}, {""u"": ""D"", ""v"": ""F""}, {""u"": ""F"", ""v"": ""G""}, {""u"": ""G"", ""v"": ""M""}, {""u"": ""H"", ""v"": ""M""}, {""u"": ""I"", ""v"": ""J""}, {""u"": ""J"", ""v"": ""L""}, {""u"": ""K"", ""v"": ""M""}, {""u"": ""K"", ""v"": ""A""}, {""u"": ""C"", ""v"": ""K""}, {""u"": ""L"", ""v"": ""M""}]}","[""H"", ""E"", ""G"", ""F"", ""M"", ""B"", ""D"", ""L"", ""J"", ""K"", ""A"", ""C"", ""I""]"
+CMP_M_034,CMP,M,34,"Recently the team needed a neat way to place all test tubes down a bench: the rule was to put each sample once in a single row, then for every possible division between earlier and later samples count how many contamination-risk links bridge that division, and finally note the largest such count — the aim is to make that biggest crossing number as small as it can be. The exact items and who’s linked to whom are shown below.
+
+{
+  ""num_samples"": 15,
+  ""num_risk_links"": 11,
+  ""sample_ids"": [
+    ""A"",
+    ""B"",
+    ""C"",
+    ""D"",
+    ""E"",
+    ""F"",
+    ""G"",
+    ""H"",
+    ""I"",
+    ""J"",
+    ""K"",
+    ""L"",
+    ""M"",
+    ""N"",
+    ""O""
+  ],
+  ""edges"": [
+    {
+      ""sample_a"": ""B"",
+      ""sample_b"": ""K""
+    },
+    {
+      ""sample_a"": ""B"",
+      ""sample_b"": ""G""
+    },
+    {
+      ""sample_a"": ""B"",
+      ""sample_b"": ""N""
+    },
+    {
+      ""sample_a"": ""B"",
+      ""sample_b"": ""C""
+    },
+    {
+      ""sample_a"": ""B"",
+      ""sample_b"": ""J""
+    },
+    {
+      ""sample_a"": ""B"",
+      ""sample_b"": ""F""
+    },
+    {
+      ""sample_a"": ""B"",
+      ""sample_b"": ""H""
+    },
+    {
+      ""sample_a"": ""B"",
+      ""sample_b"": ""O""
+    },
+    {
+      ""sample_a"": ""B"",
+      ""sample_b"": ""D""
+    },
+    {
+      ""sample_a"": ""B"",
+      ""sample_b"": ""E""
+    },
+    {
+      ""sample_a"": ""C"",
+      ""sample_b"": ""F""
+    }
+  ]
+}
+
+If you want to give me an ordering, a tiny JSON snippet like the one below makes it easy to read — just list the samples from left to right along the bench.
+
+{
+  ""solution"": [<first_tube>, <second_tube>, ..., <last_tube>]
+}
+
+This just shows the shape I expect: ""solution"" holds an ordered list of the samples as they'd sit on the bench. Each placeholder like <first_tube> is where you'd put the actual sample identifier from the instance (the one that names the test tube). Think of it like filling out a very short form, leftmost sample first, rightmost last.
+
+Note: this JSON is only a sketch of the expected shape — not the real ordering itself.
+
+Please use the exact identifiers from the instance input, do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""name"": ""shl__200.mtx.rnd_sub_15"", ""num_nodes"": 15, ""num_edges"": 11, ""edges"": [[1, 10], [1, 6], [1, 13], [1, 2], [1, 9], [1, 5], [1, 7], [1, 14], [1, 3], [1, 4], [2, 5]], ""solution"": [9, 12, 5, 0, 2, 6, 13, 1, 10, 14, 3, 4, 8, 7, 11], ""objective"": 5.0}","[9, 12, 5, 0, 2, 6, 13, 1, 10, 14, 3, 4, 8, 7, 11]",5.0,"{""problem_type"": ""CMP"", ""num_nodes"": 15, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M"", ""N"", ""O""], ""num_edges"": 11, ""edges"": [{""u"": ""B"", ""v"": ""K""}, {""u"": ""B"", ""v"": ""G""}, {""u"": ""B"", ""v"": ""N""}, {""u"": ""B"", ""v"": ""C""}, {""u"": ""B"", ""v"": ""J""}, {""u"": ""B"", ""v"": ""F""}, {""u"": ""B"", ""v"": ""H""}, {""u"": ""B"", ""v"": ""O""}, {""u"": ""B"", ""v"": ""D""}, {""u"": ""B"", ""v"": ""E""}, {""u"": ""C"", ""v"": ""F""}]}","[""J"", ""M"", ""F"", ""A"", ""C"", ""G"", ""N"", ""B"", ""K"", ""O"", ""D"", ""E"", ""I"", ""H"", ""L""]"
+CMP_M_035,CMP,M,35,"Imagine a stack of recipe cards where some cards share ingredients with others; the goal is to put every card into one sequence so that the place where the stack is most “tied together” by shared ingredients is as weak as possible. To judge an ordering, consider every possible cut through the sequence, count how many shared-ingredient links connect a card before the cut to one after, take the highest of those counts across all cuts, and aim for an ordering that makes that highest number really small. Every single card has to be included once and only once, and the specific cards and overlaps are listed below.
+
+There are 16 cards, 13 overlaps, and the cards are 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16.
+Recipe card 2 shares an ingredient with recipe card 11.
+Recipe card 3 shares an ingredient with recipe card 11.
+Recipe card 4 shares an ingredient with recipe card 7.
+Recipe card 6 shares an ingredient with recipe card 14.
+Recipe card 7 shares an ingredient with recipe card 13.
+Recipe card 9 shares an ingredient with recipe card 12.
+Recipe card 10 shares an ingredient with recipe card 15.
+Recipe card 11 shares an ingredient with recipe card 13.
+Recipe card 12 shares an ingredient with recipe card 15.
+Recipe card 13 shares an ingredient with recipe card 15.
+Recipe card 14 shares an ingredient with recipe card 15.
+Recipe card 15 shares an ingredient with recipe card 16.
+Recipe card 4 shares an ingredient with recipe card 14.
+Use the listed overlaps to order the cards so the largest number of crossing overlaps across any cut is as small as possible.
+
+If you want to hand me an ordering, just pop it into this relaxed JSON shape so I know exactly where each card goes in the stack:
+
+{
+  ""solution"": [<first_node>, <second_node>, ..., <last_node>]
+}
+
+Pretty simple: ""solution"" is the sequence from the top of the stack to the bottom (first to last). Replace each placeholder with the exact label for a card from the instance — think of it like filling out a single-line form rather than a spreadsheet. This JSON is just a sketch of the shape I expect, not the actual answer itself.
+
+Please make sure you use the identifiers exactly as they appear in the instance input — do not rename them or invent new ones. 
+
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,one_based,"{""name"": ""p48_19_21_sub_16"", ""num_nodes"": 16, ""num_edges"": 13, ""edges"": [[1, 10], [2, 10], [3, 6], [5, 13], [6, 12], [8, 11], [9, 14], [10, 12], [11, 14], [12, 14], [13, 14], [14, 15], [3, 13]], ""solution"": [9, 8, 7, 15, 11, 14, 0, 5, 13, 4, 3, 6, 12, 1, 2, 10], ""objective"": 3.0}","[9, 8, 7, 15, 11, 14, 0, 5, 13, 4, 3, 6, 12, 1, 2, 10]",3.0,"{""problem_type"": ""CMP"", ""num_nodes"": 16, ""nodes"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], ""num_edges"": 13, ""edges"": [{""u"": 2, ""v"": 11}, {""u"": 3, ""v"": 11}, {""u"": 4, ""v"": 7}, {""u"": 6, ""v"": 14}, {""u"": 7, ""v"": 13}, {""u"": 9, ""v"": 12}, {""u"": 10, ""v"": 15}, {""u"": 11, ""v"": 13}, {""u"": 12, ""v"": 15}, {""u"": 13, ""v"": 15}, {""u"": 14, ""v"": 15}, {""u"": 15, ""v"": 16}, {""u"": 4, ""v"": 14}]}","[10, 9, 8, 16, 12, 15, 1, 6, 14, 5, 4, 7, 13, 2, 3, 11]"
+CMP_M_036,CMP,M,36,"We set up all the phones in a single line for a marathon of Bluetooth tests, and every device has to be placed once in that line. For any place you might cut the line, count how many active pairings link a device on the left to one on the right; the worst cut is the one with the highest count, and the aim is to arrange the devices so that this worst-case crossing count is as small as possible. That means running through each possible split, counting the cross-connections there, and picking an ordering that drives down the biggest count. The concrete instance and its details are listed below.
+
+We list the 14 devices, the 5 active pairings between them, and the device identifiers: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13.
+
+| device_u | device_v |
+|---|---|
+| 4 | 2 |
+| 0 | 12 |
+| 0 | 6 |
+| 2 | 9 |
+| 12 | 6 |
+
+We will order the 14 devices to minimize the maximum crossings among the 5 pairings.
+
+When you send the final ordering back, just use a tiny, relaxed JSON layout like this — a single list from leftmost to rightmost device.
+
+{
+  ""solution"": [<first_phone>, <second_phone>, ..., <last_phone>]
+}
+
+Think of this as a simple form: ""solution"" holds the lineup, and each placeholder like <first_phone> is where you'd put the identifier of the phone that goes in that position (left to right). This is just the expected shape — a sketch, not the actual filled-in answer.
+
+Also: all identifiers must be used exactly as they appear in the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"{""name"": ""lns__131.mtx.rnd_sub_14"", ""num_nodes"": 14, ""num_edges"": 5, ""edges"": [[4, 2], [0, 12], [0, 6], [2, 9], [12, 6]], ""solution"": [10, 1, 3, 5, 7, 9, 13, 11, 8, 2, 4, 0, 6, 12], ""objective"": 2.0}","[10, 1, 3, 5, 7, 9, 13, 11, 8, 2, 4, 0, 6, 12]",2.0,"{""problem_type"": ""CMP"", ""num_nodes"": 14, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], ""num_edges"": 5, ""edges"": [{""u"": 4, ""v"": 2}, {""u"": 0, ""v"": 12}, {""u"": 0, ""v"": 6}, {""u"": 2, ""v"": 9}, {""u"": 12, ""v"": 6}]}","[10, 1, 3, 5, 7, 9, 13, 11, 8, 2, 4, 0, 6, 12]"
+CMP_M_037,CMP,M,37,"Recently the block association decided to re-sequence the mailboxes so the posties’ paths are less tangled. The choice is a single permutation of all mailboxes (no missing or duplicated boxes). For each space between boxes, count how many delivery routes connect a box on the left to a box on the right; then take the biggest of those counts across all spaces. The aim is to keep that biggest count as low as possible. The exact mailbox and route data come next below.
+
+{
+  ""total_mailboxes"": 14,
+  ""total_delivery_routes"": 7,
+  ""mailbox_ids"": [
+    ""A"",
+    ""B"",
+    ""C"",
+    ""D"",
+    ""E"",
+    ""F"",
+    ""G"",
+    ""H"",
+    ""I"",
+    ""J"",
+    ""K"",
+    ""L"",
+    ""M"",
+    ""N""
+  ],
+  ""edges"": [
+    {
+      ""mailbox_endpoint_u"": ""A"",
+      ""mailbox_endpoint_v"": ""H""
+    },
+    {
+      ""mailbox_endpoint_u"": ""C"",
+      ""mailbox_endpoint_v"": ""J""
+    },
+    {
+      ""mailbox_endpoint_u"": ""F"",
+      ""mailbox_endpoint_v"": ""L""
+    },
+    {
+      ""mailbox_endpoint_u"": ""H"",
+      ""mailbox_endpoint_v"": ""K""
+    },
+    {
+      ""mailbox_endpoint_u"": ""J"",
+      ""mailbox_endpoint_v"": ""K""
+    },
+    {
+      ""mailbox_endpoint_u"": ""K"",
+      ""mailbox_endpoint_v"": ""L""
+    },
+    {
+      ""mailbox_endpoint_u"": ""M"",
+      ""mailbox_endpoint_v"": ""N""
+    }
+  ]
+}
+
+If you want to hand me an ordering, just drop it in this simple JSON shape so I know where to look:
+
+{
+  ""solution"": [<first_node>, <second_node>, ..., <last_node>]
+}
+
+Think of ""solution"" as the single list of mailboxes in the left-to-right order you propose — the first mailbox listed is the leftmost, the last is the rightmost. This JSON is just a sketch of the expected shape; replace the placeholders with the actual mailbox identifiers from the instance.
+
+Please make sure you use the exact identifiers given in the instance input — do not rename them and don't invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""name"": ""p64_21_22_sub_14"", ""num_nodes"": 14, ""num_edges"": 7, ""edges"": [[0, 7], [2, 9], [5, 11], [7, 10], [9, 10], [10, 11], [12, 13]], ""solution"": [5, 3, 12, 1, 13, 11, 0, 4, 7, 6, 10, 2, 9, 8], ""objective"": 2.0}","[5, 3, 12, 1, 13, 11, 0, 4, 7, 6, 10, 2, 9, 8]",2.0,"{""problem_type"": ""CMP"", ""num_nodes"": 14, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M"", ""N""], ""num_edges"": 7, ""edges"": [{""u"": ""A"", ""v"": ""H""}, {""u"": ""C"", ""v"": ""J""}, {""u"": ""F"", ""v"": ""L""}, {""u"": ""H"", ""v"": ""K""}, {""u"": ""J"", ""v"": ""K""}, {""u"": ""K"", ""v"": ""L""}, {""u"": ""M"", ""v"": ""N""}]}","[""F"", ""D"", ""M"", ""B"", ""N"", ""L"", ""A"", ""E"", ""H"", ""G"", ""K"", ""C"", ""J"", ""I""]"
+CMP_M_038,CMP,M,38,"Someone’s trying to make the schedule flow better: every speaker has to be booked into one linear sequence, once and only once, and some speakers are connected by past collaborations. If you pause the sequence at any point, count the collaborations that stretch from people before the pause to people after it; the single biggest count among all pauses is the one that matters. A smoother schedule is one where that single biggest crossing count is kept low. The exact speakers and who’s collaborating with whom are shown below.
+
+{
+  ""num_speakers"": 13,
+  ""num_collaborations"": 3,
+  ""speaker_ids"": [
+    ""A"",
+    ""B"",
+    ""C"",
+    ""D"",
+    ""E"",
+    ""F"",
+    ""G"",
+    ""H"",
+    ""I"",
+    ""J"",
+    ""K"",
+    ""L"",
+    ""M""
+  ],
+  ""edges"": [
+    {
+      ""speaker_u"": ""F"",
+      ""speaker_v"": ""E""
+    },
+    {
+      ""speaker_u"": ""A"",
+      ""speaker_v"": ""B""
+    },
+    {
+      ""speaker_u"": ""H"",
+      ""speaker_v"": ""L""
+    }
+  ]
+}
+
+Also, when you send back the ordering, you can just drop it into a tiny JSON object like this — keeps things tidy and machine-friendly without fuss:
+
+{
+  ""solution"": [""<first_speaker>"", ""<second_speaker>"", ..., ""<last_speaker>""]
+}
+
+This just says ""solution"" is the whole schedule and the array is the speakers in order from first to last. Think of it like a simple form: replace those placeholders with the actual speaker identifiers from the instance. It's just the expected shape — a sketch, not the real filled-in answer.
+
+Please make sure every identifier you use matches exactly what's in the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""name"": ""shl__400.mtx.rnd_sub_13"", ""num_nodes"": 13, ""num_edges"": 3, ""edges"": [[5, 4], [0, 1], [7, 11]], ""solution"": [9, 7, 11, 4, 5, 10, 2, 6, 3, 8, 0, 1, 12], ""objective"": 1.0}","[9, 7, 11, 4, 5, 10, 2, 6, 3, 8, 0, 1, 12]",1.0,"{""problem_type"": ""CMP"", ""num_nodes"": 13, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M""], ""num_edges"": 3, ""edges"": [{""u"": ""F"", ""v"": ""E""}, {""u"": ""A"", ""v"": ""B""}, {""u"": ""H"", ""v"": ""L""}]}","[""J"", ""H"", ""L"", ""E"", ""F"", ""K"", ""C"", ""G"", ""D"", ""I"", ""A"", ""B"", ""M""]"
+CMP_M_039,CMP,M,39,"In a small kitchen redo the team needed to place a collection of tiles into a single straight sequence, using each piece one time only. For every possible split along the row you can count how many grout channels run from a tile on the left side to one on the right; the layout is judged by the largest of those counts, and a preferable layout is the one where that largest number ends up as small as you can manage. The concrete tiles and their connection details are shown below.
+
+{
+  ""total_tiles"": 16,
+  ""total_grout_channels"": 3,
+  ""tile_ids"": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  ""edges"": [
+    {
+      ""tile_endpoint_a"": 10,
+      ""tile_endpoint_b"": 14
+    },
+    {
+      ""tile_endpoint_a"": 3,
+      ""tile_endpoint_b"": 15
+    },
+    {
+      ""tile_endpoint_a"": 15,
+      ""tile_endpoint_b"": 11
+    }
+  ]
+}
+
+If you'd like to give me the ordering in a neat, machine-friendly way, just slip it into this little JSON sketch:
+
+{
+  ""solution"": [<first_tile>, <second_tile>, ..., <last_tile>]
+}
+
+Think of ""solution"" as the left-to-right sequence of tiles — each placeholder is where you'd put one of the actual tile identifiers from the instance. This JSON is just a template showing the shape I expect, not the actual filled-in answer.
+
+Please remember to use the exact identifiers from the instance input — do not rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"{""name"": ""sherman4.mtx.rnd_sub_16"", ""num_nodes"": 16, ""num_edges"": 3, ""edges"": [[9, 13], [2, 14], [14, 10]], ""solution"": [4, 6, 3, 5, 12, 15, 8, 7, 0, 13, 1, 9, 10, 14, 2, 11], ""objective"": 1.0}","[4, 6, 3, 5, 12, 15, 8, 7, 0, 13, 1, 9, 10, 14, 2, 11]",1.0,"{""problem_type"": ""CMP"", ""num_nodes"": 16, ""nodes"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], ""num_edges"": 3, ""edges"": [{""u"": 10, ""v"": 14}, {""u"": 3, ""v"": 15}, {""u"": 15, ""v"": 11}]}","[5, 7, 4, 6, 13, 16, 9, 8, 1, 14, 2, 10, 11, 15, 3, 12]"
+CMP_M_040,CMP,M,40,"Many people on the shop floor noticed that if products with lots of cross-links end up on opposite sides of a divide, that divide becomes hectic. The objective was simple: lay out every product once in a single line, and for every possible break between earlier and later items count how many connections cross it; the worst break is the one with the highest count, and the goal is to make that worst break as calm as possible. The actual product list and the connection details are shown below.
+
+There are 15 distinct products, 15 pairwise connections, and the product identifiers are A, B, C, D, E, F, G, H, I, J, K, L, M, N, O.
+A connection between product A and product N.
+A connection between product C and product L.
+A connection between product D and product M.
+A connection between product E and product L.
+A connection between product F and product K.
+A connection between product G and product L.
+A connection between product H and product J.
+A connection between product I and product K.
+A connection between product J and product N.
+A connection between product K and product O.
+A connection between product L and product O.
+A connection between product M and product O.
+A connection between product N and product O.
+A connection between product B and product A.
+A connection between product F and product B.
+Each line below records one of the 15 connections.
+
+If you want the ordering back from me, just drop it in this relaxed little JSON shape so it's easy to read and parse:
+
+{
+  ""solution"": [<first_product>, <second_product>, ..., <last_product>]
+}
+
+Here I'm using <first_product>, <second_product>, etc. as placeholders for the actual items — the array is the line from leftmost to rightmost. Think of it like filling out a simple form: the ""solution"" list is just the sequence you want the products laid out in.
+
+This JSON is only a sketch of the expected shape, not the final answer itself. Please make sure every identifier you put into the array matches exactly how it appears in the instance input — no renaming, no new labels. 
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"{""name"": ""p51_20_28_sub_15"", ""num_nodes"": 15, ""num_edges"": 15, ""edges"": [[0, 13], [2, 11], [3, 12], [4, 11], [5, 10], [6, 11], [7, 9], [8, 10], [9, 13], [10, 14], [11, 14], [12, 14], [13, 14], [1, 0], [5, 1]], ""solution"": [4, 9, 7, 2, 11, 6, 13, 14, 12, 0, 3, 10, 8, 1, 5], ""objective"": 3.0}","[4, 9, 7, 2, 11, 6, 13, 14, 12, 0, 3, 10, 8, 1, 5]",3.0,"{""problem_type"": ""CMP"", ""num_nodes"": 15, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M"", ""N"", ""O""], ""num_edges"": 15, ""edges"": [{""u"": ""A"", ""v"": ""N""}, {""u"": ""C"", ""v"": ""L""}, {""u"": ""D"", ""v"": ""M""}, {""u"": ""E"", ""v"": ""L""}, {""u"": ""F"", ""v"": ""K""}, {""u"": ""G"", ""v"": ""L""}, {""u"": ""H"", ""v"": ""J""}, {""u"": ""I"", ""v"": ""K""}, {""u"": ""J"", ""v"": ""N""}, {""u"": ""K"", ""v"": ""O""}, {""u"": ""L"", ""v"": ""O""}, {""u"": ""M"", ""v"": ""O""}, {""u"": ""N"", ""v"": ""O""}, {""u"": ""B"", ""v"": ""A""}, {""u"": ""F"", ""v"": ""B""}]}","[""E"", ""J"", ""H"", ""C"", ""L"", ""G"", ""N"", ""O"", ""M"", ""A"", ""D"", ""K"", ""I"", ""B"", ""F""]"
+CMP_M_041,CMP,M,41,"Someone needs to put every guest in a single row at the headlong banquet table, making sure each person has exactly one seat and nobody’s duplicated, and arrange them so that no one seating creates a brutal jam of crossed friendships at any one split. Practically, you scan every gap between seats, count how many relationships run from left to right at that gap, and the single biggest count you find is what you want to keep as low as possible. The actual guest roster and connection map are shown below.
+
+They are listed as A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, totaling 17 guests with 10 relationships.
+C — P: a social tie between these two guests that counts whenever you seat them on opposite sides of a gap.
+D — I: a social tie between these two guests that counts whenever you seat them on opposite sides of a gap.
+F — N: a social tie between these two guests that counts whenever you seat them on opposite sides of a gap.
+G — N: a social tie between these two guests that counts whenever you seat them on opposite sides of a gap.
+I — K: a social tie between these two guests that counts whenever you seat them on opposite sides of a gap.
+J — Q: a social tie between these two guests that counts whenever you seat them on opposite sides of a gap.
+K — N: a social tie between these two guests that counts whenever you seat them on opposite sides of a gap.
+O — Q: a social tie between these two guests that counts whenever you seat them on opposite sides of a gap.
+H — F: a social tie between these two guests that counts whenever you seat them on opposite sides of a gap.
+J — E: a social tie between these two guests that counts whenever you seat them on opposite sides of a gap.
+Use the 17 guests and 10 relationships above to test seatings and keep the worst split crossing as small as you can.
+
+When you’re ready to hand me the seating, just drop it in this little JSON layout so I can read it easily:
+
+{
+  ""solution"": [<first_node>, <second_node>, ..., <last_node>]
+}
+
+Here ""solution"" is the list of seats from leftmost to rightmost at the table — just put each guest identifier in order. Think of it like filling out a single row on a form: the first entry is the person on the far left, the last entry is on the far right. This JSON is just a sketch of the shape I expect, not the actual answer itself.
+
+Please make sure you use the exact identifiers from the instance input — do not rename or invent labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,names,"{""name"": ""p85_23_26_sub_17"", ""num_nodes"": 17, ""num_edges"": 10, ""edges"": [[2, 15], [3, 8], [5, 13], [6, 13], [8, 10], [9, 16], [10, 13], [14, 16], [7, 5], [9, 4]], ""solution"": [1, 14, 16, 0, 12, 9, 11, 4, 7, 5, 13, 10, 8, 6, 15, 3, 2], ""objective"": 2.0}","[1, 14, 16, 0, 12, 9, 11, 4, 7, 5, 13, 10, 8, 6, 15, 3, 2]",2.0,"{""problem_type"": ""CMP"", ""num_nodes"": 17, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M"", ""N"", ""O"", ""P"", ""Q""], ""num_edges"": 10, ""edges"": [{""u"": ""C"", ""v"": ""P""}, {""u"": ""D"", ""v"": ""I""}, {""u"": ""F"", ""v"": ""N""}, {""u"": ""G"", ""v"": ""N""}, {""u"": ""I"", ""v"": ""K""}, {""u"": ""J"", ""v"": ""Q""}, {""u"": ""K"", ""v"": ""N""}, {""u"": ""O"", ""v"": ""Q""}, {""u"": ""H"", ""v"": ""F""}, {""u"": ""J"", ""v"": ""E""}]}","[""B"", ""O"", ""Q"", ""A"", ""M"", ""J"", ""L"", ""E"", ""H"", ""F"", ""N"", ""K"", ""I"", ""G"", ""P"", ""D"", ""C""]"
+CMP_M_042,CMP,M,42,"Someone backstage is arranging a playlist and worrying about transitions: every song goes in once and only once, in a single line-up. For every point in that line-up you can look back at the songs already played and forward at what's coming next, and count how many connected song pairs are cut by that divide. What makes one ordering nicer than another is how small its worst divide is — the one split that breaks the most pairings. The full instance details are shown below.
+
+{
+  ""num_songs"": 14,
+  ""num_pairings"": 10,
+  ""song_ids"": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  ""edges"": [
+    {
+      ""song_a"": 4,
+      ""song_b"": 7
+    },
+    {
+      ""song_a"": 5,
+      ""song_b"": 6
+    },
+    {
+      ""song_a"": 6,
+      ""song_b"": 9
+    },
+    {
+      ""song_a"": 7,
+      ""song_b"": 13
+    },
+    {
+      ""song_a"": 8,
+      ""song_b"": 10
+    },
+    {
+      ""song_a"": 9,
+      ""song_b"": 11
+    },
+    {
+      ""song_a"": 10,
+      ""song_b"": 11
+    },
+    {
+      ""song_a"": 11,
+      ""song_b"": 14
+    },
+    {
+      ""song_a"": 13,
+      ""song_b"": 14
+    },
+    {
+      ""song_a"": 8,
+      ""song_b"": 3
+    }
+  ]
+}
+
+You can just send the ordering back in a tiny JSON snippet — nothing fancy, just one field named ""solution"" with the playlist order as an array. For the story I tweaked the placeholder names to match songs so it's a bit friendlier:
+
+{
+  ""solution"": [<first_song>, <second_song>, ..., <last_song>]
+}
+
+This little block means: ""solution"" is the lineup from the very first song to the very last. Each placeholder like <first_song> is where you would put an actual song/node identifier from the instance. It's just a sketch of the shape I expect, not the real answer.
+
+Please be sure to use the exact identifiers given in the instance input — don't invent new labels or rename them. To be clear, valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,one_based,"{""name"": ""p35_18_19_sub_14"", ""num_nodes"": 14, ""num_edges"": 10, ""edges"": [[3, 6], [4, 5], [5, 8], [6, 12], [7, 9], [8, 10], [9, 10], [10, 13], [12, 13], [7, 2]], ""solution"": [1, 0, 11, 12, 6, 3, 13, 10, 8, 5, 9, 7, 4, 2], ""objective"": 2.0}","[1, 0, 11, 12, 6, 3, 13, 10, 8, 5, 9, 7, 4, 2]",2.0,"{""problem_type"": ""CMP"", ""num_nodes"": 14, ""nodes"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], ""num_edges"": 10, ""edges"": [{""u"": 4, ""v"": 7}, {""u"": 5, ""v"": 6}, {""u"": 6, ""v"": 9}, {""u"": 7, ""v"": 13}, {""u"": 8, ""v"": 10}, {""u"": 9, ""v"": 11}, {""u"": 10, ""v"": 11}, {""u"": 11, ""v"": 14}, {""u"": 13, ""v"": 14}, {""u"": 8, ""v"": 3}]}","[2, 1, 12, 13, 7, 4, 14, 11, 9, 6, 10, 8, 5, 3]"
+CMP_M_043,CMP,M,43,"Back in the kitchen the prep line had to be perfect: every ingredient placed once in a straight lineup, and for every possible break between items somebody checked how many ingredient-pairs got split by that break. Tally those splits for each break and judge a lineup by its single largest tally — the better the lineup, the smaller that largest tally becomes. The concrete details are listed below.
+
+{
+  ""ingredient_count"": 13,
+  ""paired_interactions_count"": 12,
+  ""ingredients_list"": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  ""edges"": [
+    {
+      ""ingredient_a"": 0,
+      ""ingredient_b"": 8
+    },
+    {
+      ""ingredient_a"": 2,
+      ""ingredient_b"": 6
+    },
+    {
+      ""ingredient_a"": 4,
+      ""ingredient_b"": 12
+    },
+    {
+      ""ingredient_a"": 5,
+      ""ingredient_b"": 6
+    },
+    {
+      ""ingredient_a"": 6,
+      ""ingredient_b"": 9
+    },
+    {
+      ""ingredient_a"": 7,
+      ""ingredient_b"": 11
+    },
+    {
+      ""ingredient_a"": 8,
+      ""ingredient_b"": 12
+    },
+    {
+      ""ingredient_a"": 9,
+      ""ingredient_b"": 10
+    },
+    {
+      ""ingredient_a"": 10,
+      ""ingredient_b"": 11
+    },
+    {
+      ""ingredient_a"": 11,
+      ""ingredient_b"": 12
+    },
+    {
+      ""ingredient_a"": 3,
+      ""ingredient_b"": 7
+    },
+    {
+      ""ingredient_a"": 8,
+      ""ingredient_b"": 4
+    }
+  ]
+}
+
+If you want to hand the lineup back in a neat way, just drop it into a little JSON snippet like this:
+
+{
+  ""solution"": [<first_ingredient>, <second_ingredient>, ..., <last_ingredient>]
+}
+
+Think of that array as the prep line from left to right — the first slot is the item at the left end, the last slot is the one at the right end. This JSON is just a sketch of the shape I expect, not the actual answer itself.
+
+Please use the exact identifiers from the instance input for each item — don't rename them or invent new labels.  
+- Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""name"": ""p66_21_28_sub_13"", ""num_nodes"": 13, ""num_edges"": 12, ""edges"": [[0, 8], [2, 6], [4, 12], [5, 6], [6, 9], [7, 11], [8, 12], [9, 10], [10, 11], [11, 12], [3, 7], [8, 4]], ""solution"": [0, 8, 4, 12, 1, 11, 7, 10, 9, 3, 6, 5, 2], ""objective"": 2.0}","[0, 8, 4, 12, 1, 11, 7, 10, 9, 3, 6, 5, 2]",2.0,"{""problem_type"": ""CMP"", ""num_nodes"": 13, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], ""num_edges"": 12, ""edges"": [{""u"": 0, ""v"": 8}, {""u"": 2, ""v"": 6}, {""u"": 4, ""v"": 12}, {""u"": 5, ""v"": 6}, {""u"": 6, ""v"": 9}, {""u"": 7, ""v"": 11}, {""u"": 8, ""v"": 12}, {""u"": 9, ""v"": 10}, {""u"": 10, ""v"": 11}, {""u"": 11, ""v"": 12}, {""u"": 3, ""v"": 7}, {""u"": 8, ""v"": 4}]}","[0, 8, 4, 12, 1, 11, 7, 10, 9, 3, 6, 5, 2]"
+CMP_M_044,CMP,M,44,"There's this everyday problem at the dock: crates arrive with handles and straps connecting some pairs, and someone has to form a single-file sequence that includes each crate just one time. For every possible split in that sequence, someone can count how many handles connect something on the left to something on the right; the worst split is the one with the highest count. The better the sequence, the smaller that worst split becomes. The exact instance is shown below.
+
+{
+  ""total_crates"": 15,
+  ""total_handles"": 16,
+  ""crate_ids"": [
+    ""A"",
+    ""B"",
+    ""C"",
+    ""D"",
+    ""E"",
+    ""F"",
+    ""G"",
+    ""H"",
+    ""I"",
+    ""J"",
+    ""K"",
+    ""L"",
+    ""M"",
+    ""N"",
+    ""O""
+  ],
+  ""edges"": [
+    {
+      ""crate_end_a"": ""A"",
+      ""crate_end_b"": ""O""
+    },
+    {
+      ""crate_end_a"": ""B"",
+      ""crate_end_b"": ""N""
+    },
+    {
+      ""crate_end_a"": ""C"",
+      ""crate_end_b"": ""D""
+    },
+    {
+      ""crate_end_a"": ""D"",
+      ""crate_end_b"": ""J""
+    },
+    {
+      ""crate_end_a"": ""E"",
+      ""crate_end_b"": ""G""
+    },
+    {
+      ""crate_end_a"": ""F"",
+      ""crate_end_b"": ""H""
+    },
+    {
+      ""crate_end_a"": ""G"",
+      ""crate_end_b"": ""M""
+    },
+    {
+      ""crate_end_a"": ""H"",
+      ""crate_end_b"": ""L""
+    },
+    {
+      ""crate_end_a"": ""I"",
+      ""crate_end_b"": ""N""
+    },
+    {
+      ""crate_end_a"": ""J"",
+      ""crate_end_b"": ""N""
+    },
+    {
+      ""crate_end_a"": ""K"",
+      ""crate_end_b"": ""L""
+    },
+    {
+      ""crate_end_a"": ""L"",
+      ""crate_end_b"": ""O""
+    },
+    {
+      ""crate_end_a"": ""M"",
+      ""crate_end_b"": ""N""
+    },
+    {
+      ""crate_end_a"": ""N"",
+      ""crate_end_b"": ""O""
+    },
+    {
+      ""crate_end_a"": ""K"",
+      ""crate_end_b"": ""D""
+    },
+    {
+      ""crate_end_a"": ""F"",
+      ""crate_end_b"": ""N""
+    }
+  ]
+}
+
+If you want to send the ordering back, just drop it in a tiny JSON snippet like this so it's easy to parse:
+
+{
+  ""solution"": [""<first_crate>"", ""<second_crate>"", ..., ""<last_crate>""]
+}
+
+This just says: put the crates in one long line, left-to-right, in the order given inside the solution array. Each placeholder stands for whatever crate identifier you actually use in the instance. The JSON above is only a sketch of the shape I expect, not the real ordering — replace the placeholders with the real IDs from the problem.
+
+Please make sure you use the exact crate/node identifiers as they appear in the instance input — do not rename them or invent new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""name"": ""p20_16_18_sub_15"", ""num_nodes"": 15, ""num_edges"": 16, ""edges"": [[0, 14], [1, 13], [2, 3], [3, 9], [4, 6], [5, 7], [6, 12], [7, 11], [8, 13], [9, 13], [10, 11], [11, 14], [12, 13], [13, 14], [10, 3], [5, 13]], ""solution"": [10, 0, 14, 11, 1, 7, 5, 13, 8, 3, 2, 9, 4, 6, 12], ""objective"": 4.0}","[10, 0, 14, 11, 1, 7, 5, 13, 8, 3, 2, 9, 4, 6, 12]",4.0,"{""problem_type"": ""CMP"", ""num_nodes"": 15, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M"", ""N"", ""O""], ""num_edges"": 16, ""edges"": [{""u"": ""A"", ""v"": ""O""}, {""u"": ""B"", ""v"": ""N""}, {""u"": ""C"", ""v"": ""D""}, {""u"": ""D"", ""v"": ""J""}, {""u"": ""E"", ""v"": ""G""}, {""u"": ""F"", ""v"": ""H""}, {""u"": ""G"", ""v"": ""M""}, {""u"": ""H"", ""v"": ""L""}, {""u"": ""I"", ""v"": ""N""}, {""u"": ""J"", ""v"": ""N""}, {""u"": ""K"", ""v"": ""L""}, {""u"": ""L"", ""v"": ""O""}, {""u"": ""M"", ""v"": ""N""}, {""u"": ""N"", ""v"": ""O""}, {""u"": ""K"", ""v"": ""D""}, {""u"": ""F"", ""v"": ""N""}]}","[""K"", ""A"", ""O"", ""L"", ""B"", ""H"", ""F"", ""N"", ""I"", ""D"", ""C"", ""J"", ""E"", ""G"", ""M""]"
+CMP_M_045,CMP,M,45,"On a quiet afternoon the team sketched a straight arrangement of all the works, making sure each painting appears once and no piece is repeated. If the wall is cut at any point into earlier and later groups, some works on the left will still be connected to works on the right; count those connections for each cut. What matters is the cut that severs the most connections, and the hope is to pick an order so that this worst cut cuts through as few connections as possible. The exact collection and connection details come below.
+
+{
+  ""num_paintings"": 18,
+  ""num_thematic_links"": 3,
+  ""painting_ids"": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  ""edges"": [
+    {
+      ""painting_a"": 0,
+      ""painting_b"": 13
+    },
+    {
+      ""painting_a"": 13,
+      ""painting_b"": 6
+    },
+    {
+      ""painting_a"": 4,
+      ""painting_b"": 15
+    }
+  ]
+}
+
+If you want to hand the ordering back in a tidy way, just use a little JSON shape like this:
+
+{
+  ""solution"": [<first_painting>, <second_painting>, ..., <last_painting>]
+}
+
+Think of that as a simple form: ""solution"" is the list (left-to-right) of works on the wall, and each placeholder is where an actual work identifier goes. This block is just a sketch of the shape I expect, not the finished ordering.
+
+Please make sure to use the exact identifiers from the problem input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"{""name"": ""dwt__361.mtx.rnd_sub_18"", ""num_nodes"": 18, ""num_edges"": 3, ""edges"": [[0, 13], [13, 6], [4, 15]], ""solution"": [2, 10, 17, 11, 8, 9, 3, 5, 12, 1, 16, 14, 4, 15, 6, 13, 0, 7], ""objective"": 1.0}","[2, 10, 17, 11, 8, 9, 3, 5, 12, 1, 16, 14, 4, 15, 6, 13, 0, 7]",1.0,"{""problem_type"": ""CMP"", ""num_nodes"": 18, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], ""num_edges"": 3, ""edges"": [{""u"": 0, ""v"": 13}, {""u"": 13, ""v"": 6}, {""u"": 4, ""v"": 15}]}","[2, 10, 17, 11, 8, 9, 3, 5, 12, 1, 16, 14, 4, 15, 6, 13, 0, 7]"
+CMP_M_046,CMP,M,46,"Recently the family agreed to re-sequence the photos into one continuous strip so nothing gets omitted or duplicated, and the whole story reads straight through. The concern was pages where too many connections cross the middle, so for any candidate ordering one checks every split, counts crossing links, and then notes the maximum count encountered — that maximum is what determines how good the arrangement feels. The full list of pictures and their connections is shown below.
+
+There are 15 photos and 7 links; the photo identifiers are A, B, C, D, E, F, G, H, I, J, K, L, M, N, O.
+
+| photo_a_id | photo_b_id |
+|---|---|
+| J | M |
+| M | G |
+| M | C |
+| G | C |
+| G | I |
+| C | I |
+| K | B |
+
+Refer to this list when one checks every split and counts crossing links.
+
+If you want to hand me a candidate ordering, just stick it in a small JSON snippet so it's easy to read and check. Here's the little sketch I like to see:
+
+{
+  ""solution"": [<first_photo>, <second_photo>, ..., <last_photo>]
+}
+
+Think of ""solution"" as the photos laid out from left to right; each placeholder shows where a photo identifier would go in that sequence. This block is just the expected shape — a template — not the final answer itself. Please be sure to use the exact photo identifiers from the input when you fill it in; don't rename them or invent new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""name"": ""mcca.mtx.rnd_sub_15"", ""num_nodes"": 15, ""num_edges"": 7, ""edges"": [[9, 12], [12, 6], [12, 2], [6, 2], [6, 8], [2, 8], [10, 1]], ""solution"": [8, 6, 2, 9, 12, 3, 0, 1, 10, 11, 7, 5, 4, 14, 13], ""objective"": 3.0}","[8, 6, 2, 9, 12, 3, 0, 1, 10, 11, 7, 5, 4, 14, 13]",3.0,"{""problem_type"": ""CMP"", ""num_nodes"": 15, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M"", ""N"", ""O""], ""num_edges"": 7, ""edges"": [{""u"": ""J"", ""v"": ""M""}, {""u"": ""M"", ""v"": ""G""}, {""u"": ""M"", ""v"": ""C""}, {""u"": ""G"", ""v"": ""C""}, {""u"": ""G"", ""v"": ""I""}, {""u"": ""C"", ""v"": ""I""}, {""u"": ""K"", ""v"": ""B""}]}","[""I"", ""G"", ""C"", ""J"", ""M"", ""D"", ""A"", ""B"", ""K"", ""L"", ""H"", ""F"", ""E"", ""O"", ""N""]"
+CMP_M_047,CMP,M,47,"I was working on putting together an episode from a pile of recorded segments, and the job felt like arranging puzzle pieces in a line. The choice is which clip goes first, second, and so on, with every clip used once and no repeats or skips. As the episode plays, imagine every edit point and count how many little editorial links jump from earlier clips to later ones; the place with the most of those crossing links is the roughest cut, and the idea is to make that biggest crossing number as small as possible. The specific segments and how they’re connected are listed below.
+
+# num_segments=13
+# num_connections=11
+# segment_ids=1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+segment_a,segment_b
+1,10
+2,8
+3,8
+4,5
+5,6
+6,8
+7,8
+8,9
+10,13
+11,13
+9,6
+
+Also, if you're going to give me a proposed ordering, it helps to use a tiny JSON snippet like this so I can read it easily:
+
+{
+  ""solution"": [<first_clip>, <second_clip>, ..., <last_clip>]
+}
+
+This just shows the shape I expect: ""solution"" is the list of segments in playback order, from the very first clip to the very last. The angle-bracket names like <first_clip> are placeholders showing where the actual segment identifiers go. It's just a sketch of the format — not the real answer itself.
+
+Please make sure all identifiers you put in that list match the instance exactly — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""name"": ""p43_19_22_sub_13"", ""num_nodes"": 13, ""num_edges"": 11, ""edges"": [[0, 9], [1, 7], [2, 7], [3, 4], [4, 5], [5, 7], [6, 7], [7, 8], [9, 12], [10, 12], [8, 5]], ""solution"": [0, 9, 12, 10, 3, 4, 8, 5, 7, 2, 1, 6, 11], ""objective"": 3.0}","[0, 9, 12, 10, 3, 4, 8, 5, 7, 2, 1, 6, 11]",3.0,"{""problem_type"": ""CMP"", ""num_nodes"": 13, ""nodes"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], ""num_edges"": 11, ""edges"": [{""u"": 1, ""v"": 10}, {""u"": 2, ""v"": 8}, {""u"": 3, ""v"": 8}, {""u"": 4, ""v"": 5}, {""u"": 5, ""v"": 6}, {""u"": 6, ""v"": 8}, {""u"": 7, ""v"": 8}, {""u"": 8, ""v"": 9}, {""u"": 10, ""v"": 13}, {""u"": 11, ""v"": 13}, {""u"": 9, ""v"": 6}]}","[1, 10, 13, 11, 4, 5, 9, 6, 8, 3, 2, 7, 12]"
+CMP_M_048,CMP,M,48,"I’ve got a long garden bed and a bunch of different seedlings that don’t all get along — some pairs affect each other if they end up on opposite sides of a spot. The choice is how to line them up in a single row, using every seedling exactly once and not repeating any. If someone looks at any gap along the bed and counts how many of those influencing pairs are split with one plant on the left and the other on the right, the biggest count among all gaps is the one that matters. The idea is to arrange the row so that that worst split ends up as small as possible. The concrete planting details are shown below.
+
+# num_seedlings=16
+# num_influencing_pairs=18
+# seedling_identifiers=0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+seedling_a,seedling_b
+0,9
+1,14
+2,6
+4,11
+6,15
+7,11
+9,10
+10,12
+11,14
+12,13
+13,14
+14,15
+6,12
+0,11
+5,0
+6,3
+15,13
+14,10
+
+You can just send the ordering back in a tiny JSON object like this — nothing fancy, just the list from left-to-right in the bed.
+
+{
+  ""solution"": [<first_seedling>, <second_seedling>, ..., <last_seedling>]
+}
+
+This JSON is just a sketch: the ""solution"" array should list every seedling in the exact order you want them planted, from the left end of the bed to the right. Each placeholder there stands in for one actual seedling identifier — it’s not the final answer, just the shape I need.
+
+Please make sure you use the exact identifiers from the instance input when you fill it in — don’t rename them or invent new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""name"": ""p91_24_33_sub_16"", ""num_nodes"": 16, ""num_edges"": 18, ""edges"": [[0, 9], [1, 14], [2, 6], [4, 11], [6, 15], [7, 11], [9, 10], [10, 12], [11, 14], [12, 13], [13, 14], [14, 15], [6, 12], [0, 11], [5, 0], [6, 3], [15, 13], [14, 10]], ""solution"": [9, 5, 8, 0, 7, 11, 4, 10, 1, 14, 13, 12, 3, 6, 2, 15], ""objective"": 4.0}","[9, 5, 8, 0, 7, 11, 4, 10, 1, 14, 13, 12, 3, 6, 2, 15]",4.0,"{""problem_type"": ""CMP"", ""num_nodes"": 16, ""nodes"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], ""num_edges"": 18, ""edges"": [{""u"": 0, ""v"": 9}, {""u"": 1, ""v"": 14}, {""u"": 2, ""v"": 6}, {""u"": 4, ""v"": 11}, {""u"": 6, ""v"": 15}, {""u"": 7, ""v"": 11}, {""u"": 9, ""v"": 10}, {""u"": 10, ""v"": 12}, {""u"": 11, ""v"": 14}, {""u"": 12, ""v"": 13}, {""u"": 13, ""v"": 14}, {""u"": 14, ""v"": 15}, {""u"": 6, ""v"": 12}, {""u"": 0, ""v"": 11}, {""u"": 5, ""v"": 0}, {""u"": 6, ""v"": 3}, {""u"": 15, ""v"": 13}, {""u"": 14, ""v"": 10}]}","[9, 5, 8, 0, 7, 11, 4, 10, 1, 14, 13, 12, 3, 6, 2, 15]"
+CMP_M_049,CMP,M,49,"Imagine a straight line of services being started one after another, each with little ropes to the services they rely on. At any place the sequence is cut, some ropes will stretch from started services to not-yet-started ones; for each cut you count those ropes, and the idea is to arrange the line so the single largest count of stretched ropes at any cut is as small as possible. Each service must appear in that line exactly one time — no skipping, no repeats. The specific instance and connections are shown below.
+
+{
+  ""num_services"": 15,
+  ""num_dependencies"": 15,
+  ""service_list"": [
+    ""A"",
+    ""B"",
+    ""C"",
+    ""D"",
+    ""E"",
+    ""F"",
+    ""G"",
+    ""H"",
+    ""I"",
+    ""J"",
+    ""K"",
+    ""L"",
+    ""M"",
+    ""N"",
+    ""O""
+  ],
+  ""edges"": [
+    {
+      ""service_u"": ""A"",
+      ""service_v"": ""N""
+    },
+    {
+      ""service_u"": ""B"",
+      ""service_v"": ""L""
+    },
+    {
+      ""service_u"": ""C"",
+      ""service_v"": ""J""
+    },
+    {
+      ""service_u"": ""D"",
+      ""service_v"": ""N""
+    },
+    {
+      ""service_u"": ""E"",
+      ""service_v"": ""K""
+    },
+    {
+      ""service_u"": ""F"",
+      ""service_v"": ""H""
+    },
+    {
+      ""service_u"": ""G"",
+      ""service_v"": ""H""
+    },
+    {
+      ""service_u"": ""H"",
+      ""service_v"": ""I""
+    },
+    {
+      ""service_u"": ""I"",
+      ""service_v"": ""O""
+    },
+    {
+      ""service_u"": ""J"",
+      ""service_v"": ""N""
+    },
+    {
+      ""service_u"": ""L"",
+      ""service_v"": ""N""
+    },
+    {
+      ""service_u"": ""M"",
+      ""service_v"": ""N""
+    },
+    {
+      ""service_u"": ""N"",
+      ""service_v"": ""O""
+    },
+    {
+      ""service_u"": ""D"",
+      ""service_v"": ""B""
+    },
+    {
+      ""service_u"": ""A"",
+      ""service_v"": ""E""
+    }
+  ]
+}
+
+Also, when you send back the ordering, please stick to this relaxed JSON layout so it's easy to parse and double-check:
+
+{
+  ""solution"": [<first_service>, <second_service>, ..., <last_service>]
+}
+
+Think of that as a simple form: ""solution"" holds the whole left-to-right sequence (first started to last started), and each placeholder in the array is one service identifier in that order. This JSON is just a sketch of the shape I want — you'll replace the placeholders with the actual node IDs from the instance.
+
+Please be sure to use the exact identifiers from the instance input — no renaming, no made-up labels. Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",json,names,"{""name"": ""p28_17_18_sub_15"", ""num_nodes"": 15, ""num_edges"": 15, ""edges"": [[0, 13], [1, 11], [2, 9], [3, 13], [4, 10], [5, 7], [6, 7], [7, 8], [8, 14], [9, 13], [11, 13], [12, 13], [13, 14], [3, 1], [0, 4]], ""solution"": [2, 9, 11, 1, 3, 13, 12, 0, 4, 14, 8, 6, 7, 10, 5], ""objective"": 3.0}","[2, 9, 11, 1, 3, 13, 12, 0, 4, 14, 8, 6, 7, 10, 5]",3.0,"{""problem_type"": ""CMP"", ""num_nodes"": 15, ""nodes"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J"", ""K"", ""L"", ""M"", ""N"", ""O""], ""num_edges"": 15, ""edges"": [{""u"": ""A"", ""v"": ""N""}, {""u"": ""B"", ""v"": ""L""}, {""u"": ""C"", ""v"": ""J""}, {""u"": ""D"", ""v"": ""N""}, {""u"": ""E"", ""v"": ""K""}, {""u"": ""F"", ""v"": ""H""}, {""u"": ""G"", ""v"": ""H""}, {""u"": ""H"", ""v"": ""I""}, {""u"": ""I"", ""v"": ""O""}, {""u"": ""J"", ""v"": ""N""}, {""u"": ""L"", ""v"": ""N""}, {""u"": ""M"", ""v"": ""N""}, {""u"": ""N"", ""v"": ""O""}, {""u"": ""D"", ""v"": ""B""}, {""u"": ""A"", ""v"": ""E""}]}","[""C"", ""J"", ""L"", ""B"", ""D"", ""N"", ""M"", ""A"", ""E"", ""O"", ""I"", ""G"", ""H"", ""K"", ""F""]"
+CMP_M_050,CMP,M,50,"Recently the yard team turned a tedious shift into a little puzzle: they had to pick an order for all the cars, using each one exactly once, so that the busiest split point — where the most couplings span from left to right — is as small as possible. The way to judge any lineup is simple: at every spot between cars, count how many couplings cross that spot, then find the biggest count among those spots; that biggest count is the one to beat. The detailed list of cars and their couplings is listed below.
+
+# num_cars=14
+# num_couplings=10
+# car_ids=1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
+car_a,car_b
+1,4
+3,11
+4,5
+5,7
+6,11
+7,13
+11,14
+12,14
+3,2
+9,13
+
+If you want to hand me a proposed lineup, just drop it in this simple JSON shape so it's easy to check against the instance:
+
+{
+  ""solution"": [<first_car>, <second_car>, ..., <last_car>]
+}
+
+This ""solution"" list is just the left-to-right order of the cars — the first element is the car at the far left, the last element is at the far right. Think of the JSON above as a little form: replace each placeholder with the actual car identifier from the instance when you submit a lineup. It's only a sketch of the shape I expect, not the final answer itself.
+
+Please make sure to use the exact identifiers from the input — do not rename them or invent new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""name"": ""p56_20_23_sub_14"", ""num_nodes"": 14, ""num_edges"": 10, ""edges"": [[0, 3], [2, 10], [3, 4], [4, 6], [5, 10], [6, 12], [10, 13], [11, 13], [2, 1], [8, 12]], ""solution"": [8, 12, 7, 0, 3, 4, 6, 1, 5, 2, 10, 11, 13, 9], ""objective"": 2.0}","[8, 12, 7, 0, 3, 4, 6, 1, 5, 2, 10, 11, 13, 9]",2.0,"{""problem_type"": ""CMP"", ""num_nodes"": 14, ""nodes"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], ""num_edges"": 10, ""edges"": [{""u"": 1, ""v"": 4}, {""u"": 3, ""v"": 11}, {""u"": 4, ""v"": 5}, {""u"": 5, ""v"": 7}, {""u"": 6, ""v"": 11}, {""u"": 7, ""v"": 13}, {""u"": 11, ""v"": 14}, {""u"": 12, ""v"": 14}, {""u"": 3, ""v"": 2}, {""u"": 9, ""v"": 13}]}","[9, 13, 8, 1, 4, 5, 7, 2, 6, 3, 11, 12, 14, 10]"

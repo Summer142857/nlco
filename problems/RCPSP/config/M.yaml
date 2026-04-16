@@ -1,0 +1,16 @@
+problem: RCPSP
+scale: M
+seed: 43
+step1:
+  dataset_dir: datasets/RCPSP
+  n_tasks: 11-15
+
+  n_instances: 50
+  output: step1_instance_creation/generated_data/RCPSP/RCPSP_M.json
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/RCPSP/RCPSP_contexts.json
+  instance_dir: step1_instance_creation/generated_data/RCPSP
+  output_root_dir: step2_contextualization/dataset/RCPSP
+  k_per_call: 20
+  n_target: 30

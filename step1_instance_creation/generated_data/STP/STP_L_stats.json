@@ -1,0 +1,16 @@
+{
+  "num_instances": 50,
+  "density": {
+    "avg": 0.10370913845996305,
+    "min": 0.08045977011494253,
+    "max": 0.1380952380952381
+  },
+  "terminals": {
+    "avg_count": 6.92,
+    "min_count": 2,
+    "max_count": 14,
+    "avg_ratio": 0.2767807490249769,
+    "min_ratio": 0.06896551724137931,
+    "max_ratio": 0.5
+  }
+}

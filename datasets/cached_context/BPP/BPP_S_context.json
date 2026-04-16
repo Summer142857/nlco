@@ -1,0 +1,4441 @@
+[
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "There’s a stack of novels and chunky textbooks waiting to be boxed, and the task is to group them into identical moving boxes so every book is in exactly one box, no box is piled beyond its weight limit, and the whole arrangement uses as few boxes as possible. To judge which arrangement wins, simply count how many boxes are used — fewer is better. The exact details (weights and box capacity) appear below.\n\n# box_capacity_kg=100.0\n# total_books=5\nbook_label,book_weight_kg\n1,26.4\n2,28.1\n3,40.1\n4,31.5\n5,25.3\n\nOh, and one more thing — when you send the arrangement back, please use a simple JSON layout so it's easy to check. Something like this:\n\n{\n  \"solution\": [[\"book_id\", ...], ...]\n}\n\nHere \"solution\" is the outer list of moving boxes, and each inner list is the set of book IDs you put in that box (so each book appears in exactly one inner list). Think of it like filling out a packing list: each sublist is a single box and the entries are the book placeholders that go inside. This JSON is just a sketch of the shape I need, not the actual packed answer.\n\nPlease don’t rename or invent any identifiers — use the exact IDs from the instance input as-is. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      26.4,
+      28.1,
+      40.1,
+      31.5,
+      25.3
+    ],
+    "solution": [
+      [
+        0,
+        1,
+        4
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "obj": 2,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 5,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 26.4
+        },
+        {
+          "item_id": 2,
+          "weight": 28.1
+        },
+        {
+          "item_id": 3,
+          "weight": 40.1
+        },
+        {
+          "item_id": 4,
+          "weight": 31.5
+        },
+        {
+          "item_id": 5,
+          "weight": 25.3
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        1,
+        2,
+        5
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "context_index": 1,
+    "input_format": "csv",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "On a typical Saturday, there’s a pile of groceries and several uniform reusable bags on the table. The job is to assign every product to a single bag without cutting anything up, making sure the total weight in any bag never exceeds its maximum. The best way to do it is the arrangement that uses the smallest number of bags — you measure that by tallying the bags that end up holding items. The concrete list of goods and the bag limit are shown below.\n\n# bag_capacity=150.0\n# num_products=5\nproduct_id,product_weight\n0,62.0\n1,23.0\n2,82.0\n3,35.0\n4,46.0\n\nOh, and when you send back the packing plan, please put it in this little JSON shape so it's easy to read:\n\n{\n  \"solution\": [[\"product_id\", ...], ...]\n}\n\nThink of \"solution\" as the list of reusable bags, and each inner list is the set of product IDs that go into that bag. The \"product_id\" placeholders show where the actual item identifiers from the grocery list should go — this JSON is just a sketch of the expected shape, not the real answer.\n\nPlease use the exact item identifiers from the instance input (do not rename them or invent new labels). \nfor example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      62.0,
+      23.0,
+      82.0,
+      35.0,
+      46.0
+    ],
+    "solution": [
+      [
+        0,
+        1,
+        4
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "obj": 2,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 5,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 62.0
+        },
+        {
+          "item_id": 1,
+          "weight": 23.0
+        },
+        {
+          "item_id": 2,
+          "weight": 82.0
+        },
+        {
+          "item_id": 3,
+          "weight": 35.0
+        },
+        {
+          "item_id": 4,
+          "weight": 46.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        0,
+        1,
+        4
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "context_index": 2,
+    "input_format": "csv",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Someone left a big batch of favors to be packed into uniform wooden crates, and the task is to put every favor into one crate — nothing can be split between boxes or left out — while making sure no crate gets more than it’s rated for. The decisions are about assigning items to crates, and the simplest successful plan is the one that ends up with the least number of crates; just tally the crates to see which plan wins. The detailed list of favors and the crate size are shown below.\n\n# crate_capacity=150.0\n# total_favors=9\nfavor_id,favor_weight\n1,51.0\n2,37.0\n3,42.0\n4,48.0\n5,44.0\n6,97.0\n7,98.0\n8,77.0\n9,93.0\n\nWhen you send back the actual packing plan, just follow this simple JSON shape so it's easy to read by people and programs alike:\n\n{\n  \"solution\": [[favor_id, ...], ...]\n}\n\nHere \"solution\" is the outer list of crates, and each inner list is one crate listing the favor identifiers that go in it. The placeholder favor_id is just a stand-in for whatever item identifiers are used in the instance (so keep them as placeholders here, not filled in yet). This is only a sketch of the expected shape — not the real answer.\n\nPlease make sure you use the exact identifiers from the instance input with no renaming and no extra labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      51.0,
+      37.0,
+      42.0,
+      48.0,
+      44.0,
+      97.0,
+      98.0,
+      77.0,
+      93.0
+    ],
+    "solution": [
+      [
+        8
+      ],
+      [
+        6
+      ],
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        0,
+        5
+      ]
+    ],
+    "obj": 5,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 9,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 51.0
+        },
+        {
+          "item_id": 2,
+          "weight": 37.0
+        },
+        {
+          "item_id": 3,
+          "weight": 42.0
+        },
+        {
+          "item_id": 4,
+          "weight": 48.0
+        },
+        {
+          "item_id": 5,
+          "weight": 44.0
+        },
+        {
+          "item_id": 6,
+          "weight": 97.0
+        },
+        {
+          "item_id": 7,
+          "weight": 98.0
+        },
+        {
+          "item_id": 8,
+          "weight": 77.0
+        },
+        {
+          "item_id": 9,
+          "weight": 93.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        9
+      ],
+      [
+        7
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "context_index": 3,
+    "input_format": "csv",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "We were at the archive table, faced with stacks of donated magazines and a stack of identical archival boxes with a fixed interior volume. The decision is grouping magazines into those boxes so each issue travels whole in a single box (nothing split, nothing left behind or duplicated) and the total bulk inside any box stays within that box’s limit — you can check that by adding up the magazine volumes in each box. The plan that wins is the one that uses the smallest number of boxes; just count boxes to see which arrangement is better. The concrete sizes and the box limit follow below.\n\nWe have 5 magazines and each box's interior volume limit is 100.0.\nWe listed magazine A with volume 35.0.\nWe listed magazine B with volume 37.6.\nWe listed magazine C with volume 28.4.\nWe listed magazine D with volume 26.0.\nWe listed magazine E with volume 25.2.\nWe will pack the magazines to use as few boxes as possible.\n\nOh, and when you send back the grouping, a tiny JSON snippet like this is perfect — just a list of boxes, each box is a list of magazine IDs:\n\n{\n  \"solution\": [[magazine_id, ...], ...]\n}\n\nHere \"solution\" is the whole packing plan, each inner list is one box and the entries inside are the magazine identifiers (which tell me which issues go in that box). Think of it like filling out a form: one row per box, IDs of the magazines in that row. This block is just a sketch of the shape I expect, not the final answer.\n\nPlease be sure to use the exact identifiers from the instance input — no renaming, no made-up labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      35.0,
+      37.6,
+      28.4,
+      26.0,
+      25.2
+    ],
+    "solution": [
+      [
+        1,
+        3,
+        4
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "obj": 2,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 5,
+      "items": [
+        {
+          "item_id": "A",
+          "weight": 35.0
+        },
+        {
+          "item_id": "B",
+          "weight": 37.6
+        },
+        {
+          "item_id": "C",
+          "weight": 28.4
+        },
+        {
+          "item_id": "D",
+          "weight": 26.0
+        },
+        {
+          "item_id": "E",
+          "weight": 25.2
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        "B",
+        "D",
+        "E"
+      ],
+      [
+        "A",
+        "C"
+      ]
+    ],
+    "context_index": 4,
+    "input_format": "nl",
+    "input_index_base": "names"
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "We’re trying to organize a bunch of hand tools into a set of same-sized tool chests. The choice to make is how to put the tools into chests so that no chest carries more than its allowed weight, every tool is placed once and only once (no chopping tools up or leaving any behind), and the whole point is to get everything into the smallest number of chests — judge any arrangement by how many chests it uses. The detailed tool weights and chest capacity appear below.\n\n- **tool_chest_capacity**: 100.0\n- **total_tools**: 8\n\n| tool_id | tool_weight |\n|---|---|\n| 0 | 25.2 |\n| 1 | 29.8 |\n| 2 | 28.2 |\n| 3 | 25.3 |\n| 4 | 34.0 |\n| 5 | 44.6 |\n| 6 | 37.0 |\n| 7 | 35.7 |\n\nAlso, when you send back the arrangement, please use this simple JSON layout so it's easy to read and check:\n\n{\n  \"solution\": [[tool_id, ...], ...]\n}\n\nHere \"solution\" is a list of chests, and each inner list is the set of tools you'd put into one chest — the placeholder tool_id marks where each tool's identifier goes. This is just a sketch of the shape I want, not the actual answer.\n\nPlease make sure to use the exact identifiers from the instance input — no renaming and no new labels.  \nValid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      25.2,
+      29.8,
+      28.2,
+      25.3,
+      34.0,
+      44.6,
+      37.0,
+      35.7
+    ],
+    "solution": [
+      [
+        1,
+        4,
+        7
+      ],
+      [
+        0,
+        2,
+        3
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "obj": 3,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 8,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 25.2
+        },
+        {
+          "item_id": 1,
+          "weight": 29.8
+        },
+        {
+          "item_id": 2,
+          "weight": 28.2
+        },
+        {
+          "item_id": 3,
+          "weight": 25.3
+        },
+        {
+          "item_id": 4,
+          "weight": 34.0
+        },
+        {
+          "item_id": 5,
+          "weight": 44.6
+        },
+        {
+          "item_id": 6,
+          "weight": 37.0
+        },
+        {
+          "item_id": 7,
+          "weight": 35.7
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        1,
+        4,
+        7
+      ],
+      [
+        0,
+        2,
+        3
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "context_index": 5,
+    "input_format": "markdown_table",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "We’re trying to get a day’s worth of clothing orders ready, stuffing garments into same-size cartons without tearing or cutting anything. The decision is which items to pair up in each carton so every garment is packed once and only once. The winning plan is the one that ends up with the smallest number of cartons — just tally the cartons used and prefer the lower count — as long as the summed sizes in any carton stay at or under the carton’s capacity. The concrete sizes and limits are listed below.\n\n- **carton_capacity**: 100.0\n- **total_garments**: 9\n\n| garment_id | garment_size |\n|---|---|\n| 0 | 25.9 |\n| 1 | 40.3 |\n| 2 | 27.9 |\n| 3 | 40.0 |\n| 4 | 35.0 |\n| 5 | 25.2 |\n| 6 | 32.4 |\n| 7 | 25.0 |\n| 8 | 26.3 |\n\nAlso, when you send your packing plan back, just use this simple JSON shape so it's easy to read and check:\n\n{\n  \"solution\": [[garment_id, ...], ...]\n}\n\nThink of \"solution\" as a list of cartons, and each inner list is the garments that go together in that carton (use the garment identifiers from the instance). The garment_id placeholder just stands in for whatever item identifiers you were given — this block is a sketch of the expected shape, not the actual answer.\n\nPlease make sure all identifiers are used exactly as they appear in the instance input — no renaming and no new labels. For example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      25.9,
+      40.3,
+      27.9,
+      40.0,
+      35.0,
+      25.2,
+      32.4,
+      25.0,
+      26.3
+    ],
+    "solution": [
+      [
+        3,
+        5,
+        6
+      ],
+      [
+        1,
+        2,
+        8
+      ],
+      [
+        0,
+        4,
+        7
+      ]
+    ],
+    "obj": 3,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 9,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 25.9
+        },
+        {
+          "item_id": 1,
+          "weight": 40.3
+        },
+        {
+          "item_id": 2,
+          "weight": 27.9
+        },
+        {
+          "item_id": 3,
+          "weight": 40.0
+        },
+        {
+          "item_id": 4,
+          "weight": 35.0
+        },
+        {
+          "item_id": 5,
+          "weight": 25.2
+        },
+        {
+          "item_id": 6,
+          "weight": 32.4
+        },
+        {
+          "item_id": 7,
+          "weight": 25.0
+        },
+        {
+          "item_id": 8,
+          "weight": 26.3
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        3,
+        5,
+        6
+      ],
+      [
+        1,
+        2,
+        8
+      ],
+      [
+        0,
+        4,
+        7
+      ]
+    ],
+    "context_index": 6,
+    "input_format": "markdown_table",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "There’s a pile of client folders that must be packed into identical archive cartons, each carton having the same fixed space and not able to take more than it’s made for. The decision is which folders to put together in each carton, with the rule that each folder goes in exactly one carton and stays whole. A good packing is judged by how few cartons are used — count the cartons you end up with, and fewer cartons means a better outcome. The concrete list of folders and the box capacity appear below.\n\n- **box_capacity**: 100.0\n- **n_folders**: 9\n\n| folder_id | folder_size |\n|---|---|\n| A | 27.5 |\n| B | 36.9 |\n| C | 30.5 |\n| D | 29.4 |\n| E | 26.0 |\n| F | 42.4 |\n| G | 36.8 |\n| H | 46.0 |\n| I | 35.7 |\n\nOh — and when you send back the actual packing, keep it simple and use a little JSON sketch like this:\n\n{\n  \"solution\": [[folder_id, ...], ...]\n}\n\nThink of \"solution\" as the whole shipment: each inner list is one carton and the placeholders like folder_id stand in for the real folder identifiers you’ll use from the instance. This block is just the shape I want you to follow — not the real answer itself.\n\nPlease be careful to use the exact identifiers from the instance input (don’t rename them or invent new ones). \n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      27.5,
+      36.9,
+      30.5,
+      29.4,
+      26.0,
+      42.4,
+      36.8,
+      46.0,
+      35.7
+    ],
+    "solution": [
+      [
+        3,
+        8
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        0,
+        2,
+        4
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 9,
+      "items": [
+        {
+          "item_id": "A",
+          "weight": 27.5
+        },
+        {
+          "item_id": "B",
+          "weight": 36.9
+        },
+        {
+          "item_id": "C",
+          "weight": 30.5
+        },
+        {
+          "item_id": "D",
+          "weight": 29.4
+        },
+        {
+          "item_id": "E",
+          "weight": 26.0
+        },
+        {
+          "item_id": "F",
+          "weight": 42.4
+        },
+        {
+          "item_id": "G",
+          "weight": 36.8
+        },
+        {
+          "item_id": "H",
+          "weight": 46.0
+        },
+        {
+          "item_id": "I",
+          "weight": 35.7
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        "D",
+        "I"
+      ],
+      [
+        "B",
+        "H"
+      ],
+      [
+        "A",
+        "C",
+        "E"
+      ],
+      [
+        "F",
+        "G"
+      ]
+    ],
+    "context_index": 7,
+    "input_format": "markdown_table",
+    "input_index_base": "names"
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "I was helping out at a small bottling line where the job was to shove full bottles into identical crates so none of the crates got overloaded. The choice to be made was which bottle goes into which crate — every bottle has to go into one and only one crate, and bottles can’t be split up. A better packing is the one that leaves the fewest crates in use, so the score is simply how many crates end up needed. The exact bottle weights and the crate weight limit will be shown below.\n\n{\n  \"crate_capacity_kg\": 150.0,\n  \"total_bottles\": 10,\n  \"items\": [\n    {\n      \"bottle_id\": 0,\n      \"bottle_weight_kg\": 95.0\n    },\n    {\n      \"bottle_id\": 1,\n      \"bottle_weight_kg\": 33.0\n    },\n    {\n      \"bottle_id\": 2,\n      \"bottle_weight_kg\": 96.0\n    },\n    {\n      \"bottle_id\": 3,\n      \"bottle_weight_kg\": 27.0\n    },\n    {\n      \"bottle_id\": 4,\n      \"bottle_weight_kg\": 33.0\n    },\n    {\n      \"bottle_id\": 5,\n      \"bottle_weight_kg\": 57.0\n    },\n    {\n      \"bottle_id\": 6,\n      \"bottle_weight_kg\": 76.0\n    },\n    {\n      \"bottle_id\": 7,\n      \"bottle_weight_kg\": 86.0\n    },\n    {\n      \"bottle_id\": 8,\n      \"bottle_weight_kg\": 27.0\n    },\n    {\n      \"bottle_id\": 9,\n      \"bottle_weight_kg\": 29.0\n    }\n  ]\n}\n\nIf you want to hand me a proposed packing from the bottling line, just send it in this little JSON layout so I can read which bottles go in which crate.\n\n{\n  \"solution\": [[bottle_id, ...], ...]\n}\n\nIt's simple: \"solution\" is a list of crates, each inner list is the bottles that go into that crate, and each bottle is referenced by its identifier (keep them as placeholders here). This is just a sketch of the shape I expect, not the actual packing — you'll replace the placeholders with the real bottle IDs.\n\nPlease make sure you use the exact identifiers from the instance input — do not rename them or invent new labels.\n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      95.0,
+      33.0,
+      96.0,
+      27.0,
+      33.0,
+      57.0,
+      76.0,
+      86.0,
+      27.0,
+      29.0
+    ],
+    "solution": [
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        7,
+        9
+      ],
+      [
+        0,
+        3,
+        8
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 10,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 95.0
+        },
+        {
+          "item_id": 1,
+          "weight": 33.0
+        },
+        {
+          "item_id": 2,
+          "weight": 96.0
+        },
+        {
+          "item_id": 3,
+          "weight": 27.0
+        },
+        {
+          "item_id": 4,
+          "weight": 33.0
+        },
+        {
+          "item_id": 5,
+          "weight": 57.0
+        },
+        {
+          "item_id": 6,
+          "weight": 76.0
+        },
+        {
+          "item_id": 7,
+          "weight": 86.0
+        },
+        {
+          "item_id": 8,
+          "weight": 27.0
+        },
+        {
+          "item_id": 9,
+          "weight": 29.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        7,
+        9
+      ],
+      [
+        0,
+        3,
+        8
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "context_index": 8,
+    "input_format": "json",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "My neighbor dropped off a batch of seedlings and a pile of identical planters, all with the same soil capacity, and asked for help deciding how to arrange them. The choice is which seedlings to group into each planter: every seedling must go entirely into one planter (no splitting), and the total soil required by the seedlings in any one planter must not exceed that planter’s capacity. The better arrangement uses fewer planters — you measure that by counting the planters you end up using — and you must also check that none of the planters is overfilled. The specific seedling sizes and planter capacity will be shown below.\n\nBelow are the 5 seedling sizes and the planter capacity 100.0.\nSeedling A requires 29.6 soil volume.\nSeedling B requires 35.2 soil volume.\nSeedling C requires 29.5 soil volume.\nSeedling D requires 32.3 soil volume.\nSeedling E requires 25.1 soil volume.\nAssign each seedling to one planter without exceeding 100.0, and try to minimize the number of planters used.\n\nIf you want me to give the grouping as a simple data snippet you can use, just follow this little JSON shape when you send it back — it’s just a lightweight way to show which seedlings go in which planter:\n\n{\n  \"solution\": [[seedling_id, ...], ...]\n}\n\nThink of that as: \"solution\" is a list of planters, and each inner list is the set of seedling identifiers that go together in the same planter. The seedling_id entries are placeholders — in your actual reply you’d replace each placeholder with the real seedling identifiers from the instance.\n\nThis is just a sketch of the shape I expect, not the final arrangement itself. Please use the exact identifiers given in the instance input — don’t rename them and don’t invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      29.6,
+      35.2,
+      29.5,
+      32.3,
+      25.1
+    ],
+    "solution": [
+      [
+        0,
+        2,
+        4
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "obj": 2,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 5,
+      "items": [
+        {
+          "item_id": "A",
+          "weight": 29.6
+        },
+        {
+          "item_id": "B",
+          "weight": 35.2
+        },
+        {
+          "item_id": "C",
+          "weight": 29.5
+        },
+        {
+          "item_id": "D",
+          "weight": 32.3
+        },
+        {
+          "item_id": "E",
+          "weight": 25.1
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        "A",
+        "C",
+        "E"
+      ],
+      [
+        "B",
+        "D"
+      ]
+    ],
+    "context_index": 9,
+    "input_format": "nl",
+    "input_index_base": "names"
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "There’s a closet overflowing with sneakers and a stack of identical storage crates; the job is to assign every shoe to one crate (keep pairs together) without exceeding what a crate can hold. One arrangement is better than another if it uses fewer crates in total, so the simple way to judge is to count how many crates each plan requires. The concrete details — which shoes weigh what and the crate capacity — are shown below.\n\nBelow are the 9 sneaker pairs and a crate capacity of 100.0.\nSneaker pair 1 weighs 27.0.\nSneaker pair 2 weighs 25.5.\nSneaker pair 3 weighs 28.1.\nSneaker pair 4 weighs 25.4.\nSneaker pair 5 weighs 39.5.\nSneaker pair 6 weighs 32.3.\nSneaker pair 7 weighs 46.3.\nSneaker pair 8 weighs 48.0.\nSneaker pair 9 weighs 37.0.\nKeep pairs together and minimize the total number of crates used.\n\nIf you want to hand me a packing plan, just use this little JSON shape so I know which shoes go in which crate:\n\n{\n  \"solution\": [[shoe_id, ...], ...]\n}\n\nThink of that as a simple form: \"solution\" is the list of crates, each inner list is one crate and contains the shoe identifiers that go together in that crate (shoe_id is a placeholder for whatever ID each shoe has in the instance). This is just the shape I expect, not the actual answer — fill in the real shoe IDs for a real plan.\n\nAlso: all identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.\n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      27.0,
+      25.5,
+      28.1,
+      25.4,
+      39.5,
+      32.3,
+      46.3,
+      48.0,
+      37.0
+    ],
+    "solution": [
+      [
+        1,
+        2,
+        6
+      ],
+      [
+        0,
+        3,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        8
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 9,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 27.0
+        },
+        {
+          "item_id": 2,
+          "weight": 25.5
+        },
+        {
+          "item_id": 3,
+          "weight": 28.1
+        },
+        {
+          "item_id": 4,
+          "weight": 25.4
+        },
+        {
+          "item_id": 5,
+          "weight": 39.5
+        },
+        {
+          "item_id": 6,
+          "weight": 32.3
+        },
+        {
+          "item_id": 7,
+          "weight": 46.3
+        },
+        {
+          "item_id": 8,
+          "weight": 48.0
+        },
+        {
+          "item_id": 9,
+          "weight": 37.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        2,
+        3,
+        7
+      ],
+      [
+        1,
+        4,
+        6
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        9
+      ]
+    ],
+    "context_index": 10,
+    "input_format": "nl",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "There's a stack of camera gear on the table and a row of identical padded cases waiting to be filled. The choice to make is which pieces go together per case while making sure every lens and accessory goes into exactly one case and no case is overloaded beyond its limit. The goal is obvious: fit everything using the smallest number of cases possible — tally the cases used to see how well it worked. The specific items and the case size limits appear below.\n\n# case_capacity_weight=150.0\n# total_items=8\ngear_id,item_weight\nA,39.0\nB,44.0\nC,69.0\nD,50.0\nE,90.0\nF,77.0\nG,39.0\nH,49.0\n\nAlso, when you hand the packing plan back, keep it in a really simple JSON shape like this so I can read it easily:\n\n{\n  \"solution\": [[gear_id, ...], ...]\n}\n\nThink of \"solution\" as the list of filled cases, and each inner list is one case showing which item IDs go inside. The gear_id bits are just placeholders — in your actual reply replace those placeholders with the real item identifiers from the instance input. This block is only a sketch of the expected shape, not the final packing assignment.\n\nPlease make sure you use the item identifiers exactly as they appear in the instance — no renaming and no new labels. For example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      39.0,
+      44.0,
+      69.0,
+      50.0,
+      90.0,
+      77.0,
+      39.0,
+      49.0
+    ],
+    "solution": [
+      [
+        1,
+        3,
+        7
+      ],
+      [
+        0,
+        2,
+        6
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 8,
+      "items": [
+        {
+          "item_id": "A",
+          "weight": 39.0
+        },
+        {
+          "item_id": "B",
+          "weight": 44.0
+        },
+        {
+          "item_id": "C",
+          "weight": 69.0
+        },
+        {
+          "item_id": "D",
+          "weight": 50.0
+        },
+        {
+          "item_id": "E",
+          "weight": 90.0
+        },
+        {
+          "item_id": "F",
+          "weight": 77.0
+        },
+        {
+          "item_id": "G",
+          "weight": 39.0
+        },
+        {
+          "item_id": "H",
+          "weight": 49.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        "B",
+        "D",
+        "H"
+      ],
+      [
+        "A",
+        "C",
+        "G"
+      ],
+      [
+        "E"
+      ],
+      [
+        "F"
+      ]
+    ],
+    "context_index": 11,
+    "input_format": "csv",
+    "input_index_base": "names"
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Someone’s in charge of getting a bunch of framed prints into a set of matching moving crates, and they have to decide which print goes where so no crate exceeds its weight limit. The goal is to pack everything into as few crates as possible; you evaluate a packing by counting how many crates are used and by adding up the weights inside each crate to check it’s under the capacity. Each print needs to be placed in one single crate and can’t be split across crates or left behind. The exact list of print weights and the crate capacity are shown below.\n\n# crate_capacity=100.0\n# total_prints=10\nprint_id,print_weight\n0,30.0\n1,45.7\n2,27.5\n3,29.2\n4,32.7\n5,49.9\n6,25.1\n7,49.5\n8,25.9\n9,41.0\n\nIf you want to hand me a proposed packing, just send it in a little JSON shape like this so it's easy to read and check:\n\n{\n  \"solution\": [[\"print_id\", ...], ...]\n}\n\nThink of \"solution\" as the whole set of crates, each inner list is one crate and the placeholders like print_id stand in for whatever print identifiers you have in the instance. This is just a sketch of the shape I need — not the actual packing.\n\nPlease use the exact print identifiers from the instance input — do not rename them or invent new ones. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      30.0,
+      45.7,
+      27.5,
+      29.2,
+      32.7,
+      49.9,
+      25.1,
+      49.5,
+      25.9,
+      41.0
+    ],
+    "solution": [
+      [
+        4,
+        8,
+        9
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        2,
+        6
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 10,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 30.0
+        },
+        {
+          "item_id": 1,
+          "weight": 45.7
+        },
+        {
+          "item_id": 2,
+          "weight": 27.5
+        },
+        {
+          "item_id": 3,
+          "weight": 29.2
+        },
+        {
+          "item_id": 4,
+          "weight": 32.7
+        },
+        {
+          "item_id": 5,
+          "weight": 49.9
+        },
+        {
+          "item_id": 6,
+          "weight": 25.1
+        },
+        {
+          "item_id": 7,
+          "weight": 49.5
+        },
+        {
+          "item_id": 8,
+          "weight": 25.9
+        },
+        {
+          "item_id": 9,
+          "weight": 41.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        4,
+        8,
+        9
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        2,
+        6
+      ]
+    ],
+    "context_index": 12,
+    "input_format": "csv",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "We’ve got a stack of packages and a bunch of identical bins for delivery; the job is to put each package entirely into a single bin, make sure no bin’s total weight goes over the limit, and try to finish with as few bins as possible. Better plans are the ones that use a smaller number of bins — just count them — and every package must be assigned exactly once, with nothing split or left behind. The exact parcel weights and the tote capacity are listed below.\n\nThe tote capacity is 100.0 and we have 5 parcels to place.\nParcel A weighs 30.2.\nParcel B weighs 30.5.\nParcel C weighs 26.2.\nParcel D weighs 35.9.\nParcel E weighs 40.2.\nLet's place all 5 parcels into totes of capacity 100.0 without overloading any tote.\n\nAlso, when you send the actual packing plan back, keep it in this simple JSON shape so I can read it easily — nothing fancy, just a list of bins, each with the package placeholders inside.\n\n{\n  \"solution\": [[\"package_id\", \"package_id\"], [\"package_id\"]]\n}\n\nThis sketch means: \"solution\" is a list of bins, and each inner list is the set of package IDs that go into that bin. Think of each inner array as a tote and the strings inside as the package labels you put in it. It's just the shape I need — not the real packing yet.\n\nPlease make sure to use the exact identifiers from the instance input — no renaming or extra labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      30.2,
+      30.5,
+      26.2,
+      35.9,
+      40.2
+    ],
+    "solution": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "obj": 2,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 5,
+      "items": [
+        {
+          "item_id": "A",
+          "weight": 30.2
+        },
+        {
+          "item_id": "B",
+          "weight": 30.5
+        },
+        {
+          "item_id": "C",
+          "weight": 26.2
+        },
+        {
+          "item_id": "D",
+          "weight": 35.9
+        },
+        {
+          "item_id": "E",
+          "weight": 40.2
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        "A",
+        "B",
+        "C"
+      ],
+      [
+        "D",
+        "E"
+      ]
+    ],
+    "context_index": 13,
+    "input_format": "nl",
+    "input_index_base": "names"
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Many people on the logistics crew have dealt with juggling sample tubes into identical coolers that max out at the same weight. The practical choice is how to arrange those tubes so each tube is placed once in a single cooler and no cooler is asked to carry more than it can. The clearer win is any arrangement that leaves fewer coolers occupied — just count the occupied coolers to compare. The full sample list and cooler limit are shown below.\n\n# cooler_capacity=100.0\n# total_samples=7\nsample_id,sample_weight\n0,41.7\n1,48.1\n2,36.9\n3,30.5\n4,35.0\n5,33.3\n6,34.1\n\nAlso, when you send the actual arrangement back, please use this simple JSON layout so it's easy to read and plug into whatever tracking sheet we're using:\n\n{\n  \"solution\": [[tube_id, ...], ...]\n}\n\nThink of it like a little form: \"solution\" is the list of coolers, each inner list is the tubes you put in that cooler, and each tube_id is just a placeholder for whatever tube identifier shows up in the instance file. This is just the shape I want you to follow — not the final assignment.\n\nPlease make sure every identifier you use in the real reply matches exactly what's in the instance input — do not rename identifiers and don't add any new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      41.7,
+      48.1,
+      36.9,
+      30.5,
+      35.0,
+      33.3,
+      34.1
+    ],
+    "solution": [
+      [
+        3,
+        5,
+        6
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "obj": 3,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 7,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 41.7
+        },
+        {
+          "item_id": 1,
+          "weight": 48.1
+        },
+        {
+          "item_id": 2,
+          "weight": 36.9
+        },
+        {
+          "item_id": 3,
+          "weight": 30.5
+        },
+        {
+          "item_id": 4,
+          "weight": 35.0
+        },
+        {
+          "item_id": 5,
+          "weight": 33.3
+        },
+        {
+          "item_id": 6,
+          "weight": 34.1
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        3,
+        5,
+        6
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "context_index": 14,
+    "input_format": "csv",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "I’m staring at a pile of canned goods and a row of identical pantry baskets, trying to figure out how to tuck everything away. The plan is to put every single can into one of the baskets (no splitting a can or putting the same can into two places), don’t open anything, and make sure the total weight in each basket never goes past its weight limit. A better packing is simply the one that uses fewer baskets — you can tell which plan is better by counting how many baskets end up holding cans. The exact list of cans and the basket capacity are shown below.\n\n{\n  \"basket_capacity\": 150.0,\n  \"total_cans\": 7,\n  \"items\": [\n    {\n      \"can_id\": 0,\n      \"can_weight\": 34.0\n    },\n    {\n      \"can_id\": 1,\n      \"can_weight\": 20.0\n    },\n    {\n      \"can_id\": 2,\n      \"can_weight\": 36.0\n    },\n    {\n      \"can_id\": 3,\n      \"can_weight\": 50.0\n    },\n    {\n      \"can_id\": 4,\n      \"can_weight\": 32.0\n    },\n    {\n      \"can_id\": 5,\n      \"can_weight\": 26.0\n    },\n    {\n      \"can_id\": 6,\n      \"can_weight\": 79.0\n    }\n  ]\n}\n\nAlso, when you hand back a packing plan, just stick to this little JSON shape so it's easy to parse:\n\n{\n  \"solution\": [[\"can_id\", ...], ...]\n}\n\n\"solution\" is a list of baskets, and each inner list is the cans that go into that basket. Think of it like a simple checklist: each sub-array is one basket and the strings inside are the can identifiers. This is only a sketch of the shape I want — not the real answer.\n\nPlease use the exact identifiers from the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      34.0,
+      20.0,
+      36.0,
+      50.0,
+      32.0,
+      26.0,
+      79.0
+    ],
+    "solution": [
+      [
+        0,
+        1,
+        2,
+        4,
+        5
+      ],
+      [
+        3,
+        6
+      ]
+    ],
+    "obj": 2,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 7,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 34.0
+        },
+        {
+          "item_id": 1,
+          "weight": 20.0
+        },
+        {
+          "item_id": 2,
+          "weight": 36.0
+        },
+        {
+          "item_id": 3,
+          "weight": 50.0
+        },
+        {
+          "item_id": 4,
+          "weight": 32.0
+        },
+        {
+          "item_id": 5,
+          "weight": 26.0
+        },
+        {
+          "item_id": 6,
+          "weight": 79.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        0,
+        1,
+        2,
+        4,
+        5
+      ],
+      [
+        3,
+        6
+      ]
+    ],
+    "context_index": 15,
+    "input_format": "json",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "A delivery driver has a pile of bouquets and only identical boxes to load them into — each box has the same space limit. The decision is which bouquets to place together so that every bouquet goes into one box intact (no splitting, no extras), and no box gets overfilled. The winning loading plan is the one with the smallest number of boxes, determined simply by counting how many boxes end up used. The exact bouquet dimensions and the box capacity are listed below.\n\nEach box has capacity 150.0; there are 8 bouquets to assign.\nBouquet A occupies 74.0 space units.\nBouquet B occupies 67.0 space units.\nBouquet C occupies 80.0 space units.\nBouquet D occupies 32.0 space units.\nBouquet E occupies 45.0 space units.\nBouquet F occupies 21.0 space units.\nBouquet G occupies 28.0 space units.\nBouquet H occupies 66.0 space units.\nThe objective is to pack the 8 bouquets so no box exceeds 150.0, using the fewest boxes possible.\n\nOh, and when you send the loading plan back, please use this little JSON layout so it's easy to read and parse:\n\n{\n  \"solution\": [[bouquet_id, ...], ...]\n}\n\nHere \"solution\" is a list of boxes, and each inner list is the set of bouquet identifiers that go together in that box. Think of each inner array as one packed box listing which bouquets are inside. This JSON is just a sketch of the shape I expect — you'll replace those placeholders with the actual bouquet IDs from the instance.\n\nPlease make sure to use the exact identifiers from the instance input — do not rename them or invent new labels. \n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      74.0,
+      67.0,
+      80.0,
+      32.0,
+      45.0,
+      21.0,
+      28.0,
+      66.0
+    ],
+    "solution": [
+      [
+        2,
+        7
+      ],
+      [
+        0,
+        4,
+        6
+      ],
+      [
+        1,
+        3,
+        5
+      ]
+    ],
+    "obj": 3,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 8,
+      "items": [
+        {
+          "item_id": "A",
+          "weight": 74.0
+        },
+        {
+          "item_id": "B",
+          "weight": 67.0
+        },
+        {
+          "item_id": "C",
+          "weight": 80.0
+        },
+        {
+          "item_id": "D",
+          "weight": 32.0
+        },
+        {
+          "item_id": "E",
+          "weight": 45.0
+        },
+        {
+          "item_id": "F",
+          "weight": 21.0
+        },
+        {
+          "item_id": "G",
+          "weight": 28.0
+        },
+        {
+          "item_id": "H",
+          "weight": 66.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        "C",
+        "H"
+      ],
+      [
+        "A",
+        "E",
+        "G"
+      ],
+      [
+        "B",
+        "D",
+        "F"
+      ]
+    ],
+    "context_index": 16,
+    "input_format": "nl",
+    "input_index_base": "names"
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Someone brought over a box of display models and a stack of identical cases; the task is to put each model into one case, intact, and try to minimize how many cases get used. A packing is better if it uses fewer cases — simply count them to compare. To make sure a case is valid, add the weights of the figures inside and ensure that total does not go past the case’s weight limit. Nothing can be left out or copied. Exact weights and the case limit follow below.\n\n# case_capacity=150.0\n# total_models=8\nmodel_id,model_weight\nA,94.0\nB,84.0\nC,27.0\nD,40.0\nE,78.0\nF,66.0\nG,97.0\nH,73.0\n\nAlso, when you send back the packing, please use this simple JSON layout so it's easy to read and check:\n\n{\n  \"solution\": [[\"model_id\", \"model_id\", \"model_id\"], [\"model_id\", \"model_id\"]]\n}\n\nThink of \"solution\" as a stack of cases: each inner list is one case and the strings inside are the figure placeholders that go into that case. This block is just a quick sketch of the shape I expect, not the actual packing — replace those placeholders with the real identifiers from the instance.\n\nQuick reminder: use the identifiers exactly as they appear in the instance input — do not rename them or invent new ones. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      94.0,
+      84.0,
+      27.0,
+      40.0,
+      78.0,
+      66.0,
+      97.0,
+      73.0
+    ],
+    "solution": [
+      [
+        1,
+        5
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        0
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        4
+      ]
+    ],
+    "obj": 5,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 8,
+      "items": [
+        {
+          "item_id": "A",
+          "weight": 94.0
+        },
+        {
+          "item_id": "B",
+          "weight": 84.0
+        },
+        {
+          "item_id": "C",
+          "weight": 27.0
+        },
+        {
+          "item_id": "D",
+          "weight": 40.0
+        },
+        {
+          "item_id": "E",
+          "weight": 78.0
+        },
+        {
+          "item_id": "F",
+          "weight": 66.0
+        },
+        {
+          "item_id": "G",
+          "weight": 97.0
+        },
+        {
+          "item_id": "H",
+          "weight": 73.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        "B",
+        "F"
+      ],
+      [
+        "D",
+        "H"
+      ],
+      [
+        "A"
+      ],
+      [
+        "C",
+        "G"
+      ],
+      [
+        "E"
+      ]
+    ],
+    "context_index": 17,
+    "input_format": "csv",
+    "input_index_base": "names"
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "We’ve got a pile of cartons and a bunch of identical pallets waiting in the yard. The choice to make is how to arrange every carton—each placed intact on a single pallet—so that the total weight on any pallet stays within its limit. A smarter arrangement is the one that needs the least number of pallets, and performance is measured by that pallet count. The exact weights and the maximum load a pallet can take are listed below.\n\n- **pallet_capacity_kg**: 150.0\n- **total_cartons**: 5\n\n| carton_id | carton_weight_kg |\n|---|---|\n| A | 29.0 |\n| B | 88.0 |\n| C | 66.0 |\n| D | 58.0 |\n| E | 95.0 |\n\nWhen you’re ready to send the pallet arrangement back, just stick to this little JSON shape so I can read it easily:\n\n{\n  \"solution\": [[carton_id, ...], ...]\n}\n\nThink of \"solution\" as a list of pallets, and each inner list is the cartons placed on that pallet (using their carton identifiers). This is just a sketch of the shape I want — don’t treat it as the real placement, just the format to follow.\n\nPlease make sure you use the exact identifiers from the instance input — no renaming, no extra labels.  \nValid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      29.0,
+      88.0,
+      66.0,
+      58.0,
+      95.0
+    ],
+    "solution": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "obj": 3,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 5,
+      "items": [
+        {
+          "item_id": "A",
+          "weight": 29.0
+        },
+        {
+          "item_id": "B",
+          "weight": 88.0
+        },
+        {
+          "item_id": "C",
+          "weight": 66.0
+        },
+        {
+          "item_id": "D",
+          "weight": 58.0
+        },
+        {
+          "item_id": "E",
+          "weight": 95.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        "A",
+        "C"
+      ],
+      [
+        "B",
+        "D"
+      ],
+      [
+        "E"
+      ]
+    ],
+    "context_index": 18,
+    "input_format": "markdown_table",
+    "input_index_base": "names"
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Many people on small sites face the same task: pack tiles into matching wheelbarrows that all hold the same weight, keep each tile whole and put it into one and only one load, and don’t exceed the barrow’s limit when adding up the weights in a load. What matters is using the least number of wheelbarrows possible — success is simply the count of loads used. The concrete tile list and the common weight limit follow below.\n\nThere are 8 tiles and each wheelbarrow holds up to 150.0.\nTile 0 weighs 66.0.\nTile 1 weighs 61.0.\nTile 2 weighs 44.0.\nTile 3 weighs 53.0.\nTile 4 weighs 37.0.\nTile 5 weighs 48.0.\nTile 6 weighs 82.0.\nTile 7 weighs 69.0.\nThe aim remains to use the fewest wheelbarrows possible for these 8 tiles with capacity 150.0.\n\nIf you'd like the result returned in a predictable format, just use a simple JSON shape like this:\n\n{\n  \"solution\": [[tile_id, ...], ...]\n}\n\nThink of it like a little form: the solution key holds a list of loads (each inner list is one wheelbarrow), and each item in an inner list is a tile identifier that goes into that load. This is just a sketch of the shape I expect you to follow — not the actual packing answer.\n\nAlso please make sure every identifier you use is exactly the same as in the instance input — do not rename or invent labels. \nfor example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      66.0,
+      61.0,
+      44.0,
+      53.0,
+      37.0,
+      48.0,
+      82.0,
+      69.0
+    ],
+    "solution": [
+      [
+        2,
+        4,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        3
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 8,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 66.0
+        },
+        {
+          "item_id": 1,
+          "weight": 61.0
+        },
+        {
+          "item_id": 2,
+          "weight": 44.0
+        },
+        {
+          "item_id": 3,
+          "weight": 53.0
+        },
+        {
+          "item_id": 4,
+          "weight": 37.0
+        },
+        {
+          "item_id": 5,
+          "weight": 48.0
+        },
+        {
+          "item_id": 6,
+          "weight": 82.0
+        },
+        {
+          "item_id": 7,
+          "weight": 69.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        2,
+        4,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        3
+      ]
+    ],
+    "context_index": 19,
+    "input_format": "nl",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Many people cram their weekend bags into the overhead compartments and don’t realize it’s a packing challenge: every locker is identical and only holds a set amount of weight, each item has to go into one locker intact, and the aim is to fit all the stuff while using as few lockers as possible. You can tell which arrangement is better by counting how many lockers are in use — the fewer, the better — and you mustn’t split items or overload any locker. The precise list of items and the locker limit are shown below.\n\n{\n  \"locker_capacity\": 100.0,\n  \"total_carry_items\": 9,\n  \"items\": [\n    {\n      \"carry_item_id\": \"A\",\n      \"carry_item_weight\": 32.3\n    },\n    {\n      \"carry_item_id\": \"B\",\n      \"carry_item_weight\": 28.3\n    },\n    {\n      \"carry_item_id\": \"C\",\n      \"carry_item_weight\": 26.5\n    },\n    {\n      \"carry_item_id\": \"D\",\n      \"carry_item_weight\": 42.9\n    },\n    {\n      \"carry_item_id\": \"E\",\n      \"carry_item_weight\": 25.1\n    },\n    {\n      \"carry_item_id\": \"F\",\n      \"carry_item_weight\": 26.3\n    },\n    {\n      \"carry_item_id\": \"G\",\n      \"carry_item_weight\": 35.8\n    },\n    {\n      \"carry_item_id\": \"H\",\n      \"carry_item_weight\": 25.9\n    },\n    {\n      \"carry_item_id\": \"I\",\n      \"carry_item_weight\": 26.7\n    }\n  ]\n}\n\nOh, and just so we're on the same page about how I'd like the answer formatted, you can use a tiny JSON sketch like this — just a friendly shape to show which items go in which locker:\n\n{\n  \"solution\": [[locker_item_id, ...], ...]\n}\n\nHere \"solution\" is a list of lockers, and each inner list is the set of item identifiers you put into that locker. Think of each inner array as one overhead compartment and the placeholders as the item labels you’d enter there. This is just the expected shape — not the actual packing you need to produce.\n\nPlease make sure you use the exact identifiers from the instance input — do not rename them or invent new ones. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      32.3,
+      28.3,
+      26.5,
+      42.9,
+      25.1,
+      26.3,
+      35.8,
+      25.9,
+      26.7
+    ],
+    "solution": [
+      [
+        2,
+        4,
+        7
+      ],
+      [
+        1,
+        3,
+        8
+      ],
+      [
+        0,
+        5,
+        6
+      ]
+    ],
+    "obj": 3,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 9,
+      "items": [
+        {
+          "item_id": "A",
+          "weight": 32.3
+        },
+        {
+          "item_id": "B",
+          "weight": 28.3
+        },
+        {
+          "item_id": "C",
+          "weight": 26.5
+        },
+        {
+          "item_id": "D",
+          "weight": 42.9
+        },
+        {
+          "item_id": "E",
+          "weight": 25.1
+        },
+        {
+          "item_id": "F",
+          "weight": 26.3
+        },
+        {
+          "item_id": "G",
+          "weight": 35.8
+        },
+        {
+          "item_id": "H",
+          "weight": 25.9
+        },
+        {
+          "item_id": "I",
+          "weight": 26.7
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        "C",
+        "E",
+        "H"
+      ],
+      [
+        "B",
+        "D",
+        "I"
+      ],
+      [
+        "A",
+        "F",
+        "G"
+      ]
+    ],
+    "context_index": 20,
+    "input_format": "json",
+    "input_index_base": "names"
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "This weekend the apartment is being emptied into identical moving crates, and the trick is to group each piece of furniture and every boxed belonging so no crate exceeds its allowed weight, nothing is left out or put into more than one crate, and the total number of crates is as small as possible — measure a packing by counting its crates. The concrete item weights and the crate capacity are shown below.\n\n# crate_max_weight=100.0\n# total_items_to_pack=5\nbelonging_id,belonging_weight\n1,43.3\n2,26.6\n3,35.0\n4,31.2\n5,36.6\n\nIf you want the packing sent back in a neat, machine-friendly form, just follow this simple JSON shape — nothing fancy, just a list of crates each containing the item labels:\n\n{\n  \"solution\": [[furniture_id, ...], ...]\n}\n\n\"solution\" is the outer list of crates, and each inner list is the set of furniture_id placeholders for the items you put in that crate. This block is just a sketch of the expected shape, not the actual answer — replace the placeholders with the real item labels from the instance when you give the final packing.\n\nPlease be sure to use the exact identifiers from the instance input — do not rename them or invent new ones. \n\n- for example: \"Valid identifiers look like plain numbers such as \"1\" or \"23\", single capital letters like \"A\" or \"B\", or a capital letter followed by digits like \"A1\" or \"X7\".\"",
+    "instance": [
+      43.3,
+      26.6,
+      35.0,
+      31.2,
+      36.6
+    ],
+    "solution": [
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        2,
+        4
+      ]
+    ],
+    "obj": 2,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 5,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 43.3
+        },
+        {
+          "item_id": 2,
+          "weight": 26.6
+        },
+        {
+          "item_id": 3,
+          "weight": 35.0
+        },
+        {
+          "item_id": 4,
+          "weight": 31.2
+        },
+        {
+          "item_id": 5,
+          "weight": 36.6
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3,
+        5
+      ]
+    ],
+    "context_index": 21,
+    "input_format": "csv",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Recently I helped pack up a show and had to cram all the instruments and amps into identical road cases. The choice was which items to put together so that everything ends up in exactly one case, no case goes over its weight allowance, and overall we used the fewest cases possible. You judge the packing by the number of cases it takes. The exact inventory and the case capacity are shown below.\n\nEach road case can carry at most 150.0, and I had 8 items to fit.\nI recorded 1 weighing 26.0.\nI recorded 2 weighing 97.0.\nI recorded 3 weighing 62.0.\nI recorded 4 weighing 42.0.\nI recorded 5 weighing 84.0.\nI recorded 6 weighing 34.0.\nI recorded 7 weighing 88.0.\nI recorded 8 weighing 35.0.\nThat's the inventory to judge the packing by — aim to use as few cases as possible.\n\nOh, and when you reply with the packing you found, please use this little JSON layout so it's easy to read programmatically:\n\n{\n  \"solution\": [[\"instrument_id\", ...], ...]\n}\n\nThink of \"solution\" as the whole set of road cases, and each inner list is one case showing the item identifiers that go inside it. It's just a sketch of the shape I want — not the actual answer itself.\n\nPlease be careful to use the exact item identifiers from the instance input, without renaming or inventing new ones. \n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      26.0,
+      97.0,
+      62.0,
+      42.0,
+      84.0,
+      34.0,
+      88.0,
+      35.0
+    ],
+    "solution": [
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        2,
+        7
+      ],
+      [
+        4
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 8,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 26.0
+        },
+        {
+          "item_id": 2,
+          "weight": 97.0
+        },
+        {
+          "item_id": 3,
+          "weight": 62.0
+        },
+        {
+          "item_id": 4,
+          "weight": 42.0
+        },
+        {
+          "item_id": 5,
+          "weight": 84.0
+        },
+        {
+          "item_id": 6,
+          "weight": 34.0
+        },
+        {
+          "item_id": 7,
+          "weight": 88.0
+        },
+        {
+          "item_id": 8,
+          "weight": 35.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        2,
+        4
+      ],
+      [
+        1,
+        3,
+        8
+      ],
+      [
+        5
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "context_index": 22,
+    "input_format": "nl",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Someone is organizing a mini archive and is stuffing paperback and hardback volumes into identical containers. The rule is that each volume gets exactly one container and the combined weight in any container can’t be more than the container’s capacity. The goal is to minimize how many containers are used — you can check that by adding up weights per container to make sure none go over and then counting how many containers were needed. The item weights and the capacity are given below.\n\n{\n  \"container_capacity\": 100.0,\n  \"total_volumes\": 6,\n  \"items\": [\n    {\n      \"volume_id\": \"A\",\n      \"volume_weight\": 25.2\n    },\n    {\n      \"volume_id\": \"B\",\n      \"volume_weight\": 49.3\n    },\n    {\n      \"volume_id\": \"C\",\n      \"volume_weight\": 25.3\n    },\n    {\n      \"volume_id\": \"D\",\n      \"volume_weight\": 33.9\n    },\n    {\n      \"volume_id\": \"E\",\n      \"volume_weight\": 25.7\n    },\n    {\n      \"volume_id\": \"F\",\n      \"volume_weight\": 26.8\n    }\n  ]\n}\n\nIf you'd like the result in a compact, predictable form, I usually lay it out like this:\n\n{\n  \"solution\": [[volume_id, ...], ...]\n}\n\nThink of \"solution\" as the list of containers, and each inner array is the set of volume IDs packed into one container. The placeholders (like volume_id) are just stand-ins for the actual item identifiers from your instance — this block is a sketch of the shape I expect, not the actual packing.\n\nAlso, please use the exact identifiers from the instance input — do not rename them or invent new labels.\n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      25.2,
+      49.3,
+      25.3,
+      33.9,
+      25.7,
+      26.8
+    ],
+    "solution": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        3,
+        4,
+        5
+      ]
+    ],
+    "obj": 2,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 6,
+      "items": [
+        {
+          "item_id": "A",
+          "weight": 25.2
+        },
+        {
+          "item_id": "B",
+          "weight": 49.3
+        },
+        {
+          "item_id": "C",
+          "weight": 25.3
+        },
+        {
+          "item_id": "D",
+          "weight": 33.9
+        },
+        {
+          "item_id": "E",
+          "weight": 25.7
+        },
+        {
+          "item_id": "F",
+          "weight": 26.8
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        "A",
+        "B",
+        "C"
+      ],
+      [
+        "D",
+        "E",
+        "F"
+      ]
+    ],
+    "context_index": 23,
+    "input_format": "json",
+    "input_index_base": "names"
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Many people underestimate how much planning goes into loading food, so here’s my situation: a bunch of finished dish containers must be loaded into identical coolers. The decision is organizing those containers into coolers so none exceeds its capacity and every single container lives in one and only one cooler. The plan that’s “better” is the one that lets us bring the fewest coolers — you can check by counting them. The actual container weights and cooler limit are shown below.\n\n{\n  \"cooler_capacity\": 100.0,\n  \"total_dish_containers\": 10,\n  \"items\": [\n    {\n      \"container_id\": 1,\n      \"container_weight\": 49.8\n    },\n    {\n      \"container_id\": 2,\n      \"container_weight\": 36.7\n    },\n    {\n      \"container_id\": 3,\n      \"container_weight\": 48.2\n    },\n    {\n      \"container_id\": 4,\n      \"container_weight\": 48.2\n    },\n    {\n      \"container_id\": 5,\n      \"container_weight\": 35.0\n    },\n    {\n      \"container_id\": 6,\n      \"container_weight\": 27.7\n    },\n    {\n      \"container_id\": 7,\n      \"container_weight\": 49.4\n    },\n    {\n      \"container_id\": 8,\n      \"container_weight\": 28.8\n    },\n    {\n      \"container_id\": 9,\n      \"container_weight\": 25.9\n    },\n    {\n      \"container_id\": 10,\n      \"container_weight\": 28.4\n    }\n  ]\n}\n\nAlso, when you send me the actual assignment of containers to coolers, please use this simple JSON layout so it's easy to check:\n\n{\n  \"solution\": [[container_id, ...], ...]\n}\n\nThis is just a little sketch of the shape I expect: \"solution\" is a list of coolers, each inner list is the container IDs that go in that cooler. Think of each inner array as one cooler's contents — nothing fancy, just a plain list of which containers ride together. The JSON above is the format only, not the real answer.\n\nPlease be sure to use the exact container identifiers from the instance input — no renaming and no new labels. \n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”\"",
+    "instance": [
+      49.8,
+      36.7,
+      48.2,
+      48.2,
+      35.0,
+      27.7,
+      49.4,
+      28.8,
+      25.9,
+      28.4
+    ],
+    "solution": [
+      [
+        2,
+        3
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        7,
+        9
+      ],
+      [
+        4,
+        5,
+        8
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 10,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 49.8
+        },
+        {
+          "item_id": 2,
+          "weight": 36.7
+        },
+        {
+          "item_id": 3,
+          "weight": 48.2
+        },
+        {
+          "item_id": 4,
+          "weight": 48.2
+        },
+        {
+          "item_id": 5,
+          "weight": 35.0
+        },
+        {
+          "item_id": 6,
+          "weight": 27.7
+        },
+        {
+          "item_id": 7,
+          "weight": 49.4
+        },
+        {
+          "item_id": 8,
+          "weight": 28.8
+        },
+        {
+          "item_id": 9,
+          "weight": 25.9
+        },
+        {
+          "item_id": 10,
+          "weight": 28.4
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        2,
+        8,
+        10
+      ],
+      [
+        5,
+        6,
+        9
+      ]
+    ],
+    "context_index": 24,
+    "input_format": "json",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "I’m trying to sort a pile of toolboxes and loose parts into a bunch of identical plastic totes in the garage. The job is to put every single toolbox and every loose part into one tote each (no splitting an item or putting it in twice), never overfill a tote past its weight limit, and do it so that the whole job ends up using as few totes as possible — count how many totes are used, and fewer is better. The exact list of items and the tote weight limit are shown below.\n\nEach tote can hold at most 100.0 and there are 10 items to place.\nI need to put 1 weighing 35.6 into a tote.\nI need to put 2 weighing 25.0 into a tote.\nI need to put 3 weighing 27.0 into a tote.\nI need to put 4 weighing 30.4 into a tote.\nI need to put 5 weighing 33.6 into a tote.\nI need to put 6 weighing 25.3 into a tote.\nI need to put 7 weighing 48.2 into a tote.\nI need to put 8 weighing 34.7 into a tote.\nI need to put 9 weighing 39.5 into a tote.\nI need to put 10 weighing 29.7 into a tote.\nI’ll pack them without exceeding 100.0, aiming to use as few totes as possible.\n\nOh, and one more thing — when you send the actual packing plan, please use this simple JSON layout so I (and any scripts) can read it easily:\n\n{\n  \"solution\": [[toolbox_id, ...], ...]\n}\n\nHere, \"solution\" is a list of totes, and each inner list is the set of item IDs (toolboxes or loose parts) that go into that particular tote. The toolbox_id token is just a placeholder showing the shape I expect — in your real reply each placeholder should be replaced by the actual item identifiers from the instance.\n\nPlease use the exact identifiers from the instance input — do not rename items or invent new labels.  \n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      35.6,
+      25.0,
+      27.0,
+      30.4,
+      33.6,
+      25.3,
+      48.2,
+      34.7,
+      39.5,
+      29.7
+    ],
+    "solution": [
+      [
+        2,
+        8,
+        9
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        1,
+        5,
+        7
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 10,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 35.6
+        },
+        {
+          "item_id": 2,
+          "weight": 25.0
+        },
+        {
+          "item_id": 3,
+          "weight": 27.0
+        },
+        {
+          "item_id": 4,
+          "weight": 30.4
+        },
+        {
+          "item_id": 5,
+          "weight": 33.6
+        },
+        {
+          "item_id": 6,
+          "weight": 25.3
+        },
+        {
+          "item_id": 7,
+          "weight": 48.2
+        },
+        {
+          "item_id": 8,
+          "weight": 34.7
+        },
+        {
+          "item_id": 9,
+          "weight": 39.5
+        },
+        {
+          "item_id": 10,
+          "weight": 29.7
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        3,
+        9,
+        10
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        2,
+        6,
+        8
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "context_index": 25,
+    "input_format": "nl",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Many people end up juggling multiple identical backup drives when they want to save a lot of media. The choice is how to group the files onto those drives so every file appears on a single drive, no drive goes beyond how much it can hold, and the whole thing fits on as few drives as possible. Fewer drives used means a better solution, and you measure that by the drive count. The exact sizes and capacities follow below.\n\nThere are 9 files and each identical drive can hold up to 150.0 units.\nFile 0 has size 72.0.\nFile 1 has size 83.0.\nFile 2 has size 56.0.\nFile 3 has size 43.0.\nFile 4 has size 68.0.\nFile 5 has size 48.0.\nFile 6 has size 36.0.\nFile 7 has size 89.0.\nFile 8 has size 31.0.\nThese files should be grouped onto drives without exceeding 150.0, aiming to minimize the number of drives used.\n\nIf you want the answer in a simple machine-friendly form, just follow this shape — nothing fancy:\n\n{\n  \"solution\": [[\"file_id_1\", \"file_id_2\"], [\"file_id_3\"]]\n}\n\nHere the parts mean, in plain terms: \"solution\" is a list of drives (or backup disks), and each inner list is the group of file IDs that should go on that drive. It's just a sketch of the shape I expect, not the actual packing — you'll replace those placeholders with the real file IDs from the instance.\n\nPlease make sure to use the exact identifiers given in the instance input — do not rename them or invent new labels.\n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      72.0,
+      83.0,
+      56.0,
+      43.0,
+      68.0,
+      48.0,
+      36.0,
+      89.0,
+      31.0
+    ],
+    "solution": [
+      [
+        1,
+        6,
+        8
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 9,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 72.0
+        },
+        {
+          "item_id": 1,
+          "weight": 83.0
+        },
+        {
+          "item_id": 2,
+          "weight": 56.0
+        },
+        {
+          "item_id": 3,
+          "weight": 43.0
+        },
+        {
+          "item_id": 4,
+          "weight": 68.0
+        },
+        {
+          "item_id": 5,
+          "weight": 48.0
+        },
+        {
+          "item_id": 6,
+          "weight": 36.0
+        },
+        {
+          "item_id": 7,
+          "weight": 89.0
+        },
+        {
+          "item_id": 8,
+          "weight": 31.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        1,
+        6,
+        8
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "context_index": 26,
+    "input_format": "nl",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "On a busy morning at the nursery, the gardener sorted pots into identical transport crates, deciding which pots share a crate so that no crate gets too heavy, every pot is in one crate only, and the whole load uses as few crates as possible. The winner among different ways to pack them is the one that ends up with the smallest number of crates — just count how many are used — provided each crate’s combined weight is under the cap. The concrete numbers for plant weights and the crate capacity follow below.\n\n# crate_capacity=100.0\n# total_plants=9\nplant_id,plant_weight\n1,34.0\n2,42.6\n3,27.7\n4,27.5\n5,38.1\n6,27.1\n7,41.8\n8,33.7\n9,25.4\n\nOh, and just so we're on the same page about how I'd like the answer shaped: please return a little JSON sketch like the one below that shows which pots go into which crate. Nothing fancy — just that structure.\n\n{\n  \"solution\": [[pot_id, ...], ...]\n}\n\nThis little sketch means: \"solution\" is a list of crates, and each inner list is the pots packed into that crate (use the pot identifiers from the instance). It's just a template to show the shape I expect, not the actual packing.\n\nOne quick but important note — use the exact identifiers from the instance input, do not rename them or invent new labels. Valid identifiers look like:\n- plain numbers such as “1” or “23”\n- single capital letters like “A” or “B”\n- a capital letter followed by digits like “A1” or “X7”\n\nKeep those exactly as given in the input when you fill in the JSON.",
+    "instance": [
+      34.0,
+      42.6,
+      27.7,
+      27.5,
+      38.1,
+      27.1,
+      41.8,
+      33.7,
+      25.4
+    ],
+    "solution": [
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        5,
+        7
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        2,
+        8
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 9,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 34.0
+        },
+        {
+          "item_id": 2,
+          "weight": 42.6
+        },
+        {
+          "item_id": 3,
+          "weight": 27.7
+        },
+        {
+          "item_id": 4,
+          "weight": 27.5
+        },
+        {
+          "item_id": 5,
+          "weight": 38.1
+        },
+        {
+          "item_id": 6,
+          "weight": 27.1
+        },
+        {
+          "item_id": 7,
+          "weight": 41.8
+        },
+        {
+          "item_id": 8,
+          "weight": 33.7
+        },
+        {
+          "item_id": 9,
+          "weight": 25.4
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        2,
+        4
+      ],
+      [
+        1,
+        6,
+        8
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        3,
+        9
+      ]
+    ],
+    "context_index": 27,
+    "input_format": "csv",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Someone at the community center has to pack toys into the same kind of box over and over. Each toy must go into just one box — nothing left behind or duplicated — and each box must stay at or under the allowed weight. The aim is to get everything boxed up using as few boxes as possible; simply count boxes to see which packing wins. The detailed list of toy weights and the box capacity is below.\n\n- **box_max_weight**: 150.0\n- **total_number_of_toys**: 10\n\n| toy_id | toy_weight |\n|---|---|\n| 1 | 75.0 |\n| 2 | 34.0 |\n| 3 | 53.0 |\n| 4 | 80.0 |\n| 5 | 89.0 |\n| 6 | 79.0 |\n| 7 | 32.0 |\n| 8 | 54.0 |\n| 9 | 90.0 |\n| 10 | 63.0 |\n\nAlso, when you hand back a packing, just use this simple JSON shape so it's easy to read and parse:\n\n{\n  \"solution\": [[\"toy_id\", ...], ...]\n}\n\nHere \"solution\" is a list of boxes, and each inner list is the set of toy IDs that go into that particular box. Think of each inner array as one packed box — list the toy identifiers that belong together. This JSON is only a sketch of the shape I expect, not the actual packing.\n\nPlease make sure to use the exact identifiers from the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      75.0,
+      34.0,
+      53.0,
+      80.0,
+      89.0,
+      79.0,
+      32.0,
+      54.0,
+      90.0,
+      63.0
+    ],
+    "solution": [
+      [
+        4,
+        7
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        1,
+        3,
+        6
+      ],
+      [
+        8
+      ]
+    ],
+    "obj": 5,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 10,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 75.0
+        },
+        {
+          "item_id": 2,
+          "weight": 34.0
+        },
+        {
+          "item_id": 3,
+          "weight": 53.0
+        },
+        {
+          "item_id": 4,
+          "weight": 80.0
+        },
+        {
+          "item_id": 5,
+          "weight": 89.0
+        },
+        {
+          "item_id": 6,
+          "weight": 79.0
+        },
+        {
+          "item_id": 7,
+          "weight": 32.0
+        },
+        {
+          "item_id": 8,
+          "weight": 54.0
+        },
+        {
+          "item_id": 9,
+          "weight": 90.0
+        },
+        {
+          "item_id": 10,
+          "weight": 63.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        5,
+        8
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        1,
+        10
+      ],
+      [
+        2,
+        4,
+        7
+      ],
+      [
+        9
+      ]
+    ],
+    "context_index": 28,
+    "input_format": "markdown_table",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Back when the garage was being cleared out, every small appliance had to be organized into identical shelving bins so none would overload a bin and every appliance would be in exactly one place. A preferable setup is easy to spot: it’s the one that uses the least number of bins, and performance is measured simply by how many bins get used (fewer is better), provided no bin exceeds its weight limit. The concrete details for each appliance and the bin weight limit are shown below.\n\n{\n  \"shelf_bin_capacity\": 150.0,\n  \"num_appliances\": 8,\n  \"items\": [\n    {\n      \"appliance_id\": 0,\n      \"appliance_weight\": 77.0\n    },\n    {\n      \"appliance_id\": 1,\n      \"appliance_weight\": 81.0\n    },\n    {\n      \"appliance_id\": 2,\n      \"appliance_weight\": 67.0\n    },\n    {\n      \"appliance_id\": 3,\n      \"appliance_weight\": 58.0\n    },\n    {\n      \"appliance_id\": 4,\n      \"appliance_weight\": 28.0\n    },\n    {\n      \"appliance_id\": 5,\n      \"appliance_weight\": 20.0\n    },\n    {\n      \"appliance_id\": 6,\n      \"appliance_weight\": 80.0\n    },\n    {\n      \"appliance_id\": 7,\n      \"appliance_weight\": 21.0\n    }\n  ]\n}\n\nOh, and when you send the packing back, please use this simple JSON layout so it's easy to read and check:\n\n{\n  \"solution\": [[\"appliance_id\", ...], ...]\n}\n\nHere \"solution\" is a list of shelving bins, and each inner list is the group of appliance identifiers that go into that bin — just like writing which appliances ended up on each shelf. This is only a sketch of the shape I expect, not the actual packed answer.\n\nAlso: all identifiers must be used exactly as they appear in the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      77.0,
+      81.0,
+      67.0,
+      58.0,
+      28.0,
+      20.0,
+      80.0,
+      21.0
+    ],
+    "solution": [
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        4,
+        5,
+        6,
+        7
+      ]
+    ],
+    "obj": 3,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 8,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 77.0
+        },
+        {
+          "item_id": 1,
+          "weight": 81.0
+        },
+        {
+          "item_id": 2,
+          "weight": 67.0
+        },
+        {
+          "item_id": 3,
+          "weight": 58.0
+        },
+        {
+          "item_id": 4,
+          "weight": 28.0
+        },
+        {
+          "item_id": 5,
+          "weight": 20.0
+        },
+        {
+          "item_id": 6,
+          "weight": 80.0
+        },
+        {
+          "item_id": 7,
+          "weight": 21.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        4,
+        5,
+        6,
+        7
+      ]
+    ],
+    "context_index": 29,
+    "input_format": "json",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "There’s a pile of bike wheels and frames waiting to be shipped in identical containers; the job is to put each component into one container only, never exceed a container’s permitted weight, and end up using as few containers as possible. You measure how well that went simply by counting the containers you needed. The exact components and their weights are listed below.\n\n- **container_capacity_kg**: 150.0\n- **total_components**: 5\n\n| component_id | component_weight_kg |\n|---|---|\n| 1 | 56.0 |\n| 2 | 29.0 |\n| 3 | 51.0 |\n| 4 | 81.0 |\n| 5 | 80.0 |\n\nAlso, when you send your packing plan back, keep it in this simple JSON shape so it's easy to read and check:\n\n{\n  \"solution\": [[wheel_id, ...], ...]\n}\n\nThink of this as: \"solution\" is a list of containers, and each inner list is the components that go into one container. wheel_id is just a placeholder name matching the stuff in the story (so in your real reply you'll replace those placeholders with the actual item identifiers from the instance). This block is only a sketch of the expected shape — not the real answer.\n\nPlease make sure all identifiers in your actual solution are used exactly as they appear in the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      56.0,
+      29.0,
+      51.0,
+      81.0,
+      80.0
+    ],
+    "solution": [
+      [
+        2,
+        4
+      ],
+      [
+        3
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "obj": 3,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 5,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 56.0
+        },
+        {
+          "item_id": 2,
+          "weight": 29.0
+        },
+        {
+          "item_id": 3,
+          "weight": 51.0
+        },
+        {
+          "item_id": 4,
+          "weight": 81.0
+        },
+        {
+          "item_id": 5,
+          "weight": 80.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        3,
+        5
+      ],
+      [
+        4
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "context_index": 30,
+    "input_format": "markdown_table",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Recently the studio decided to move some paintings into storage and has only identical crates to use; the task is to put each canvas into exactly one crate and keep each crate’s load under its allowed weight. What counts as better here is easy to see: fewer crates used is better — you add up the weights in each crate to make sure none are over the limit, and then just count the crates. The specifics (weights and crate limit) follow below.\n\n- **crate_weight_limit**: 150.0\n- **num_paintings**: 10\n\n| painting_id | painting_weight |\n|---|---|\n| 1 | 100.0 |\n| 2 | 86.0 |\n| 3 | 58.0 |\n| 4 | 35.0 |\n| 5 | 54.0 |\n| 6 | 22.0 |\n| 7 | 54.0 |\n| 8 | 55.0 |\n| 9 | 72.0 |\n| 10 | 96.0 |\n\nAlso, when you send the packing back, just use a tiny JSON snippet like this so it's easy to read and load:\n\n{\n  \"solution\": [[painting_id, ...], ...]\n}\n\nThink of \"solution\" as a list of crates, and each inner list is the paintings that go into that crate. The painting_id entries are placeholders for the actual painting identifiers from the instance — the JSON above is only a sketch of the shape I need, not the real answer.\n\nPlease make sure to use the exact identifiers from the instance input — don't rename them or invent new labels. \n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      100.0,
+      86.0,
+      58.0,
+      35.0,
+      54.0,
+      22.0,
+      54.0,
+      55.0,
+      72.0,
+      96.0
+    ],
+    "solution": [
+      [
+        6,
+        9
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        3,
+        4,
+        7
+      ],
+      [
+        8
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "obj": 5,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 10,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 100.0
+        },
+        {
+          "item_id": 2,
+          "weight": 86.0
+        },
+        {
+          "item_id": 3,
+          "weight": 58.0
+        },
+        {
+          "item_id": 4,
+          "weight": 35.0
+        },
+        {
+          "item_id": 5,
+          "weight": 54.0
+        },
+        {
+          "item_id": 6,
+          "weight": 22.0
+        },
+        {
+          "item_id": 7,
+          "weight": 54.0
+        },
+        {
+          "item_id": 8,
+          "weight": 55.0
+        },
+        {
+          "item_id": 9,
+          "weight": 72.0
+        },
+        {
+          "item_id": 10,
+          "weight": 96.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        7,
+        10
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        4,
+        5,
+        8
+      ],
+      [
+        9
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "context_index": 31,
+    "input_format": "markdown_table",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Many people underestimate how tricky it is to pack all the lights into the same type of flight case without going over the case weight allowance, but the job here is straightforward: assign each piece to one case, don’t split or repeat items, and keep every case under its weight limit. The winning arrangement is the one that ends up with the smallest number of cases to lug around — just count the cases to compare options. The exact weights for each item and the case limit are given below.\n\n- **case_weight_limit**: 150.0\n- **total_gear_pieces**: 8\n\n| gear_id | gear_weight |\n|---|---|\n| 1 | 22.0 |\n| 2 | 55.0 |\n| 3 | 38.0 |\n| 4 | 85.0 |\n| 5 | 95.0 |\n| 6 | 64.0 |\n| 7 | 94.0 |\n| 8 | 25.0 |\n\nIf you want to hand me the packing plan in a tidy, machine-friendly way, just follow this little JSON layout I'm showing below — keeps things simple and predictable.\n\n{\n  \"solution\": [[light_id, ...], ...]\n}\n\nThe idea here is straightforward: \"solution\" is a list of cases, and each inner list is the set of light IDs assigned to that case. Think of each inner array as one flight case and the entries inside as the exact items that go into it. This is just a sketch of the shape I expect, not the final packing plan.\n\nPlease make sure every identifier you use in the real answer matches the instance input exactly — don’t rename items or invent new labels. \n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      22.0,
+      55.0,
+      38.0,
+      85.0,
+      95.0,
+      64.0,
+      94.0,
+      25.0
+    ],
+    "solution": [
+      [
+        0,
+        1,
+        2,
+        7
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4
+      ],
+      [
+        6
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 8,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 22.0
+        },
+        {
+          "item_id": 2,
+          "weight": 55.0
+        },
+        {
+          "item_id": 3,
+          "weight": 38.0
+        },
+        {
+          "item_id": 4,
+          "weight": 85.0
+        },
+        {
+          "item_id": 5,
+          "weight": 95.0
+        },
+        {
+          "item_id": 6,
+          "weight": 64.0
+        },
+        {
+          "item_id": 7,
+          "weight": 94.0
+        },
+        {
+          "item_id": 8,
+          "weight": 25.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        1,
+        2,
+        3,
+        8
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5
+      ],
+      [
+        7
+      ]
+    ],
+    "context_index": 32,
+    "input_format": "markdown_table",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "We’ve got a pile of vintage shirts and coats that need to be folded and packed into the same kind of trunks, and the trick is to pack them so no trunk’s weight allowance is exceeded. Every single item must be assigned to exactly one trunk, and the best outcome is the one with the smallest number of trunks used — you just total how many trunks are filled to get that score. The exact item weights and trunk weight limit are listed below.\n\nEach trunk holds up to 100.0 kg and we’ve got 6 garments to assign.\nWe fold A and it weighs 29.9 kg.\nWe fold B and it weighs 25.1 kg.\nWe fold C and it weighs 26.6 kg.\nWe fold D and it weighs 25.7 kg.\nWe fold E and it weighs 45.7 kg.\nWe fold F and it weighs 25.7 kg.\nLet’s pack so no trunk exceeds 100.0 kg and we use as few trunks as possible.\n\nOh, and when you send back the actual packing, just use a simple JSON layout like this so I can read it easily:\n\n{\n  \"solution\": [[\"garment_id\", ...], ...]\n}\n\nThink of \"solution\" as a list of trunks, and each inner list is the set of item identifiers you put into that trunk. It’s just a sketch of the shape I expect — not the real answer — so fill those placeholder slots with the actual item ids from the instance.\n\nPlease make sure you use the exact identifiers from the instance input — don’t rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      29.9,
+      25.1,
+      26.6,
+      25.7,
+      45.7,
+      25.7
+    ],
+    "solution": [
+      [
+        1,
+        2,
+        4
+      ],
+      [
+        0,
+        3,
+        5
+      ]
+    ],
+    "obj": 2,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 6,
+      "items": [
+        {
+          "item_id": "A",
+          "weight": 29.9
+        },
+        {
+          "item_id": "B",
+          "weight": 25.1
+        },
+        {
+          "item_id": "C",
+          "weight": 26.6
+        },
+        {
+          "item_id": "D",
+          "weight": 25.7
+        },
+        {
+          "item_id": "E",
+          "weight": 45.7
+        },
+        {
+          "item_id": "F",
+          "weight": 25.7
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        "B",
+        "C",
+        "E"
+      ],
+      [
+        "A",
+        "D",
+        "F"
+      ]
+    ],
+    "context_index": 33,
+    "input_format": "nl",
+    "input_index_base": "names"
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "I run a pet supply warehouse packing sacks of feed into identical shipping boxes. The job is to decide which sacks go together in each box so no box gets heavier than it can safely carry, every sack ends up in exactly one box (nothing left out or duplicated), and the best way is the one that gets everything shipped using the fewest boxes — you can see how well a plan did simply by counting how many boxes were used. The exact bag weights and box capacity are shown below.\n\n# box_capacity_weight=150.0\n# total_feed_sacks=10\nsack_id,sack_weight\n0,32.0\n1,64.0\n2,86.0\n3,70.0\n4,74.0\n5,20.0\n6,76.0\n7,56.0\n8,40.0\n9,39.0\n\nAlso, when you send the packing plan back, just use a simple JSON shape like this so it's easy to parse:\n\n{\n  \"solution\": [[\"sack_id\", ...], ...]\n}\n\nHere \"solution\" is a list of boxes and each inner list shows which sacks go in that box (by their sack identifier). This is just a sketch of the expected shape — not the actual assignment.\n\nPlease make sure every identifier you use matches the instance input exactly — no renaming and no new labels.\n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      32.0,
+      64.0,
+      86.0,
+      70.0,
+      74.0,
+      20.0,
+      76.0,
+      56.0,
+      40.0,
+      39.0
+    ],
+    "solution": [
+      [
+        0,
+        4,
+        9
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        2,
+        5,
+        8
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 10,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 32.0
+        },
+        {
+          "item_id": 1,
+          "weight": 64.0
+        },
+        {
+          "item_id": 2,
+          "weight": 86.0
+        },
+        {
+          "item_id": 3,
+          "weight": 70.0
+        },
+        {
+          "item_id": 4,
+          "weight": 74.0
+        },
+        {
+          "item_id": 5,
+          "weight": 20.0
+        },
+        {
+          "item_id": 6,
+          "weight": 76.0
+        },
+        {
+          "item_id": 7,
+          "weight": 56.0
+        },
+        {
+          "item_id": 8,
+          "weight": 40.0
+        },
+        {
+          "item_id": 9,
+          "weight": 39.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        0,
+        4,
+        9
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        2,
+        5,
+        8
+      ]
+    ],
+    "context_index": 34,
+    "input_format": "csv",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "At the warehouse the team needed to fit a bunch of packed cartons into identical crates, making sure none of the crates was overloaded. The choice involves grouping cartons so each box sits in one crate only, no crate passes the weight limit, and the ideal result is the one that uses the fewest crates overall — you’ll know it’s better when the total number of crates goes down. The specific cartons and the permitted load per crate are shown below.\n\n- **crate_permitted_load**: 150.0\n- **total_cartons**: 10\n\n| carton_id | carton_weight |\n|---|---|\n| 1 | 20.0 |\n| 2 | 46.0 |\n| 3 | 67.0 |\n| 4 | 72.0 |\n| 5 | 24.0 |\n| 6 | 73.0 |\n| 7 | 75.0 |\n| 8 | 46.0 |\n| 9 | 50.0 |\n| 10 | 97.0 |\n\nIf you want the answer in a machine-friendly way, I'll return a little JSON sketch that shows which cartons go in which crate. It's just a relaxed layout — one top-level key called solution, with a list of crates, and each crate is a list of carton placeholders. Here’s the shape I’ll use:\n\n{\n  \"solution\": [[carton_id, ...], ...]\n}\n\nThink of that as: \"solution\" holds all the crates, each inner list is one crate and the items inside are carton_id placeholders for the cartons I've assigned there. This is only the expected shape of the reply — not the actual packing.\n\nPlease use the exact identifiers from the instance input when I produce the real assignment — do not rename them or invent new labels. For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      20.0,
+      46.0,
+      67.0,
+      72.0,
+      24.0,
+      73.0,
+      75.0,
+      46.0,
+      50.0,
+      97.0
+    ],
+    "solution": [
+      [
+        8,
+        9
+      ],
+      [
+        1,
+        2,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        0,
+        5,
+        7
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 10,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 20.0
+        },
+        {
+          "item_id": 2,
+          "weight": 46.0
+        },
+        {
+          "item_id": 3,
+          "weight": 67.0
+        },
+        {
+          "item_id": 4,
+          "weight": 72.0
+        },
+        {
+          "item_id": 5,
+          "weight": 24.0
+        },
+        {
+          "item_id": 6,
+          "weight": 73.0
+        },
+        {
+          "item_id": 7,
+          "weight": 75.0
+        },
+        {
+          "item_id": 8,
+          "weight": 46.0
+        },
+        {
+          "item_id": 9,
+          "weight": 50.0
+        },
+        {
+          "item_id": 10,
+          "weight": 97.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        9,
+        10
+      ],
+      [
+        2,
+        3,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        1,
+        6,
+        8
+      ]
+    ],
+    "context_index": 35,
+    "input_format": "markdown_table",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Recently the library needed to move a batch of paperbacks and had only uniform archival cartons on hand; the plan was to drop each paperback into one carton, keep each carton under its weight limit, and do it in a way that uses the fewest cartons. That means testing how books are grouped and comparing groupings by the total number of cartons they produce — the packing with the smallest carton count is preferred. The concrete details will be shown below.\n\n{\n  \"carton_max_weight\": 150.0,\n  \"total_paperback_count\": 10,\n  \"items\": [\n    {\n      \"volume_id\": 0,\n      \"volume_weight\": 23.0\n    },\n    {\n      \"volume_id\": 1,\n      \"volume_weight\": 67.0\n    },\n    {\n      \"volume_id\": 2,\n      \"volume_weight\": 67.0\n    },\n    {\n      \"volume_id\": 3,\n      \"volume_weight\": 98.0\n    },\n    {\n      \"volume_id\": 4,\n      \"volume_weight\": 47.0\n    },\n    {\n      \"volume_id\": 5,\n      \"volume_weight\": 41.0\n    },\n    {\n      \"volume_id\": 6,\n      \"volume_weight\": 36.0\n    },\n    {\n      \"volume_id\": 7,\n      \"volume_weight\": 72.0\n    },\n    {\n      \"volume_id\": 8,\n      \"volume_weight\": 100.0\n    },\n    {\n      \"volume_id\": 9,\n      \"volume_weight\": 88.0\n    }\n  ]\n}\n\nOh, and to keep things tidy when you send the grouping back, please follow this simple JSON shape so it's easy to read by hand or by a script:\n\n{\n  \"solution\": [[book_id, ...], ...]\n}\n\nThink of \"solution\" as a list of cartons, and each inner list is one carton containing the book identifiers that go inside it. The placeholder book_id is just standing in for whatever actual identifiers the instance uses — this block is only a sketch of the expected shape, not the real packing.\n\nPlease be careful to use the exact identifiers from the instance input — do not rename them and do not invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      23.0,
+      67.0,
+      67.0,
+      98.0,
+      47.0,
+      41.0,
+      36.0,
+      72.0,
+      100.0,
+      88.0
+    ],
+    "solution": [
+      [
+        4,
+        8
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        0,
+        6,
+        9
+      ],
+      [
+        3
+      ]
+    ],
+    "obj": 5,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 10,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 23.0
+        },
+        {
+          "item_id": 1,
+          "weight": 67.0
+        },
+        {
+          "item_id": 2,
+          "weight": 67.0
+        },
+        {
+          "item_id": 3,
+          "weight": 98.0
+        },
+        {
+          "item_id": 4,
+          "weight": 47.0
+        },
+        {
+          "item_id": 5,
+          "weight": 41.0
+        },
+        {
+          "item_id": 6,
+          "weight": 36.0
+        },
+        {
+          "item_id": 7,
+          "weight": 72.0
+        },
+        {
+          "item_id": 8,
+          "weight": 100.0
+        },
+        {
+          "item_id": 9,
+          "weight": 88.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        4,
+        8
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        0,
+        6,
+        9
+      ],
+      [
+        3
+      ]
+    ],
+    "context_index": 36,
+    "input_format": "json",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Recently a photographer asked to copy a batch of high-res images to identical cards: each file must go on exactly one card, no splits, no duplicates, and no card can hold more data than its limit. Success is measured by how many cards end up being used — the fewer cards required, the better, so just count them to see how well it went. The detailed sizes and card limits appear below.\n\nThere are 5 photo files and each identical memory card holds up to 150.0 bytes.\nPhoto A: 48.0 bytes.\nPhoto B: 26.0 bytes.\nPhoto C: 50.0 bytes.\nPhoto D: 53.0 bytes.\nPhoto E: 82.0 bytes.\nPlace each file intact on cards of 150.0 bytes and count how many cards the 5 photos require.\n\nIf you prefer a machine-friendly reply, just return a small JSON object in the shape below — it's nothing fancy, just a simple packing list layout.\n\n{\n  \"solution\": [[\"file_id\", ...], ...]\n}\n\nThink of this as: \"solution\" is a list of memory cards, and each inner array is the files put on one card. \"file_id\" is just a placeholder for the actual file identifiers you were given in the instance. This block is only a sketch of the expected shape, not the actual assignment.\n\nImportant: use the identifiers exactly as they appear in the instance input — no renaming and no new labels.\n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      48.0,
+      26.0,
+      50.0,
+      53.0,
+      82.0
+    ],
+    "solution": [
+      [
+        3,
+        4
+      ],
+      [
+        0,
+        1,
+        2
+      ]
+    ],
+    "obj": 2,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 5,
+      "items": [
+        {
+          "item_id": "A",
+          "weight": 48.0
+        },
+        {
+          "item_id": "B",
+          "weight": 26.0
+        },
+        {
+          "item_id": "C",
+          "weight": 50.0
+        },
+        {
+          "item_id": "D",
+          "weight": 53.0
+        },
+        {
+          "item_id": "E",
+          "weight": 82.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        "D",
+        "E"
+      ],
+      [
+        "A",
+        "B",
+        "C"
+      ]
+    ],
+    "context_index": 37,
+    "input_format": "nl",
+    "input_index_base": "names"
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Many people who make mixes run into this: a DJ has to organize a bunch of tracks onto identical blank discs so that each song sits on one disc, no disc exceeds its time capacity, and the overall job uses the least number of discs possible. The straightforward measure is how many discs end up being used — smaller is preferable — and you verify a grouping by summing the track lengths on each disc and checking that the sum stays within the disc’s limit. Every track must appear once and only once; splitting or duplicating tracks isn’t allowed. The specific times and disc limit appear below.\n\n- **disc_time_capacity_seconds**: 150.0\n- **total_tracks**: 10\n\n| track_id | track_duration_seconds |\n|---|---|\n| 1 | 30.0 |\n| 2 | 27.0 |\n| 3 | 75.0 |\n| 4 | 100.0 |\n| 5 | 52.0 |\n| 6 | 64.0 |\n| 7 | 87.0 |\n| 8 | 96.0 |\n| 9 | 82.0 |\n| 10 | 39.0 |\n\nAlso, when you send your grouping back, please follow this little JSON layout so it's easy to parse:\n\n{\n  \"solution\": [[track_id, ...], ...]\n}\n\nHere \"solution\" is the outer container, and each inner array is one disc (so each disc lists the track identifiers that go on it). Think of it like a form: each bracketed list is a disc and the items inside are the track IDs you put on that disc. This is just the shape I expect — not the actual answer yet.\n\nPlease make sure you use the exact identifiers from the instance input — no renaming, no made-up labels. \n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      30.0,
+      27.0,
+      75.0,
+      100.0,
+      52.0,
+      64.0,
+      87.0,
+      96.0,
+      82.0,
+      39.0
+    ],
+    "solution": [
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        7
+      ]
+    ],
+    "obj": 5,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 10,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 30.0
+        },
+        {
+          "item_id": 2,
+          "weight": 27.0
+        },
+        {
+          "item_id": 3,
+          "weight": 75.0
+        },
+        {
+          "item_id": 4,
+          "weight": 100.0
+        },
+        {
+          "item_id": 5,
+          "weight": 52.0
+        },
+        {
+          "item_id": 6,
+          "weight": 64.0
+        },
+        {
+          "item_id": 7,
+          "weight": 87.0
+        },
+        {
+          "item_id": 8,
+          "weight": 96.0
+        },
+        {
+          "item_id": 9,
+          "weight": 82.0
+        },
+        {
+          "item_id": 10,
+          "weight": 39.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        5,
+        7
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        8
+      ]
+    ],
+    "context_index": 38,
+    "input_format": "markdown_table",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "On a busy shift the task was to arrange sealed vials into a bunch of identical shipping boxes so every vial is assigned to one box, no box takes more weight than allowed, and the whole shipment fits into as few boxes as possible. You decide which plan is best by counting the boxes used (the fewer, the better) and verifying each box by adding up the weights of its contents to ensure it doesn’t exceed the box’s load limit. Each vial must be packed exactly once. The exact instance details follow below.\n\n{\n  \"box_max_load\": 100.0,\n  \"total_vials\": 7,\n  \"items\": [\n    {\n      \"vial_id\": 0,\n      \"vial_weight\": 31.1\n    },\n    {\n      \"vial_id\": 1,\n      \"vial_weight\": 44.8\n    },\n    {\n      \"vial_id\": 2,\n      \"vial_weight\": 26.7\n    },\n    {\n      \"vial_id\": 3,\n      \"vial_weight\": 26.0\n    },\n    {\n      \"vial_id\": 4,\n      \"vial_weight\": 27.0\n    },\n    {\n      \"vial_id\": 5,\n      \"vial_weight\": 38.2\n    },\n    {\n      \"vial_id\": 6,\n      \"vial_weight\": 25.2\n    }\n  ]\n}\n\nIf you want to hand me a packing plan, just use this little JSON shape so I know where to look:\n\n{\n  \"solution\": [[vial_id, ...], ...]\n}\n\nThis is just a sketch of the shape I expect: \"solution\" is a list of boxes, and each inner list is the set of vial IDs assigned to that box. Think of each inner list as one shipping box full of vials.\n\nThe JSON above is only the expected format, not the actual packing — I’ll need the real vial identifiers from the instance to produce the final plan.\n\nPlease be careful: all identifiers must be used exactly as they appear in the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      31.1,
+      44.8,
+      26.7,
+      26.0,
+      27.0,
+      38.2,
+      25.2
+    ],
+    "solution": [
+      [
+        0,
+        2,
+        6
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "obj": 3,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 7,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 31.1
+        },
+        {
+          "item_id": 1,
+          "weight": 44.8
+        },
+        {
+          "item_id": 2,
+          "weight": 26.7
+        },
+        {
+          "item_id": 3,
+          "weight": 26.0
+        },
+        {
+          "item_id": 4,
+          "weight": 27.0
+        },
+        {
+          "item_id": 5,
+          "weight": 38.2
+        },
+        {
+          "item_id": 6,
+          "weight": 25.2
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        0,
+        2,
+        6
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "context_index": 39,
+    "input_format": "json",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "At the scrapyard a foreman is mapping out where each scrap part should go among a bunch of identical collection bins. The rule is every piece gets placed into one bin only, the sum of weights in any bin can’t exceed its capacity, and the aim is to arrange things so as few bins as possible are needed — you evaluate arrangements by counting how many bins end up filled. The detailed piece weights and the bin size are shown below.\n\n- **bin_max_capacity**: 100.0\n- **total_scrap_pieces**: 7\n\n| scrap_piece_id | scrap_piece_weight |\n|---|---|\n| 1 | 35.2 |\n| 2 | 35.7 |\n| 3 | 29.8 |\n| 4 | 37.2 |\n| 5 | 28.2 |\n| 6 | 37.0 |\n| 7 | 34.7 |\n\nJust a heads-up: please format your reply in the simple JSON shape below so I can read which scraps go into which bins.\n\n{\n  \"solution\": [[scrap_id, ...], ...]\n}\n\nThink of \"solution\" as a list of the collection bins, and each inner list is the scrap pieces assigned to that bin. The placeholder scrap_id stands in for whatever exact part identifier comes from the instance — replace each placeholder with the real IDs from the input.\n\nThis JSON is just a sketch of the shape I want, not the actual assignment.\n\nPlease be careful to use the identifiers exactly as they appear in the instance input — no renaming and no new labels. \n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      35.2,
+      35.7,
+      29.8,
+      37.2,
+      28.2,
+      37.0,
+      34.7
+    ],
+    "solution": [
+      [
+        0,
+        1,
+        4
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        5
+      ]
+    ],
+    "obj": 3,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 7,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 35.2
+        },
+        {
+          "item_id": 2,
+          "weight": 35.7
+        },
+        {
+          "item_id": 3,
+          "weight": 29.8
+        },
+        {
+          "item_id": 4,
+          "weight": 37.2
+        },
+        {
+          "item_id": 5,
+          "weight": 28.2
+        },
+        {
+          "item_id": 6,
+          "weight": 37.0
+        },
+        {
+          "item_id": 7,
+          "weight": 34.7
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        1,
+        2,
+        5
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "context_index": 40,
+    "input_format": "markdown_table",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "There's a scene in the loading bay where someone is stacking a bunch of small crates onto identical pallets — each crate needs to go on a single pallet (not split or duplicated), and the total weight on every pallet must stay within its limit. The goal is to keep the number of pallets in use as low as possible; you check how well you did simply by counting pallets that carry something. The exact numbers for the crates and the pallet limit follow below.\n\n# pallet_capacity=100.0\n# total_crates=8\ncrate_id,crate_weight\n1,41.5\n2,25.0\n3,47.2\n4,29.8\n5,39.3\n6,29.8\n7,48.0\n8,35.0\n\nOh, and if you want to hand the result back in a tidy way, please follow this simple JSON layout — something that looks like a list of pallets, each with the crates assigned to it:\n\n{\n  \"solution\": [[crate_id, ...], ...]\n}\n\nThis little sketch means: \"solution\" is a list of pallets; each inner list is the set of crate identifiers sitting on that pallet. The crate_id entries are just placeholders showing the shape I want — when you give the real assignment, put the actual crate labels from the instance in their place.\n\nJust a quick reminder: use the identifiers exactly as they appear in the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      41.5,
+      25.0,
+      47.2,
+      29.8,
+      39.3,
+      29.8,
+      48.0,
+      35.0
+    ],
+    "solution": [
+      [
+        3,
+        4
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        0,
+        1,
+        5
+      ],
+      [
+        7
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 8,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 41.5
+        },
+        {
+          "item_id": 2,
+          "weight": 25.0
+        },
+        {
+          "item_id": 3,
+          "weight": 47.2
+        },
+        {
+          "item_id": 4,
+          "weight": 29.8
+        },
+        {
+          "item_id": 5,
+          "weight": 39.3
+        },
+        {
+          "item_id": 6,
+          "weight": 29.8
+        },
+        {
+          "item_id": 7,
+          "weight": 48.0
+        },
+        {
+          "item_id": 8,
+          "weight": 35.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        4,
+        5
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        1,
+        2,
+        6
+      ],
+      [
+        8
+      ]
+    ],
+    "context_index": 41,
+    "input_format": "csv",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Someone putting together party favors has to cram all the items into matching gift bags before the guests arrive. The decision is how to distribute the favors so no bag goes over what it can carry, and the aim is to use the least number of bags — you judge the result by counting bags, with lower counts meaning a better packing. Rules: every favor goes into exactly one bag, and no bag can exceed its carrying limit. The concrete numbers for the favors and bag limit are listed below.\n\n# bag_capacity=150.0\n# total_favors=9\nfavor_id,favor_weight\n0,51.0\n1,99.0\n2,58.0\n3,87.0\n4,74.0\n5,59.0\n6,49.0\n7,86.0\n8,47.0\n\nOh, and when you hand back the packing plan, it'd be great if you followed this little JSON layout so it's easy to read automatically:\n\n{\n  \"solution\": [[\"favor_id\", \"favor_id\", \"favor_id\"], [\"favor_id\", \"favor_id\"]]\n}\n\nHere \"solution\" is a list of gift bags, each inner list is one bag and the entries are placeholders for the favors that go into that bag. Treat each \"favor_id\" as a stand-in for whatever identifier the instance uses for a favor — this is just a sketch of the shape I expect, not the actual packing.\n\nPlease make sure you use the exact identifiers from the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      51.0,
+      99.0,
+      58.0,
+      87.0,
+      74.0,
+      59.0,
+      49.0,
+      86.0,
+      47.0
+    ],
+    "solution": [
+      [
+        2,
+        7
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        3
+      ]
+    ],
+    "obj": 5,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 9,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 51.0
+        },
+        {
+          "item_id": 1,
+          "weight": 99.0
+        },
+        {
+          "item_id": 2,
+          "weight": 58.0
+        },
+        {
+          "item_id": 3,
+          "weight": 87.0
+        },
+        {
+          "item_id": 4,
+          "weight": 74.0
+        },
+        {
+          "item_id": 5,
+          "weight": 59.0
+        },
+        {
+          "item_id": 6,
+          "weight": 49.0
+        },
+        {
+          "item_id": 7,
+          "weight": 86.0
+        },
+        {
+          "item_id": 8,
+          "weight": 47.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        2,
+        7
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        3
+      ]
+    ],
+    "context_index": 42,
+    "input_format": "csv",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Recently I helped a friend pack for a hike: we had to split all their gear into the same model of backpack, with each bag only able to hold so much weight. Every single item had to be assigned to one bag, no extras and no repeats, and each bag’s total weight had to stay under its limit. The trick was to get everything into as few backpacks as we could — you simply count the backpacks to see how well you did. The exact list of items with their weights and the backpack limit is given below.\n\n- **backpack_capacity**: 150.0\n- **total_gear_items**: 5\n\n| gear_item_id | item_weight |\n|---|---|\n| 0 | 20.0 |\n| 1 | 77.0 |\n| 2 | 39.0 |\n| 3 | 20.0 |\n| 4 | 84.0 |\n\nIf you want to hand me a candidate packing plan, a simple JSON sketch is best — nothing fancy, just a list of backpacks with the item identifiers that go in each one. Something like this shows the shape I expect:\n\n{\n  \"solution\": [[gear_id, ...], ...]\n}\n\nThink of each inner list as one backpack and each placeholder like gear_id as a stand-in for an actual item identifier from the list above. This is just the form I need — a quick, human-friendly way to say \"these items go together\" — not the final packed result.\n\nPlease note: use the exact identifiers from the instance input with no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      20.0,
+      77.0,
+      39.0,
+      20.0,
+      84.0
+    ],
+    "solution": [
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        0,
+        4
+      ]
+    ],
+    "obj": 2,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 5,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 20.0
+        },
+        {
+          "item_id": 1,
+          "weight": 77.0
+        },
+        {
+          "item_id": 2,
+          "weight": 39.0
+        },
+        {
+          "item_id": 3,
+          "weight": 20.0
+        },
+        {
+          "item_id": 4,
+          "weight": 84.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        0,
+        4
+      ]
+    ],
+    "context_index": 43,
+    "input_format": "markdown_table",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "We’re at the loading dock with a pile of parcels and a bunch of the same-sized containers to fill. The decision is which parcel goes into which container so that each parcel is packed exactly once, no container is overweight, and the whole setup uses the smallest possible number of containers — the lower the container count, the better. Every parcel must be placed and not duplicated, and the concrete details will be shown below.\n\n{\n  \"container_capacity\": 150.0,\n  \"total_parcels\": 6,\n  \"items\": [\n    {\n      \"parcel_id\": 1,\n      \"parcel_weight\": 32.0\n    },\n    {\n      \"parcel_id\": 2,\n      \"parcel_weight\": 90.0\n    },\n    {\n      \"parcel_id\": 3,\n      \"parcel_weight\": 57.0\n    },\n    {\n      \"parcel_id\": 4,\n      \"parcel_weight\": 32.0\n    },\n    {\n      \"parcel_id\": 5,\n      \"parcel_weight\": 58.0\n    },\n    {\n      \"parcel_id\": 6,\n      \"parcel_weight\": 65.0\n    }\n  ]\n}\n\nIf you want the packing laid out simply, just send it back in a little JSON sketch like this:\n\n{\n  \"solution\": [[parcel_id, ...], ...]\n}\n\nHere \"solution\" is a list of containers, and each inner list is the parcels that go into that container (those parcel_id tokens are placeholders). Think of it like a packing list form — one line per container, item names filled in where the placeholders are. This block is just the shape I expect your answer to follow, not the actual packing for the instance.\n\nPlease be careful to use the exact identifiers from the instance input — do not rename them or invent new ones.\n\n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      32.0,
+      90.0,
+      57.0,
+      32.0,
+      58.0,
+      65.0
+    ],
+    "solution": [
+      [
+        0,
+        3,
+        5
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        1
+      ]
+    ],
+    "obj": 3,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 6,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 32.0
+        },
+        {
+          "item_id": 2,
+          "weight": 90.0
+        },
+        {
+          "item_id": 3,
+          "weight": 57.0
+        },
+        {
+          "item_id": 4,
+          "weight": 32.0
+        },
+        {
+          "item_id": 5,
+          "weight": 58.0
+        },
+        {
+          "item_id": 6,
+          "weight": 65.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        1,
+        4,
+        6
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2
+      ]
+    ],
+    "context_index": 44,
+    "input_format": "json",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "At the nursery this morning the challenge is to arrange all the pots onto identical growing trays so each pot belongs to one tray and nothing is omitted or duplicated. Every tray carries a strict weight limit, so the total on any tray has to be within that safe range. The aim is to pack everything using the fewest trays possible — you can see which arrangement is better by the tray count. The specific pot weights and tray capacity are listed below.\n\nThere are 8 pots and each tray can carry up to 150.0 weight.\nPot A weighs 90.0.\nPot B weighs 40.0.\nPot C weighs 56.0.\nPot D weighs 73.0.\nPot E weighs 93.0.\nPot F weighs 45.0.\nPot G weighs 86.0.\nPot H weighs 30.0.\nPlace pots so no tray exceeds 150.0, aiming to use the fewest trays to hold all 8 pots.\n\nOh, and when you send the actual arrangement back, please use this simple JSON layout so it's easy to read by the nursery records:\n\n{\n  \"solution\": [[pot_id, ...], ...]\n}\n\nThis little sketch means \"solution\" is a list of trays, and each inner list is the pots assigned to that tray (each pot referenced by its pot identifier from the input). Think of it like a form: one row per tray, with the pot IDs listed together.\n\nThis is just the expected shape — not the real packing — so fill it with the actual pot identifiers when you reply. Please make sure you use the exact identifiers from the instance input — do not rename them and do not invent new labels.\n\nFor example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      90.0,
+      40.0,
+      56.0,
+      73.0,
+      93.0,
+      45.0,
+      86.0,
+      30.0
+    ],
+    "solution": [
+      [
+        4
+      ],
+      [
+        3,
+        5,
+        7
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        6
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 8,
+      "items": [
+        {
+          "item_id": "A",
+          "weight": 90.0
+        },
+        {
+          "item_id": "B",
+          "weight": 40.0
+        },
+        {
+          "item_id": "C",
+          "weight": 56.0
+        },
+        {
+          "item_id": "D",
+          "weight": 73.0
+        },
+        {
+          "item_id": "E",
+          "weight": 93.0
+        },
+        {
+          "item_id": "F",
+          "weight": 45.0
+        },
+        {
+          "item_id": "G",
+          "weight": 86.0
+        },
+        {
+          "item_id": "H",
+          "weight": 30.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        "E"
+      ],
+      [
+        "D",
+        "F",
+        "H"
+      ],
+      [
+        "A",
+        "B"
+      ],
+      [
+        "C",
+        "G"
+      ]
+    ],
+    "context_index": 45,
+    "input_format": "nl",
+    "input_index_base": "names"
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Someone at the shop is lining up posters to be rolled and packed into the same kind of mailing tubes. The tricky part is picking which posters go together so each tube stays under its capacity and every poster is packed once and only once. The clearer win is whichever plan uses the least number of tubes; you simply count how many tubes you end up using. Details about the posters and tube size follow below.\n\nThere are 8 posters and each identical tube can hold up to 100.0.\nPoster 0 weighs 28.5 and will be rolled into a tube.\nPoster 1 weighs 30.4 and will be rolled into a tube.\nPoster 2 weighs 47.6 and will be rolled into a tube.\nPoster 3 weighs 25.3 and will be rolled into a tube.\nPoster 4 weighs 29.0 and will be rolled into a tube.\nPoster 5 weighs 43.4 and will be rolled into a tube.\nPoster 6 weighs 27.5 and will be rolled into a tube.\nPoster 7 weighs 39.7 and will be rolled into a tube.\nThe goal is to keep every tube at or below 100.0 and to use as few tubes as possible.\n\nOh, and before you send back a packing plan, could you put it in a tiny JSON shape like this so it's easy to read and check?\n\n{\n  \"solution\": [[poster_id, ...], ...]\n}\n\nThis is just a sketch of the shape I expect: \"solution\" is the outer list (each inner list is one mailing tube), and each poster_id is a placeholder for whatever poster identifier you'll use to show which posters go together in that tube. Think of it like filling out a simple form — one list per tube, poster identifiers inside.\n\nThis JSON is only the expected shape, not the actual answer.\n\nPlease use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels.\n\"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      28.5,
+      30.4,
+      47.6,
+      25.3,
+      29.0,
+      43.4,
+      27.5,
+      39.7
+    ],
+    "solution": [
+      [
+        1,
+        3,
+        5
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        4,
+        6,
+        7
+      ]
+    ],
+    "obj": 3,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 8,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 28.5
+        },
+        {
+          "item_id": 1,
+          "weight": 30.4
+        },
+        {
+          "item_id": 2,
+          "weight": 47.6
+        },
+        {
+          "item_id": 3,
+          "weight": 25.3
+        },
+        {
+          "item_id": 4,
+          "weight": 29.0
+        },
+        {
+          "item_id": 5,
+          "weight": 43.4
+        },
+        {
+          "item_id": 6,
+          "weight": 27.5
+        },
+        {
+          "item_id": 7,
+          "weight": 39.7
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        1,
+        3,
+        5
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        4,
+        6,
+        7
+      ]
+    ],
+    "context_index": 46,
+    "input_format": "nl",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "There’s a tester racing to copy demo assets to a stack of identical USBs. They can only put each asset bundle on a single USB, must not exceed the storage on any USB when summing the bundles on it, and want to finish with as few USBs as possible. To see which packing is better, count how many USBs are needed; fewer is better. The specific asset sizes and drive size appear below.\n\nEach USB holds up to 100.0, and there are 5 bundles listed below.\nAsset bundle 1 has size 48.6.\nAsset bundle 2 has size 28.5.\nAsset bundle 3 has size 25.6.\nAsset bundle 4 has size 29.0.\nAsset bundle 5 has size 25.7.\nThey must fit those 5 bundles onto USBs without exceeding 100.0 per drive, aiming to use as few USBs as possible.\n\nAlso, when you send the result please follow this simple JSON layout so it's easy to check automatically:\n\n{\n  \"solution\": [[bundle_id, ...], ...]\n}\n\nThink of \"solution\" as a list of USBs, and each inner list is the bundle identifiers that go on that USB. I swapped the placeholder name to bundle_id to match the story (keeps it a placeholder — don't replace it with concrete text here). This block is just a sketch of the shape I want, not the actual packing.\n\nQuick reminder: use the exact identifiers from the instance input — do not rename them or invent new labels. \n- for example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.\"",
+    "instance": [
+      48.6,
+      28.5,
+      25.6,
+      29.0,
+      25.7
+    ],
+    "solution": [
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        2,
+        4
+      ]
+    ],
+    "obj": 2,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 5,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 48.6
+        },
+        {
+          "item_id": 2,
+          "weight": 28.5
+        },
+        {
+          "item_id": 3,
+          "weight": 25.6
+        },
+        {
+          "item_id": 4,
+          "weight": 29.0
+        },
+        {
+          "item_id": 5,
+          "weight": 25.7
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        2,
+        4
+      ],
+      [
+        1,
+        3,
+        5
+      ]
+    ],
+    "context_index": 47,
+    "input_format": "nl",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "In the lab it comes down to arranging vials into cryoboxes so the freezer stays organized and safe. Every single vial needs to be put into one of the boxes (no vial left out or placed twice), and each box has a firm cap on how much it can safely hold. The smartest arrangement is the one that uses the fewest boxes — the success metric is just how many boxes are used — provided no box is overloaded. The exact vial details and box limits are listed below.\n\n- **cryobox_capacity**: 100.0\n- **n_vials**: 10\n\n| vial_id | vial_weight |\n|---|---|\n| 1 | 27.4 |\n| 2 | 41.2 |\n| 3 | 25.3 |\n| 4 | 31.4 |\n| 5 | 25.6 |\n| 6 | 49.7 |\n| 7 | 40.2 |\n| 8 | 43.2 |\n| 9 | 29.6 |\n| 10 | 35.4 |\n\nAlso, when you send back the actual packing, please use this simple JSON outline so it's easy to read and parse:\n\n{\n  \"solution\": [[vial_id, ...], ...]\n}\n\nHere, \"solution\" is a list of cryoboxes and each inner list is the vial identifiers that go into that box. The vial_id placeholder stands in for whatever vial labels you have in the instance (so each inner list is one box's contents). This is just a sketch of the shape I want — not the real packing yet.\n\nPlease make sure to use the exact identifiers from the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      27.4,
+      41.2,
+      25.3,
+      31.4,
+      25.6,
+      49.7,
+      40.2,
+      43.2,
+      29.6,
+      35.4
+    ],
+    "solution": [
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        7,
+        8
+      ],
+      [
+        0,
+        2,
+        9
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "obj": 4,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 10,
+      "items": [
+        {
+          "item_id": 1,
+          "weight": 27.4
+        },
+        {
+          "item_id": 2,
+          "weight": 41.2
+        },
+        {
+          "item_id": 3,
+          "weight": 25.3
+        },
+        {
+          "item_id": 4,
+          "weight": 31.4
+        },
+        {
+          "item_id": 5,
+          "weight": 25.6
+        },
+        {
+          "item_id": 6,
+          "weight": 49.7
+        },
+        {
+          "item_id": 7,
+          "weight": 40.2
+        },
+        {
+          "item_id": 8,
+          "weight": 43.2
+        },
+        {
+          "item_id": 9,
+          "weight": 29.6
+        },
+        {
+          "item_id": 10,
+          "weight": 35.4
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        8,
+        9
+      ],
+      [
+        1,
+        3,
+        10
+      ],
+      [
+        2,
+        7
+      ]
+    ],
+    "context_index": 48,
+    "input_format": "markdown_table",
+    "input_index_base": 1
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "Someone in the bakery has to sort every loaf into identical delivery crates, making sure no crate gets heavier than it’s meant to be and every loaf ends up in exactly one crate. The choice is which loaves to pair up in each crate so the weight stays within the allowed amount and nothing is left out or doubled up. A smarter stacking is the one that leaves the fewest crates to carry away; to check, simply count how many crates are used. Exact loaf weights and the crate capacity appear below.\n\nThe crate capacity is 150.0 and there are 5 loaves to sort.\nLoaf 0 weighs 64.0.\nLoaf 1 weighs 100.0.\nLoaf 2 weighs 100.0.\nLoaf 3 weighs 48.0.\nLoaf 4 weighs 46.0.\nThe goal is to use as few crates as possible; no crate may exceed 150.0.\n\nOh, and when you send the packing plan back, please use this little JSON layout so it's easy to check:\n\n{\n  \"solution\": [[loaf_id, ...], ...]\n}\n\nThink of that as: \"solution\" is a list of crates, each inner list is the loaves (the loaf_id placeholders) that go into one crate. It's just a sketch of the shape I expect, not the actual packing — you'll replace the loaf_id placeholders with the real loaf identifiers from the instance.\n\nOne important note: do not rename any of the actual identifiers from the instance input — use them exactly as given, and don't introduce new labels. For example: \"Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      64.0,
+      100.0,
+      100.0,
+      48.0,
+      46.0
+    ],
+    "solution": [
+      [
+        2,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1
+      ]
+    ],
+    "obj": 3,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 150.0,
+      "n_items": 5,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 64.0
+        },
+        {
+          "item_id": 1,
+          "weight": 100.0
+        },
+        {
+          "item_id": 2,
+          "weight": 100.0
+        },
+        {
+          "item_id": 3,
+          "weight": 48.0
+        },
+        {
+          "item_id": 4,
+          "weight": 46.0
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        2,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1
+      ]
+    ],
+    "context_index": 49,
+    "input_format": "nl",
+    "input_index_base": 0
+  },
+  {
+    "task_name": "BPP",
+    "problem_type": "BPP",
+    "instruction": "There’s a stack of donated volumes that needs to be split into the same kind of storage boxes; every single book has to go into one box only, and nothing should be missing or placed in more than one spot. Each box only accepts a certain amount of bulk, so the total of the books inside each box must not exceed that allowance. The goal is to use as few boxes as possible — the winning plan is the one with the lower box count, which is simply counted. The specific donations and crate allowance are listed below.\n\n# crate_capacity=100.0\n# n_books=5\nbook_id,book_bulk\n0,25.9\n1,37.1\n2,34.1\n3,26.5\n4,25.2\n\nI'll show the shape I'd like the packing plan returned in — a tiny JSON sketch so it's clear how to format the answer.\n\n{\n  \"solution\": [[book_id, ...], ...]\n}\n\nThis just means \"solution\" holds a list of boxes, and each inner list is the collection of book identifiers going into that box. Think of it like a quick packing list: each sub-list is one box and the items in it are the books put inside.\n\nThis JSON is only a sketch of the expected shape, not the actual packing plan.\n\nPlease make sure to use the exact identifiers from the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",
+    "instance": [
+      25.9,
+      37.1,
+      34.1,
+      26.5,
+      25.2
+    ],
+    "solution": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "obj": 2,
+    "instance_variant": {
+      "problem_type": "BPP",
+      "bin_capacity": 100.0,
+      "n_items": 5,
+      "items": [
+        {
+          "item_id": 0,
+          "weight": 25.9
+        },
+        {
+          "item_id": 1,
+          "weight": 37.1
+        },
+        {
+          "item_id": 2,
+          "weight": 34.1
+        },
+        {
+          "item_id": 3,
+          "weight": 26.5
+        },
+        {
+          "item_id": 4,
+          "weight": 25.2
+        }
+      ]
+    },
+    "solution_variant": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "context_index": 50,
+    "input_format": "csv",
+    "input_index_base": 0
+  }
+]

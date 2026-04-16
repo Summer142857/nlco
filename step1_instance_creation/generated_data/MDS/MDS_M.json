@@ -1,0 +1,4164 @@
+[
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 14,
+      "num_edges": 14,
+      "edges": [
+        {
+          "u": 7,
+          "v": 3
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 4
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        }
+      ],
+      "source_file": "great-britain_osm.mtx",
+      "density": 0.15384615384615385,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0000.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0000.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      8,
+      10,
+      13
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 18,
+      "num_edges": 18,
+      "edges": [
+        {
+          "u": 2,
+          "v": 1
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 2,
+          "v": 10
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 5,
+          "v": 7
+        },
+        {
+          "u": 5,
+          "v": 12
+        },
+        {
+          "u": 5,
+          "v": 13
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 7,
+          "v": 11
+        },
+        {
+          "u": 7,
+          "v": 14
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 11,
+          "v": 4
+        },
+        {
+          "u": 6,
+          "v": 4
+        },
+        {
+          "u": 17,
+          "v": 14
+        },
+        {
+          "u": 17,
+          "v": 16
+        },
+        {
+          "u": 14,
+          "v": 18
+        },
+        {
+          "u": 16,
+          "v": 15
+        }
+      ],
+      "source_file": "netherlands_osm.mtx",
+      "density": 0.11764705882352941,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0001.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0001.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      8,
+      11,
+      14,
+      16
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 17,
+      "num_edges": 18,
+      "edges": [
+        {
+          "u": 2,
+          "v": 1
+        },
+        {
+          "u": 2,
+          "v": 11
+        },
+        {
+          "u": 13,
+          "v": 4
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 15,
+          "v": 16
+        },
+        {
+          "u": 15,
+          "v": 17
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 7,
+          "v": 17
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 8,
+          "v": 16
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        }
+      ],
+      "source_file": "belgium_osm.mtx",
+      "density": 0.1323529411764706,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0002.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0002.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      4,
+      7,
+      8,
+      11,
+      15
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 13,
+      "num_edges": 12,
+      "edges": [
+        {
+          "u": 8,
+          "v": 1
+        },
+        {
+          "u": 9,
+          "v": 3
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 7
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        }
+      ],
+      "source_file": "belgium_osm.mtx",
+      "density": 0.15384615384615385,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0003.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0003.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      1,
+      5,
+      9,
+      10,
+      13
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 14,
+      "num_edges": 13,
+      "edges": [
+        {
+          "u": 10,
+          "v": 9
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 4,
+          "v": 7
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 12,
+          "v": 7
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        }
+      ],
+      "source_file": "great-britain_osm.mtx",
+      "density": 0.14285714285714285,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0004.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0004.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      8,
+      10,
+      13
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 18,
+      "num_edges": 17,
+      "edges": [
+        {
+          "u": 2,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 18
+        },
+        {
+          "u": 3,
+          "v": 1
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 15,
+          "v": 16
+        },
+        {
+          "u": 16,
+          "v": 17
+        },
+        {
+          "u": 17,
+          "v": 18
+        }
+      ],
+      "source_file": "great-britain_osm.mtx",
+      "density": 0.1111111111111111,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0005.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0005.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      3,
+      6,
+      9,
+      10,
+      13,
+      16
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 13,
+      "num_edges": 12,
+      "edges": [
+        {
+          "u": 12,
+          "v": 11
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 9,
+          "v": 8
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 2,
+          "v": 1
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 2,
+          "v": 4
+        },
+        {
+          "u": 6,
+          "v": 5
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 10,
+          "v": 11
+        }
+      ],
+      "source_file": "italy_osm.mtx",
+      "density": 0.15384615384615385,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0006.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0006.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      6,
+      9,
+      12
+    ],
+    "obj": 4.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 16,
+      "num_edges": 15,
+      "edges": [
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 8
+        },
+        {
+          "u": 1,
+          "v": 16
+        },
+        {
+          "u": 5,
+          "v": 4
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 15
+        },
+        {
+          "u": 4,
+          "v": 3
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        }
+      ],
+      "source_file": "netherlands_osm.mtx",
+      "density": 0.125,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0007.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0007.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      1,
+      4,
+      6,
+      10,
+      13,
+      14
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 13,
+      "num_edges": 12,
+      "edges": [
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 5,
+          "v": 10
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 1
+        },
+        {
+          "u": 7,
+          "v": 11
+        },
+        {
+          "u": 13,
+          "v": 8
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 8,
+          "v": 2
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "source_file": "great-britain_osm.mtx",
+      "density": 0.15384615384615385,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0008.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0008.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      4,
+      5,
+      8,
+      11
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 15,
+      "num_edges": 14,
+      "edges": [
+        {
+          "u": 12,
+          "v": 7
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        }
+      ],
+      "source_file": "great-britain_osm.mtx",
+      "density": 0.13333333333333333,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0009.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0009.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      7,
+      10,
+      14
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 15,
+      "num_edges": 16,
+      "edges": [
+        {
+          "u": 10,
+          "v": 8
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 15
+        },
+        {
+          "u": 12,
+          "v": 4
+        },
+        {
+          "u": 12,
+          "v": 7
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 8
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 3
+        },
+        {
+          "u": 7,
+          "v": 3
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 3,
+          "v": 4
+        }
+      ],
+      "source_file": "netherlands_osm.mtx",
+      "density": 0.1523809523809524,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0010.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0010.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      1,
+      3,
+      8,
+      11,
+      13
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 14,
+      "num_edges": 13,
+      "edges": [
+        {
+          "u": 14,
+          "v": 12
+        },
+        {
+          "u": 3,
+          "v": 2
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "source_file": "great-britain_osm.mtx",
+      "density": 0.14285714285714285,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0011.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0011.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      8,
+      9,
+      12
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 14,
+      "num_edges": 14,
+      "edges": [
+        {
+          "u": 5,
+          "v": 4
+        },
+        {
+          "u": 5,
+          "v": 12
+        },
+        {
+          "u": 5,
+          "v": 13
+        },
+        {
+          "u": 6,
+          "v": 2
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 4,
+          "v": 2
+        },
+        {
+          "u": 4,
+          "v": 3
+        },
+        {
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "source_file": "italy_osm.mtx",
+      "density": 0.15384615384615385,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0012.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0012.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      4,
+      8,
+      11,
+      13
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 13,
+      "num_edges": 14,
+      "edges": [
+        {
+          "u": 2,
+          "v": 1
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 8
+        },
+        {
+          "u": 4,
+          "v": 11
+        },
+        {
+          "u": 13,
+          "v": 5
+        },
+        {
+          "u": 13,
+          "v": 12
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 6,
+          "v": 10
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 12,
+          "v": 1
+        },
+        {
+          "u": 12,
+          "v": 11
+        }
+      ],
+      "source_file": "netherlands_osm.mtx",
+      "density": 0.1794871794871795,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0013.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0013.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      4,
+      8,
+      10,
+      13
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 18,
+      "num_edges": 17,
+      "edges": [
+        {
+          "u": 12,
+          "v": 11
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 15,
+          "v": 16
+        },
+        {
+          "u": 16,
+          "v": 17
+        },
+        {
+          "u": 17,
+          "v": 18
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        }
+      ],
+      "source_file": "italy_osm.mtx",
+      "density": 0.1111111111111111,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0014.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0014.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      8,
+      11,
+      14,
+      17
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 15,
+      "num_edges": 14,
+      "edges": [
+        {
+          "u": 15,
+          "v": 14
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        }
+      ],
+      "source_file": "luxembourg_osm.mtx",
+      "density": 0.13333333333333333,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0015.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0015.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      8,
+      11,
+      14
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 14,
+      "num_edges": 13,
+      "edges": [
+        {
+          "u": 8,
+          "v": 7
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 2,
+          "v": 1
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        }
+      ],
+      "source_file": "great-britain_osm.mtx",
+      "density": 0.14285714285714285,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0016.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0016.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      8,
+      10,
+      13
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 16,
+      "num_edges": 15,
+      "edges": [
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 3
+        },
+        {
+          "u": 6,
+          "v": 3
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 3,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 1
+        },
+        {
+          "u": 15,
+          "v": 16
+        }
+      ],
+      "source_file": "great-britain_osm.mtx",
+      "density": 0.125,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0017.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0017.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      7,
+      10,
+      12,
+      15
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 18,
+      "num_edges": 18,
+      "edges": [
+        {
+          "u": 11,
+          "v": 3
+        },
+        {
+          "u": 12,
+          "v": 3
+        },
+        {
+          "u": 13,
+          "v": 2
+        },
+        {
+          "u": 14,
+          "v": 2
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 16,
+          "v": 7
+        },
+        {
+          "u": 16,
+          "v": 17
+        },
+        {
+          "u": 17,
+          "v": 6
+        },
+        {
+          "u": 17,
+          "v": 18
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 7
+        },
+        {
+          "u": 1,
+          "v": 8
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 7,
+          "v": 6
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 8,
+          "v": 10
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 6,
+          "v": 5
+        }
+      ],
+      "source_file": "italy_osm.mtx",
+      "density": 0.11764705882352941,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0018.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0018.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      3,
+      6,
+      8,
+      14,
+      17
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 17,
+      "num_edges": 16,
+      "edges": [
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 15,
+          "v": 16
+        },
+        {
+          "u": 16,
+          "v": 17
+        }
+      ],
+      "source_file": "italy_osm.mtx",
+      "density": 0.11764705882352941,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0019.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0019.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      8,
+      10,
+      13,
+      16
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 18,
+      "num_edges": 17,
+      "edges": [
+        {
+          "u": 4,
+          "v": 3
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 15,
+          "v": 16
+        },
+        {
+          "u": 16,
+          "v": 17
+        },
+        {
+          "u": 17,
+          "v": 18
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "source_file": "great-britain_osm.mtx",
+      "density": 0.1111111111111111,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0020.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0020.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      8,
+      11,
+      14,
+      17
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 15,
+      "num_edges": 14,
+      "edges": [
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 8,
+          "v": 10
+        },
+        {
+          "u": 9,
+          "v": 14
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        }
+      ],
+      "source_file": "belgium_osm.mtx",
+      "density": 0.13333333333333333,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0021.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0021.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      7,
+      11,
+      14
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 14,
+      "num_edges": 13,
+      "edges": [
+        {
+          "u": 8,
+          "v": 7
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 10,
+          "v": 2
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 1
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        }
+      ],
+      "source_file": "luxembourg_osm.mtx",
+      "density": 0.14285714285714285,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0022.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0022.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      3,
+      5,
+      8,
+      11,
+      14
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 14,
+      "num_edges": 14,
+      "edges": [
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 8
+        },
+        {
+          "u": 1,
+          "v": 10
+        },
+        {
+          "u": 1,
+          "v": 11
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 6,
+          "v": 14
+        },
+        {
+          "u": 13,
+          "v": 11
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 12
+        },
+        {
+          "u": 8,
+          "v": 12
+        }
+      ],
+      "source_file": "belgium_osm.mtx",
+      "density": 0.15384615384615385,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0023.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0023.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      1,
+      3,
+      6,
+      10,
+      11
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 17,
+      "num_edges": 16,
+      "edges": [
+        {
+          "u": 2,
+          "v": 1
+        },
+        {
+          "u": 1,
+          "v": 3
+        },
+        {
+          "u": 1,
+          "v": 4
+        },
+        {
+          "u": 9,
+          "v": 8
+        },
+        {
+          "u": 12,
+          "v": 6
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 13,
+          "v": 17
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 10,
+          "v": 8
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 16,
+          "v": 17
+        }
+      ],
+      "source_file": "belgium_osm.mtx",
+      "density": 0.11764705882352941,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0024.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0024.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      1,
+      6,
+      8,
+      10,
+      14,
+      17
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 14,
+      "num_edges": 13,
+      "edges": [
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 4,
+          "v": 11
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 2
+        },
+        {
+          "u": 14,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "source_file": "luxembourg_osm.mtx",
+      "density": 0.14285714285714285,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0025.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0025.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      6,
+      9,
+      11
+    ],
+    "obj": 4.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 17,
+      "num_edges": 16,
+      "edges": [
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 15,
+          "v": 16
+        },
+        {
+          "u": 16,
+          "v": 17
+        }
+      ],
+      "source_file": "belgium_osm.mtx",
+      "density": 0.11764705882352941,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0026.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0026.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      8,
+      10,
+      13,
+      16
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 13,
+      "num_edges": 12,
+      "edges": [
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 7,
+          "v": 11
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 8,
+          "v": 13
+        },
+        {
+          "u": 9,
+          "v": 3
+        },
+        {
+          "u": 2,
+          "v": 1
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 4,
+          "v": 10
+        },
+        {
+          "u": 13,
+          "v": 12
+        }
+      ],
+      "source_file": "great-britain_osm.mtx",
+      "density": 0.15384615384615385,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0027.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0027.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      3,
+      4,
+      7,
+      13
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 18,
+      "num_edges": 17,
+      "edges": [
+        {
+          "u": 9,
+          "v": 11
+        },
+        {
+          "u": 6,
+          "v": 5
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 6,
+          "v": 16
+        },
+        {
+          "u": 11,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 2
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 10,
+          "v": 15
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 12,
+          "v": 14
+        },
+        {
+          "u": 8,
+          "v": 7
+        },
+        {
+          "u": 14,
+          "v": 5
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 18,
+          "v": 16
+        },
+        {
+          "u": 16,
+          "v": 17
+        }
+      ],
+      "source_file": "great-britain_osm.mtx",
+      "density": 0.1111111111111111,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0028.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0028.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      7,
+      11,
+      12,
+      15,
+      16
+    ],
+    "obj": 7.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 17,
+      "num_edges": 16,
+      "edges": [
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 6,
+          "v": 16
+        },
+        {
+          "u": 6,
+          "v": 17
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 1
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 15,
+          "v": 16
+        }
+      ],
+      "source_file": "luxembourg_osm.mtx",
+      "density": 0.11764705882352941,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0029.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0029.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      1,
+      4,
+      6,
+      9,
+      12,
+      13,
+      16
+    ],
+    "obj": 7.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 16,
+      "num_edges": 15,
+      "edges": [
+        {
+          "u": 10,
+          "v": 9
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 15,
+          "v": 16
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        }
+      ],
+      "source_file": "italy_osm.mtx",
+      "density": 0.125,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0030.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0030.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      8,
+      9,
+      12,
+      15
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 18,
+      "num_edges": 19,
+      "edges": [
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 1
+        },
+        {
+          "u": 6,
+          "v": 2
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 6,
+          "v": 15
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 7,
+          "v": 11
+        },
+        {
+          "u": 8,
+          "v": 18
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 12,
+          "v": 17
+        },
+        {
+          "u": 12,
+          "v": 18
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 3
+        },
+        {
+          "u": 2,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 15,
+          "v": 16
+        },
+        {
+          "u": 16,
+          "v": 17
+        }
+      ],
+      "source_file": "netherlands_osm.mtx",
+      "density": 0.12418300653594772,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0031.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0031.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      1,
+      4,
+      7,
+      10,
+      12,
+      13,
+      16
+    ],
+    "obj": 7.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 14,
+      "num_edges": 13,
+      "edges": [
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 3,
+          "v": 14
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        }
+      ],
+      "source_file": "great-britain_osm.mtx",
+      "density": 0.14285714285714285,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0032.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0032.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      3,
+      6,
+      9,
+      12
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 14,
+      "num_edges": 13,
+      "edges": [
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 2,
+          "v": 14
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        }
+      ],
+      "source_file": "luxembourg_osm.mtx",
+      "density": 0.14285714285714285,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0033.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0033.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      8,
+      9,
+      12
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 17,
+      "num_edges": 16,
+      "edges": [
+        {
+          "u": 17,
+          "v": 3
+        },
+        {
+          "u": 4,
+          "v": 1
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 6,
+          "v": 9
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 15,
+          "v": 16
+        },
+        {
+          "u": 16,
+          "v": 3
+        },
+        {
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "source_file": "belgium_osm.mtx",
+      "density": 0.11764705882352941,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0034.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0034.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      3,
+      4,
+      7,
+      10,
+      13,
+      14
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 15,
+      "num_edges": 14,
+      "edges": [
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 6,
+          "v": 15
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 1
+        },
+        {
+          "u": 14,
+          "v": 15
+        }
+      ],
+      "source_file": "belgium_osm.mtx",
+      "density": 0.13333333333333333,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0035.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0035.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      4,
+      8,
+      11,
+      15
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 15,
+      "num_edges": 14,
+      "edges": [
+        {
+          "u": 13,
+          "v": 12
+        },
+        {
+          "u": 10,
+          "v": 9
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 3,
+          "v": 8
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 12,
+          "v": 11
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 8,
+          "v": 14
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 15,
+          "v": 7
+        }
+      ],
+      "source_file": "italy_osm.mtx",
+      "density": 0.13333333333333333,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0036.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0036.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      4,
+      7,
+      8,
+      9,
+      12
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 15,
+      "num_edges": 14,
+      "edges": [
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 15,
+          "v": 1
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 6
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 4,
+          "v": 5
+        }
+      ],
+      "source_file": "luxembourg_osm.mtx",
+      "density": 0.13333333333333333,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0037.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0037.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      1,
+      4,
+      8,
+      11,
+      14
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 15,
+      "num_edges": 16,
+      "edges": [
+        {
+          "u": 3,
+          "v": 2
+        },
+        {
+          "u": 3,
+          "v": 6
+        },
+        {
+          "u": 3,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 9
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 15,
+          "v": 4
+        },
+        {
+          "u": 15,
+          "v": 5
+        },
+        {
+          "u": 4,
+          "v": 8
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 5
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 8
+        },
+        {
+          "u": 6,
+          "v": 7
+        }
+      ],
+      "source_file": "luxembourg_osm.mtx",
+      "density": 0.1523809523809524,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0038.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0038.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      1,
+      6,
+      9,
+      12,
+      15
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 17,
+      "num_edges": 16,
+      "edges": [
+        {
+          "u": 15,
+          "v": 12
+        },
+        {
+          "u": 15,
+          "v": 14
+        },
+        {
+          "u": 16,
+          "v": 12
+        },
+        {
+          "u": 16,
+          "v": 17
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 13
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        }
+      ],
+      "source_file": "belgium_osm.mtx",
+      "density": 0.11764705882352941,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0039.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0039.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      1,
+      4,
+      7,
+      10,
+      15,
+      16
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 16,
+      "num_edges": 19,
+      "edges": [
+        {
+          "u": 4,
+          "v": 1
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 5,
+          "v": 16
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 14,
+          "v": 10
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 15,
+          "v": 16
+        },
+        {
+          "u": 16,
+          "v": 11
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 8,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 2
+        },
+        {
+          "u": 3,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 1
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "source_file": "italy_osm.mtx",
+      "density": 0.15833333333333333,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0040.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0040.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      3,
+      5,
+      8,
+      12,
+      15
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 16,
+      "num_edges": 17,
+      "edges": [
+        {
+          "u": 7,
+          "v": 6
+        },
+        {
+          "u": 7,
+          "v": 11
+        },
+        {
+          "u": 16,
+          "v": 13
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 3,
+          "v": 15
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 4,
+          "v": 12
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 12,
+          "v": 10
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 11,
+          "v": 10
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        }
+      ],
+      "source_file": "great-britain_osm.mtx",
+      "density": 0.14166666666666666,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0041.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0041.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      3,
+      6,
+      7,
+      9,
+      13
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 15,
+      "num_edges": 14,
+      "edges": [
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 2,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 6
+        },
+        {
+          "u": 9,
+          "v": 5
+        },
+        {
+          "u": 9,
+          "v": 7
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 5,
+          "v": 13
+        },
+        {
+          "u": 6,
+          "v": 15
+        },
+        {
+          "u": 10,
+          "v": 13
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 14
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 14,
+          "v": 15
+        }
+      ],
+      "source_file": "netherlands_osm.mtx",
+      "density": 0.13333333333333333,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0042.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0042.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      3,
+      6,
+      9,
+      12,
+      13
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 18,
+      "num_edges": 18,
+      "edges": [
+        {
+          "u": 13,
+          "v": 6
+        },
+        {
+          "u": 13,
+          "v": 12
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 9,
+          "v": 6
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 17,
+          "v": 8
+        },
+        {
+          "u": 17,
+          "v": 18
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 8,
+          "v": 1
+        },
+        {
+          "u": 8,
+          "v": 12
+        },
+        {
+          "u": 11,
+          "v": 10
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 10,
+          "v": 16
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 4
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 15,
+          "v": 16
+        }
+      ],
+      "source_file": "netherlands_osm.mtx",
+      "density": 0.11764705882352941,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0043.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0043.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      1,
+      2,
+      6,
+      11,
+      15,
+      17
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 16,
+      "num_edges": 15,
+      "edges": [
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 11
+        },
+        {
+          "u": 6,
+          "v": 12
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 15,
+          "v": 16
+        },
+        {
+          "u": 16,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "source_file": "luxembourg_osm.mtx",
+      "density": 0.125,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0044.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0044.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      8,
+      10,
+      13,
+      14
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 13,
+      "num_edges": 12,
+      "edges": [
+        {
+          "u": 5,
+          "v": 4
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 6,
+          "v": 10
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 11,
+          "v": 10
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 11,
+          "v": 13
+        },
+        {
+          "u": 9,
+          "v": 1
+        },
+        {
+          "u": 9,
+          "v": 2
+        },
+        {
+          "u": 3,
+          "v": 4
+        }
+      ],
+      "source_file": "italy_osm.mtx",
+      "density": 0.15384615384615385,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0045.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0045.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      4,
+      6,
+      9,
+      11
+    ],
+    "obj": 4.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 14,
+      "num_edges": 13,
+      "edges": [
+        {
+          "u": 2,
+          "v": 1
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 2,
+          "v": 7
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        }
+      ],
+      "source_file": "luxembourg_osm.mtx",
+      "density": 0.14285714285714285,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0046.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0046.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      3,
+      5,
+      9,
+      12
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 14,
+      "num_edges": 13,
+      "edges": [
+        {
+          "u": 11,
+          "v": 1
+        },
+        {
+          "u": 11,
+          "v": 10
+        },
+        {
+          "u": 11,
+          "v": 14
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 7,
+          "v": 12
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 6
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 9,
+          "v": 10
+        }
+      ],
+      "source_file": "netherlands_osm.mtx",
+      "density": 0.14285714285714285,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0047.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0047.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      9,
+      12,
+      14
+    ],
+    "obj": 5.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 16,
+      "num_edges": 16,
+      "edges": [
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 5,
+          "v": 15
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 6,
+          "v": 11
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 1
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 11,
+          "v": 16
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 15,
+          "v": 16
+        }
+      ],
+      "source_file": "italy_osm.mtx",
+      "density": 0.13333333333333333,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0048.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0048.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      3,
+      7,
+      10,
+      13,
+      15,
+      16
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  },
+  {
+    "instance": {
+      "problem_type": "MDS",
+      "num_nodes": 18,
+      "num_edges": 17,
+      "edges": [
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 13
+        },
+        {
+          "u": 13,
+          "v": 14
+        },
+        {
+          "u": 14,
+          "v": 15
+        },
+        {
+          "u": 15,
+          "v": 16
+        },
+        {
+          "u": 16,
+          "v": 17
+        },
+        {
+          "u": 17,
+          "v": 18
+        }
+      ],
+      "source_file": "luxembourg_osm.mtx",
+      "density": 0.1111111111111111,
+      "viz_instance": "generated_data/MDS/viz/MDS_M/instance_0049.png",
+      "viz_solution": "generated_data/MDS/viz/MDS_M/solution_0049.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      2,
+      5,
+      8,
+      11,
+      14,
+      17
+    ],
+    "obj": 6.0,
+    "problem_type": "MDS"
+  }
+]

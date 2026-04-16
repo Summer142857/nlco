@@ -1,0 +1,2147 @@
+task_name,problem_type,instruction,instance,solution,obj,instance_variant,solution_variant,context_index,input_format,input_index_base
+KMST,KMST,"There’s a planning task where a team must select a predetermined number of city blocks and connect them with newly built streets so those blocks become one connected cluster, with no closed loops of road and no duplicate segments. What separates a good plan from a bad one is how cheap the whole construction comes out: just add up the price of each new street and the smaller that total, the better the plan. The exact blocks, candidate streets, and their costs are shown below.
+
+# total_city_blocks=14
+# candidate_streets_count=17
+# target_blocks_to_connect=7
+block_endpoint_u,block_endpoint_v,construction_cost
+L,D,613.0
+I,F,491.0
+I,C,498.0
+I,A,3619.0
+D,E,496.0
+D,B,524.0
+C,B,10.0
+C,J,2911.0
+E,F,282.0
+J,K,243.0
+J,G,2850.0
+K,B,2894.0
+K,H,2769.0
+G,H,512.0
+G,N,2274.0
+H,M,2255.0
+M,N,702.0
+
+If you want, send back the picked street segments in a tiny JSON snippet like this so it's easy to read and process:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+That ""solution"" list is just a set of street segments: each pair like [u1, v1] means ""connect block u1 to block v1"" with a new road. Think of it like filling out a short form — the JSON shows the shape I expect, not the actual answer.
+
+Please use the exact identifiers from the instance input when you fill this in — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 17, 'edges': [{'u': 12, 'v': 4, 'w': 613.0}, {'u': 9, 'v': 6, 'w': 491.0}, {'u': 9, 'v': 3, 'w': 498.0}, {'u': 9, 'v': 1, 'w': 3619.0}, {'u': 4, 'v': 5, 'w': 496.0}, {'u': 4, 'v': 2, 'w': 524.0}, {'u': 3, 'v': 2, 'w': 10.0}, {'u': 3, 'v': 10, 'w': 2911.0}, {'u': 5, 'v': 6, 'w': 282.0}, {'u': 10, 'v': 11, 'w': 243.0}, {'u': 10, 'v': 7, 'w': 2850.0}, {'u': 11, 'v': 2, 'w': 2894.0}, {'u': 11, 'v': 8, 'w': 2769.0}, {'u': 7, 'v': 8, 'w': 512.0}, {'u': 7, 'v': 14, 'w': 2274.0}, {'u': 8, 'v': 13, 'w': 2255.0}, {'u': 13, 'v': 14, 'w': 702.0}], 'k': 7, 'source_file': 'I007.stp', 'density': 0.18681318681318682}","[[4, 12], [6, 9], [3, 9], [4, 5], [2, 3], [5, 6]]",2390.0,"{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 17, 'edges': [{'u': 'L', 'v': 'D', 'w': 613.0}, {'u': 'I', 'v': 'F', 'w': 491.0}, {'u': 'I', 'v': 'C', 'w': 498.0}, {'u': 'I', 'v': 'A', 'w': 3619.0}, {'u': 'D', 'v': 'E', 'w': 496.0}, {'u': 'D', 'v': 'B', 'w': 524.0}, {'u': 'C', 'v': 'B', 'w': 10.0}, {'u': 'C', 'v': 'J', 'w': 2911.0}, {'u': 'E', 'v': 'F', 'w': 282.0}, {'u': 'J', 'v': 'K', 'w': 243.0}, {'u': 'J', 'v': 'G', 'w': 2850.0}, {'u': 'K', 'v': 'B', 'w': 2894.0}, {'u': 'K', 'v': 'H', 'w': 2769.0}, {'u': 'G', 'v': 'H', 'w': 512.0}, {'u': 'G', 'v': 'N', 'w': 2274.0}, {'u': 'H', 'v': 'M', 'w': 2255.0}, {'u': 'M', 'v': 'N', 'w': 702.0}], 'density': 0.18681318681318682, 'source_file': 'I007.stp', 'k': 7}","[['D', 'L'], ['F', 'I'], ['C', 'I'], ['D', 'E'], ['B', 'C'], ['E', 'F']]",1,csv,names
+KMST,KMST,"We had to lay out a small cluster: choose a set number of racks and wire them together with straight links so every machine in that set can reach every other, without creating redundant loops that would waste cable. Decisions are judged by total cable used — sum the lengths of the chosen links, and the setup with the lowest sum is best. The rule is to include exactly the required number of servers, make sure they’re all connected, and avoid any extra circular wiring. The concrete details are shown below.
+
+# total_servers=14
+# potential_links=18
+# servers_to_select=4
+server_u,server_v,cable_length
+A,B,1012.0
+A,C,1132.0
+A,G,265913.0
+H,D,1116.0
+H,N,437.0
+H,B,956.0
+C,I,687.0
+C,F,601.0
+D,E,661.0
+D,G,266122.0
+E,J,190.0
+E,F,1217.0
+F,M,939.0
+K,L,2779.0
+K,J,2071.0
+K,N,1424.0
+M,J,863.0
+M,L,1965.0
+
+When you send back the wiring plan, just paste the chosen links in this simple JSON shape so it's easy to parse and check:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Here ""solution"" is a list of the links you picked; each inner pair like [u1, v1] is one straight connection between two racks (order doesn't matter — it's just the two endpoints). Think of it as a little checklist of which cables to lay between which racks.
+
+This JSON is just a sketch of the shape I expect, not the actual answer — fill in the exact pair list for your instance. Also be sure to use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".""","{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 18, 'edges': [{'u': 1, 'v': 2, 'w': 1012.0}, {'u': 1, 'v': 3, 'w': 1132.0}, {'u': 1, 'v': 7, 'w': 265913.0}, {'u': 8, 'v': 4, 'w': 1116.0}, {'u': 8, 'v': 14, 'w': 437.0}, {'u': 8, 'v': 2, 'w': 956.0}, {'u': 3, 'v': 9, 'w': 687.0}, {'u': 3, 'v': 6, 'w': 601.0}, {'u': 4, 'v': 5, 'w': 661.0}, {'u': 4, 'v': 7, 'w': 266122.0}, {'u': 5, 'v': 10, 'w': 190.0}, {'u': 5, 'v': 6, 'w': 1217.0}, {'u': 6, 'v': 13, 'w': 939.0}, {'u': 11, 'v': 12, 'w': 2779.0}, {'u': 11, 'v': 10, 'w': 2071.0}, {'u': 11, 'v': 14, 'w': 1424.0}, {'u': 13, 'v': 10, 'w': 863.0}, {'u': 13, 'v': 12, 'w': 1965.0}], 'k': 4, 'source_file': 'I011.stp', 'density': 0.1978021978021978}","[[4, 5], [5, 10], [10, 13]]",1714.0,"{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 18, 'edges': [{'u': 'A', 'v': 'B', 'w': 1012.0}, {'u': 'A', 'v': 'C', 'w': 1132.0}, {'u': 'A', 'v': 'G', 'w': 265913.0}, {'u': 'H', 'v': 'D', 'w': 1116.0}, {'u': 'H', 'v': 'N', 'w': 437.0}, {'u': 'H', 'v': 'B', 'w': 956.0}, {'u': 'C', 'v': 'I', 'w': 687.0}, {'u': 'C', 'v': 'F', 'w': 601.0}, {'u': 'D', 'v': 'E', 'w': 661.0}, {'u': 'D', 'v': 'G', 'w': 266122.0}, {'u': 'E', 'v': 'J', 'w': 190.0}, {'u': 'E', 'v': 'F', 'w': 1217.0}, {'u': 'F', 'v': 'M', 'w': 939.0}, {'u': 'K', 'v': 'L', 'w': 2779.0}, {'u': 'K', 'v': 'J', 'w': 2071.0}, {'u': 'K', 'v': 'N', 'w': 1424.0}, {'u': 'M', 'v': 'J', 'w': 863.0}, {'u': 'M', 'v': 'L', 'w': 1965.0}], 'density': 0.1978021978021978, 'source_file': 'I011.stp', 'k': 4}","[['D', 'E'], ['E', 'J'], ['J', 'M']]",2,csv,names
+KMST,KMST,"Someone on the planning team has to pick a set number of campsites and sketch paths between them so the selected sites become one connected cluster, and there can’t be any closed loops in the path layout. Better plans are the ones with the least total trail length: just sum all the individual path lengths to compare options. The rule is to use exactly that many campsites, don’t double-count spots, and make sure none of the chosen sites are left isolated. The detailed campsite list and distances appear below.
+
+{
+  ""total_campsites"": 10,
+  ""total_candidate_trails"": 9,
+  ""edges"": [
+    {
+      ""campsite_endpoint_u"": 2,
+      ""campsite_endpoint_v"": 9,
+      ""trail_length"": 1009.0
+    },
+    {
+      ""campsite_endpoint_u"": 3,
+      ""campsite_endpoint_v"": 9,
+      ""trail_length"": 94.0
+    },
+    {
+      ""campsite_endpoint_u"": 4,
+      ""campsite_endpoint_v"": 5,
+      ""trail_length"": 1171.0
+    },
+    {
+      ""campsite_endpoint_u"": 0,
+      ""campsite_endpoint_v"": 8,
+      ""trail_length"": 1048.0
+    },
+    {
+      ""campsite_endpoint_u"": 5,
+      ""campsite_endpoint_v"": 7,
+      ""trail_length"": 860.0
+    },
+    {
+      ""campsite_endpoint_u"": 5,
+      ""campsite_endpoint_v"": 6,
+      ""trail_length"": 2280.0
+    },
+    {
+      ""campsite_endpoint_u"": 9,
+      ""campsite_endpoint_v"": 7,
+      ""trail_length"": 64.0
+    },
+    {
+      ""campsite_endpoint_u"": 7,
+      ""campsite_endpoint_v"": 8,
+      ""trail_length"": 1593.0
+    },
+    {
+      ""campsite_endpoint_u"": 8,
+      ""campsite_endpoint_v"": 1,
+      ""trail_length"": 409.0
+    }
+  ],
+  ""target_campsite_count"": 3
+}
+
+When you send back the chosen paths, please stick to a little JSON sketch like this so it's easy to read and parse:
+
+{
+  ""solution"": [[camp1, camp2], [camp3, camp4], ...]
+}
+
+Here ""solution"" is a list of the trail segments you picked; each inner pair [A, B] is a path between two campsites A and B. Think of it like filling in a simple form: each line is one selected connection. This block is just a shape example — not the real answer.
+
+Please make sure that in your actual reply you use the exact identifiers given in the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 10, 'num_edges': 9, 'edges': [{'u': 3, 'v': 10, 'w': 1009.0}, {'u': 4, 'v': 10, 'w': 94.0}, {'u': 5, 'v': 6, 'w': 1171.0}, {'u': 1, 'v': 9, 'w': 1048.0}, {'u': 6, 'v': 8, 'w': 860.0}, {'u': 6, 'v': 7, 'w': 2280.0}, {'u': 10, 'v': 8, 'w': 64.0}, {'u': 8, 'v': 9, 'w': 1593.0}, {'u': 9, 'v': 2, 'w': 409.0}], 'k': 3, 'source_file': 'I037.stp', 'density': 0.2}","[[4, 10], [8, 10]]",158.0,"{'problem_type': 'KMST', 'num_nodes': 10, 'num_edges': 9, 'edges': [{'u': 2, 'v': 9, 'w': 1009.0}, {'u': 3, 'v': 9, 'w': 94.0}, {'u': 4, 'v': 5, 'w': 1171.0}, {'u': 0, 'v': 8, 'w': 1048.0}, {'u': 5, 'v': 7, 'w': 860.0}, {'u': 5, 'v': 6, 'w': 2280.0}, {'u': 9, 'v': 7, 'w': 64.0}, {'u': 7, 'v': 8, 'w': 1593.0}, {'u': 8, 'v': 1, 'w': 409.0}], 'density': 0.2, 'source_file': 'I037.stp', 'k': 3}","[[3, 9], [7, 9]]",3,json,0
+KMST,KMST,"We had a one-line brief from the museum director: pick a set number of exhibits and connect them with walkways so visitors can move between any two chosen exhibits, but don’t let the walkways form loops where people might walk in circles. Better layouts were simply those where the sum of the lengths of all built paths was as small as it could be — you literally add up the lengths of the chosen paths and prefer the smallest total. The selection must include exactly the pre-determined number of displays (no leaving some out or doubling up) and each chosen display must be linked so the whole group is connected without circular routes. The specific layout options and distances appear below.
+
+{
+  ""total_exhibits_available"": 12,
+  ""total_candidate_walkways"": 15,
+  ""edges"": [
+    {
+      ""exhibit_endpoint_u"": ""A"",
+      ""exhibit_endpoint_v"": ""B"",
+      ""walkway_length"": 460.0
+    },
+    {
+      ""exhibit_endpoint_u"": ""A"",
+      ""exhibit_endpoint_v"": ""I"",
+      ""walkway_length"": 4066.0
+    },
+    {
+      ""exhibit_endpoint_u"": ""B"",
+      ""exhibit_endpoint_v"": ""G"",
+      ""walkway_length"": 2658.0
+    },
+    {
+      ""exhibit_endpoint_u"": ""C"",
+      ""exhibit_endpoint_v"": ""D"",
+      ""walkway_length"": 471.0
+    },
+    {
+      ""exhibit_endpoint_u"": ""C"",
+      ""exhibit_endpoint_v"": ""E"",
+      ""walkway_length"": 469.0
+    },
+    {
+      ""exhibit_endpoint_u"": ""C"",
+      ""exhibit_endpoint_v"": ""K"",
+      ""walkway_length"": 11769.0
+    },
+    {
+      ""exhibit_endpoint_u"": ""C"",
+      ""exhibit_endpoint_v"": ""L"",
+      ""walkway_length"": 4411.0
+    },
+    {
+      ""exhibit_endpoint_u"": ""D"",
+      ""exhibit_endpoint_v"": ""F"",
+      ""walkway_length"": 2798.0
+    },
+    {
+      ""exhibit_endpoint_u"": ""D"",
+      ""exhibit_endpoint_v"": ""E"",
+      ""walkway_length"": 20.0
+    },
+    {
+      ""exhibit_endpoint_u"": ""E"",
+      ""exhibit_endpoint_v"": ""H"",
+      ""walkway_length"": 11399.0
+    },
+    {
+      ""exhibit_endpoint_u"": ""F"",
+      ""exhibit_endpoint_v"": ""G"",
+      ""walkway_length"": 11377.0
+    },
+    {
+      ""exhibit_endpoint_u"": ""F"",
+      ""exhibit_endpoint_v"": ""J"",
+      ""walkway_length"": 9042.0
+    },
+    {
+      ""exhibit_endpoint_u"": ""G"",
+      ""exhibit_endpoint_v"": ""H"",
+      ""walkway_length"": 1379.0
+    },
+    {
+      ""exhibit_endpoint_u"": ""H"",
+      ""exhibit_endpoint_v"": ""I"",
+      ""walkway_length"": 470.0
+    },
+    {
+      ""exhibit_endpoint_u"": ""I"",
+      ""exhibit_endpoint_v"": ""L"",
+      ""walkway_length"": 7457.0
+    }
+  ],
+  ""exhibits_to_select"": 6
+}
+
+Also, when you send back the chosen walkways, please follow this little JSON sketch so it's easy to read and parse:
+
+{
+  ""solution"": [[""ex1"", ""ex2""], [""ex3"", ""ex4""], ...]
+}
+
+Here ""solution"" is a list of the paths you'll build; each inner pair is a walkway connecting the two exhibit IDs (so [""ex1"",""ex2""] means there's a path between exhibit ex1 and exhibit ex2). It's just a template showing the shape I expect — not the actual layout you should submit.
+
+Please make sure to use the exact exhibit IDs from the instance input — do not rename them or invent new labels.  
+Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".","{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 15, 'edges': [{'u': 1, 'v': 2, 'w': 460.0}, {'u': 1, 'v': 9, 'w': 4066.0}, {'u': 2, 'v': 7, 'w': 2658.0}, {'u': 3, 'v': 4, 'w': 471.0}, {'u': 3, 'v': 5, 'w': 469.0}, {'u': 3, 'v': 11, 'w': 11769.0}, {'u': 3, 'v': 12, 'w': 4411.0}, {'u': 4, 'v': 6, 'w': 2798.0}, {'u': 4, 'v': 5, 'w': 20.0}, {'u': 5, 'v': 8, 'w': 11399.0}, {'u': 6, 'v': 7, 'w': 11377.0}, {'u': 6, 'v': 10, 'w': 9042.0}, {'u': 7, 'v': 8, 'w': 1379.0}, {'u': 8, 'v': 9, 'w': 470.0}, {'u': 9, 'v': 12, 'w': 7457.0}], 'k': 6, 'source_file': 'I072.stp', 'density': 0.22727272727272727}","[[1, 2], [2, 7], [7, 8], [8, 9], [9, 12]]",12424.0,"{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 15, 'edges': [{'u': 'A', 'v': 'B', 'w': 460.0}, {'u': 'A', 'v': 'I', 'w': 4066.0}, {'u': 'B', 'v': 'G', 'w': 2658.0}, {'u': 'C', 'v': 'D', 'w': 471.0}, {'u': 'C', 'v': 'E', 'w': 469.0}, {'u': 'C', 'v': 'K', 'w': 11769.0}, {'u': 'C', 'v': 'L', 'w': 4411.0}, {'u': 'D', 'v': 'F', 'w': 2798.0}, {'u': 'D', 'v': 'E', 'w': 20.0}, {'u': 'E', 'v': 'H', 'w': 11399.0}, {'u': 'F', 'v': 'G', 'w': 11377.0}, {'u': 'F', 'v': 'J', 'w': 9042.0}, {'u': 'G', 'v': 'H', 'w': 1379.0}, {'u': 'H', 'v': 'I', 'w': 470.0}, {'u': 'I', 'v': 'L', 'w': 7457.0}], 'density': 0.22727272727272727, 'source_file': 'I072.stp', 'k': 6}","[['A', 'B'], ['B', 'G'], ['G', 'H'], ['H', 'I'], ['I', 'L']]",4,json,names
+KMST,KMST,"Many planners run into the same puzzle: select a predetermined count of towers and set up point-to-point connections so the selected towers are all connected, but there are no circular routes among the links. The decision is about picking which towers and which connections; to compare options, add up the price of every link in a plan and favor the plan with the smallest total. The number of towers is fixed, each chosen once, and they must form one continuous, loop-free network. The concrete instance and numbers follow below.
+
+There are 11 towers available, 12 candidate links, and the planner must choose exactly 3 towers to interconnect into one connected, acyclic network.
+Candidate link between towers 11 and 2 with cost 280.0.
+Candidate link between towers 11 and 8 with cost 2830.0.
+Candidate link between towers 11 and 10 with cost 1294.0.
+Candidate link between towers 5 and 9 with cost 1195.0.
+Candidate link between towers 5 and 7 with cost 1733.0.
+Candidate link between towers 6 and 7 with cost 2082.0.
+Candidate link between towers 7 and 10 with cost 1778.0.
+Candidate link between towers 9 and 4 with cost 3771.0.
+Candidate link between towers 10 and 4 with cost 319.0.
+Candidate link between towers 1 and 4 with cost 1615.0.
+Candidate link between towers 1 and 3 with cost 1177.0.
+Candidate link between towers 2 and 3 with cost 1231.0.
+The planner will favor the plan with the smallest total cost that yields a single, loop-free network spanning the 3 selected towers.
+
+Also, when you reply with a candidate wiring plan, please use this simple JSON shape so it's easy to parse and compare:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Think of that as a little form: ""solution"" is the list of chosen links, and each inner pair like [u1, v1] just means ""connect tower u1 to tower v1"". Pretty informal — it's just a sketch of the shape I expect, not the final answer itself.
+
+All identifiers in your solution must match the instance input exactly — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 12, 'edges': [{'u': 11, 'v': 2, 'w': 280.0}, {'u': 11, 'v': 8, 'w': 2830.0}, {'u': 11, 'v': 10, 'w': 1294.0}, {'u': 5, 'v': 9, 'w': 1195.0}, {'u': 5, 'v': 7, 'w': 1733.0}, {'u': 6, 'v': 7, 'w': 2082.0}, {'u': 7, 'v': 10, 'w': 1778.0}, {'u': 9, 'v': 4, 'w': 3771.0}, {'u': 10, 'v': 4, 'w': 319.0}, {'u': 1, 'v': 4, 'w': 1615.0}, {'u': 1, 'v': 3, 'w': 1177.0}, {'u': 2, 'v': 3, 'w': 1231.0}], 'k': 3, 'source_file': 'I017.stp', 'density': 0.21818181818181817}","[[2, 11], [2, 3]]",1511.0,"{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 12, 'edges': [{'u': 11, 'v': 2, 'w': 280.0}, {'u': 11, 'v': 8, 'w': 2830.0}, {'u': 11, 'v': 10, 'w': 1294.0}, {'u': 5, 'v': 9, 'w': 1195.0}, {'u': 5, 'v': 7, 'w': 1733.0}, {'u': 6, 'v': 7, 'w': 2082.0}, {'u': 7, 'v': 10, 'w': 1778.0}, {'u': 9, 'v': 4, 'w': 3771.0}, {'u': 10, 'v': 4, 'w': 319.0}, {'u': 1, 'v': 4, 'w': 1615.0}, {'u': 1, 'v': 3, 'w': 1177.0}, {'u': 2, 'v': 3, 'w': 1231.0}], 'density': 0.21818181818181817, 'source_file': 'I017.stp', 'k': 3}","[[2, 11], [2, 3]]",5,markdown_table,1
+KMST,KMST,"Someone on the disaster team has to decide which supply depots to open and which roads to use so those depots form one tidy, loop-free network. The smarter choice is the one that keeps total driving distance down — calculated by summing the lengths of all roads that end up in the network. The rule is clear: pick the predetermined number of depots, make sure they’re all connected, and don’t create redundant circular routes. The detailed instance with distances and nodes appears below.
+
+# total_locations=14
+# total_roads=16
+# depots_to_open=7
+location_u,location_v,road_distance
+K,M,1134.0
+K,E,2085.0
+L,E,149.0
+L,C,750.0
+L,J,11372.0
+G,H,246.0
+G,I,504.0
+H,A,544.0
+I,D,29.0
+I,A,321.0
+B,C,473.0
+B,D,504.0
+B,E,874.0
+C,A,390.0
+D,F,528.0
+N,A,2974.0
+
+Also, to keep things easy for whoever's checking this, please give the picked roads in a tiny JSON sketch like this:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Think of each pair [uX, vX] as one road you plan to keep open between two depots — the whole ""solution"" list is the final loop-free network of k depots. This block is just the shape I need; don't treat these placeholders as the actual answer.
+
+Please make sure you use the exact depot/node identifiers from the instance input — don't rename them or invent new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 16, 'edges': [{'u': 11, 'v': 13, 'w': 1134.0}, {'u': 11, 'v': 5, 'w': 2085.0}, {'u': 12, 'v': 5, 'w': 149.0}, {'u': 12, 'v': 3, 'w': 750.0}, {'u': 12, 'v': 10, 'w': 11372.0}, {'u': 7, 'v': 8, 'w': 246.0}, {'u': 7, 'v': 9, 'w': 504.0}, {'u': 8, 'v': 1, 'w': 544.0}, {'u': 9, 'v': 4, 'w': 29.0}, {'u': 9, 'v': 1, 'w': 321.0}, {'u': 2, 'v': 3, 'w': 473.0}, {'u': 2, 'v': 4, 'w': 504.0}, {'u': 2, 'v': 5, 'w': 874.0}, {'u': 3, 'v': 1, 'w': 390.0}, {'u': 4, 'v': 6, 'w': 528.0}, {'u': 14, 'v': 1, 'w': 2974.0}], 'k': 7, 'source_file': 'I043.stp', 'density': 0.17582417582417584}","[[7, 8], [7, 9], [4, 9], [1, 9], [2, 3], [1, 3]]",1963.0,"{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 16, 'edges': [{'u': 'K', 'v': 'M', 'w': 1134.0}, {'u': 'K', 'v': 'E', 'w': 2085.0}, {'u': 'L', 'v': 'E', 'w': 149.0}, {'u': 'L', 'v': 'C', 'w': 750.0}, {'u': 'L', 'v': 'J', 'w': 11372.0}, {'u': 'G', 'v': 'H', 'w': 246.0}, {'u': 'G', 'v': 'I', 'w': 504.0}, {'u': 'H', 'v': 'A', 'w': 544.0}, {'u': 'I', 'v': 'D', 'w': 29.0}, {'u': 'I', 'v': 'A', 'w': 321.0}, {'u': 'B', 'v': 'C', 'w': 473.0}, {'u': 'B', 'v': 'D', 'w': 504.0}, {'u': 'B', 'v': 'E', 'w': 874.0}, {'u': 'C', 'v': 'A', 'w': 390.0}, {'u': 'D', 'v': 'F', 'w': 528.0}, {'u': 'N', 'v': 'A', 'w': 2974.0}], 'density': 0.17582417582417584, 'source_file': 'I043.stp', 'k': 7}","[['G', 'H'], ['G', 'I'], ['D', 'I'], ['A', 'I'], ['B', 'C'], ['A', 'C']]",6,csv,names
+KMST,KMST,"Back in the control room the challenge was laid out plainly: we must pick a set number of substations and string power lines so they form one connected grouping with no circular paths. A plan is judged by how little cable and installation cost it requires — total cost equals the sum of the lengths and installation costs of the chosen lines. The selection has to include exactly that many substations, tie them into one network, and avoid any closed circuits or redundancies. The concrete details will be shown below.
+
+There are 11 substations and 12 available line segments; we must select exactly 4 substations to form one connected acyclic network.
+We can build a line between substation 4 and 5 for cost 2003.0.
+We can build a line between substation 5 and 10 for cost 1532.0.
+We can build a line between substation 5 and 3 for cost 1218.0.
+We can build a line between substation 8 and 2 for cost 5274.0.
+We can build a line between substation 8 and 9 for cost 10.0.
+We can build a line between substation 8 and 6 for cost 531.0.
+We can build a line between substation 6 and 7 for cost 53.0.
+We can build a line between substation 6 and 10 for cost 360.0.
+We can build a line between substation 7 and 3 for cost 2623.0.
+We can build a line between substation 7 and 1 for cost 5441.0.
+We can build a line between substation 10 and 11 for cost 5.0.
+We can build a line between substation 1 and 2 for cost 681.0.
+We will evaluate these candidates to assemble the minimal-cost 4-substation tree.
+
+Oh, and when you send back the plan, just put it in this shape so I can read it automatically:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Here ""solution"" is a list of the power lines you picked; each little pair like [u1, v1] is one line connecting the two substations named u1 and v1. It's just a quick form — the actual answer should be the real list of edges from the instance.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 12, 'edges': [{'u': 4, 'v': 5, 'w': 2003.0}, {'u': 5, 'v': 10, 'w': 1532.0}, {'u': 5, 'v': 3, 'w': 1218.0}, {'u': 8, 'v': 2, 'w': 5274.0}, {'u': 8, 'v': 9, 'w': 10.0}, {'u': 8, 'v': 6, 'w': 531.0}, {'u': 6, 'v': 7, 'w': 53.0}, {'u': 6, 'v': 10, 'w': 360.0}, {'u': 7, 'v': 3, 'w': 2623.0}, {'u': 7, 'v': 1, 'w': 5441.0}, {'u': 10, 'v': 11, 'w': 5.0}, {'u': 1, 'v': 2, 'w': 681.0}], 'k': 4, 'source_file': 'I036.stp', 'density': 0.21818181818181817}","[[6, 7], [6, 10], [10, 11]]",418.0,"{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 12, 'edges': [{'u': 4, 'v': 5, 'w': 2003.0}, {'u': 5, 'v': 10, 'w': 1532.0}, {'u': 5, 'v': 3, 'w': 1218.0}, {'u': 8, 'v': 2, 'w': 5274.0}, {'u': 8, 'v': 9, 'w': 10.0}, {'u': 8, 'v': 6, 'w': 531.0}, {'u': 6, 'v': 7, 'w': 53.0}, {'u': 6, 'v': 10, 'w': 360.0}, {'u': 7, 'v': 3, 'w': 2623.0}, {'u': 7, 'v': 1, 'w': 5441.0}, {'u': 10, 'v': 11, 'w': 5.0}, {'u': 1, 'v': 2, 'w': 681.0}], 'density': 0.21818181818181817, 'source_file': 'I036.stp', 'k': 4}","[[6, 7], [6, 10], [10, 11]]",7,nl,1
+KMST,KMST,"Recently the operations team was asked to pick a specific number of warehouses and sketch shuttle paths between them so they form one continuous network without any loops. What counts as a better sketch is straightforward: measure every route, add those distances together, and the smallest total wins. The chosen number of warehouses must be met exactly and no circular or duplicate routes are allowed. The exact data on warehouses and route lengths appears below.
+
+There are 13 candidate warehouses and 17 potential routes listed; the operations team must select exactly 4 warehouses.
+Route between warehouses 7 and 6 with distance 546.0.
+Route between warehouses 7 and 8 with distance 4206.0.
+Route between warehouses 7 and 9 with distance 1321.0.
+Route between warehouses 7 and 10 with distance 1487.0.
+Route between warehouses 8 and 11 with distance 886.0.
+Route between warehouses 8 and 0 with distance 4099.0.
+Route between warehouses 10 and 2 with distance 1909.0.
+Route between warehouses 10 and 12 with distance 1940.0.
+Route between warehouses 3 and 2 with distance 998.0.
+Route between warehouses 3 and 4 with distance 2049.0.
+Route between warehouses 3 and 9 with distance 1097.0.
+Route between warehouses 4 and 5 with distance 3315.0.
+Route between warehouses 12 and 11 with distance 1725.0.
+Route between warehouses 1 and 5 with distance 222.0.
+Route between warehouses 1 and 0 with distance 2017.0.
+Route between warehouses 9 and 6 with distance 1042.0.
+Route between warehouses 5 and 6 with distance 1750.0.
+These entries are provided for the operations team to evaluate candidate sketches and compute the minimal total distance.
+
+Just drop your chosen edges into this simple JSON shape when you're ready — it's just a tiny, predictable form so whatever reads it knows where to look.
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Think of ""solution"" as the list of shuttle paths you picked. Each inner pair like [u1, v1] is one route connecting two warehouses (the two IDs go in there). This is only a sketch of the shape I need, not the actual answer — you'll replace those placeholders with the real IDs from the instance.
+
+Please make sure to use the exact identifiers from the input, without renaming or inventing new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 13, 'num_edges': 17, 'edges': [{'u': 8, 'v': 7, 'w': 546.0}, {'u': 8, 'v': 9, 'w': 4206.0}, {'u': 8, 'v': 10, 'w': 1321.0}, {'u': 8, 'v': 11, 'w': 1487.0}, {'u': 9, 'v': 12, 'w': 886.0}, {'u': 9, 'v': 1, 'w': 4099.0}, {'u': 11, 'v': 3, 'w': 1909.0}, {'u': 11, 'v': 13, 'w': 1940.0}, {'u': 4, 'v': 3, 'w': 998.0}, {'u': 4, 'v': 5, 'w': 2049.0}, {'u': 4, 'v': 10, 'w': 1097.0}, {'u': 5, 'v': 6, 'w': 3315.0}, {'u': 13, 'v': 12, 'w': 1725.0}, {'u': 2, 'v': 6, 'w': 222.0}, {'u': 2, 'v': 1, 'w': 2017.0}, {'u': 10, 'v': 7, 'w': 1042.0}, {'u': 6, 'v': 7, 'w': 1750.0}], 'k': 4, 'source_file': 'I083.stp', 'density': 0.21794871794871795}","[[7, 8], [2, 6], [6, 7]]",2518.0,"{'problem_type': 'KMST', 'num_nodes': 13, 'num_edges': 17, 'edges': [{'u': 7, 'v': 6, 'w': 546.0}, {'u': 7, 'v': 8, 'w': 4206.0}, {'u': 7, 'v': 9, 'w': 1321.0}, {'u': 7, 'v': 10, 'w': 1487.0}, {'u': 8, 'v': 11, 'w': 886.0}, {'u': 8, 'v': 0, 'w': 4099.0}, {'u': 10, 'v': 2, 'w': 1909.0}, {'u': 10, 'v': 12, 'w': 1940.0}, {'u': 3, 'v': 2, 'w': 998.0}, {'u': 3, 'v': 4, 'w': 2049.0}, {'u': 3, 'v': 9, 'w': 1097.0}, {'u': 4, 'v': 5, 'w': 3315.0}, {'u': 12, 'v': 11, 'w': 1725.0}, {'u': 1, 'v': 5, 'w': 222.0}, {'u': 1, 'v': 0, 'w': 2017.0}, {'u': 9, 'v': 6, 'w': 1042.0}, {'u': 5, 'v': 6, 'w': 1750.0}], 'density': 0.21794871794871795, 'source_file': 'I083.stp', 'k': 4}","[[6, 7], [1, 5], [5, 6]]",8,markdown_table,0
+KMST,KMST,"Someone on the trail crew needs to pick a handful of scenic spots and connect them with new trails and bridges so the selected spots make a single connected system without any circular detours. The better the choice, the less total track to build — compute that by summing the lengths of every installed connector — and the team must include precisely the set number of viewpoints and avoid leaving gaps or creating duplicate/looping connections. Details for the specific case are shown below.
+
+# total_viewpoints=12
+# total_potential_connectors=14
+# target_viewpoints_count=5
+viewpoint_u,viewpoint_v,connector_length
+L,G,5426.0
+H,I,816.0
+H,J,154.0
+I,E,267.0
+I,K,3930.0
+E,F,1891.0
+E,C,7858.0
+F,G,712.0
+F,D,7858.0
+G,J,1943.0
+A,B,2061.0
+A,D,4767.0
+B,C,4756.0
+C,D,1818.0
+
+When you hand the chosen trail segments back, just put them in a tiny JSON snippet so it's easy to read and parse. Something like this will do:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+This ""solution"" field is just the list of connectors you'll build; each pair [u, v] is a single trail or bridge linking two viewpoints (use the exact labels from the instance). The block above is only a sketch of the expected shape — not the actual answer itself.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new ones.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 14, 'edges': [{'u': 12, 'v': 7, 'w': 5426.0}, {'u': 8, 'v': 9, 'w': 816.0}, {'u': 8, 'v': 10, 'w': 154.0}, {'u': 9, 'v': 5, 'w': 267.0}, {'u': 9, 'v': 11, 'w': 3930.0}, {'u': 5, 'v': 6, 'w': 1891.0}, {'u': 5, 'v': 3, 'w': 7858.0}, {'u': 6, 'v': 7, 'w': 712.0}, {'u': 6, 'v': 4, 'w': 7858.0}, {'u': 7, 'v': 10, 'w': 1943.0}, {'u': 1, 'v': 2, 'w': 2061.0}, {'u': 1, 'v': 4, 'w': 4767.0}, {'u': 2, 'v': 3, 'w': 4756.0}, {'u': 3, 'v': 4, 'w': 1818.0}], 'k': 5, 'source_file': 'I022.stp', 'density': 0.21212121212121213}","[[8, 9], [8, 10], [5, 9], [5, 6]]",3128.0,"{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 14, 'edges': [{'u': 'L', 'v': 'G', 'w': 5426.0}, {'u': 'H', 'v': 'I', 'w': 816.0}, {'u': 'H', 'v': 'J', 'w': 154.0}, {'u': 'I', 'v': 'E', 'w': 267.0}, {'u': 'I', 'v': 'K', 'w': 3930.0}, {'u': 'E', 'v': 'F', 'w': 1891.0}, {'u': 'E', 'v': 'C', 'w': 7858.0}, {'u': 'F', 'v': 'G', 'w': 712.0}, {'u': 'F', 'v': 'D', 'w': 7858.0}, {'u': 'G', 'v': 'J', 'w': 1943.0}, {'u': 'A', 'v': 'B', 'w': 2061.0}, {'u': 'A', 'v': 'D', 'w': 4767.0}, {'u': 'B', 'v': 'C', 'w': 4756.0}, {'u': 'C', 'v': 'D', 'w': 1818.0}], 'density': 0.21212121212121213, 'source_file': 'I022.stp', 'k': 5}","[['H', 'I'], ['H', 'J'], ['E', 'I'], ['E', 'F']]",9,csv,names
+KMST,KMST,"Many coastal planners face the same choice: pick exactly a set number of docks and connect them with direct ferry legs so all picked docks are connected together, but never in a loop. The straightforward score for any plan is just the sum of the lengths of its legs — lower is better — and the chosen plan must include exactly that many docks, keep each dock unique in the plan, and avoid closed circuits. The precise figures and map are given below.
+
+There are 15 docks, 18 possible direct routes, and the plan must select exactly 6 docks.
+Direct route between dock 9 and dock 10 with distance 1992.0.
+Direct route between dock 10 and dock 1 with distance 1661.0.
+Direct route between dock 10 and dock 2 with distance 4760.0.
+Direct route between dock 13 and dock 8 with distance 1327.0.
+Direct route between dock 13 and dock 15 with distance 257.0.
+Direct route between dock 11 and dock 5 with distance 942.0.
+Direct route between dock 11 and dock 14 with distance 669.0.
+Direct route between dock 11 and dock 1 with distance 7406.0.
+Direct route between dock 7 and dock 6 with distance 1014.0.
+Direct route between dock 7 and dock 12 with distance 2097.0.
+Direct route between dock 8 and dock 3 with distance 797.0.
+Direct route between dock 8 and dock 4 with distance 983.0.
+Direct route between dock 8 and dock 12 with distance 981.0.
+Direct route between dock 8 and dock 15 with distance 1356.0.
+Direct route between dock 15 and dock 1 with distance 477.0.
+Direct route between dock 1 and dock 12 with distance 2261.0.
+Direct route between dock 5 and dock 6 with distance 2060.0.
+Direct route between dock 3 and dock 4 with distance 684.0.
+Select 6 unique docks to connect without loops so the sum of chosen route distances is minimized.
+
+Oh, and when you send back your plan, please stick to this little JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Think of ""solution"" as the list of ferry legs you picked. Each inner pair like [u1, v1] is one direct leg connecting the two dock identifiers u1 and v1. This is just a sketch of the shape I expect — not your final answer.
+
+Please make sure to use the exact dock identifiers from the instance input, with no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'KMST', 'num_nodes': 15, 'num_edges': 18, 'edges': [{'u': 9, 'v': 10, 'w': 1992.0}, {'u': 10, 'v': 1, 'w': 1661.0}, {'u': 10, 'v': 2, 'w': 4760.0}, {'u': 13, 'v': 8, 'w': 1327.0}, {'u': 13, 'v': 15, 'w': 257.0}, {'u': 11, 'v': 5, 'w': 942.0}, {'u': 11, 'v': 14, 'w': 669.0}, {'u': 11, 'v': 1, 'w': 7406.0}, {'u': 7, 'v': 6, 'w': 1014.0}, {'u': 7, 'v': 12, 'w': 2097.0}, {'u': 8, 'v': 3, 'w': 797.0}, {'u': 8, 'v': 4, 'w': 983.0}, {'u': 8, 'v': 12, 'w': 981.0}, {'u': 8, 'v': 15, 'w': 1356.0}, {'u': 15, 'v': 1, 'w': 477.0}, {'u': 1, 'v': 12, 'w': 2261.0}, {'u': 5, 'v': 6, 'w': 2060.0}, {'u': 3, 'v': 4, 'w': 684.0}], 'k': 6, 'source_file': 'I021.stp', 'density': 0.17142857142857143}","[[8, 13], [13, 15], [3, 8], [1, 15], [3, 4]]",3542.0,"{'problem_type': 'KMST', 'num_nodes': 15, 'num_edges': 18, 'edges': [{'u': 9, 'v': 10, 'w': 1992.0}, {'u': 10, 'v': 1, 'w': 1661.0}, {'u': 10, 'v': 2, 'w': 4760.0}, {'u': 13, 'v': 8, 'w': 1327.0}, {'u': 13, 'v': 15, 'w': 257.0}, {'u': 11, 'v': 5, 'w': 942.0}, {'u': 11, 'v': 14, 'w': 669.0}, {'u': 11, 'v': 1, 'w': 7406.0}, {'u': 7, 'v': 6, 'w': 1014.0}, {'u': 7, 'v': 12, 'w': 2097.0}, {'u': 8, 'v': 3, 'w': 797.0}, {'u': 8, 'v': 4, 'w': 983.0}, {'u': 8, 'v': 12, 'w': 981.0}, {'u': 8, 'v': 15, 'w': 1356.0}, {'u': 15, 'v': 1, 'w': 477.0}, {'u': 1, 'v': 12, 'w': 2261.0}, {'u': 5, 'v': 6, 'w': 2060.0}, {'u': 3, 'v': 4, 'w': 684.0}], 'density': 0.17142857142857143, 'source_file': 'I021.stp', 'k': 6}","[[8, 13], [13, 15], [3, 8], [1, 15], [3, 4]]",10,nl,1
+KMST,KMST,"Recently a team decided they’d pick a fixed number of habitat patches and create corridors so those patches are all connected, but without extra looping routes that just waste length. Plans are scored by adding up every corridor’s length; the goal is the smallest possible total while including exactly the required number of patches and not duplicating connections. The particular instance and measurements are shown below.
+
+# total_habitat_patches=15
+# candidate_corridor_count=18
+# target_patches_to_connect=8
+patch_endpoint_a,patch_endpoint_b,corridor_length
+7,15,4178.0
+15,3,1663.0
+15,11,565.0
+11,8,609.0
+12,2,151.0
+12,3,327.0
+12,14,3118.0
+9,5,874.0
+2,1,3086.0
+2,8,1084.0
+5,4,2473.0
+5,10,2002.0
+10,13,3168.0
+10,3,1330.0
+1,14,97.0
+4,13,2112.0
+4,6,338.0
+14,13,1385.0
+
+If you want the corridors listed back in a compact way, I usually give them in a tiny JSON sketch like this so it’s easy to parse:
+
+{
+  ""solution"": [[""patch1"", ""patch2""], [""patch3"", ""patch4""], [""patch5"", ""patch6""], ...]
+}
+
+Each inner pair is just one corridor linking two habitat patches, and the whole ""solution"" list is the set of corridors you’d build. This block is only a shape example — not the actual chosen corridors.
+
+Please use the exact identifiers from the instance input when you give the real answer — don’t rename patches or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 15, 'num_edges': 18, 'edges': [{'u': 7, 'v': 15, 'w': 4178.0}, {'u': 15, 'v': 3, 'w': 1663.0}, {'u': 15, 'v': 11, 'w': 565.0}, {'u': 11, 'v': 8, 'w': 609.0}, {'u': 12, 'v': 2, 'w': 151.0}, {'u': 12, 'v': 3, 'w': 327.0}, {'u': 12, 'v': 14, 'w': 3118.0}, {'u': 9, 'v': 5, 'w': 874.0}, {'u': 2, 'v': 1, 'w': 3086.0}, {'u': 2, 'v': 8, 'w': 1084.0}, {'u': 5, 'v': 4, 'w': 2473.0}, {'u': 5, 'v': 10, 'w': 2002.0}, {'u': 10, 'v': 13, 'w': 3168.0}, {'u': 10, 'v': 3, 'w': 1330.0}, {'u': 1, 'v': 14, 'w': 97.0}, {'u': 4, 'v': 13, 'w': 2112.0}, {'u': 4, 'v': 6, 'w': 338.0}, {'u': 14, 'v': 13, 'w': 1385.0}], 'k': 8, 'source_file': 'I038.stp', 'density': 0.17142857142857143}","[[11, 15], [8, 11], [2, 12], [3, 12], [1, 2], [2, 8], [1, 14]]",5919.0,"{'problem_type': 'KMST', 'num_nodes': 15, 'num_edges': 18, 'edges': [{'u': 7, 'v': 15, 'w': 4178.0}, {'u': 15, 'v': 3, 'w': 1663.0}, {'u': 15, 'v': 11, 'w': 565.0}, {'u': 11, 'v': 8, 'w': 609.0}, {'u': 12, 'v': 2, 'w': 151.0}, {'u': 12, 'v': 3, 'w': 327.0}, {'u': 12, 'v': 14, 'w': 3118.0}, {'u': 9, 'v': 5, 'w': 874.0}, {'u': 2, 'v': 1, 'w': 3086.0}, {'u': 2, 'v': 8, 'w': 1084.0}, {'u': 5, 'v': 4, 'w': 2473.0}, {'u': 5, 'v': 10, 'w': 2002.0}, {'u': 10, 'v': 13, 'w': 3168.0}, {'u': 10, 'v': 3, 'w': 1330.0}, {'u': 1, 'v': 14, 'w': 97.0}, {'u': 4, 'v': 13, 'w': 2112.0}, {'u': 4, 'v': 6, 'w': 338.0}, {'u': 14, 'v': 13, 'w': 1385.0}], 'density': 0.17142857142857143, 'source_file': 'I038.stp', 'k': 8}","[[11, 15], [8, 11], [2, 12], [3, 12], [1, 2], [2, 8], [1, 14]]",11,csv,1
+KMST,KMST,"Imagine laying out the festival’s utilities: choose exactly a set number of booths to serve, run lines between them so they’re all linked together with no circular paths, and aim to use the shortest total length of cable possible — just add up the lengths of the connections you’d install to compare layouts. No booth in the chosen set can be left out or connected more than once; they all need to sit in one connected system. The precise layout and distances are below.
+
+Here are the 14 booths and 16 candidate direct lines; select exactly 4 booths and connect them into a single acyclic network using the listed lengths.
+Potential line between booth H and booth D with length 2.0.
+Potential line between booth H and booth I with length 417.0.
+Potential line between booth H and booth M with length 576.0.
+Potential line between booth E and booth F with length 1253.0.
+Potential line between booth F and booth N with length 917.0.
+Potential line between booth F and booth M with length 189.0.
+Potential line between booth B and booth I with length 64.0.
+Potential line between booth B and booth C with length 618.0.
+Potential line between booth B and booth J with length 622.0.
+Potential line between booth C and booth M with length 103.0.
+Potential line between booth C and booth K with length 639.0.
+Potential line between booth J and booth A with length 357.0.
+Potential line between booth J and booth K with length 800.0.
+Potential line between booth K and booth G with length 278.0.
+Potential line between booth N and booth G with length 123.0.
+Potential line between booth I and booth L with length 672.0.
+When ready, pick the 4 booths and minimize the total of the chosen line lengths to produce the shortest connected layout.
+
+If you want to sketch a candidate layout back to me, just drop it in a tiny JSON blob like this:
+
+{
+  ""solution"": [[""u1"", ""v1""], [""u2"", ""v2""], ...]
+}
+
+Think of ""solution"" as a list of the cable runs you’d install — each inner pair is one connection between two booths/nodes. This is just the shape I expect (a simple list of edges), not the actual final answer.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 16, 'edges': [{'u': 8, 'v': 4, 'w': 2.0}, {'u': 8, 'v': 9, 'w': 417.0}, {'u': 8, 'v': 13, 'w': 576.0}, {'u': 5, 'v': 6, 'w': 1253.0}, {'u': 6, 'v': 14, 'w': 917.0}, {'u': 6, 'v': 13, 'w': 189.0}, {'u': 2, 'v': 9, 'w': 64.0}, {'u': 2, 'v': 3, 'w': 618.0}, {'u': 2, 'v': 10, 'w': 622.0}, {'u': 3, 'v': 13, 'w': 103.0}, {'u': 3, 'v': 11, 'w': 639.0}, {'u': 10, 'v': 1, 'w': 357.0}, {'u': 10, 'v': 11, 'w': 800.0}, {'u': 11, 'v': 7, 'w': 278.0}, {'u': 14, 'v': 7, 'w': 123.0}, {'u': 9, 'v': 12, 'w': 672.0}], 'k': 4, 'source_file': 'I051.stp', 'density': 0.17582417582417584}","[[4, 8], [8, 9], [2, 9]]",483.0,"{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 16, 'edges': [{'u': 'H', 'v': 'D', 'w': 2.0}, {'u': 'H', 'v': 'I', 'w': 417.0}, {'u': 'H', 'v': 'M', 'w': 576.0}, {'u': 'E', 'v': 'F', 'w': 1253.0}, {'u': 'F', 'v': 'N', 'w': 917.0}, {'u': 'F', 'v': 'M', 'w': 189.0}, {'u': 'B', 'v': 'I', 'w': 64.0}, {'u': 'B', 'v': 'C', 'w': 618.0}, {'u': 'B', 'v': 'J', 'w': 622.0}, {'u': 'C', 'v': 'M', 'w': 103.0}, {'u': 'C', 'v': 'K', 'w': 639.0}, {'u': 'J', 'v': 'A', 'w': 357.0}, {'u': 'J', 'v': 'K', 'w': 800.0}, {'u': 'K', 'v': 'G', 'w': 278.0}, {'u': 'N', 'v': 'G', 'w': 123.0}, {'u': 'I', 'v': 'L', 'w': 672.0}], 'density': 0.17582417582417584, 'source_file': 'I051.stp', 'k': 4}","[['D', 'H'], ['H', 'I'], ['B', 'I']]",12,nl,names
+KMST,KMST,"Around here the job is to choose exactly k stops and lay down sidewalks so the chosen stops become one continuous, loop-free network for students to use. The cost to compare different layouts is the total sidewalk length — just add up the lengths of the chosen links — and the aim is to make that sum as small as possible while including exactly the required stops and not creating any closed loops or double-counted stretches. The precise map and lengths are shown below.
+
+{
+  ""total_bus_stops"": 15,
+  ""candidate_sidewalk_segments"": 18,
+  ""edges"": [
+    {
+      ""stop_u"": 5,
+      ""stop_v"": 6,
+      ""sidewalk_length"": 622.0
+    },
+    {
+      ""stop_u"": 5,
+      ""stop_v"": 8,
+      ""sidewalk_length"": 1202.0
+    },
+    {
+      ""stop_u"": 5,
+      ""stop_v"": 4,
+      ""sidewalk_length"": 13379.0
+    },
+    {
+      ""stop_u"": 6,
+      ""stop_v"": 7,
+      ""sidewalk_length"": 1196.0
+    },
+    {
+      ""stop_u"": 7,
+      ""stop_v"": 15,
+      ""sidewalk_length"": 507.0
+    },
+    {
+      ""stop_u"": 14,
+      ""stop_v"": 8,
+      ""sidewalk_length"": 479.0
+    },
+    {
+      ""stop_u"": 14,
+      ""stop_v"": 15,
+      ""sidewalk_length"": 799.0
+    },
+    {
+      ""stop_u"": 10,
+      ""stop_v"": 3,
+      ""sidewalk_length"": 10331.0
+    },
+    {
+      ""stop_u"": 10,
+      ""stop_v"": 1,
+      ""sidewalk_length"": 12528.0
+    },
+    {
+      ""stop_u"": 10,
+      ""stop_v"": 12,
+      ""sidewalk_length"": 19689.0
+    },
+    {
+      ""stop_u"": 1,
+      ""stop_v"": 2,
+      ""sidewalk_length"": 1227.0
+    },
+    {
+      ""stop_u"": 1,
+      ""stop_v"": 11,
+      ""sidewalk_length"": 6630.0
+    },
+    {
+      ""stop_u"": 2,
+      ""stop_v"": 9,
+      ""sidewalk_length"": 6252.0
+    },
+    {
+      ""stop_u"": 2,
+      ""stop_v"": 4,
+      ""sidewalk_length"": 23286.0
+    },
+    {
+      ""stop_u"": 3,
+      ""stop_v"": 4,
+      ""sidewalk_length"": 1197.0
+    },
+    {
+      ""stop_u"": 3,
+      ""stop_v"": 8,
+      ""sidewalk_length"": 13070.0
+    },
+    {
+      ""stop_u"": 11,
+      ""stop_v"": 9,
+      ""sidewalk_length"": 1178.0
+    },
+    {
+      ""stop_u"": 12,
+      ""stop_v"": 13,
+      ""sidewalk_length"": 13866.0
+    }
+  ],
+  ""required_stops_count"": 6
+}
+
+You can just hand the chosen sidewalk segments over in a tiny JSON snippet like this:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Think of ""solution"" as the list of sidewalk links you picked — each pair [u, v] is one connection between stop u and stop v. This block is just the shape I expect, not the real answer: replace those u1/v1 placeholders with the actual node identifiers from the instance.
+
+Please use the identifiers exactly as they appear in the input file — no renaming, no made-up labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 15, 'num_edges': 18, 'edges': [{'u': 5, 'v': 6, 'w': 622.0}, {'u': 5, 'v': 8, 'w': 1202.0}, {'u': 5, 'v': 4, 'w': 13379.0}, {'u': 6, 'v': 7, 'w': 1196.0}, {'u': 7, 'v': 15, 'w': 507.0}, {'u': 14, 'v': 8, 'w': 479.0}, {'u': 14, 'v': 15, 'w': 799.0}, {'u': 10, 'v': 3, 'w': 10331.0}, {'u': 10, 'v': 1, 'w': 12528.0}, {'u': 10, 'v': 12, 'w': 19689.0}, {'u': 1, 'v': 2, 'w': 1227.0}, {'u': 1, 'v': 11, 'w': 6630.0}, {'u': 2, 'v': 9, 'w': 6252.0}, {'u': 2, 'v': 4, 'w': 23286.0}, {'u': 3, 'v': 4, 'w': 1197.0}, {'u': 3, 'v': 8, 'w': 13070.0}, {'u': 11, 'v': 9, 'w': 1178.0}, {'u': 12, 'v': 13, 'w': 13866.0}], 'k': 6, 'source_file': 'I080.stp', 'density': 0.17142857142857143}","[[5, 6], [6, 7], [7, 15], [8, 14], [14, 15]]",3603.0,"{'problem_type': 'KMST', 'num_nodes': 15, 'num_edges': 18, 'edges': [{'u': 5, 'v': 6, 'w': 622.0}, {'u': 5, 'v': 8, 'w': 1202.0}, {'u': 5, 'v': 4, 'w': 13379.0}, {'u': 6, 'v': 7, 'w': 1196.0}, {'u': 7, 'v': 15, 'w': 507.0}, {'u': 14, 'v': 8, 'w': 479.0}, {'u': 14, 'v': 15, 'w': 799.0}, {'u': 10, 'v': 3, 'w': 10331.0}, {'u': 10, 'v': 1, 'w': 12528.0}, {'u': 10, 'v': 12, 'w': 19689.0}, {'u': 1, 'v': 2, 'w': 1227.0}, {'u': 1, 'v': 11, 'w': 6630.0}, {'u': 2, 'v': 9, 'w': 6252.0}, {'u': 2, 'v': 4, 'w': 23286.0}, {'u': 3, 'v': 4, 'w': 1197.0}, {'u': 3, 'v': 8, 'w': 13070.0}, {'u': 11, 'v': 9, 'w': 1178.0}, {'u': 12, 'v': 13, 'w': 13866.0}], 'density': 0.17142857142857143, 'source_file': 'I080.stp', 'k': 6}","[[5, 6], [6, 7], [7, 15], [8, 14], [14, 15]]",13,json,1
+KMST,KMST,"Many people imagine a dig where the director just opens every route, but here the task is tighter: choose a set number of sites and link them with pathways that don’t double back into loops. The better choice is the one with the least combined path length — total everything up and choose the smallest total. Exactly the predetermined number of sites must be used, they all need to be connected, and no circular or repeated tracks are allowed. The concrete site list and the path distances follow below.
+
+{
+  ""total_sites"": 15,
+  ""candidate_tracks"": 19,
+  ""edges"": [
+    {
+      ""site_endpoint_a"": ""I"",
+      ""site_endpoint_b"": ""F"",
+      ""track_length"": 291448.0
+    },
+    {
+      ""site_endpoint_a"": ""I"",
+      ""site_endpoint_b"": ""H"",
+      ""track_length"": 334263.0
+    },
+    {
+      ""site_endpoint_a"": ""B"",
+      ""site_endpoint_b"": ""C"",
+      ""track_length"": 159584.0
+    },
+    {
+      ""site_endpoint_a"": ""B"",
+      ""site_endpoint_b"": ""D"",
+      ""track_length"": 159331.0
+    },
+    {
+      ""site_endpoint_a"": ""O"",
+      ""site_endpoint_b"": ""M"",
+      ""track_length"": 284.0
+    },
+    {
+      ""site_endpoint_a"": ""O"",
+      ""site_endpoint_b"": ""D"",
+      ""track_length"": 1952.0
+    },
+    {
+      ""site_endpoint_a"": ""O"",
+      ""site_endpoint_b"": ""H"",
+      ""track_length"": 467.0
+    },
+    {
+      ""site_endpoint_a"": ""C"",
+      ""site_endpoint_b"": ""L"",
+      ""track_length"": 970.0
+    },
+    {
+      ""site_endpoint_a"": ""C"",
+      ""site_endpoint_b"": ""M"",
+      ""track_length"": 1001.0
+    },
+    {
+      ""site_endpoint_a"": ""D"",
+      ""site_endpoint_b"": ""L"",
+      ""track_length"": 1973.0
+    },
+    {
+      ""site_endpoint_a"": ""K"",
+      ""site_endpoint_b"": ""H"",
+      ""track_length"": 3273.0
+    },
+    {
+      ""site_endpoint_a"": ""M"",
+      ""site_endpoint_b"": ""H"",
+      ""track_length"": 371.0
+    },
+    {
+      ""site_endpoint_a"": ""G"",
+      ""site_endpoint_b"": ""H"",
+      ""track_length"": 4719.0
+    },
+    {
+      ""site_endpoint_a"": ""J"",
+      ""site_endpoint_b"": ""H"",
+      ""track_length"": 780.0
+    },
+    {
+      ""site_endpoint_a"": ""N"",
+      ""site_endpoint_b"": ""H"",
+      ""track_length"": 1721.0
+    },
+    {
+      ""site_endpoint_a"": ""E"",
+      ""site_endpoint_b"": ""F"",
+      ""track_length"": 375931.0
+    },
+    {
+      ""site_endpoint_a"": ""E"",
+      ""site_endpoint_b"": ""H"",
+      ""track_length"": 765484.0
+    },
+    {
+      ""site_endpoint_a"": ""F"",
+      ""site_endpoint_b"": ""H"",
+      ""track_length"": 461984.0
+    },
+    {
+      ""site_endpoint_a"": ""H"",
+      ""site_endpoint_b"": ""A"",
+      ""track_length"": 3097.0
+    }
+  ],
+  ""sites_to_select"": 8
+}
+
+I'll just show the shape I want back — a tiny JSON snippet so it's clear how to paste the chosen edges. Nothing fancy, just the layout:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+This means ""solution"" should be a list of edges, and each inner pair [u, v] is an edge connecting site u to site v. Think of it like a simple checklist: list the links you picked, one pair per link. It's just a sketch of the shape I expect, not the real answer.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 15, 'num_edges': 19, 'edges': [{'u': 9, 'v': 6, 'w': 291448.0}, {'u': 9, 'v': 8, 'w': 334263.0}, {'u': 2, 'v': 3, 'w': 159584.0}, {'u': 2, 'v': 4, 'w': 159331.0}, {'u': 15, 'v': 13, 'w': 284.0}, {'u': 15, 'v': 4, 'w': 1952.0}, {'u': 15, 'v': 8, 'w': 467.0}, {'u': 3, 'v': 12, 'w': 970.0}, {'u': 3, 'v': 13, 'w': 1001.0}, {'u': 4, 'v': 12, 'w': 1973.0}, {'u': 11, 'v': 8, 'w': 3273.0}, {'u': 13, 'v': 8, 'w': 371.0}, {'u': 7, 'v': 8, 'w': 4719.0}, {'u': 10, 'v': 8, 'w': 780.0}, {'u': 14, 'v': 8, 'w': 1721.0}, {'u': 5, 'v': 6, 'w': 375931.0}, {'u': 5, 'v': 8, 'w': 765484.0}, {'u': 6, 'v': 8, 'w': 461984.0}, {'u': 8, 'v': 1, 'w': 3097.0}], 'k': 8, 'source_file': 'I004.stp', 'density': 0.18095238095238095}","[[13, 15], [4, 15], [3, 12], [3, 13], [8, 13], [8, 10], [8, 14]]",7079.0,"{'problem_type': 'KMST', 'num_nodes': 15, 'num_edges': 19, 'edges': [{'u': 'I', 'v': 'F', 'w': 291448.0}, {'u': 'I', 'v': 'H', 'w': 334263.0}, {'u': 'B', 'v': 'C', 'w': 159584.0}, {'u': 'B', 'v': 'D', 'w': 159331.0}, {'u': 'O', 'v': 'M', 'w': 284.0}, {'u': 'O', 'v': 'D', 'w': 1952.0}, {'u': 'O', 'v': 'H', 'w': 467.0}, {'u': 'C', 'v': 'L', 'w': 970.0}, {'u': 'C', 'v': 'M', 'w': 1001.0}, {'u': 'D', 'v': 'L', 'w': 1973.0}, {'u': 'K', 'v': 'H', 'w': 3273.0}, {'u': 'M', 'v': 'H', 'w': 371.0}, {'u': 'G', 'v': 'H', 'w': 4719.0}, {'u': 'J', 'v': 'H', 'w': 780.0}, {'u': 'N', 'v': 'H', 'w': 1721.0}, {'u': 'E', 'v': 'F', 'w': 375931.0}, {'u': 'E', 'v': 'H', 'w': 765484.0}, {'u': 'F', 'v': 'H', 'w': 461984.0}, {'u': 'H', 'v': 'A', 'w': 3097.0}], 'density': 0.18095238095238095, 'source_file': 'I004.stp', 'k': 8}","[['M', 'O'], ['D', 'O'], ['C', 'L'], ['C', 'M'], ['H', 'M'], ['H', 'J'], ['H', 'N']]",14,json,names
+KMST,KMST,"Someone in the planning office wants a compact bike network: pick exactly k stations, join them so they form one connected structure without any closed loops, and make sure every selected station is included once. Plans are compared by the total length of lanes built — just add the lane distances to see which is shortest. The map and numbers for this task are shown below.
+
+# num_stations_total=15
+# num_candidate_links_total=17
+# selected_stations_k=8
+station_u_id,station_v_id,link_length
+9,6,1350.0
+9,13,564.0
+10,2,802.0
+10,8,573.0
+10,12,3316.0
+11,5,843.0
+11,3,767.0
+12,5,35.0
+12,13,1382.0
+1,8,694.0
+7,8,981.0
+7,2,388.0
+7,14,468.0
+0,2,586.0
+0,3,587.0
+2,4,476.0
+5,6,314.0
+
+If you want to send the chosen lanes back to me, please use this little JSON shape so it's easy to read:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Here ""solution"" is just a list of the lanes you want to build; each lane is a pair [u, v] meaning ""connect station u with station v"". Think of it like filling out a short form — this block is only a sketch of the shape I expect, not the actual answer.
+
+Please be sure to use the exact identifiers from the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 15, 'num_edges': 17, 'edges': [{'u': 10, 'v': 7, 'w': 1350.0}, {'u': 10, 'v': 14, 'w': 564.0}, {'u': 11, 'v': 3, 'w': 802.0}, {'u': 11, 'v': 9, 'w': 573.0}, {'u': 11, 'v': 13, 'w': 3316.0}, {'u': 12, 'v': 6, 'w': 843.0}, {'u': 12, 'v': 4, 'w': 767.0}, {'u': 13, 'v': 6, 'w': 35.0}, {'u': 13, 'v': 14, 'w': 1382.0}, {'u': 2, 'v': 9, 'w': 694.0}, {'u': 8, 'v': 9, 'w': 981.0}, {'u': 8, 'v': 3, 'w': 388.0}, {'u': 8, 'v': 15, 'w': 468.0}, {'u': 1, 'v': 3, 'w': 586.0}, {'u': 1, 'v': 4, 'w': 587.0}, {'u': 3, 'v': 5, 'w': 476.0}, {'u': 6, 'v': 7, 'w': 314.0}], 'k': 8, 'source_file': 'I045.stp', 'density': 0.1619047619047619}","[[6, 12], [4, 12], [6, 13], [3, 8], [1, 3], [1, 4], [6, 7]]",3520.0,"{'problem_type': 'KMST', 'num_nodes': 15, 'num_edges': 17, 'edges': [{'u': 9, 'v': 6, 'w': 1350.0}, {'u': 9, 'v': 13, 'w': 564.0}, {'u': 10, 'v': 2, 'w': 802.0}, {'u': 10, 'v': 8, 'w': 573.0}, {'u': 10, 'v': 12, 'w': 3316.0}, {'u': 11, 'v': 5, 'w': 843.0}, {'u': 11, 'v': 3, 'w': 767.0}, {'u': 12, 'v': 5, 'w': 35.0}, {'u': 12, 'v': 13, 'w': 1382.0}, {'u': 1, 'v': 8, 'w': 694.0}, {'u': 7, 'v': 8, 'w': 981.0}, {'u': 7, 'v': 2, 'w': 388.0}, {'u': 7, 'v': 14, 'w': 468.0}, {'u': 0, 'v': 2, 'w': 586.0}, {'u': 0, 'v': 3, 'w': 587.0}, {'u': 2, 'v': 4, 'w': 476.0}, {'u': 5, 'v': 6, 'w': 314.0}], 'density': 0.1619047619047619, 'source_file': 'I045.stp', 'k': 8}","[[5, 11], [3, 11], [5, 12], [2, 7], [0, 2], [0, 3], [5, 6]]",15,csv,0
+KMST,KMST,"We’ve been asked to connect a fixed number of vineyard parcels with irrigation lines so they form one continuous network, but we must avoid creating circular feeder routes. What makes one plan better than another is how little pipe and money it needs — add up the pipe segments you choose and that total length/cost is what matters. Exactly that predetermined number of parcels has to be chosen (no more, no less), each counted once, and all must be linked together without any loops. The exact instance — which parcels and the pipe lengths/costs — appears below.
+
+There are 10 parcels, 11 candidate pipe segments, and we must select exactly 5 parcels to interconnect into one loop-free network.
+Candidate pipe connecting parcel F and parcel I with length/cost 851.0.
+Candidate pipe connecting parcel G and parcel H with length/cost 331.0.
+Candidate pipe connecting parcel G and parcel B with length/cost 1204.0.
+Candidate pipe connecting parcel G and parcel C with length/cost 1667.0.
+Candidate pipe connecting parcel H and parcel I with length/cost 155.0.
+Candidate pipe connecting parcel H and parcel J with length/cost 535.0.
+Candidate pipe connecting parcel A and parcel E with length/cost 665.0.
+Candidate pipe connecting parcel A and parcel J with length/cost 882.0.
+Candidate pipe connecting parcel A and parcel I with length/cost 1020.0.
+Candidate pipe connecting parcel D and parcel E with length/cost 279.0.
+Candidate pipe connecting parcel D and parcel J with length/cost 281.0.
+These entries let us evaluate pipe choices to connect exactly 5 parcels with minimum total length/cost while avoiding loops.
+
+I’ll keep the answer in a simple JSON shape so it’s easy to read and parse. Think of it as a little form where each entry is one chosen pipe between two parcels.
+
+{
+  ""solution"": [[""p1"", ""p2""], [""p3"", ""p4""], ...]
+}
+
+In plain terms: ""solution"" is the list of irrigation line segments you pick. Each inner pair [""X"", ""Y""] means “connect parcel X to parcel Y.” This is just the expected shape — a sketch of how I’ll present the final plan, not the actual selection.
+
+Please make sure to use the parcel identifiers exactly as they appear in the instance input — no renaming, no new labels. 
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'KMST', 'num_nodes': 10, 'num_edges': 11, 'edges': [{'u': 6, 'v': 9, 'w': 851.0}, {'u': 7, 'v': 8, 'w': 331.0}, {'u': 7, 'v': 2, 'w': 1204.0}, {'u': 7, 'v': 3, 'w': 1667.0}, {'u': 8, 'v': 9, 'w': 155.0}, {'u': 8, 'v': 10, 'w': 535.0}, {'u': 1, 'v': 5, 'w': 665.0}, {'u': 1, 'v': 10, 'w': 882.0}, {'u': 1, 'v': 9, 'w': 1020.0}, {'u': 4, 'v': 5, 'w': 279.0}, {'u': 4, 'v': 10, 'w': 281.0}], 'k': 5, 'source_file': 'I069.stp', 'density': 0.24444444444444444}","[[8, 9], [8, 10], [4, 5], [4, 10]]",1250.0,"{'problem_type': 'KMST', 'num_nodes': 10, 'num_edges': 11, 'edges': [{'u': 'F', 'v': 'I', 'w': 851.0}, {'u': 'G', 'v': 'H', 'w': 331.0}, {'u': 'G', 'v': 'B', 'w': 1204.0}, {'u': 'G', 'v': 'C', 'w': 1667.0}, {'u': 'H', 'v': 'I', 'w': 155.0}, {'u': 'H', 'v': 'J', 'w': 535.0}, {'u': 'A', 'v': 'E', 'w': 665.0}, {'u': 'A', 'v': 'J', 'w': 882.0}, {'u': 'A', 'v': 'I', 'w': 1020.0}, {'u': 'D', 'v': 'E', 'w': 279.0}, {'u': 'D', 'v': 'J', 'w': 281.0}], 'density': 0.24444444444444444, 'source_file': 'I069.stp', 'k': 5}","[['H', 'I'], ['H', 'J'], ['D', 'E'], ['D', 'J']]",16,markdown_table,names
+KMST,KMST,"Someone on the team needs to pick a fixed number of sensors and hook them together with radio connections so they form a single connected web with no loops; the trick is to do this while keeping the sum of all link distances as small as possible. The way to check which choice is best is to add up the lengths of all the links used, and be sure the network contains exactly the chosen number of distinct sensors with no extras. The detailed sensor layout and distances are given below.
+
+Below are the 13 potential links among the 12 sensors; the chosen tree must span exactly 4 sensors.
+Link between sensor E and sensor L with distance 7691.0.
+Link between sensor E and sensor C with distance 16355.0.
+Link between sensor E and sensor K with distance 8612.0.
+Link between sensor H and sensor F with distance 21896.0.
+Link between sensor H and sensor A with distance 4917.0.
+Link between sensor H and sensor L with distance 42047.0.
+Link between sensor B and sensor K with distance 3811.0.
+Link between sensor B and sensor L with distance 12056.0.
+Link between sensor I and sensor D with distance 19702.0.
+Link between sensor J and sensor C with distance 22875.0.
+Link between sensor C and sensor F with distance 5079.0.
+Link between sensor F and sensor D with distance 5401.0.
+Link between sensor D and sensor G with distance 21999.0.
+The chosen selection should minimize the total link distance while spanning exactly 4 sensors.
+
+If you want the answer output in a machine-friendly way, just stick to this little JSON shape:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Here ""solution"" is a list of radio links to include in the final web. Each pair like [u1, v1] is one connection between two sensors (the order inside the pair doesn't matter — it's just the two endpoints). Think of it as a simple form: a list of links that together make the connected, loop-free network of exactly the chosen sensors.
+
+This JSON is only a sketch of the shape I need — not the real answer. When you fill it in, use the exact sensor identifiers from the instance input, with no renaming and no extra labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 13, 'edges': [{'u': 5, 'v': 12, 'w': 7691.0}, {'u': 5, 'v': 3, 'w': 16355.0}, {'u': 5, 'v': 11, 'w': 8612.0}, {'u': 8, 'v': 6, 'w': 21896.0}, {'u': 8, 'v': 1, 'w': 4917.0}, {'u': 8, 'v': 12, 'w': 42047.0}, {'u': 2, 'v': 11, 'w': 3811.0}, {'u': 2, 'v': 12, 'w': 12056.0}, {'u': 9, 'v': 4, 'w': 19702.0}, {'u': 10, 'v': 3, 'w': 22875.0}, {'u': 3, 'v': 6, 'w': 5079.0}, {'u': 6, 'v': 4, 'w': 5401.0}, {'u': 4, 'v': 7, 'w': 21999.0}], 'k': 4, 'source_file': 'I058.stp', 'density': 0.19696969696969696}","[[5, 12], [5, 11], [2, 11]]",20114.0,"{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 13, 'edges': [{'u': 'E', 'v': 'L', 'w': 7691.0}, {'u': 'E', 'v': 'C', 'w': 16355.0}, {'u': 'E', 'v': 'K', 'w': 8612.0}, {'u': 'H', 'v': 'F', 'w': 21896.0}, {'u': 'H', 'v': 'A', 'w': 4917.0}, {'u': 'H', 'v': 'L', 'w': 42047.0}, {'u': 'B', 'v': 'K', 'w': 3811.0}, {'u': 'B', 'v': 'L', 'w': 12056.0}, {'u': 'I', 'v': 'D', 'w': 19702.0}, {'u': 'J', 'v': 'C', 'w': 22875.0}, {'u': 'C', 'v': 'F', 'w': 5079.0}, {'u': 'F', 'v': 'D', 'w': 5401.0}, {'u': 'D', 'v': 'G', 'w': 21999.0}], 'density': 0.19696969696969696, 'source_file': 'I058.stp', 'k': 4}","[['E', 'L'], ['E', 'K'], ['B', 'K']]",17,markdown_table,names
+KMST,KMST,"On a quiet afternoon the village engineer drew up plans to connect a fixed number of wells so they all sit on one continuous supply line without any loops or repeated routes. Different connection schemes are compared by simply summing the lengths of the pipes they’d need — the scheme with the smallest sum is the cheapest and therefore best. It’s non-negotiable that exactly that many wells are included, that each is connected, and that piping never forms a circular path. The actual map, distances, and how many wells to connect are given below.
+
+# total_wells=10
+# possible_pipe_segments=13
+# wells_to_connect=3
+well_u_id,well_v_id,pipe_length
+H,I,156.0
+J,I,1089.0
+J,A,3645.0
+I,B,3626.0
+A,B,407.0
+A,D,6522.0
+B,C,6496.0
+C,D,313.0
+C,E,16993.0
+D,G,17048.0
+E,F,313.0
+E,G,310.0
+F,G,25.0
+
+If it helps, reply with a tiny JSON snippet in that shape so I can immediately see which wells get connected. Something informal like this works:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+""solution"" should be a list of pipe links; each pair [u1, v1] means there's a single pipe between the two wells whose identifiers are u1 and v1. Think of it as filling out a simple form: each inner pair is one connection. This is just the expected shape — a sketch of the format, not the actual answer.
+
+Please be sure to use the exact identifiers from the input, with no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 10, 'num_edges': 13, 'edges': [{'u': 8, 'v': 9, 'w': 156.0}, {'u': 10, 'v': 9, 'w': 1089.0}, {'u': 10, 'v': 1, 'w': 3645.0}, {'u': 9, 'v': 2, 'w': 3626.0}, {'u': 1, 'v': 2, 'w': 407.0}, {'u': 1, 'v': 4, 'w': 6522.0}, {'u': 2, 'v': 3, 'w': 6496.0}, {'u': 3, 'v': 4, 'w': 313.0}, {'u': 3, 'v': 5, 'w': 16993.0}, {'u': 4, 'v': 7, 'w': 17048.0}, {'u': 5, 'v': 6, 'w': 313.0}, {'u': 5, 'v': 7, 'w': 310.0}, {'u': 6, 'v': 7, 'w': 25.0}], 'k': 3, 'source_file': 'I010.stp', 'density': 0.28888888888888886}","[[5, 7], [6, 7]]",335.0,"{'problem_type': 'KMST', 'num_nodes': 10, 'num_edges': 13, 'edges': [{'u': 'H', 'v': 'I', 'w': 156.0}, {'u': 'J', 'v': 'I', 'w': 1089.0}, {'u': 'J', 'v': 'A', 'w': 3645.0}, {'u': 'I', 'v': 'B', 'w': 3626.0}, {'u': 'A', 'v': 'B', 'w': 407.0}, {'u': 'A', 'v': 'D', 'w': 6522.0}, {'u': 'B', 'v': 'C', 'w': 6496.0}, {'u': 'C', 'v': 'D', 'w': 313.0}, {'u': 'C', 'v': 'E', 'w': 16993.0}, {'u': 'D', 'v': 'G', 'w': 17048.0}, {'u': 'E', 'v': 'F', 'w': 313.0}, {'u': 'E', 'v': 'G', 'w': 310.0}, {'u': 'F', 'v': 'G', 'w': 25.0}], 'density': 0.28888888888888886, 'source_file': 'I010.stp', 'k': 3}","[['E', 'G'], ['F', 'G']]",18,csv,names
+KMST,KMST,"There’s a small project to wire a handful of buildings: pick a predetermined number of sites and connect them with fiber so they all reach each other through a single connected layout that doesn’t loop back on itself. What makes one plan better than another is simply the total cable put in — add the lengths of the chosen links and the smaller total wins. Every chosen building has to be one of the fixed number (no extras, no repeats), and the cabling must link them into a single loop-free network. The detailed map and numbers follow below.
+
+# total_buildings=13
+# total_possible_links=14
+# buildings_to_connect=5
+building_u,building_v,link_length
+K,J,6265.0
+K,I,2728.0
+K,M,3027.0
+G,E,1751.0
+G,B,382.0
+G,M,2112.0
+H,E,1684.0
+M,L,2543.0
+L,I,3307.0
+D,B,1161.0
+D,A,2035.0
+E,F,7563.0
+F,J,2265.0
+B,C,2143.0
+
+If you want to tell me which links you'd pick, just drop them in a tiny JSON snippet like this and I’ll know how to read it:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Here ""solution"" is just a list of the chosen cable runs, and each pair like [u1, v1] is one link between two sites (use the site identifiers from the instance). Think of it as a simple form: a list of edges that together make the connected, loop-free layout.
+
+This JSON is only a sketch of the expected shape — not the final plan itself.
+
+Please make sure every identifier in your submission matches exactly what appears in the instance input — don’t rename or invent labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 13, 'num_edges': 14, 'edges': [{'u': 11, 'v': 10, 'w': 6265.0}, {'u': 11, 'v': 9, 'w': 2728.0}, {'u': 11, 'v': 13, 'w': 3027.0}, {'u': 7, 'v': 5, 'w': 1751.0}, {'u': 7, 'v': 2, 'w': 382.0}, {'u': 7, 'v': 13, 'w': 2112.0}, {'u': 8, 'v': 5, 'w': 1684.0}, {'u': 13, 'v': 12, 'w': 2543.0}, {'u': 12, 'v': 9, 'w': 3307.0}, {'u': 4, 'v': 2, 'w': 1161.0}, {'u': 4, 'v': 1, 'w': 2035.0}, {'u': 5, 'v': 6, 'w': 7563.0}, {'u': 6, 'v': 10, 'w': 2265.0}, {'u': 2, 'v': 3, 'w': 2143.0}], 'k': 5, 'source_file': 'I017.stp', 'density': 0.1794871794871795}","[[5, 7], [2, 7], [5, 8], [2, 4]]",4978.0,"{'problem_type': 'KMST', 'num_nodes': 13, 'num_edges': 14, 'edges': [{'u': 'K', 'v': 'J', 'w': 6265.0}, {'u': 'K', 'v': 'I', 'w': 2728.0}, {'u': 'K', 'v': 'M', 'w': 3027.0}, {'u': 'G', 'v': 'E', 'w': 1751.0}, {'u': 'G', 'v': 'B', 'w': 382.0}, {'u': 'G', 'v': 'M', 'w': 2112.0}, {'u': 'H', 'v': 'E', 'w': 1684.0}, {'u': 'M', 'v': 'L', 'w': 2543.0}, {'u': 'L', 'v': 'I', 'w': 3307.0}, {'u': 'D', 'v': 'B', 'w': 1161.0}, {'u': 'D', 'v': 'A', 'w': 2035.0}, {'u': 'E', 'v': 'F', 'w': 7563.0}, {'u': 'F', 'v': 'J', 'w': 2265.0}, {'u': 'B', 'v': 'C', 'w': 2143.0}], 'density': 0.1794871794871795, 'source_file': 'I017.stp', 'k': 5}","[['E', 'G'], ['B', 'G'], ['E', 'H'], ['B', 'D']]",19,csv,names
+KMST,KMST,"I’m playing the role of the city planner who has to pick a fixed number of utility poles and string cable so that every chosen pole can be reached from any other without making any closed loops. The choice is about which exact poles to include and which connections to run between them; a better choice is simply the one that needs the least amount of new cable overall — add up the length of each cable segment used and that total is what’s being kept as small as possible. It’s important that exactly the given number of poles are included, none are duplicated, and the wiring can’t form circuits (every selected pole must stay reachable from the others through the network). The map and the exact distances and numbers will be shown below.
+
+The map shows 12 poles and 14 possible cable segments, and I must choose exactly 5 poles to connect into a tree that minimizes total cable.
+I can run cable between pole 1 and pole 6 with length 1514.0.
+I can run cable between pole 1 and pole 2 with length 581.0.
+I can run cable between pole 9 and pole 3 with length 222.0.
+I can run cable between pole 9 and pole 11 with length 710.0.
+I can run cable between pole 9 and pole 8 with length 1894.0.
+I can run cable between pole 7 and pole 2 with length 338.0.
+I can run cable between pole 7 and pole 10 with length 183.0.
+I can run cable between pole 7 and pole 4 with length 560.0.
+I can run cable between pole 3 and pole 4 with length 57.0.
+I can run cable between pole 3 and pole 2 with length 751.0.
+I can run cable between pole 0 and pole 8 with length 734.0.
+I can run cable between pole 0 and pole 6 with length 617.0.
+I can run cable between pole 4 and pole 5 with length 753.0.
+I can run cable between pole 5 and pole 10 with length 610.0.
+I will choose exactly 5 poles and the set of segments that yields the smallest total cable while avoiding any cycles.
+
+Oh, and before I give the wiring plan, I’ll show the shape I’ll use for the answer so it’s easy to copy into whatever you’re using. It’s just a tiny JSON sketch of the connections — nothing final, just the format I’ll follow.
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Each inner pair is one cable segment: the two labels are the poles (nodes) that get connected. Think of it like filling out a form where each line says ""connect this pole to that pole."" This block is only an example of the expected shape, not the actual answer.
+
+Reminder: all identifiers must be used exactly as they appear in the instance input — don’t rename any nodes or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 14, 'edges': [{'u': 2, 'v': 7, 'w': 1514.0}, {'u': 2, 'v': 3, 'w': 581.0}, {'u': 10, 'v': 4, 'w': 222.0}, {'u': 10, 'v': 12, 'w': 710.0}, {'u': 10, 'v': 9, 'w': 1894.0}, {'u': 8, 'v': 3, 'w': 338.0}, {'u': 8, 'v': 11, 'w': 183.0}, {'u': 8, 'v': 5, 'w': 560.0}, {'u': 4, 'v': 5, 'w': 57.0}, {'u': 4, 'v': 3, 'w': 751.0}, {'u': 1, 'v': 9, 'w': 734.0}, {'u': 1, 'v': 7, 'w': 617.0}, {'u': 5, 'v': 6, 'w': 753.0}, {'u': 6, 'v': 11, 'w': 610.0}], 'k': 5, 'source_file': 'I058.stp', 'density': 0.21212121212121213}","[[4, 10], [8, 11], [5, 8], [4, 5]]",1022.0,"{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 14, 'edges': [{'u': 1, 'v': 6, 'w': 1514.0}, {'u': 1, 'v': 2, 'w': 581.0}, {'u': 9, 'v': 3, 'w': 222.0}, {'u': 9, 'v': 11, 'w': 710.0}, {'u': 9, 'v': 8, 'w': 1894.0}, {'u': 7, 'v': 2, 'w': 338.0}, {'u': 7, 'v': 10, 'w': 183.0}, {'u': 7, 'v': 4, 'w': 560.0}, {'u': 3, 'v': 4, 'w': 57.0}, {'u': 3, 'v': 2, 'w': 751.0}, {'u': 0, 'v': 8, 'w': 734.0}, {'u': 0, 'v': 6, 'w': 617.0}, {'u': 4, 'v': 5, 'w': 753.0}, {'u': 5, 'v': 10, 'w': 610.0}], 'density': 0.21212121212121213, 'source_file': 'I058.stp', 'k': 5}","[[3, 9], [7, 10], [4, 7], [3, 4]]",20,markdown_table,0
+KMST,KMST,"Someone in charge of park logistics needs to open a set number of ranger posts and connect them so staff can travel between them, but they can’t create any roundabout loops and must stick to exactly k posts. Better setups are judged by how short the combined trail mileage is — you calculate it by adding every trail’s length that’s built. The plan must include every chosen post, keep the network one-piece, and avoid duplicated or circular connections. The concrete instance with distances is shown below.
+
+{
+  ""total_ranger_posts"": 10,
+  ""total_possible_trails"": 12,
+  ""edges"": [
+    {
+      ""post_u"": ""A"",
+      ""post_v"": ""B"",
+      ""trail_length"": 230903.0
+    },
+    {
+      ""post_u"": ""A"",
+      ""post_v"": ""C"",
+      ""trail_length"": 230903.0
+    },
+    {
+      ""post_u"": ""B"",
+      ""post_v"": ""D"",
+      ""trail_length"": 1283.0
+    },
+    {
+      ""post_u"": ""B"",
+      ""post_v"": ""E"",
+      ""trail_length"": 1548.0
+    },
+    {
+      ""post_u"": ""C"",
+      ""post_v"": ""D"",
+      ""trail_length"": 470.0
+    },
+    {
+      ""post_u"": ""C"",
+      ""post_v"": ""I"",
+      ""trail_length"": 1084.0
+    },
+    {
+      ""post_u"": ""E"",
+      ""post_v"": ""I"",
+      ""trail_length"": 1869.0
+    },
+    {
+      ""post_u"": ""E"",
+      ""post_v"": ""J"",
+      ""trail_length"": 3322.0
+    },
+    {
+      ""post_u"": ""F"",
+      ""post_v"": ""G"",
+      ""trail_length"": 780.0
+    },
+    {
+      ""post_u"": ""F"",
+      ""post_v"": ""I"",
+      ""trail_length"": 1251.0
+    },
+    {
+      ""post_u"": ""G"",
+      ""post_v"": ""H"",
+      ""trail_length"": 767.0
+    },
+    {
+      ""post_u"": ""H"",
+      ""post_v"": ""D"",
+      ""trail_length"": 557.0
+    }
+  ],
+  ""target_open_posts"": 5
+}
+
+If you want to hand me a candidate layout, just stick to this simple JSON shape so I can read it easily:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+""solution"" should be a list of the trail segments you plan to build. Each inner pair like [u1, v1] is one connection between two ranger posts (use the post IDs from the instance). This is just a sketch of the shape I expect, not the actual final plan.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new ones. Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".","{'problem_type': 'KMST', 'num_nodes': 10, 'num_edges': 12, 'edges': [{'u': 1, 'v': 2, 'w': 230903.0}, {'u': 1, 'v': 3, 'w': 230903.0}, {'u': 2, 'v': 4, 'w': 1283.0}, {'u': 2, 'v': 5, 'w': 1548.0}, {'u': 3, 'v': 4, 'w': 470.0}, {'u': 3, 'v': 9, 'w': 1084.0}, {'u': 5, 'v': 9, 'w': 1869.0}, {'u': 5, 'v': 10, 'w': 3322.0}, {'u': 6, 'v': 7, 'w': 780.0}, {'u': 6, 'v': 9, 'w': 1251.0}, {'u': 7, 'v': 8, 'w': 767.0}, {'u': 8, 'v': 4, 'w': 557.0}], 'k': 5, 'source_file': 'I045.stp', 'density': 0.26666666666666666}","[[3, 4], [6, 7], [7, 8], [4, 8]]",2574.0,"{'problem_type': 'KMST', 'num_nodes': 10, 'num_edges': 12, 'edges': [{'u': 'A', 'v': 'B', 'w': 230903.0}, {'u': 'A', 'v': 'C', 'w': 230903.0}, {'u': 'B', 'v': 'D', 'w': 1283.0}, {'u': 'B', 'v': 'E', 'w': 1548.0}, {'u': 'C', 'v': 'D', 'w': 470.0}, {'u': 'C', 'v': 'I', 'w': 1084.0}, {'u': 'E', 'v': 'I', 'w': 1869.0}, {'u': 'E', 'v': 'J', 'w': 3322.0}, {'u': 'F', 'v': 'G', 'w': 780.0}, {'u': 'F', 'v': 'I', 'w': 1251.0}, {'u': 'G', 'v': 'H', 'w': 767.0}, {'u': 'H', 'v': 'D', 'w': 557.0}], 'density': 0.26666666666666666, 'source_file': 'I045.stp', 'k': 5}","[['C', 'D'], ['F', 'G'], ['G', 'H'], ['D', 'H']]",21,json,names
+KMST,KMST,"At a small market the organizers had to pick exactly k vendors to get utilities and plan how to string the cables between them. The cables had to make the chosen vendors part of one connected group without closing any loops, and since every cable segment had a cost, the smart choice was the plan with the smallest overall cable bill — calculated by summing the cost of each segment used. No chosen vendor could be left out or duplicated, and no wiring could create a cycle. The concrete diagram and costs follow below.
+
+{
+  ""total_stalls"": 11,
+  ""total_possible_connectors"": 13,
+  ""edges"": [
+    {
+      ""stall_endpoint_u"": 10,
+      ""stall_endpoint_v"": 0,
+      ""connector_cost"": 4388.0
+    },
+    {
+      ""stall_endpoint_u"": 10,
+      ""stall_endpoint_v"": 8,
+      ""connector_cost"": 1375.0
+    },
+    {
+      ""stall_endpoint_u"": 2,
+      ""stall_endpoint_v"": 3,
+      ""connector_cost"": 830.0
+    },
+    {
+      ""stall_endpoint_u"": 2,
+      ""stall_endpoint_v"": 4,
+      ""connector_cost"": 5649.0
+    },
+    {
+      ""stall_endpoint_u"": 0,
+      ""stall_endpoint_v"": 1,
+      ""connector_cost"": 697.0
+    },
+    {
+      ""stall_endpoint_u"": 0,
+      ""stall_endpoint_v"": 9,
+      ""connector_cost"": 9193.0
+    },
+    {
+      ""stall_endpoint_u"": 1,
+      ""stall_endpoint_v"": 8,
+      ""connector_cost"": 4127.0
+    },
+    {
+      ""stall_endpoint_u"": 1,
+      ""stall_endpoint_v"": 7,
+      ""connector_cost"": 9181.0
+    },
+    {
+      ""stall_endpoint_u"": 7,
+      ""stall_endpoint_v"": 4,
+      ""connector_cost"": 1219.0
+    },
+    {
+      ""stall_endpoint_u"": 7,
+      ""stall_endpoint_v"": 9,
+      ""connector_cost"": 669.0
+    },
+    {
+      ""stall_endpoint_u"": 3,
+      ""stall_endpoint_v"": 5,
+      ""connector_cost"": 5785.0
+    },
+    {
+      ""stall_endpoint_u"": 6,
+      ""stall_endpoint_v"": 9,
+      ""connector_cost"": 1564.0
+    },
+    {
+      ""stall_endpoint_u"": 4,
+      ""stall_endpoint_v"": 5,
+      ""connector_cost"": 1076.0
+    }
+  ],
+  ""stalls_to_supply"": 6
+}
+
+Oh, and when you hand me the wiring plan, just put it into this little JSON shape so I can read it easily:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+""solution"" should be a list of the cable segments you plan to use. Each inner pair [u1, v1] is one cable connecting vendor u1 to vendor v1. Think of it like a simple checklist of which stands get linked together — just the structure, not the prices or anything. This is only a sketch of the shape I expect, not the final answer itself.
+
+Please make sure to use the exact identifiers from the instance input — do not rename them and do not invent new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 13, 'edges': [{'u': 11, 'v': 1, 'w': 4388.0}, {'u': 11, 'v': 9, 'w': 1375.0}, {'u': 3, 'v': 4, 'w': 830.0}, {'u': 3, 'v': 5, 'w': 5649.0}, {'u': 1, 'v': 2, 'w': 697.0}, {'u': 1, 'v': 10, 'w': 9193.0}, {'u': 2, 'v': 9, 'w': 4127.0}, {'u': 2, 'v': 8, 'w': 9181.0}, {'u': 8, 'v': 5, 'w': 1219.0}, {'u': 8, 'v': 10, 'w': 669.0}, {'u': 4, 'v': 6, 'w': 5785.0}, {'u': 7, 'v': 10, 'w': 1564.0}, {'u': 5, 'v': 6, 'w': 1076.0}], 'k': 6, 'source_file': 'I034.stp', 'density': 0.23636363636363636}","[[3, 4], [3, 5], [5, 8], [8, 10], [5, 6]]",9443.0,"{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 13, 'edges': [{'u': 10, 'v': 0, 'w': 4388.0}, {'u': 10, 'v': 8, 'w': 1375.0}, {'u': 2, 'v': 3, 'w': 830.0}, {'u': 2, 'v': 4, 'w': 5649.0}, {'u': 0, 'v': 1, 'w': 697.0}, {'u': 0, 'v': 9, 'w': 9193.0}, {'u': 1, 'v': 8, 'w': 4127.0}, {'u': 1, 'v': 7, 'w': 9181.0}, {'u': 7, 'v': 4, 'w': 1219.0}, {'u': 7, 'v': 9, 'w': 669.0}, {'u': 3, 'v': 5, 'w': 5785.0}, {'u': 6, 'v': 9, 'w': 1564.0}, {'u': 4, 'v': 5, 'w': 1076.0}], 'density': 0.23636363636363636, 'source_file': 'I034.stp', 'k': 6}","[[2, 3], [2, 4], [4, 7], [7, 9], [4, 5]]",22,json,0
+KMST,KMST,"At the wildlife trust the brief is to pick exactly a set number of hides and link them with footpaths so the chosen hides make a single connected layout without any circular trails. The practical choices—selecting which hides to use and which connecting footpaths to build—are judged by summing the lengths of those paths, and the smaller that sum, the better the plan. The concrete details and distances follow below.
+
+# num_hides_total=15
+# num_candidate_paths=20
+# hides_to_select=4
+hide_u,hide_v,path_length
+13,8,1078.0
+13,14,2684.0
+13,2,245.0
+14,10,547.0
+14,11,1498.0
+3,2,838.0
+3,1,2621.0
+3,8,852.0
+1,2,2201.0
+1,5,782.0
+7,6,3437.0
+7,12,3623.0
+7,5,4768.0
+15,4,2046.0
+15,5,6489.0
+6,12,3124.0
+6,4,5578.0
+9,10,1535.0
+9,11,784.0
+10,8,2066.0
+
+Also, when you send back your choice of paths, please use this simple JSON layout so it's easy to read:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Here ""solution"" is a list of the footpaths you'd build; each inner pair like [u1, v1] represents a single path connecting two hides (use the hide identifiers exactly as given). This block is just a sketch of the shape I expect — not the final answer itself, just the format to follow.
+
+Please be sure to use the exact identifiers from the instance input, with no renaming and no extra labels. 
+- Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'KMST', 'num_nodes': 15, 'num_edges': 20, 'edges': [{'u': 13, 'v': 8, 'w': 1078.0}, {'u': 13, 'v': 14, 'w': 2684.0}, {'u': 13, 'v': 2, 'w': 245.0}, {'u': 14, 'v': 10, 'w': 547.0}, {'u': 14, 'v': 11, 'w': 1498.0}, {'u': 3, 'v': 2, 'w': 838.0}, {'u': 3, 'v': 1, 'w': 2621.0}, {'u': 3, 'v': 8, 'w': 852.0}, {'u': 1, 'v': 2, 'w': 2201.0}, {'u': 1, 'v': 5, 'w': 782.0}, {'u': 7, 'v': 6, 'w': 3437.0}, {'u': 7, 'v': 12, 'w': 3623.0}, {'u': 7, 'v': 5, 'w': 4768.0}, {'u': 15, 'v': 4, 'w': 2046.0}, {'u': 15, 'v': 5, 'w': 6489.0}, {'u': 6, 'v': 12, 'w': 3124.0}, {'u': 6, 'v': 4, 'w': 5578.0}, {'u': 9, 'v': 10, 'w': 1535.0}, {'u': 9, 'v': 11, 'w': 784.0}, {'u': 10, 'v': 8, 'w': 2066.0}], 'k': 4, 'source_file': 'I072.stp', 'density': 0.19047619047619047}","[[2, 13], [2, 3], [3, 8]]",1935.0,"{'problem_type': 'KMST', 'num_nodes': 15, 'num_edges': 20, 'edges': [{'u': 13, 'v': 8, 'w': 1078.0}, {'u': 13, 'v': 14, 'w': 2684.0}, {'u': 13, 'v': 2, 'w': 245.0}, {'u': 14, 'v': 10, 'w': 547.0}, {'u': 14, 'v': 11, 'w': 1498.0}, {'u': 3, 'v': 2, 'w': 838.0}, {'u': 3, 'v': 1, 'w': 2621.0}, {'u': 3, 'v': 8, 'w': 852.0}, {'u': 1, 'v': 2, 'w': 2201.0}, {'u': 1, 'v': 5, 'w': 782.0}, {'u': 7, 'v': 6, 'w': 3437.0}, {'u': 7, 'v': 12, 'w': 3623.0}, {'u': 7, 'v': 5, 'w': 4768.0}, {'u': 15, 'v': 4, 'w': 2046.0}, {'u': 15, 'v': 5, 'w': 6489.0}, {'u': 6, 'v': 12, 'w': 3124.0}, {'u': 6, 'v': 4, 'w': 5578.0}, {'u': 9, 'v': 10, 'w': 1535.0}, {'u': 9, 'v': 11, 'w': 784.0}, {'u': 10, 'v': 8, 'w': 2066.0}], 'density': 0.19047619047619047, 'source_file': 'I072.stp', 'k': 4}","[[2, 13], [2, 3], [3, 8]]",23,csv,1
+KMST,KMST,"In town the sewer team needs to select a set number of access points to service and string pipes between them so they become one connected system without any circular detours. Plans are judged by how little pipe they require in total — found by summing all the individual pipe segment lengths — and the team must include exactly the required number of points, connect them all, and avoid creating any loops. The specific nodes and distances will be shown below.
+
+# total_access_points=11
+# candidate_pipe_segments=13
+# required_access_points=4
+access_point_u,access_point_v,pipe_length
+E,F,1141.0
+E,D,3102.0
+E,J,291.0
+F,C,2904.0
+F,I,193.0
+C,H,457.0
+C,D,703.0
+D,G,2919.0
+I,B,4080.0
+I,K,1604.0
+H,G,1789.0
+A,B,1704.0
+A,K,4076.0
+
+When you're ready to hand over the chosen pipe segments, just return them in a little JSON sketch like this:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Here ""solution"" is a list of pipe pieces to lay down; each inner pair [uX, vX] is just the two access points that get connected by that pipe. Think of it like filling out a simple form: each line says ""connect this point to that point."" This block is only a template showing the shape I expect, not the actual answer.
+
+Please make sure to use the node identifiers exactly as they appear in the instance input — don't rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 13, 'edges': [{'u': 5, 'v': 6, 'w': 1141.0}, {'u': 5, 'v': 4, 'w': 3102.0}, {'u': 5, 'v': 10, 'w': 291.0}, {'u': 6, 'v': 3, 'w': 2904.0}, {'u': 6, 'v': 9, 'w': 193.0}, {'u': 3, 'v': 8, 'w': 457.0}, {'u': 3, 'v': 4, 'w': 703.0}, {'u': 4, 'v': 7, 'w': 2919.0}, {'u': 9, 'v': 2, 'w': 4080.0}, {'u': 9, 'v': 11, 'w': 1604.0}, {'u': 8, 'v': 7, 'w': 1789.0}, {'u': 1, 'v': 2, 'w': 1704.0}, {'u': 1, 'v': 11, 'w': 4076.0}], 'k': 4, 'source_file': 'I085.stp', 'density': 0.23636363636363636}","[[5, 6], [5, 10], [6, 9]]",1625.0,"{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 13, 'edges': [{'u': 'E', 'v': 'F', 'w': 1141.0}, {'u': 'E', 'v': 'D', 'w': 3102.0}, {'u': 'E', 'v': 'J', 'w': 291.0}, {'u': 'F', 'v': 'C', 'w': 2904.0}, {'u': 'F', 'v': 'I', 'w': 193.0}, {'u': 'C', 'v': 'H', 'w': 457.0}, {'u': 'C', 'v': 'D', 'w': 703.0}, {'u': 'D', 'v': 'G', 'w': 2919.0}, {'u': 'I', 'v': 'B', 'w': 4080.0}, {'u': 'I', 'v': 'K', 'w': 1604.0}, {'u': 'H', 'v': 'G', 'w': 1789.0}, {'u': 'A', 'v': 'B', 'w': 1704.0}, {'u': 'A', 'v': 'K', 'w': 4076.0}], 'density': 0.23636363636363636, 'source_file': 'I085.stp', 'k': 4}","[['E', 'F'], ['E', 'J'], ['F', 'I']]",24,csv,names
+KMST,KMST,"Back at the control room the brief was simple: choose a predetermined number of sensor sites and connect them so they form one connected, cycle-free network — nothing duplicated, nothing left hanging. The job is to pick which sites and which links to install; a better plan is the one that keeps the sum of all link costs as low as possible (just total up each chosen link’s cost). The full instance details and cost table appear below.
+
+{
+  ""total_sensor_sites"": 15,
+  ""candidate_links_count"": 19,
+  ""edges"": [
+    {
+      ""site_u_id"": 13,
+      ""site_v_id"": 0,
+      ""link_cost"": 2321.0
+    },
+    {
+      ""site_u_id"": 13,
+      ""site_v_id"": 12,
+      ""link_cost"": 443.0
+    },
+    {
+      ""site_u_id"": 13,
+      ""site_v_id"": 5,
+      ""link_cost"": 3739.0
+    },
+    {
+      ""site_u_id"": 1,
+      ""site_v_id"": 0,
+      ""link_cost"": 961.0
+    },
+    {
+      ""site_u_id"": 1,
+      ""site_v_id"": 12,
+      ""link_cost"": 2278.0
+    },
+    {
+      ""site_u_id"": 1,
+      ""site_v_id"": 9,
+      ""link_cost"": 1129.0
+    },
+    {
+      ""site_u_id"": 14,
+      ""site_v_id"": 8,
+      ""link_cost"": 1012.0
+    },
+    {
+      ""site_u_id"": 14,
+      ""site_v_id"": 0,
+      ""link_cost"": 397.0
+    },
+    {
+      ""site_u_id"": 14,
+      ""site_v_id"": 11,
+      ""link_cost"": 1304.0
+    },
+    {
+      ""site_u_id"": 12,
+      ""site_v_id"": 5,
+      ""link_cost"": 4037.0
+    },
+    {
+      ""site_u_id"": 4,
+      ""site_v_id"": 9,
+      ""link_cost"": 5934.0
+    },
+    {
+      ""site_u_id"": 6,
+      ""site_v_id"": 10,
+      ""link_cost"": 939.0
+    },
+    {
+      ""site_u_id"": 6,
+      ""site_v_id"": 2,
+      ""link_cost"": 112.0
+    },
+    {
+      ""site_u_id"": 11,
+      ""site_v_id"": 7,
+      ""link_cost"": 933.0
+    },
+    {
+      ""site_u_id"": 11,
+      ""site_v_id"": 3,
+      ""link_cost"": 471.0
+    },
+    {
+      ""site_u_id"": 3,
+      ""site_v_id"": 2,
+      ""link_cost"": 686.0
+    },
+    {
+      ""site_u_id"": 7,
+      ""site_v_id"": 8,
+      ""link_cost"": 1358.0
+    },
+    {
+      ""site_u_id"": 7,
+      ""site_v_id"": 10,
+      ""link_cost"": 415.0
+    },
+    {
+      ""site_u_id"": 8,
+      ""site_v_id"": 9,
+      ""link_cost"": 713.0
+    }
+  ],
+  ""target_site_count"": 6
+}
+
+You can just return the selected links in a tiny JSON snippet like this — nice and simple:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Think of it like a short checklist: ""solution"" holds a list of links, and each [uX, vX] pair is one chosen connection between two sites. It's just the shape we expect, not the actual plan — fill those pairs with the real site identifiers from the instance when you send the answer.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — no renaming and no invented labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 15, 'num_edges': 19, 'edges': [{'u': 14, 'v': 1, 'w': 2321.0}, {'u': 14, 'v': 13, 'w': 443.0}, {'u': 14, 'v': 6, 'w': 3739.0}, {'u': 2, 'v': 1, 'w': 961.0}, {'u': 2, 'v': 13, 'w': 2278.0}, {'u': 2, 'v': 10, 'w': 1129.0}, {'u': 15, 'v': 9, 'w': 1012.0}, {'u': 15, 'v': 1, 'w': 397.0}, {'u': 15, 'v': 12, 'w': 1304.0}, {'u': 13, 'v': 6, 'w': 4037.0}, {'u': 5, 'v': 10, 'w': 5934.0}, {'u': 7, 'v': 11, 'w': 939.0}, {'u': 7, 'v': 3, 'w': 112.0}, {'u': 12, 'v': 8, 'w': 933.0}, {'u': 12, 'v': 4, 'w': 471.0}, {'u': 4, 'v': 3, 'w': 686.0}, {'u': 8, 'v': 9, 'w': 1358.0}, {'u': 8, 'v': 11, 'w': 415.0}, {'u': 9, 'v': 10, 'w': 713.0}], 'k': 6, 'source_file': 'I082.stp', 'density': 0.18095238095238095}","[[3, 7], [8, 12], [4, 12], [3, 4], [8, 11]]",2617.0,"{'problem_type': 'KMST', 'num_nodes': 15, 'num_edges': 19, 'edges': [{'u': 13, 'v': 0, 'w': 2321.0}, {'u': 13, 'v': 12, 'w': 443.0}, {'u': 13, 'v': 5, 'w': 3739.0}, {'u': 1, 'v': 0, 'w': 961.0}, {'u': 1, 'v': 12, 'w': 2278.0}, {'u': 1, 'v': 9, 'w': 1129.0}, {'u': 14, 'v': 8, 'w': 1012.0}, {'u': 14, 'v': 0, 'w': 397.0}, {'u': 14, 'v': 11, 'w': 1304.0}, {'u': 12, 'v': 5, 'w': 4037.0}, {'u': 4, 'v': 9, 'w': 5934.0}, {'u': 6, 'v': 10, 'w': 939.0}, {'u': 6, 'v': 2, 'w': 112.0}, {'u': 11, 'v': 7, 'w': 933.0}, {'u': 11, 'v': 3, 'w': 471.0}, {'u': 3, 'v': 2, 'w': 686.0}, {'u': 7, 'v': 8, 'w': 1358.0}, {'u': 7, 'v': 10, 'w': 415.0}, {'u': 8, 'v': 9, 'w': 713.0}], 'density': 0.18095238095238095, 'source_file': 'I082.stp', 'k': 6}","[[2, 6], [7, 11], [3, 11], [2, 3], [7, 10]]",25,json,0
+KMST,KMST,"At the office they handed over a map and asked for a tight, loop-free connection among a fixed number of stations, and the consultant must decide the layout. The practical decision is picking exactly that many stations and the connecting links that make them one connected set with no circular tracks. The preferred layout is the one with the lowest total length of new track — calculate that by summing all chosen segment lengths, and the plan with the smallest sum wins. All chosen stations have to be included, cycles are not permitted, and segments are counted once; the concrete instance follows below.
+
+The map shows 12 stations and 14 candidate segments; the consultant must pick exactly 4 stations and the connecting links to form a single, loop-free network.
+Candidate segment connecting stations J and C with length 47.0.
+Candidate segment connecting stations J and K with length 521.0.
+Candidate segment connecting stations J and E with length 967.0.
+Candidate segment connecting stations A and B with length 176.0.
+Candidate segment connecting stations A and C with length 524.0.
+Candidate segment connecting stations C and L with length 154.0.
+Candidate segment connecting stations B and H with length 762.0.
+Candidate segment connecting stations B and L with length 517.0.
+Candidate segment connecting stations L and G with length 893.0.
+Candidate segment connecting stations F and G with length 1123.0.
+Candidate segment connecting stations F and I with length 1328.0.
+Candidate segment connecting stations F and H with length 981.0.
+Candidate segment connecting stations G and D with length 945.0.
+Candidate segment connecting stations D and E with length 1009.0.
+The consultant must select 4 stations and their links so all chosen stations are included, no cycles occur, and the sum of chosen segment lengths is minimal.
+
+When you’re ready to hand back the exact layout, just use this tidy little JSON shape so I can read it automatically:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+This just means: ""solution"" is a list of the track segments you want to build. Each inner pair [u, v] names the two stations that the segment connects — think of each pair as one straight line between two stops. It’s just a sketch of the shape I expect, not the final plan itself.
+
+Please use the station identifiers exactly as they appear in the instance — don’t rename them or invent new ones.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 14, 'edges': [{'u': 10, 'v': 3, 'w': 47.0}, {'u': 10, 'v': 11, 'w': 521.0}, {'u': 10, 'v': 5, 'w': 967.0}, {'u': 1, 'v': 2, 'w': 176.0}, {'u': 1, 'v': 3, 'w': 524.0}, {'u': 3, 'v': 12, 'w': 154.0}, {'u': 2, 'v': 8, 'w': 762.0}, {'u': 2, 'v': 12, 'w': 517.0}, {'u': 12, 'v': 7, 'w': 893.0}, {'u': 6, 'v': 7, 'w': 1123.0}, {'u': 6, 'v': 9, 'w': 1328.0}, {'u': 6, 'v': 8, 'w': 981.0}, {'u': 7, 'v': 4, 'w': 945.0}, {'u': 4, 'v': 5, 'w': 1009.0}], 'k': 4, 'source_file': 'I032.stp', 'density': 0.21212121212121213}","[[3, 10], [3, 12], [2, 12]]",718.0,"{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 14, 'edges': [{'u': 'J', 'v': 'C', 'w': 47.0}, {'u': 'J', 'v': 'K', 'w': 521.0}, {'u': 'J', 'v': 'E', 'w': 967.0}, {'u': 'A', 'v': 'B', 'w': 176.0}, {'u': 'A', 'v': 'C', 'w': 524.0}, {'u': 'C', 'v': 'L', 'w': 154.0}, {'u': 'B', 'v': 'H', 'w': 762.0}, {'u': 'B', 'v': 'L', 'w': 517.0}, {'u': 'L', 'v': 'G', 'w': 893.0}, {'u': 'F', 'v': 'G', 'w': 1123.0}, {'u': 'F', 'v': 'I', 'w': 1328.0}, {'u': 'F', 'v': 'H', 'w': 981.0}, {'u': 'G', 'v': 'D', 'w': 945.0}, {'u': 'D', 'v': 'E', 'w': 1009.0}], 'density': 0.21212121212121213, 'source_file': 'I032.stp', 'k': 4}","[['C', 'J'], ['C', 'L'], ['B', 'L']]",26,nl,names
+KMST,KMST,"We have a mountain range full of potential watch points and a set number of slots to fill. The decision is which specific spots to use and which straight connections to make so the selected spots become one connected, loop-free network. Plans are judged by adding up the lengths of the paths added — the smaller that sum, the better — and the rules are that exactly the given number of distinct lookouts must be chosen and no closed loops are allowed. The concrete map and distances follow below.
+
+There are 14 potential watchpoints and 16 candidate straight paths; we must select exactly 6 lookouts so they form one connected, loop-free network.
+Path between watchpoint I and watchpoint J with length 218.0.
+Path between watchpoint I and watchpoint H with length 1959.0.
+Path between watchpoint I and watchpoint N with length 10660.0.
+Path between watchpoint J and watchpoint G with length 2165.0.
+Path between watchpoint J and watchpoint K with length 1005.0.
+Path between watchpoint K and watchpoint D with length 3518.0.
+Path between watchpoint K and watchpoint E with length 4916.0.
+Path between watchpoint C and watchpoint B with length 2190.0.
+Path between watchpoint C and watchpoint G with length 6943.0.
+Path between watchpoint D and watchpoint B with length 6438.0.
+Path between watchpoint D and watchpoint G with length 927.0.
+Path between watchpoint H and watchpoint L with length 7882.0.
+Path between watchpoint M and watchpoint E with length 7388.0.
+Path between watchpoint M and watchpoint N with length 1292.0.
+Path between watchpoint B and watchpoint A with length 4261.0.
+Path between watchpoint E and watchpoint F with length 1249.0.
+We will use the map below to pick 6 lookouts and the connecting paths that minimize the total path length.
+
+Quick note on how I'd like the answer formatted — keep it simple and JSON-y, like this:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Think of ""solution"" as just a list of the straight connections you'll make. Each inner pair is one edge (which two lookout IDs get linked). It's just a sketch of the shape I expect you to follow, not the real final plan.
+
+Please use the exact node identifiers from the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 16, 'edges': [{'u': 9, 'v': 10, 'w': 218.0}, {'u': 9, 'v': 8, 'w': 1959.0}, {'u': 9, 'v': 14, 'w': 10660.0}, {'u': 10, 'v': 7, 'w': 2165.0}, {'u': 10, 'v': 11, 'w': 1005.0}, {'u': 11, 'v': 4, 'w': 3518.0}, {'u': 11, 'v': 5, 'w': 4916.0}, {'u': 3, 'v': 2, 'w': 2190.0}, {'u': 3, 'v': 7, 'w': 6943.0}, {'u': 4, 'v': 2, 'w': 6438.0}, {'u': 4, 'v': 7, 'w': 927.0}, {'u': 8, 'v': 12, 'w': 7882.0}, {'u': 13, 'v': 5, 'w': 7388.0}, {'u': 13, 'v': 14, 'w': 1292.0}, {'u': 2, 'v': 1, 'w': 4261.0}, {'u': 5, 'v': 6, 'w': 1249.0}], 'k': 6, 'source_file': 'I027.stp', 'density': 0.17582417582417584}","[[9, 10], [8, 9], [7, 10], [10, 11], [4, 7]]",6274.0,"{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 16, 'edges': [{'u': 'I', 'v': 'J', 'w': 218.0}, {'u': 'I', 'v': 'H', 'w': 1959.0}, {'u': 'I', 'v': 'N', 'w': 10660.0}, {'u': 'J', 'v': 'G', 'w': 2165.0}, {'u': 'J', 'v': 'K', 'w': 1005.0}, {'u': 'K', 'v': 'D', 'w': 3518.0}, {'u': 'K', 'v': 'E', 'w': 4916.0}, {'u': 'C', 'v': 'B', 'w': 2190.0}, {'u': 'C', 'v': 'G', 'w': 6943.0}, {'u': 'D', 'v': 'B', 'w': 6438.0}, {'u': 'D', 'v': 'G', 'w': 927.0}, {'u': 'H', 'v': 'L', 'w': 7882.0}, {'u': 'M', 'v': 'E', 'w': 7388.0}, {'u': 'M', 'v': 'N', 'w': 1292.0}, {'u': 'B', 'v': 'A', 'w': 4261.0}, {'u': 'E', 'v': 'F', 'w': 1249.0}], 'density': 0.17582417582417584, 'source_file': 'I027.stp', 'k': 6}","[['I', 'J'], ['H', 'I'], ['G', 'J'], ['J', 'K'], ['D', 'G']]",27,nl,names
+KMST,KMST,"Recently the farm manager had to pick exactly k barns and stitch together sections from the stock of fence parts so the chosen barns are all joined together in one enclosure, without forming any cycles and without selecting a barn more than once. The plan that’s better is simply the one that needs less total fence, which is found by summing the lengths of the pieces used. The concrete layout and pieces are shown below.
+
+# total_barns=11
+# total_fence_pieces=13
+# barns_to_enclose=3
+barn_u,barn_v,fence_length
+1,0,710.0
+1,10,997.0
+1,8,3901.0
+6,4,368.0
+6,7,1193.0
+6,8,760.0
+3,2,2828.0
+3,4,2277.0
+3,5,1414.0
+2,9,2580.0
+8,5,3091.0
+7,10,1065.0
+9,5,2774.0
+
+I'll show the output in a tiny, friendly JSON sketch so it's clear what shape the answer should take.
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Think of ""solution"" as a list of fence pieces — each pair [u, v] is a chosen connection joining barn u to barn v. This block is just the expected shape, not the actual fenced plan.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new ones. 
+
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 13, 'edges': [{'u': 2, 'v': 1, 'w': 710.0}, {'u': 2, 'v': 11, 'w': 997.0}, {'u': 2, 'v': 9, 'w': 3901.0}, {'u': 7, 'v': 5, 'w': 368.0}, {'u': 7, 'v': 8, 'w': 1193.0}, {'u': 7, 'v': 9, 'w': 760.0}, {'u': 4, 'v': 3, 'w': 2828.0}, {'u': 4, 'v': 5, 'w': 2277.0}, {'u': 4, 'v': 6, 'w': 1414.0}, {'u': 3, 'v': 10, 'w': 2580.0}, {'u': 9, 'v': 6, 'w': 3091.0}, {'u': 8, 'v': 11, 'w': 1065.0}, {'u': 10, 'v': 6, 'w': 2774.0}], 'k': 3, 'source_file': 'I059.stp', 'density': 0.23636363636363636}","[[5, 7], [7, 9]]",1128.0,"{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 13, 'edges': [{'u': 1, 'v': 0, 'w': 710.0}, {'u': 1, 'v': 10, 'w': 997.0}, {'u': 1, 'v': 8, 'w': 3901.0}, {'u': 6, 'v': 4, 'w': 368.0}, {'u': 6, 'v': 7, 'w': 1193.0}, {'u': 6, 'v': 8, 'w': 760.0}, {'u': 3, 'v': 2, 'w': 2828.0}, {'u': 3, 'v': 4, 'w': 2277.0}, {'u': 3, 'v': 5, 'w': 1414.0}, {'u': 2, 'v': 9, 'w': 2580.0}, {'u': 8, 'v': 5, 'w': 3091.0}, {'u': 7, 'v': 10, 'w': 1065.0}, {'u': 9, 'v': 5, 'w': 2774.0}], 'density': 0.23636363636363636, 'source_file': 'I059.stp', 'k': 3}","[[4, 6], [6, 8]]",28,csv,0
+KMST,KMST,"There’s a field job where the crew must choose exactly k towers from a set of candidates, then select which microwave connections to build so every chosen tower is reachable from the others, avoiding any redundant circular connections, and judging plans by the sum of the link costs — the smaller that sum, the better. The concrete details are shown below.
+
+They have 15 candidate towers and 17 candidate links; the crew must select exactly 4 towers to connect into an acyclic network.
+Candidate link between tower J and tower B with cost 759.0.
+Candidate link between tower J and tower D with cost 2277.0.
+Candidate link between tower C and tower G with cost 467.0.
+Candidate link between tower C and tower H with cost 684.0.
+Candidate link between tower I and tower K with cost 209.0.
+Candidate link between tower M and tower F with cost 154.0.
+Candidate link between tower M and tower L with cost 3265.0.
+Candidate link between tower G and tower N with cost 1014.0.
+Candidate link between tower G and tower F with cost 304.0.
+Candidate link between tower N and tower E with cost 213.0.
+Candidate link between tower N and tower O with cost 3352.0.
+Candidate link between tower E and tower D with cost 2761.0.
+Candidate link between tower E and tower H with cost 131.0.
+Candidate link between tower H and tower A with cost 2850.0.
+Candidate link between tower K and tower A with cost 1380.0.
+Candidate link between tower A and tower B with cost 2053.0.
+Candidate link between tower A and tower F with cost 2428.0.
+Plans are ranked by the sum of selected link costs; lower is better.
+
+Also, when you send back the chosen links, please use this simple JSON layout so it's easy to parse:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Think of ""solution"" as a list of the microwave links you'll build; each inner pair like [u1, v1] is one connection between two selected towers. This is just a sketch of the expected shape — not the actual answer — so fill it with the exact edge pairs you pick.
+
+Please don't rename any identifiers or invent new labels; use the node names exactly as they appear in the instance input — no tweaks.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 15, 'num_edges': 17, 'edges': [{'u': 10, 'v': 2, 'w': 759.0}, {'u': 10, 'v': 4, 'w': 2277.0}, {'u': 3, 'v': 7, 'w': 467.0}, {'u': 3, 'v': 8, 'w': 684.0}, {'u': 9, 'v': 11, 'w': 209.0}, {'u': 13, 'v': 6, 'w': 154.0}, {'u': 13, 'v': 12, 'w': 3265.0}, {'u': 7, 'v': 14, 'w': 1014.0}, {'u': 7, 'v': 6, 'w': 304.0}, {'u': 14, 'v': 5, 'w': 213.0}, {'u': 14, 'v': 15, 'w': 3352.0}, {'u': 5, 'v': 4, 'w': 2761.0}, {'u': 5, 'v': 8, 'w': 131.0}, {'u': 8, 'v': 1, 'w': 2850.0}, {'u': 11, 'v': 1, 'w': 1380.0}, {'u': 1, 'v': 2, 'w': 2053.0}, {'u': 1, 'v': 6, 'w': 2428.0}], 'k': 4, 'source_file': 'I050.stp', 'density': 0.1619047619047619}","[[3, 7], [6, 13], [6, 7]]",925.0,"{'problem_type': 'KMST', 'num_nodes': 15, 'num_edges': 17, 'edges': [{'u': 'J', 'v': 'B', 'w': 759.0}, {'u': 'J', 'v': 'D', 'w': 2277.0}, {'u': 'C', 'v': 'G', 'w': 467.0}, {'u': 'C', 'v': 'H', 'w': 684.0}, {'u': 'I', 'v': 'K', 'w': 209.0}, {'u': 'M', 'v': 'F', 'w': 154.0}, {'u': 'M', 'v': 'L', 'w': 3265.0}, {'u': 'G', 'v': 'N', 'w': 1014.0}, {'u': 'G', 'v': 'F', 'w': 304.0}, {'u': 'N', 'v': 'E', 'w': 213.0}, {'u': 'N', 'v': 'O', 'w': 3352.0}, {'u': 'E', 'v': 'D', 'w': 2761.0}, {'u': 'E', 'v': 'H', 'w': 131.0}, {'u': 'H', 'v': 'A', 'w': 2850.0}, {'u': 'K', 'v': 'A', 'w': 1380.0}, {'u': 'A', 'v': 'B', 'w': 2053.0}, {'u': 'A', 'v': 'F', 'w': 2428.0}], 'density': 0.1619047619047619, 'source_file': 'I050.stp', 'k': 4}","[['C', 'G'], ['F', 'M'], ['F', 'G']]",29,nl,names
+KMST,KMST,"There’s a curator’s puzzle on the table: choose exactly k items from the gallery and link them together using permitted passageways so the group is all connected, but don’t let those passages form a circle. The way to judge a plan is simple — add up the lengths of the selected corridors and pick the plan with the smallest total. Every chosen exhibit must be included once, nothing extra, and the concrete map and distances appear below.
+
+The gallery shows 11 exhibits and 11 permitted corridors; select exactly 3 exhibits.
+Permitted corridor between exhibits F and E with length 355.0.
+Permitted corridor between exhibits F and G with length 285.0.
+Permitted corridor between exhibits F and A with length 12782.0.
+Permitted corridor between exhibits A and J with length 4206.0.
+Permitted corridor between exhibits A and H with length 6912.0.
+Permitted corridor between exhibits G and D with length 366.0.
+Permitted corridor between exhibits C and B with length 756.0.
+Permitted corridor between exhibits C and H with length 8311.0.
+Permitted corridor between exhibits I and J with length 5386.0.
+Permitted corridor between exhibits J and K with length 1236.0.
+Permitted corridor between exhibits D and E with length 298.0.
+Pick a connected, acyclic selection of exactly 3 exhibits that minimizes the sum of chosen corridor lengths.
+
+You can just hand me the chosen corridors in a tiny JSON snip — nice and simple. Something like this will do:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+This ""solution"" array is just a list of the passageways you pick, each pair [u, v] meaning ""connect exhibit u to exhibit v"" in the curator’s plan. Think of it like filling in a form: list the corridor pairs you want. The block above is only a sketch of the shape I expect, not the actual answer — replace those placeholders with the real labels from the instance.
+
+Please use the identifiers exactly as they appear in the instance input — don’t rename them and don’t invent new labels.
+
+for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 11, 'edges': [{'u': 6, 'v': 5, 'w': 355.0}, {'u': 6, 'v': 7, 'w': 285.0}, {'u': 6, 'v': 1, 'w': 12782.0}, {'u': 1, 'v': 10, 'w': 4206.0}, {'u': 1, 'v': 8, 'w': 6912.0}, {'u': 7, 'v': 4, 'w': 366.0}, {'u': 3, 'v': 2, 'w': 756.0}, {'u': 3, 'v': 8, 'w': 8311.0}, {'u': 9, 'v': 10, 'w': 5386.0}, {'u': 10, 'v': 11, 'w': 1236.0}, {'u': 4, 'v': 5, 'w': 298.0}], 'k': 3, 'source_file': 'I038.stp', 'density': 0.2}","[[5, 6], [6, 7]]",640.0,"{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 11, 'edges': [{'u': 'F', 'v': 'E', 'w': 355.0}, {'u': 'F', 'v': 'G', 'w': 285.0}, {'u': 'F', 'v': 'A', 'w': 12782.0}, {'u': 'A', 'v': 'J', 'w': 4206.0}, {'u': 'A', 'v': 'H', 'w': 6912.0}, {'u': 'G', 'v': 'D', 'w': 366.0}, {'u': 'C', 'v': 'B', 'w': 756.0}, {'u': 'C', 'v': 'H', 'w': 8311.0}, {'u': 'I', 'v': 'J', 'w': 5386.0}, {'u': 'J', 'v': 'K', 'w': 1236.0}, {'u': 'D', 'v': 'E', 'w': 298.0}], 'density': 0.2, 'source_file': 'I038.stp', 'k': 3}","[['E', 'F'], ['F', 'G']]",30,markdown_table,names
+KMST,KMST,"Many people imagine wiring is just about running wire from A to B, but this job was different: only k homes should be picked to interconnect, and the electrician must choose which homes and which available segments make up the network so the selected homes are all connected, without forming any loops or repeating segments. The best choice is the one with the lowest total installation cost, obtained by adding up the costs of the installed segments. The candidate segments, house list, and prices are listed below.
+
+Below are the 13 available segments among the 11 candidate houses; the electrician must select exactly 6 houses to interconnect into a loop-free network.
+Candidate segment between house A and house D: installation cost 281.0.
+Candidate segment between house A and house K: installation cost 543.0.
+Candidate segment between house A and house I: installation cost 592.0.
+Candidate segment between house F and house G: installation cost 437.0.
+Candidate segment between house F and house B: installation cost 264.0.
+Candidate segment between house G and house C: installation cost 259.0.
+Candidate segment between house B and house C: installation cost 441.0.
+Candidate segment between house C and house J: installation cost 809.0.
+Candidate segment between house D and house E: installation cost 537.0.
+Candidate segment between house E and house K: installation cost 281.0.
+Candidate segment between house K and house J: installation cost 590.0.
+Candidate segment between house H and house I: installation cost 469.0.
+Candidate segment between house I and house J: installation cost 540.0.
+The electrician will choose the set of 6 houses and segments that gives the lowest total installation cost.
+
+When you give the final answer, just use this simple JSON layout so it's easy to check automatically:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Here ""solution"" is a list of the chosen wire segments. Each inner pair [u1, v1] is one installed segment connecting two homes (use the exact home identifiers from the instance). Think of it like filling out a short list of which connections you picked — no need for anything else in the file.
+
+This JSON is just a sketch of the shape I expect, not the actual answer — replace the placeholders with the real edges from the instance.
+
+Please make sure all identifiers are used exactly as they appear in the instance input — do not rename them or invent new labels. For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 13, 'edges': [{'u': 1, 'v': 4, 'w': 281.0}, {'u': 1, 'v': 11, 'w': 543.0}, {'u': 1, 'v': 9, 'w': 592.0}, {'u': 6, 'v': 7, 'w': 437.0}, {'u': 6, 'v': 2, 'w': 264.0}, {'u': 7, 'v': 3, 'w': 259.0}, {'u': 2, 'v': 3, 'w': 441.0}, {'u': 3, 'v': 10, 'w': 809.0}, {'u': 4, 'v': 5, 'w': 537.0}, {'u': 5, 'v': 11, 'w': 281.0}, {'u': 11, 'v': 10, 'w': 590.0}, {'u': 8, 'v': 9, 'w': 469.0}, {'u': 9, 'v': 10, 'w': 540.0}], 'k': 6, 'source_file': 'I069.stp', 'density': 0.23636363636363636}","[[1, 4], [1, 9], [4, 5], [5, 11], [8, 9]]",2160.0,"{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 13, 'edges': [{'u': 'A', 'v': 'D', 'w': 281.0}, {'u': 'A', 'v': 'K', 'w': 543.0}, {'u': 'A', 'v': 'I', 'w': 592.0}, {'u': 'F', 'v': 'G', 'w': 437.0}, {'u': 'F', 'v': 'B', 'w': 264.0}, {'u': 'G', 'v': 'C', 'w': 259.0}, {'u': 'B', 'v': 'C', 'w': 441.0}, {'u': 'C', 'v': 'J', 'w': 809.0}, {'u': 'D', 'v': 'E', 'w': 537.0}, {'u': 'E', 'v': 'K', 'w': 281.0}, {'u': 'K', 'v': 'J', 'w': 590.0}, {'u': 'H', 'v': 'I', 'w': 469.0}, {'u': 'I', 'v': 'J', 'w': 540.0}], 'density': 0.23636363636363636, 'source_file': 'I069.stp', 'k': 6}","[['A', 'D'], ['A', 'I'], ['D', 'E'], ['E', 'K'], ['H', 'I']]",31,markdown_table,names
+KMST,KMST,"We’ve got to set up a compact aid network: decide on exactly k places to serve as aid stations and pick the roads that tie those spots together so anyone can get from one chosen station to another using only those roads, with no circular routes allowed. The preferred setup is the one whose roads add up to the smallest possible travel time — calculated by adding the travel time of each chosen road. It’s important that exactly k stations are selected and each road is included only as part of that connecting system. The specific stations and road times are listed below.
+
+There are 10 possible locations, 13 candidate roads, and we must pick exactly 4 stations.
+We list a road connecting 1 and 2 with travel time 18001.0.
+We list a road connecting 1 and 6 with travel time 568.0.
+We list a road connecting 7 and 4 with travel time 1322.0.
+We list a road connecting 7 and 0 with travel time 18613.0.
+We list a road connecting 7 and 8 with travel time 592.0.
+We list a road connecting 6 and 3 with travel time 18152.0.
+We list a road connecting 6 and 9 with travel time 1120.0.
+We list a road connecting 8 and 9 with travel time 18450.0.
+We list a road connecting 8 and 3 with travel time 1077.0.
+We list a road connecting 9 and 0 with travel time 616.0.
+We list a road connecting 2 and 3 with travel time 545.0.
+We list a road connecting 5 and 4 with travel time 18978.0.
+We list a road connecting 5 and 0 with travel time 1376.0.
+We’ll use these entries to choose the 4-station tree with minimum total travel time.
+
+Just send the chosen tree as a small JSON snippet so it's easy to check automatically. Something like this works fine:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Here ""solution"" is the list of roads you'll pick for the aid network. Each pair like [u1, v1] is one road connecting station u1 to station v1. Think of it as a simple form: one pair per chosen road, and together the pairs should connect exactly k stations without any loops.
+
+This JSON is only a sketch of the shape I expect — it's not the actual answer. Please make sure to use the exact identifiers from the instance input, with no renaming and no new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 10, 'num_edges': 13, 'edges': [{'u': 2, 'v': 3, 'w': 18001.0}, {'u': 2, 'v': 7, 'w': 568.0}, {'u': 8, 'v': 5, 'w': 1322.0}, {'u': 8, 'v': 1, 'w': 18613.0}, {'u': 8, 'v': 9, 'w': 592.0}, {'u': 7, 'v': 4, 'w': 18152.0}, {'u': 7, 'v': 10, 'w': 1120.0}, {'u': 9, 'v': 10, 'w': 18450.0}, {'u': 9, 'v': 4, 'w': 1077.0}, {'u': 10, 'v': 1, 'w': 616.0}, {'u': 3, 'v': 4, 'w': 545.0}, {'u': 6, 'v': 5, 'w': 18978.0}, {'u': 6, 'v': 1, 'w': 1376.0}], 'k': 4, 'source_file': 'I009.stp', 'density': 0.28888888888888886}","[[8, 9], [4, 9], [3, 4]]",2214.0,"{'problem_type': 'KMST', 'num_nodes': 10, 'num_edges': 13, 'edges': [{'u': 1, 'v': 2, 'w': 18001.0}, {'u': 1, 'v': 6, 'w': 568.0}, {'u': 7, 'v': 4, 'w': 1322.0}, {'u': 7, 'v': 0, 'w': 18613.0}, {'u': 7, 'v': 8, 'w': 592.0}, {'u': 6, 'v': 3, 'w': 18152.0}, {'u': 6, 'v': 9, 'w': 1120.0}, {'u': 8, 'v': 9, 'w': 18450.0}, {'u': 8, 'v': 3, 'w': 1077.0}, {'u': 9, 'v': 0, 'w': 616.0}, {'u': 2, 'v': 3, 'w': 545.0}, {'u': 5, 'v': 4, 'w': 18978.0}, {'u': 5, 'v': 0, 'w': 1376.0}], 'density': 0.28888888888888886, 'source_file': 'I009.stp', 'k': 4}","[[7, 8], [3, 8], [2, 3]]",32,nl,0
+KMST,KMST,"We’re trying to build a tight little leadership circle of exactly k local leaders. That means choosing the k leaders first, then arranging specific pairwise introductions so that all chosen leaders are linked together into a single connected group, while avoiding any redundant, loop-forming introductions. Every introduction has an effort score; add those scores for the introductions that are scheduled to get the total effort, and a better choice is the one with a lower total. The actual people, possible introductions, and their effort values are listed below.
+
+{
+  ""total_local_leaders_available"": 14,
+  ""total_possible_introductions"": 15,
+  ""edges"": [
+    {
+      ""leader_u"": ""B"",
+      ""leader_v"": ""J"",
+      ""introduction_effort"": 615.0
+    },
+    {
+      ""leader_u"": ""J"",
+      ""leader_v"": ""K"",
+      ""introduction_effort"": 1486.0
+    },
+    {
+      ""leader_u"": ""J"",
+      ""leader_v"": ""H"",
+      ""introduction_effort"": 105.0
+    },
+    {
+      ""leader_u"": ""K"",
+      ""leader_v"": ""M"",
+      ""introduction_effort"": 740.0
+    },
+    {
+      ""leader_u"": ""K"",
+      ""leader_v"": ""L"",
+      ""introduction_effort"": 154.0
+    },
+    {
+      ""leader_u"": ""M"",
+      ""leader_v"": ""N"",
+      ""introduction_effort"": 359.0
+    },
+    {
+      ""leader_u"": ""M"",
+      ""leader_v"": ""E"",
+      ""introduction_effort"": 815.0
+    },
+    {
+      ""leader_u"": ""L"",
+      ""leader_v"": ""I"",
+      ""introduction_effort"": 532.0
+    },
+    {
+      ""leader_u"": ""L"",
+      ""leader_v"": ""F"",
+      ""introduction_effort"": 1128.0
+    },
+    {
+      ""leader_u"": ""C"",
+      ""leader_v"": ""D"",
+      ""introduction_effort"": 1363.0
+    },
+    {
+      ""leader_u"": ""C"",
+      ""leader_v"": ""I"",
+      ""introduction_effort"": 950.0
+    },
+    {
+      ""leader_u"": ""D"",
+      ""leader_v"": ""I"",
+      ""introduction_effort"": 1117.0
+    },
+    {
+      ""leader_u"": ""F"",
+      ""leader_v"": ""G"",
+      ""introduction_effort"": 1101.0
+    },
+    {
+      ""leader_u"": ""G"",
+      ""leader_v"": ""H"",
+      ""introduction_effort"": 329.0
+    },
+    {
+      ""leader_u"": ""H"",
+      ""leader_v"": ""A"",
+      ""introduction_effort"": 481.0
+    }
+  ],
+  ""target_leader_count"": 6
+}
+
+Also, when you send back the scheduled introductions, please use this simple JSON shape so it's easy to check:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Think of ""solution"" as a list of the pairwise intros we'll schedule; each [u, v] is one introduction linking leader u with leader v. This snippet is just a sketch of the shape I expect — not the actual answer.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — no renaming and no new labels. 
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 15, 'edges': [{'u': 2, 'v': 10, 'w': 615.0}, {'u': 10, 'v': 11, 'w': 1486.0}, {'u': 10, 'v': 8, 'w': 105.0}, {'u': 11, 'v': 13, 'w': 740.0}, {'u': 11, 'v': 12, 'w': 154.0}, {'u': 13, 'v': 14, 'w': 359.0}, {'u': 13, 'v': 5, 'w': 815.0}, {'u': 12, 'v': 9, 'w': 532.0}, {'u': 12, 'v': 6, 'w': 1128.0}, {'u': 3, 'v': 4, 'w': 1363.0}, {'u': 3, 'v': 9, 'w': 950.0}, {'u': 4, 'v': 9, 'w': 1117.0}, {'u': 6, 'v': 7, 'w': 1101.0}, {'u': 7, 'v': 8, 'w': 329.0}, {'u': 8, 'v': 1, 'w': 481.0}], 'k': 6, 'source_file': 'I036.stp', 'density': 0.16483516483516483}","[[10, 11], [8, 10], [11, 12], [7, 8], [1, 8]]",2555.0,"{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 15, 'edges': [{'u': 'B', 'v': 'J', 'w': 615.0}, {'u': 'J', 'v': 'K', 'w': 1486.0}, {'u': 'J', 'v': 'H', 'w': 105.0}, {'u': 'K', 'v': 'M', 'w': 740.0}, {'u': 'K', 'v': 'L', 'w': 154.0}, {'u': 'M', 'v': 'N', 'w': 359.0}, {'u': 'M', 'v': 'E', 'w': 815.0}, {'u': 'L', 'v': 'I', 'w': 532.0}, {'u': 'L', 'v': 'F', 'w': 1128.0}, {'u': 'C', 'v': 'D', 'w': 1363.0}, {'u': 'C', 'v': 'I', 'w': 950.0}, {'u': 'D', 'v': 'I', 'w': 1117.0}, {'u': 'F', 'v': 'G', 'w': 1101.0}, {'u': 'G', 'v': 'H', 'w': 329.0}, {'u': 'H', 'v': 'A', 'w': 481.0}], 'density': 0.16483516483516483, 'source_file': 'I036.stp', 'k': 6}","[['J', 'K'], ['H', 'J'], ['K', 'L'], ['G', 'H'], ['A', 'H']]",33,json,names
+KMST,KMST,"Back when the team reviewed the garden project, the brief was clear: pick exactly k ponds to showcase and use the pipe segments on hand to link them into a single, loop-free water system — no extra ponds, no duplicated connections, and every chosen pond must be part of that one network. Plans are compared by totaling the lengths of the pipes used, and the plan with the smallest total length is preferred; the concrete layout and segment lengths follow below.
+
+There are 14 ponds and 17 pipe segments available; pick exactly 6 ponds to join into a single, loop-free water system.
+Pipe between pond 0 and pond 3 with length 376498.0.
+Pipe between pond 0 and pond 2 with length 6018.0.
+Pipe between pond 1 and pond 2 with length 4412.0.
+Pipe between pond 1 and pond 3 with length 375821.0.
+Pipe between pond 2 and pond 12 with length 5392.0.
+Pipe between pond 5 and pond 6 with length 3813.0.
+Pipe between pond 5 and pond 9 with length 326.0.
+Pipe between pond 6 and pond 10 with length 6984.0.
+Pipe between pond 13 and pond 9 with length 1791.0.
+Pipe between pond 13 and pond 4 with length 1925.0.
+Pipe between pond 13 and pond 7 with length 3661.0.
+Pipe between pond 10 and pond 11 with length 2806.0.
+Pipe between pond 11 and pond 8 with length 3611.0.
+Pipe between pond 11 and pond 12 with length 1309.0.
+Pipe between pond 12 and pond 7 with length 3276.0.
+Pipe between pond 7 and pond 8 with length 1462.0.
+Pipe between pond 8 and pond 9 with length 3194.0.
+Use the list below to assemble the minimal-total-length, loop-free layout that connects exactly 6 ponds.
+
+Also, when you send your plan back, keep it in this simple JSON shape so I can read it easily:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+""solution"" is just a list of pipe segments: each inner pair [u, v] means ""connect pond u to pond v"" in the final loop-free layout. Think of it like filling out a short form — one line per pipe. This is only a sketch of the shape I expect, not the actual answer.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 17, 'edges': [{'u': 1, 'v': 4, 'w': 376498.0}, {'u': 1, 'v': 3, 'w': 6018.0}, {'u': 2, 'v': 3, 'w': 4412.0}, {'u': 2, 'v': 4, 'w': 375821.0}, {'u': 3, 'v': 13, 'w': 5392.0}, {'u': 6, 'v': 7, 'w': 3813.0}, {'u': 6, 'v': 10, 'w': 326.0}, {'u': 7, 'v': 11, 'w': 6984.0}, {'u': 14, 'v': 10, 'w': 1791.0}, {'u': 14, 'v': 5, 'w': 1925.0}, {'u': 14, 'v': 8, 'w': 3661.0}, {'u': 11, 'v': 12, 'w': 2806.0}, {'u': 12, 'v': 9, 'w': 3611.0}, {'u': 12, 'v': 13, 'w': 1309.0}, {'u': 13, 'v': 8, 'w': 3276.0}, {'u': 8, 'v': 9, 'w': 1462.0}, {'u': 9, 'v': 10, 'w': 3194.0}], 'k': 6, 'source_file': 'I036.stp', 'density': 0.18681318681318682}","[[6, 10], [10, 14], [5, 14], [8, 9], [9, 10]]",8698.0,"{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 17, 'edges': [{'u': 0, 'v': 3, 'w': 376498.0}, {'u': 0, 'v': 2, 'w': 6018.0}, {'u': 1, 'v': 2, 'w': 4412.0}, {'u': 1, 'v': 3, 'w': 375821.0}, {'u': 2, 'v': 12, 'w': 5392.0}, {'u': 5, 'v': 6, 'w': 3813.0}, {'u': 5, 'v': 9, 'w': 326.0}, {'u': 6, 'v': 10, 'w': 6984.0}, {'u': 13, 'v': 9, 'w': 1791.0}, {'u': 13, 'v': 4, 'w': 1925.0}, {'u': 13, 'v': 7, 'w': 3661.0}, {'u': 10, 'v': 11, 'w': 2806.0}, {'u': 11, 'v': 8, 'w': 3611.0}, {'u': 11, 'v': 12, 'w': 1309.0}, {'u': 12, 'v': 7, 'w': 3276.0}, {'u': 7, 'v': 8, 'w': 1462.0}, {'u': 8, 'v': 9, 'w': 3194.0}], 'density': 0.18681318681318682, 'source_file': 'I036.stp', 'k': 6}","[[5, 9], [9, 13], [4, 13], [7, 8], [8, 9]]",34,markdown_table,0
+KMST,KMST,"On a typical planning shift the duty is to choose exactly k landing pads from the available sites, assign allowed corridors between them so the selected pads form one connected system with no circular flight loops, and try to keep the sum of all corridor lengths as small as it can be. The sum of the corridor lengths is how the plan’s cost is measured. The full map and numbers are shown below.
+
+The full map shows 13 landing pads and 15 permitted corridors; a valid plan must span exactly 6 pads.
+A permitted corridor connects pads 9 and 10 with length 997.0.
+A permitted corridor connects pads 9 and 3 with length 1765.0.
+A permitted corridor connects pads 10 and 11 with length 1435.0.
+A permitted corridor connects pads 1 and 4 with length 1060.0.
+A permitted corridor connects pads 1 and 3 with length 1010.0.
+A permitted corridor connects pads 2 and 0 with length 593.0.
+A permitted corridor connects pads 2 and 12 with length 1089.0.
+A permitted corridor connects pads 2 and 4 with length 671.0.
+A permitted corridor connects pads 3 and 4 with length 697.0.
+A permitted corridor connects pads 5 and 11 with length 515.0.
+A permitted corridor connects pads 5 and 7 with length 1550.0.
+A permitted corridor connects pads 5 and 6 with length 1946.0.
+A permitted corridor connects pads 6 and 8 with length 1499.0.
+A permitted corridor connects pads 6 and 12 with length 431.0.
+A permitted corridor connects pads 11 and 12 with length 1855.0.
+Assemble candidate connected systems of exactly 6 pads that minimize the total corridor length.
+
+When you send the plan back, please stick to this simple JSON layout so I can read it automatically:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+This shows a list of corridor pairs — each pair is an edge between two chosen pads (so [u1, v1] means a corridor connecting pad u1 and pad v1). Think of it like a little form: the ""solution"" field holds all the chosen corridors that make up your connected, loop-free system. This JSON is just a sketch of the shape I need, not the actual answer — replace those placeholders with the real pad identifiers from the instance.
+
+Please be careful to use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 13, 'num_edges': 15, 'edges': [{'u': 10, 'v': 11, 'w': 997.0}, {'u': 10, 'v': 4, 'w': 1765.0}, {'u': 11, 'v': 12, 'w': 1435.0}, {'u': 2, 'v': 5, 'w': 1060.0}, {'u': 2, 'v': 4, 'w': 1010.0}, {'u': 3, 'v': 1, 'w': 593.0}, {'u': 3, 'v': 13, 'w': 1089.0}, {'u': 3, 'v': 5, 'w': 671.0}, {'u': 4, 'v': 5, 'w': 697.0}, {'u': 6, 'v': 12, 'w': 515.0}, {'u': 6, 'v': 8, 'w': 1550.0}, {'u': 6, 'v': 7, 'w': 1946.0}, {'u': 7, 'v': 9, 'w': 1499.0}, {'u': 7, 'v': 13, 'w': 431.0}, {'u': 12, 'v': 13, 'w': 1855.0}], 'k': 6, 'source_file': 'I010.stp', 'density': 0.19230769230769232}","[[1, 3], [3, 13], [3, 5], [4, 5], [7, 13]]",3481.0,"{'problem_type': 'KMST', 'num_nodes': 13, 'num_edges': 15, 'edges': [{'u': 9, 'v': 10, 'w': 997.0}, {'u': 9, 'v': 3, 'w': 1765.0}, {'u': 10, 'v': 11, 'w': 1435.0}, {'u': 1, 'v': 4, 'w': 1060.0}, {'u': 1, 'v': 3, 'w': 1010.0}, {'u': 2, 'v': 0, 'w': 593.0}, {'u': 2, 'v': 12, 'w': 1089.0}, {'u': 2, 'v': 4, 'w': 671.0}, {'u': 3, 'v': 4, 'w': 697.0}, {'u': 5, 'v': 11, 'w': 515.0}, {'u': 5, 'v': 7, 'w': 1550.0}, {'u': 5, 'v': 6, 'w': 1946.0}, {'u': 6, 'v': 8, 'w': 1499.0}, {'u': 6, 'v': 12, 'w': 431.0}, {'u': 11, 'v': 12, 'w': 1855.0}], 'density': 0.19230769230769232, 'source_file': 'I010.stp', 'k': 6}","[[0, 2], [2, 12], [2, 4], [3, 4], [6, 12]]",35,markdown_table,0
+KMST,KMST,"Many people on campus want faster links, so the task is to select exactly k buildings to interconnect with new conduit using only the available routes, ensure those chosen buildings form a single connected group, and avoid any redundant circular runs. A plan is better if the sum of its conduit segments is smaller — total length is the straightforward sum of the chosen route lengths. The specific instance information is shown below.
+
+There are 14 buildings and 16 available routes; exactly 7 buildings must be selected and interconnected.
+Route between building C and building D with length 365.0.
+Route between building C and building E with length 1244.0.
+Route between building C and building F with length 1219.0.
+Route between building D and building J with length 481.0.
+Route between building E and building M with length 899.0.
+Route between building E and building I with length 488.0.
+Route between building F and building M with length 934.0.
+Route between building G and building H with length 774.0.
+Route between building G and building I with length 1247.0.
+Route between building G and building K with length 129470.0.
+Route between building H and building B with length 740.0.
+Route between building I and building A with length 201.0.
+Route between building A and building L with length 209034.0.
+Route between building A and building N with length 947.0.
+Route between building B and building L with length 209149.0.
+Route between building J and building K with length 129728.0.
+Prefer solutions that connect exactly 7 buildings into a single acyclic group with minimal total route length.
+
+Also, when you send back the actual plan, please follow this little JSON layout so it's easy to check automatically:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Think of ""solution"" as a short list of conduit runs to lay down. Each inner pair like [u1, v1] is one route between two chosen buildings (use the building IDs from the instance). This block is just a sketch of the shape I expect you to return — not the actual wiring plan.
+
+Please be sure to use the exact identifiers from the instance input — don't rename them and don't invent new labels.  
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 16, 'edges': [{'u': 3, 'v': 4, 'w': 365.0}, {'u': 3, 'v': 5, 'w': 1244.0}, {'u': 3, 'v': 6, 'w': 1219.0}, {'u': 4, 'v': 10, 'w': 481.0}, {'u': 5, 'v': 13, 'w': 899.0}, {'u': 5, 'v': 9, 'w': 488.0}, {'u': 6, 'v': 13, 'w': 934.0}, {'u': 7, 'v': 8, 'w': 774.0}, {'u': 7, 'v': 9, 'w': 1247.0}, {'u': 7, 'v': 11, 'w': 129470.0}, {'u': 8, 'v': 2, 'w': 740.0}, {'u': 9, 'v': 1, 'w': 201.0}, {'u': 1, 'v': 12, 'w': 209034.0}, {'u': 1, 'v': 14, 'w': 947.0}, {'u': 2, 'v': 12, 'w': 209149.0}, {'u': 10, 'v': 11, 'w': 129728.0}], 'k': 7, 'source_file': 'I040.stp', 'density': 0.17582417582417584}","[[3, 4], [3, 5], [4, 10], [5, 13], [5, 9], [1, 9]]",3678.0,"{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 16, 'edges': [{'u': 'C', 'v': 'D', 'w': 365.0}, {'u': 'C', 'v': 'E', 'w': 1244.0}, {'u': 'C', 'v': 'F', 'w': 1219.0}, {'u': 'D', 'v': 'J', 'w': 481.0}, {'u': 'E', 'v': 'M', 'w': 899.0}, {'u': 'E', 'v': 'I', 'w': 488.0}, {'u': 'F', 'v': 'M', 'w': 934.0}, {'u': 'G', 'v': 'H', 'w': 774.0}, {'u': 'G', 'v': 'I', 'w': 1247.0}, {'u': 'G', 'v': 'K', 'w': 129470.0}, {'u': 'H', 'v': 'B', 'w': 740.0}, {'u': 'I', 'v': 'A', 'w': 201.0}, {'u': 'A', 'v': 'L', 'w': 209034.0}, {'u': 'A', 'v': 'N', 'w': 947.0}, {'u': 'B', 'v': 'L', 'w': 209149.0}, {'u': 'J', 'v': 'K', 'w': 129728.0}], 'density': 0.17582417582417584, 'source_file': 'I040.stp', 'k': 7}","[['C', 'D'], ['C', 'E'], ['D', 'J'], ['E', 'M'], ['E', 'I'], ['A', 'I']]",36,markdown_table,names
+KMST,KMST,"Backstage, the coordinator has to decide which exact k sets will be active and which approved walkway pieces to install so the chosen sets form one connected layout with no circular paths. The choices must be k distinct sets, only approved segments may be used, and the way to compare layouts is to sum the costs of the chosen segments — the lower that sum, the better the setup. The concrete details will be shown below.
+
+There are 13 available sets, 17 approved walkway segments, and the coordinator must activate exactly 6 sets.
+Approved walkway segment connecting set A and set L with installation cost 10451.0.
+Approved walkway segment connecting set B and set C with installation cost 228.0.
+Approved walkway segment connecting set B and set M with installation cost 3624.0.
+Approved walkway segment connecting set B and set K with installation cost 11519.0.
+Approved walkway segment connecting set C and set J with installation cost 11505.0.
+Approved walkway segment connecting set C and set L with installation cost 3639.0.
+Approved walkway segment connecting set D and set E with installation cost 306.0.
+Approved walkway segment connecting set D and set K with installation cost 3108.0.
+Approved walkway segment connecting set D and set I with installation cost 11660.0.
+Approved walkway segment connecting set E and set J with installation cost 3108.0.
+Approved walkway segment connecting set E and set H with installation cost 11685.0.
+Approved walkway segment connecting set F and set G with installation cost 385.0.
+Approved walkway segment connecting set F and set I with installation cost 2992.0.
+Approved walkway segment connecting set G and set H with installation cost 2952.0.
+Approved walkway segment connecting set H and set I with installation cost 335.0.
+Approved walkway segment connecting set J and set K with installation cost 234.0.
+Approved walkway segment connecting set L and set M with installation cost 207.0.
+The coordinator must select 6 distinct sets and install approved segments so the chosen layout is connected, acyclic, and minimizes the total installation cost.
+
+If you want to give me the chosen layout, just drop it in this simple JSON shape so it's easy to check programmatically:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Here ""solution"" is just a list of the approved walkway pieces you're going to install; each inner pair [u, v] means ""connect set u to set v"". Super informal: it's just a list of edges to make the final connected, loop-free layout. The block above is only a sketch of the shape I expect, not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”. ""","{'problem_type': 'KMST', 'num_nodes': 13, 'num_edges': 17, 'edges': [{'u': 1, 'v': 12, 'w': 10451.0}, {'u': 2, 'v': 3, 'w': 228.0}, {'u': 2, 'v': 13, 'w': 3624.0}, {'u': 2, 'v': 11, 'w': 11519.0}, {'u': 3, 'v': 10, 'w': 11505.0}, {'u': 3, 'v': 12, 'w': 3639.0}, {'u': 4, 'v': 5, 'w': 306.0}, {'u': 4, 'v': 11, 'w': 3108.0}, {'u': 4, 'v': 9, 'w': 11660.0}, {'u': 5, 'v': 10, 'w': 3108.0}, {'u': 5, 'v': 8, 'w': 11685.0}, {'u': 6, 'v': 7, 'w': 385.0}, {'u': 6, 'v': 9, 'w': 2992.0}, {'u': 7, 'v': 8, 'w': 2952.0}, {'u': 8, 'v': 9, 'w': 335.0}, {'u': 10, 'v': 11, 'w': 234.0}, {'u': 12, 'v': 13, 'w': 207.0}], 'k': 6, 'source_file': 'I056.stp', 'density': 0.21794871794871795}","[[2, 3], [3, 10], [4, 5], [4, 11], [10, 11]]",15381.0,"{'problem_type': 'KMST', 'num_nodes': 13, 'num_edges': 17, 'edges': [{'u': 'A', 'v': 'L', 'w': 10451.0}, {'u': 'B', 'v': 'C', 'w': 228.0}, {'u': 'B', 'v': 'M', 'w': 3624.0}, {'u': 'B', 'v': 'K', 'w': 11519.0}, {'u': 'C', 'v': 'J', 'w': 11505.0}, {'u': 'C', 'v': 'L', 'w': 3639.0}, {'u': 'D', 'v': 'E', 'w': 306.0}, {'u': 'D', 'v': 'K', 'w': 3108.0}, {'u': 'D', 'v': 'I', 'w': 11660.0}, {'u': 'E', 'v': 'J', 'w': 3108.0}, {'u': 'E', 'v': 'H', 'w': 11685.0}, {'u': 'F', 'v': 'G', 'w': 385.0}, {'u': 'F', 'v': 'I', 'w': 2992.0}, {'u': 'G', 'v': 'H', 'w': 2952.0}, {'u': 'H', 'v': 'I', 'w': 335.0}, {'u': 'J', 'v': 'K', 'w': 234.0}, {'u': 'L', 'v': 'M', 'w': 207.0}], 'density': 0.21794871794871795, 'source_file': 'I056.stp', 'k': 6}","[['B', 'C'], ['C', 'J'], ['D', 'E'], ['D', 'K'], ['J', 'K']]",37,markdown_table,names
+KMST,KMST,"On a busy morning the coordinator needs to lock in exactly k supplier locations and route deliveries along certain roads so the chosen locations become a single, non-repeating network. Plans are judged by total route length — add up the distances of the roads chosen and pick the layout with the least total. There can’t be duplicate stops and every one of the k must be connected without any circular detours. The concrete map and distances are provided below.
+
+{
+  ""total_supplier_locations"": 10,
+  ""total_candidate_roads"": 13,
+  ""edges"": [
+    {
+      ""road_endpoint_u"": 3,
+      ""road_endpoint_v"": 1,
+      ""road_distance"": 975.0
+    },
+    {
+      ""road_endpoint_u"": 3,
+      ""road_endpoint_v"": 4,
+      ""road_distance"": 228.0
+    },
+    {
+      ""road_endpoint_u"": 3,
+      ""road_endpoint_v"": 8,
+      ""road_distance"": 371.0
+    },
+    {
+      ""road_endpoint_u"": 10,
+      ""road_endpoint_v"": 6,
+      ""road_distance"": 1195.0
+    },
+    {
+      ""road_endpoint_u"": 10,
+      ""road_endpoint_v"": 9,
+      ""road_distance"": 608.0
+    },
+    {
+      ""road_endpoint_u"": 4,
+      ""road_endpoint_v"": 5,
+      ""road_distance"": 962.0
+    },
+    {
+      ""road_endpoint_u"": 4,
+      ""road_endpoint_v"": 6,
+      ""road_distance"": 248.0
+    },
+    {
+      ""road_endpoint_u"": 5,
+      ""road_endpoint_v"": 7,
+      ""road_distance"": 303.0
+    },
+    {
+      ""road_endpoint_u"": 5,
+      ""road_endpoint_v"": 1,
+      ""road_distance"": 228.0
+    },
+    {
+      ""road_endpoint_u"": 6,
+      ""road_endpoint_v"": 7,
+      ""road_distance"": 946.0
+    },
+    {
+      ""road_endpoint_u"": 8,
+      ""road_endpoint_v"": 2,
+      ""road_distance"": 981.0
+    },
+    {
+      ""road_endpoint_u"": 8,
+      ""road_endpoint_v"": 9,
+      ""road_distance"": 1349.0
+    },
+    {
+      ""road_endpoint_u"": 1,
+      ""road_endpoint_v"": 2,
+      ""road_distance"": 462.0
+    }
+  ],
+  ""target_supplier_count"": 4
+}
+
+When you send back the chosen roads, please put them in a simple JSON shape like this:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Each pair [u1, v1] is just one road connecting two supplier locations in the final locked-in network — list every road you’re using so that the k locations become one connected, non-repeating layout. Think of the JSON as a quick form: ""solution"" holds a list of edges (each edge is a two-item list).
+
+This JSON is only a sketch of the expected shape, not the actual answer — replace the placeholders with the real node identifiers from the instance input. Please use those identifiers exactly as they appear in the input — do not rename them or invent new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 10, 'num_edges': 13, 'edges': [{'u': 3, 'v': 1, 'w': 975.0}, {'u': 3, 'v': 4, 'w': 228.0}, {'u': 3, 'v': 8, 'w': 371.0}, {'u': 10, 'v': 6, 'w': 1195.0}, {'u': 10, 'v': 9, 'w': 608.0}, {'u': 4, 'v': 5, 'w': 962.0}, {'u': 4, 'v': 6, 'w': 248.0}, {'u': 5, 'v': 7, 'w': 303.0}, {'u': 5, 'v': 1, 'w': 228.0}, {'u': 6, 'v': 7, 'w': 946.0}, {'u': 8, 'v': 2, 'w': 981.0}, {'u': 8, 'v': 9, 'w': 1349.0}, {'u': 1, 'v': 2, 'w': 462.0}], 'k': 4, 'source_file': 'I074.stp', 'density': 0.28888888888888886}","[[3, 4], [3, 8], [4, 6]]",847.0,"{'problem_type': 'KMST', 'num_nodes': 10, 'num_edges': 13, 'edges': [{'u': 3, 'v': 1, 'w': 975.0}, {'u': 3, 'v': 4, 'w': 228.0}, {'u': 3, 'v': 8, 'w': 371.0}, {'u': 10, 'v': 6, 'w': 1195.0}, {'u': 10, 'v': 9, 'w': 608.0}, {'u': 4, 'v': 5, 'w': 962.0}, {'u': 4, 'v': 6, 'w': 248.0}, {'u': 5, 'v': 7, 'w': 303.0}, {'u': 5, 'v': 1, 'w': 228.0}, {'u': 6, 'v': 7, 'w': 946.0}, {'u': 8, 'v': 2, 'w': 981.0}, {'u': 8, 'v': 9, 'w': 1349.0}, {'u': 1, 'v': 2, 'w': 462.0}], 'density': 0.28888888888888886, 'source_file': 'I074.stp', 'k': 4}","[[3, 4], [3, 8], [4, 6]]",38,json,1
+KMST,KMST,"We’ve been handed a floor plan and told to choose exactly k hubs to link up, picking from the available fiber options so the chosen hubs form a single, loop-free network; the better layouts are simply the ones with the lowest total bill, calculated by summing the cost of the cables used. The specific instance and costs are listed below.
+
+There are 12 hubs and 14 candidate fiber runs; we must select exactly 5 hubs and interconnect them into a single, loop-free tree.
+We can install a fiber run between 7 and 5 for 1598.0.
+We can install a fiber run between 7 and 3 for 599.0.
+We can install a fiber run between 10 and 0 for 1962.0.
+We can install a fiber run between 8 and 2 for 3645.0.
+We can install a fiber run between 9 and 2 for 1264.0.
+We can install a fiber run between 9 and 11 for 697.0.
+We can install a fiber run between 9 and 5 for 1018.0.
+We can install a fiber run between 11 and 4 for 1058.0.
+We can install a fiber run between 11 and 1 for 2354.0.
+We can install a fiber run between 1 and 2 for 2688.0.
+We can install a fiber run between 1 and 0 for 1911.0.
+We can install a fiber run between 3 and 4 for 2764.0.
+We can install a fiber run between 0 and 6 for 2444.0.
+We can install a fiber run between 4 and 5 for 722.0.
+We’ll use the 14 options among the 12 hubs to compute the total bill for any chosen set of 5 hubs.
+
+When you send the chosen cabling back, just drop it into this simple JSON shape so I can read it easily:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+This is just a sketch of the shape I expect: ""solution"" is a list of the cables you picked, and each inner pair like [u1, v1] is an edge connecting hub u1 to hub v1. Think of each pair as one cable between two hubs — nothing fancy, just the list.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new labels.
+- For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 14, 'edges': [{'u': 8, 'v': 6, 'w': 1598.0}, {'u': 8, 'v': 4, 'w': 599.0}, {'u': 11, 'v': 1, 'w': 1962.0}, {'u': 9, 'v': 3, 'w': 3645.0}, {'u': 10, 'v': 3, 'w': 1264.0}, {'u': 10, 'v': 12, 'w': 697.0}, {'u': 10, 'v': 6, 'w': 1018.0}, {'u': 12, 'v': 5, 'w': 1058.0}, {'u': 12, 'v': 2, 'w': 2354.0}, {'u': 2, 'v': 3, 'w': 2688.0}, {'u': 2, 'v': 1, 'w': 1911.0}, {'u': 4, 'v': 5, 'w': 2764.0}, {'u': 1, 'v': 7, 'w': 2444.0}, {'u': 5, 'v': 6, 'w': 722.0}], 'k': 5, 'source_file': 'I054.stp', 'density': 0.21212121212121213}","[[3, 10], [10, 12], [6, 10], [5, 6]]",3701.0,"{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 14, 'edges': [{'u': 7, 'v': 5, 'w': 1598.0}, {'u': 7, 'v': 3, 'w': 599.0}, {'u': 10, 'v': 0, 'w': 1962.0}, {'u': 8, 'v': 2, 'w': 3645.0}, {'u': 9, 'v': 2, 'w': 1264.0}, {'u': 9, 'v': 11, 'w': 697.0}, {'u': 9, 'v': 5, 'w': 1018.0}, {'u': 11, 'v': 4, 'w': 1058.0}, {'u': 11, 'v': 1, 'w': 2354.0}, {'u': 1, 'v': 2, 'w': 2688.0}, {'u': 1, 'v': 0, 'w': 1911.0}, {'u': 3, 'v': 4, 'w': 2764.0}, {'u': 0, 'v': 6, 'w': 2444.0}, {'u': 4, 'v': 5, 'w': 722.0}], 'density': 0.21212121212121213, 'source_file': 'I054.stp', 'k': 5}","[[2, 9], [9, 11], [5, 9], [4, 5]]",39,markdown_table,0
+KMST,KMST,"Many folks assume wiring is just plug-and-play, but this time the task was to select exactly k vendor stalls and link them with approved trunk lines so they form a single connected setup without any circular circuits — a straightforward branching feed. What makes one selection better than another is simply the total length of trunk wiring required: add up every chosen trunk segment and pick the setup with the smallest total. No extra stalls, no duplicate feeds, and no loops are allowed. The concrete stall list and trunk measurements appear below.
+
+Here are the specifics: 11 vendor stalls, 14 approved trunk segments, and the requirement to power exactly 3 stalls.
+Trunk segment between stall 1 and stall 2 — length 1631.0.
+Trunk segment between stall 1 and stall 7 — length 10975.0.
+Trunk segment between stall 1 and stall 9 — length 3159.0.
+Trunk segment between stall 2 and stall 8 — length 3211.0.
+Trunk segment between stall 2 and stall 6 — length 10593.0.
+Trunk segment between stall 3 and stall 4 — length 1795.0.
+Trunk segment between stall 3 and stall 5 — length 1793.0.
+Trunk segment between stall 3 and stall 10 — length 3354.0.
+Trunk segment between stall 3 and stall 7 — length 9491.0.
+Trunk segment between stall 4 and stall 5 — length 101.0.
+Trunk segment between stall 4 and stall 11 — length 4084.0.
+Trunk segment between stall 5 and stall 6 — length 8316.0.
+Trunk segment between stall 6 and stall 7 — length 1691.0.
+Trunk segment between stall 8 and stall 9 — length 1449.0.
+The goal remains: exactly 3 stalls connected with no loops, and the best setup is the one with the smallest total trunk length.
+
+If you want to hand back the chosen wiring, just pop it into this tiny JSON shape so I can read it easily:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Here ""solution"" is a list of trunk segments to be used. Each inner pair like [u1, v1] is one approved trunk connecting stall u1 to stall v1. Think of it like filling out a simple form: each line is a single connection you picked.
+
+This JSON is just a sketch of the shape I expect — not the actual answer. Please make sure every stall identifier you use matches the instance input exactly — no renaming, no inventing new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 14, 'edges': [{'u': 1, 'v': 2, 'w': 1631.0}, {'u': 1, 'v': 7, 'w': 10975.0}, {'u': 1, 'v': 9, 'w': 3159.0}, {'u': 2, 'v': 8, 'w': 3211.0}, {'u': 2, 'v': 6, 'w': 10593.0}, {'u': 3, 'v': 4, 'w': 1795.0}, {'u': 3, 'v': 5, 'w': 1793.0}, {'u': 3, 'v': 10, 'w': 3354.0}, {'u': 3, 'v': 7, 'w': 9491.0}, {'u': 4, 'v': 5, 'w': 101.0}, {'u': 4, 'v': 11, 'w': 4084.0}, {'u': 5, 'v': 6, 'w': 8316.0}, {'u': 6, 'v': 7, 'w': 1691.0}, {'u': 8, 'v': 9, 'w': 1449.0}], 'k': 3, 'source_file': 'I020.stp', 'density': 0.2545454545454545}","[[3, 5], [4, 5]]",1894.0,"{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 14, 'edges': [{'u': 1, 'v': 2, 'w': 1631.0}, {'u': 1, 'v': 7, 'w': 10975.0}, {'u': 1, 'v': 9, 'w': 3159.0}, {'u': 2, 'v': 8, 'w': 3211.0}, {'u': 2, 'v': 6, 'w': 10593.0}, {'u': 3, 'v': 4, 'w': 1795.0}, {'u': 3, 'v': 5, 'w': 1793.0}, {'u': 3, 'v': 10, 'w': 3354.0}, {'u': 3, 'v': 7, 'w': 9491.0}, {'u': 4, 'v': 5, 'w': 101.0}, {'u': 4, 'v': 11, 'w': 4084.0}, {'u': 5, 'v': 6, 'w': 8316.0}, {'u': 6, 'v': 7, 'w': 1691.0}, {'u': 8, 'v': 9, 'w': 1449.0}], 'density': 0.2545454545454545, 'source_file': 'I020.stp', 'k': 3}","[[3, 5], [4, 5]]",40,nl,1
+KMST,KMST,"Many people on the field crew have been debating where to put a fixed number of sensor stations and which tracks to use so everything ties into one connected route without any loops. The smarter choice is the one with the lowest total distance traveled — you get that by summing the distances of the tracks that get opened. Requirements: pick exactly the given number of distinct sites, make sure they are all connected in a single route, and avoid any closed circuits or repeating sites. The particular site coordinates and distances follow below.
+
+# total_sites=11
+# total_candidate_tracks=12
+# target_sites=4
+site_a,site_b,track_distance
+F,H,1051.0
+F,J,387.0
+A,B,1309.0
+A,G,363.0
+B,C,673.0
+B,D,64.0
+K,G,1117.0
+C,G,1444.0
+C,H,173.0
+G,I,1271.0
+H,E,3513.0
+J,D,1154.0
+
+Also, when you send back the chosen tracks, just stick to this simple JSON shape so I can read it easily:
+
+{
+  ""solution"": [[""u1"", ""v1""], [""u2"", ""v2""], ...]
+}
+
+Think of ""solution"" as the list of tracks we're opening; each inner pair [uX, vX] is one track between two sites (the order in the pair doesn't matter — it's just saying those two sites are connected). This block is only a sketch of the shape I need, not the final answer itself.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 12, 'edges': [{'u': 6, 'v': 8, 'w': 1051.0}, {'u': 6, 'v': 10, 'w': 387.0}, {'u': 1, 'v': 2, 'w': 1309.0}, {'u': 1, 'v': 7, 'w': 363.0}, {'u': 2, 'v': 3, 'w': 673.0}, {'u': 2, 'v': 4, 'w': 64.0}, {'u': 11, 'v': 7, 'w': 1117.0}, {'u': 3, 'v': 7, 'w': 1444.0}, {'u': 3, 'v': 8, 'w': 173.0}, {'u': 7, 'v': 9, 'w': 1271.0}, {'u': 8, 'v': 5, 'w': 3513.0}, {'u': 10, 'v': 4, 'w': 1154.0}], 'k': 4, 'source_file': 'I048.stp', 'density': 0.21818181818181817}","[[2, 3], [2, 4], [3, 8]]",910.0,"{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 12, 'edges': [{'u': 'F', 'v': 'H', 'w': 1051.0}, {'u': 'F', 'v': 'J', 'w': 387.0}, {'u': 'A', 'v': 'B', 'w': 1309.0}, {'u': 'A', 'v': 'G', 'w': 363.0}, {'u': 'B', 'v': 'C', 'w': 673.0}, {'u': 'B', 'v': 'D', 'w': 64.0}, {'u': 'K', 'v': 'G', 'w': 1117.0}, {'u': 'C', 'v': 'G', 'w': 1444.0}, {'u': 'C', 'v': 'H', 'w': 173.0}, {'u': 'G', 'v': 'I', 'w': 1271.0}, {'u': 'H', 'v': 'E', 'w': 3513.0}, {'u': 'J', 'v': 'D', 'w': 1154.0}], 'density': 0.21818181818181817, 'source_file': 'I048.stp', 'k': 4}","[['B', 'C'], ['B', 'D'], ['C', 'H']]",41,csv,names
+KMST,KMST,"Once the planning team fixes how many community centers will be served, the next step is picking the exact streets that will connect those centers into one continuous route without any unnecessary loops or doubles. The plan that’s preferred is the one with the lowest total distance, found by summing the lengths of the chosen roads, and the specific centers and road measurements appear below.
+
+There are 11 total locations and 12 available road segments; the planning team must select exactly 4 centers to connect.
+Segment connecting 3 and 2 has length 629.0.
+Segment connecting 3 and 10 has length 1136.0.
+Segment connecting 4 and 2 has length 12.0.
+Segment connecting 4 and 6 has length 1134.0.
+Segment connecting 4 and 5 has length 703.0.
+Segment connecting 7 and 0 has length 646.0.
+Segment connecting 8 and 5 has length 634.0.
+Segment connecting 5 and 0 has length 1132.0.
+Segment connecting 10 and 9 has length 1361.0.
+Segment connecting 10 and 6 has length 657.0.
+Segment connecting 6 and 0 has length 697.0.
+Segment connecting 0 and 1 has length 470.0.
+These measurements let the planning team determine the tree of 4 centers with minimum total distance.
+
+When you send back the chosen streets, a simple JSON layout like this works great — keep it relaxed and just list the edges you picked.
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Think of ""solution"" as the form field where you list each road to keep. Each pair like [u1, v1] is one street connecting two centers (use the exact node identifiers from the instance). This JSON is just a sketch of the shape I expect, not the actual answer—fill in the real pairs when you submit.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 12, 'edges': [{'u': 4, 'v': 3, 'w': 629.0}, {'u': 4, 'v': 11, 'w': 1136.0}, {'u': 5, 'v': 3, 'w': 12.0}, {'u': 5, 'v': 7, 'w': 1134.0}, {'u': 5, 'v': 6, 'w': 703.0}, {'u': 8, 'v': 1, 'w': 646.0}, {'u': 9, 'v': 6, 'w': 634.0}, {'u': 6, 'v': 1, 'w': 1132.0}, {'u': 11, 'v': 10, 'w': 1361.0}, {'u': 11, 'v': 7, 'w': 657.0}, {'u': 7, 'v': 1, 'w': 697.0}, {'u': 1, 'v': 2, 'w': 470.0}], 'k': 4, 'source_file': 'I003.stp', 'density': 0.21818181818181817}","[[3, 4], [3, 5], [5, 6]]",1344.0,"{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 12, 'edges': [{'u': 3, 'v': 2, 'w': 629.0}, {'u': 3, 'v': 10, 'w': 1136.0}, {'u': 4, 'v': 2, 'w': 12.0}, {'u': 4, 'v': 6, 'w': 1134.0}, {'u': 4, 'v': 5, 'w': 703.0}, {'u': 7, 'v': 0, 'w': 646.0}, {'u': 8, 'v': 5, 'w': 634.0}, {'u': 5, 'v': 0, 'w': 1132.0}, {'u': 10, 'v': 9, 'w': 1361.0}, {'u': 10, 'v': 6, 'w': 657.0}, {'u': 6, 'v': 0, 'w': 697.0}, {'u': 0, 'v': 1, 'w': 470.0}], 'density': 0.21818181818181817, 'source_file': 'I003.stp', 'k': 4}","[[2, 3], [2, 4], [4, 5]]",42,markdown_table,0
+KMST,KMST,"Someone on the logistics floor has to pick a handful of hubs and schedule one-way or two-way transfer lanes so those hubs form a single, loop-free network. The choice is about which hubs make the cut and which direct lanes to open; the way to tell which choice is better is to add up all the lane distances — the smaller that total, the better the plan. Practical ground rules: include exactly the required number of hubs, ensure each chosen hub can reach the others through the lanes, and avoid creating circular routes or repeating hubs. The concrete details are shown below.
+
+From 12 hubs and 13 candidate lanes, they must choose exactly 6 hubs and open lanes so those hubs form a single, loop-free connected network.
+Candidate lane between hub L and hub J with distance 2115.0.
+Candidate lane between hub L and hub A with distance 2081.0.
+Candidate lane between hub L and hub K with distance 48.0.
+Candidate lane between hub K and hub G with distance 84.0.
+Candidate lane between hub D and hub I with distance 8457.0.
+Candidate lane between hub I and hub J with distance 7851.0.
+Candidate lane between hub I and hub H with distance 6074.0.
+Candidate lane between hub A and hub B with distance 515.0.
+Candidate lane between hub A and hub C with distance 173.0.
+Candidate lane between hub J and hub E with distance 148.0.
+Candidate lane between hub C and hub E with distance 48.0.
+Candidate lane between hub G and hub H with distance 4654.0.
+Candidate lane between hub E and hub F with distance 1338.0.
+They must include exactly 6 hubs, ensure every chosen hub can reach the others, avoid cycles, and minimize the sum of lane distances.
+
+If you want to send the plan back, just pop it into a tiny JSON snippet like this — I find it easiest to think of it as ""a list of lanes, each lane is a pair of hubs.""
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+In plain terms: ""solution"" is the list, and each [u, v] pair is a lane from hub u to hub v. Think of it like filling out a simple form: one line per lane, with the two hubs that the lane connects. This JSON is just a sketch of the shape I expect — you'll replace the placeholders with the actual hubs from the instance.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels.  
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 13, 'edges': [{'u': 12, 'v': 10, 'w': 2115.0}, {'u': 12, 'v': 1, 'w': 2081.0}, {'u': 12, 'v': 11, 'w': 48.0}, {'u': 11, 'v': 7, 'w': 84.0}, {'u': 4, 'v': 9, 'w': 8457.0}, {'u': 9, 'v': 10, 'w': 7851.0}, {'u': 9, 'v': 8, 'w': 6074.0}, {'u': 1, 'v': 2, 'w': 515.0}, {'u': 1, 'v': 3, 'w': 173.0}, {'u': 10, 'v': 5, 'w': 148.0}, {'u': 3, 'v': 5, 'w': 48.0}, {'u': 7, 'v': 8, 'w': 4654.0}, {'u': 5, 'v': 6, 'w': 1338.0}], 'k': 6, 'source_file': 'I049.stp', 'density': 0.19696969696969696}","[[1, 2], [1, 3], [5, 10], [3, 5], [5, 6]]",2222.0,"{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 13, 'edges': [{'u': 'L', 'v': 'J', 'w': 2115.0}, {'u': 'L', 'v': 'A', 'w': 2081.0}, {'u': 'L', 'v': 'K', 'w': 48.0}, {'u': 'K', 'v': 'G', 'w': 84.0}, {'u': 'D', 'v': 'I', 'w': 8457.0}, {'u': 'I', 'v': 'J', 'w': 7851.0}, {'u': 'I', 'v': 'H', 'w': 6074.0}, {'u': 'A', 'v': 'B', 'w': 515.0}, {'u': 'A', 'v': 'C', 'w': 173.0}, {'u': 'J', 'v': 'E', 'w': 148.0}, {'u': 'C', 'v': 'E', 'w': 48.0}, {'u': 'G', 'v': 'H', 'w': 4654.0}, {'u': 'E', 'v': 'F', 'w': 1338.0}], 'density': 0.19696969696969696, 'source_file': 'I049.stp', 'k': 6}","[['A', 'B'], ['A', 'C'], ['E', 'J'], ['C', 'E'], ['E', 'F']]",43,nl,names
+KMST,KMST,"Recently the crew got instructions to wire a precise number of lamps along a neighborhood and make them one cohesive circuit. The plan must pick exactly that many different lights, join them using the available conduit paths so they’re all connected, and avoid creating any closed loops; the cost of a plan is simply the sum of the conduit run costs used, and the aim is to keep that sum as low as possible. No duplicates or missing lights are allowed — each selected fixture is part of the single, loop-free network. The specific layout and numbers are shown below.
+
+# total_fixtures=14
+# available_conduit_runs=16
+# target_fixtures=4
+fixture_endpoint_a,fixture_endpoint_b,conduit_cost
+12,11,1224.0
+12,13,2460.0
+12,7,341.0
+2,0,300.0
+2,4,146.0
+10,11,10.0
+11,6,910.0
+4,1,153.0
+4,8,1018.0
+5,6,1193.0
+5,7,922.0
+5,8,275.0
+0,1,302.0
+1,7,1321.0
+9,8,823.0
+3,13,3086.0
+
+Oh, and when you send back your wiring plan, please stick to this little JSON layout so it’s easy to read and check:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Here ""solution"" is just the list of conduit runs you picked — each inner pair [u1, v1] is one connection joining two lamps. Think of it like filling out a form: give a list of the edges you want in the final loop-free circuit. This JSON is only a sketch of the shape I need, not the actual answer.
+
+Please make sure you use the exact identifiers from the instance input — don’t rename them or invent new ones.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 16, 'edges': [{'u': 13, 'v': 12, 'w': 1224.0}, {'u': 13, 'v': 14, 'w': 2460.0}, {'u': 13, 'v': 8, 'w': 341.0}, {'u': 3, 'v': 1, 'w': 300.0}, {'u': 3, 'v': 5, 'w': 146.0}, {'u': 11, 'v': 12, 'w': 10.0}, {'u': 12, 'v': 7, 'w': 910.0}, {'u': 5, 'v': 2, 'w': 153.0}, {'u': 5, 'v': 9, 'w': 1018.0}, {'u': 6, 'v': 7, 'w': 1193.0}, {'u': 6, 'v': 8, 'w': 922.0}, {'u': 6, 'v': 9, 'w': 275.0}, {'u': 1, 'v': 2, 'w': 302.0}, {'u': 2, 'v': 8, 'w': 1321.0}, {'u': 10, 'v': 9, 'w': 823.0}, {'u': 4, 'v': 14, 'w': 3086.0}], 'k': 4, 'source_file': 'I079.stp', 'density': 0.17582417582417584}","[[1, 3], [3, 5], [2, 5]]",599.0,"{'problem_type': 'KMST', 'num_nodes': 14, 'num_edges': 16, 'edges': [{'u': 12, 'v': 11, 'w': 1224.0}, {'u': 12, 'v': 13, 'w': 2460.0}, {'u': 12, 'v': 7, 'w': 341.0}, {'u': 2, 'v': 0, 'w': 300.0}, {'u': 2, 'v': 4, 'w': 146.0}, {'u': 10, 'v': 11, 'w': 10.0}, {'u': 11, 'v': 6, 'w': 910.0}, {'u': 4, 'v': 1, 'w': 153.0}, {'u': 4, 'v': 8, 'w': 1018.0}, {'u': 5, 'v': 6, 'w': 1193.0}, {'u': 5, 'v': 7, 'w': 922.0}, {'u': 5, 'v': 8, 'w': 275.0}, {'u': 0, 'v': 1, 'w': 302.0}, {'u': 1, 'v': 7, 'w': 1321.0}, {'u': 9, 'v': 8, 'w': 823.0}, {'u': 3, 'v': 13, 'w': 3086.0}], 'density': 0.17582417582417584, 'source_file': 'I079.stp', 'k': 4}","[[0, 2], [2, 4], [1, 4]]",44,csv,0
+KMST,KMST,"Recently the municipality asked for a compact pump layout: settle on a target number of pump stations and select the pipe segments that join them into one connected, cycle-free structure. The plan that uses the smallest total pipe length wins — the total is just the sum of the lengths of the pipes chosen. Practically, the design must include exactly that many stations, keep every chosen station connected, avoid any closed loops, and not repeat segments. Concrete instance information appears below.
+
+# total_candidate_sites=11
+# total_candidate_pipes=11
+# target_pump_stations=3
+endpoint_site_a,endpoint_site_b,pipe_length
+8,0,7301.0
+8,10,4005.0
+8,5,5027.0
+3,7,16.0
+3,2,489.0
+3,1,9249.0
+0,1,587.0
+0,2,8915.0
+1,6,8010.0
+2,4,417.0
+4,9,4643.0
+
+When you’re ready to hand in the chosen pipe segments, please use a simple JSON shape so it’s easy to read and validate. Here’s the little sketch I’m expecting:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Think of this as a form: the ""solution"" field is a list of the pipe segments you picked, and each [u1, v1] pair is one segment connecting two station identifiers. Super casual — just a list of the edges that make up the final connected, loop-free layout. This is just the shape I want you to follow, not the actual answer.
+
+Please make sure every identifier you use matches the instance input exactly — don’t rename stations or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 11, 'edges': [{'u': 9, 'v': 1, 'w': 7301.0}, {'u': 9, 'v': 11, 'w': 4005.0}, {'u': 9, 'v': 6, 'w': 5027.0}, {'u': 4, 'v': 8, 'w': 16.0}, {'u': 4, 'v': 3, 'w': 489.0}, {'u': 4, 'v': 2, 'w': 9249.0}, {'u': 1, 'v': 2, 'w': 587.0}, {'u': 1, 'v': 3, 'w': 8915.0}, {'u': 2, 'v': 7, 'w': 8010.0}, {'u': 3, 'v': 5, 'w': 417.0}, {'u': 5, 'v': 10, 'w': 4643.0}], 'k': 3, 'source_file': 'I040.stp', 'density': 0.2}","[[4, 8], [3, 4]]",505.0,"{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 11, 'edges': [{'u': 8, 'v': 0, 'w': 7301.0}, {'u': 8, 'v': 10, 'w': 4005.0}, {'u': 8, 'v': 5, 'w': 5027.0}, {'u': 3, 'v': 7, 'w': 16.0}, {'u': 3, 'v': 2, 'w': 489.0}, {'u': 3, 'v': 1, 'w': 9249.0}, {'u': 0, 'v': 1, 'w': 587.0}, {'u': 0, 'v': 2, 'w': 8915.0}, {'u': 1, 'v': 6, 'w': 8010.0}, {'u': 2, 'v': 4, 'w': 417.0}, {'u': 4, 'v': 9, 'w': 4643.0}], 'density': 0.2, 'source_file': 'I040.stp', 'k': 3}","[[3, 7], [2, 3]]",45,csv,0
+KMST,KMST,"I’m planning a shoot and need to pick a fixed number of locations for different scenes, then lay down service roads so every chosen site can be driven between without any breaks. The choice is which exact spots to include and which roads to build so that all the picked sites are connected in one continuous layout with no loops or redundant backtracking. A better choice is the one that uses the fewest road miles overall — count the length of each service road you include and add them up, and the sum should be as small as possible. The rules are strict: pick exactly the given number of sites, don’t duplicate sites, make sure every chosen site is reachable from any other via the roads, and avoid creating circular routes. The concrete details are shown below.
+
+{
+  ""total_available_sites"": 11,
+  ""total_possible_roads"": 13,
+  ""edges"": [
+    {
+      ""site_endpoint_u"": ""D"",
+      ""site_endpoint_v"": ""B"",
+      ""road_mileage"": 4495.0
+    },
+    {
+      ""site_endpoint_u"": ""E"",
+      ""site_endpoint_v"": ""I"",
+      ""road_mileage"": 787.0
+    },
+    {
+      ""site_endpoint_u"": ""H"",
+      ""site_endpoint_v"": ""F"",
+      ""road_mileage"": 587.0
+    },
+    {
+      ""site_endpoint_u"": ""H"",
+      ""site_endpoint_v"": ""G"",
+      ""road_mileage"": 1174.0
+    },
+    {
+      ""site_endpoint_u"": ""H"",
+      ""site_endpoint_v"": ""I"",
+      ""road_mileage"": 1234.0
+    },
+    {
+      ""site_endpoint_u"": ""A"",
+      ""site_endpoint_v"": ""K"",
+      ""road_mileage"": 935.0
+    },
+    {
+      ""site_endpoint_u"": ""A"",
+      ""site_endpoint_v"": ""G"",
+      ""road_mileage"": 458.0
+    },
+    {
+      ""site_endpoint_u"": ""A"",
+      ""site_endpoint_v"": ""B"",
+      ""road_mileage"": 1458.0
+    },
+    {
+      ""site_endpoint_u"": ""I"",
+      ""site_endpoint_v"": ""K"",
+      ""road_mileage"": 1282.0
+    },
+    {
+      ""site_endpoint_u"": ""J"",
+      ""site_endpoint_v"": ""F"",
+      ""road_mileage"": 796.0
+    },
+    {
+      ""site_endpoint_u"": ""F"",
+      ""site_endpoint_v"": ""C"",
+      ""road_mileage"": 879.0
+    },
+    {
+      ""site_endpoint_u"": ""G"",
+      ""site_endpoint_v"": ""C"",
+      ""road_mileage"": 1034.0
+    },
+    {
+      ""site_endpoint_u"": ""B"",
+      ""site_endpoint_v"": ""C"",
+      ""road_mileage"": 912.0
+    }
+  ],
+  ""sites_to_select"": 3
+}
+
+Also, a quick format note — when you send back the roads you pick, it'd be great if you put them in a little JSON snippet like this:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+This just means ""solution"" is the list of roads you'll build. Each pair like [u1, v1] is a road connecting the two chosen sites. Think of it like filling out a short form: one line per road, listing the two endpoints. It's only a sketch of the shape I want, not the actual answer you should compute.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+
+Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".","{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 13, 'edges': [{'u': 4, 'v': 2, 'w': 4495.0}, {'u': 5, 'v': 9, 'w': 787.0}, {'u': 8, 'v': 6, 'w': 587.0}, {'u': 8, 'v': 7, 'w': 1174.0}, {'u': 8, 'v': 9, 'w': 1234.0}, {'u': 1, 'v': 11, 'w': 935.0}, {'u': 1, 'v': 7, 'w': 458.0}, {'u': 1, 'v': 2, 'w': 1458.0}, {'u': 9, 'v': 11, 'w': 1282.0}, {'u': 10, 'v': 6, 'w': 796.0}, {'u': 6, 'v': 3, 'w': 879.0}, {'u': 7, 'v': 3, 'w': 1034.0}, {'u': 2, 'v': 3, 'w': 912.0}], 'k': 3, 'source_file': 'I054.stp', 'density': 0.23636363636363636}","[[6, 8], [6, 10]]",1383.0,"{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 13, 'edges': [{'u': 'D', 'v': 'B', 'w': 4495.0}, {'u': 'E', 'v': 'I', 'w': 787.0}, {'u': 'H', 'v': 'F', 'w': 587.0}, {'u': 'H', 'v': 'G', 'w': 1174.0}, {'u': 'H', 'v': 'I', 'w': 1234.0}, {'u': 'A', 'v': 'K', 'w': 935.0}, {'u': 'A', 'v': 'G', 'w': 458.0}, {'u': 'A', 'v': 'B', 'w': 1458.0}, {'u': 'I', 'v': 'K', 'w': 1282.0}, {'u': 'J', 'v': 'F', 'w': 796.0}, {'u': 'F', 'v': 'C', 'w': 879.0}, {'u': 'G', 'v': 'C', 'w': 1034.0}, {'u': 'B', 'v': 'C', 'w': 912.0}], 'density': 0.23636363636363636, 'source_file': 'I054.stp', 'k': 3}","[['F', 'H'], ['F', 'J']]",46,json,names
+KMST,KMST,"Recently the cable company got a brief to wire up a handful of junctions: they must choose an exact number of those junctions and link them with coax so the chosen set is all connected together, with no closed loops. Plans are judged by how little cable they require — simply total the lengths of all the links you’d place. The practical constraints are straightforward: exactly that many junctions, each included only once, everything connected, and no looped paths. The specific data is given below.
+
+# total_junctions=11
+# total_possible_links=12
+# required_junctions_to_connect=3
+junction_a_id,junction_b_id,cable_length_meters
+J,G,1717.0
+J,D,332.0
+J,H,979.0
+I,D,286.0
+G,B,945.0
+G,C,433.0
+F,A,837.0
+F,K,1617.0
+D,E,171.0
+A,C,390.0
+B,C,1307.0
+K,H,88.0
+
+Oh, and when you send back the plan, please follow this little JSON layout so I can read it automatically:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Think of that as a simple form: ""solution"" is the list of coax runs you propose, and each [u, v] pair is a single cable connecting junction u to junction v. It's just the shape I need — a sketch of the format, not your final answer.
+
+Also, use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 12, 'edges': [{'u': 10, 'v': 7, 'w': 1717.0}, {'u': 10, 'v': 4, 'w': 332.0}, {'u': 10, 'v': 8, 'w': 979.0}, {'u': 9, 'v': 4, 'w': 286.0}, {'u': 7, 'v': 2, 'w': 945.0}, {'u': 7, 'v': 3, 'w': 433.0}, {'u': 6, 'v': 1, 'w': 837.0}, {'u': 6, 'v': 11, 'w': 1617.0}, {'u': 4, 'v': 5, 'w': 171.0}, {'u': 1, 'v': 3, 'w': 390.0}, {'u': 2, 'v': 3, 'w': 1307.0}, {'u': 11, 'v': 8, 'w': 88.0}], 'k': 3, 'source_file': 'I068.stp', 'density': 0.21818181818181817}","[[4, 9], [4, 5]]",457.0,"{'problem_type': 'KMST', 'num_nodes': 11, 'num_edges': 12, 'edges': [{'u': 'J', 'v': 'G', 'w': 1717.0}, {'u': 'J', 'v': 'D', 'w': 332.0}, {'u': 'J', 'v': 'H', 'w': 979.0}, {'u': 'I', 'v': 'D', 'w': 286.0}, {'u': 'G', 'v': 'B', 'w': 945.0}, {'u': 'G', 'v': 'C', 'w': 433.0}, {'u': 'F', 'v': 'A', 'w': 837.0}, {'u': 'F', 'v': 'K', 'w': 1617.0}, {'u': 'D', 'v': 'E', 'w': 171.0}, {'u': 'A', 'v': 'C', 'w': 390.0}, {'u': 'B', 'v': 'C', 'w': 1307.0}, {'u': 'K', 'v': 'H', 'w': 88.0}], 'density': 0.21818181818181817, 'source_file': 'I068.stp', 'k': 3}","[['D', 'I'], ['D', 'E']]",47,csv,names
+KMST,KMST,"I run the watering schedule at our community garden, and I need to pick a specific number of raised beds to hook up to the shared water line. The job is to decide which beds to include and which hoses to lay so all those chosen beds are joined together in a single network with no closed loops, and the plan is better the less hose it uses — you figure that by adding up the lengths of the hoses you’d need. The exact layout and hose lengths for the current case are shown below.
+
+There are 12 raised beds and 14 candidate hose segments; I must connect exactly 4 beds into a single loop-free watering network.
+Between bed 9 and bed 2 I can lay a hose of length 282.0.
+Between bed 9 and bed 10 I can lay a hose of length 281.0.
+Between bed 9 and bed 6 I can lay a hose of length 429.0.
+Between bed 10 and bed 11 I can lay a hose of length 53.0.
+Between bed 6 and bed 1 I can lay a hose of length 283.0.
+Between bed 6 and bed 7 I can lay a hose of length 346.0.
+Between bed 11 and bed 7 I can lay a hose of length 419.0.
+Between bed 11 and bed 12 I can lay a hose of length 81.0.
+Between bed 7 and bed 5 I can lay a hose of length 504.0.
+Between bed 1 and bed 2 I can lay a hose of length 437.0.
+Between bed 3 and bed 4 I can lay a hose of length 677.0.
+Between bed 3 and bed 5 I can lay a hose of length 613.0.
+Between bed 4 and bed 8 I can lay a hose of length 663.0.
+Between bed 5 and bed 8 I can lay a hose of length 723.0.
+I'll choose the 4 beds and the connecting hoses that minimize the total hose length.
+
+Also, when you send the plan back, please use this simple JSON layout so it's easy to read and feed into the garden map:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Here ""solution"" is a list of hose runs; each inner pair [u, v] means run a hose between bed u and bed v. It's just a quick form of saying which beds get connected to which — nothing fancy, just a list of connections.
+
+This JSON is only a sketch of the expected shape, not the actual answer.
+
+Please make sure all identifiers in your final answer match exactly what's in the instance input — no renaming and no new labels. For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.","{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 14, 'edges': [{'u': 9, 'v': 2, 'w': 282.0}, {'u': 9, 'v': 10, 'w': 281.0}, {'u': 9, 'v': 6, 'w': 429.0}, {'u': 10, 'v': 11, 'w': 53.0}, {'u': 6, 'v': 1, 'w': 283.0}, {'u': 6, 'v': 7, 'w': 346.0}, {'u': 11, 'v': 7, 'w': 419.0}, {'u': 11, 'v': 12, 'w': 81.0}, {'u': 7, 'v': 5, 'w': 504.0}, {'u': 1, 'v': 2, 'w': 437.0}, {'u': 3, 'v': 4, 'w': 677.0}, {'u': 3, 'v': 5, 'w': 613.0}, {'u': 4, 'v': 8, 'w': 663.0}, {'u': 5, 'v': 8, 'w': 723.0}], 'k': 4, 'source_file': 'I050.stp', 'density': 0.21212121212121213}","[[9, 10], [10, 11], [11, 12]]",415.0,"{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 14, 'edges': [{'u': 9, 'v': 2, 'w': 282.0}, {'u': 9, 'v': 10, 'w': 281.0}, {'u': 9, 'v': 6, 'w': 429.0}, {'u': 10, 'v': 11, 'w': 53.0}, {'u': 6, 'v': 1, 'w': 283.0}, {'u': 6, 'v': 7, 'w': 346.0}, {'u': 11, 'v': 7, 'w': 419.0}, {'u': 11, 'v': 12, 'w': 81.0}, {'u': 7, 'v': 5, 'w': 504.0}, {'u': 1, 'v': 2, 'w': 437.0}, {'u': 3, 'v': 4, 'w': 677.0}, {'u': 3, 'v': 5, 'w': 613.0}, {'u': 4, 'v': 8, 'w': 663.0}, {'u': 5, 'v': 8, 'w': 723.0}], 'density': 0.21212121212121213, 'source_file': 'I050.stp', 'k': 4}","[[9, 10], [10, 11], [11, 12]]",48,markdown_table,1
+KMST,KMST,"Heading into the next round of surveys, the responsibility is to select a specified count of plots and pick links that tie those plots into a single connected, loopless measurement structure. The plan that wins is the one with the smallest combined link distance — just total the lengths of all the links chosen. Every selected plot must be included once, everything must be connected together, and there can’t be any loops or repeated plot selections. The concrete details for the instance are shown below.
+
+Instance specifics: 10 total plots, 10 candidate links, choose exactly 5 plots for the measurement tree.
+Candidate link between plot 10 and plot 6 with distance 1064.0.
+Candidate link between plot 5 and plot 4 with distance 3208.0.
+Candidate link between plot 5 and plot 9 with distance 8924.0.
+Candidate link between plot 9 and plot 2 with distance 2187.0.
+Candidate link between plot 9 and plot 6 with distance 6338.0.
+Candidate link between plot 9 and plot 7 with distance 4351.0.
+Candidate link between plot 3 and plot 2 with distance 1383.0.
+Candidate link between plot 1 and plot 2 with distance 3205.0.
+Candidate link between plot 6 and plot 7 with distance 6128.0.
+Candidate link between plot 7 and plot 8 with distance 4799.0.
+Verify these 10 candidate links across 10 plots permit selecting exactly 5 plots that form a single connected, loopless measurement tree.
+
+Also, when you send your plan back, please use this simple JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [[u1, v1], [u2, v2], ...]
+}
+
+Here ""solution"" is just a list of the links you want to include; each inner pair [u, v] is a single link connecting plot u to plot v. Think of it like filling in a short form: list the chosen connections one pair at a time. This block is just a sketch of the shape I expect, not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them and don't invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 10, 'num_edges': 10, 'edges': [{'u': 10, 'v': 6, 'w': 1064.0}, {'u': 5, 'v': 4, 'w': 3208.0}, {'u': 5, 'v': 9, 'w': 8924.0}, {'u': 9, 'v': 2, 'w': 2187.0}, {'u': 9, 'v': 6, 'w': 6338.0}, {'u': 9, 'v': 7, 'w': 4351.0}, {'u': 3, 'v': 2, 'w': 1383.0}, {'u': 1, 'v': 2, 'w': 3205.0}, {'u': 6, 'v': 7, 'w': 6128.0}, {'u': 7, 'v': 8, 'w': 4799.0}], 'k': 5, 'source_file': 'I021.stp', 'density': 0.2222222222222222}","[[6, 10], [2, 9], [6, 9], [2, 3]]",10972.0,"{'problem_type': 'KMST', 'num_nodes': 10, 'num_edges': 10, 'edges': [{'u': 10, 'v': 6, 'w': 1064.0}, {'u': 5, 'v': 4, 'w': 3208.0}, {'u': 5, 'v': 9, 'w': 8924.0}, {'u': 9, 'v': 2, 'w': 2187.0}, {'u': 9, 'v': 6, 'w': 6338.0}, {'u': 9, 'v': 7, 'w': 4351.0}, {'u': 3, 'v': 2, 'w': 1383.0}, {'u': 1, 'v': 2, 'w': 3205.0}, {'u': 6, 'v': 7, 'w': 6128.0}, {'u': 7, 'v': 8, 'w': 4799.0}], 'density': 0.2222222222222222, 'source_file': 'I021.stp', 'k': 5}","[[6, 10], [2, 9], [6, 9], [2, 3]]",49,markdown_table,1
+KMST,KMST,"Someone from network operations has to choose a handful of small cells — exactly k — and set up backhaul so the chosen cells form a single connected layout with no loops or redundant paths. The goal is simply to keep the total backhaul expense as low as possible, measured by adding the cost of each link used. The detailed layout and costs are listed below.
+
+# total_small_cells=12
+# total_candidate_links=13
+# target_active_small_cells=4
+cell_u_id,cell_v_id,backhaul_cost
+G,H,1438.0
+G,B,699.0
+G,I,266.0
+H,A,708.0
+H,J,494.0
+L,B,1254.0
+L,C,1212.0
+D,F,1490.0
+E,F,958.0
+A,B,1552.0
+F,I,6995.0
+I,J,1376.0
+J,K,1970.0
+
+If you want to send back the chosen links, just use this simple JSON shape — a list of the selected edges under ""solution"". For example:
+
+{
+  ""solution"": [[""u1"", ""v1""], [""u2"", ""v2""], ...]
+}
+
+This is just a sketch of the shape I expect: ""solution"" holds a list of pairs, and each pair is an edge between two small-cell identifiers (the two ends of a backhaul link). Keep it light and use the same identifiers the instance uses — this block isn't the final answer, just the format I'll read.
+
+Also: all identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""","{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 13, 'edges': [{'u': 7, 'v': 8, 'w': 1438.0}, {'u': 7, 'v': 2, 'w': 699.0}, {'u': 7, 'v': 9, 'w': 266.0}, {'u': 8, 'v': 1, 'w': 708.0}, {'u': 8, 'v': 10, 'w': 494.0}, {'u': 12, 'v': 2, 'w': 1254.0}, {'u': 12, 'v': 3, 'w': 1212.0}, {'u': 4, 'v': 6, 'w': 1490.0}, {'u': 5, 'v': 6, 'w': 958.0}, {'u': 1, 'v': 2, 'w': 1552.0}, {'u': 6, 'v': 9, 'w': 6995.0}, {'u': 9, 'v': 10, 'w': 1376.0}, {'u': 10, 'v': 11, 'w': 1970.0}], 'k': 4, 'source_file': 'I052.stp', 'density': 0.19696969696969696}","[[7, 9], [8, 10], [9, 10]]",2136.0,"{'problem_type': 'KMST', 'num_nodes': 12, 'num_edges': 13, 'edges': [{'u': 'G', 'v': 'H', 'w': 1438.0}, {'u': 'G', 'v': 'B', 'w': 699.0}, {'u': 'G', 'v': 'I', 'w': 266.0}, {'u': 'H', 'v': 'A', 'w': 708.0}, {'u': 'H', 'v': 'J', 'w': 494.0}, {'u': 'L', 'v': 'B', 'w': 1254.0}, {'u': 'L', 'v': 'C', 'w': 1212.0}, {'u': 'D', 'v': 'F', 'w': 1490.0}, {'u': 'E', 'v': 'F', 'w': 958.0}, {'u': 'A', 'v': 'B', 'w': 1552.0}, {'u': 'F', 'v': 'I', 'w': 6995.0}, {'u': 'I', 'v': 'J', 'w': 1376.0}, {'u': 'J', 'v': 'K', 'w': 1970.0}], 'density': 0.19696969696969696, 'source_file': 'I052.stp', 'k': 4}","[['G', 'I'], ['H', 'J'], ['I', 'J']]",50,csv,names

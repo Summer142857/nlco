@@ -1,0 +1,16 @@
+problem: AP3
+scale: M
+seed: 43
+step1:
+  dataset_dir: datasets/AP3
+  n_nodes: 6-8
+
+  n_instances: 50
+  output: step1_instance_creation/generated_data/AP3/AP3_M.json
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/AP3/AP3_contexts.json
+  instance_dir: step1_instance_creation/generated_data/AP3
+  output_root_dir: step2_contextualization/dataset/AP3
+  k_per_call: 20
+  n_target: 30

@@ -1,0 +1,2258 @@
+id,task_id,difficulty_tier,example_index,prompt,surface_format,indexing_scheme,instance_canonical_json,reference_solution_canonical_json,reference_objective_value,instance_surface_json,reference_solution_surface_json
+PDP_S_001,PDP,S,1,"There’s a daily downtown ride where the courier must collect orders from restaurants, hand them to the right customers, and come back to the central locker — all in a single loop with no repeats or missed stops. Each pickup needs to happen before its linked delivery, and every delivery must be made within its allowed time frame. The goal is to make that whole loop as short as possible: total distance is measured by summing the legs between stops, so shorter sums mean a better route. The exact stops, pairings, and windows follow below.
+
+{
+  ""total_locations_including_locker"": 11,
+  ""central_locker_id"": 1,
+  ""nodes"": [
+    {
+      ""stop_id"": 1,
+      ""x_coordinate_map"": 66,
+      ""y_coordinate_map"": 30,
+      ""earliest_arrival_time"": 0,
+      ""latest_arrival_time"": 1236
+    },
+    {
+      ""stop_id"": 2,
+      ""x_coordinate_map"": 69,
+      ""y_coordinate_map"": 66,
+      ""earliest_arrival_time"": 643,
+      ""latest_arrival_time"": 866
+    },
+    {
+      ""stop_id"": 3,
+      ""x_coordinate_map"": 66,
+      ""y_coordinate_map"": 68,
+      ""earliest_arrival_time"": 499,
+      ""latest_arrival_time"": 824
+    },
+    {
+      ""stop_id"": 4,
+      ""x_coordinate_map"": 14,
+      ""y_coordinate_map"": 0,
+      ""earliest_arrival_time"": 144,
+      ""latest_arrival_time"": 293
+    },
+    {
+      ""stop_id"": 5,
+      ""x_coordinate_map"": 14,
+      ""y_coordinate_map"": 10,
+      ""earliest_arrival_time"": 31,
+      ""latest_arrival_time"": 309
+    },
+    {
+      ""stop_id"": 6,
+      ""x_coordinate_map"": 10,
+      ""y_coordinate_map"": 10,
+      ""earliest_arrival_time"": 33,
+      ""latest_arrival_time"": 313
+    },
+    {
+      ""stop_id"": 7,
+      ""x_coordinate_map"": 10,
+      ""y_coordinate_map"": 20,
+      ""earliest_arrival_time"": 655,
+      ""latest_arrival_time"": 912
+    },
+    {
+      ""stop_id"": 8,
+      ""x_coordinate_map"": 5,
+      ""y_coordinate_map"": 0,
+      ""earliest_arrival_time"": 191,
+      ""latest_arrival_time"": 436
+    },
+    {
+      ""stop_id"": 9,
+      ""x_coordinate_map"": 0,
+      ""y_coordinate_map"": 10,
+      ""earliest_arrival_time"": 305,
+      ""latest_arrival_time"": 512
+    },
+    {
+      ""stop_id"": 10,
+      ""x_coordinate_map"": 100,
+      ""y_coordinate_map"": 100,
+      ""earliest_arrival_time"": 470,
+      ""latest_arrival_time"": 713
+    },
+    {
+      ""stop_id"": 11,
+      ""x_coordinate_map"": 100,
+      ""y_coordinate_map"": 100,
+      ""earliest_arrival_time"": 470,
+      ""latest_arrival_time"": 713
+    }
+  ]
+}
+
+{
+  ""pickup_delivery_pairs"": [
+    {
+      ""pickup_stop_id"": 3,
+      ""delivery_stop_id"": 2
+    },
+    {
+      ""pickup_stop_id"": 10,
+      ""delivery_stop_id"": 11
+    },
+    {
+      ""pickup_stop_id"": 6,
+      ""delivery_stop_id"": 9
+    },
+    {
+      ""pickup_stop_id"": 4,
+      ""delivery_stop_id"": 8
+    },
+    {
+      ""pickup_stop_id"": 5,
+      ""delivery_stop_id"": 7
+    }
+  ]
+}
+
+When you hand me the route, just use a tiny JSON snippet so it's easy to read and parse — something like this:
+
+{
+  ""solution"": [locker_id, ..., locker_id]
+}
+
+Here ""solution"" is the sequence of stops in the courier's loop, starting and ending at the central locker. Each item in the list is a placeholder for a stop identifier (pickups, deliveries, or the locker). This block is just a sketch of the shape I expect — replace the placeholders with the actual IDs from the instance.
+
+Please make sure you use the exact identifiers as given in the problem input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,one_based,"{""coordinates"": [[66, 30], [69, 66], [66, 68], [14, 0], [14, 10], [10, 10], [10, 20], [5, 0], [0, 10], [100, 100], [100, 100]], ""depot"": 0, ""time_windows"": [[0, 1236], [643, 866], [499, 824], [144, 293], [31, 309], [33, 313], [655, 912], [191, 436], [305, 512], [470, 713], [470, 713]], ""pickup_delivery_pairs"": [[2, 1], [9, 10], [5, 8], [3, 7], [4, 6]], ""num_vehicles"": 1, ""total_distance"": 402.9280426278679, ""objective"": 402.9280426278679}","[[0, 4, 5, 3, 7, 8, 2, 9, 10, 1, 6, 0]]",402.9280426278679,"{""problem_type"": ""PDP"", ""num_nodes"": 11, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 66, ""y"": 30, ""tw_start"": 0, ""tw_end"": 1236}, {""id"": 2, ""x"": 69, ""y"": 66, ""tw_start"": 643, ""tw_end"": 866}, {""id"": 3, ""x"": 66, ""y"": 68, ""tw_start"": 499, ""tw_end"": 824}, {""id"": 4, ""x"": 14, ""y"": 0, ""tw_start"": 144, ""tw_end"": 293}, {""id"": 5, ""x"": 14, ""y"": 10, ""tw_start"": 31, ""tw_end"": 309}, {""id"": 6, ""x"": 10, ""y"": 10, ""tw_start"": 33, ""tw_end"": 313}, {""id"": 7, ""x"": 10, ""y"": 20, ""tw_start"": 655, ""tw_end"": 912}, {""id"": 8, ""x"": 5, ""y"": 0, ""tw_start"": 191, ""tw_end"": 436}, {""id"": 9, ""x"": 0, ""y"": 10, ""tw_start"": 305, ""tw_end"": 512}, {""id"": 10, ""x"": 100, ""y"": 100, ""tw_start"": 470, ""tw_end"": 713}, {""id"": 11, ""x"": 100, ""y"": 100, ""tw_start"": 470, ""tw_end"": 713}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[3, 2], [10, 11], [6, 9], [4, 8], [5, 7]], ""total_distance"": 402.9280426278679, ""objective"": 402.9280426278679}","[[1, 5, 6, 4, 8, 9, 3, 10, 11, 2, 7, 1]]"
+PDP_S_002,PDP,S,2,"We run the lab’s delivery van and put together a day’s route that starts and finishes at the lab. Every clinic and testing site needs to be visited one time only, each visit must happen during that site’s allotted time period, and any specimen pickup has to come before its paired drop-off at an analysis center. A better route is simply the one that uses fewer miles overall — calculated by summing the distances between consecutive stops on the trip. The concrete stops, coordinates and time windows are listed below.
+
+# GLOBALS
+key,value
+total_locations_including_depot,7
+lab_depot_id,1
+
+# PAIRS
+pickup_location_id,delivery_location_id
+4,5
+6,7
+3,2
+
+# NODES
+location_id,x_coord,y_coord,earliest_arrival_time,latest_arrival_time
+1,32,40,0,3390
+2,17,80,2385,2976
+3,0,100,1689,2144
+4,42,20,12,424
+5,35,0,641,1070
+6,100,0,2169,2818
+7,82,20,2599,3164
+
+When you send the route back, please just use the tiny JSON shape below so it's easy to read and plug into the planner.
+
+{
+  ""solution"": [lab_depot_id, ..., lab_depot_id]
+}
+
+This shows the shape I need: ""solution"" is the ordered list of stops for the whole trip, starting and ending at the depot. The placeholders in the example are just that — a sketch of the shape, not the real answer. Replace them with the actual stop identifiers from your instance.
+
+Quick reminder: use the exact identifiers as they appear in the instance input — no renaming and no new labels.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""coordinates"": [[32, 40], [17, 80], [0, 100], [42, 20], [35, 0], [100, 0], [82, 20]], ""depot"": 0, ""time_windows"": [[0, 3390], [2385, 2976], [1689, 2144], [12, 424], [641, 1070], [2169, 2818], [2599, 3164]], ""pickup_delivery_pairs"": [[3, 4], [5, 6], [2, 1]], ""num_vehicles"": 1, ""total_distance"": 371.7840310731794, ""objective"": 371.7840310731794}","[[0, 3, 4, 2, 1, 5, 6, 0]]",371.7840310731794,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 32, ""y"": 40, ""tw_start"": 0, ""tw_end"": 3390}, {""id"": 2, ""x"": 17, ""y"": 80, ""tw_start"": 2385, ""tw_end"": 2976}, {""id"": 3, ""x"": 0, ""y"": 100, ""tw_start"": 1689, ""tw_end"": 2144}, {""id"": 4, ""x"": 42, ""y"": 20, ""tw_start"": 12, ""tw_end"": 424}, {""id"": 5, ""x"": 35, ""y"": 0, ""tw_start"": 641, ""tw_end"": 1070}, {""id"": 6, ""x"": 100, ""y"": 0, ""tw_start"": 2169, ""tw_end"": 2818}, {""id"": 7, ""x"": 82, ""y"": 20, ""tw_start"": 2599, ""tw_end"": 3164}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[4, 5], [6, 7], [3, 2]], ""total_distance"": 371.7840310731794, ""objective"": 371.7840310731794}","[[1, 4, 5, 3, 2, 6, 7, 1]]"
+PDP_S_003,PDP,S,3,"A moving crew has to run a single trip that starts and ends at the storage yard, touching every pickup residence and every delivery apartment exactly one time, loading at the pickup and then taking that load to its paired drop-off within the building’s scheduled window. The task is choosing the stop order so each pickup precedes its delivery and every delivery fits the building’s allowed time, with no stops repeated or omitted. The yard wants the shortest possible total driving distance — tally the miles between successive stops to get the route’s total and pick the smallest total. The precise list of stops, their time windows and which pickup links to which delivery are shown below.
+
+- **total_stops_including_yard**: 11
+- **storage_yard_id**: 0
+
+**pickup_delivery_pairs**
+| pickup_stop_id | delivery_stop_id |
+|---|---|
+| 1 | 9 |
+| 10 | 6 |
+| 5 | 7 |
+| 8 | 4 |
+| 3 | 2 |
+
+**nodes**
+| stop_id | x_coord | y_coord | window_open_time | window_close_time |
+|---|---|---|---|---|
+| 0 | 21 | 64 | 0 | 3390 |
+| 1 | 53 | 91 | 0 | 3270 |
+| 2 | 0 | 36 | 0 | 3275 |
+| 3 | 27 | 0 | 1256 | 1416 |
+| 4 | 100 | 43 | 0 | 3242 |
+| 5 | 86 | 43 | 0 | 3252 |
+| 6 | 67 | 71 | 0 | 3267 |
+| 7 | 56 | 59 | 3097 | 3257 |
+| 8 | 57 | 79 | 0 | 3273 |
+| 9 | 50 | 71 | 0 | 3279 |
+| 10 | 47 | 100 | 0 | 3269 |
+
+Also, when you hand the route back, please use this simple JSON layout so it's easy for the yard to read and import:
+
+{
+  ""solution"": [yard_id, ..., yard_id]
+}
+
+This little block just says: put the stops in order inside the array, starting and ending with the yard (the storage yard/depot), with every stop listed exactly once in between. Think of it like filling out a form that lists the stops in the order the truck will visit them — it’s just the shape of the answer, not the actual route.
+
+All identifiers in your actual answer must match the instance input exactly — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”"".",markdown_table,zero_based,"{""coordinates"": [[21, 64], [53, 91], [0, 36], [27, 0], [100, 43], [86, 43], [67, 71], [56, 59], [57, 79], [50, 71], [47, 100]], ""depot"": 0, ""time_windows"": [[0, 3390], [0, 3270], [0, 3275], [1256, 1416], [0, 3242], [0, 3252], [0, 3267], [3097, 3257], [0, 3273], [0, 3279], [0, 3269]], ""pickup_delivery_pairs"": [[1, 9], [10, 6], [5, 7], [8, 4], [3, 2]], ""num_vehicles"": 1, ""total_distance"": 359.48412344842137, ""objective"": 359.48412344842137}","[[0, 3, 2, 10, 1, 8, 6, 4, 5, 7, 9, 0]]",359.48412344842137,"{""problem_type"": ""PDP"", ""num_nodes"": 11, ""depot"": 0, ""nodes"": [{""id"": 0, ""x"": 21, ""y"": 64, ""tw_start"": 0, ""tw_end"": 3390}, {""id"": 1, ""x"": 53, ""y"": 91, ""tw_start"": 0, ""tw_end"": 3270}, {""id"": 2, ""x"": 0, ""y"": 36, ""tw_start"": 0, ""tw_end"": 3275}, {""id"": 3, ""x"": 27, ""y"": 0, ""tw_start"": 1256, ""tw_end"": 1416}, {""id"": 4, ""x"": 100, ""y"": 43, ""tw_start"": 0, ""tw_end"": 3242}, {""id"": 5, ""x"": 86, ""y"": 43, ""tw_start"": 0, ""tw_end"": 3252}, {""id"": 6, ""x"": 67, ""y"": 71, ""tw_start"": 0, ""tw_end"": 3267}, {""id"": 7, ""x"": 56, ""y"": 59, ""tw_start"": 3097, ""tw_end"": 3257}, {""id"": 8, ""x"": 57, ""y"": 79, ""tw_start"": 0, ""tw_end"": 3273}, {""id"": 9, ""x"": 50, ""y"": 71, ""tw_start"": 0, ""tw_end"": 3279}, {""id"": 10, ""x"": 47, ""y"": 100, ""tw_start"": 0, ""tw_end"": 3269}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[1, 9], [10, 6], [5, 7], [8, 4], [3, 2]], ""total_distance"": 359.48412344842137, ""objective"": 359.48412344842137}","[[0, 3, 2, 10, 1, 8, 6, 4, 5, 7, 9, 0]]"
+PDP_S_004,PDP,S,4,"Recently the shop organized a pick-up and delivery loop: the courier leaves the shop, goes to each donor and each recipient once, and returns to the shop at the end. Each collected book has to be picked up before it reaches its paired recipient, every visit must be inside the place’s permitted times, and no address can be skipped or visited twice. The route is judged by how far the van drives — sum the distances between each consecutive stop (including the final leg back to the shop) and choose the route with the smallest total. The specific route instance is given below.
+
+# GLOBALS
+key,value
+total_locations_including_shop,7
+shop_node_id,A
+
+# PAIRS
+pickup_location_id,delivery_location_id
+G,F
+C,B
+D,E
+
+# NODES
+location_id,coord_x,coord_y,earliest_allowed_arrival,latest_allowed_arrival
+A,93,50,0,1236
+B,26,100,571,616
+C,0,86,172,261
+D,63,21,338,433
+E,37,21,695,816
+F,100,0,35,233
+G,93,0,35,172
+
+Also, when you reply with the route itself, a simple JSON layout like this is easiest to work with:
+
+{
+  ""solution"": [shop_id, ..., shop_id]
+}
+
+This just means ""solution"" should be a list showing the whole loop — start at the shop, list every stop in the order you visit them, and finish back at the shop. The placeholders are only there to show the shape: the first and last entries are the depot/shop, and the ... stands in for all the intermediate locations in order.
+
+This JSON is only a sketch of the expected shape, not the actual route — you'll fill in the real location identifiers from the problem input.
+
+Please make sure to use the exact identifiers as they appear in the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",csv,names,"{""coordinates"": [[93, 50], [26, 100], [0, 86], [63, 21], [37, 21], [100, 0], [93, 0]], ""depot"": 0, ""time_windows"": [[0, 1236], [571, 616], [172, 261], [338, 433], [695, 816], [35, 233], [35, 172]], ""pickup_delivery_pairs"": [[6, 5], [2, 1], [3, 4]], ""num_vehicles"": 1, ""total_distance"": 509.4755330738521, ""objective"": 509.4755330738521}","[[0, 6, 5, 2, 3, 1, 4, 0]]",509.4755330738521,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 93, ""y"": 50, ""tw_start"": 0, ""tw_end"": 1236}, {""id"": ""B"", ""x"": 26, ""y"": 100, ""tw_start"": 571, ""tw_end"": 616}, {""id"": ""C"", ""x"": 0, ""y"": 86, ""tw_start"": 172, ""tw_end"": 261}, {""id"": ""D"", ""x"": 63, ""y"": 21, ""tw_start"": 338, ""tw_end"": 433}, {""id"": ""E"", ""x"": 37, ""y"": 21, ""tw_start"": 695, ""tw_end"": 816}, {""id"": ""F"", ""x"": 100, ""y"": 0, ""tw_start"": 35, ""tw_end"": 233}, {""id"": ""G"", ""x"": 93, ""y"": 0, ""tw_start"": 35, ""tw_end"": 172}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""G"", ""F""], [""C"", ""B""], [""D"", ""E""]], ""total_distance"": 509.4755330738521, ""objective"": 509.4755330738521}","[[""A"", ""G"", ""F"", ""C"", ""D"", ""B"", ""E"", ""A""]]"
+PDP_S_005,PDP,S,5,"I run a one-person instrument shuttle out of a little workshop and need to put together a single driving loop that leaves and returns to the shop, stops at every rehearsal space and venue exactly once, and makes every pickup before its matching drop-off — all while getting to each place within its available time slot. The goal is to keep the whole trip as short as possible: add up the miles between each stop in the order driven, and the route with the smallest total is the better plan. Concrete details about the stops, times, and pickup–delivery pairs are shown below.
+
+# GLOBALS
+key,value
+total_locations_including_workshop,9
+workshop_node_id,1
+
+# PAIRS
+pickup_location_id,delivery_location_id
+7,3
+8,2
+5,9
+6,4
+
+# NODES
+stop_id,x_coordinate,y_coordinate,earliest_arrival_time,latest_arrival_time
+1,40,41,0,1000
+2,0,32,20,906
+3,100,14,826,956
+4,34,0,246,705
+5,12,21,17,972
+6,84,100,98,537
+7,62,2,681,802
+8,6,21,691,969
+9,22,27,190,749
+
+When you send your proposed route back, just slip it into a tiny JSON snippet like this so I can read it automatically:
+
+{
+  ""solution"": [shop_id, ..., shop_id]
+}
+
+Here ""solution"" should be the ordered list of stops in the loop — start at the shop, list each location in the sequence you'll drive to, and finish back at the shop. The placeholder shop_id is standing in for whatever depot identifier the instance uses; the ... just means all the intermediate stops go in order between the two shop entries. This JSON is just a sketch of the shape I’m expecting, not the actual route — I’ll need the real identifiers filled in.
+
+Please use the exact identifiers from the problem input (no renaming, no invented labels). 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""coordinates"": [[40, 41], [0, 32], [100, 14], [34, 0], [12, 21], [84, 100], [62, 2], [6, 21], [22, 27]], ""depot"": 0, ""time_windows"": [[0, 1000], [20, 906], [826, 956], [246, 705], [17, 972], [98, 537], [681, 802], [691, 969], [190, 749]], ""pickup_delivery_pairs"": [[6, 2], [7, 1], [4, 8], [5, 3]], ""num_vehicles"": 1, ""total_distance"": 409.7232356456175, ""objective"": 409.7232356456175}","[[0, 5, 3, 4, 7, 1, 8, 6, 2, 0]]",409.7232356456175,"{""problem_type"": ""PDP"", ""num_nodes"": 9, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 40, ""y"": 41, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": 2, ""x"": 0, ""y"": 32, ""tw_start"": 20, ""tw_end"": 906}, {""id"": 3, ""x"": 100, ""y"": 14, ""tw_start"": 826, ""tw_end"": 956}, {""id"": 4, ""x"": 34, ""y"": 0, ""tw_start"": 246, ""tw_end"": 705}, {""id"": 5, ""x"": 12, ""y"": 21, ""tw_start"": 17, ""tw_end"": 972}, {""id"": 6, ""x"": 84, ""y"": 100, ""tw_start"": 98, ""tw_end"": 537}, {""id"": 7, ""x"": 62, ""y"": 2, ""tw_start"": 681, ""tw_end"": 802}, {""id"": 8, ""x"": 6, ""y"": 21, ""tw_start"": 691, ""tw_end"": 969}, {""id"": 9, ""x"": 22, ""y"": 27, ""tw_start"": 190, ""tw_end"": 749}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[7, 3], [8, 2], [5, 9], [6, 4]], ""total_distance"": 409.7232356456175, ""objective"": 409.7232356456175}","[[1, 6, 4, 5, 8, 2, 9, 7, 3, 1]]"
+PDP_S_006,PDP,S,6,"Recently the shop asked for a one-trip route: the driver departs the depot, goes to every customer and partner shop once (no skips, no repeats), makes sure every pickup happens before its linked drop-off, sticks to each place’s allowed arrival time, and finishes back at the store. The success of a plan is measured by how short the driving is — just add up the distances between stops to get the total miles. The exact addresses, time windows, and pairings follow below.
+
+- **total_locations_including_depot**: 11
+- **store_node_id**: A
+
+**pickup_delivery_pairs**
+| pickup_location | delivery_location |
+|---|---|
+| H | G |
+| D | C |
+| B | I |
+| E | F |
+| K | J |
+
+**nodes**
+| location_id | map_x | map_y | earliest_arrival | latest_arrival |
+|---|---|---|---|---|
+| A | 44 | 50 | 0 | 1236 |
+| B | 56 | 79 | 756 | 939 |
+| C | 11 | 100 | 547 | 826 |
+| D | 0 | 93 | 318 | 495 |
+| E | 29 | 24 | 19 | 345 |
+| F | 27 | 21 | 278 | 493 |
+| G | 49 | 0 | 35 | 287 |
+| H | 44 | 0 | 35 | 246 |
+| I | 56 | 71 | 847 | 1130 |
+| J | 100 | 64 | 551 | 802 |
+| K | 89 | 57 | 20 | 276 |
+
+Also, when you send the final route back, please use this simple JSON shape so it's clear and easy to read:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+This just means ""solution"" is the ordered list of location identifiers (the tour), starting and ending with the depot. The placeholder above is only a sketch of the shape — you'll replace those placeholders with the actual IDs from the instance when you give the real route.
+
+Quick reminder: use the exact identifiers as they appear in the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,names,"{""coordinates"": [[44, 50], [56, 79], [11, 100], [0, 93], [29, 24], [27, 21], [49, 0], [44, 0], [56, 71], [100, 64], [89, 57]], ""depot"": 0, ""time_windows"": [[0, 1236], [756, 939], [547, 826], [318, 495], [19, 345], [278, 493], [35, 287], [35, 246], [847, 1130], [551, 802], [20, 276]], ""pickup_delivery_pairs"": [[7, 6], [3, 2], [1, 8], [4, 5], [10, 9]], ""num_vehicles"": 1, ""total_distance"": 422.6230278993871, ""objective"": 422.6230278993871}","[[0, 10, 7, 6, 4, 5, 3, 2, 9, 1, 8, 0]]",422.6230278993871,"{""problem_type"": ""PDP"", ""num_nodes"": 11, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 44, ""y"": 50, ""tw_start"": 0, ""tw_end"": 1236}, {""id"": ""B"", ""x"": 56, ""y"": 79, ""tw_start"": 756, ""tw_end"": 939}, {""id"": ""C"", ""x"": 11, ""y"": 100, ""tw_start"": 547, ""tw_end"": 826}, {""id"": ""D"", ""x"": 0, ""y"": 93, ""tw_start"": 318, ""tw_end"": 495}, {""id"": ""E"", ""x"": 29, ""y"": 24, ""tw_start"": 19, ""tw_end"": 345}, {""id"": ""F"", ""x"": 27, ""y"": 21, ""tw_start"": 278, ""tw_end"": 493}, {""id"": ""G"", ""x"": 49, ""y"": 0, ""tw_start"": 35, ""tw_end"": 287}, {""id"": ""H"", ""x"": 44, ""y"": 0, ""tw_start"": 35, ""tw_end"": 246}, {""id"": ""I"", ""x"": 56, ""y"": 71, ""tw_start"": 847, ""tw_end"": 1130}, {""id"": ""J"", ""x"": 100, ""y"": 64, ""tw_start"": 551, ""tw_end"": 802}, {""id"": ""K"", ""x"": 89, ""y"": 57, ""tw_start"": 20, ""tw_end"": 276}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""H"", ""G""], [""D"", ""C""], [""B"", ""I""], [""E"", ""F""], [""K"", ""J""]], ""total_distance"": 422.6230278993871, ""objective"": 422.6230278993871}","[[""A"", ""K"", ""H"", ""G"", ""E"", ""F"", ""D"", ""C"", ""J"", ""B"", ""I"", ""A""]]"
+PDP_S_007,PDP,S,7,"Someone at the donation center coordinated a single-loop route so the van leaves and returns to the same spot, touches every donor and every distribution point exactly once within their scheduled slots, and always collects an item before taking it to its assigned drop-off. Better routes are the ones that use fewer miles in total — just add up the distance between stops along the loop — and the plan can’t skip stops or repeat them. The detailed schedule and addresses are shown below.
+
+There are 11 total locations including the depot A.
+Stop A is at (71, 61) with time window 0-960.
+Stop B is at (18, 48) with time window 404-753.
+Stop C is at (9, 55) with time window 35-697.
+Stop D is at (0, 48) with time window 94-535.
+Stop E is at (62, 3) with time window 386-904.
+Stop F is at (32, 100) with time window 315-782.
+Stop G is at (41, 0) with time window 390-900.
+Stop H is at (11, 84) with time window 215-608.
+Stop I is at (48, 52) with time window 14-506.
+Stop J is at (95, 52) with time window 14-581.
+Stop K is at (100, 44) with time window 20-539.
+Pair 0: collect at C then deliver to F.
+Pair 1: collect at H then deliver to G.
+Pair 2: collect at D then deliver to E.
+Pair 3: collect at J then deliver to K.
+Pair 4: collect at I then deliver to B.
+Verify the loop visits all 11 stops and returns to A without skipping or repeating.
+
+If you want to give me the planned loop, a handy way to do it is this simple JSON shape:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+Think of ""solution"" as the whole loop: list the stop IDs in order, starting and ending at the depot. The depot_id entries are just placeholders here — when you send the actual route, replace those placeholders with the exact stop IDs from the instance. This JSON is just a sketch of the shape I expect, not the actual answer.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".""",nl,names,"{""coordinates"": [[71, 61], [18, 48], [9, 55], [0, 48], [62, 3], [32, 100], [41, 0], [11, 84], [48, 52], [95, 52], [100, 44]], ""depot"": 0, ""time_windows"": [[0, 960], [404, 753], [35, 697], [94, 535], [386, 904], [315, 782], [390, 900], [215, 608], [14, 506], [14, 581], [20, 539]], ""pickup_delivery_pairs"": [[2, 5], [7, 6], [3, 4], [9, 10], [8, 1]], ""num_vehicles"": 1, ""total_distance"": 383.1261745227918, ""objective"": 383.1261745227918}","[[0, 9, 10, 8, 1, 3, 2, 7, 5, 6, 4, 0]]",383.1261745227918,"{""problem_type"": ""PDP"", ""num_nodes"": 11, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 71, ""y"": 61, ""tw_start"": 0, ""tw_end"": 960}, {""id"": ""B"", ""x"": 18, ""y"": 48, ""tw_start"": 404, ""tw_end"": 753}, {""id"": ""C"", ""x"": 9, ""y"": 55, ""tw_start"": 35, ""tw_end"": 697}, {""id"": ""D"", ""x"": 0, ""y"": 48, ""tw_start"": 94, ""tw_end"": 535}, {""id"": ""E"", ""x"": 62, ""y"": 3, ""tw_start"": 386, ""tw_end"": 904}, {""id"": ""F"", ""x"": 32, ""y"": 100, ""tw_start"": 315, ""tw_end"": 782}, {""id"": ""G"", ""x"": 41, ""y"": 0, ""tw_start"": 390, ""tw_end"": 900}, {""id"": ""H"", ""x"": 11, ""y"": 84, ""tw_start"": 215, ""tw_end"": 608}, {""id"": ""I"", ""x"": 48, ""y"": 52, ""tw_start"": 14, ""tw_end"": 506}, {""id"": ""J"", ""x"": 95, ""y"": 52, ""tw_start"": 14, ""tw_end"": 581}, {""id"": ""K"", ""x"": 100, ""y"": 44, ""tw_start"": 20, ""tw_end"": 539}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""C"", ""F""], [""H"", ""G""], [""D"", ""E""], [""J"", ""K""], [""I"", ""B""]], ""total_distance"": 383.1261745227918, ""objective"": 383.1261745227918}","[[""A"", ""J"", ""K"", ""I"", ""B"", ""D"", ""C"", ""H"", ""F"", ""G"", ""E"", ""A""]]"
+PDP_S_008,PDP,S,8,"I picture a bike courier leaving the florist, picking up bouquets from a few vendors, dropping each bouquet off at its recipient, and then rolling back to the shop — all in one continuous loop. The rider must visit every vendor and every delivery address exactly once, pick up a bouquet before dropping it off, and arrive at each stop within its promised delivery window. The ""best"" route is the one that keeps the total distance ridden as small as possible — simply add up the distances between each consecutive stop in the loop to get that total. The exact list of stops, pickup-delivery pairs, and time windows are shown below.
+
+{
+  ""total_stops_including_florist"": 7,
+  ""florist_node_id"": 1,
+  ""nodes"": [
+    {
+      ""stop_id"": 1,
+      ""coord_x"": 44,
+      ""coord_y"": 72,
+      ""time_window_start"": 0,
+      ""time_window_end"": 960
+    },
+    {
+      ""stop_id"": 2,
+      ""coord_x"": 6,
+      ""coord_y"": 44,
+      ""time_window_start"": 470,
+      ""time_window_end"": 687
+    },
+    {
+      ""stop_id"": 3,
+      ""coord_x"": 0,
+      ""coord_y"": 31,
+      ""time_window_start"": 359,
+      ""time_window_end"": 911
+    },
+    {
+      ""stop_id"": 4,
+      ""coord_x"": 100,
+      ""coord_y"": 31,
+      ""time_window_start"": 462,
+      ""time_window_end"": 631
+    },
+    {
+      ""stop_id"": 5,
+      ""coord_x"": 31,
+      ""coord_y"": 100,
+      ""time_window_start"": 421,
+      ""time_window_end"": 896
+    },
+    {
+      ""stop_id"": 6,
+      ""coord_x"": 28,
+      ""coord_y"": 53,
+      ""time_window_start"": 85,
+      ""time_window_end"": 338
+    },
+    {
+      ""stop_id"": 7,
+      ""coord_x"": 20,
+      ""coord_y"": 0,
+      ""time_window_start"": 332,
+      ""time_window_end"": 485
+    }
+  ]
+}
+
+{
+  ""pickup_delivery_pairs"": [
+    {
+      ""pickup_node_id"": 6,
+      ""delivery_node_id"": 4
+    },
+    {
+      ""pickup_node_id"": 3,
+      ""delivery_node_id"": 2
+    },
+    {
+      ""pickup_node_id"": 7,
+      ""delivery_node_id"": 5
+    }
+  ]
+}
+
+When you hand me a proposed route, just put it in a tiny JSON object like this so it's easy to check:
+
+{
+  ""solution"": [""florist_id"", ..., ""florist_id""]
+}
+
+This ""solution"" array is the whole loop, listed in the order the rider visits each place — starting and ending at the florist. The JSON above is just a sketch of the shape I need; in your actual reply replace those placeholders with the real location IDs from the instance.
+
+Please use the identifiers exactly as they appear in the instance input — don't rename them or create new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"{""coordinates"": [[44, 72], [6, 44], [0, 31], [100, 31], [31, 100], [28, 53], [20, 0]], ""depot"": 0, ""time_windows"": [[0, 960], [470, 687], [359, 911], [462, 631], [421, 896], [85, 338], [332, 485]], ""pickup_delivery_pairs"": [[5, 3], [2, 1], [6, 4]], ""num_vehicles"": 1, ""total_distance"": 352.99552472891645, ""objective"": 352.99552472891645}","[[0, 5, 6, 2, 1, 3, 4, 0]]",352.99552472891645,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 44, ""y"": 72, ""tw_start"": 0, ""tw_end"": 960}, {""id"": 2, ""x"": 6, ""y"": 44, ""tw_start"": 470, ""tw_end"": 687}, {""id"": 3, ""x"": 0, ""y"": 31, ""tw_start"": 359, ""tw_end"": 911}, {""id"": 4, ""x"": 100, ""y"": 31, ""tw_start"": 462, ""tw_end"": 631}, {""id"": 5, ""x"": 31, ""y"": 100, ""tw_start"": 421, ""tw_end"": 896}, {""id"": 6, ""x"": 28, ""y"": 53, ""tw_start"": 85, ""tw_end"": 338}, {""id"": 7, ""x"": 20, ""y"": 0, ""tw_start"": 332, ""tw_end"": 485}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[6, 4], [3, 2], [7, 5]], ""total_distance"": 352.99552472891645, ""objective"": 352.99552472891645}","[[1, 6, 7, 3, 2, 4, 5, 1]]"
+PDP_S_009,PDP,S,9,"We run a single parts van for a team of technicians and have to map out a single round trip from the depot back to the depot that touches all the parts vendors and all the jobs exactly once, with each pickup coming before its paired repair. The goal is to keep the total travel short — total travel is just the sum of distances between consecutive stops on the route, so a route with fewer miles is preferred. Also, every place has a time slot for arrival, and every location must be visited once and only once. The exact locations, pairings, and time windows are listed below.
+
+- **total_locations_including_depot**: 9
+- **depot_node_id**: 1
+
+**pickup_delivery_pairs**
+| pickup_node_id | delivery_node_id |
+|---|---|
+| 9 | 8 |
+| 2 | 5 |
+| 6 | 3 |
+| 7 | 4 |
+
+**nodes**
+| location_id | coord_x | coord_y | time_window_start | time_window_end |
+|---|---|---|---|---|
+| 1 | 39 | 86 | 0 | 1000 |
+| 2 | 59 | 0 | 409 | 494 |
+| 3 | 100 | 86 | 704 | 847 |
+| 4 | 84 | 66 | 641 | 734 |
+| 5 | 96 | 45 | 620 | 739 |
+| 6 | 82 | 100 | 637 | 752 |
+| 7 | 57 | 24 | 308 | 399 |
+| 8 | 0 | 41 | 376 | 461 |
+| 9 | 18 | 48 | 92 | 231 |
+
+Also, when you hand in the route, please use this simple JSON shape so everything's easy to parse:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+This just means the ""solution"" field is a list that shows the visit order for the whole round trip — start at the depot placeholder, hit every location exactly once (with each pickup before its paired delivery), and come back to the depot. Treat the placeholders as the exact location IDs from the instance input; you'll replace them with the real IDs when you submit the answer.
+
+This is only a sketch of the shape I want, not the actual route.
+
+Important: use the identifiers exactly as they appear in the instance input — no renaming, no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""coordinates"": [[39, 86], [59, 0], [100, 86], [84, 66], [96, 45], [82, 100], [57, 24], [0, 41], [18, 48]], ""depot"": 0, ""time_windows"": [[0, 1000], [409, 494], [704, 847], [641, 734], [620, 739], [637, 752], [308, 399], [376, 461], [92, 231]], ""pickup_delivery_pairs"": [[8, 7], [1, 4], [5, 2], [6, 3]], ""num_vehicles"": 1, ""total_distance"": 420.84484961145176, ""objective"": 420.84484961145176}","[[0, 8, 6, 7, 1, 4, 3, 5, 2, 0]]",420.84484961145176,"{""problem_type"": ""PDP"", ""num_nodes"": 9, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 39, ""y"": 86, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": 2, ""x"": 59, ""y"": 0, ""tw_start"": 409, ""tw_end"": 494}, {""id"": 3, ""x"": 100, ""y"": 86, ""tw_start"": 704, ""tw_end"": 847}, {""id"": 4, ""x"": 84, ""y"": 66, ""tw_start"": 641, ""tw_end"": 734}, {""id"": 5, ""x"": 96, ""y"": 45, ""tw_start"": 620, ""tw_end"": 739}, {""id"": 6, ""x"": 82, ""y"": 100, ""tw_start"": 637, ""tw_end"": 752}, {""id"": 7, ""x"": 57, ""y"": 24, ""tw_start"": 308, ""tw_end"": 399}, {""id"": 8, ""x"": 0, ""y"": 41, ""tw_start"": 376, ""tw_end"": 461}, {""id"": 9, ""x"": 18, ""y"": 48, ""tw_start"": 92, ""tw_end"": 231}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[9, 8], [2, 5], [6, 3], [7, 4]], ""total_distance"": 420.84484961145176, ""objective"": 420.84484961145176}","[[1, 9, 7, 8, 2, 5, 4, 6, 3, 1]]"
+PDP_S_010,PDP,S,10,"We run move-in logistics for the dorms and need a single driving route that starts and ends at the housing office, goes to every student pickup location to load belongings, then to the corresponding dorm room to unload — each location visited one time only, and a student’s stuff must be picked up before it’s taken to their room. A better route is the one that results in the least total driving distance; that total is just the sum of the miles between successive stops on the loop. Each pickup and drop has an assigned arrival window that has to be respected. The concrete details follow below.
+
+- **total_locations_including_housing_office**: 11
+- **housing_office_node_id**: A
+
+**pickup_delivery_pairs**
+| pickup_location_id | delivery_location_id |
+|---|---|
+| G | H |
+| F | I |
+| C | B |
+| D | E |
+| J | K |
+
+**nodes**
+| location_id | x_coordinate | y_coordinate | arrival_window_earliest | arrival_window_latest |
+|---|---|---|---|---|
+| A | 24 | 36 | 0 | 1236 |
+| B | 7 | 40 | 776 | 919 |
+| C | 0 | 45 | 523 | 616 |
+| D | 100 | 9 | 260 | 393 |
+| E | 96 | 0 | 442 | 587 |
+| F | 72 | 45 | 344 | 445 |
+| G | 68 | 45 | 228 | 375 |
+| H | 65 | 51 | 425 | 556 |
+| I | 58 | 55 | 614 | 739 |
+| J | 58 | 95 | 260 | 361 |
+| K | 44 | 100 | 608 | 765 |
+
+Also, when you hand back the final route, please use this simple JSON shape so it's easy to parse:
+
+{
+  ""solution"": [""office_id"", ..., ""office_id""]
+}
+
+Think of that as: ""solution"" is the ordered loop of stops (start at the housing office, visit every pickup and delivery once, and end back at the housing office). The example above is just the shape I need — the array should list the location identifiers in visiting order, beginning and ending with the office. Don’t fill in the example placeholders there when you submit the real answer; they’re just showing the format.
+
+Please use the exact identifiers from the instance input — no renaming, no made-up labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,names,"{""coordinates"": [[24, 36], [7, 40], [0, 45], [100, 9], [96, 0], [72, 45], [68, 45], [65, 51], [58, 55], [58, 95], [44, 100]], ""depot"": 0, ""time_windows"": [[0, 1236], [776, 919], [523, 616], [260, 393], [442, 587], [344, 445], [228, 375], [425, 556], [614, 739], [260, 361], [608, 765]], ""pickup_delivery_pairs"": [[6, 7], [5, 8], [2, 1], [3, 4], [9, 10]], ""num_vehicles"": 1, ""total_distance"": 491.68665793373486, ""objective"": 491.68665793373486}","[[0, 9, 6, 5, 3, 4, 7, 2, 10, 8, 1, 0]]",491.68665793373486,"{""problem_type"": ""PDP"", ""num_nodes"": 11, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 24, ""y"": 36, ""tw_start"": 0, ""tw_end"": 1236}, {""id"": ""B"", ""x"": 7, ""y"": 40, ""tw_start"": 776, ""tw_end"": 919}, {""id"": ""C"", ""x"": 0, ""y"": 45, ""tw_start"": 523, ""tw_end"": 616}, {""id"": ""D"", ""x"": 100, ""y"": 9, ""tw_start"": 260, ""tw_end"": 393}, {""id"": ""E"", ""x"": 96, ""y"": 0, ""tw_start"": 442, ""tw_end"": 587}, {""id"": ""F"", ""x"": 72, ""y"": 45, ""tw_start"": 344, ""tw_end"": 445}, {""id"": ""G"", ""x"": 68, ""y"": 45, ""tw_start"": 228, ""tw_end"": 375}, {""id"": ""H"", ""x"": 65, ""y"": 51, ""tw_start"": 425, ""tw_end"": 556}, {""id"": ""I"", ""x"": 58, ""y"": 55, ""tw_start"": 614, ""tw_end"": 739}, {""id"": ""J"", ""x"": 58, ""y"": 95, ""tw_start"": 260, ""tw_end"": 361}, {""id"": ""K"", ""x"": 44, ""y"": 100, ""tw_start"": 608, ""tw_end"": 765}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""G"", ""H""], [""F"", ""I""], [""C"", ""B""], [""D"", ""E""], [""J"", ""K""]], ""total_distance"": 491.68665793373486, ""objective"": 491.68665793373486}","[[""A"", ""J"", ""G"", ""F"", ""D"", ""E"", ""H"", ""C"", ""K"", ""I"", ""B"", ""A""]]"
+PDP_S_011,PDP,S,11,"On a busy morning a shuttle driver has to put together one full circuit from the shop, visiting all pickup points and their matching drop-offs exactly once. The driver can’t drop off a kit before picking it up, must hit each place during its reserved slot, and wants the route that uses the least total driving — calculated by adding up the miles between successive stops. The specific locations and time windows appear below.
+
+# GLOBALS
+key,value
+total_locations_including_depot,7
+rental_shop_depot,A
+
+# PAIRS
+pickup_location_id,delivery_location_id
+G,F
+E,D
+B,C
+
+# NODES
+location_id,x_coordinate,y_coordinate,time_window_start,time_window_end
+A,73,100,0,3390
+B,31,100,398,558
+C,0,89,1253,1413
+D,44,60,0,3277
+E,42,56,2200,2360
+F,69,0,1442,1602
+G,100,56,0,3276
+
+If you want to hand me the final route, the easiest way is a tiny JSON snippet like this — just an ordered list of the stops, starting and ending at the shop.
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+""solution"" is the tour: the sequence of location identifiers in the order the driver will visit them, with the depot first and last. The little placeholders here (like depot_id) are just showing the shape I expect — think of it as the form to fill in, not the finished plan.
+
+Please use the exact identifiers from the instance input — don’t rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"{""coordinates"": [[73, 100], [31, 100], [0, 89], [44, 60], [42, 56], [69, 0], [100, 56]], ""depot"": 0, ""time_windows"": [[0, 3390], [398, 558], [1253, 1413], [0, 3277], [2200, 2360], [1442, 1602], [0, 3276]], ""pickup_delivery_pairs"": [[6, 5], [4, 3], [1, 2]], ""num_vehicles"": 1, ""total_distance"": 360.25363876164045, ""objective"": 360.25363876164045}","[[0, 1, 2, 6, 5, 4, 3, 0]]",360.25363876164045,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 73, ""y"": 100, ""tw_start"": 0, ""tw_end"": 3390}, {""id"": ""B"", ""x"": 31, ""y"": 100, ""tw_start"": 398, ""tw_end"": 558}, {""id"": ""C"", ""x"": 0, ""y"": 89, ""tw_start"": 1253, ""tw_end"": 1413}, {""id"": ""D"", ""x"": 44, ""y"": 60, ""tw_start"": 0, ""tw_end"": 3277}, {""id"": ""E"", ""x"": 42, ""y"": 56, ""tw_start"": 2200, ""tw_end"": 2360}, {""id"": ""F"", ""x"": 69, ""y"": 0, ""tw_start"": 1442, ""tw_end"": 1602}, {""id"": ""G"", ""x"": 100, ""y"": 56, ""tw_start"": 0, ""tw_end"": 3276}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""G"", ""F""], [""E"", ""D""], [""B"", ""C""]], ""total_distance"": 360.25363876164045, ""objective"": 360.25363876164045}","[[""A"", ""B"", ""C"", ""G"", ""F"", ""E"", ""D"", ""A""]]"
+PDP_S_012,PDP,S,12,"Recently a driver was tasked with a tidy little challenge: start at the market, collect every supplier’s order, deliver each order to its assigned household, and come back to the market — all as one continuous loop. No stop gets skipped or repeated, pickups must precede their deliveries, and every stop must happen within its given time window. The success measure is simple: total miles driven, found by adding up the distances between stops; lower is better. The concrete details for that route are shown below.
+
+This instance contains 7 stops in total, starting and ending at the market (node 1).
+Stop 1 sits at (60, 74); arrival must fall within 0–3390.
+Stop 2 sits at (40, 100); arrival must fall within 2628–3113.
+Stop 3 sits at (20, 74); arrival must fall within 10–645.
+Stop 4 sits at (20, 41); arrival must fall within 1932–2437.
+Stop 5 sits at (0, 49); arrival must fall within 2201–2728.
+Stop 6 sits at (76, 0); arrival must fall within 1078–1593.
+Stop 7 sits at (100, 41); arrival must fall within 223–738.
+Order 0: pick up at stop 3, then deliver to stop 2.
+Order 1: pick up at stop 7, then deliver to stop 4.
+Order 2: pick up at stop 6, then deliver to stop 5.
+That completes the route specification the driver must follow.
+
+If you want to give the final tour in a tidy, predictable way, just drop it into this little JSON shape — nothing fancy, just the order of stops from start to finish:
+
+{
+  ""solution"": [market_id, ..., market_id]
+}
+
+Think of ""solution"" as the checklist for the trip: the array is the stops in the order the driver will visit them, starting and ending back at the market. The market_id and the other placeholders are just stand-ins here to show the shape; you'll replace them with the actual stop identifiers from the instance when you submit the real answer.
+
+Please make sure you use the exact identifiers from the instance input — do not rename them or make up new labels.  
+
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,one_based,"{""coordinates"": [[60, 74], [40, 100], [20, 74], [20, 41], [0, 49], [76, 0], [100, 41]], ""depot"": 0, ""time_windows"": [[0, 3390], [2628, 3113], [10, 645], [1932, 2437], [2201, 2728], [1078, 1593], [223, 738]], ""pickup_delivery_pairs"": [[2, 1], [6, 3], [5, 4]], ""num_vehicles"": 1, ""total_distance"": 362.6097332786478, ""objective"": 362.6097332786478}","[[0, 2, 6, 5, 3, 4, 1, 0]]",362.6097332786478,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 60, ""y"": 74, ""tw_start"": 0, ""tw_end"": 3390}, {""id"": 2, ""x"": 40, ""y"": 100, ""tw_start"": 2628, ""tw_end"": 3113}, {""id"": 3, ""x"": 20, ""y"": 74, ""tw_start"": 10, ""tw_end"": 645}, {""id"": 4, ""x"": 20, ""y"": 41, ""tw_start"": 1932, ""tw_end"": 2437}, {""id"": 5, ""x"": 0, ""y"": 49, ""tw_start"": 2201, ""tw_end"": 2728}, {""id"": 6, ""x"": 76, ""y"": 0, ""tw_start"": 1078, ""tw_end"": 1593}, {""id"": 7, ""x"": 100, ""y"": 41, ""tw_start"": 223, ""tw_end"": 738}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[3, 2], [7, 4], [6, 5]], ""total_distance"": 362.6097332786478, ""objective"": 362.6097332786478}","[[1, 3, 7, 6, 4, 5, 2, 1]]"
+PDP_S_013,PDP,S,13,"There’s a clinic courier who needs to do one tidy circuit: pick up samples at homes, hand them in at labs, hit each location once, and be back at the clinic. Every stop has its own time slot, and each sample’s pickup must come before its lab handover. The aim is to pick an order of visits that keeps the whole driving distance as small as possible — compute that by summing the distances along the route from start to finish and back to the clinic. The concrete locations, time windows, and which pickup belongs to which drop-off are listed below.
+
+Below are the 9 stops (clinic included); the clinic node is 1.
+Stop 1: coordinates (65, 33), time window [0, 3390].
+Stop 2: coordinates (24, 89), time window [1742, 1902].
+Stop 3: coordinates (24, 100), time window [1837, 1997].
+Stop 4: coordinates (16, 0), time window [781, 941].
+Stop 5: coordinates (13, 22), time window [1346, 1506].
+Stop 6: coordinates (8, 22), time window [1253, 1413].
+Stop 7: coordinates (0, 11), time window [1063, 1223].
+Stop 8: coordinates (90, 64), time window [1355, 1515].
+Stop 9: coordinates (100, 11), time window [3001, 3161].
+Pair 0: pickup at 4 before delivery to 6.
+Pair 1: pickup at 2 before delivery to 3.
+Pair 2: pickup at 7 before delivery to 5.
+Pair 3: pickup at 8 before delivery to 9.
+The route must visit each stop once, start and end at 1, respect all time windows, and minimize total driving distance.
+
+Also, to keep things machine-friendly, please send the final tour in this little JSON layout:
+
+{
+  ""solution"": [clinic_id, ..., clinic_id]
+}
+
+Think of ""solution"" as the ordered list of stops in the courier's loop — the first and last entry should be the clinic, and everything in between is each location visited once in order. This is just the shape I want, not the actual route.
+
+Please use the exact identifiers from the instance input — don't rename them or make up new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,one_based,"{""coordinates"": [[65, 33], [24, 89], [24, 100], [16, 0], [13, 22], [8, 22], [0, 11], [90, 64], [100, 11]], ""depot"": 0, ""time_windows"": [[0, 3390], [1742, 1902], [1837, 1997], [781, 941], [1346, 1506], [1253, 1413], [1063, 1223], [1355, 1515], [3001, 3161]], ""pickup_delivery_pairs"": [[3, 5], [1, 2], [6, 4], [7, 8]], ""num_vehicles"": 1, ""total_distance"": 424.7543651138894, ""objective"": 424.7543651138894}","[[0, 3, 6, 5, 4, 7, 1, 2, 8, 0]]",424.7543651138894,"{""problem_type"": ""PDP"", ""num_nodes"": 9, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 65, ""y"": 33, ""tw_start"": 0, ""tw_end"": 3390}, {""id"": 2, ""x"": 24, ""y"": 89, ""tw_start"": 1742, ""tw_end"": 1902}, {""id"": 3, ""x"": 24, ""y"": 100, ""tw_start"": 1837, ""tw_end"": 1997}, {""id"": 4, ""x"": 16, ""y"": 0, ""tw_start"": 781, ""tw_end"": 941}, {""id"": 5, ""x"": 13, ""y"": 22, ""tw_start"": 1346, ""tw_end"": 1506}, {""id"": 6, ""x"": 8, ""y"": 22, ""tw_start"": 1253, ""tw_end"": 1413}, {""id"": 7, ""x"": 0, ""y"": 11, ""tw_start"": 1063, ""tw_end"": 1223}, {""id"": 8, ""x"": 90, ""y"": 64, ""tw_start"": 1355, ""tw_end"": 1515}, {""id"": 9, ""x"": 100, ""y"": 11, ""tw_start"": 3001, ""tw_end"": 3161}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[4, 6], [2, 3], [7, 5], [8, 9]], ""total_distance"": 424.7543651138894, ""objective"": 424.7543651138894}","[[1, 4, 7, 6, 5, 8, 2, 3, 9, 1]]"
+PDP_S_014,PDP,S,14,"Back at the gallery, the transport coordinator has to plan a single trip: start at the gallery, visit each artist studio and each exhibit site exactly one time, collect artworks before dropping them at their paired exhibits, respect the opening times at every stop, and finish back at the gallery. The winning plan is the one with the least total driving distance — just total up the distances between the stops in order and choose the route with the lowest total. The precise locations and time windows are laid out below.
+
+- **total_locations_including_gallery**: 11
+- **gallery_depot_id**: A
+
+**pickup_delivery_pairs**
+| pickup_studio_id | delivery_exhibit_id |
+|---|---|
+| E | F |
+| C | K |
+| B | J |
+| I | H |
+| D | G |
+
+**nodes**
+| location_id | location_x_coordinate | location_y_coordinate | earliest_allowed_arrival | latest_allowed_arrival |
+|---|---|---|---|---|
+| A | 55 | 37 | 0 | 1000 |
+| B | 38 | 30 | 345 | 585 |
+| C | 22 | 0 | 32 | 272 |
+| D | 13 | 15 | 203 | 443 |
+| E | 15 | 6 | 167 | 407 |
+| F | 0 | 57 | 452 | 692 |
+| G | 57 | 24 | 740 | 980 |
+| H | 22 | 100 | 154 | 394 |
+| I | 100 | 100 | 49 | 289 |
+| J | 90 | 40 | 728 | 968 |
+| K | 28 | 16 | 0 | 968 |
+
+Just so you know how I'd like the final answer shaped, please return the planned route in a simple JSON list showing the visit order, starting and ending at the gallery. Something like this:
+
+{
+  ""solution"": [gallery_id, ..., gallery_id]
+}
+
+This is just a sketch of the shape I need: the ""solution"" array is the ordered tour — the first entry is the depot (the gallery), then every stop in the order you plan to visit them, and the last entry is the depot again. Treat the placeholders as placeholders: when you give the real answer, replace them with the exact location identifiers from the instance.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[55, 37], [38, 30], [22, 0], [13, 15], [15, 6], [0, 57], [57, 24], [22, 100], [100, 100], [90, 40], [28, 16]], ""depot"": 0, ""time_windows"": [[0, 1000], [345, 585], [32, 272], [203, 443], [167, 407], [452, 692], [740, 980], [154, 394], [49, 289], [728, 968], [0, 968]], ""pickup_delivery_pairs"": [[4, 5], [2, 10], [1, 9], [8, 7], [3, 6]], ""num_vehicles"": 1, ""total_distance"": 464.4148174539456, ""objective"": 464.4148174539456}","[[0, 8, 7, 3, 4, 2, 10, 5, 1, 6, 9, 0]]",464.4148174539456,"{""problem_type"": ""PDP"", ""num_nodes"": 11, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 55, ""y"": 37, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": ""B"", ""x"": 38, ""y"": 30, ""tw_start"": 345, ""tw_end"": 585}, {""id"": ""C"", ""x"": 22, ""y"": 0, ""tw_start"": 32, ""tw_end"": 272}, {""id"": ""D"", ""x"": 13, ""y"": 15, ""tw_start"": 203, ""tw_end"": 443}, {""id"": ""E"", ""x"": 15, ""y"": 6, ""tw_start"": 167, ""tw_end"": 407}, {""id"": ""F"", ""x"": 0, ""y"": 57, ""tw_start"": 452, ""tw_end"": 692}, {""id"": ""G"", ""x"": 57, ""y"": 24, ""tw_start"": 740, ""tw_end"": 980}, {""id"": ""H"", ""x"": 22, ""y"": 100, ""tw_start"": 154, ""tw_end"": 394}, {""id"": ""I"", ""x"": 100, ""y"": 100, ""tw_start"": 49, ""tw_end"": 289}, {""id"": ""J"", ""x"": 90, ""y"": 40, ""tw_start"": 728, ""tw_end"": 968}, {""id"": ""K"", ""x"": 28, ""y"": 16, ""tw_start"": 0, ""tw_end"": 968}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""E"", ""F""], [""C"", ""K""], [""B"", ""J""], [""I"", ""H""], [""D"", ""G""]], ""total_distance"": 464.4148174539456, ""objective"": 464.4148174539456}","[[""A"", ""I"", ""H"", ""D"", ""E"", ""C"", ""K"", ""F"", ""B"", ""G"", ""J"", ""A""]]"
+PDP_S_015,PDP,S,15,"Recently the courier team had to plan a single run that begins and ends at the municipal office, touches each department and each citizen address one time only, collects paperwork at origin offices before delivering it to linked recipients, and fits each visit inside its allowed time window. The aim is to minimize how far the vehicle drives overall — calculate that by summing the distances between each stop along the route. The exact locations, their time windows, and pickup-to-delivery links are shown below.
+
+# GLOBALS
+key,value
+total_locations_count,9
+municipal_office_node_id,1
+
+# PAIRS
+pickup_location_id,delivery_location_id
+5,4
+8,9
+6,7
+3,2
+
+# NODES
+location_id,x_coordinate,y_coordinate,earliest_arrival_time,latest_arrival_time
+1,69,44,0,3390
+2,12,100,2310,2659
+3,0,100,2143,2638
+4,38,58,2675,3288
+5,12,80,2380,2787
+6,100,22,14,360
+7,91,11,393,942
+8,91,22,12,424
+9,75,0,641,1070
+
+Also, when you hand the planned route back, please use this little JSON layout so it's easy to parse:
+
+{
+  ""solution"": [municipal_office_id, ..., municipal_office_id]
+}
+
+This means the ""solution"" field should contain the tour as an ordered list of location identifiers — start at the municipal office placeholder, go through every stop once (in the order visited), and finish back at the municipal office. The placeholders above are just showing the shape of the answer; replace them with the exact IDs from the instance when you submit the route.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename or invent labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.
+
+Remember, that JSON is only a sketch of the expected shape, not the actual solution itself.",csv,one_based,"{""coordinates"": [[69, 44], [12, 100], [0, 100], [38, 58], [12, 80], [100, 22], [91, 11], [91, 22], [75, 0]], ""depot"": 0, ""time_windows"": [[0, 3390], [2310, 2659], [2143, 2638], [2675, 3288], [2380, 2787], [14, 360], [393, 942], [12, 424], [641, 1070]], ""pickup_delivery_pairs"": [[4, 3], [7, 8], [5, 6], [2, 1]], ""num_vehicles"": 1, ""total_distance"": 294.30500987461505, ""objective"": 294.30500987461505}","[[0, 7, 5, 6, 8, 4, 2, 1, 3, 0]]",294.30500987461505,"{""problem_type"": ""PDP"", ""num_nodes"": 9, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 69, ""y"": 44, ""tw_start"": 0, ""tw_end"": 3390}, {""id"": 2, ""x"": 12, ""y"": 100, ""tw_start"": 2310, ""tw_end"": 2659}, {""id"": 3, ""x"": 0, ""y"": 100, ""tw_start"": 2143, ""tw_end"": 2638}, {""id"": 4, ""x"": 38, ""y"": 58, ""tw_start"": 2675, ""tw_end"": 3288}, {""id"": 5, ""x"": 12, ""y"": 80, ""tw_start"": 2380, ""tw_end"": 2787}, {""id"": 6, ""x"": 100, ""y"": 22, ""tw_start"": 14, ""tw_end"": 360}, {""id"": 7, ""x"": 91, ""y"": 11, ""tw_start"": 393, ""tw_end"": 942}, {""id"": 8, ""x"": 91, ""y"": 22, ""tw_start"": 12, ""tw_end"": 424}, {""id"": 9, ""x"": 75, ""y"": 0, ""tw_start"": 641, ""tw_end"": 1070}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[5, 4], [8, 9], [6, 7], [3, 2]], ""total_distance"": 294.30500987461505, ""objective"": 294.30500987461505}","[[1, 8, 6, 7, 9, 5, 3, 2, 4, 1]]"
+PDP_S_016,PDP,S,16,"Imagine a prop runner with a map, a schedule of arrival windows, and a list of pickup–drop pairs: the runner has to do one uninterrupted trip from the warehouse, visit each pickup and each set exactly once, collect items before taking them to their assigned set, and make every arrival inside the allowed time slot. The aim is to keep the van’s total driving distance as low as possible — just add up the distance between each stop in order to get the route’s total miles. The specific stops, times, and pairings are listed below.
+
+# GLOBALS
+key,value
+total_stops_including_warehouse,7
+warehouse_node_id,A
+
+# PAIRS
+pickup_node_id,delivery_node_id
+F,C
+B,E
+D,G
+
+# NODES
+stop_id,coord_x,coord_y,earliest_arrival_time,latest_arrival_time
+A,95,100,0,960
+B,19,78,33,511
+C,0,89,394,909
+D,100,11,85,542
+E,95,0,45,517
+F,48,100,239,630
+G,50,42,212,605
+
+When you send back the final route, just drop it into a tiny JSON object like this:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+This is just the shape I need: ""solution"" should hold the ordered list of stop identifiers (start at the depot, go through every stop once, and finish at the depot). The placeholder above is a sketch — swap those placeholders for the actual stop IDs from the instance when you reply.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"{""coordinates"": [[95, 100], [19, 78], [0, 89], [100, 11], [95, 0], [48, 100], [50, 42]], ""depot"": 0, ""time_windows"": [[0, 960], [33, 511], [394, 909], [85, 542], [45, 517], [239, 630], [212, 605]], ""pickup_delivery_pairs"": [[5, 2], [1, 4], [3, 6]], ""num_vehicles"": 1, ""total_distance"": 426.4143047994229, ""objective"": 426.4143047994229}","[[0, 5, 1, 3, 4, 6, 2, 0]]",426.4143047994229,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 95, ""y"": 100, ""tw_start"": 0, ""tw_end"": 960}, {""id"": ""B"", ""x"": 19, ""y"": 78, ""tw_start"": 33, ""tw_end"": 511}, {""id"": ""C"", ""x"": 0, ""y"": 89, ""tw_start"": 394, ""tw_end"": 909}, {""id"": ""D"", ""x"": 100, ""y"": 11, ""tw_start"": 85, ""tw_end"": 542}, {""id"": ""E"", ""x"": 95, ""y"": 0, ""tw_start"": 45, ""tw_end"": 517}, {""id"": ""F"", ""x"": 48, ""y"": 100, ""tw_start"": 239, ""tw_end"": 630}, {""id"": ""G"", ""x"": 50, ""y"": 42, ""tw_start"": 212, ""tw_end"": 605}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""F"", ""C""], [""B"", ""E""], [""D"", ""G""]], ""total_distance"": 426.4143047994229, ""objective"": 426.4143047994229}","[[""A"", ""F"", ""B"", ""D"", ""E"", ""G"", ""C"", ""A""]]"
+PDP_S_017,PDP,S,17,"On campus, the central depot dispatches one vehicle to collect gear from labs and drop it in classrooms; the plan must be a single loop that leaves and returns to the depot, touches every pickup and every delivery exactly once, arrives within the scheduled windows, and never reverses a pickup-delivery order. The objective is to minimize how far the van drives overall — calculate that by adding up the distance of each leg in the loop — and choose the route with the smallest total. The concrete details follow below.
+
+The instance lists 7 distinct locations and designates node 0 as the central depot.
+Node 0 is at coordinates (31, 50) and must be arrived at between 0 and 960.
+Node 1 is at coordinates (100, 0) and must be arrived at between 146 and 266.
+Node 2 is at coordinates (50, 83) and must be arrived at between 0 and 931.
+Node 3 is at coordinates (0, 83) and must be arrived at between 0 and 923.
+Node 4 is at coordinates (60, 100) and must be arrived at between 0 and 922.
+Node 5 is at coordinates (15, 27) and must be arrived at between 0 and 935.
+Node 6 is at coordinates (52, 43) and must be arrived at between 0 and 932.
+Pair 0: pickup at node 4 and delivery at node 6; the pickup must precede its delivery.
+Pair 1: pickup at node 2 and delivery at node 3; the pickup must precede its delivery.
+Pair 2: pickup at node 1 and delivery at node 5; the pickup must precede its delivery.
+Construct the single-loop route that departs from and returns to 0, visits every location exactly once, respects all time windows, preserves pickup-before-delivery for each pair, and minimizes the total driven distance.
+
+Oh, and one more practical thing — when you give the route back, just stick to a tiny JSON object that lists the tour in order (start at the depot, visit every location once, and end back at the depot). Something simple like this is perfect:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+Think of that as a little form: ""solution"" holds the ordered list of location IDs in the loop, with the depot listed first and last. This is just a sketch of the expected shape, not the actual answer — replace the placeholders with the real IDs from the instance.
+
+Please make sure to use the exact identifiers from the instance input — no renaming and no new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""coordinates"": [[31, 50], [100, 0], [50, 83], [0, 83], [60, 100], [15, 27], [52, 43]], ""depot"": 0, ""time_windows"": [[0, 960], [146, 266], [0, 931], [0, 923], [0, 922], [0, 935], [0, 932]], ""pickup_delivery_pairs"": [[4, 6], [2, 3], [1, 5]], ""num_vehicles"": 1, ""total_distance"": 367.415499591867, ""objective"": 367.415499591867}","[[0, 2, 4, 3, 6, 1, 5, 0]]",367.415499591867,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": 0, ""nodes"": [{""id"": 0, ""x"": 31, ""y"": 50, ""tw_start"": 0, ""tw_end"": 960}, {""id"": 1, ""x"": 100, ""y"": 0, ""tw_start"": 146, ""tw_end"": 266}, {""id"": 2, ""x"": 50, ""y"": 83, ""tw_start"": 0, ""tw_end"": 931}, {""id"": 3, ""x"": 0, ""y"": 83, ""tw_start"": 0, ""tw_end"": 923}, {""id"": 4, ""x"": 60, ""y"": 100, ""tw_start"": 0, ""tw_end"": 922}, {""id"": 5, ""x"": 15, ""y"": 27, ""tw_start"": 0, ""tw_end"": 935}, {""id"": 6, ""x"": 52, ""y"": 43, ""tw_start"": 0, ""tw_end"": 932}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[4, 6], [2, 3], [1, 5]], ""total_distance"": 367.415499591867, ""objective"": 367.415499591867}","[[0, 2, 4, 3, 6, 1, 5, 0]]"
+PDP_S_018,PDP,S,18,"There’s a small courier company moving case files between law firms and courts, and the task is to put together one continuous run that leaves the office, visits every listed lawyer’s office and court address once, and ends back at the office. Every file must be picked up before it’s dropped at its paired destination, and each visit must fall inside that location’s allowed time window. The aim is to keep the drive as short as possible — total miles are found by adding up the distances between each stop in the route — and the exact locations and time windows follow below.
+
+{
+  ""total_locations_including_office"": 11,
+  ""office_node_id"": ""A"",
+  ""nodes"": [
+    {
+      ""location_id"": ""A"",
+      ""map_x_coordinate"": 24,
+      ""map_y_coordinate"": 12,
+      ""earliest_allowed_arrival"": 0,
+      ""latest_allowed_arrival"": 3390
+    },
+    {
+      ""location_id"": ""B"",
+      ""map_x_coordinate"": 36,
+      ""map_y_coordinate"": 62,
+      ""earliest_allowed_arrival"": 20,
+      ""latest_allowed_arrival"": 660
+    },
+    {
+      ""location_id"": ""C"",
+      ""map_x_coordinate"": 71,
+      ""map_y_coordinate"": 52,
+      ""earliest_allowed_arrival"": 1021,
+      ""latest_allowed_arrival"": 1661
+    },
+    {
+      ""location_id"": ""D"",
+      ""map_x_coordinate"": 67,
+      ""map_y_coordinate"": 62,
+      ""earliest_allowed_arrival"": 833,
+      ""latest_allowed_arrival"": 1473
+    },
+    {
+      ""location_id"": ""E"",
+      ""map_x_coordinate"": 12,
+      ""map_y_coordinate"": 60,
+      ""earliest_allowed_arrival"": 2458,
+      ""latest_allowed_arrival"": 3098
+    },
+    {
+      ""location_id"": ""F"",
+      ""map_x_coordinate"": 0,
+      ""map_y_coordinate"": 28,
+      ""earliest_allowed_arrival"": 2648,
+      ""latest_allowed_arrival"": 3288
+    },
+    {
+      ""location_id"": ""G"",
+      ""map_x_coordinate"": 100,
+      ""map_y_coordinate"": 0,
+      ""earliest_allowed_arrival"": 2627,
+      ""latest_allowed_arrival"": 3267
+    },
+    {
+      ""location_id"": ""H"",
+      ""map_x_coordinate"": 88,
+      ""map_y_coordinate"": 100,
+      ""earliest_allowed_arrival"": 454,
+      ""latest_allowed_arrival"": 1094
+    },
+    {
+      ""location_id"": ""I"",
+      ""map_x_coordinate"": 29,
+      ""map_y_coordinate"": 32,
+      ""earliest_allowed_arrival"": 8,
+      ""latest_allowed_arrival"": 648
+    },
+    {
+      ""location_id"": ""J"",
+      ""map_x_coordinate"": 71,
+      ""map_y_coordinate"": 100,
+      ""earliest_allowed_arrival"": 357,
+      ""latest_allowed_arrival"": 997
+    },
+    {
+      ""location_id"": ""K"",
+      ""map_x_coordinate"": 67,
+      ""map_y_coordinate"": 75,
+      ""earliest_allowed_arrival"": 738,
+      ""latest_allowed_arrival"": 1378
+    }
+  ]
+}
+
+{
+  ""pickup_delivery_pairs"": [
+    {
+      ""pickup_location_id"": ""C"",
+      ""delivery_location_id"": ""G""
+    },
+    {
+      ""pickup_location_id"": ""B"",
+      ""delivery_location_id"": ""D""
+    },
+    {
+      ""pickup_location_id"": ""I"",
+      ""delivery_location_id"": ""H""
+    },
+    {
+      ""pickup_location_id"": ""J"",
+      ""delivery_location_id"": ""K""
+    },
+    {
+      ""pickup_location_id"": ""E"",
+      ""delivery_location_id"": ""F""
+    }
+  ]
+}
+
+Just so we're on the same page about how I'd like the final answer formatted, please return the route in a little JSON sketch like this:
+
+{
+  ""solution"": [office_id, ..., office_id]
+}
+
+""solution"" is the ordered list of stops for the run — it should start and end with the office/place that acts as the depot, and each entry is a location identifier from the instance (the pickup and dropoff spots). This JSON is just the shape I expect, not the actual route itself.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,names,"{""coordinates"": [[24, 12], [36, 62], [71, 52], [67, 62], [12, 60], [0, 28], [100, 0], [88, 100], [29, 32], [71, 100], [67, 75]], ""depot"": 0, ""time_windows"": [[0, 3390], [20, 660], [1021, 1661], [833, 1473], [2458, 3098], [2648, 3288], [2627, 3267], [454, 1094], [8, 648], [357, 997], [738, 1378]], ""pickup_delivery_pairs"": [[2, 6], [1, 3], [8, 7], [9, 10], [4, 5]], ""num_vehicles"": 1, ""total_distance"": 405.57226560779657, ""objective"": 405.57226560779657}","[[0, 8, 1, 9, 7, 10, 3, 2, 6, 4, 5, 0]]",405.57226560779657,"{""problem_type"": ""PDP"", ""num_nodes"": 11, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 24, ""y"": 12, ""tw_start"": 0, ""tw_end"": 3390}, {""id"": ""B"", ""x"": 36, ""y"": 62, ""tw_start"": 20, ""tw_end"": 660}, {""id"": ""C"", ""x"": 71, ""y"": 52, ""tw_start"": 1021, ""tw_end"": 1661}, {""id"": ""D"", ""x"": 67, ""y"": 62, ""tw_start"": 833, ""tw_end"": 1473}, {""id"": ""E"", ""x"": 12, ""y"": 60, ""tw_start"": 2458, ""tw_end"": 3098}, {""id"": ""F"", ""x"": 0, ""y"": 28, ""tw_start"": 2648, ""tw_end"": 3288}, {""id"": ""G"", ""x"": 100, ""y"": 0, ""tw_start"": 2627, ""tw_end"": 3267}, {""id"": ""H"", ""x"": 88, ""y"": 100, ""tw_start"": 454, ""tw_end"": 1094}, {""id"": ""I"", ""x"": 29, ""y"": 32, ""tw_start"": 8, ""tw_end"": 648}, {""id"": ""J"", ""x"": 71, ""y"": 100, ""tw_start"": 357, ""tw_end"": 997}, {""id"": ""K"", ""x"": 67, ""y"": 75, ""tw_start"": 738, ""tw_end"": 1378}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""C"", ""G""], [""B"", ""D""], [""I"", ""H""], [""J"", ""K""], [""E"", ""F""]], ""total_distance"": 405.57226560779657, ""objective"": 405.57226560779657}","[[""A"", ""I"", ""B"", ""J"", ""H"", ""K"", ""D"", ""C"", ""G"", ""E"", ""F"", ""A""]]"
+PDP_S_019,PDP,S,19,"Many people are coordinating a single courier trip: it starts and finishes at the pharmacy, includes every clinic and patient address exactly once, and respects the rule that a prescription must be picked up before it’s handed to its paired patient. Each stop has its own time window, and the aim is to keep the bike’s total travel as small as possible — computed by adding the lengths of all the legs in the route. The specific details for this run (locations, allowed times, and pairings) follow below.
+
+There are 11 total stops, and the pharmacy depot is node A.
+Stop A is located at (57, 48) and must be visited between 0 and 1000.
+Stop B is located at (27, 95) and must be visited between 146 and 386.
+Stop C is located at (96, 0) and must be visited between 146 and 386.
+Stop D is located at (35, 11) and must be visited between 25 and 265.
+Stop E is located at (0, 100) and must be visited between 401 and 641.
+Stop F is located at (80, 67) and must be visited between 0 and 973.
+Stop G is located at (100, 38) and must be visited between 568 and 808.
+Stop H is located at (29, 30) and must be visited between 0 and 972.
+Stop I is located at (39, 48) and must be visited between 718 and 958.
+Stop J is located at (27, 33) and must be visited between 263 and 503.
+Stop K is located at (24, 21) and must be visited between 725 and 965.
+Prescription pair: collect at clinic F then deliver to patient J; the pickup must occur before its paired delivery.
+Prescription pair: collect at clinic H then deliver to patient E; the pickup must occur before its paired delivery.
+Prescription pair: collect at clinic D then deliver to patient K; the pickup must occur before its paired delivery.
+Prescription pair: collect at clinic B then deliver to patient I; the pickup must occur before its paired delivery.
+Prescription pair: collect at clinic C then deliver to patient G; the pickup must occur before its paired delivery.
+All time windows and pickup-before-delivery pairings must be respected while minimizing the bike’s total travel.
+
+When you’re ready to send back the tour, just use this little JSON layout so it’s easy to read and check:
+
+{
+  ""solution"": [pharmacy_id, ..., pharmacy_id]
+}
+
+The ""solution"" array is just the ordered list of stops — start at the pharmacy, visit every place once, and come back to the pharmacy. Think of each entry as the exact label for a clinic, a patient address, or the pharmacy itself. This is only a sketch of the shape I expect, not the actual route — you’ll fill in the real IDs from the instance.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — don’t rename them and don’t invent new labels.
+
+for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"{""coordinates"": [[57, 48], [27, 95], [96, 0], [35, 11], [0, 100], [80, 67], [100, 38], [29, 30], [39, 48], [27, 33], [24, 21]], ""depot"": 0, ""time_windows"": [[0, 1000], [146, 386], [146, 386], [25, 265], [401, 641], [0, 973], [568, 808], [0, 972], [718, 958], [263, 503], [725, 965]], ""pickup_delivery_pairs"": [[5, 9], [7, 4], [3, 10], [1, 8], [2, 6]], ""num_vehicles"": 1, ""total_distance"": 513.7774106259958, ""objective"": 513.7774106259958}","[[0, 7, 3, 2, 5, 1, 4, 9, 10, 6, 8, 0]]",513.7774106259958,"{""problem_type"": ""PDP"", ""num_nodes"": 11, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 57, ""y"": 48, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": ""B"", ""x"": 27, ""y"": 95, ""tw_start"": 146, ""tw_end"": 386}, {""id"": ""C"", ""x"": 96, ""y"": 0, ""tw_start"": 146, ""tw_end"": 386}, {""id"": ""D"", ""x"": 35, ""y"": 11, ""tw_start"": 25, ""tw_end"": 265}, {""id"": ""E"", ""x"": 0, ""y"": 100, ""tw_start"": 401, ""tw_end"": 641}, {""id"": ""F"", ""x"": 80, ""y"": 67, ""tw_start"": 0, ""tw_end"": 973}, {""id"": ""G"", ""x"": 100, ""y"": 38, ""tw_start"": 568, ""tw_end"": 808}, {""id"": ""H"", ""x"": 29, ""y"": 30, ""tw_start"": 0, ""tw_end"": 972}, {""id"": ""I"", ""x"": 39, ""y"": 48, ""tw_start"": 718, ""tw_end"": 958}, {""id"": ""J"", ""x"": 27, ""y"": 33, ""tw_start"": 263, ""tw_end"": 503}, {""id"": ""K"", ""x"": 24, ""y"": 21, ""tw_start"": 725, ""tw_end"": 965}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""F"", ""J""], [""H"", ""E""], [""D"", ""K""], [""B"", ""I""], [""C"", ""G""]], ""total_distance"": 513.7774106259958, ""objective"": 513.7774106259958}","[[""A"", ""H"", ""D"", ""C"", ""F"", ""B"", ""E"", ""J"", ""K"", ""G"", ""I"", ""A""]]"
+PDP_S_020,PDP,S,20,"There’s a courier shift to plan where one vehicle handles everything: leave the central hub, hit each pickup and delivery point one time only, make sure each pickup happens before its paired drop, and respect the time windows when each place can accept a visit. What makes one plan better than another is simple — the total distance the driver has to travel; add up the distances between consecutive stops and the route with the smallest total is preferred — and nothing can be left out or visited twice. The concrete details follow below.
+
+There are 7 stops in total, counting the hub A.
+Visit location A at (43, 55); available from 0 to 1000.
+Visit location B at (29, 100); available from 0 to 964.
+Visit location C at (29, 0); available from 175 to 300.
+Visit location D at (0, 64); available from 0 to 974.
+Visit location E at (0, 27); available from 0 to 968.
+Visit location F at (20, 69); available from 0 to 978.
+Visit location G at (100, 89); available from 0 to 962.
+Pair 0: visit pickup C before its delivery B.
+Pair 1: visit pickup F before its delivery G.
+Pair 2: visit pickup D before its delivery E.
+Start and finish at A, visit each of the 7 locations exactly once, and minimize the total distance.
+
+Also, when you give me the route, just put it in a tiny JSON snippet like this so it's easy to parse:
+
+{
+  ""solution"": [hub_id, ..., hub_id]
+}
+
+Here ""solution"" is the ordered list of stops — start at the hub, visit every location exactly once (pickups before their paired drops, and respecting the allowed time windows), and come back to the hub. The placeholders above are just a sketch of the shape I expect; you'll replace them with the actual location identifiers from the instance.
+
+Please use the exact identifiers from the input file — do not rename them or invent new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”"".",nl,names,"{""coordinates"": [[43, 55], [29, 100], [29, 0], [0, 64], [0, 27], [20, 69], [100, 89]], ""depot"": 0, ""time_windows"": [[0, 1000], [0, 964], [175, 300], [0, 974], [0, 968], [0, 978], [0, 962]], ""pickup_delivery_pairs"": [[2, 1], [5, 6], [3, 4]], ""num_vehicles"": 1, ""total_distance"": 356.98990366642215, ""objective"": 356.98990366642215}","[[0, 5, 3, 4, 2, 6, 1, 0]]",356.98990366642215,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 43, ""y"": 55, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": ""B"", ""x"": 29, ""y"": 100, ""tw_start"": 0, ""tw_end"": 964}, {""id"": ""C"", ""x"": 29, ""y"": 0, ""tw_start"": 175, ""tw_end"": 300}, {""id"": ""D"", ""x"": 0, ""y"": 64, ""tw_start"": 0, ""tw_end"": 974}, {""id"": ""E"", ""x"": 0, ""y"": 27, ""tw_start"": 0, ""tw_end"": 968}, {""id"": ""F"", ""x"": 20, ""y"": 69, ""tw_start"": 0, ""tw_end"": 978}, {""id"": ""G"", ""x"": 100, ""y"": 89, ""tw_start"": 0, ""tw_end"": 962}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""C"", ""B""], [""F"", ""G""], [""D"", ""E""]], ""total_distance"": 356.98990366642215, ""objective"": 356.98990366642215}","[[""A"", ""F"", ""D"", ""E"", ""C"", ""G"", ""B"", ""A""]]"
+PDP_S_021,PDP,S,21,"Someone has to plan the run for one delivery van: it starts and ends at the warehouse and needs to hit every specified point on the map exactly once. The tricky bits are making sure the van always picks up an item before it hands that item over, and that each arrival falls within that location’s allowed window; nothing can be repeated or omitted. The aim is to keep the whole trip as short as possible — total trip length equals the sum of distances between each stop in the order chosen, plus the legs to and from the depot — and the full list of timing details and pairings is listed below.
+
+- **total_stops_including_warehouse**: 11
+- **warehouse_id**: 1
+
+**pickup_delivery_pairs**
+| pickup_stop_id | delivery_stop_id |
+|---|---|
+| 8 | 9 |
+| 5 | 4 |
+| 7 | 3 |
+| 2 | 6 |
+| 10 | 11 |
+
+**nodes**
+| stop_id | x_coordinate | y_coordinate | time_window_start | time_window_end |
+|---|---|---|---|---|
+| 1 | 52 | 36 | 0 | 1000 |
+| 2 | 5 | 26 | 0 | 959 |
+| 3 | 68 | 100 | 0 | 958 |
+| 4 | 100 | 36 | 0 | 960 |
+| 5 | 52 | 47 | 0 | 985 |
+| 6 | 0 | 64 | 0 | 954 |
+| 7 | 56 | 28 | 414 | 489 |
+| 8 | 35 | 85 | 163 | 302 |
+| 9 | 87 | 64 | 388 | 465 |
+| 10 | 3 | 0 | 0 | 954 |
+| 11 | 29 | 17 | 333 | 432 |
+
+I'll return the final route in a simple JSON object like this, so it's easy to parse and paste back into whatever system you're using:
+
+{
+  ""solution"": [warehouse_id, ..., warehouse_id]
+}
+
+Here ""solution"" is just an ordered list showing the van's stops from the depot/warehouse, through every location once, and back to the depot/warehouse at the end. Think of it like filling in the blanks on a form — the array is the visit order, starting and finishing at the warehouse placeholder shown above. This is only a sketch of the shape I need; I'll fill in the actual identifiers and the exact order when I produce the real route.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,one_based,"{""coordinates"": [[52, 36], [5, 26], [68, 100], [100, 36], [52, 47], [0, 64], [56, 28], [35, 85], [87, 64], [3, 0], [29, 17]], ""depot"": 0, ""time_windows"": [[0, 1000], [0, 959], [0, 958], [0, 960], [0, 985], [0, 954], [414, 489], [163, 302], [388, 465], [0, 954], [333, 432]], ""pickup_delivery_pairs"": [[7, 8], [4, 3], [6, 2], [1, 5], [9, 10]], ""num_vehicles"": 1, ""total_distance"": 482.3784957775051, ""objective"": 482.3784957775051}","[[0, 9, 1, 5, 7, 4, 10, 6, 8, 2, 3, 0]]",482.3784957775051,"{""problem_type"": ""PDP"", ""num_nodes"": 11, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 52, ""y"": 36, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": 2, ""x"": 5, ""y"": 26, ""tw_start"": 0, ""tw_end"": 959}, {""id"": 3, ""x"": 68, ""y"": 100, ""tw_start"": 0, ""tw_end"": 958}, {""id"": 4, ""x"": 100, ""y"": 36, ""tw_start"": 0, ""tw_end"": 960}, {""id"": 5, ""x"": 52, ""y"": 47, ""tw_start"": 0, ""tw_end"": 985}, {""id"": 6, ""x"": 0, ""y"": 64, ""tw_start"": 0, ""tw_end"": 954}, {""id"": 7, ""x"": 56, ""y"": 28, ""tw_start"": 414, ""tw_end"": 489}, {""id"": 8, ""x"": 35, ""y"": 85, ""tw_start"": 163, ""tw_end"": 302}, {""id"": 9, ""x"": 87, ""y"": 64, ""tw_start"": 388, ""tw_end"": 465}, {""id"": 10, ""x"": 3, ""y"": 0, ""tw_start"": 0, ""tw_end"": 954}, {""id"": 11, ""x"": 29, ""y"": 17, ""tw_start"": 333, ""tw_end"": 432}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[8, 9], [5, 4], [7, 3], [2, 6], [10, 11]], ""total_distance"": 482.3784957775051, ""objective"": 482.3784957775051}","[[1, 10, 2, 6, 8, 5, 11, 7, 9, 3, 4, 1]]"
+PDP_S_022,PDP,S,22,"Picture a courier’s route that begins and ends at the office and visits a fixed list of places one time each; some of those visits are pickups that must happen before their paired deliveries, and every stop has a limited time span for arrival. The decision to make is the order to visit the stops so the rider never revisits a place or misses a pickup-before-drop requirement and always arrives within each spot’s allowed time. Better orders are simply shorter rides — total route length is found by adding up the distances between each consecutive stop (including leaving and returning to the office) — so the goal is the smallest possible sum while meeting the pickup and timing needs. The specific addresses, time windows and pairings appear below.
+
+There are 7 locations in the loop and the office is node 0.
+Location 0 at (55, 68) must be arrived no earlier than 0 and no later than 1000.
+Location 1 at (55, 19) must be arrived no earlier than 0 and no later than 972.
+Location 2 at (87, 0) must be arrived no earlier than 332 and no later than 572.
+Location 3 at (19, 5) must be arrived no earlier than 25 and no later than 265.
+Location 4 at (61, 100) must be arrived no earlier than 108 and no later than 348.
+Location 5 at (100, 86) must be arrived no earlier than 212 and no later than 452.
+Location 6 at (0, 22) must be arrived no earlier than 725 and no later than 965.
+Pair 0: pickup at node 3 must be visited before its delivery at node 6.
+Pair 1: pickup at node 4 must be visited before its delivery at node 5.
+Pair 2: pickup at node 2 must be visited before its delivery at node 1.
+Construct an order that starts and ends at node 0, visits all 7 locations once, respects pickups before deliveries, and meets every time window.
+
+Also, when you hand back the route, please use this simple JSON shape so it’s easy to parse:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+Think of that as a little form: ""solution"" is the ordered list of place identifiers — start at the depot, visit every spot once in the order listed, and finish back at the depot. The array is just the visit sequence; this is only a sketch of the expected shape, not the actual route.
+
+Please be sure to use the exact identifiers from the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,zero_based,"{""coordinates"": [[55, 68], [55, 19], [87, 0], [19, 5], [61, 100], [100, 86], [0, 22]], ""depot"": 0, ""time_windows"": [[0, 1000], [0, 972], [332, 572], [25, 265], [108, 348], [212, 452], [725, 965]], ""pickup_delivery_pairs"": [[3, 6], [4, 5], [2, 1]], ""num_vehicles"": 1, ""total_distance"": 468.8422507262869, ""objective"": 468.8422507262869}","[[0, 3, 4, 5, 2, 1, 6, 0]]",468.8422507262869,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": 0, ""nodes"": [{""id"": 0, ""x"": 55, ""y"": 68, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": 1, ""x"": 55, ""y"": 19, ""tw_start"": 0, ""tw_end"": 972}, {""id"": 2, ""x"": 87, ""y"": 0, ""tw_start"": 332, ""tw_end"": 572}, {""id"": 3, ""x"": 19, ""y"": 5, ""tw_start"": 25, ""tw_end"": 265}, {""id"": 4, ""x"": 61, ""y"": 100, ""tw_start"": 108, ""tw_end"": 348}, {""id"": 5, ""x"": 100, ""y"": 86, ""tw_start"": 212, ""tw_end"": 452}, {""id"": 6, ""x"": 0, ""y"": 22, ""tw_start"": 725, ""tw_end"": 965}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[3, 6], [4, 5], [2, 1]], ""total_distance"": 468.8422507262869, ""objective"": 468.8422507262869}","[[0, 3, 4, 5, 2, 1, 6, 0]]"
+PDP_S_023,PDP,S,23,"We have one technician and a pile of service calls: start at the service center, hit every client location one time only, make sure any parts pickup happens before its paired install, and finish back at the center. Each client has an appointment window that must be respected, and a “better” route is the one that results in the fewest kilometers driven overall — just sum the distances between consecutive stops to compare options. Concrete details like addresses, time windows and which stops are pickups versus installs are listed below.
+
+# GLOBALS
+key,value
+total_stops_including_service_center,9
+service_center_id,A
+
+# PAIRS
+parts_pickup_stop,installation_stop
+G,B
+E,F
+I,H
+D,C
+
+# NODES
+stop_id,coord_x,coord_y,appointment_window_earliest,appointment_window_latest
+A,43,36,0,3390
+B,24,100,1772,2625
+C,21,100,1586,2625
+D,12,82,1299,2344
+E,24,36,15,532
+F,4,27,954,1897
+G,0,9,377,1534
+H,89,18,2599,3164
+I,100,0,2505,2870
+
+Also, when you send back the route, please stick to this simple JSON layout so it's easy to parse and compare.
+
+{
+  ""solution"": [service_center_id, ..., service_center_id]
+}
+
+Here ""solution"" is just the ordered list of location IDs that make up the technician's loop — start at the service center, visit every stop exactly once (respecting pickups before their installs and the appointment windows), and return to the service center. Think of it like filling in a little itinerary form: the array is the stops in the exact sequence to be driven.
+
+This JSON is only a sketch of the expected shape, not the actual answer.
+
+Please use the exact identifiers from the problem input with no renaming or new labels — they must match character-for-character. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"{""coordinates"": [[43, 36], [24, 100], [21, 100], [12, 82], [24, 36], [4, 27], [0, 9], [89, 18], [100, 0]], ""depot"": 0, ""time_windows"": [[0, 3390], [1772, 2625], [1586, 2625], [1299, 2344], [15, 532], [954, 1897], [377, 1534], [2599, 3164], [2505, 2870]], ""pickup_delivery_pairs"": [[6, 1], [4, 5], [8, 7], [3, 2]], ""num_vehicles"": 1, ""total_distance"": 348.3611843703253, ""objective"": 348.3611843703253}","[[0, 4, 6, 5, 3, 2, 1, 8, 7, 0]]",348.3611843703253,"{""problem_type"": ""PDP"", ""num_nodes"": 9, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 43, ""y"": 36, ""tw_start"": 0, ""tw_end"": 3390}, {""id"": ""B"", ""x"": 24, ""y"": 100, ""tw_start"": 1772, ""tw_end"": 2625}, {""id"": ""C"", ""x"": 21, ""y"": 100, ""tw_start"": 1586, ""tw_end"": 2625}, {""id"": ""D"", ""x"": 12, ""y"": 82, ""tw_start"": 1299, ""tw_end"": 2344}, {""id"": ""E"", ""x"": 24, ""y"": 36, ""tw_start"": 15, ""tw_end"": 532}, {""id"": ""F"", ""x"": 4, ""y"": 27, ""tw_start"": 954, ""tw_end"": 1897}, {""id"": ""G"", ""x"": 0, ""y"": 9, ""tw_start"": 377, ""tw_end"": 1534}, {""id"": ""H"", ""x"": 89, ""y"": 18, ""tw_start"": 2599, ""tw_end"": 3164}, {""id"": ""I"", ""x"": 100, ""y"": 0, ""tw_start"": 2505, ""tw_end"": 2870}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""G"", ""B""], [""E"", ""F""], [""I"", ""H""], [""D"", ""C""]], ""total_distance"": 348.3611843703253, ""objective"": 348.3611843703253}","[[""A"", ""E"", ""G"", ""F"", ""D"", ""C"", ""B"", ""I"", ""H"", ""A""]]"
+PDP_S_024,PDP,S,24,"Recently the team asked for one round-trip shuttle from the storage yard that touches every pickup point and drop-off point only once, makes sure every piece of equipment is picked up before being dropped off, and respects the time windows at each site. Nothing can be left out or visited twice. The practical measure of success is simple — the total distance driven, calculated by summing the distance of each leg of the circuit — and shorter is better. The specific stops, matched pairs and their time windows are listed below.
+
+# GLOBALS
+key,value
+total_stops_including_yard,11
+storage_yard_node,A
+
+# PAIRS
+pickup_site_id,delivery_site_id
+G,D
+F,K
+C,H
+B,J
+I,E
+
+# NODES
+site_id,x_coord,y_coord,time_window_start,time_window_end
+A,38,60,0,960
+B,13,100,644,764
+C,41,7,254,374
+D,38,0,0,905
+E,36,0,201,321
+F,100,33,246,366
+G,99,33,621,741
+H,0,20,0,907
+I,27,63,157,277
+J,32,85,810,930
+K,35,35,0,930
+
+If you'd like to hand me the route in a neat, machine-friendly way, just use this little JSON shape for the reply:
+
+{
+  ""solution"": [yard_id, ..., yard_id]
+}
+
+This is just a sketch of the shape I expect: the solution array is where you list the stops in visit order, starting and ending at the depot/yard. Keep it relaxed — one compact sequence of identifiers, nothing else.
+
+Please use the exact identifiers from the instance input — no renaming, no invented labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"{""coordinates"": [[38, 60], [13, 100], [41, 7], [38, 0], [36, 0], [100, 33], [99, 33], [0, 20], [27, 63], [32, 85], [35, 35]], ""depot"": 0, ""time_windows"": [[0, 960], [644, 764], [254, 374], [0, 905], [201, 321], [246, 366], [621, 741], [0, 907], [157, 277], [810, 930], [0, 930]], ""pickup_delivery_pairs"": [[6, 3], [5, 10], [2, 7], [1, 9], [8, 4]], ""num_vehicles"": 1, ""total_distance"": 582.8793420212169, ""objective"": 582.8793420212169}","[[0, 8, 5, 2, 4, 7, 6, 1, 9, 10, 3, 0]]",582.8793420212169,"{""problem_type"": ""PDP"", ""num_nodes"": 11, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 38, ""y"": 60, ""tw_start"": 0, ""tw_end"": 960}, {""id"": ""B"", ""x"": 13, ""y"": 100, ""tw_start"": 644, ""tw_end"": 764}, {""id"": ""C"", ""x"": 41, ""y"": 7, ""tw_start"": 254, ""tw_end"": 374}, {""id"": ""D"", ""x"": 38, ""y"": 0, ""tw_start"": 0, ""tw_end"": 905}, {""id"": ""E"", ""x"": 36, ""y"": 0, ""tw_start"": 201, ""tw_end"": 321}, {""id"": ""F"", ""x"": 100, ""y"": 33, ""tw_start"": 246, ""tw_end"": 366}, {""id"": ""G"", ""x"": 99, ""y"": 33, ""tw_start"": 621, ""tw_end"": 741}, {""id"": ""H"", ""x"": 0, ""y"": 20, ""tw_start"": 0, ""tw_end"": 907}, {""id"": ""I"", ""x"": 27, ""y"": 63, ""tw_start"": 157, ""tw_end"": 277}, {""id"": ""J"", ""x"": 32, ""y"": 85, ""tw_start"": 810, ""tw_end"": 930}, {""id"": ""K"", ""x"": 35, ""y"": 35, ""tw_start"": 0, ""tw_end"": 930}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""G"", ""D""], [""F"", ""K""], [""C"", ""H""], [""B"", ""J""], [""I"", ""E""]], ""total_distance"": 582.8793420212169, ""objective"": 582.8793420212169}","[[""A"", ""I"", ""F"", ""C"", ""E"", ""H"", ""G"", ""B"", ""J"", ""K"", ""D"", ""A""]]"
+PDP_S_025,PDP,S,25,"Picture this: a single vehicle does a round trip from the yard, making a run through several pickup spots and their matched worksites, visiting each location exactly once and never delivering before its pickup, all while arriving at each place during its permitted time slot. The aim is to keep the total distance driven as small as possible — simply total up the distances of each leg of the trip and pick the plan with the lowest sum. The full list of locations, pairings and arrival windows is shown below.
+
+{
+  ""total_locations_including_yard"": 9,
+  ""yard_node_id"": ""A"",
+  ""nodes"": [
+    {
+      ""location_id"": ""A"",
+      ""coord_x"": 38,
+      ""coord_y"": 42,
+      ""arrival_window_start"": 0,
+      ""arrival_window_end"": 1000
+    },
+    {
+      ""location_id"": ""B"",
+      ""coord_x"": 50,
+      ""coord_y"": 44,
+      ""arrival_window_start"": 65,
+      ""arrival_window_end"": 305
+    },
+    {
+      ""location_id"": ""C"",
+      ""coord_x"": 48,
+      ""coord_y"": 76,
+      ""arrival_window_start"": 187,
+      ""arrival_window_end"": 427
+    },
+    {
+      ""location_id"": ""D"",
+      ""coord_x"": 73,
+      ""coord_y"": 65,
+      ""arrival_window_start"": 24,
+      ""arrival_window_end"": 264
+    },
+    {
+      ""location_id"": ""E"",
+      ""coord_x"": 87,
+      ""coord_y"": 10,
+      ""arrival_window_start"": 33,
+      ""arrival_window_end"": 273
+    },
+    {
+      ""location_id"": ""F"",
+      ""coord_x"": 73,
+      ""coord_y"": 10,
+      ""arrival_window_start"": 519,
+      ""arrival_window_end"": 759
+    },
+    {
+      ""location_id"": ""G"",
+      ""coord_x"": 0,
+      ""coord_y"": 100,
+      ""arrival_window_start"": 154,
+      ""arrival_window_end"": 394
+    },
+    {
+      ""location_id"": ""H"",
+      ""coord_x"": 100,
+      ""coord_y"": 0,
+      ""arrival_window_start"": 228,
+      ""arrival_window_end"": 468
+    },
+    {
+      ""location_id"": ""I"",
+      ""coord_x"": 65,
+      ""coord_y"": 51,
+      ""arrival_window_start"": 212,
+      ""arrival_window_end"": 452
+    }
+  ]
+}
+
+{
+  ""pickup_delivery_pairs"": [
+    {
+      ""pickup_location"": ""B"",
+      ""delivery_location"": ""I""
+    },
+    {
+      ""pickup_location"": ""G"",
+      ""delivery_location"": ""F""
+    },
+    {
+      ""pickup_location"": ""D"",
+      ""delivery_location"": ""C""
+    },
+    {
+      ""pickup_location"": ""E"",
+      ""delivery_location"": ""H""
+    }
+  ]
+}
+
+Also, when you hand me the route, please put it in this simple JSON shape so it's easy to parse and reuse.
+
+{
+  ""solution"": [yard_id, ..., yard_id]
+}
+
+This just means ""solution"" should be an ordered list showing the tour — the sequence of location IDs the vehicle visits, starting and ending at the yard. The little placeholder yard_id is just standing in for whatever the real depot identifier is in your instance; treat this JSON as a sketch of the expected shape, not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — do not rename them or invent new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""coordinates"": [[38, 42], [50, 44], [48, 76], [73, 65], [87, 10], [73, 10], [0, 100], [100, 0], [65, 51]], ""depot"": 0, ""time_windows"": [[0, 1000], [65, 305], [187, 427], [24, 264], [33, 273], [519, 759], [154, 394], [228, 468], [212, 452]], ""pickup_delivery_pairs"": [[1, 8], [6, 5], [3, 2], [4, 7]], ""num_vehicles"": 1, ""total_distance"": 419.6182866682788, ""objective"": 419.6182866682788}","[[0, 1, 4, 3, 2, 6, 8, 7, 5, 0]]",419.6182866682788,"{""problem_type"": ""PDP"", ""num_nodes"": 9, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 38, ""y"": 42, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": ""B"", ""x"": 50, ""y"": 44, ""tw_start"": 65, ""tw_end"": 305}, {""id"": ""C"", ""x"": 48, ""y"": 76, ""tw_start"": 187, ""tw_end"": 427}, {""id"": ""D"", ""x"": 73, ""y"": 65, ""tw_start"": 24, ""tw_end"": 264}, {""id"": ""E"", ""x"": 87, ""y"": 10, ""tw_start"": 33, ""tw_end"": 273}, {""id"": ""F"", ""x"": 73, ""y"": 10, ""tw_start"": 519, ""tw_end"": 759}, {""id"": ""G"", ""x"": 0, ""y"": 100, ""tw_start"": 154, ""tw_end"": 394}, {""id"": ""H"", ""x"": 100, ""y"": 0, ""tw_start"": 228, ""tw_end"": 468}, {""id"": ""I"", ""x"": 65, ""y"": 51, ""tw_start"": 212, ""tw_end"": 452}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""B"", ""I""], [""G"", ""F""], [""D"", ""C""], [""E"", ""H""]], ""total_distance"": 419.6182866682788, ""objective"": 419.6182866682788}","[[""A"", ""B"", ""E"", ""D"", ""C"", ""G"", ""I"", ""H"", ""F"", ""A""]]"
+PDP_S_026,PDP,S,26,"There’s a delivery route to plan: one vehicle leaves the hospital, goes out to a set of clinics and wards, and must return to the hospital at the end. Every location needs a single visit, pickups must come before their paired drop-offs, and every visit has to happen inside its given time window. The route that’s preferred is the one with the smallest overall driving distance, calculated by adding up every segment between stops. The concrete list of stops, time windows, and which pickups go with which deliveries appears below.
+
+# GLOBALS
+key,value
+total_locations_including_hospital,7
+hospital_node_id,1
+
+# PAIRS
+pickup_location_id,delivery_location_id
+6,4
+5,2
+7,3
+
+# NODES
+location_id,map_x_coordinate,map_y_coordinate,time_window_earliest,time_window_latest
+1,40,60,0,1000
+2,0,50,20,370
+3,30,0,30,529
+4,100,100,487,656
+5,24,76,111,362
+6,44,84,12,535
+7,58,24,263,444
+
+Also, when you hand back the route, please use a tiny JSON layout like this so it's easy to parse:
+
+{
+  ""solution"": [hospital_id, ..., hospital_id]
+}
+
+Think of this as a simple form: ""solution"" is the ordered list of stops the vehicle will make, starting and ending at the hospital (the depot). The placeholders above are just showing the shape I want — replace them with the real location IDs from the instance in the exact order the vehicle visits them.
+
+This JSON is just a sketch of the expected shape, not the actual route answer.
+
+Please make sure all identifiers are used exactly as they appear in the instance input — no renaming and no new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""coordinates"": [[40, 60], [0, 50], [30, 0], [100, 100], [24, 76], [44, 84], [58, 24]], ""depot"": 0, ""time_windows"": [[0, 1000], [20, 370], [30, 529], [487, 656], [111, 362], [12, 535], [263, 444]], ""pickup_delivery_pairs"": [[5, 3], [4, 1], [6, 2]], ""num_vehicles"": 1, ""total_distance"": 365.9016717649856, ""objective"": 365.9016717649856}","[[0, 4, 6, 2, 1, 5, 3, 0]]",365.9016717649856,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 40, ""y"": 60, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": 2, ""x"": 0, ""y"": 50, ""tw_start"": 20, ""tw_end"": 370}, {""id"": 3, ""x"": 30, ""y"": 0, ""tw_start"": 30, ""tw_end"": 529}, {""id"": 4, ""x"": 100, ""y"": 100, ""tw_start"": 487, ""tw_end"": 656}, {""id"": 5, ""x"": 24, ""y"": 76, ""tw_start"": 111, ""tw_end"": 362}, {""id"": 6, ""x"": 44, ""y"": 84, ""tw_start"": 12, ""tw_end"": 535}, {""id"": 7, ""x"": 58, ""y"": 24, ""tw_start"": 263, ""tw_end"": 444}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[6, 4], [5, 2], [7, 3]], ""total_distance"": 365.9016717649856, ""objective"": 365.9016717649856}","[[1, 5, 7, 3, 2, 6, 4, 1]]"
+PDP_S_027,PDP,S,27,"Many people depend on the branch’s courier run, so the plan is to run a single loop that leaves from and returns to the branch, touches every patron and drop location exactly once, and handles paired pickups and deliveries in the right order — pickups first, deliveries after — with every visit falling inside that site’s available hours. What makes one plan better than another is simple: how far the courier has to drive in total, calculated by adding up the distance of each segment between stops (including the return). Nothing can be skipped or doubled up. The specific schedule and locations are shown below.
+
+# GLOBALS
+key,value
+total_locations_including_branch,7
+branch_node_id,0
+
+# PAIRS
+pickup_node_id,delivery_node_id
+4,2
+5,3
+1,6
+
+# NODES
+location_id,x_coord,y_coord,availability_start,availability_end
+0,62,0,0,1000
+1,19,74,0,957
+2,72,74,0,964
+3,100,50,0,965
+4,0,9,0,960
+5,45,100,0,955
+6,43,50,0,970
+
+Oh, and if you want to send the route back to me in a machine-friendly way, you can just drop it into a tiny JSON shape like this:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+Think of that as a simple form: ""solution"" is the ordered list of stops the courier will visit, starting at the depot and ending back there. The array should list each location once, in the exact visiting order. This is just the sketch of the shape I expect, not the actual route itself.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new ones. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,zero_based,"{""coordinates"": [[62, 0], [19, 74], [72, 74], [100, 50], [0, 9], [45, 100], [43, 50]], ""depot"": 0, ""time_windows"": [[0, 1000], [0, 957], [0, 964], [0, 965], [0, 960], [0, 955], [0, 970]], ""pickup_delivery_pairs"": [[4, 2], [5, 3], [1, 6]], ""num_vehicles"": 1, ""total_distance"": 351.5137230833824, ""objective"": 351.5137230833824}","[[0, 4, 1, 6, 5, 2, 3, 0]]",351.5137230833824,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": 0, ""nodes"": [{""id"": 0, ""x"": 62, ""y"": 0, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": 1, ""x"": 19, ""y"": 74, ""tw_start"": 0, ""tw_end"": 957}, {""id"": 2, ""x"": 72, ""y"": 74, ""tw_start"": 0, ""tw_end"": 964}, {""id"": 3, ""x"": 100, ""y"": 50, ""tw_start"": 0, ""tw_end"": 965}, {""id"": 4, ""x"": 0, ""y"": 9, ""tw_start"": 0, ""tw_end"": 960}, {""id"": 5, ""x"": 45, ""y"": 100, ""tw_start"": 0, ""tw_end"": 955}, {""id"": 6, ""x"": 43, ""y"": 50, ""tw_start"": 0, ""tw_end"": 970}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[4, 2], [5, 3], [1, 6]], ""total_distance"": 351.5137230833824, ""objective"": 351.5137230833824}","[[0, 4, 1, 6, 5, 2, 3, 0]]"
+PDP_S_028,PDP,S,28,"On a busy route planner’s checklist: plan a single trip from the depot that visits every listed address once, picks up goods where specified and delivers them later to their matched addresses, arrives at each stop inside its allotted time window, and comes back to the depot at the end. The preferred plan is the one with the least total driving, measured by summing the distances between each stop in the tour (including the leg back to the depot); every stop must be included exactly once and pickups must always precede their paired deliveries. The full pickup-delivery pairs, coordinates, and time slots are shown below.
+
+Checklist entries for the 9 locations (depot: 1):
+Stop 1: located at (37, 36); arrive between 0 and 3390.
+Stop 2: located at (5, 65); arrive between 1563 and 1883.
+Stop 3: located at (0, 9); arrive between 701 and 1021.
+Stop 4: located at (100, 0); arrive between 2334 and 2654.
+Stop 5: located at (83, 18); arrive between 2722 and 3042.
+Stop 6: located at (94, 0); arrive between 2528 and 2848.
+Stop 7: located at (79, 45); arrive between 1845 and 2165.
+Stop 8: located at (61, 100); arrive between 517 and 837.
+Stop 9: located at (59, 82); arrive between 898 and 1218.
+Pair 0: pickup at 7 then deliver to 4.
+Pair 1: pickup at 3 then deliver to 2.
+Pair 2: pickup at 8 then deliver to 9.
+Pair 3: pickup at 6 then deliver to 5.
+Use these entries to plan the least-driving tour that starts and ends at 1.
+
+You can send the planned route back in this simple JSON shape so it's easy to read and test:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+""solution"" is just the ordered list of stops for the trip — start at the depot, visit every location once in the order shown, and finish back at the depot. The snippet above is only a sketch of the expected shape, not the actual route.
+
+Please use the exact identifiers from the instance input when you fill this in — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,one_based,"{""coordinates"": [[37, 36], [5, 65], [0, 9], [100, 0], [83, 18], [94, 0], [79, 45], [61, 100], [59, 82]], ""depot"": 0, ""time_windows"": [[0, 3390], [1563, 1883], [701, 1021], [2334, 2654], [2722, 3042], [2528, 2848], [1845, 2165], [517, 837], [898, 1218]], ""pickup_delivery_pairs"": [[6, 3], [2, 1], [7, 8], [5, 4]], ""num_vehicles"": 1, ""total_distance"": 432.886346396867, ""objective"": 432.886346396867}","[[0, 2, 7, 8, 1, 6, 3, 5, 4, 0]]",432.886346396867,"{""problem_type"": ""PDP"", ""num_nodes"": 9, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 37, ""y"": 36, ""tw_start"": 0, ""tw_end"": 3390}, {""id"": 2, ""x"": 5, ""y"": 65, ""tw_start"": 1563, ""tw_end"": 1883}, {""id"": 3, ""x"": 0, ""y"": 9, ""tw_start"": 701, ""tw_end"": 1021}, {""id"": 4, ""x"": 100, ""y"": 0, ""tw_start"": 2334, ""tw_end"": 2654}, {""id"": 5, ""x"": 83, ""y"": 18, ""tw_start"": 2722, ""tw_end"": 3042}, {""id"": 6, ""x"": 94, ""y"": 0, ""tw_start"": 2528, ""tw_end"": 2848}, {""id"": 7, ""x"": 79, ""y"": 45, ""tw_start"": 1845, ""tw_end"": 2165}, {""id"": 8, ""x"": 61, ""y"": 100, ""tw_start"": 517, ""tw_end"": 837}, {""id"": 9, ""x"": 59, ""y"": 82, ""tw_start"": 898, ""tw_end"": 1218}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[7, 4], [3, 2], [8, 9], [6, 5]], ""total_distance"": 432.886346396867, ""objective"": 432.886346396867}","[[1, 3, 8, 9, 2, 7, 4, 6, 5, 1]]"
+PDP_S_029,PDP,S,29,"On a typical day the challenge is to map a single loop from the shop that touches every location a single time, collects garments at pickup points before heading to their matched deliverers, arrives within each site's allowable hours, and ends back at the shop. The route you pick is better if it results in fewer miles overall — compute total mileage by summing the distances between consecutive stops — and the plan must include every location once and respect every pickup-then-drop pairing. The precise locations and time windows are shown below.
+
+# GLOBALS
+key,value
+total_locations_including_shop,9
+shop_node_id,A
+
+# PAIRS
+pickup_location_id,delivery_location_id
+C,H
+I,B
+D,G
+E,F
+
+# NODES
+location_id,x_coord,y_coord,earliest_arrival_time,latest_arrival_time
+A,57,56,0,960
+B,10,38,213,648
+C,97,100,43,617
+D,81,94,33,568
+E,97,19,39,593
+F,100,0,325,897
+G,90,59,373,928
+H,81,61,418,825
+I,0,16,426,787
+
+Also, when you hand the route back, please use this simple JSON layout so it's easy to read and plug in:
+
+{
+  ""solution"": [shop_id, ..., shop_id]
+}
+
+This just means ""solution"" is the ordered loop: an array of location identifiers that starts and ends at the shop/depot, visiting each place once in the order your route follows. It's just a sketch of the shape I want — not the actual route.
+
+Note: in the example above I used shop_id as a placeholder to match the story tone — when you give the real answer, use the exact identifiers from the instance input (do not rename them and do not invent new labels).
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"{""coordinates"": [[57, 56], [10, 38], [97, 100], [81, 94], [97, 19], [100, 0], [90, 59], [81, 61], [0, 16]], ""depot"": 0, ""time_windows"": [[0, 960], [213, 648], [43, 617], [33, 568], [39, 593], [325, 897], [373, 928], [418, 825], [426, 787]], ""pickup_delivery_pairs"": [[2, 7], [8, 1], [3, 6], [4, 5]], ""num_vehicles"": 1, ""total_distance"": 349.0166262285106, ""objective"": 349.0166262285106}","[[0, 3, 2, 7, 6, 4, 5, 8, 1, 0]]",349.0166262285106,"{""problem_type"": ""PDP"", ""num_nodes"": 9, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 57, ""y"": 56, ""tw_start"": 0, ""tw_end"": 960}, {""id"": ""B"", ""x"": 10, ""y"": 38, ""tw_start"": 213, ""tw_end"": 648}, {""id"": ""C"", ""x"": 97, ""y"": 100, ""tw_start"": 43, ""tw_end"": 617}, {""id"": ""D"", ""x"": 81, ""y"": 94, ""tw_start"": 33, ""tw_end"": 568}, {""id"": ""E"", ""x"": 97, ""y"": 19, ""tw_start"": 39, ""tw_end"": 593}, {""id"": ""F"", ""x"": 100, ""y"": 0, ""tw_start"": 325, ""tw_end"": 897}, {""id"": ""G"", ""x"": 90, ""y"": 59, ""tw_start"": 373, ""tw_end"": 928}, {""id"": ""H"", ""x"": 81, ""y"": 61, ""tw_start"": 418, ""tw_end"": 825}, {""id"": ""I"", ""x"": 0, ""y"": 16, ""tw_start"": 426, ""tw_end"": 787}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""C"", ""H""], [""I"", ""B""], [""D"", ""G""], [""E"", ""F""]], ""total_distance"": 349.0166262285106, ""objective"": 349.0166262285106}","[[""A"", ""D"", ""C"", ""H"", ""G"", ""E"", ""F"", ""I"", ""B"", ""A""]]"
+PDP_S_030,PDP,S,30,"Someone in charge of scheduling a repair run has to lay out a single circuit that departs and returns to the workshop, hits each customer and return location exactly once, grabs faulty items before taking them back to their paired supplier or workstation, and arrives at each stop inside its permitted time slot. The clearer, preferable circuit is the one that minimizes the truck’s total driving distance — sum every piece of the trip between consecutive stops (including the shop legs) and pick the route with the smallest total miles. The specific addresses, pairings, and allowable times are provided below.
+
+{
+  ""total_locations"": 11,
+  ""workshop_node_id"": 1,
+  ""nodes"": [
+    {
+      ""location_id"": 1,
+      ""x_coord"": 39,
+      ""y_coord"": 60,
+      ""earliest_arrival"": 0,
+      ""latest_arrival"": 1236
+    },
+    {
+      ""location_id"": 2,
+      ""x_coord"": 44,
+      ""y_coord"": 81,
+      ""earliest_arrival"": 16,
+      ""latest_arrival"": 196
+    },
+    {
+      ""location_id"": 3,
+      ""x_coord"": 25,
+      ""y_coord"": 81,
+      ""earliest_arrival"": 294,
+      ""latest_arrival"": 474
+    },
+    {
+      ""location_id"": 4,
+      ""x_coord"": 11,
+      ""y_coord"": 40,
+      ""earliest_arrival"": 947,
+      ""latest_arrival"": 1127
+    },
+    {
+      ""location_id"": 5,
+      ""x_coord"": 6,
+      ""y_coord"": 40,
+      ""earliest_arrival"": 944,
+      ""latest_arrival"": 1124
+    },
+    {
+      ""location_id"": 6,
+      ""x_coord"": 0,
+      ""y_coord"": 36,
+      ""earliest_arrival"": 758,
+      ""latest_arrival"": 938
+    },
+    {
+      ""location_id"": 7,
+      ""x_coord"": 44,
+      ""y_coord"": 7,
+      ""earliest_arrival"": 132,
+      ""latest_arrival"": 312
+    },
+    {
+      ""location_id"": 8,
+      ""x_coord"": 39,
+      ""y_coord"": 0,
+      ""earliest_arrival"": 321,
+      ""latest_arrival"": 501
+    },
+    {
+      ""location_id"": 9,
+      ""x_coord"": 100,
+      ""y_coord"": 100,
+      ""earliest_arrival"": 128,
+      ""latest_arrival"": 308
+    },
+    {
+      ""location_id"": 10,
+      ""x_coord"": 81,
+      ""y_coord"": 100,
+      ""earliest_arrival"": 692,
+      ""latest_arrival"": 872
+    },
+    {
+      ""location_id"": 11,
+      ""x_coord"": 11,
+      ""y_coord"": 40,
+      ""earliest_arrival"": 947,
+      ""latest_arrival"": 1127
+    }
+  ]
+}
+
+{
+  ""pickup_delivery_pairs"": [
+    {
+      ""pickup_node_id"": 2,
+      ""delivery_node_id"": 3
+    },
+    {
+      ""pickup_node_id"": 7,
+      ""delivery_node_id"": 8
+    },
+    {
+      ""pickup_node_id"": 9,
+      ""delivery_node_id"": 10
+    },
+    {
+      ""pickup_node_id"": 6,
+      ""delivery_node_id"": 5
+    },
+    {
+      ""pickup_node_id"": 4,
+      ""delivery_node_id"": 11
+    }
+  ]
+}
+
+Also, when you send the planned route back, it'd be great if you use a small JSON snippet like this so it's easy to parse and check:
+
+{
+  ""solution"": [workshop_id, ..., workshop_id]
+}
+
+Think of ""solution"" as the ordered list of stops the truck will make: start at the workshop, list every location in the exact visit order, and finish back at the workshop. The placeholder workshop_id stands for whatever identifier the instance uses for the depot/workshop. This block is just a sketch of the shape I want — not the actual route.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels. For example: ""1"" or ""23"", ""A"" or ""B"", ""A1"" or ""X7"".",json,one_based,"{""coordinates"": [[39, 60], [44, 81], [25, 81], [11, 40], [6, 40], [0, 36], [44, 7], [39, 0], [100, 100], [81, 100], [11, 40]], ""depot"": 0, ""time_windows"": [[0, 1236], [16, 196], [294, 474], [947, 1127], [944, 1124], [758, 938], [132, 312], [321, 501], [128, 308], [692, 872], [947, 1127]], ""pickup_delivery_pairs"": [[1, 2], [6, 7], [8, 9], [5, 4], [3, 10]], ""num_vehicles"": 1, ""total_distance"": 489.0730973996277, ""objective"": 489.0730973996277}","[[0, 1, 8, 6, 7, 2, 9, 5, 4, 3, 10, 0]]",489.0730973996277,"{""problem_type"": ""PDP"", ""num_nodes"": 11, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 39, ""y"": 60, ""tw_start"": 0, ""tw_end"": 1236}, {""id"": 2, ""x"": 44, ""y"": 81, ""tw_start"": 16, ""tw_end"": 196}, {""id"": 3, ""x"": 25, ""y"": 81, ""tw_start"": 294, ""tw_end"": 474}, {""id"": 4, ""x"": 11, ""y"": 40, ""tw_start"": 947, ""tw_end"": 1127}, {""id"": 5, ""x"": 6, ""y"": 40, ""tw_start"": 944, ""tw_end"": 1124}, {""id"": 6, ""x"": 0, ""y"": 36, ""tw_start"": 758, ""tw_end"": 938}, {""id"": 7, ""x"": 44, ""y"": 7, ""tw_start"": 132, ""tw_end"": 312}, {""id"": 8, ""x"": 39, ""y"": 0, ""tw_start"": 321, ""tw_end"": 501}, {""id"": 9, ""x"": 100, ""y"": 100, ""tw_start"": 128, ""tw_end"": 308}, {""id"": 10, ""x"": 81, ""y"": 100, ""tw_start"": 692, ""tw_end"": 872}, {""id"": 11, ""x"": 11, ""y"": 40, ""tw_start"": 947, ""tw_end"": 1127}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[2, 3], [7, 8], [9, 10], [6, 5], [4, 11]], ""total_distance"": 489.0730973996277, ""objective"": 489.0730973996277}","[[1, 2, 9, 7, 8, 3, 10, 6, 5, 4, 11, 1]]"
+PDP_S_031,PDP,S,31,"On a busy morning the job looks like this: one vehicle, many addresses with set time slots, and some addresses that are pickups tied to later deliveries — each pickup must happen first. The choice to make is the visiting order, and success is simply less driving: compute total distance by summing every travel segment from one stop to the next in that order, including the final trip home, and choose the ordering with the smallest sum. Every location must be visited exactly once and every arrival needs to fall inside its time window. The concrete details follow below.
+
+- **total_locations_including_depot**: 7
+- **depot_node_id**: A
+
+**pickup_delivery_pairs**
+| pickup_location | delivery_location |
+|---|---|
+| C | B |
+| G | F |
+| D | E |
+
+**nodes**
+| location_id | coord_x | coord_y | time_window_earliest | time_window_latest |
+|---|---|---|---|---|
+| A | 42 | 90 | 0 | 3390 |
+| B | 2 | 100 | 1010 | 2043 |
+| C | 0 | 70 | 494 | 1607 |
+| D | 44 | 10 | 998 | 1481 |
+| E | 40 | 0 | 1133 | 1910 |
+| F | 100 | 50 | 2169 | 2818 |
+| G | 81 | 100 | 1894 | 2115 |
+
+Oh, and when you send the route back, just wrap it up in this little JSON shape so it's easy to parse and check:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+Here ""solution"" is just the ordered list of stops — the tour from the depot back to the depot. Think of it like filling in the visiting order on a form: the first entry is where you leave from, the last entry is where you return, and everything in between is the order you visit each location. This block is only a sketch of the shape I need, not the actual route — you'll replace the placeholders with the real location identifiers from the instance.
+
+Please use the exact identifiers from the problem input — no renaming or invented labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[42, 90], [2, 100], [0, 70], [44, 10], [40, 0], [100, 50], [81, 100]], ""depot"": 0, ""time_windows"": [[0, 3390], [1010, 2043], [494, 1607], [998, 1481], [1133, 1910], [2169, 2818], [1894, 2115]], ""pickup_delivery_pairs"": [[2, 1], [6, 5], [3, 4]], ""num_vehicles"": 1, ""total_distance"": 404.42847224547, ""objective"": 404.42847224547}","[[0, 3, 4, 2, 1, 6, 5, 0]]",404.42847224547,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 42, ""y"": 90, ""tw_start"": 0, ""tw_end"": 3390}, {""id"": ""B"", ""x"": 2, ""y"": 100, ""tw_start"": 1010, ""tw_end"": 2043}, {""id"": ""C"", ""x"": 0, ""y"": 70, ""tw_start"": 494, ""tw_end"": 1607}, {""id"": ""D"", ""x"": 44, ""y"": 10, ""tw_start"": 998, ""tw_end"": 1481}, {""id"": ""E"", ""x"": 40, ""y"": 0, ""tw_start"": 1133, ""tw_end"": 1910}, {""id"": ""F"", ""x"": 100, ""y"": 50, ""tw_start"": 2169, ""tw_end"": 2818}, {""id"": ""G"", ""x"": 81, ""y"": 100, ""tw_start"": 1894, ""tw_end"": 2115}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""C"", ""B""], [""G"", ""F""], [""D"", ""E""]], ""total_distance"": 404.42847224547, ""objective"": 404.42847224547}","[[""A"", ""D"", ""E"", ""C"", ""B"", ""G"", ""F"", ""A""]]"
+PDP_S_032,PDP,S,32,"Recently the shop got swamped and now there’s just one van to handle all pickups and drop-offs: it must leave from the shop, visit each address one time only, ensure every pickup happens before its matching delivery, arrive within each location’s allowed time window, and return to the shop at the end. The problem to solve is the visiting order, and success means minimizing how far the van drives overall — calculate that by summing the distances of each leg in the tour, including the outbound and return legs. The exact addresses, coordinates and time constraints are listed below.
+
+- **total_stops_including_shop**: 7
+- **shop_node_id**: 0
+
+**pickup_delivery_pairs**
+| pickup_stop_id | delivery_stop_id |
+|---|---|
+| 6 | 1 |
+| 4 | 3 |
+| 2 | 5 |
+
+**nodes**
+| stop_id | x_coordinate | y_coordinate | earliest_arrival_time | latest_arrival_time |
+|---|---|---|---|---|
+| 0 | 94 | 79 | 0 | 960 |
+| 1 | 0 | 58 | 404 | 753 |
+| 2 | 100 | 0 | 341 | 658 |
+| 3 | 62 | 100 | 420 | 897 |
+| 4 | 62 | 27 | 227 | 686 |
+| 5 | 31 | 17 | 430 | 913 |
+| 6 | 53 | 65 | 14 | 506 |
+
+Also, when you send the final route back, please use a tiny JSON sketch like this so it's easy to read and parse:
+
+{
+  ""solution"": [""shop_id"", ..., ""shop_id""]
+}
+
+This just means ""solution"" holds the ordered list of location identifiers the van will visit, starting and ending at the shop. The ""shop_id"" entries above are just placeholders to show the shape — replace them with the actual IDs from the instance when you provide the final tour. It's only a sketch of the expected format, not the actual answer.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels.
+
+for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"{""coordinates"": [[94, 79], [0, 58], [100, 0], [62, 100], [62, 27], [31, 17], [53, 65]], ""depot"": 0, ""time_windows"": [[0, 960], [404, 753], [341, 658], [420, 897], [227, 686], [430, 913], [14, 506]], ""pickup_delivery_pairs"": [[6, 1], [4, 3], [2, 5]], ""num_vehicles"": 1, ""total_distance"": 364.61669495437945, ""objective"": 364.61669495437945}","[[0, 6, 4, 2, 5, 1, 3, 0]]",364.61669495437945,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": 0, ""nodes"": [{""id"": 0, ""x"": 94, ""y"": 79, ""tw_start"": 0, ""tw_end"": 960}, {""id"": 1, ""x"": 0, ""y"": 58, ""tw_start"": 404, ""tw_end"": 753}, {""id"": 2, ""x"": 100, ""y"": 0, ""tw_start"": 341, ""tw_end"": 658}, {""id"": 3, ""x"": 62, ""y"": 100, ""tw_start"": 420, ""tw_end"": 897}, {""id"": 4, ""x"": 62, ""y"": 27, ""tw_start"": 227, ""tw_end"": 686}, {""id"": 5, ""x"": 31, ""y"": 17, ""tw_start"": 430, ""tw_end"": 913}, {""id"": 6, ""x"": 53, ""y"": 65, ""tw_start"": 14, ""tw_end"": 506}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[6, 1], [4, 3], [2, 5]], ""total_distance"": 364.61669495437945, ""objective"": 364.61669495437945}","[[0, 6, 4, 2, 5, 1, 3, 0]]"
+PDP_S_033,PDP,S,33,"Picture a single van doing all the instrument moves: it departs the concert hall, visits every pickup and its paired delivery exactly once in the right order (pickups before their deliveries), arrives at each place within its allowed time window, and then returns to the concert hall. The way to judge one plan against another is the total driving distance — just add the distance of each leg of the trip — and the specific addresses and time constraints are listed below.
+
+- **total_locations**: 7
+- **concert_hall_node**: A
+
+**pickup_delivery_pairs**
+| pickup_node | delivery_node |
+|---|---|
+| F | G |
+| E | D |
+| C | B |
+
+**nodes**
+| location_id | x_coord | y_coord | earliest_arrival | latest_arrival |
+|---|---|---|---|---|
+| A | 0 | 43 | 0 | 1236 |
+| B | 9 | 94 | 0 | 1127 |
+| C | 9 | 100 | 0 | 1125 |
+| D | 100 | 0 | 0 | 1088 |
+| E | 82 | 0 | 0 | 1098 |
+| F | 51 | 71 | 0 | 1116 |
+| G | 42 | 66 | 0 | 1121 |
+
+If you want to hand me a candidate route, please use a tiny JSON shape so it's straightforward to read and check. Here's the little sketch I expect:
+
+{
+  ""solution"": [concert_hall_id, ..., concert_hall_id]
+}
+
+Think of this as a simple form: ""solution"" is the ordered list of stops your van will make — start at the concert hall, list every location in the exact visit order (each pickup before its delivery), and finish back at the concert hall. This block is just an example of the shape I need, not the actual answer.
+
+Please be careful to use the exact identifiers from the instance input — don't rename them or introduce new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[0, 43], [9, 94], [9, 100], [100, 0], [82, 0], [51, 71], [42, 66]], ""depot"": 0, ""time_windows"": [[0, 1236], [0, 1127], [0, 1125], [0, 1088], [0, 1098], [0, 1116], [0, 1121]], ""pickup_delivery_pairs"": [[5, 6], [4, 3], [2, 1]], ""num_vehicles"": 1, ""total_distance"": 312.3226141851363, ""objective"": 312.3226141851363}","[[0, 4, 3, 5, 6, 2, 1, 0]]",312.3226141851363,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 0, ""y"": 43, ""tw_start"": 0, ""tw_end"": 1236}, {""id"": ""B"", ""x"": 9, ""y"": 94, ""tw_start"": 0, ""tw_end"": 1127}, {""id"": ""C"", ""x"": 9, ""y"": 100, ""tw_start"": 0, ""tw_end"": 1125}, {""id"": ""D"", ""x"": 100, ""y"": 0, ""tw_start"": 0, ""tw_end"": 1088}, {""id"": ""E"", ""x"": 82, ""y"": 0, ""tw_start"": 0, ""tw_end"": 1098}, {""id"": ""F"", ""x"": 51, ""y"": 71, ""tw_start"": 0, ""tw_end"": 1116}, {""id"": ""G"", ""x"": 42, ""y"": 66, ""tw_start"": 0, ""tw_end"": 1121}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""F"", ""G""], [""E"", ""D""], [""C"", ""B""]], ""total_distance"": 312.3226141851363, ""objective"": 312.3226141851363}","[[""A"", ""E"", ""D"", ""F"", ""G"", ""C"", ""B"", ""A""]]"
+PDP_S_034,PDP,S,34,"We have one truck and a list of pickup and drop-off locations; it needs a single loop that starts and ends at the depot, visits every site one time only, gets each pickup before its matching disposal, and reaches every stop during its allowed time slot. A better plan is the one that keeps the total drive distance as low as possible — just total up the legs between stops and choose the least. The concrete locations, time windows, and pickup-delivery pairs are detailed below.
+
+{
+  ""total_locations_including_depot"": 7,
+  ""depot_node_id"": ""A"",
+  ""nodes"": [
+    {
+      ""location_id"": ""A"",
+      ""x_coordinate"": 4,
+      ""y_coordinate"": 60,
+      ""earliest_arrival_time"": 0,
+      ""latest_arrival_time"": 960
+    },
+    {
+      ""location_id"": ""B"",
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 13,
+      ""earliest_arrival_time"": 681,
+      ""latest_arrival_time"": 801
+    },
+    {
+      ""location_id"": ""C"",
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 40,
+      ""earliest_arrival_time"": 487,
+      ""latest_arrival_time"": 607
+    },
+    {
+      ""location_id"": ""D"",
+      ""x_coordinate"": 47,
+      ""y_coordinate"": 100,
+      ""earliest_arrival_time"": 64,
+      ""latest_arrival_time"": 184
+    },
+    {
+      ""location_id"": ""E"",
+      ""x_coordinate"": 9,
+      ""y_coordinate"": 9,
+      ""earliest_arrival_time"": 440,
+      ""latest_arrival_time"": 560
+    },
+    {
+      ""location_id"": ""F"",
+      ""x_coordinate"": 26,
+      ""y_coordinate"": 40,
+      ""earliest_arrival_time"": 557,
+      ""latest_arrival_time"": 677
+    },
+    {
+      ""location_id"": ""G"",
+      ""x_coordinate"": 62,
+      ""y_coordinate"": 0,
+      ""earliest_arrival_time"": 713,
+      ""latest_arrival_time"": 833
+    }
+  ]
+}
+
+{
+  ""pickup_delivery_pairs"": [
+    {
+      ""pickup_location_id"": ""D"",
+      ""delivery_location_id"": ""C""
+    },
+    {
+      ""pickup_location_id"": ""G"",
+      ""delivery_location_id"": ""B""
+    },
+    {
+      ""pickup_location_id"": ""E"",
+      ""delivery_location_id"": ""F""
+    }
+  ]
+}
+
+Also, when you send back the final route, please use a tiny JSON snippet like this so it's easy to check automatically:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+This just means ""solution"" should hold the ordered list of location identifiers (the tour), starting and ending with the depot. The array entries are the exact site IDs in visit order — it's just a sketch of the shape I need, not the actual route.
+
+Please use the identifiers exactly as they appear in the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,names,"{""coordinates"": [[4, 60], [0, 13], [100, 40], [47, 100], [9, 9], [26, 40], [62, 0]], ""depot"": 0, ""time_windows"": [[0, 960], [681, 801], [487, 607], [64, 184], [440, 560], [557, 677], [713, 833]], ""pickup_delivery_pairs"": [[3, 2], [6, 1], [4, 5]], ""num_vehicles"": 1, ""total_distance"": 491.8115690565459, ""objective"": 491.8115690565459}","[[0, 3, 4, 2, 5, 6, 1, 0]]",491.8115690565459,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 4, ""y"": 60, ""tw_start"": 0, ""tw_end"": 960}, {""id"": ""B"", ""x"": 0, ""y"": 13, ""tw_start"": 681, ""tw_end"": 801}, {""id"": ""C"", ""x"": 100, ""y"": 40, ""tw_start"": 487, ""tw_end"": 607}, {""id"": ""D"", ""x"": 47, ""y"": 100, ""tw_start"": 64, ""tw_end"": 184}, {""id"": ""E"", ""x"": 9, ""y"": 9, ""tw_start"": 440, ""tw_end"": 560}, {""id"": ""F"", ""x"": 26, ""y"": 40, ""tw_start"": 557, ""tw_end"": 677}, {""id"": ""G"", ""x"": 62, ""y"": 0, ""tw_start"": 713, ""tw_end"": 833}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""D"", ""C""], [""G"", ""B""], [""E"", ""F""]], ""total_distance"": 491.8115690565459, ""objective"": 491.8115690565459}","[[""A"", ""D"", ""E"", ""C"", ""F"", ""G"", ""B"", ""A""]]"
+PDP_S_035,PDP,S,35,"Out on the route, the bookmobile must leave from the main branch, tour every outreach location exactly once, collect returns before dropping off the matched replacements, and arrive only during each location’s scheduled window. The route that’s preferred is the one with the least total mileage, calculated by summing the distance of each consecutive leg of the trip and the final leg back to the branch. The concrete locations, pairings, and time windows are shown below.
+
+{
+  ""total_locations_including_branch"": 7,
+  ""main_branch_node"": 1,
+  ""nodes"": [
+    {
+      ""location_id"": 1,
+      ""coord_x"": 35,
+      ""coord_y"": 32,
+      ""window_earliest"": 0,
+      ""window_latest"": 1000
+    },
+    {
+      ""location_id"": 2,
+      ""coord_x"": 0,
+      ""coord_y"": 66,
+      ""window_earliest"": 292,
+      ""window_latest"": 449
+    },
+    {
+      ""location_id"": 3,
+      ""coord_x"": 23,
+      ""coord_y"": 89,
+      ""window_earliest"": 496,
+      ""window_latest"": 713
+    },
+    {
+      ""location_id"": 4,
+      ""coord_x"": 100,
+      ""coord_y"": 100,
+      ""window_earliest"": 439,
+      ""window_latest"": 948
+    },
+    {
+      ""location_id"": 5,
+      ""coord_x"": 40,
+      ""coord_y"": 23,
+      ""window_earliest"": 301,
+      ""window_latest"": 602
+    },
+    {
+      ""location_id"": 6,
+      ""coord_x"": 84,
+      ""coord_y"": 41,
+      ""window_earliest"": 464,
+      ""window_latest"": 925
+    },
+    {
+      ""location_id"": 7,
+      ""coord_x"": 12,
+      ""coord_y"": 0,
+      ""window_earliest"": 582,
+      ""window_latest"": 703
+    }
+  ]
+}
+
+{
+  ""pickup_delivery_pairs"": [
+    {
+      ""return_pickup_location"": 5,
+      ""replacement_delivery_location"": 7
+    },
+    {
+      ""return_pickup_location"": 4,
+      ""replacement_delivery_location"": 6
+    },
+    {
+      ""return_pickup_location"": 2,
+      ""replacement_delivery_location"": 3
+    }
+  ]
+}
+
+If you want the route in a machine-friendly shape, just follow this simple JSON layout:
+
+{
+  ""solution"": [branch_id, ..., branch_id]
+}
+
+""solution"" should be the ordered tour — a list of location identifiers, starting and ending at the main branch. The placeholders here (like branch_id) stand in for whatever exact location IDs appear in the instance. This is just a sketch of the shape I expect, not the actual route.
+
+Please make sure to use the exact identifiers from the instance input — no renaming, no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"{""coordinates"": [[35, 32], [0, 66], [23, 89], [100, 100], [40, 23], [84, 41], [12, 0]], ""depot"": 0, ""time_windows"": [[0, 1000], [292, 449], [496, 713], [439, 948], [301, 602], [464, 925], [582, 703]], ""pickup_delivery_pairs"": [[4, 6], [3, 5], [1, 2]], ""num_vehicles"": 1, ""total_distance"": 414.51548341302276, ""objective"": 414.51548341302276}","[[0, 4, 1, 6, 2, 3, 5, 0]]",414.51548341302276,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 35, ""y"": 32, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": 2, ""x"": 0, ""y"": 66, ""tw_start"": 292, ""tw_end"": 449}, {""id"": 3, ""x"": 23, ""y"": 89, ""tw_start"": 496, ""tw_end"": 713}, {""id"": 4, ""x"": 100, ""y"": 100, ""tw_start"": 439, ""tw_end"": 948}, {""id"": 5, ""x"": 40, ""y"": 23, ""tw_start"": 301, ""tw_end"": 602}, {""id"": 6, ""x"": 84, ""y"": 41, ""tw_start"": 464, ""tw_end"": 925}, {""id"": 7, ""x"": 12, ""y"": 0, ""tw_start"": 582, ""tw_end"": 703}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[5, 7], [4, 6], [2, 3]], ""total_distance"": 414.51548341302276, ""objective"": 414.51548341302276}","[[1, 5, 2, 7, 3, 4, 6, 1]]"
+PDP_S_036,PDP,S,36,"Recently the schedule got busier, so the kennel needs a clear plan for the one van: choose an order of stops that hits every pickup and every drop‑off exactly once, makes sure each animal is picked up before being dropped at its matched place, and respects the arrival time ranges at each stop. The score to watch is total driving distance — add up the distance of each leg in the round trip (including leaving and returning to the kennel) and try to make that total as small as possible. The detailed list of stops and their time slots is below.
+
+- **total_stops_including_kennel**: 7
+- **kennel_node_id**: A
+
+**pickup_delivery_pairs**
+| pickup_stop_id | dropoff_stop_id |
+|---|---|
+| F | G |
+| C | B |
+| E | D |
+
+**nodes**
+| stop_id | x_coord | y_coord | earliest_allowed_arrival | latest_allowed_arrival |
+|---|---|---|---|---|
+| A | 63 | 30 | 0 | 1236 |
+| B | 44 | 62 | 0 | 1129 |
+| C | 7 | 100 | 0 | 1107 |
+| D | 19 | 40 | 732 | 777 |
+| E | 0 | 40 | 0 | 1128 |
+| F | 100 | 0 | 262 | 317 |
+| G | 81 | 0 | 916 | 969 |
+
+When you send back a route, just use this simple JSON layout so it's easy to check:
+
+{
+  ""solution"": [kennel_id, ..., kennel_id]
+}
+
+Think of ""solution"" as the ordered list of stops: start at the kennel, list every stop exactly once in the order the van visits them, and finish back at the kennel. The kennel_id bits are just placeholders to show where the depot identifier goes, and the ""..."" stands for the other stops in between. This block is only a sketch of the expected shape — it's not the actual answer.
+
+Use the identifiers exactly as they appear in the instance input — do not rename them or invent new ones.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[63, 30], [44, 62], [7, 100], [19, 40], [0, 40], [100, 0], [81, 0]], ""depot"": 0, ""time_windows"": [[0, 1236], [0, 1129], [0, 1107], [732, 777], [0, 1128], [262, 317], [916, 969]], ""pickup_delivery_pairs"": [[5, 6], [2, 1], [4, 3]], ""num_vehicles"": 1, ""total_distance"": 395.7500935795768, ""objective"": 395.7500935795768}","[[0, 5, 4, 3, 2, 1, 6, 0]]",395.7500935795768,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 63, ""y"": 30, ""tw_start"": 0, ""tw_end"": 1236}, {""id"": ""B"", ""x"": 44, ""y"": 62, ""tw_start"": 0, ""tw_end"": 1129}, {""id"": ""C"", ""x"": 7, ""y"": 100, ""tw_start"": 0, ""tw_end"": 1107}, {""id"": ""D"", ""x"": 19, ""y"": 40, ""tw_start"": 732, ""tw_end"": 777}, {""id"": ""E"", ""x"": 0, ""y"": 40, ""tw_start"": 0, ""tw_end"": 1128}, {""id"": ""F"", ""x"": 100, ""y"": 0, ""tw_start"": 262, ""tw_end"": 317}, {""id"": ""G"", ""x"": 81, ""y"": 0, ""tw_start"": 916, ""tw_end"": 969}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""F"", ""G""], [""C"", ""B""], [""E"", ""D""]], ""total_distance"": 395.7500935795768, ""objective"": 395.7500935795768}","[[""A"", ""F"", ""E"", ""D"", ""C"", ""B"", ""G"", ""A""]]"
+PDP_S_037,PDP,S,37,"We’ve got one shuttle to run a full loop from the plant, call on every supplier and assembly point a single time, and return to base. The job is to pick a visiting order that never delivers a part before it’s picked up, respects the arrival windows at every location, and visits no place more than once. A better route is simply the one with the lowest total travel distance, computed by summing the lengths of each leg between stops, and the specific locations and time windows appear below.
+
+# GLOBALS
+key,value
+total_locations,7
+factory_depot_id,1
+
+# PAIRS
+pickup_location_id,delivery_location_id
+4,2
+6,7
+5,3
+
+# NODES
+location_id,coord_x,coord_y,earliest_arrival_time,latest_arrival_time
+1,52,21,0,1000
+2,13,48,393,492
+3,100,21,435,960
+4,0,66,338,805
+5,87,0,475,900
+6,35,100,168,297
+7,14,7,425,522
+
+When you’re ready to send the planned loop back, just stick it in a tiny JSON snippet so it’s easy to check and compare. Something like this is what I expect:
+
+{
+  ""solution"": [plant_id, ..., plant_id]
+}
+
+This just represents the visiting order: the ""solution"" array is the shuttle’s route, starting and ending at the plant and listing every location identifier in the order they’re visited. It’s just a sketch of the shape I need — not the actual route itself.
+
+Please use the exact identifiers from the instance input — don’t rename anything or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""coordinates"": [[52, 21], [13, 48], [100, 21], [0, 66], [87, 0], [35, 100], [14, 7]], ""depot"": 0, ""time_windows"": [[0, 1000], [393, 492], [435, 960], [338, 805], [475, 900], [168, 297], [425, 522]], ""pickup_delivery_pairs"": [[3, 1], [5, 6], [4, 2]], ""num_vehicles"": 1, ""total_distance"": 338.8527301580187, ""objective"": 338.8527301580187}","[[0, 5, 3, 1, 6, 4, 2, 0]]",338.8527301580187,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 52, ""y"": 21, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": 2, ""x"": 13, ""y"": 48, ""tw_start"": 393, ""tw_end"": 492}, {""id"": 3, ""x"": 100, ""y"": 21, ""tw_start"": 435, ""tw_end"": 960}, {""id"": 4, ""x"": 0, ""y"": 66, ""tw_start"": 338, ""tw_end"": 805}, {""id"": 5, ""x"": 87, ""y"": 0, ""tw_start"": 475, ""tw_end"": 900}, {""id"": 6, ""x"": 35, ""y"": 100, ""tw_start"": 168, ""tw_end"": 297}, {""id"": 7, ""x"": 14, ""y"": 7, ""tw_start"": 425, ""tw_end"": 522}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[4, 2], [6, 7], [5, 3]], ""total_distance"": 338.8527301580187, ""objective"": 338.8527301580187}","[[1, 6, 4, 2, 7, 5, 3, 1]]"
+PDP_S_038,PDP,S,38,"Picture this: a single repair van rolls out from the depot, has to visit a set list of suppliers and homeowners one time each, grab parts from certain suppliers before heading to the homes that need them, and make every appointment within its time slot, then return to base. The clear way to judge routes is by total driving distance — add the distance between each stop along the path and the trip back to the depot; the smaller that total, the better the route. The full instance information appears below.
+
+- **total_locations_including_service_center**: 9
+- **service_center_id**: A
+
+**pickup_delivery_pairs**
+| parts_supplier_location_id | customer_delivery_location_id |
+|---|---|
+| D | F |
+| B | C |
+| E | G |
+| I | H |
+
+**nodes**
+| location_id | map_x_coordinate | map_y_coordinate | appointment_window_start | appointment_window_end |
+|---|---|---|---|---|
+| A | 40 | 83 | 0 | 1236 |
+| B | 6 | 33 | 144 | 293 |
+| C | 0 | 33 | 191 | 436 |
+| D | 100 | 17 | 370 | 659 |
+| E | 98 | 33 | 119 | 344 |
+| F | 95 | 17 | 469 | 748 |
+| G | 92 | 0 | 694 | 895 |
+| H | 77 | 100 | 154 | 449 |
+| I | 69 | 100 | 25 | 260 |
+
+Oh, and when you send the route back, please use a tiny JSON sketch like this so it's easy to read and plug into whatever checks or maps you're using:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+""solution"" is just the ordered list of stops — the exact sequence the van follows, starting and ending at the depot. The depot_id placeholders are where the real location identifiers go, and the ""..."" means all the intermediate stops in order. This is only the shape I need, not the actual route yet.
+
+Please make sure to use the exact identifiers from the instance input — do not rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[40, 83], [6, 33], [0, 33], [100, 17], [98, 33], [95, 17], [92, 0], [77, 100], [69, 100]], ""depot"": 0, ""time_windows"": [[0, 1236], [144, 293], [191, 436], [370, 659], [119, 344], [469, 748], [694, 895], [154, 449], [25, 260]], ""pickup_delivery_pairs"": [[3, 5], [1, 2], [4, 6], [8, 7]], ""num_vehicles"": 1, ""total_distance"": 501.93644842558615, ""objective"": 501.93644842558615}","[[0, 8, 4, 7, 1, 2, 3, 5, 6, 0]]",501.93644842558615,"{""problem_type"": ""PDP"", ""num_nodes"": 9, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 40, ""y"": 83, ""tw_start"": 0, ""tw_end"": 1236}, {""id"": ""B"", ""x"": 6, ""y"": 33, ""tw_start"": 144, ""tw_end"": 293}, {""id"": ""C"", ""x"": 0, ""y"": 33, ""tw_start"": 191, ""tw_end"": 436}, {""id"": ""D"", ""x"": 100, ""y"": 17, ""tw_start"": 370, ""tw_end"": 659}, {""id"": ""E"", ""x"": 98, ""y"": 33, ""tw_start"": 119, ""tw_end"": 344}, {""id"": ""F"", ""x"": 95, ""y"": 17, ""tw_start"": 469, ""tw_end"": 748}, {""id"": ""G"", ""x"": 92, ""y"": 0, ""tw_start"": 694, ""tw_end"": 895}, {""id"": ""H"", ""x"": 77, ""y"": 100, ""tw_start"": 154, ""tw_end"": 449}, {""id"": ""I"", ""x"": 69, ""y"": 100, ""tw_start"": 25, ""tw_end"": 260}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""D"", ""F""], [""B"", ""C""], [""E"", ""G""], [""I"", ""H""]], ""total_distance"": 501.93644842558615, ""objective"": 501.93644842558615}","[[""A"", ""I"", ""E"", ""H"", ""B"", ""C"", ""D"", ""F"", ""G"", ""A""]]"
+PDP_S_039,PDP,S,39,"I’m picturing a single school materials van that has to leave the supply depot, hit a set of pickup points and delivery stops, and come back home — every stop visited once and never revisited. The choice to make is the order to visit those places so that each bundle is collected before its matching drop-off and each stop is reached during its allowed time window. The better plan is simply the one that makes the van drive the least overall distance — add up the distances between each consecutive stop, including the trip back to the depot, and smaller totals are better. The specific locations, times and pickup-delivery pairs are shown below.
+
+- **total_stops_including_depot**: 7
+- **supply_depot_id**: 1
+
+**pickup_delivery_pairs**
+| pickup_stop_id | delivery_stop_id |
+|---|---|
+| 3 | 2 |
+| 7 | 4 |
+| 5 | 6 |
+
+**nodes**
+| stop_id | coordinate_x | coordinate_y | earliest_allowed_arrival | latest_allowed_arrival |
+|---|---|---|---|---|
+| 1 | 100 | 76 | 0 | 1000 |
+| 2 | 0 | 0 | 32 | 694 |
+| 3 | 60 | 100 | 11 | 502 |
+| 4 | 30 | 42 | 17 | 681 |
+| 5 | 5 | 36 | 213 | 624 |
+| 6 | 65 | 24 | 287 | 580 |
+| 7 | 55 | 52 | 283 | 656 |
+
+When you send the route back, just stick to a tiny JSON snippet so it's easy to read and use. Something like this:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+The ""solution"" field is just the ordered list of stops — start at the depot, list every location in the order the van should visit them, and finish back at the depot. Treat this as a simple form to fill in, not the full answer yet.
+
+Also, please use the location identifiers exactly as they appear in the instance input — no renaming and no inventing new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""coordinates"": [[100, 76], [0, 0], [60, 100], [30, 42], [5, 36], [65, 24], [55, 52]], ""depot"": 0, ""time_windows"": [[0, 1000], [32, 694], [11, 502], [17, 681], [213, 624], [287, 580], [283, 656]], ""pickup_delivery_pairs"": [[2, 1], [6, 3], [4, 5]], ""num_vehicles"": 1, ""total_distance"": 315.8596217797662, ""objective"": 315.8596217797662}","[[0, 2, 6, 3, 4, 1, 5, 0]]",315.8596217797662,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 100, ""y"": 76, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": 2, ""x"": 0, ""y"": 0, ""tw_start"": 32, ""tw_end"": 694}, {""id"": 3, ""x"": 60, ""y"": 100, ""tw_start"": 11, ""tw_end"": 502}, {""id"": 4, ""x"": 30, ""y"": 42, ""tw_start"": 17, ""tw_end"": 681}, {""id"": 5, ""x"": 5, ""y"": 36, ""tw_start"": 213, ""tw_end"": 624}, {""id"": 6, ""x"": 65, ""y"": 24, ""tw_start"": 287, ""tw_end"": 580}, {""id"": 7, ""x"": 55, ""y"": 52, ""tw_start"": 283, ""tw_end"": 656}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[3, 2], [7, 4], [5, 6]], ""total_distance"": 315.8596217797662, ""objective"": 315.8596217797662}","[[1, 3, 7, 4, 5, 2, 6, 1]]"
+PDP_S_040,PDP,S,40,"I’m planning the route for a single equipment truck that leaves the rental yard, goes out to collect gear and then drop it off at events, and comes back to the yard at the end of the day. The job is to pick the order of stops so the truck visits every pickup and every drop‑off exactly once, always picks up an item before delivering its matching drop‑off, and arrives at each site inside its scheduled arrival window. The aim is to keep the total road miles as low as possible — measured by adding up the distances driven between each consecutive stop, including the trip back to the yard — and nothing can be skipped or visited twice. Concrete details for the day’s run are shown below.
+
+I have 11 total locations including the rental yard, and the truck starts and ends at node 0.
+At location 0 (coords 49, 39) the allowed arrival window is 0 to 1000.
+At location 1 (coords 100, 12) the allowed arrival window is 716 to 956.
+At location 2 (coords 49, 48) the allowed arrival window is 0 to 985.
+At location 3 (coords 49, 100) the allowed arrival window is 0 to 956.
+At location 4 (coords 0, 45) the allowed arrival window is 0 to 960.
+At location 5 (coords 19, 38) the allowed arrival window is 0 to 971.
+At location 6 (coords 10, 20) the allowed arrival window is 0 to 964.
+At location 7 (coords 31, 80) the allowed arrival window is 113 to 353.
+At location 8 (coords 68, 0) the allowed arrival window is 622 to 862.
+At location 9 (coords 37, 9) the allowed arrival window is 314 to 554.
+At location 10 (coords 34, 70) the allowed arrival window is 0 to 970.
+For pair 0 I must visit pickup 1 before making delivery 8.
+For pair 1 I must visit pickup 9 before making delivery 4.
+For pair 2 I must visit pickup 6 before making delivery 3.
+For pair 3 I must visit pickup 7 before making delivery 2.
+For pair 4 I must visit pickup 5 before making delivery 10.
+I will visit every stop once, return to node 0, and aim to minimize the total road miles.
+
+Also, when you send back the chosen route, please use a tiny JSON snippet like this so it's easy to read and parse:
+
+{
+  ""solution"": [yard_id, ..., yard_id]
+}
+
+""solution"" is just the ordered list of stops the truck will follow — start at the yard, visit every pickup and drop‑off once (in the right order), and return to the yard at the end. The placeholders (like yard_id) are just standing in for whatever exact location IDs appear in the instance; this block is only a sketch of the shape I want, not the actual route.
+
+Please make sure you use the identifiers exactly as they appear in the instance input — no renaming and no new labels. For example: Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",nl,zero_based,"{""coordinates"": [[49, 39], [100, 12], [49, 48], [49, 100], [0, 45], [19, 38], [10, 20], [31, 80], [68, 0], [37, 9], [34, 70]], ""depot"": 0, ""time_windows"": [[0, 1000], [716, 956], [0, 985], [0, 956], [0, 960], [0, 971], [0, 964], [113, 353], [622, 862], [314, 554], [0, 970]], ""pickup_delivery_pairs"": [[1, 8], [9, 4], [6, 3], [7, 2], [5, 10]], ""num_vehicles"": 1, ""total_distance"": 444.85757111896703, ""objective"": 444.85757111896703}","[[0, 7, 5, 9, 1, 8, 6, 4, 10, 3, 2, 0]]",444.85757111896703,"{""problem_type"": ""PDP"", ""num_nodes"": 11, ""depot"": 0, ""nodes"": [{""id"": 0, ""x"": 49, ""y"": 39, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": 1, ""x"": 100, ""y"": 12, ""tw_start"": 716, ""tw_end"": 956}, {""id"": 2, ""x"": 49, ""y"": 48, ""tw_start"": 0, ""tw_end"": 985}, {""id"": 3, ""x"": 49, ""y"": 100, ""tw_start"": 0, ""tw_end"": 956}, {""id"": 4, ""x"": 0, ""y"": 45, ""tw_start"": 0, ""tw_end"": 960}, {""id"": 5, ""x"": 19, ""y"": 38, ""tw_start"": 0, ""tw_end"": 971}, {""id"": 6, ""x"": 10, ""y"": 20, ""tw_start"": 0, ""tw_end"": 964}, {""id"": 7, ""x"": 31, ""y"": 80, ""tw_start"": 113, ""tw_end"": 353}, {""id"": 8, ""x"": 68, ""y"": 0, ""tw_start"": 622, ""tw_end"": 862}, {""id"": 9, ""x"": 37, ""y"": 9, ""tw_start"": 314, ""tw_end"": 554}, {""id"": 10, ""x"": 34, ""y"": 70, ""tw_start"": 0, ""tw_end"": 970}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[1, 8], [9, 4], [6, 3], [7, 2], [5, 10]], ""total_distance"": 444.85757111896703, ""objective"": 444.85757111896703}","[[0, 7, 5, 9, 1, 8, 6, 4, 10, 3, 2, 0]]"
+PDP_S_041,PDP,S,41,"Recently the rental crew had to plan one vehicle’s day: leave the yard, stop at each customer and depot address exactly once, hit everyone inside their permitted arrival windows, make sure every pickup comes earlier than its paired return, and come home to the yard. The success metric was simple — the route that accumulates the smallest total distance wins, where total distance is computed by summing the distances between each stop in the order driven. The detailed stop list, time windows, and pickup/return pairings are shown below.
+
+- **total_nodes**: 9
+- **depot_id**: A
+
+**pickup_delivery_pairs**
+| pickup_location | delivery_location |
+|---|---|
+| E | I |
+| C | D |
+| F | B |
+| H | G |
+
+**nodes**
+| location_id | coord_x | coord_y | earliest_arrival | latest_arrival |
+|---|---|---|---|---|
+| A | 41 | 48 | 0 | 1000 |
+| B | 0 | 95 | 33 | 511 |
+| C | 27 | 0 | 30 | 519 |
+| D | 68 | 95 | 418 | 829 |
+| E | 68 | 24 | 36 | 509 |
+| F | 46 | 67 | 12 | 513 |
+| G | 100 | 100 | 98 | 537 |
+| H | 73 | 17 | 22 | 617 |
+| I | 78 | 10 | 62 | 519 |
+
+Oh, and when you send the answer back, please use this simple JSON layout so it's easy to check automatically:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+Here ""solution"" is just the ordered driving plan — an array of stop identifiers that starts at the depot, lists every stop exactly once in the order they'll be visited, and ends back at the depot. Think of it like filling in a form: that array is where you write the route. This JSON is only a sketch of the shape I need, not the actual route answer.
+
+Important: use the identifiers exactly as they appear in the instance — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[41, 48], [0, 95], [27, 0], [68, 95], [68, 24], [46, 67], [100, 100], [73, 17], [78, 10]], ""depot"": 0, ""time_windows"": [[0, 1000], [33, 511], [30, 519], [418, 829], [36, 509], [12, 513], [98, 537], [22, 617], [62, 519]], ""pickup_delivery_pairs"": [[4, 8], [2, 3], [5, 1], [7, 6]], ""num_vehicles"": 1, ""total_distance"": 391.58119289049654, ""objective"": 391.58119289049654}","[[0, 2, 4, 7, 8, 6, 3, 5, 1, 0]]",391.58119289049654,"{""problem_type"": ""PDP"", ""num_nodes"": 9, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 41, ""y"": 48, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": ""B"", ""x"": 0, ""y"": 95, ""tw_start"": 33, ""tw_end"": 511}, {""id"": ""C"", ""x"": 27, ""y"": 0, ""tw_start"": 30, ""tw_end"": 519}, {""id"": ""D"", ""x"": 68, ""y"": 95, ""tw_start"": 418, ""tw_end"": 829}, {""id"": ""E"", ""x"": 68, ""y"": 24, ""tw_start"": 36, ""tw_end"": 509}, {""id"": ""F"", ""x"": 46, ""y"": 67, ""tw_start"": 12, ""tw_end"": 513}, {""id"": ""G"", ""x"": 100, ""y"": 100, ""tw_start"": 98, ""tw_end"": 537}, {""id"": ""H"", ""x"": 73, ""y"": 17, ""tw_start"": 22, ""tw_end"": 617}, {""id"": ""I"", ""x"": 78, ""y"": 10, ""tw_start"": 62, ""tw_end"": 519}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""E"", ""I""], [""C"", ""D""], [""F"", ""B""], [""H"", ""G""]], ""total_distance"": 391.58119289049654, ""objective"": 391.58119289049654}","[[""A"", ""C"", ""E"", ""H"", ""I"", ""G"", ""D"", ""F"", ""B"", ""A""]]"
+PDP_S_042,PDP,S,42,"There’s a one-van operation that shuttles tiny electronics parts: the van must leave the warehouse, go to a set of suppliers and assembly sites, and come back home. Every location has a specific acceptance window and must be visited exactly once; each part needs to be picked up before it’s dropped off at its paired site. The winning route is simply the one with the least total driving distance — add up the distances between each leg of the trip to measure that — and the full set of addresses, coordinates and time windows are listed below.
+
+- **total_locations_including_warehouse**: 7
+- **warehouse_node_id**: 1
+
+**pickup_delivery_pairs**
+| pickup_location_id | delivery_location_id |
+|---|---|
+| 2 | 4 |
+| 7 | 3 |
+| 5 | 6 |
+
+**nodes**
+| location_id | x_coord | y_coord | time_window_start | time_window_end |
+|---|---|---|---|---|
+| 1 | 74 | 65 | 0 | 1000 |
+| 2 | 19 | 96 | 0 | 968 |
+| 3 | 0 | 14 | 0 | 957 |
+| 4 | 59 | 100 | 0 | 972 |
+| 5 | 100 | 8 | 0 | 961 |
+| 6 | 30 | 0 | 0 | 955 |
+| 7 | 26 | 39 | 18 | 181 |
+
+Also, when you send the route back, you can just follow this little JSON shape so it's easy to read and import:
+
+{
+  ""solution"": [warehouse_id, ..., warehouse_id]
+}
+
+Think of this as a simple form: ""solution"" is the ordered list of location identifiers that the van will visit, starting and ending at the warehouse. The placeholders above just show the layout — you'll replace them with the actual IDs from the instance.
+
+This JSON is only a sketch of the expected shape, not the actual route answer. Please use the exact identifiers as they appear in the instance input — do not rename or invent labels.
+
+""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""coordinates"": [[74, 65], [19, 96], [0, 14], [59, 100], [100, 8], [30, 0], [26, 39]], ""depot"": 0, ""time_windows"": [[0, 1000], [0, 968], [0, 957], [0, 972], [0, 961], [0, 955], [18, 181]], ""pickup_delivery_pairs"": [[1, 3], [6, 2], [4, 5]], ""num_vehicles"": 1, ""total_distance"": 370.8302594673897, ""objective"": 370.8302594673897}","[[0, 4, 5, 6, 2, 1, 3, 0]]",370.8302594673897,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 74, ""y"": 65, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": 2, ""x"": 19, ""y"": 96, ""tw_start"": 0, ""tw_end"": 968}, {""id"": 3, ""x"": 0, ""y"": 14, ""tw_start"": 0, ""tw_end"": 957}, {""id"": 4, ""x"": 59, ""y"": 100, ""tw_start"": 0, ""tw_end"": 972}, {""id"": 5, ""x"": 100, ""y"": 8, ""tw_start"": 0, ""tw_end"": 961}, {""id"": 6, ""x"": 30, ""y"": 0, ""tw_start"": 0, ""tw_end"": 955}, {""id"": 7, ""x"": 26, ""y"": 39, ""tw_start"": 18, ""tw_end"": 181}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[2, 4], [7, 3], [5, 6]], ""total_distance"": 370.8302594673897, ""objective"": 370.8302594673897}","[[1, 5, 6, 7, 3, 2, 4, 1]]"
+PDP_S_043,PDP,S,43,"In this scenario the supply coordinator has to plan one continuous loop from the central supply room, visiting each department and outside vendor exactly once, making sure to obey each place’s available hours, and ensuring any pickup-location is visited before its corresponding delivery. The comparison between possible plans is straightforward: total distance driven — computed by summing the distances between successive stops (and back to the supply room) — should be as small as possible. The concrete list of locations, times and pickup-delivery pairings is provided below.
+
+# GLOBALS
+key,value
+total_locations_including_depot,7
+central_supply_room_id,0
+
+# PAIRS
+pickup_location_id,delivery_location_id
+6,4
+5,3
+2,1
+
+# NODES
+location_id,x_coordinate,y_coordinate,available_from_time,available_until_time
+0,90,79,0,3390
+1,8,100,1036,2213
+2,0,70,819,1846
+3,77,47,2480,3195
+4,64,53,2242,2877
+5,51,53,2070,2859
+6,100,0,1078,1593
+
+If you want to hand me a candidate loop, a neat way to show it is with a tiny JSON snippet like this:
+
+{
+  ""solution"": [supply_room_id, ..., supply_room_id]
+}
+
+Think of ""solution"" as the ordered checklist of stops — it should start at the supply room, list each department/vendor once in the visiting order, and finish back at the supply room. That JSON is just a sketch of the shape I expect, not the actual route — replace those placeholders with the exact IDs from the instance when you give the real answer.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""coordinates"": [[90, 79], [8, 100], [0, 70], [77, 47], [64, 53], [51, 53], [100, 0]], ""depot"": 0, ""time_windows"": [[0, 3390], [1036, 2213], [819, 1846], [2480, 3195], [2242, 2877], [2070, 2859], [1078, 1593]], ""pickup_delivery_pairs"": [[6, 4], [5, 3], [2, 1]], ""num_vehicles"": 1, ""total_distance"": 358.30438813248026, ""objective"": 358.30438813248026}","[[0, 6, 2, 1, 5, 4, 3, 0]]",358.30438813248026,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": 0, ""nodes"": [{""id"": 0, ""x"": 90, ""y"": 79, ""tw_start"": 0, ""tw_end"": 3390}, {""id"": 1, ""x"": 8, ""y"": 100, ""tw_start"": 1036, ""tw_end"": 2213}, {""id"": 2, ""x"": 0, ""y"": 70, ""tw_start"": 819, ""tw_end"": 1846}, {""id"": 3, ""x"": 77, ""y"": 47, ""tw_start"": 2480, ""tw_end"": 3195}, {""id"": 4, ""x"": 64, ""y"": 53, ""tw_start"": 2242, ""tw_end"": 2877}, {""id"": 5, ""x"": 51, ""y"": 53, ""tw_start"": 2070, ""tw_end"": 2859}, {""id"": 6, ""x"": 100, ""y"": 0, ""tw_start"": 1078, ""tw_end"": 1593}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[6, 4], [5, 3], [2, 1]], ""total_distance"": 358.30438813248026, ""objective"": 358.30438813248026}","[[0, 6, 2, 1, 5, 4, 3, 0]]"
+PDP_S_044,PDP,S,44,"Many people love the idea of a single morning loop from a boutique bakery that begins and ends at the same spot, visiting every pickup point and customer one time only. Orders have to be collected at their source before being delivered to the right customer, and every stop needs to be reached during its allowed delivery window. The route that’s “better” is the one that drives the least overall distance — total distance comes from summing every leg between stops, including the final trip home to the bakery. All specific stops, matchings, and windows are listed below.
+
+- **total_stops_including_bakery**: 9
+- **bakery_depot_id**: A
+
+**pickup_delivery_pairs**
+| order_pickup_id | order_delivery_id |
+|---|---|
+| E | F |
+| D | H |
+| B | C |
+| I | G |
+
+**nodes**
+| stop_id | coord_x | coord_y | time_window_start | time_window_end |
+|---|---|---|---|---|
+| A | 68 | 43 | 0 | 960 |
+| B | 28 | 100 | 40 | 280 |
+| C | 28 | 95 | 37 | 277 |
+| D | 58 | 26 | 11 | 251 |
+| E | 4 | 52 | 305 | 545 |
+| F | 0 | 72 | 292 | 532 |
+| G | 30 | 0 | 289 | 529 |
+| H | 100 | 21 | 40 | 280 |
+| I | 40 | 46 | 112 | 352 |
+
+If you want to hand the route back in a neat, machine-friendly way, just use a tiny JSON snippet like this:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+Think of it like a little form: the solution array is the ordered list of stops for the whole loop (starting and ending at the bakery/depot). The depot_id placeholder stands in for whatever the depot’s identifier is in your instance — don’t replace it with a new name here, just use the exact identifiers from the input.
+
+This JSON is only a sketch of the shape I need, not the actual answer itself. Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[68, 43], [28, 100], [28, 95], [58, 26], [4, 52], [0, 72], [30, 0], [100, 21], [40, 46]], ""depot"": 0, ""time_windows"": [[0, 960], [40, 280], [37, 277], [11, 251], [305, 545], [292, 532], [289, 529], [40, 280], [112, 352]], ""pickup_delivery_pairs"": [[4, 5], [3, 7], [1, 2], [8, 6]], ""num_vehicles"": 1, ""total_distance"": 392.3619556371525, ""objective"": 392.3619556371525}","[[0, 3, 7, 8, 1, 2, 4, 5, 6, 0]]",392.3619556371525,"{""problem_type"": ""PDP"", ""num_nodes"": 9, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 68, ""y"": 43, ""tw_start"": 0, ""tw_end"": 960}, {""id"": ""B"", ""x"": 28, ""y"": 100, ""tw_start"": 40, ""tw_end"": 280}, {""id"": ""C"", ""x"": 28, ""y"": 95, ""tw_start"": 37, ""tw_end"": 277}, {""id"": ""D"", ""x"": 58, ""y"": 26, ""tw_start"": 11, ""tw_end"": 251}, {""id"": ""E"", ""x"": 4, ""y"": 52, ""tw_start"": 305, ""tw_end"": 545}, {""id"": ""F"", ""x"": 0, ""y"": 72, ""tw_start"": 292, ""tw_end"": 532}, {""id"": ""G"", ""x"": 30, ""y"": 0, ""tw_start"": 289, ""tw_end"": 529}, {""id"": ""H"", ""x"": 100, ""y"": 21, ""tw_start"": 40, ""tw_end"": 280}, {""id"": ""I"", ""x"": 40, ""y"": 46, ""tw_start"": 112, ""tw_end"": 352}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""E"", ""F""], [""D"", ""H""], [""B"", ""C""], [""I"", ""G""]], ""total_distance"": 392.3619556371525, ""objective"": 392.3619556371525}","[[""A"", ""D"", ""H"", ""I"", ""B"", ""C"", ""E"", ""F"", ""G"", ""A""]]"
+PDP_S_045,PDP,S,45,"Many teams face the same chore: create a single route that starts at headquarters, visits all return pickups and their assigned drop-off sites exactly once, collects items before handing them off at the linked processing center, and finishes back at HQ. Each stop has a time slot that must be respected, and pickups must always happen before their paired drop-offs. The better route is the one with the least total miles driven — just add up the distances between stops to see which route is shorter. The detailed schedule and addresses are shown below.
+
+# GLOBALS
+key,value
+total_locations_including_hq,11
+hq_node_id,1
+
+# PAIRS
+pickup_node_id,delivery_node_id
+4,2
+9,11
+10,8
+5,6
+7,3
+
+# NODES
+location_id,coord_x,coord_y,earliest_allowed_arrival,latest_allowed_arrival
+1,65,56,0,1000
+2,76,81,658,898
+3,55,4,118,358
+4,0,100,41,281
+5,78,7,334,574
+6,41,0,543,783
+7,37,37,17,257
+8,69,93,728,968
+9,88,23,22,262
+10,100,70,730,970
+11,4,26,307,547
+
+Also, when you send back the route, please stick to a tiny JSON sketch like this:
+
+{
+  ""solution"": [hq_id, ..., hq_id]
+}
+
+""solution"" is just the ordered list of stop identifiers for the whole tour — start at HQ, visit every location once (pickups before their paired drop-offs, respect the time slots), and come back to HQ. This JSON is only the shape I want you to return, not the actual route.
+
+Please make sure you use the exact identifiers from the instance input — no renaming and no new labels. 
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""coordinates"": [[65, 56], [76, 81], [55, 4], [0, 100], [78, 7], [41, 0], [37, 37], [69, 93], [88, 23], [100, 70], [4, 26]], ""depot"": 0, ""time_windows"": [[0, 1000], [658, 898], [118, 358], [41, 281], [334, 574], [543, 783], [17, 257], [728, 968], [22, 262], [730, 970], [307, 547]], ""pickup_delivery_pairs"": [[3, 1], [8, 10], [9, 7], [4, 5], [6, 2]], ""num_vehicles"": 1, ""total_distance"": 516.3241601393587, ""objective"": 516.3241601393587}","[[0, 3, 6, 8, 4, 2, 10, 5, 9, 1, 7, 0]]",516.3241601393587,"{""problem_type"": ""PDP"", ""num_nodes"": 11, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 65, ""y"": 56, ""tw_start"": 0, ""tw_end"": 1000}, {""id"": 2, ""x"": 76, ""y"": 81, ""tw_start"": 658, ""tw_end"": 898}, {""id"": 3, ""x"": 55, ""y"": 4, ""tw_start"": 118, ""tw_end"": 358}, {""id"": 4, ""x"": 0, ""y"": 100, ""tw_start"": 41, ""tw_end"": 281}, {""id"": 5, ""x"": 78, ""y"": 7, ""tw_start"": 334, ""tw_end"": 574}, {""id"": 6, ""x"": 41, ""y"": 0, ""tw_start"": 543, ""tw_end"": 783}, {""id"": 7, ""x"": 37, ""y"": 37, ""tw_start"": 17, ""tw_end"": 257}, {""id"": 8, ""x"": 69, ""y"": 93, ""tw_start"": 728, ""tw_end"": 968}, {""id"": 9, ""x"": 88, ""y"": 23, ""tw_start"": 22, ""tw_end"": 262}, {""id"": 10, ""x"": 100, ""y"": 70, ""tw_start"": 730, ""tw_end"": 970}, {""id"": 11, ""x"": 4, ""y"": 26, ""tw_start"": 307, ""tw_end"": 547}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[4, 2], [9, 11], [10, 8], [5, 6], [7, 3]], ""total_distance"": 516.3241601393587, ""objective"": 516.3241601393587}","[[1, 4, 7, 9, 5, 3, 11, 6, 10, 2, 8, 1]]"
+PDP_S_046,PDP,S,46,"I run the scheduling for a small furniture fleet and the job is to build a single loop that leaves from the depot and ends back there, hitting every pickup spot and every customer address exactly once. The plan has to make sure every pickup visit happens before its matching delivery and that each appointment window is met, and the best plan is the one with the least total driving — computed by adding up the distances between each stop in the route. The exact addresses, pickup-delivery pairs and time slots are listed below.
+
+- **total_stops_including_depot**: 7
+- **depot_node_id**: A
+
+**pickup_delivery_pairs**
+| pickup_node_id | delivery_node_id |
+|---|---|
+| D | F |
+| C | E |
+| B | G |
+
+**nodes**
+| location_id | location_x_coord | location_y_coord | time_window_earliest | time_window_latest |
+|---|---|---|---|---|
+| A | 62 | 21 | 0 | 3390 |
+| B | 67 | 61 | 15 | 655 |
+| C | 0 | 0 | 257 | 897 |
+| D | 49 | 71 | 2458 | 3098 |
+| E | 10 | 100 | 1976 | 2616 |
+| F | 36 | 37 | 2648 | 3288 |
+| G | 100 | 100 | 167 | 807 |
+
+When you’re ready to hand the route back, just use this simple JSON shape so I can read it programmatically — nothing fancy, just the ordered list of stops:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+Think of ""solution"" as the ordered checklist: the array should list the stops in the exact order the vehicle will visit them (starting at the depot and ending back there). The placeholders in the array are where the real location identifiers go. This is just a sketch of the expected shape, not the actual route.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — don’t rename anything or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[62, 21], [67, 61], [0, 0], [49, 71], [10, 100], [36, 37], [100, 100]], ""depot"": 0, ""time_windows"": [[0, 3390], [15, 655], [257, 897], [2458, 3098], [1976, 2616], [2648, 3288], [167, 807]], ""pickup_delivery_pairs"": [[3, 5], [2, 4], [1, 6]], ""num_vehicles"": 1, ""total_distance"": 412.6867568268276, ""objective"": 412.6867568268276}","[[0, 2, 1, 6, 4, 3, 5, 0]]",412.6867568268276,"{""problem_type"": ""PDP"", ""num_nodes"": 7, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 62, ""y"": 21, ""tw_start"": 0, ""tw_end"": 3390}, {""id"": ""B"", ""x"": 67, ""y"": 61, ""tw_start"": 15, ""tw_end"": 655}, {""id"": ""C"", ""x"": 0, ""y"": 0, ""tw_start"": 257, ""tw_end"": 897}, {""id"": ""D"", ""x"": 49, ""y"": 71, ""tw_start"": 2458, ""tw_end"": 3098}, {""id"": ""E"", ""x"": 10, ""y"": 100, ""tw_start"": 1976, ""tw_end"": 2616}, {""id"": ""F"", ""x"": 36, ""y"": 37, ""tw_start"": 2648, ""tw_end"": 3288}, {""id"": ""G"", ""x"": 100, ""y"": 100, ""tw_start"": 167, ""tw_end"": 807}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""D"", ""F""], [""C"", ""E""], [""B"", ""G""]], ""total_distance"": 412.6867568268276, ""objective"": 412.6867568268276}","[[""A"", ""C"", ""B"", ""G"", ""E"", ""D"", ""F"", ""A""]]"
+PDP_S_047,PDP,S,47,"I’m a parts runner out of the central garage and need to plan a single day’s route: leave the garage, hit every pickup and every repair site exactly once, and come back to the garage at the end. The trick is arranging the order so every pickup happens before its matching delivery, each stop is reached within that site’s allowed time window, and nothing gets skipped or visited twice. A “better” plan here is simply the one that keeps the total driving as low as possible — add up the distance between each consecutive stop (including the distance from the garage at the start and back at the end) and make that sum as small as possible. The concrete details of the stops and their time windows are shown below.
+
+{
+  ""total_locations_including_garage"": 11,
+  ""garage_node_id"": 1,
+  ""nodes"": [
+    {
+      ""stop_id"": 1,
+      ""map_x_coordinate"": 51,
+      ""map_y_coordinate"": 57,
+      ""earliest_allowed_arrival"": 0,
+      ""latest_allowed_arrival"": 3390
+    },
+    {
+      ""stop_id"": 2,
+      ""map_x_coordinate"": 79,
+      ""map_y_coordinate"": 100,
+      ""earliest_allowed_arrival"": 1167,
+      ""latest_allowed_arrival"": 1327
+    },
+    {
+      ""stop_id"": 3,
+      ""map_x_coordinate"": 5,
+      ""map_y_coordinate"": 68,
+      ""earliest_allowed_arrival"": 1447,
+      ""latest_allowed_arrival"": 1607
+    },
+    {
+      ""stop_id"": 4,
+      ""map_x_coordinate"": 6,
+      ""map_y_coordinate"": 23,
+      ""earliest_allowed_arrival"": 876,
+      ""latest_allowed_arrival"": 1036
+    },
+    {
+      ""stop_id"": 5,
+      ""map_x_coordinate"": 3,
+      ""map_y_coordinate"": 34,
+      ""earliest_allowed_arrival"": 971,
+      ""latest_allowed_arrival"": 1131
+    },
+    {
+      ""stop_id"": 6,
+      ""map_x_coordinate"": 0,
+      ""map_y_coordinate"": 45,
+      ""earliest_allowed_arrival"": 1158,
+      ""latest_allowed_arrival"": 1318
+    },
+    {
+      ""stop_id"": 7,
+      ""map_x_coordinate"": 45,
+      ""map_y_coordinate"": 16,
+      ""earliest_allowed_arrival"": 2758,
+      ""latest_allowed_arrival"": 2918
+    },
+    {
+      ""stop_id"": 8,
+      ""map_x_coordinate"": 44,
+      ""map_y_coordinate"": 0,
+      ""earliest_allowed_arrival"": 2009,
+      ""latest_allowed_arrival"": 2169
+    },
+    {
+      ""stop_id"": 9,
+      ""map_x_coordinate"": 58,
+      ""map_y_coordinate"": 91,
+      ""earliest_allowed_arrival"": 118,
+      ""latest_allowed_arrival"": 278
+    },
+    {
+      ""stop_id"": 10,
+      ""map_x_coordinate"": 100,
+      ""map_y_coordinate"": 34,
+      ""earliest_allowed_arrival"": 2802,
+      ""latest_allowed_arrival"": 2962
+    },
+    {
+      ""stop_id"": 11,
+      ""map_x_coordinate"": 77,
+      ""map_y_coordinate"": 68,
+      ""earliest_allowed_arrival"": 3119,
+      ""latest_allowed_arrival"": 3279
+    }
+  ]
+}
+
+{
+  ""pickup_delivery_pairs"": [
+    {
+      ""pickup_stop_id"": 4,
+      ""delivery_stop_id"": 6
+    },
+    {
+      ""pickup_stop_id"": 8,
+      ""delivery_stop_id"": 7
+    },
+    {
+      ""pickup_stop_id"": 9,
+      ""delivery_stop_id"": 10
+    },
+    {
+      ""pickup_stop_id"": 5,
+      ""delivery_stop_id"": 3
+    },
+    {
+      ""pickup_stop_id"": 2,
+      ""delivery_stop_id"": 11
+    }
+  ]
+}
+
+Also, when you hand me the route, please use this simple JSON layout so it's easy to parse:
+
+{
+  ""solution"": [garage_id, ..., garage_id]
+}
+
+Think of it like a little form: ""solution"" is the ordered list of stops — start at the garage, hit every pickup and repair site exactly once (with each pickup before its matching delivery and inside each site's allowed time window), and come back to the garage at the end. Each item in the list should be the exact location identifier from the instance input; the first and last entries are the garage identifier.
+
+Just a heads-up: use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""
+
+The JSON above is only a sketch of the expected shape, not the final answer — when you're ready, give the actual route in that exact JSON form using the real identifiers from the instance.",json,one_based,"{""coordinates"": [[51, 57], [79, 100], [5, 68], [6, 23], [3, 34], [0, 45], [45, 16], [44, 0], [58, 91], [100, 34], [77, 68]], ""depot"": 0, ""time_windows"": [[0, 3390], [1167, 1327], [1447, 1607], [876, 1036], [971, 1131], [1158, 1318], [2758, 2918], [2009, 2169], [118, 278], [2802, 2962], [3119, 3279]], ""pickup_delivery_pairs"": [[3, 5], [7, 6], [8, 9], [4, 2], [1, 10]], ""num_vehicles"": 1, ""total_distance"": 541.57475359179, ""objective"": 541.57475359179}","[[0, 8, 3, 4, 5, 1, 2, 7, 6, 9, 10, 0]]",541.57475359179,"{""problem_type"": ""PDP"", ""num_nodes"": 11, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 51, ""y"": 57, ""tw_start"": 0, ""tw_end"": 3390}, {""id"": 2, ""x"": 79, ""y"": 100, ""tw_start"": 1167, ""tw_end"": 1327}, {""id"": 3, ""x"": 5, ""y"": 68, ""tw_start"": 1447, ""tw_end"": 1607}, {""id"": 4, ""x"": 6, ""y"": 23, ""tw_start"": 876, ""tw_end"": 1036}, {""id"": 5, ""x"": 3, ""y"": 34, ""tw_start"": 971, ""tw_end"": 1131}, {""id"": 6, ""x"": 0, ""y"": 45, ""tw_start"": 1158, ""tw_end"": 1318}, {""id"": 7, ""x"": 45, ""y"": 16, ""tw_start"": 2758, ""tw_end"": 2918}, {""id"": 8, ""x"": 44, ""y"": 0, ""tw_start"": 2009, ""tw_end"": 2169}, {""id"": 9, ""x"": 58, ""y"": 91, ""tw_start"": 118, ""tw_end"": 278}, {""id"": 10, ""x"": 100, ""y"": 34, ""tw_start"": 2802, ""tw_end"": 2962}, {""id"": 11, ""x"": 77, ""y"": 68, ""tw_start"": 3119, ""tw_end"": 3279}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[4, 6], [8, 7], [9, 10], [5, 3], [2, 11]], ""total_distance"": 541.57475359179, ""objective"": 541.57475359179}","[[1, 9, 4, 5, 6, 2, 3, 8, 7, 10, 11, 1]]"
+PDP_S_048,PDP,S,48,"Many people don’t realize how tricky favor logistics are: the driver leaves from the storage, must visit every vendor and every venue exactly once, pick up each favor before dropping it at its matched venue, and make every arrival inside the stop’s allotted time. The route that’s preferred is the one with the least total driving — calculate it by summing the distances between stops to get the overall miles. No skips, no repeats. The concrete details — addresses, windows and pickups-to-drops — are listed below.
+
+- **total_stops_including_storage**: 9
+- **storage_node_id**: A
+
+**pickup_delivery_pairs**
+| pickup_stop_id | delivery_stop_id |
+|---|---|
+| I | H |
+| B | G |
+| C | D |
+| F | E |
+
+**nodes**
+| stop_id | coord_x | coord_y | earliest_arrival_time | latest_arrival_time |
+|---|---|---|---|---|
+| A | 60 | 36 | 0 | 3390 |
+| B | 93 | 71 | 1087 | 1407 |
+| C | 42 | 40 | 12 | 332 |
+| D | 0 | 27 | 1078 | 1398 |
+| E | 63 | 0 | 696 | 1016 |
+| F | 67 | 9 | 600 | 920 |
+| G | 84 | 62 | 1275 | 1595 |
+| H | 100 | 100 | 614 | 934 |
+| I | 63 | 51 | 8 | 328 |
+
+When you’re ready to give the final route, just send it back in a tiny JSON snippet so it’s easy to read by whatever’s checking it — nothing fancy, just this shape:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+Here the ""solution"" array is the tour: list the depot and every stop in the exact order the driver should visit them, and finish at the depot again. The little placeholders above are just showing the shape I need — they’re not the actual stops. Replace them with the exact stop identifiers from the instance when you submit the route.
+
+Please don’t rename or invent any labels — use the identifiers exactly as they appear in the instance input, no changes. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[60, 36], [93, 71], [42, 40], [0, 27], [63, 0], [67, 9], [84, 62], [100, 100], [63, 51]], ""depot"": 0, ""time_windows"": [[0, 3390], [1087, 1407], [12, 332], [1078, 1398], [696, 1016], [600, 920], [1275, 1595], [614, 934], [8, 328]], ""pickup_delivery_pairs"": [[8, 7], [1, 6], [2, 3], [5, 4]], ""num_vehicles"": 1, ""total_distance"": 389.53461901292286, ""objective"": 389.53461901292286}","[[0, 8, 2, 5, 4, 7, 1, 6, 3, 0]]",389.53461901292286,"{""problem_type"": ""PDP"", ""num_nodes"": 9, ""depot"": ""A"", ""nodes"": [{""id"": ""A"", ""x"": 60, ""y"": 36, ""tw_start"": 0, ""tw_end"": 3390}, {""id"": ""B"", ""x"": 93, ""y"": 71, ""tw_start"": 1087, ""tw_end"": 1407}, {""id"": ""C"", ""x"": 42, ""y"": 40, ""tw_start"": 12, ""tw_end"": 332}, {""id"": ""D"", ""x"": 0, ""y"": 27, ""tw_start"": 1078, ""tw_end"": 1398}, {""id"": ""E"", ""x"": 63, ""y"": 0, ""tw_start"": 696, ""tw_end"": 1016}, {""id"": ""F"", ""x"": 67, ""y"": 9, ""tw_start"": 600, ""tw_end"": 920}, {""id"": ""G"", ""x"": 84, ""y"": 62, ""tw_start"": 1275, ""tw_end"": 1595}, {""id"": ""H"", ""x"": 100, ""y"": 100, ""tw_start"": 614, ""tw_end"": 934}, {""id"": ""I"", ""x"": 63, ""y"": 51, ""tw_start"": 8, ""tw_end"": 328}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[""I"", ""H""], [""B"", ""G""], [""C"", ""D""], [""F"", ""E""]], ""total_distance"": 389.53461901292286, ""objective"": 389.53461901292286}","[[""A"", ""I"", ""C"", ""F"", ""E"", ""H"", ""B"", ""G"", ""D"", ""A""]]"
+PDP_S_049,PDP,S,49,"I work at the dispatch desk and my job is to turn a jumble of old-appliance pick-ups and new-appliance drop-offs into one neat loop that leaves from the service center and comes back at the end of the day. The trick is to visit every pick-up address and every delivery address exactly once, hit each place within its allowed arrival time, and always collect an old unit before dropping off its paired replacement. The better plan is the one that keeps the van’s miles as low as possible — add up the distance driven from stop to stop (including the trip back to base) and pick the route with the smallest total. The full list of addresses, paired jobs and time windows is shown below.
+
+# GLOBALS
+key,value
+total_locations_including_depot,9
+service_center_id,1
+
+# PAIRS
+old_unit_pickup,new_unit_delivery
+6,3
+5,4
+2,9
+7,8
+
+# NODES
+location_id,coord_x,coord_y,earliest_arrival,latest_arrival
+1,61,50,0,3390
+2,100,77,927,1567
+3,35,100,1879,2519
+4,30,100,1786,2426
+5,23,86,2071,2711
+6,0,29,636,1276
+7,65,0,825,1465
+8,58,0,1485,2125
+9,89,70,1115,1755
+
+Oh, and when you hand me the route back, a neat little JSON snippet is perfect — just an object with a ""solution"" key and the tour as a list that starts and ends at the depot. Something like this:
+
+{
+  ""solution"": [depot_id, ..., depot_id]
+}
+
+Think of ""solution"" as the ordered checklist of stops the van will make (first item is the depot where we leave from, last item is the depot when we return). This block is just the shape I expect — a sketch of the form, not the actual route with real IDs yet.
+
+Please use the exact identifiers from the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""coordinates"": [[61, 50], [100, 77], [35, 100], [30, 100], [23, 86], [0, 29], [65, 0], [58, 0], [89, 70]], ""depot"": 0, ""time_windows"": [[0, 3390], [927, 1567], [1879, 2519], [1786, 2426], [2071, 2711], [636, 1276], [825, 1465], [1485, 2125], [1115, 1755]], ""pickup_delivery_pairs"": [[5, 2], [4, 3], [1, 8], [6, 7]], ""num_vehicles"": 1, ""total_distance"": 406.4960310855472, ""objective"": 406.4960310855472}","[[0, 1, 8, 5, 6, 7, 4, 3, 2, 0]]",406.4960310855472,"{""problem_type"": ""PDP"", ""num_nodes"": 9, ""depot"": 1, ""nodes"": [{""id"": 1, ""x"": 61, ""y"": 50, ""tw_start"": 0, ""tw_end"": 3390}, {""id"": 2, ""x"": 100, ""y"": 77, ""tw_start"": 927, ""tw_end"": 1567}, {""id"": 3, ""x"": 35, ""y"": 100, ""tw_start"": 1879, ""tw_end"": 2519}, {""id"": 4, ""x"": 30, ""y"": 100, ""tw_start"": 1786, ""tw_end"": 2426}, {""id"": 5, ""x"": 23, ""y"": 86, ""tw_start"": 2071, ""tw_end"": 2711}, {""id"": 6, ""x"": 0, ""y"": 29, ""tw_start"": 636, ""tw_end"": 1276}, {""id"": 7, ""x"": 65, ""y"": 0, ""tw_start"": 825, ""tw_end"": 1465}, {""id"": 8, ""x"": 58, ""y"": 0, ""tw_start"": 1485, ""tw_end"": 2125}, {""id"": 9, ""x"": 89, ""y"": 70, ""tw_start"": 1115, ""tw_end"": 1755}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[6, 3], [5, 4], [2, 9], [7, 8]], ""total_distance"": 406.4960310855472, ""objective"": 406.4960310855472}","[[1, 2, 9, 6, 7, 8, 5, 4, 3, 1]]"
+PDP_S_050,PDP,S,50,"Someone at the clinic has to map out a nurse’s route that starts and finishes at the clinic, visits every patient exactly one time, hands off samples to the correct labs after picking them up, and hits every appointment window. The real choice is the stop-by-stop sequence — the better sequence saves travel, measured by summing the distances between successive stops to get the total trip length. No location can be skipped or visited twice, each sample pickup must happen before its lab stop, and all time windows must be kept. The concrete details are shown below.
+
+- **total_locations_including_depot**: 11
+- **clinic_depot_node**: 0
+
+**pickup_delivery_pairs**
+| sample_pickup_location_id | matched_lab_location_id |
+|---|---|
+| 4 | 3 |
+| 2 | 10 |
+| 5 | 6 |
+| 1 | 7 |
+| 8 | 9 |
+
+**nodes**
+| location_id | x_coordinate | y_coordinate | appointment_window_start | appointment_window_end |
+|---|---|---|---|---|
+| 0 | 52 | 60 | 0 | 3390 |
+| 1 | 82 | 81 | 1021 | 1661 |
+| 2 | 55 | 80 | 15 | 655 |
+| 3 | 4 | 76 | 1305 | 1945 |
+| 4 | 0 | 53 | 1013 | 1653 |
+| 5 | 55 | 7 | 920 | 1560 |
+| 6 | 49 | 0 | 1202 | 1842 |
+| 7 | 100 | 53 | 2627 | 3267 |
+| 8 | 91 | 67 | 1496 | 2136 |
+| 9 | 85 | 47 | 2635 | 3275 |
+| 10 | 75 | 100 | 167 | 807 |
+
+Oh, and when you send the route back, just stick to this little JSON shape so it's easy to parse:
+
+{
+  ""solution"": [clinic_id, ..., clinic_id]
+}
+
+""solution"" is just the ordered list of stops: start at the clinic, visit every patient and lab in the order you choose, and return to the clinic. The clinic_id placeholders mark the depot (clinic) at the beginning and end, and the ""..."" stands for the sequence of patient and lab IDs in between. This block is only a sketch of the shape I need, not the actual route itself.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,zero_based,"{""coordinates"": [[52, 60], [82, 81], [55, 80], [4, 76], [0, 53], [55, 7], [49, 0], [100, 53], [91, 67], [85, 47], [75, 100]], ""depot"": 0, ""time_windows"": [[0, 3390], [1021, 1661], [15, 655], [1305, 1945], [1013, 1653], [920, 1560], [1202, 1842], [2627, 3267], [1496, 2136], [2635, 3275], [167, 807]], ""pickup_delivery_pairs"": [[4, 3], [2, 10], [5, 6], [1, 7], [8, 9]], ""num_vehicles"": 1, ""total_distance"": 408.00479353890444, ""objective"": 408.00479353890444}","[[0, 2, 10, 1, 5, 6, 4, 3, 8, 7, 9, 0]]",408.00479353890444,"{""problem_type"": ""PDP"", ""num_nodes"": 11, ""depot"": 0, ""nodes"": [{""id"": 0, ""x"": 52, ""y"": 60, ""tw_start"": 0, ""tw_end"": 3390}, {""id"": 1, ""x"": 82, ""y"": 81, ""tw_start"": 1021, ""tw_end"": 1661}, {""id"": 2, ""x"": 55, ""y"": 80, ""tw_start"": 15, ""tw_end"": 655}, {""id"": 3, ""x"": 4, ""y"": 76, ""tw_start"": 1305, ""tw_end"": 1945}, {""id"": 4, ""x"": 0, ""y"": 53, ""tw_start"": 1013, ""tw_end"": 1653}, {""id"": 5, ""x"": 55, ""y"": 7, ""tw_start"": 920, ""tw_end"": 1560}, {""id"": 6, ""x"": 49, ""y"": 0, ""tw_start"": 1202, ""tw_end"": 1842}, {""id"": 7, ""x"": 100, ""y"": 53, ""tw_start"": 2627, ""tw_end"": 3267}, {""id"": 8, ""x"": 91, ""y"": 67, ""tw_start"": 1496, ""tw_end"": 2136}, {""id"": 9, ""x"": 85, ""y"": 47, ""tw_start"": 2635, ""tw_end"": 3275}, {""id"": 10, ""x"": 75, ""y"": 100, ""tw_start"": 167, ""tw_end"": 807}], ""num_vehicles"": 1, ""pickup_delivery_pairs"": [[4, 3], [2, 10], [5, 6], [1, 7], [8, 9]], ""total_distance"": 408.00479353890444, ""objective"": 408.00479353890444}","[[0, 2, 10, 1, 5, 6, 4, 3, 8, 7, 9, 0]]"

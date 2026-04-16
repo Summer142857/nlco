@@ -1,0 +1,2078 @@
+id,task_id,difficulty_tier,example_index,prompt,surface_format,indexing_scheme,instance_canonical_json,reference_solution_canonical_json,reference_objective_value,instance_surface_json,reference_solution_surface_json
+PCTSP_S_001,PCTSP,S,1,"Someone in charge of the grocery vans has to plan one closed loop out of the depot, choosing which local stores to hit so the total expected restock meets the target quantity. The trade-off is clear: skipping a store costs a penalty, and every mile costs in distance, so the winner is the loop that makes the sum of miles driven plus penalties as small as possible. The loop must start and end at the depot, visit each chosen store only once, and collect enough restock from the visited stops. The specific store numbers, travel distances and penalties appear below.
+
+There are 6 locations including depot A, and the loop must collect at least 150.0 expected restock.
+
+| store_node_id | x_coordinate | y_coordinate | expected_restock_amount | skip_penalty_cost |
+|---|---|---|---|---|
+| A | 100 | 88 | 0 | 0 |
+| B | 86 | 27 | 55 | 1 |
+| C | 73 | 100 | 97 | 21 |
+| D | 84 | 83 | 71 | 36 |
+| E | 16 | 83 | 70 | 65 |
+| F | 0 | 0 | 22 | 17 |
+
+The planner must pick a closed loop starting and ending at depot A that minimizes miles driven plus skip penalties while meeting the 150.0 target.
+
+Also, when you send the final route, please use a simple JSON shape like this so it's easy to read and process:
+
+{
+  ""solution"": [depot_id, store_id, ..., depot_id]
+}
+
+This just means: the ""solution"" entry is the loop — put the depot identifier first, then each store you plan to visit in order, and finish with the depot again. Think of it as filling out a little form with the route; that JSON is only a sketch of the expected shape, not the actual answer.
+
+Please make sure you use the exact identifiers from the instance input — don't rename them or invent new labels. 
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""coordinates"": [[100, 88], [86, 27], [73, 100], [84, 83], [16, 83], [0, 0]], ""prizes"": [0, 55, 97, 71, 70, 22], ""penalties"": [0, 1, 21, 36, 65, 17], ""required_prize"": 150.0, ""depot"": 0, ""route_length"": 66.55808475094511, ""route_prize"": 168.0, ""unvisited_penalty"": 83.0, ""objective"": 149.5580847509451}","[0, 2, 3, 0]",149.5580847509451,"{""problem_type"": ""PCTSP"", ""num_nodes"": 6, ""nodes"": [{""id"": ""A"", ""x"": 100, ""y"": 88, ""prize"": 0, ""penalty"": 0}, {""id"": ""B"", ""x"": 86, ""y"": 27, ""prize"": 55, ""penalty"": 1}, {""id"": ""C"", ""x"": 73, ""y"": 100, ""prize"": 97, ""penalty"": 21}, {""id"": ""D"", ""x"": 84, ""y"": 83, ""prize"": 71, ""penalty"": 36}, {""id"": ""E"", ""x"": 16, ""y"": 83, ""prize"": 70, ""penalty"": 65}, {""id"": ""F"", ""x"": 0, ""y"": 0, ""prize"": 22, ""penalty"": 17}], ""depot"": ""A"", ""required_prize"": 150.0, ""route_prize"": 168.0, ""unvisited_penalty"": 83.0, ""route_length"": 66.55808475094511, ""objective"": 149.5580847509451}","[""A"", ""C"", ""D"", ""A""]"
+PCTSP_S_002,PCTSP,S,2,"I run the mobile clinic and need to plan one continuous loop that leaves the clinic, stops at some farms to pick up booked vet appointments, and comes back to the clinic. The decision is which farms to include on that single circuit so the total number of appointments (or health coverage) collected hits a required target. A good plan keeps the driving time low but also avoids big fines for farms that get skipped — the score for any candidate route is simply the total drive time plus the penalties charged for farms left out. No farm should be visited more than once and the route must start and end at the clinic. The specific farm locations, penalties, appointment values and the target coverage are shown below.
+
+The instance has 5 locations (clinic is node 1), and I must collect at least 125.0 appointments on the single loop.
+
+| farm_node_id | map_x_coordinate | map_y_coordinate | appointments_value | skip_penalty |
+|---|---|---|---|---|
+| 1 | 0 | 98 | 0 | 0 |
+| 2 | 32 | 3 | 98 | 4 |
+| 3 | 68 | 100 | 16 | 96 |
+| 4 | 98 | 34 | 60 | 44 |
+| 5 | 100 | 0 | 1 | 95 |
+
+I will choose one circuit that starts and ends at clinic 1, meets the 125.0 target, and minimizes total drive time plus penalties for skipped farms.
+
+Also, to keep things easy to read, please send the route using a simple JSON layout like the one below.
+
+{
+  ""solution"": [clinic_id, farm_id, ..., clinic_id]
+}
+
+This ""solution"" list is just the tour: put the clinic (the depot) first, then the farms you plan to stop at in order, and finish back at the clinic. Think of it as a short form — a sketch of the route rather than the full technical answer.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new labels. 
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""coordinates"": [[0, 98], [32, 3], [68, 100], [98, 34], [100, 0]], ""prizes"": [0, 98, 16, 60, 1], ""penalties"": [0, 4, 96, 44, 95], ""required_prize"": 125.0, ""depot"": 0, ""route_length"": 342.89729888922864, ""route_prize"": 175.0, ""unvisited_penalty"": 0.0, ""objective"": 342.89729888922864}","[0, 1, 4, 3, 2, 0]",342.89729888922864,"{""problem_type"": ""PCTSP"", ""num_nodes"": 5, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 98, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 32, ""y"": 3, ""prize"": 98, ""penalty"": 4}, {""id"": 3, ""x"": 68, ""y"": 100, ""prize"": 16, ""penalty"": 96}, {""id"": 4, ""x"": 98, ""y"": 34, ""prize"": 60, ""penalty"": 44}, {""id"": 5, ""x"": 100, ""y"": 0, ""prize"": 1, ""penalty"": 95}], ""depot"": 1, ""required_prize"": 125.0, ""route_prize"": 175.0, ""unvisited_penalty"": 0.0, ""route_length"": 342.89729888922864, ""objective"": 342.89729888922864}","[1, 2, 5, 4, 3, 1]"
+PCTSP_S_003,PCTSP,S,3,"I run an ice cream truck and need to plan one round trip that leaves from and returns to the garage, picking which city blocks to stop at so the day’s sales hit a required target. The trade-off is simple: choose stops so the route is short but also so missed blocks don’t cost too much in lost sales — the “score” for any plan is just total miles driven plus the sum of lost‑sales penalties for blocks skipped, and a smaller score is better. The trip must be a single loop (no visiting blocks twice) and must bring in at least the required sales. Concrete details about the blocks, sales, and penalties are shown below.
+
+Below are the 7 locations (including my garage 1); I must collect at least 175.0 in expected sales.
+Block 1 at (80, 18) would add 0 to my sales; skipping it incurs a lost-sales penalty of 0.
+Block 2 at (61, 0) would add 87 to my sales; skipping it incurs a lost-sales penalty of 38.
+Block 3 at (100, 18) would add 17 to my sales; skipping it incurs a lost-sales penalty of 67.
+Block 4 at (53, 49) would add 7 to my sales; skipping it incurs a lost-sales penalty of 37.
+Block 5 at (100, 82) would add 60 to my sales; skipping it incurs a lost-sales penalty of 8.
+Block 6 at (96, 100) would add 17 to my sales; skipping it incurs a lost-sales penalty of 11.
+Block 7 at (0, 49) would add 73 to my sales; skipping it incurs a lost-sales penalty of 39.
+Use these entries to pick a single-loop route that starts and ends at my garage 1 and meets the 175.0 sales target.
+
+Also, when you send the plan back, just stick to this simple JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [""garage_id"", ""block_id"", ""..."", ""garage_id""]
+}
+
+Think of it like a little form: the first item is the garage where the truck starts, the middle items are the blocks you stop at in order, and the last item is the garage again to show the loop is closed. This JSON is just a sketch of the expected shape — not your actual answer.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"{""coordinates"": [[80, 18], [61, 0], [100, 18], [53, 49], [100, 82], [96, 100], [0, 49]], ""prizes"": [0, 87, 17, 7, 60, 17, 73], ""penalties"": [0, 38, 67, 37, 8, 11, 39], ""required_prize"": 175.0, ""depot"": 0, ""route_length"": 233.718468265716, ""route_prize"": 184.0, ""unvisited_penalty"": 19.0, ""objective"": 252.718468265716}","[0, 1, 6, 3, 2, 0]",252.718468265716,"{""problem_type"": ""PCTSP"", ""num_nodes"": 7, ""nodes"": [{""id"": 1, ""x"": 80, ""y"": 18, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 61, ""y"": 0, ""prize"": 87, ""penalty"": 38}, {""id"": 3, ""x"": 100, ""y"": 18, ""prize"": 17, ""penalty"": 67}, {""id"": 4, ""x"": 53, ""y"": 49, ""prize"": 7, ""penalty"": 37}, {""id"": 5, ""x"": 100, ""y"": 82, ""prize"": 60, ""penalty"": 8}, {""id"": 6, ""x"": 96, ""y"": 100, ""prize"": 17, ""penalty"": 11}, {""id"": 7, ""x"": 0, ""y"": 49, ""prize"": 73, ""penalty"": 39}], ""depot"": 1, ""required_prize"": 175.0, ""route_prize"": 184.0, ""unvisited_penalty"": 19.0, ""route_length"": 233.718468265716, ""objective"": 252.718468265716}","[1, 2, 7, 4, 3, 1]"
+PCTSP_S_004,PCTSP,S,4,"Recently the team had to plan a single pickup loop out of the center: the driver will leave, call on selected donors, and end the loop back at the center once the campaign total is reached. Each stop gives a known contribution and carries a penalty for not stopping, so a smarter route is the one that meets the fundraising target while keeping the combined tally of travel distance and missed-donor penalties as low as possible. The route must be one uninterrupted circuit with each chosen house visited only once. Concrete specifics are shown below.
+
+{
+  ""total_locations"": 7,
+  ""nodes"": [
+    {
+      ""location_id"": ""A"",
+      ""map_x_coord"": 90,
+      ""map_y_coord"": 0,
+      ""donation_amount"": 0,
+      ""skip_penalty"": 0
+    },
+    {
+      ""location_id"": ""B"",
+      ""map_x_coord"": 100,
+      ""map_y_coord"": 20,
+      ""donation_amount"": 64,
+      ""skip_penalty"": 27
+    },
+    {
+      ""location_id"": ""C"",
+      ""map_x_coord"": 0,
+      ""map_y_coord"": 41,
+      ""donation_amount"": 40,
+      ""skip_penalty"": 36
+    },
+    {
+      ""location_id"": ""D"",
+      ""map_x_coord"": 2,
+      ""map_y_coord"": 44,
+      ""donation_amount"": 65,
+      ""skip_penalty"": 49
+    },
+    {
+      ""location_id"": ""E"",
+      ""map_x_coord"": 1,
+      ""map_y_coord"": 64,
+      ""donation_amount"": 40,
+      ""skip_penalty"": 18
+    },
+    {
+      ""location_id"": ""F"",
+      ""map_x_coord"": 29,
+      ""map_y_coord"": 75,
+      ""donation_amount"": 62,
+      ""skip_penalty"": 40
+    },
+    {
+      ""location_id"": ""G"",
+      ""map_x_coord"": 57,
+      ""map_y_coord"": 100,
+      ""donation_amount"": 77,
+      ""skip_penalty"": 45
+    }
+  ],
+  ""charity_center_id"": ""A"",
+  ""fundraising_target"": 175.0
+}
+
+Also, when you send the chosen loop back to us, please use this simple JSON shape so it's easy to parse:
+
+{
+  ""solution"": [center_id, donor_id, ..., center_id]
+}
+
+This is just a loose sketch of the shape we need: the array lists the stops in order (starting and ending at the center), using the exact stop identifiers from the instance. It's just a format guide, not the actual route.
+
+Please be sure to use the identifiers exactly as they appear in the instance input—no renaming, no extra labels.
+- Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",json,names,"{""coordinates"": [[90, 0], [100, 20], [0, 41], [2, 44], [1, 64], [29, 75], [57, 100]], ""prizes"": [0, 64, 40, 65, 40, 62, 77], ""penalties"": [0, 27, 36, 49, 18, 40, 45], ""required_prize"": 175.0, ""depot"": 0, ""route_length"": 303.3340260693069, ""route_prize"": 348.0, ""unvisited_penalty"": 0.0, ""objective"": 303.3340260693069}","[0, 2, 3, 4, 5, 6, 1, 0]",303.3340260693069,"{""problem_type"": ""PCTSP"", ""num_nodes"": 7, ""nodes"": [{""id"": ""A"", ""x"": 90, ""y"": 0, ""prize"": 0, ""penalty"": 0}, {""id"": ""B"", ""x"": 100, ""y"": 20, ""prize"": 64, ""penalty"": 27}, {""id"": ""C"", ""x"": 0, ""y"": 41, ""prize"": 40, ""penalty"": 36}, {""id"": ""D"", ""x"": 2, ""y"": 44, ""prize"": 65, ""penalty"": 49}, {""id"": ""E"", ""x"": 1, ""y"": 64, ""prize"": 40, ""penalty"": 18}, {""id"": ""F"", ""x"": 29, ""y"": 75, ""prize"": 62, ""penalty"": 40}, {""id"": ""G"", ""x"": 57, ""y"": 100, ""prize"": 77, ""penalty"": 45}], ""depot"": ""A"", ""required_prize"": 175.0, ""route_prize"": 348.0, ""unvisited_penalty"": 0.0, ""route_length"": 303.3340260693069, ""objective"": 303.3340260693069}","[""A"", ""C"", ""D"", ""E"", ""F"", ""G"", ""B"", ""A""]"
+PCTSP_S_005,PCTSP,S,5,"We imagine the city inspector drawing a single circuit from headquarters, choosing which lamp posts to inspect until the team has collected enough priority points to meet the quota. Better plans are simply those where the sum of road miles driven plus the penalties for any uninspected posts comes out lower — compute it by adding the total travel distance to the penalty amounts for skipped posts. The day’s work must be done as one continuous tour that returns to HQ, and revisiting posts just wastes distance. The concrete post-by-post details are listed below.
+
+# total_locations_including_hq=8
+# headquarters_node_id=1
+# required_priority_score=200.0
+post_node_id,x_coordinate,y_coordinate,priority_points,skip_penalty
+1,48,71,0,0
+2,0,5,36,26
+3,88,81,64,57
+4,66,0,19,25
+5,100,100,50,21
+6,38,20,18,36
+7,38,49,92,53
+8,86,46,43,54
+
+You can send your answer in a simple JSON form like this so it's easy to check automatically — just a single tour as a list that starts and ends at the depot.
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of that as a little form: ""solution"" is the tour, and the array is the order you visit things (starting and finishing at the depot). It's only a sketch of the shape I want here, not the actual route — replace those placeholders with the real IDs from the instance.
+
+Please use the exact identifiers from the instance input — no renaming and no new labels.  
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""coordinates"": [[48, 71], [0, 5], [88, 81], [66, 0], [100, 100], [38, 20], [38, 49], [86, 46]], ""prizes"": [0, 36, 64, 19, 50, 18, 92, 43], ""penalties"": [0, 26, 57, 25, 21, 36, 53, 54], ""required_prize"": 200.0, ""depot"": 0, ""route_length"": 184.04362074510667, ""route_prize"": 217.0, ""unvisited_penalty"": 72.0, ""objective"": 256.0436207451067}","[0, 6, 5, 7, 2, 0]",256.0436207451067,"{""problem_type"": ""PCTSP"", ""num_nodes"": 8, ""nodes"": [{""id"": 1, ""x"": 48, ""y"": 71, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 0, ""y"": 5, ""prize"": 36, ""penalty"": 26}, {""id"": 3, ""x"": 88, ""y"": 81, ""prize"": 64, ""penalty"": 57}, {""id"": 4, ""x"": 66, ""y"": 0, ""prize"": 19, ""penalty"": 25}, {""id"": 5, ""x"": 100, ""y"": 100, ""prize"": 50, ""penalty"": 21}, {""id"": 6, ""x"": 38, ""y"": 20, ""prize"": 18, ""penalty"": 36}, {""id"": 7, ""x"": 38, ""y"": 49, ""prize"": 92, ""penalty"": 53}, {""id"": 8, ""x"": 86, ""y"": 46, ""prize"": 43, ""penalty"": 54}], ""depot"": 1, ""required_prize"": 200.0, ""route_prize"": 217.0, ""unvisited_penalty"": 72.0, ""route_length"": 184.04362074510667, ""objective"": 256.0436207451067}","[1, 7, 6, 8, 3, 1]"
+PCTSP_S_006,PCTSP,S,6,"Many people do one-day pop-up rounds from a home studio: drive a loop, stop at selected meetup spots, and return. The choice here is which stops to take so that the bookings from those stops meet a minimum target. To pick the best loop, sum the driving expense for the entire circuit plus the penalties for any meetups not visited — lower combined cost is better. The trip must be exactly one circuit beginning and ending at the studio, with each meetup visited at most once. The full list of meetups, their booking values, penalties, and the required total are given below.
+
+{
+  ""total_locations_including_studio"": 6,
+  ""nodes"": [
+    {
+      ""location_id"": ""A"",
+      ""x_coord"": 31,
+      ""y_coord"": 50,
+      ""booking_value"": 0,
+      ""missed_session_penalty"": 0
+    },
+    {
+      ""location_id"": ""B"",
+      ""x_coord"": 100,
+      ""y_coord"": 0,
+      ""booking_value"": 8,
+      ""missed_session_penalty"": 50
+    },
+    {
+      ""location_id"": ""C"",
+      ""x_coord"": 82,
+      ""y_coord"": 100,
+      ""booking_value"": 60,
+      ""missed_session_penalty"": 5
+    },
+    {
+      ""location_id"": ""D"",
+      ""x_coord"": 10,
+      ""y_coord"": 19,
+      ""booking_value"": 25,
+      ""missed_session_penalty"": 45
+    },
+    {
+      ""location_id"": ""E"",
+      ""x_coord"": 0,
+      ""y_coord"": 89,
+      ""booking_value"": 73,
+      ""missed_session_penalty"": 11
+    },
+    {
+      ""location_id"": ""F"",
+      ""x_coord"": 82,
+      ""y_coord"": 99,
+      ""booking_value"": 89,
+      ""missed_session_penalty"": 51
+    }
+  ],
+  ""studio_node_id"": ""A"",
+  ""required_total_bookings"": 150.0
+}
+
+If you want the tour back in a simple, machine-friendly form, you can use this relaxed JSON shape — nothing fancy, just an ordered list that starts and ends at the studio:
+
+{
+  ""solution"": [studio_id, meetup_id, ..., studio_id]
+}
+
+Think of ""solution"" as the single loop: the list shows the stops in order, beginning and ending at your studio. The studio_id and meetup_id entries are placeholders for the studio and each meetup stop, and the ""..."" just means you can have as many meetups in the middle as needed. This is only a sketch of the shape I expect, not the actual answer.
+
+Please be sure to use the exact identifiers from the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""coordinates"": [[31, 50], [100, 0], [82, 100], [10, 19], [0, 89], [82, 99]], ""prizes"": [0, 8, 60, 25, 73, 89], ""penalties"": [0, 50, 5, 45, 11, 51], ""required_prize"": 150.0, ""depot"": 0, ""route_length"": 217.4935681729642, ""route_prize"": 174.0, ""unvisited_penalty"": 61.0, ""objective"": 278.49356817296416}","[0, 3, 5, 2, 0]",278.49356817296416,"{""problem_type"": ""PCTSP"", ""num_nodes"": 6, ""nodes"": [{""id"": ""A"", ""x"": 31, ""y"": 50, ""prize"": 0, ""penalty"": 0}, {""id"": ""B"", ""x"": 100, ""y"": 0, ""prize"": 8, ""penalty"": 50}, {""id"": ""C"", ""x"": 82, ""y"": 100, ""prize"": 60, ""penalty"": 5}, {""id"": ""D"", ""x"": 10, ""y"": 19, ""prize"": 25, ""penalty"": 45}, {""id"": ""E"", ""x"": 0, ""y"": 89, ""prize"": 73, ""penalty"": 11}, {""id"": ""F"", ""x"": 82, ""y"": 99, ""prize"": 89, ""penalty"": 51}], ""depot"": ""A"", ""required_prize"": 150.0, ""route_prize"": 174.0, ""unvisited_penalty"": 61.0, ""route_length"": 217.4935681729642, ""objective"": 278.49356817296416}","[""A"", ""D"", ""F"", ""C"", ""A""]"
+PCTSP_S_007,PCTSP,S,7,"I’m the person in charge of the pharmacy’s delivery run: plan one single round trip that leaves from the pharmacy, visits a selection of patient homes, and comes back. The decision is which homes to include and in what order so that the total number of medicines handed out hits the required quota. A better plan is one that keeps the bill low — add up the driving cost (miles/time/fuel/driver pay) for the whole loop and then add any fines or customer penalty amounts for homes that were skipped; the sum is what matters, and the plan with the smaller sum wins. The trip must be a single loop starting and ending at the pharmacy, no split trips, and no visiting the same house twice. Concrete details of addresses, delivery amounts, and penalty values are shown below.
+
+{
+  ""total_locations_including_pharmacy"": 7,
+  ""nodes"": [
+    {
+      ""location_id"": 0,
+      ""coord_x"": 28,
+      ""coord_y"": 55,
+      ""medicines_delivered_at_stop"": 0,
+      ""missed_delivery_penalty"": 0
+    },
+    {
+      ""location_id"": 1,
+      ""coord_x"": 0,
+      ""coord_y"": 16,
+      ""medicines_delivered_at_stop"": 77,
+      ""missed_delivery_penalty"": 35
+    },
+    {
+      ""location_id"": 2,
+      ""coord_x"": 63,
+      ""coord_y"": 0,
+      ""medicines_delivered_at_stop"": 5,
+      ""missed_delivery_penalty"": 58
+    },
+    {
+      ""location_id"": 3,
+      ""coord_x"": 11,
+      ""coord_y"": 100,
+      ""medicines_delivered_at_stop"": 11,
+      ""missed_delivery_penalty"": 37
+    },
+    {
+      ""location_id"": 4,
+      ""coord_x"": 100,
+      ""coord_y"": 9,
+      ""medicines_delivered_at_stop"": 68,
+      ""missed_delivery_penalty"": 66
+    },
+    {
+      ""location_id"": 5,
+      ""coord_x"": 95,
+      ""coord_y"": 84,
+      ""medicines_delivered_at_stop"": 51,
+      ""missed_delivery_penalty"": 48
+    },
+    {
+      ""location_id"": 6,
+      ""coord_x"": 87,
+      ""coord_y"": 91,
+      ""medicines_delivered_at_stop"": 57,
+      ""missed_delivery_penalty"": 11
+    }
+  ],
+  ""pharmacy_node_id"": 0,
+  ""required_medicine_count"": 175.0
+}
+
+When you send your planned loop back, just use this simple JSON layout so I can pick it up cleanly:
+
+{
+  ""solution"": [""pharmacy_id"", ""patient_id"", ..., ""pharmacy_id""]
+}
+
+The ""solution"" list is just the ordered loop: start with the pharmacy's id, list the patient home ids you plan to visit in order, and finish with the pharmacy id again to close the trip. It's just a little form — nothing fancy — and it's only a sketch of the shape I expect, not the actual route.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",json,zero_based,"{""coordinates"": [[28, 55], [0, 16], [63, 0], [11, 100], [100, 9], [95, 84], [87, 91]], ""prizes"": [0, 77, 5, 11, 68, 51, 57], ""penalties"": [0, 35, 58, 37, 66, 48, 11], ""required_prize"": 175.0, ""depot"": 0, ""route_length"": 258.18336206845515, ""route_prize"": 181.0, ""unvisited_penalty"": 72.0, ""objective"": 330.1833620684551}","[0, 6, 5, 4, 2, 0]",330.1833620684551,"{""problem_type"": ""PCTSP"", ""num_nodes"": 7, ""nodes"": [{""id"": 0, ""x"": 28, ""y"": 55, ""prize"": 0, ""penalty"": 0}, {""id"": 1, ""x"": 0, ""y"": 16, ""prize"": 77, ""penalty"": 35}, {""id"": 2, ""x"": 63, ""y"": 0, ""prize"": 5, ""penalty"": 58}, {""id"": 3, ""x"": 11, ""y"": 100, ""prize"": 11, ""penalty"": 37}, {""id"": 4, ""x"": 100, ""y"": 9, ""prize"": 68, ""penalty"": 66}, {""id"": 5, ""x"": 95, ""y"": 84, ""prize"": 51, ""penalty"": 48}, {""id"": 6, ""x"": 87, ""y"": 91, ""prize"": 57, ""penalty"": 11}], ""depot"": 0, ""required_prize"": 175.0, ""route_prize"": 181.0, ""unvisited_penalty"": 72.0, ""route_length"": 258.18336206845515, ""objective"": 330.1833620684551}","[0, 6, 5, 4, 2, 0]"
+PCTSP_S_008,PCTSP,S,8,"Picture this: a map with a depot and lots of little neighborhood bins, each labeled with how much material it holds and how much it costs if skipped. The supervisor needs to pick a single loop that leaves and returns to the depot, visits some of those bins (no duplicates) until the truck’s load meets the target, and does so cheaply. “Cheaply” here means the total of the miles driven plus the fines for any skipped bins — that sum is what’s being minimized. The exact figures and distances are listed below.
+
+# total_locations_including_depot=5
+# depot_id=1
+# required_total_recyclable_weight=125.0
+location_id,x_coord,y_coord,bin_recyclable_weight,skip_fine
+1,0,25,0,0
+2,95,52,87,62
+3,100,0,35,44
+4,57,100,19,26
+5,24,54,47,41
+
+Oh, and when you send back the chosen loop, please stick to this simple JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+This just means ""solution"" should be an ordered list of the stops on the single loop — start at the depot, list each visited location once in the order you visit them, and finish back at the depot. Think of it like filling out a short form: the array is the route from beginning to end. This is only a sketch of the expected shape, not the actual route — replace those placeholders with the real identifiers from the instance when you answer.
+
+Please make sure all identifiers are used exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""coordinates"": [[0, 25], [95, 52], [100, 0], [57, 100], [24, 54]], ""prizes"": [0, 87, 35, 19, 47], ""penalties"": [0, 62, 44, 26, 41], ""required_prize"": 125.0, ""depot"": 0, ""route_length"": 207.43356487876758, ""route_prize"": 134.0, ""unvisited_penalty"": 70.0, ""objective"": 277.4335648787676}","[0, 4, 1, 0]",277.4335648787676,"{""problem_type"": ""PCTSP"", ""num_nodes"": 5, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 25, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 95, ""y"": 52, ""prize"": 87, ""penalty"": 62}, {""id"": 3, ""x"": 100, ""y"": 0, ""prize"": 35, ""penalty"": 44}, {""id"": 4, ""x"": 57, ""y"": 100, ""prize"": 19, ""penalty"": 26}, {""id"": 5, ""x"": 24, ""y"": 54, ""prize"": 47, ""penalty"": 41}], ""depot"": 1, ""required_prize"": 125.0, ""route_prize"": 134.0, ""unvisited_penalty"": 70.0, ""route_length"": 207.43356487876758, ""objective"": 277.4335648787676}","[1, 5, 2, 1]"
+PCTSP_S_009,PCTSP,S,9,"Someone in charge of billboard upkeep needs to map out one circuit leaving from and returning to the operations office, stopping at selected signs until the required maintenance coverage is reached. The key decision is which signs to include — the balance to strike is shorter driving against the contractual penalties for signs that don’t get visited. The way to compare plans is straightforward: add the trip’s travel cost to the sum of penalties for any unvisited billboards and aim for the smallest total. Each billboard should be visited at most once, the trip must start and end at the office, and the inspected set must meet the minimum coverage. The specific instance data follow below.
+
+Instance data: 7 total locations including the operations office, depot 0, required maintenance coverage 175.0.
+Billboard 0 at (64, 0) provides coverage 0 and carries a contractual penalty of 0 if it is not visited.
+Billboard 1 at (96, 0) provides coverage 90 and carries a contractual penalty of 25 if it is not visited.
+Billboard 2 at (28, 26) provides coverage 98 and carries a contractual penalty of 4 if it is not visited.
+Billboard 3 at (100, 41) provides coverage 62 and carries a contractual penalty of 44 if it is not visited.
+Billboard 4 at (0, 41) provides coverage 8 and carries a contractual penalty of 9 if it is not visited.
+Billboard 5 at (40, 63) provides coverage 73 and carries a contractual penalty of 54 if it is not visited.
+Billboard 6 at (19, 100) provides coverage 68 and carries a contractual penalty of 57 if it is not visited.
+The circuit must achieve at least 175.0 total coverage while minimizing travel plus penalties.
+
+You can just hand the route back in a tiny JSON snippet so it's clear and machine-friendly. Something like this:
+
+{
+  ""solution"": [office_id, sign_id, ..., office_id]
+}
+
+This is just a sketch of the shape I want: the solution array lists the office (start), the signs you plan to visit in order, and the office again (end). The placeholders here are just placeholders — replace them with the actual identifiers from the instance when you give the real route.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,zero_based,"{""coordinates"": [[64, 0], [96, 0], [28, 26], [100, 41], [0, 41], [40, 63], [19, 100]], ""prizes"": [0, 90, 98, 62, 8, 73, 68], ""penalties"": [0, 25, 4, 44, 9, 54, 57], ""required_prize"": 175.0, ""depot"": 0, ""route_length"": 204.51745624550648, ""route_prize"": 225.0, ""unvisited_penalty"": 70.0, ""objective"": 274.5174562455065}","[0, 1, 3, 5, 0]",274.5174562455065,"{""problem_type"": ""PCTSP"", ""num_nodes"": 7, ""nodes"": [{""id"": 0, ""x"": 64, ""y"": 0, ""prize"": 0, ""penalty"": 0}, {""id"": 1, ""x"": 96, ""y"": 0, ""prize"": 90, ""penalty"": 25}, {""id"": 2, ""x"": 28, ""y"": 26, ""prize"": 98, ""penalty"": 4}, {""id"": 3, ""x"": 100, ""y"": 41, ""prize"": 62, ""penalty"": 44}, {""id"": 4, ""x"": 0, ""y"": 41, ""prize"": 8, ""penalty"": 9}, {""id"": 5, ""x"": 40, ""y"": 63, ""prize"": 73, ""penalty"": 54}, {""id"": 6, ""x"": 19, ""y"": 100, ""prize"": 68, ""penalty"": 57}], ""depot"": 0, ""required_prize"": 175.0, ""route_prize"": 225.0, ""unvisited_penalty"": 70.0, ""route_length"": 204.51745624550648, ""objective"": 274.5174562455065}","[0, 1, 3, 5, 0]"
+PCTSP_S_010,PCTSP,S,10,"There’s a field season coming up and someone has to sketch a single sampling circuit that begins and ends at base and visits selected locations. The decision is which locations to include so that the collected data adds up to at least the required threshold. To compare plans, tally the distance or time for the whole loop and then add a penalty for each location that isn’t visited — the plan with the smallest total is preferred. The tour must be one continuous loop without revisiting places, and the concrete details are shown below.
+
+There are 9 sites in total (base camp is A); the tour must collect at least 225.0 total data.
+Site A at (21, 65) provides 0 data and incurs 0 if not visited.
+Site B at (59, 32) provides 94 data and incurs 1 if not visited.
+Site C at (42, 34) provides 17 data and incurs 30 if not visited.
+Site D at (100, 99) provides 94 data and incurs 2 if not visited.
+Site E at (8, 100) provides 47 data and incurs 37 if not visited.
+Site F at (5, 99) provides 76 data and incurs 30 if not visited.
+Site G at (3, 99) provides 75 data and incurs 37 if not visited.
+Site H at (0, 100) provides 98 data and incurs 25 if not visited.
+Site I at (98, 0) provides 97 data and incurs 15 if not visited.
+Prefer the single continuous loop with the smallest sum of travel distance and missed-sample penalties.
+
+When you send the chosen loop back, just drop it in a tiny JSON snippet like this so it's easy to parse:
+
+{
+  ""solution"": [base_id, site_id, ..., base_id]
+}
+
+Think of that array as the ordered loop: start at the base, list each site you plan to visit in the order you'll hit them, and finish back at the base. It's just a shape sketch — not the final plan itself.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"{""coordinates"": [[21, 65], [59, 32], [42, 34], [100, 99], [8, 100], [5, 99], [3, 99], [0, 100], [98, 0]], ""prizes"": [0, 94, 17, 94, 47, 76, 75, 98, 97], ""penalties"": [0, 1, 30, 2, 37, 30, 37, 25, 15], ""required_prize"": 225.0, ""depot"": 0, ""route_length"": 86.47752798944279, ""route_prize"": 296.0, ""unvisited_penalty"": 48.0, ""objective"": 134.4775279894428}","[0, 4, 5, 6, 7, 0]",134.4775279894428,"{""problem_type"": ""PCTSP"", ""num_nodes"": 9, ""nodes"": [{""id"": ""A"", ""x"": 21, ""y"": 65, ""prize"": 0, ""penalty"": 0}, {""id"": ""B"", ""x"": 59, ""y"": 32, ""prize"": 94, ""penalty"": 1}, {""id"": ""C"", ""x"": 42, ""y"": 34, ""prize"": 17, ""penalty"": 30}, {""id"": ""D"", ""x"": 100, ""y"": 99, ""prize"": 94, ""penalty"": 2}, {""id"": ""E"", ""x"": 8, ""y"": 100, ""prize"": 47, ""penalty"": 37}, {""id"": ""F"", ""x"": 5, ""y"": 99, ""prize"": 76, ""penalty"": 30}, {""id"": ""G"", ""x"": 3, ""y"": 99, ""prize"": 75, ""penalty"": 37}, {""id"": ""H"", ""x"": 0, ""y"": 100, ""prize"": 98, ""penalty"": 25}, {""id"": ""I"", ""x"": 98, ""y"": 0, ""prize"": 97, ""penalty"": 15}], ""depot"": ""A"", ""required_prize"": 225.0, ""route_prize"": 296.0, ""unvisited_penalty"": 48.0, ""route_length"": 86.47752798944279, ""objective"": 134.4775279894428}","[""A"", ""E"", ""F"", ""G"", ""H"", ""A""]"
+PCTSP_S_011,PCTSP,S,11,"We’ve got to map out one uninterrupted sales run from headquarters and back, choosing a subset of boutiques to visit until the target order volume is reached. The decision is which boutiques make the cut — each chosen boutique is visited one time during the loop and the tour must be continuous. The “score” for a route is simple: total travel mileage plus the lost-commission penalties for boutiques that weren’t visited, and the aim is to make that sum as small as possible while reaching the order goal. The specific numbers and locations appear below.
+
+We have 10 locations (including our office at node A) and must collect at least 250.0 order volume.
+Boutique A at (87, 38) provides 0 order volume and costs 0 in lost commission if we skip it.
+Boutique B at (60, 43) provides 73 order volume and costs 28 in lost commission if we skip it.
+Boutique C at (43, 32) provides 1 order volume and costs 9 in lost commission if we skip it.
+Boutique D at (42, 77) provides 10 order volume and costs 21 in lost commission if we skip it.
+Boutique E at (100, 0) provides 63 order volume and costs 38 in lost commission if we skip it.
+Boutique F at (96, 64) provides 29 order volume and costs 50 in lost commission if we skip it.
+Boutique G at (0, 98) provides 41 order volume and costs 4 in lost commission if we skip it.
+Boutique H at (15, 100) provides 78 order volume and costs 7 in lost commission if we skip it.
+Boutique I at (62, 62) provides 35 order volume and costs 37 in lost commission if we skip it.
+Boutique J at (68, 72) provides 93 order volume and costs 42 in lost commission if we skip it.
+Plan a single continuous loop starting and ending at node A that meets 250.0 across the 10 locations.
+
+Also, when you send the chosen loop back, please use this simple JSON layout so I can read it automatically:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+""solution"" should be a single list that starts at the depot, lists each boutique you visit in the order you visit them, and ends back at the depot. Think of it like filling in a short route sheet: depot → shop → shop → ... → depot.
+
+Just a quick reminder: use the exact identifiers shown in the instance input — don’t rename them or invent new ones. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"{""coordinates"": [[87, 38], [60, 43], [43, 32], [42, 77], [100, 0], [96, 64], [0, 98], [15, 100], [62, 62], [68, 72]], ""prizes"": [0, 73, 1, 10, 63, 29, 41, 78, 35, 93], ""penalties"": [0, 28, 9, 21, 38, 50, 4, 7, 37, 42], ""required_prize"": 250.0, ""depot"": 0, ""route_length"": 186.29130820190116, ""route_prize"": 293.0, ""unvisited_penalty"": 41.0, ""objective"": 227.2913082019012}","[0, 4, 1, 8, 9, 5, 0]",227.2913082019012,"{""problem_type"": ""PCTSP"", ""num_nodes"": 10, ""nodes"": [{""id"": ""A"", ""x"": 87, ""y"": 38, ""prize"": 0, ""penalty"": 0}, {""id"": ""B"", ""x"": 60, ""y"": 43, ""prize"": 73, ""penalty"": 28}, {""id"": ""C"", ""x"": 43, ""y"": 32, ""prize"": 1, ""penalty"": 9}, {""id"": ""D"", ""x"": 42, ""y"": 77, ""prize"": 10, ""penalty"": 21}, {""id"": ""E"", ""x"": 100, ""y"": 0, ""prize"": 63, ""penalty"": 38}, {""id"": ""F"", ""x"": 96, ""y"": 64, ""prize"": 29, ""penalty"": 50}, {""id"": ""G"", ""x"": 0, ""y"": 98, ""prize"": 41, ""penalty"": 4}, {""id"": ""H"", ""x"": 15, ""y"": 100, ""prize"": 78, ""penalty"": 7}, {""id"": ""I"", ""x"": 62, ""y"": 62, ""prize"": 35, ""penalty"": 37}, {""id"": ""J"", ""x"": 68, ""y"": 72, ""prize"": 93, ""penalty"": 42}], ""depot"": ""A"", ""required_prize"": 250.0, ""route_prize"": 293.0, ""unvisited_penalty"": 41.0, ""route_length"": 186.29130820190116, ""objective"": 227.2913082019012}","[""A"", ""E"", ""B"", ""I"", ""J"", ""F"", ""A""]"
+PCTSP_S_012,PCTSP,S,12,"Picture this: the library needs the bookmobile to do one tidy circuit — leave the library, stop at a selection of community drop boxes, collect enough returns to hit the target, and pull back into the library. The job is choosing which boxes make the list and in what order so driving distance is minimized while avoiding big overdue or service penalties for any boxes skipped. The way to compare routes is straightforward: add up the driving distance and the penalties for unvisited boxes — smaller totals are better. The trip has to be a single continuous loop, each box visited at most once, and the pickups must meet or exceed the required total. The concrete box-by-box details, distances, return counts, and skip penalties follow below.
+
+{
+  ""total_locations_including_library"": 9,
+  ""nodes"": [
+    {
+      ""location_node_id"": ""A"",
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 35,
+      ""returns_at_box"": 0,
+      ""missed_box_penalty"": 0
+    },
+    {
+      ""location_node_id"": ""B"",
+      ""x_coordinate"": 17,
+      ""y_coordinate"": 36,
+      ""returns_at_box"": 83,
+      ""missed_box_penalty"": 52
+    },
+    {
+      ""location_node_id"": ""C"",
+      ""x_coordinate"": 17,
+      ""y_coordinate"": 100,
+      ""returns_at_box"": 79,
+      ""missed_box_penalty"": 51
+    },
+    {
+      ""location_node_id"": ""D"",
+      ""x_coordinate"": 54,
+      ""y_coordinate"": 13,
+      ""returns_at_box"": 69,
+      ""missed_box_penalty"": 54
+    },
+    {
+      ""location_node_id"": ""E"",
+      ""x_coordinate"": 54,
+      ""y_coordinate"": 82,
+      ""returns_at_box"": 34,
+      ""missed_box_penalty"": 45
+    },
+    {
+      ""location_node_id"": ""F"",
+      ""x_coordinate"": 81,
+      ""y_coordinate"": 100,
+      ""returns_at_box"": 44,
+      ""missed_box_penalty"": 5
+    },
+    {
+      ""location_node_id"": ""G"",
+      ""x_coordinate"": 89,
+      ""y_coordinate"": 30,
+      ""returns_at_box"": 37,
+      ""missed_box_penalty"": 5
+    },
+    {
+      ""location_node_id"": ""H"",
+      ""x_coordinate"": 96,
+      ""y_coordinate"": 98,
+      ""returns_at_box"": 84,
+      ""missed_box_penalty"": 31
+    },
+    {
+      ""location_node_id"": ""I"",
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 0,
+      ""returns_at_box"": 33,
+      ""missed_box_penalty"": 48
+    }
+  ],
+  ""library_node_id"": ""A"",
+  ""required_returns_target"": 225.0
+}
+
+Oh, and when you send the chosen route back, please use this simple JSON shape so it's easy to read by whatever's checking the answers:
+
+{
+  ""solution"": [""library_id"", ""box_id"", ..., ""library_id""]
+}
+
+This little sketch means: the ""solution"" array is the tour in order — start at the library, list each drop box you plan to visit (at most once), and finish back at the library. It's just an example of the shape I need, not the actual final route.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""coordinates"": [[0, 35], [17, 36], [17, 100], [54, 13], [54, 82], [81, 100], [89, 30], [96, 98], [100, 0]], ""prizes"": [0, 83, 79, 69, 34, 44, 37, 84, 33], ""penalties"": [0, 52, 51, 54, 45, 5, 5, 31, 48], ""required_prize"": 225.0, ""depot"": 0, ""route_length"": 237.9278175393556, ""route_prize"": 265.0, ""unvisited_penalty"": 89.0, ""objective"": 326.9278175393556}","[0, 2, 4, 3, 1, 0]",326.9278175393556,"{""problem_type"": ""PCTSP"", ""num_nodes"": 9, ""nodes"": [{""id"": ""A"", ""x"": 0, ""y"": 35, ""prize"": 0, ""penalty"": 0}, {""id"": ""B"", ""x"": 17, ""y"": 36, ""prize"": 83, ""penalty"": 52}, {""id"": ""C"", ""x"": 17, ""y"": 100, ""prize"": 79, ""penalty"": 51}, {""id"": ""D"", ""x"": 54, ""y"": 13, ""prize"": 69, ""penalty"": 54}, {""id"": ""E"", ""x"": 54, ""y"": 82, ""prize"": 34, ""penalty"": 45}, {""id"": ""F"", ""x"": 81, ""y"": 100, ""prize"": 44, ""penalty"": 5}, {""id"": ""G"", ""x"": 89, ""y"": 30, ""prize"": 37, ""penalty"": 5}, {""id"": ""H"", ""x"": 96, ""y"": 98, ""prize"": 84, ""penalty"": 31}, {""id"": ""I"", ""x"": 100, ""y"": 0, ""prize"": 33, ""penalty"": 48}], ""depot"": ""A"", ""required_prize"": 225.0, ""route_prize"": 265.0, ""unvisited_penalty"": 89.0, ""route_length"": 237.9278175393556, ""objective"": 326.9278175393556}","[""A"", ""C"", ""E"", ""D"", ""B"", ""A""]"
+PCTSP_S_013,PCTSP,S,13,"Picture running a mobile detailing service and having to draw one continuous circuit from the shop that picks up certain customers so the bookings meet the minimum revenue goal. The selection should keep costs down, where cost means the total time spent driving that loop plus any refunds or cancellation costs paid to customers who don’t get a visit. It has to be a single outing that leaves and returns to the shop, visiting each chosen address once and not revisiting places. The exact instance information — locations, booking values, penalties, and the revenue requirement — is listed below.
+
+{
+  ""total_addresses_including_shop"": 7,
+  ""nodes"": [
+    {
+      ""location_id"": 0,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 70,
+      ""booking_revenue_if_served"": 0,
+      ""refund_or_cancellation_cost_if_skipped"": 0
+    },
+    {
+      ""location_id"": 1,
+      ""x_coordinate"": 37,
+      ""y_coordinate"": 72,
+      ""booking_revenue_if_served"": 64,
+      ""refund_or_cancellation_cost_if_skipped"": 8
+    },
+    {
+      ""location_id"": 2,
+      ""x_coordinate"": 31,
+      ""y_coordinate"": 58,
+      ""booking_revenue_if_served"": 96,
+      ""refund_or_cancellation_cost_if_skipped"": 27
+    },
+    {
+      ""location_id"": 3,
+      ""x_coordinate"": 49,
+      ""y_coordinate"": 100,
+      ""booking_revenue_if_served"": 15,
+      ""refund_or_cancellation_cost_if_skipped"": 2
+    },
+    {
+      ""location_id"": 4,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 84,
+      ""booking_revenue_if_served"": 22,
+      ""refund_or_cancellation_cost_if_skipped"": 38
+    },
+    {
+      ""location_id"": 5,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 77,
+      ""booking_revenue_if_served"": 33,
+      ""refund_or_cancellation_cost_if_skipped"": 68
+    },
+    {
+      ""location_id"": 6,
+      ""x_coordinate"": 86,
+      ""y_coordinate"": 0,
+      ""booking_revenue_if_served"": 26,
+      ""refund_or_cancellation_cost_if_skipped"": 32
+    }
+  ],
+  ""shop_node_id"": 0,
+  ""required_booking_revenue"": 175.0
+}
+
+When you send back the route, just use this simple JSON layout so it's easy to parse:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of ""solution"" as the ordered list of stops for the single outing — start at the shop (depot_id), go visit the listed locations in order, and come back to the shop (the final depot_id). The placeholders are just showing the shape I expect, not the actual route — so treat this as a template.
+
+Please use the exact identifiers from the instance input — no renaming, no made-up labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"{""coordinates"": [[0, 70], [37, 72], [31, 58], [49, 100], [100, 84], [100, 77], [86, 0]], ""prizes"": [0, 64, 96, 15, 22, 33, 26], ""penalties"": [0, 8, 27, 2, 38, 68, 32], ""required_prize"": 175.0, ""depot"": 0, ""route_length"": 212.99637922411455, ""route_prize"": 215.0, ""unvisited_penalty"": 34.0, ""objective"": 246.99637922411455}","[0, 2, 5, 4, 1, 0]",246.99637922411455,"{""problem_type"": ""PCTSP"", ""num_nodes"": 7, ""nodes"": [{""id"": 0, ""x"": 0, ""y"": 70, ""prize"": 0, ""penalty"": 0}, {""id"": 1, ""x"": 37, ""y"": 72, ""prize"": 64, ""penalty"": 8}, {""id"": 2, ""x"": 31, ""y"": 58, ""prize"": 96, ""penalty"": 27}, {""id"": 3, ""x"": 49, ""y"": 100, ""prize"": 15, ""penalty"": 2}, {""id"": 4, ""x"": 100, ""y"": 84, ""prize"": 22, ""penalty"": 38}, {""id"": 5, ""x"": 100, ""y"": 77, ""prize"": 33, ""penalty"": 68}, {""id"": 6, ""x"": 86, ""y"": 0, ""prize"": 26, ""penalty"": 32}], ""depot"": 0, ""required_prize"": 175.0, ""route_prize"": 215.0, ""unvisited_penalty"": 34.0, ""route_length"": 212.99637922411455, ""objective"": 246.99637922411455}","[0, 2, 5, 4, 1, 0]"
+PCTSP_S_014,PCTSP,S,14,"There’s a need to map out a single round trip from the health center that stops at chosen neighborhoods until the expected donor count meets a preset minimum. To compare different route choices, total up how much it costs to drive the whole loop and then add a penalty cost for each neighborhood that wasn’t visited — the best route minimizes that total. The journey must start and end at the health center, avoid repeat visits, and the chosen stops must together reach the required donor total. The concrete details are provided below.
+
+{
+  ""total_locations_including_health_center"": 8,
+  ""nodes"": [
+    {
+      ""neighborhood_node_id"": 0,
+      ""x_coordinate_location"": 58,
+      ""y_coordinate_location"": 91,
+      ""expected_donors_at_location"": 0,
+      ""penalty_cost_if_not_visited"": 0
+    },
+    {
+      ""neighborhood_node_id"": 1,
+      ""x_coordinate_location"": 36,
+      ""y_coordinate_location"": 91,
+      ""expected_donors_at_location"": 61,
+      ""penalty_cost_if_not_visited"": 46
+    },
+    {
+      ""neighborhood_node_id"": 2,
+      ""x_coordinate_location"": 30,
+      ""y_coordinate_location"": 91,
+      ""expected_donors_at_location"": 93,
+      ""penalty_cost_if_not_visited"": 21
+    },
+    {
+      ""neighborhood_node_id"": 3,
+      ""x_coordinate_location"": 50,
+      ""y_coordinate_location"": 32,
+      ""expected_donors_at_location"": 73,
+      ""penalty_cost_if_not_visited"": 55
+    },
+    {
+      ""neighborhood_node_id"": 4,
+      ""x_coordinate_location"": 50,
+      ""y_coordinate_location"": 31,
+      ""expected_donors_at_location"": 82,
+      ""penalty_cost_if_not_visited"": 54
+    },
+    {
+      ""neighborhood_node_id"": 5,
+      ""x_coordinate_location"": 96,
+      ""y_coordinate_location"": 100,
+      ""expected_donors_at_location"": 34,
+      ""penalty_cost_if_not_visited"": 10
+    },
+    {
+      ""neighborhood_node_id"": 6,
+      ""x_coordinate_location"": 100,
+      ""y_coordinate_location"": 99,
+      ""expected_donors_at_location"": 91,
+      ""penalty_cost_if_not_visited"": 14
+    },
+    {
+      ""neighborhood_node_id"": 7,
+      ""x_coordinate_location"": 0,
+      ""y_coordinate_location"": 0,
+      ""expected_donors_at_location"": 19,
+      ""penalty_cost_if_not_visited"": 3
+    }
+  ],
+  ""health_center_node_id"": 0,
+  ""required_minimum_expected_donors"": 200.0
+}
+
+Also, when you send back the chosen round trip, just put it in a tiny JSON snippet like this:
+
+{
+  ""solution"": [health_center_id, neighborhood_id, ..., health_center_id]
+}
+
+Think of that array as the form you fill out: start with the health center, then list the neighborhoods you plan to visit in order (no repeats), and finish by returning to the health center. This is just a sketch of the expected shape — not the actual route.
+
+Please make sure to use the exact identifiers from the instance input — do not rename them or make up new labels.
+
+For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""coordinates"": [[58, 91], [36, 91], [30, 91], [50, 32], [50, 31], [96, 100], [100, 99], [0, 0]], ""prizes"": [0, 61, 93, 73, 82, 34, 91, 19], ""penalties"": [0, 46, 21, 55, 54, 10, 14, 3], ""required_prize"": 200.0, ""depot"": 0, ""route_length"": 151.78545578978438, ""route_prize"": 309.0, ""unvisited_penalty"": 27.0, ""objective"": 178.78545578978438}","[0, 3, 4, 2, 1, 0]",178.78545578978438,"{""problem_type"": ""PCTSP"", ""num_nodes"": 8, ""nodes"": [{""id"": 0, ""x"": 58, ""y"": 91, ""prize"": 0, ""penalty"": 0}, {""id"": 1, ""x"": 36, ""y"": 91, ""prize"": 61, ""penalty"": 46}, {""id"": 2, ""x"": 30, ""y"": 91, ""prize"": 93, ""penalty"": 21}, {""id"": 3, ""x"": 50, ""y"": 32, ""prize"": 73, ""penalty"": 55}, {""id"": 4, ""x"": 50, ""y"": 31, ""prize"": 82, ""penalty"": 54}, {""id"": 5, ""x"": 96, ""y"": 100, ""prize"": 34, ""penalty"": 10}, {""id"": 6, ""x"": 100, ""y"": 99, ""prize"": 91, ""penalty"": 14}, {""id"": 7, ""x"": 0, ""y"": 0, ""prize"": 19, ""penalty"": 3}], ""depot"": 0, ""required_prize"": 200.0, ""route_prize"": 309.0, ""unvisited_penalty"": 27.0, ""route_length"": 151.78545578978438, ""objective"": 178.78545578978438}","[0, 3, 4, 2, 1, 0]"
+PCTSP_S_015,PCTSP,S,15,"Imagine the admissions director sketching one continuous recruiting route that departs campus, visits a handful of schools, and returns to campus — the stops must bring the total prospective student contacts up to the required threshold. The task is to pick which schools to include and the order to visit them; a smarter choice keeps the combined bill low by minimizing the round-trip travel cost plus the outreach penalties for any schools left out. Concretely, you’d compute that combined score by summing the travel expense for the whole circuit and the penalties for skipped schools, and the tour has to be a single loop with no repeated stops while meeting the contact target. The full instance details are below.
+
+{
+  ""total_locations_count"": 9,
+  ""nodes"": [
+    {
+      ""school_id"": 1,
+      ""location_x"": 100,
+      ""location_y"": 85,
+      ""contacts_at_school"": 0,
+      ""outreach_penalty_if_skipped"": 0
+    },
+    {
+      ""school_id"": 2,
+      ""location_x"": 89,
+      ""location_y"": 94,
+      ""contacts_at_school"": 34,
+      ""outreach_penalty_if_skipped"": 53
+    },
+    {
+      ""school_id"": 3,
+      ""location_x"": 65,
+      ""location_y"": 44,
+      ""contacts_at_school"": 39,
+      ""outreach_penalty_if_skipped"": 21
+    },
+    {
+      ""school_id"": 4,
+      ""location_x"": 53,
+      ""location_y"": 0,
+      ""contacts_at_school"": 27,
+      ""outreach_penalty_if_skipped"": 53
+    },
+    {
+      ""school_id"": 5,
+      ""location_x"": 50,
+      ""location_y"": 89,
+      ""contacts_at_school"": 12,
+      ""outreach_penalty_if_skipped"": 3
+    },
+    {
+      ""school_id"": 6,
+      ""location_x"": 58,
+      ""location_y"": 35,
+      ""contacts_at_school"": 46,
+      ""outreach_penalty_if_skipped"": 31
+    },
+    {
+      ""school_id"": 7,
+      ""location_x"": 33,
+      ""location_y"": 100,
+      ""contacts_at_school"": 23,
+      ""outreach_penalty_if_skipped"": 33
+    },
+    {
+      ""school_id"": 8,
+      ""location_x"": 15,
+      ""location_y"": 54,
+      ""contacts_at_school"": 56,
+      ""outreach_penalty_if_skipped"": 54
+    },
+    {
+      ""school_id"": 9,
+      ""location_x"": 0,
+      ""location_y"": 15,
+      ""contacts_at_school"": 20,
+      ""outreach_penalty_if_skipped"": 52
+    }
+  ],
+  ""campus_node_id"": 1,
+  ""required_contact_target"": 225.0
+}
+
+Oh, and when you reply with the route, toss it into this simple JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of that as a little form: the solution field is the ordered list of stops on the single loop — it starts at the depot, lists each school or site you plan to visit in order, and ends back at the depot. This is just the expected shape, not the actual route — fill it in with the exact IDs from the instance when you submit.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels. 
+for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"{""coordinates"": [[100, 85], [89, 94], [65, 44], [53, 0], [50, 89], [58, 35], [33, 100], [15, 54], [0, 15]], ""prizes"": [0, 34, 39, 27, 12, 46, 23, 56, 20], ""penalties"": [0, 53, 21, 53, 3, 31, 33, 54, 52], ""required_prize"": 225.0, ""depot"": 0, ""route_length"": 317.4608813511076, ""route_prize"": 245.0, ""unvisited_penalty"": 3.0, ""objective"": 320.4608813511076}","[0, 2, 5, 3, 8, 7, 6, 1, 0]",320.4608813511076,"{""problem_type"": ""PCTSP"", ""num_nodes"": 9, ""nodes"": [{""id"": 1, ""x"": 100, ""y"": 85, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 89, ""y"": 94, ""prize"": 34, ""penalty"": 53}, {""id"": 3, ""x"": 65, ""y"": 44, ""prize"": 39, ""penalty"": 21}, {""id"": 4, ""x"": 53, ""y"": 0, ""prize"": 27, ""penalty"": 53}, {""id"": 5, ""x"": 50, ""y"": 89, ""prize"": 12, ""penalty"": 3}, {""id"": 6, ""x"": 58, ""y"": 35, ""prize"": 46, ""penalty"": 31}, {""id"": 7, ""x"": 33, ""y"": 100, ""prize"": 23, ""penalty"": 33}, {""id"": 8, ""x"": 15, ""y"": 54, ""prize"": 56, ""penalty"": 54}, {""id"": 9, ""x"": 0, ""y"": 15, ""prize"": 20, ""penalty"": 52}], ""depot"": 1, ""required_prize"": 225.0, ""route_prize"": 245.0, ""unvisited_penalty"": 3.0, ""route_length"": 317.4608813511076, ""objective"": 320.4608813511076}","[1, 3, 6, 4, 9, 8, 7, 2, 1]"
+PCTSP_S_016,PCTSP,S,16,"We’re imagining the pest control day as a round trip from headquarters: there’s a depot, a bunch of properties each worth a certain infestation-reduction score if treated and each carrying a penalty if skipped, and a minimum total score that must be achieved. The decision is which properties to include on one continuous circuit that starts and ends at the depot, never visiting the same property twice, so the chosen visits together reach that minimum score. The way to judge routes is to total the driving cost and then add the penalties for every untreated property — the route with the lower combined number is the preferable plan. The exact property details and the required score follow below.
+
+{
+  ""total_locations"": 10,
+  ""nodes"": [
+    {
+      ""property_id"": 1,
+      ""x_coord"": 0,
+      ""y_coord"": 47,
+      ""mitigation_score"": 0,
+      ""untreated_penalty"": 0
+    },
+    {
+      ""property_id"": 2,
+      ""x_coord"": 71,
+      ""y_coord"": 70,
+      ""mitigation_score"": 76,
+      ""untreated_penalty"": 29
+    },
+    {
+      ""property_id"": 3,
+      ""x_coord"": 76,
+      ""y_coord"": 93,
+      ""mitigation_score"": 98,
+      ""untreated_penalty"": 14
+    },
+    {
+      ""property_id"": 4,
+      ""x_coord"": 98,
+      ""y_coord"": 95,
+      ""mitigation_score"": 74,
+      ""untreated_penalty"": 6
+    },
+    {
+      ""property_id"": 5,
+      ""x_coord"": 100,
+      ""y_coord"": 100,
+      ""mitigation_score"": 95,
+      ""untreated_penalty"": 12
+    },
+    {
+      ""property_id"": 6,
+      ""x_coord"": 68,
+      ""y_coord"": 0,
+      ""mitigation_score"": 94,
+      ""untreated_penalty"": 6
+    },
+    {
+      ""property_id"": 7,
+      ""x_coord"": 63,
+      ""y_coord"": 21,
+      ""mitigation_score"": 48,
+      ""untreated_penalty"": 12
+    },
+    {
+      ""property_id"": 8,
+      ""x_coord"": 71,
+      ""y_coord"": 30,
+      ""mitigation_score"": 66,
+      ""untreated_penalty"": 19
+    },
+    {
+      ""property_id"": 9,
+      ""x_coord"": 68,
+      ""y_coord"": 42,
+      ""mitigation_score"": 18,
+      ""untreated_penalty"": 2
+    },
+    {
+      ""property_id"": 10,
+      ""x_coord"": 27,
+      ""y_coord"": 53,
+      ""mitigation_score"": 44,
+      ""untreated_penalty"": 42
+    }
+  ],
+  ""depot_id"": 1,
+  ""required_mitigation_score"": 250.0
+}
+
+Also, when you send back the route, a simple JSON layout like this makes it easy for me to parse:
+
+{
+  ""solution"": [hq_id, property_id, ..., hq_id]
+}
+
+Think of that as a little form: ""solution"" is the ordered circuit — first entry is the depot (here H Q), then the properties you visit in order, and the final entry is the depot again. It's just a sketch of the shape I want, not the actual answer.
+
+Please make sure you use the exact identifiers given in the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"{""coordinates"": [[0, 47], [71, 70], [76, 93], [98, 95], [100, 100], [68, 0], [63, 21], [71, 30], [68, 42], [27, 53]], ""prizes"": [0, 76, 98, 74, 95, 94, 48, 66, 18, 44], ""penalties"": [0, 29, 14, 6, 12, 6, 12, 19, 2, 42], ""required_prize"": 250.0, ""depot"": 0, ""route_length"": 195.55394301401935, ""route_prize"": 252.0, ""unvisited_penalty"": 38.0, ""objective"": 233.55394301401935}","[0, 9, 1, 8, 7, 6, 0]",233.55394301401935,"{""problem_type"": ""PCTSP"", ""num_nodes"": 10, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 47, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 71, ""y"": 70, ""prize"": 76, ""penalty"": 29}, {""id"": 3, ""x"": 76, ""y"": 93, ""prize"": 98, ""penalty"": 14}, {""id"": 4, ""x"": 98, ""y"": 95, ""prize"": 74, ""penalty"": 6}, {""id"": 5, ""x"": 100, ""y"": 100, ""prize"": 95, ""penalty"": 12}, {""id"": 6, ""x"": 68, ""y"": 0, ""prize"": 94, ""penalty"": 6}, {""id"": 7, ""x"": 63, ""y"": 21, ""prize"": 48, ""penalty"": 12}, {""id"": 8, ""x"": 71, ""y"": 30, ""prize"": 66, ""penalty"": 19}, {""id"": 9, ""x"": 68, ""y"": 42, ""prize"": 18, ""penalty"": 2}, {""id"": 10, ""x"": 27, ""y"": 53, ""prize"": 44, ""penalty"": 42}], ""depot"": 1, ""required_prize"": 250.0, ""route_prize"": 252.0, ""unvisited_penalty"": 38.0, ""route_length"": 195.55394301401935, ""objective"": 233.55394301401935}","[1, 10, 2, 9, 8, 7, 1]"
+PCTSP_S_017,PCTSP,S,17,"There’s a day when the lab has to send out one courier who makes a round-trip route from the lab, visiting a selection of clinics to pick up samples until the minimum sample requirement is met. The worthwhile routes are those with the smallest combined bill: total travel time for the whole loop plus the penalties charged for any clinics the courier didn’t stop at. The courier can’t visit the same clinic twice, the route must return to the lab, and the chosen stops must together supply at least the required samples. The exact clinic locations, prizes, penalties, and targets are listed below.
+
+{
+  ""total_locations_including_lab"": 10,
+  ""nodes"": [
+    {
+      ""location_id"": 1,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 100,
+      ""samples_available"": 0,
+      ""non_pickup_penalty"": 0
+    },
+    {
+      ""location_id"": 2,
+      ""x_coordinate"": 17,
+      ""y_coordinate"": 46,
+      ""samples_available"": 57,
+      ""non_pickup_penalty"": 1
+    },
+    {
+      ""location_id"": 3,
+      ""x_coordinate"": 18,
+      ""y_coordinate"": 31,
+      ""samples_available"": 64,
+      ""non_pickup_penalty"": 45
+    },
+    {
+      ""location_id"": 4,
+      ""x_coordinate"": 20,
+      ""y_coordinate"": 5,
+      ""samples_available"": 13,
+      ""non_pickup_penalty"": 19
+    },
+    {
+      ""location_id"": 5,
+      ""x_coordinate"": 23,
+      ""y_coordinate"": 0,
+      ""samples_available"": 8,
+      ""non_pickup_penalty"": 8
+    },
+    {
+      ""location_id"": 6,
+      ""x_coordinate"": 24,
+      ""y_coordinate"": 19,
+      ""samples_available"": 16,
+      ""non_pickup_penalty"": 17
+    },
+    {
+      ""location_id"": 7,
+      ""x_coordinate"": 49,
+      ""y_coordinate"": 31,
+      ""samples_available"": 99,
+      ""non_pickup_penalty"": 30
+    },
+    {
+      ""location_id"": 8,
+      ""x_coordinate"": 69,
+      ""y_coordinate"": 19,
+      ""samples_available"": 10,
+      ""non_pickup_penalty"": 2
+    },
+    {
+      ""location_id"": 9,
+      ""x_coordinate"": 74,
+      ""y_coordinate"": 2,
+      ""samples_available"": 42,
+      ""non_pickup_penalty"": 32
+    },
+    {
+      ""location_id"": 10,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 54,
+      ""samples_available"": 88,
+      ""non_pickup_penalty"": 31
+    }
+  ],
+  ""lab_node"": 1,
+  ""required_sample_count"": 250.0
+}
+
+Also, when you send the chosen loop back, it'd be great if you used a tiny JSON snippet like this so it's easy to read and parse:
+
+{
+  ""solution"": [lab_id, clinic_id, ..., lab_id]
+}
+
+This is just a simple sketch: ""solution"" should be the ordered list of stops in the loop, starting and ending with the lab's identifier, and any clinic identifiers in between are the places the courier visits. Think of it like filling in a little route form — not the final answer itself, just the shape I expect.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"{""coordinates"": [[0, 100], [17, 46], [18, 31], [20, 5], [23, 0], [24, 19], [49, 31], [69, 19], [74, 2], [100, 54]], ""prizes"": [0, 57, 64, 13, 8, 16, 99, 10, 42, 88], ""penalties"": [0, 1, 45, 19, 8, 17, 30, 2, 32, 31], ""required_prize"": 250.0, ""depot"": 0, ""route_length"": 230.54205235048119, ""route_prize"": 257.0, ""unvisited_penalty"": 65.0, ""objective"": 295.5420523504812}","[0, 1, 2, 5, 3, 4, 6, 0]",295.5420523504812,"{""problem_type"": ""PCTSP"", ""num_nodes"": 10, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 100, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 17, ""y"": 46, ""prize"": 57, ""penalty"": 1}, {""id"": 3, ""x"": 18, ""y"": 31, ""prize"": 64, ""penalty"": 45}, {""id"": 4, ""x"": 20, ""y"": 5, ""prize"": 13, ""penalty"": 19}, {""id"": 5, ""x"": 23, ""y"": 0, ""prize"": 8, ""penalty"": 8}, {""id"": 6, ""x"": 24, ""y"": 19, ""prize"": 16, ""penalty"": 17}, {""id"": 7, ""x"": 49, ""y"": 31, ""prize"": 99, ""penalty"": 30}, {""id"": 8, ""x"": 69, ""y"": 19, ""prize"": 10, ""penalty"": 2}, {""id"": 9, ""x"": 74, ""y"": 2, ""prize"": 42, ""penalty"": 32}, {""id"": 10, ""x"": 100, ""y"": 54, ""prize"": 88, ""penalty"": 31}], ""depot"": 1, ""required_prize"": 250.0, ""route_prize"": 257.0, ""unvisited_penalty"": 65.0, ""route_length"": 230.54205235048119, ""objective"": 295.5420523504812}","[1, 2, 3, 6, 4, 5, 7, 1]"
+PCTSP_S_018,PCTSP,S,18,"Many people think route planning is just about shortest roads, but here it’s about striking a balance: plan one tour from HQ that visits selected booths and comes home, so the combined audience reach from the stops meets the campaign target. What makes one plan better than another is simple to tally — total miles traveled plus the penalty costs for any booths left out — and the goal is to keep that combined number as low as possible. The loop must be a single trip, no booth is visited more than once, and the chosen booths must together meet the exposure requirement. The concrete numbers and booth details are below.
+
+There are 7 locations (HQ is A), and the campaign requires 175.0 audience exposure.
+Booth A at (32, 0) provides 0 audience exposure and incurs a missed-opportunity penalty of 0 if skipped.
+Booth B at (49, 0) provides 43 audience exposure and incurs a missed-opportunity penalty of 32 if skipped.
+Booth C at (100, 16) provides 19 audience exposure and incurs a missed-opportunity penalty of 48 if skipped.
+Booth D at (41, 58) provides 2 audience exposure and incurs a missed-opportunity penalty of 5 if skipped.
+Booth E at (29, 75) provides 58 audience exposure and incurs a missed-opportunity penalty of 25 if skipped.
+Booth F at (2, 100) provides 45 audience exposure and incurs a missed-opportunity penalty of 49 if skipped.
+Booth G at (0, 99) provides 84 audience exposure and incurs a missed-opportunity penalty of 18 if skipped.
+Use these booth specifics to plan a single loop from HQ A that meets at least 175.0 exposure while minimizing travel plus missed-opportunity penalties.
+
+Oh, and just to keep things tidy, please send the answer using this simple JSON shape when you’re ready:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of ""solution"" as the single loop: list the depot first, then the stops in order, and the depot again at the end. The placeholders in that example are just a sketch of the format — replace them with the actual location IDs from the instance when you submit the tour.
+
+This JSON is only the expected shape, not the actual route — it’s a template to follow.
+
+Please use the exact identifiers given in the instance input — don’t rename them or invent new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"{""coordinates"": [[32, 0], [49, 0], [100, 16], [41, 58], [29, 75], [2, 100], [0, 99]], ""prizes"": [0, 43, 19, 2, 58, 45, 84], ""penalties"": [0, 32, 48, 5, 25, 49, 18], ""required_prize"": 175.0, ""depot"": 0, ""route_length"": 239.43384391677463, ""route_prize"": 232.0, ""unvisited_penalty"": 48.0, ""objective"": 287.43384391677466}","[0, 6, 5, 4, 3, 1, 0]",287.43384391677466,"{""problem_type"": ""PCTSP"", ""num_nodes"": 7, ""nodes"": [{""id"": ""A"", ""x"": 32, ""y"": 0, ""prize"": 0, ""penalty"": 0}, {""id"": ""B"", ""x"": 49, ""y"": 0, ""prize"": 43, ""penalty"": 32}, {""id"": ""C"", ""x"": 100, ""y"": 16, ""prize"": 19, ""penalty"": 48}, {""id"": ""D"", ""x"": 41, ""y"": 58, ""prize"": 2, ""penalty"": 5}, {""id"": ""E"", ""x"": 29, ""y"": 75, ""prize"": 58, ""penalty"": 25}, {""id"": ""F"", ""x"": 2, ""y"": 100, ""prize"": 45, ""penalty"": 49}, {""id"": ""G"", ""x"": 0, ""y"": 99, ""prize"": 84, ""penalty"": 18}], ""depot"": ""A"", ""required_prize"": 175.0, ""route_prize"": 232.0, ""unvisited_penalty"": 48.0, ""route_length"": 239.43384391677463, ""objective"": 287.43384391677466}","[""A"", ""G"", ""F"", ""E"", ""D"", ""B"", ""A""]"
+PCTSP_S_019,PCTSP,S,19,"Many mornings the foreman sketches a single circular route from the yard and chooses which gardens to hit before returning to base. The choice is balancing which jobs to take so the total value of visited sites reaches the required minimum, while keeping the route short and avoiding big penalty charges for the ones skipped. To compare plans, add up the loop’s driving distance and then add every skipped client’s penalty to get the total cost — smaller totals are better — and the route has to be a single loop that starts and ends at the yard without visiting any place twice. The concrete data for this run are listed below.
+
+# total_locations_including_yard=8
+# yard_node_id=A
+# required_total_project_value=200.0
+location_id,map_x_coordinate,map_y_coordinate,project_value_if_visited,skip_penalty
+A,97,50,0,0
+B,18,52,58,27
+C,21,0,41,32
+D,97,79,88,41
+E,100,96,86,59
+F,84,100,83,51
+G,71,16,43,8
+H,0,91,19,57
+
+Oh, and when you send the route back, please use this simple JSON layout so it's easy to check automatically:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of it like a little form: ""solution"" is the ordered loop — start with the yard (depot_id), list each client you visit in order (location_id, etc.), and end back at the yard (depot_id). The ""..."" just means ""any other stops in between"" — keep it casual and readable, one identifier per stop, in travel order.
+
+Please make sure every identifier you use matches exactly what's in the instance input — no renaming and no invented labels.
+- ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"{""coordinates"": [[97, 50], [18, 52], [21, 0], [97, 79], [100, 96], [84, 100], [71, 16], [0, 91]], ""prizes"": [0, 58, 41, 88, 86, 83, 43, 19], ""penalties"": [0, 27, 32, 41, 59, 51, 8, 57], ""required_prize"": 200.0, ""depot"": 0, ""route_length"": 114.41746441646067, ""route_prize"": 257.0, ""unvisited_penalty"": 124.0, ""objective"": 238.4174644164607}","[0, 3, 4, 5, 0]",238.4174644164607,"{""problem_type"": ""PCTSP"", ""num_nodes"": 8, ""nodes"": [{""id"": ""A"", ""x"": 97, ""y"": 50, ""prize"": 0, ""penalty"": 0}, {""id"": ""B"", ""x"": 18, ""y"": 52, ""prize"": 58, ""penalty"": 27}, {""id"": ""C"", ""x"": 21, ""y"": 0, ""prize"": 41, ""penalty"": 32}, {""id"": ""D"", ""x"": 97, ""y"": 79, ""prize"": 88, ""penalty"": 41}, {""id"": ""E"", ""x"": 100, ""y"": 96, ""prize"": 86, ""penalty"": 59}, {""id"": ""F"", ""x"": 84, ""y"": 100, ""prize"": 83, ""penalty"": 51}, {""id"": ""G"", ""x"": 71, ""y"": 16, ""prize"": 43, ""penalty"": 8}, {""id"": ""H"", ""x"": 0, ""y"": 91, ""prize"": 19, ""penalty"": 57}], ""depot"": ""A"", ""required_prize"": 200.0, ""route_prize"": 257.0, ""unvisited_penalty"": 124.0, ""route_length"": 114.41746441646067, ""objective"": 238.4174644164607}","[""A"", ""D"", ""E"", ""F"", ""A""]"
+PCTSP_S_020,PCTSP,S,20,"I’m a local courier trying to put together one neat loop that leaves from the central hub and comes back there at the end, hitting a handful of customer addresses so the total value of picked-up parcels reaches the required amount. The trade-off is obvious: shorter driving distance is better, but skipping a stop costs a money penalty, so the route is judged by adding up the miles driven plus the penalties for any addresses left out — the lower that total, the better. Everything has to fit into a single tour (no back-and-forth visits or visiting the same spot twice), and the exact addresses, pickup values, and penalties are listed below.
+
+There are 10 locations including the central hub 1, and I need to collect at least 250.0 in pickup value.
+
+| location_id | x_coordinate_miles_or_units | y_coordinate_miles_or_units | pickup_value | skip_penalty_cost |
+|---|---|---|---|---|
+| 1 | 8 | 48 | 0 | 0 |
+| 2 | 16 | 100 | 32 | 16 |
+| 3 | 36 | 45 | 73 | 24 |
+| 4 | 67 | 31 | 47 | 47 |
+| 5 | 79 | 45 | 56 | 43 |
+| 6 | 0 | 65 | 57 | 14 |
+| 7 | 36 | 7 | 15 | 20 |
+| 8 | 100 | 22 | 36 | 29 |
+| 9 | 88 | 0 | 44 | 6 |
+| 10 | 11 | 22 | 6 | 40 |
+
+I'll plan one neat loop starting and ending at 1 that balances driving distance and skip penalties to hit the required 250.0 if I can.
+
+Oh, and just to keep things tidy, please format your route reply in this little JSON shape so it's easy for me to read:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+That ""solution"" array is just the hub first, then the stops you plan to visit in order, and the hub again at the end. Think of it as filling in a short checklist: start at the central hub, list each address you’ll hit (in the order you’ll drive to them), and then return to the hub. This block is just a sketch of the expected shape — don’t treat it as the final route.
+
+One more thing: use the identifiers exactly as they appear in the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,one_based,"{""coordinates"": [[8, 48], [16, 100], [36, 45], [67, 31], [79, 45], [0, 65], [36, 7], [100, 22], [88, 0], [11, 22]], ""prizes"": [0, 32, 73, 47, 56, 57, 15, 36, 44, 6], ""penalties"": [0, 16, 24, 47, 43, 14, 20, 29, 6, 40], ""required_prize"": 250.0, ""depot"": 0, ""route_length"": 215.94175940524633, ""route_prize"": 254.0, ""unvisited_penalty"": 51.0, ""objective"": 266.94175940524633}","[0, 9, 6, 3, 4, 2, 5, 0]",266.94175940524633,"{""problem_type"": ""PCTSP"", ""num_nodes"": 10, ""nodes"": [{""id"": 1, ""x"": 8, ""y"": 48, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 16, ""y"": 100, ""prize"": 32, ""penalty"": 16}, {""id"": 3, ""x"": 36, ""y"": 45, ""prize"": 73, ""penalty"": 24}, {""id"": 4, ""x"": 67, ""y"": 31, ""prize"": 47, ""penalty"": 47}, {""id"": 5, ""x"": 79, ""y"": 45, ""prize"": 56, ""penalty"": 43}, {""id"": 6, ""x"": 0, ""y"": 65, ""prize"": 57, ""penalty"": 14}, {""id"": 7, ""x"": 36, ""y"": 7, ""prize"": 15, ""penalty"": 20}, {""id"": 8, ""x"": 100, ""y"": 22, ""prize"": 36, ""penalty"": 29}, {""id"": 9, ""x"": 88, ""y"": 0, ""prize"": 44, ""penalty"": 6}, {""id"": 10, ""x"": 11, ""y"": 22, ""prize"": 6, ""penalty"": 40}], ""depot"": 1, ""required_prize"": 250.0, ""route_prize"": 254.0, ""unvisited_penalty"": 51.0, ""route_length"": 215.94175940524633, ""objective"": 266.94175940524633}","[1, 10, 7, 4, 5, 3, 6, 1]"
+PCTSP_S_021,PCTSP,S,21,"Imagine the outreach coordinator with a cart, a list, and one chance to do a loop out of the storage room: visit a selection of galleries so the sum of their restocking values meets the target, then return. The choice is which stops to make on that single loop — the better plan saves on walking and moving stuff and avoids paying high penalties for skipped galleries. To see which plan comes out ahead, sum up the entire loop’s walking/transport effort and add the penalty costs for any galleries left unvisited; the lower that combined number, the better. The trip must start and finish at storage and can’t double back to the same gallery, and the concrete details are shown below.
+
+Below are the 5 locations (storage room id A); the loop must collect at least 125.0 restocking value.
+Gallery A at (37, 100) — restocking value 0, skip penalty 0.
+Gallery B at (0, 75) — restocking value 12, skip penalty 77.
+Gallery C at (27, 1) — restocking value 71, skip penalty 3.
+Gallery D at (46, 0) — restocking value 51, skip penalty 66.
+Gallery E at (100, 12) — restocking value 3, skip penalty 25.
+Execute a single loop starting and ending at A that reaches the 125.0 target while minimizing walking and skip penalties.
+
+When you send me the chosen loop, just drop it into a tiny JSON snippet like this so it's easy to read and check:
+
+{
+  ""solution"": [storage_id, gallery_id, ..., storage_id]
+}
+
+That ""solution"" list is just the ordered stops on the one loop — start at storage, list each gallery you visit in order, and finish back at storage. Think of it like filling out a quick form; this block is only the sketch of the shape I expect, not the actual route.
+
+Please make sure you use the exact identifiers from the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,names,"{""coordinates"": [[37, 100], [0, 75], [27, 1], [46, 0], [100, 12]], ""prizes"": [0, 12, 71, 51, 3], ""penalties"": [0, 77, 3, 66, 25], ""required_prize"": 125.0, ""depot"": 0, ""route_length"": 242.85653026699046, ""route_prize"": 134.0, ""unvisited_penalty"": 25.0, ""objective"": 267.8565302669905}","[0, 1, 2, 3, 0]",267.8565302669905,"{""problem_type"": ""PCTSP"", ""num_nodes"": 5, ""nodes"": [{""id"": ""A"", ""x"": 37, ""y"": 100, ""prize"": 0, ""penalty"": 0}, {""id"": ""B"", ""x"": 0, ""y"": 75, ""prize"": 12, ""penalty"": 77}, {""id"": ""C"", ""x"": 27, ""y"": 1, ""prize"": 71, ""penalty"": 3}, {""id"": ""D"", ""x"": 46, ""y"": 0, ""prize"": 51, ""penalty"": 66}, {""id"": ""E"", ""x"": 100, ""y"": 12, ""prize"": 3, ""penalty"": 25}], ""depot"": ""A"", ""required_prize"": 125.0, ""route_prize"": 134.0, ""unvisited_penalty"": 25.0, ""route_length"": 242.85653026699046, ""objective"": 267.8565302669905}","[""A"", ""B"", ""C"", ""D"", ""A""]"
+PCTSP_S_022,PCTSP,S,22,"Recently the neighbors agreed to run a doorstep pledge drive that’s done as one continuous loop from the community center and back, visiting whichever houses make sense. The decision is which houses to include so that total collected pledges reach the fundraising target, but with an eye toward minimizing overall cost — measured by adding the walking distance of the loop and the total loss from any houses not visited; the lower that sum, the better. The route has to be a single, uninterrupted circuit and each house can only be visited as part of that loop. The concrete details for targets, house pledges, and skip-penalties appear below.
+
+{
+  ""total_locations"": 6,
+  ""nodes"": [
+    {
+      ""location_id"": ""A"",
+      ""x_coord"": 0,
+      ""y_coord"": 0,
+      ""pledge_amount"": 0,
+      ""skip_penalty"": 0
+    },
+    {
+      ""location_id"": ""B"",
+      ""x_coord"": 62,
+      ""y_coord"": 59,
+      ""pledge_amount"": 7,
+      ""skip_penalty"": 79
+    },
+    {
+      ""location_id"": ""C"",
+      ""x_coord"": 94,
+      ""y_coord"": 6,
+      ""pledge_amount"": 53,
+      ""skip_penalty"": 41
+    },
+    {
+      ""location_id"": ""D"",
+      ""x_coord"": 100,
+      ""y_coord"": 21,
+      ""pledge_amount"": 94,
+      ""skip_penalty"": 76
+    },
+    {
+      ""location_id"": ""E"",
+      ""x_coord"": 72,
+      ""y_coord"": 100,
+      ""pledge_amount"": 30,
+      ""skip_penalty"": 76
+    },
+    {
+      ""location_id"": ""F"",
+      ""x_coord"": 43,
+      ""y_coord"": 71,
+      ""pledge_amount"": 6,
+      ""skip_penalty"": 61
+    }
+  ],
+  ""community_center_id"": ""A"",
+  ""fundraising_target"": 150.0
+}
+
+If you want to return a proposed route, just use this simple JSON shape so I can read it easily:
+
+{
+  ""solution"": [community_center_id, house_id, ..., community_center_id]
+}
+
+Think of it like a short form: the list is the loop starting at the community center, then the houses you plan to hit in order, and finally back to the community center. It’s just a sketch of the shape I’m expecting, not the actual answer — fill in the real identifiers from the instance when you send the route.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename them or add new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,names,"{""coordinates"": [[0, 0], [62, 59], [94, 6], [100, 21], [72, 100], [43, 71]], ""prizes"": [0, 7, 53, 94, 30, 6], ""penalties"": [0, 79, 41, 76, 76, 61], ""required_prize"": 150.0, ""depot"": 0, ""route_length"": 330.30701738474073, ""route_prize"": 190.0, ""unvisited_penalty"": 0.0, ""objective"": 330.30701738474073}","[0, 5, 4, 1, 3, 2, 0]",330.30701738474073,"{""problem_type"": ""PCTSP"", ""num_nodes"": 6, ""nodes"": [{""id"": ""A"", ""x"": 0, ""y"": 0, ""prize"": 0, ""penalty"": 0}, {""id"": ""B"", ""x"": 62, ""y"": 59, ""prize"": 7, ""penalty"": 79}, {""id"": ""C"", ""x"": 94, ""y"": 6, ""prize"": 53, ""penalty"": 41}, {""id"": ""D"", ""x"": 100, ""y"": 21, ""prize"": 94, ""penalty"": 76}, {""id"": ""E"", ""x"": 72, ""y"": 100, ""prize"": 30, ""penalty"": 76}, {""id"": ""F"", ""x"": 43, ""y"": 71, ""prize"": 6, ""penalty"": 61}], ""depot"": ""A"", ""required_prize"": 150.0, ""route_prize"": 190.0, ""unvisited_penalty"": 0.0, ""route_length"": 330.30701738474073, ""objective"": 330.30701738474073}","[""A"", ""F"", ""E"", ""B"", ""D"", ""C"", ""A""]"
+PCTSP_S_023,PCTSP,S,23,"On a typical day there’s one trip to plan: leave the office, hit selected client sites to clear priority items until the required total is met, and then come straight back. The plan is judged by its combined cost — what’s spent getting around plus what’s paid out to any clients who weren’t visited — and the better route is simply the one with the smaller combined cost. The tour can’t double-back to the same client and must begin and end at the office while achieving the needed number of fixes. The concrete numbers and locations are shown below.
+
+There are 5 locations in total, the office is node 1, and the trip must collect at least 125.0 priority fixes.
+Client 1 at (0, 100) yields 0 priority fixes and carries an unvisited compensation cost of 0.
+Client 2 at (82, 0) yields 16 priority fixes and carries an unvisited compensation cost of 86.
+Client 3 at (25, 0) yields 85 priority fixes and carries an unvisited compensation cost of 43.
+Client 4 at (100, 0) yields 42 priority fixes and carries an unvisited compensation cost of 8.
+Client 5 at (19, 0) yields 29 priority fixes and carries an unvisited compensation cost of 29.
+Plan the single trip starting and ending at 1 so the required fixes are met while minimizing the combined travel and unvisited compensation cost.
+
+If you want to return the plan in a tidy, machine-friendly way, just send a small JSON snippet like this — nothing fancy, just the tour in order.
+
+{
+  ""solution"": [office_id, client_id, ..., office_id]
+}
+
+Think of that as a simple form: ""solution"" is the tour — start at the office (depot), list the clients you visit in the order you visit them, and finish back at the office. The placeholders above are just examples of the shape; don’t treat them as real IDs.
+
+Please use the exact identifiers from the instance input when you fill this in — do not rename or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"{""coordinates"": [[0, 100], [82, 0], [25, 0], [100, 0], [19, 0]], ""prizes"": [0, 16, 85, 42, 29], ""penalties"": [0, 86, 43, 8, 29], ""required_prize"": 125.0, ""depot"": 0, ""route_length"": 294.110302723402, ""route_prize"": 130.0, ""unvisited_penalty"": 8.0, ""objective"": 302.110302723402}","[0, 4, 2, 1, 0]",302.110302723402,"{""problem_type"": ""PCTSP"", ""num_nodes"": 5, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 100, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 82, ""y"": 0, ""prize"": 16, ""penalty"": 86}, {""id"": 3, ""x"": 25, ""y"": 0, ""prize"": 85, ""penalty"": 43}, {""id"": 4, ""x"": 100, ""y"": 0, ""prize"": 42, ""penalty"": 8}, {""id"": 5, ""x"": 19, ""y"": 0, ""prize"": 29, ""penalty"": 29}], ""depot"": 1, ""required_prize"": 125.0, ""route_prize"": 130.0, ""unvisited_penalty"": 8.0, ""route_length"": 294.110302723402, ""objective"": 302.110302723402}","[1, 5, 3, 2, 1]"
+PCTSP_S_024,PCTSP,S,24,"We have one mobile-library run to plan: start at the branch, hit some of the pickup lockers with requested holds, and return to the branch when done. The decision is which lockers to serve so the total delivered books meets the distribution target; stronger plans deliver enough books without making a long detour or leaving high-penalty lockers unserviced. The way to compare routes is straightforward — total driving distance plus the penalties for any lockers that were skipped — and the run must be a single loop with no duplicate visits. The concrete details will be shown below.
+
+We have 6 locations in total, the branch node is 0, and we must deliver at least 150.0 books on the run.
+We can visit locker 0 at (86, 100); it delivers 0 books and incurs a missed-service penalty of 0 if skipped.
+We can visit locker 1 at (49, 92); it delivers 70 books and incurs a missed-service penalty of 5 if skipped.
+We can visit locker 2 at (100, 4); it delivers 96 books and incurs a missed-service penalty of 54 if skipped.
+We can visit locker 3 at (28, 0); it delivers 55 books and incurs a missed-service penalty of 31 if skipped.
+We can visit locker 4 at (25, 79); it delivers 25 books and incurs a missed-service penalty of 38 if skipped.
+We can visit locker 5 at (0, 94); it delivers 70 books and incurs a missed-service penalty of 6 if skipped.
+We will plan a single-loop route that meets the 150.0 target without visiting any node more than once.
+
+I'll show the shape I want the route in as a tiny JSON example so it's clear how to give the run back.
+
+{
+  ""solution"": [branch_id, locker_id, ..., branch_id]
+}
+
+Just to be clear: ""solution"" is a list that describes the single loop — start at the branch, go to the listed lockers in order, and come back to the branch at the end. Each entry in the list is an identifier for a location from the instance (the branch and the lockers). This JSON is just a sketch of the shape I expect, not the actual answer — you'll fill it with the real identifiers from the instance.
+
+Please use the identifiers exactly as they appear in the input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,zero_based,"{""coordinates"": [[86, 100], [49, 92], [100, 4], [28, 0], [25, 79], [0, 94]], ""prizes"": [0, 70, 96, 55, 25, 70], ""penalties"": [0, 5, 54, 31, 38, 6], ""required_prize"": 150.0, ""depot"": 0, ""route_length"": 180.51348231264348, ""route_prize"": 165.0, ""unvisited_penalty"": 85.0, ""objective"": 265.5134823126435}","[0, 1, 4, 5, 0]",265.5134823126435,"{""problem_type"": ""PCTSP"", ""num_nodes"": 6, ""nodes"": [{""id"": 0, ""x"": 86, ""y"": 100, ""prize"": 0, ""penalty"": 0}, {""id"": 1, ""x"": 49, ""y"": 92, ""prize"": 70, ""penalty"": 5}, {""id"": 2, ""x"": 100, ""y"": 4, ""prize"": 96, ""penalty"": 54}, {""id"": 3, ""x"": 28, ""y"": 0, ""prize"": 55, ""penalty"": 31}, {""id"": 4, ""x"": 25, ""y"": 79, ""prize"": 25, ""penalty"": 38}, {""id"": 5, ""x"": 0, ""y"": 94, ""prize"": 70, ""penalty"": 6}], ""depot"": 0, ""required_prize"": 150.0, ""route_prize"": 165.0, ""unvisited_penalty"": 85.0, ""route_length"": 180.51348231264348, ""objective"": 265.5134823126435}","[0, 1, 4, 5, 0]"
+PCTSP_S_025,PCTSP,S,25,"On a typical Monday the garden supervisor lays out a single maintenance hop: the van leaves from the depot and must return there, each garden has an upkeep value and a cost if it’s skipped, and there’s a required total upkeep to hit. The decision is which plots to include in that one-loop route (each visited at most once) so the required upkeep is collected. A route is judged by how little is wasted — add up the miles driven and the fines for any plots left out, and the lower that total the better. The full list of plots, upkeep scores and penalties appears below.
+
+# total_locations_including_depot=8
+# depot_site_id=A
+# required_upkeep_score=200.0
+plot_id,x_coordinate,y_coordinate,upkeep_score,skip_fine
+A,27,100,0,0
+B,38,1,61,36
+C,80,40,98,31
+D,26,63,2,50
+E,0,65,52,57
+F,100,0,49,20
+G,74,50,63,45
+H,81,29,85,41
+
+When you're ready to hand me the route, just drop it in this simple JSON shape so I can read it easily:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+This just means: ""solution"" is the one-loop route — start at the depot, list each plot you visit in order (each at most once), and end back at the depot. It's just a sketch of the shape I expect, not the actual answer itself.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",csv,names,"{""coordinates"": [[27, 100], [38, 1], [80, 40], [26, 63], [0, 65], [100, 0], [74, 50], [81, 29]], ""prizes"": [0, 61, 98, 2, 52, 49, 63, 85], ""penalties"": [0, 36, 31, 50, 57, 20, 45, 41], ""required_prize"": 200.0, ""depot"": 0, ""route_length"": 226.27095313678905, ""route_prize"": 300.0, ""unvisited_penalty"": 56.0, ""objective"": 282.27095313678905}","[0, 4, 3, 7, 2, 6, 0]",282.27095313678905,"{""problem_type"": ""PCTSP"", ""num_nodes"": 8, ""nodes"": [{""id"": ""A"", ""x"": 27, ""y"": 100, ""prize"": 0, ""penalty"": 0}, {""id"": ""B"", ""x"": 38, ""y"": 1, ""prize"": 61, ""penalty"": 36}, {""id"": ""C"", ""x"": 80, ""y"": 40, ""prize"": 98, ""penalty"": 31}, {""id"": ""D"", ""x"": 26, ""y"": 63, ""prize"": 2, ""penalty"": 50}, {""id"": ""E"", ""x"": 0, ""y"": 65, ""prize"": 52, ""penalty"": 57}, {""id"": ""F"", ""x"": 100, ""y"": 0, ""prize"": 49, ""penalty"": 20}, {""id"": ""G"", ""x"": 74, ""y"": 50, ""prize"": 63, ""penalty"": 45}, {""id"": ""H"", ""x"": 81, ""y"": 29, ""prize"": 85, ""penalty"": 41}], ""depot"": ""A"", ""required_prize"": 200.0, ""route_prize"": 300.0, ""unvisited_penalty"": 56.0, ""route_length"": 226.27095313678905, ""objective"": 282.27095313678905}","[""A"", ""E"", ""D"", ""H"", ""C"", ""G"", ""A""]"
+PCTSP_S_026,PCTSP,S,26,"There's an antiques buyer planning a single round-trip from their shop to several sellers, trying to pick stops so the purchases add up to at least a required appraisal sum. The task is picking which sellers to stop at and how to string them into one continuous tour that starts and ends at the shop, without repeating stops. The goal is to meet that appraisal threshold while keeping the overall price tag low — where the overall price tag is simply miles driven plus the total value of sellers passed over — so the best plan minimizes that combined amount. The full list of sellers, distances, values, and the required total follow below.
+
+There are 5 locations including the shop at node 1; the buyer must collect at least 125.0 in appraisal_value.
+Location 1 at (0, 91) offers appraisal 0 and carries a skip penalty of 0.
+Location 2 at (0, 63) offers appraisal 80 and carries a skip penalty of 64.
+Location 3 at (52, 0) offers appraisal 70 and carries a skip penalty of 64.
+Location 4 at (98, 100) offers appraisal 49 and carries a skip penalty of 38.
+Location 5 at (100, 97) offers appraisal 57 and carries a skip penalty of 78.
+The buyer must choose a single non-repeating round-trip starting and ending at the shop that attains at least 125.0 while minimizing miles driven plus the appraisal value of skipped sellers.
+
+Oh, and when you send your plan back, please use this simple JSON layout so it's easy to read and validate:
+
+{
+  ""solution"": [shop_id, seller_id, ..., shop_id]
+}
+
+Think of that array as the trip sheet: the first item is your shop, then the sellers you stop at in the order you visit them, and the last item is your shop again to show the round-trip. It's just a sketch of the shape I expect, not the final route.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new ones.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"{""coordinates"": [[0, 91], [0, 63], [52, 0], [98, 100], [100, 97]], ""prizes"": [0, 80, 70, 49, 57], ""penalties"": [0, 64, 64, 38, 78], ""required_prize"": 125.0, ""depot"": 0, ""route_length"": 235.63991628053736, ""route_prize"": 186.0, ""unvisited_penalty"": 64.0, ""objective"": 299.63991628053736}","[0, 1, 4, 3, 0]",299.63991628053736,"{""problem_type"": ""PCTSP"", ""num_nodes"": 5, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 91, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 0, ""y"": 63, ""prize"": 80, ""penalty"": 64}, {""id"": 3, ""x"": 52, ""y"": 0, ""prize"": 70, ""penalty"": 64}, {""id"": 4, ""x"": 98, ""y"": 100, ""prize"": 49, ""penalty"": 38}, {""id"": 5, ""x"": 100, ""y"": 97, ""prize"": 57, ""penalty"": 78}], ""depot"": 1, ""required_prize"": 125.0, ""route_prize"": 186.0, ""unvisited_penalty"": 64.0, ""route_length"": 235.63991628053736, ""objective"": 299.63991628053736}","[1, 2, 5, 4, 1]"
+PCTSP_S_027,PCTSP,S,27,"There’s a small promotional team figuring out a tidy loop from the company van to several stores and back, trying to hit enough spots to meet a placements target without wasting time. The choice is which stores make the cut so the stops’ placement totals reach the required number; every shop skipped brings a penalty, and the whole run must be a single continuous circuit with no repeated stops. To compare plans, add the total driving time for the circuit to the penalties of all skipped stores — the lower that combined number, the smarter the route. The concrete store and target details follow below.
+
+{
+  ""total_locations_including_depot"": 8,
+  ""nodes"": [
+    {
+      ""store_node_id"": 0,
+      ""map_x_coordinate"": 57,
+      ""map_y_coordinate"": 2,
+      ""placements_at_store"": 0,
+      ""skip_penalty"": 0
+    },
+    {
+      ""store_node_id"": 1,
+      ""map_x_coordinate"": 18,
+      ""map_y_coordinate"": 0,
+      ""placements_at_store"": 31,
+      ""skip_penalty"": 36
+    },
+    {
+      ""store_node_id"": 2,
+      ""map_x_coordinate"": 45,
+      ""map_y_coordinate"": 22,
+      ""placements_at_store"": 33,
+      ""skip_penalty"": 39
+    },
+    {
+      ""store_node_id"": 3,
+      ""map_x_coordinate"": 0,
+      ""map_y_coordinate"": 54,
+      ""placements_at_store"": 67,
+      ""skip_penalty"": 34
+    },
+    {
+      ""store_node_id"": 4,
+      ""map_x_coordinate"": 90,
+      ""map_y_coordinate"": 50,
+      ""placements_at_store"": 29,
+      ""skip_penalty"": 60
+    },
+    {
+      ""store_node_id"": 5,
+      ""map_x_coordinate"": 92,
+      ""map_y_coordinate"": 74,
+      ""placements_at_store"": 8,
+      ""skip_penalty"": 51
+    },
+    {
+      ""store_node_id"": 6,
+      ""map_x_coordinate"": 62,
+      ""map_y_coordinate"": 100,
+      ""placements_at_store"": 29,
+      ""skip_penalty"": 60
+    },
+    {
+      ""store_node_id"": 7,
+      ""map_x_coordinate"": 100,
+      ""map_y_coordinate"": 100,
+      ""placements_at_store"": 70,
+      ""skip_penalty"": 43
+    }
+  ],
+  ""company_van_node_id"": 0,
+  ""required_placements_target"": 200.0
+}
+
+Oh, and when you send the plan back, please put it in this simple JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of that as a little form: ""solution"" is the van's loop — a single list that starts at the depot, lists each visited store in order, and ends back at the depot. The placeholders are where you'll put the actual IDs from the instance. This block is just a sketch of the expected shape, not the actual route.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""1"" or ""23"", ""A"" or ""B"", ""A1"" or ""X7""",json,zero_based,"{""coordinates"": [[57, 2], [18, 0], [45, 22], [0, 54], [90, 50], [92, 74], [62, 100], [100, 100]], ""prizes"": [0, 31, 33, 67, 29, 8, 29, 70], ""penalties"": [0, 36, 39, 34, 60, 51, 60, 43], ""required_prize"": 200.0, ""depot"": 0, ""route_length"": 301.24606325103565, ""route_prize"": 200.0, ""unvisited_penalty"": 34.0, ""objective"": 335.24606325103565}","[0, 1, 2, 6, 7, 5, 4, 0]",335.24606325103565,"{""problem_type"": ""PCTSP"", ""num_nodes"": 8, ""nodes"": [{""id"": 0, ""x"": 57, ""y"": 2, ""prize"": 0, ""penalty"": 0}, {""id"": 1, ""x"": 18, ""y"": 0, ""prize"": 31, ""penalty"": 36}, {""id"": 2, ""x"": 45, ""y"": 22, ""prize"": 33, ""penalty"": 39}, {""id"": 3, ""x"": 0, ""y"": 54, ""prize"": 67, ""penalty"": 34}, {""id"": 4, ""x"": 90, ""y"": 50, ""prize"": 29, ""penalty"": 60}, {""id"": 5, ""x"": 92, ""y"": 74, ""prize"": 8, ""penalty"": 51}, {""id"": 6, ""x"": 62, ""y"": 100, ""prize"": 29, ""penalty"": 60}, {""id"": 7, ""x"": 100, ""y"": 100, ""prize"": 70, ""penalty"": 43}], ""depot"": 0, ""required_prize"": 200.0, ""route_prize"": 200.0, ""unvisited_penalty"": 34.0, ""route_length"": 301.24606325103565, ""objective"": 335.24606325103565}","[0, 1, 2, 6, 7, 5, 4, 0]"
+PCTSP_S_028,PCTSP,S,28,"Someone in the field needs to lay out a single inspection loop that starts at the office, visits a selected group of properties, and returns, with the inspected properties’ weights adding up to at least the required amount. Each property brings either inspection weight or a penalty if left out, so a better plan is simply the one that results in the lowest combined cost: the loop’s travel distance plus the penalties for any unvisited properties. The circuit must be a single continuous trip with each chosen stop visited once, and the total inspected weight must meet the mandate. The concrete data for the scenario is shown below.
+
+There are 5 known locations including the office at node 0, and the inspection must collect at least 125.0 inspection weight.
+
+| property_node_id | map_x_coordinate | map_y_coordinate | inspection_weight | penalty_if_uninspected |
+|---|---|---|---|---|
+| 0 | 11 | 56 | 0 | 0 |
+| 1 | 0 | 23 | 75 | 7 |
+| 2 | 100 | 100 | 94 | 96 |
+| 3 | 71 | 0 | 34 | 48 |
+| 4 | 31 | 100 | 32 | 12 |
+
+The plan must be a single continuous loop starting and ending at node 0, minimizing travel distance plus penalties while achieving the 125.0 mandate.
+
+Also, when you're ready to hand back the route, just use this simple JSON layout so it's easy to read and plug in:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Here ""solution"" is an ordered list showing the inspection loop: start at the depot, visit each listed property once in the shown order, and come back to the depot. Think of each entry as the ID you see in the instance — it's just a quick form, not the final plan itself.
+
+This JSON is only a sketch of the expected shape, not the actual answer you need to compute. Please make sure to use the exact identifiers from the instance input — no renaming and no new labels. 
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"{""coordinates"": [[11, 56], [0, 23], [100, 100], [71, 0], [31, 100]], ""prizes"": [0, 75, 94, 34, 32], ""penalties"": [0, 7, 96, 48, 12], ""required_prize"": 125.0, ""depot"": 0, ""route_length"": 216.61460932808737, ""route_prize"": 126.0, ""unvisited_penalty"": 55.0, ""objective"": 271.61460932808734}","[0, 2, 4, 0]",271.61460932808734,"{""problem_type"": ""PCTSP"", ""num_nodes"": 5, ""nodes"": [{""id"": 0, ""x"": 11, ""y"": 56, ""prize"": 0, ""penalty"": 0}, {""id"": 1, ""x"": 0, ""y"": 23, ""prize"": 75, ""penalty"": 7}, {""id"": 2, ""x"": 100, ""y"": 100, ""prize"": 94, ""penalty"": 96}, {""id"": 3, ""x"": 71, ""y"": 0, ""prize"": 34, ""penalty"": 48}, {""id"": 4, ""x"": 31, ""y"": 100, ""prize"": 32, ""penalty"": 12}], ""depot"": 0, ""required_prize"": 125.0, ""route_prize"": 126.0, ""unvisited_penalty"": 55.0, ""route_length"": 216.61460932808737, ""objective"": 271.61460932808734}","[0, 2, 4, 0]"
+PCTSP_S_029,PCTSP,S,29,"Many people on the team pitch ideas for a single photographer’s round trip: leave the newsroom, photograph selected events, and return, all in one go. The practical decision is which events to include and in what order so the photos add up to at least the minimum coverage the editors want, and the best plan keeps the combined cost low — travel distance for the loop plus the editorial price of anything missed. That means summing the miles on the circuit and the penalties for skipped events; lower sums are preferable. The tour must be a single loop starting and ending at the newsroom, with no repeated visits, and the concrete details will be shown below.
+
+# total_locations_including_newsroom=10
+# newsroom_node_id=1
+# required_coverage_value=250.0
+location_id,x_coordinate,y_coordinate,coverage_value,missed_event_penalty
+1,5,76,0,0
+2,55,72,52,27
+3,39,69,65,22
+4,45,90,83,12
+5,45,100,57,42
+6,100,14,33,20
+7,95,21,70,46
+8,58,0,19,14
+9,21,48,33,32
+10,0,34,12,37
+
+Oh, and when you send the tour back, a simple JSON like this is perfect — just an ordered list showing the loop from the newsroom and back:
+
+{
+  ""solution"": [""newsroom_id"", ""event_id"", ""..."", ""newsroom_id""]
+}
+
+Think of ""solution"" as the short form of the trip: start at the newsroom, visit the events in the order listed, and return to the newsroom. The strings above are just placeholders to show the shape I expect — your real reply should replace them with the actual IDs from the instance.
+
+One more thing: use the identifiers exactly as they appear in the problem input — don't rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""coordinates"": [[5, 76], [55, 72], [39, 69], [45, 90], [45, 100], [100, 14], [95, 21], [58, 0], [21, 48], [0, 34]], ""prizes"": [0, 52, 65, 83, 57, 33, 70, 19, 33, 12], ""penalties"": [0, 27, 22, 12, 42, 20, 46, 14, 32, 37], ""required_prize"": 250.0, ""depot"": 0, ""route_length"": 188.7117603020759, ""route_prize"": 302.0, ""unvisited_penalty"": 80.0, ""objective"": 268.7117603020759}","[0, 4, 3, 1, 2, 8, 9, 0]",268.7117603020759,"{""problem_type"": ""PCTSP"", ""num_nodes"": 10, ""nodes"": [{""id"": 1, ""x"": 5, ""y"": 76, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 55, ""y"": 72, ""prize"": 52, ""penalty"": 27}, {""id"": 3, ""x"": 39, ""y"": 69, ""prize"": 65, ""penalty"": 22}, {""id"": 4, ""x"": 45, ""y"": 90, ""prize"": 83, ""penalty"": 12}, {""id"": 5, ""x"": 45, ""y"": 100, ""prize"": 57, ""penalty"": 42}, {""id"": 6, ""x"": 100, ""y"": 14, ""prize"": 33, ""penalty"": 20}, {""id"": 7, ""x"": 95, ""y"": 21, ""prize"": 70, ""penalty"": 46}, {""id"": 8, ""x"": 58, ""y"": 0, ""prize"": 19, ""penalty"": 14}, {""id"": 9, ""x"": 21, ""y"": 48, ""prize"": 33, ""penalty"": 32}, {""id"": 10, ""x"": 0, ""y"": 34, ""prize"": 12, ""penalty"": 37}], ""depot"": 1, ""required_prize"": 250.0, ""route_prize"": 302.0, ""unvisited_penalty"": 80.0, ""route_length"": 188.7117603020759, ""objective"": 268.7117603020759}","[1, 5, 4, 2, 3, 9, 10, 1]"
+PCTSP_S_030,PCTSP,S,30,"We have to send a driver out on one tidy circuit from the flower shop and back, choosing which seasonal arrangements to deliver so the sum of delivered order values meets a target. A good choice balances short driving distance with small payouts to customers who don’t get deliveries; think of the final bill as total mileage plus the compensation paid to anyone skipped. Stops shouldn’t be duplicated and the trip begins and ends at the shop. The concrete addresses, order sizes, and compensation figures follow below.
+
+# total_stops_including_shop=7
+# shop_node_id=0
+# required_total_order_value=175.0
+location_id,x_coordinate,y_coordinate,order_value,compensation_if_unserved
+0,100,0,0,0
+1,100,5,18,17
+2,84,100,76,60
+3,77,88,9,54
+4,55,68,48,8
+5,13,87,8,19
+6,0,80,96,46
+
+Oh, and when you send the chosen route back, please use a tiny JSON sketch like this so I can read it easily:
+
+{
+  ""solution"": [shop_id, order_id, ..., shop_id]
+}
+
+This just shows the shape I expect: the array called ""solution"" lists the shop (depot) first, then the customer stops in the order they'll be visited, and the shop again at the end. Think of it like filling out a simple itinerary form — it's just the stop sequence, not the distances or payments.
+
+This is only a sketch of the format, not your actual answer. Please be sure to use the exact identifiers from the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""coordinates"": [[100, 0], [100, 5], [84, 100], [77, 88], [55, 68], [13, 87], [0, 80]], ""prizes"": [0, 18, 76, 9, 48, 8, 96], ""penalties"": [0, 17, 60, 54, 8, 19, 46], ""required_prize"": 175.0, ""depot"": 0, ""route_length"": 320.02789352935247, ""route_prize"": 207.0, ""unvisited_penalty"": 8.0, ""objective"": 328.02789352935247}","[0, 1, 3, 2, 5, 6, 0]",328.02789352935247,"{""problem_type"": ""PCTSP"", ""num_nodes"": 7, ""nodes"": [{""id"": 0, ""x"": 100, ""y"": 0, ""prize"": 0, ""penalty"": 0}, {""id"": 1, ""x"": 100, ""y"": 5, ""prize"": 18, ""penalty"": 17}, {""id"": 2, ""x"": 84, ""y"": 100, ""prize"": 76, ""penalty"": 60}, {""id"": 3, ""x"": 77, ""y"": 88, ""prize"": 9, ""penalty"": 54}, {""id"": 4, ""x"": 55, ""y"": 68, ""prize"": 48, ""penalty"": 8}, {""id"": 5, ""x"": 13, ""y"": 87, ""prize"": 8, ""penalty"": 19}, {""id"": 6, ""x"": 0, ""y"": 80, ""prize"": 96, ""penalty"": 46}], ""depot"": 0, ""required_prize"": 175.0, ""route_prize"": 207.0, ""unvisited_penalty"": 8.0, ""route_length"": 320.02789352935247, ""objective"": 328.02789352935247}","[0, 1, 3, 2, 5, 6, 0]"
+PCTSP_S_031,PCTSP,S,31,"Someone on the team needs to draw up a single road trip that begins and ends at headquarters, stopping at a selection of venues to secure bookings until the total booking value crosses our minimum goal. What makes one trip preferable to another is the total damage to the bottom line: traveling expenses for the whole loop plus penalties for venues we skipped — that combined amount is what we try to minimize. Each venue only counts once, the tour must be continuous and return to the office, and the chosen stops must reach the target booking sum. The full instance details are below.
+
+There are 9 locations in total, the office is node A, and we must secure at least 225.0 total booking value.
+Node A: coordinates (0, 58); booking value 0; missed-booking penalty 0.
+Node B: coordinates (69, 100); booking value 34; missed-booking penalty 43.
+Node C: coordinates (100, 20); booking value 13; missed-booking penalty 10.
+Node D: coordinates (77, 24); booking value 49; missed-booking penalty 38.
+Node E: coordinates (66, 0); booking value 76; missed-booking penalty 45.
+Node F: coordinates (55, 8); booking value 52; missed-booking penalty 49.
+Node G: coordinates (47, 75); booking value 19; missed-booking penalty 17.
+Node H: coordinates (44, 98); booking value 30; missed-booking penalty 51.
+Node I: coordinates (22, 66); booking value 76; missed-booking penalty 33.
+Use these entries to plan a single continuous loop starting and ending at node A that reaches 225.0 while minimizing travel plus missed-booking penalties.
+
+Oh, and when you send the planned route back, please use a simple JSON shape like this:
+
+{
+  ""solution"": [hq_id, venue_id, ..., hq_id]
+}
+
+Think of that array as the ordered checklist of stops: start at HQ, list the venues you’ll stop at in order, and finish back at HQ. This is just the sketch of the shape I want — not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename them or invent new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"{""coordinates"": [[0, 58], [69, 100], [100, 20], [77, 24], [66, 0], [55, 8], [47, 75], [44, 98], [22, 66]], ""prizes"": [0, 34, 13, 49, 76, 52, 19, 30, 76], ""penalties"": [0, 43, 10, 38, 45, 49, 17, 51, 33], ""required_prize"": 225.0, ""depot"": 0, ""route_length"": 289.00722425845476, ""route_prize"": 336.0, ""unvisited_penalty"": 10.0, ""objective"": 299.00722425845476}","[0, 5, 4, 3, 1, 7, 6, 8, 0]",299.00722425845476,"{""problem_type"": ""PCTSP"", ""num_nodes"": 9, ""nodes"": [{""id"": ""A"", ""x"": 0, ""y"": 58, ""prize"": 0, ""penalty"": 0}, {""id"": ""B"", ""x"": 69, ""y"": 100, ""prize"": 34, ""penalty"": 43}, {""id"": ""C"", ""x"": 100, ""y"": 20, ""prize"": 13, ""penalty"": 10}, {""id"": ""D"", ""x"": 77, ""y"": 24, ""prize"": 49, ""penalty"": 38}, {""id"": ""E"", ""x"": 66, ""y"": 0, ""prize"": 76, ""penalty"": 45}, {""id"": ""F"", ""x"": 55, ""y"": 8, ""prize"": 52, ""penalty"": 49}, {""id"": ""G"", ""x"": 47, ""y"": 75, ""prize"": 19, ""penalty"": 17}, {""id"": ""H"", ""x"": 44, ""y"": 98, ""prize"": 30, ""penalty"": 51}, {""id"": ""I"", ""x"": 22, ""y"": 66, ""prize"": 76, ""penalty"": 33}], ""depot"": ""A"", ""required_prize"": 225.0, ""route_prize"": 336.0, ""unvisited_penalty"": 10.0, ""route_length"": 289.00722425845476, ""objective"": 299.00722425845476}","[""A"", ""F"", ""E"", ""D"", ""B"", ""H"", ""G"", ""I"", ""A""]"
+PCTSP_S_032,PCTSP,S,32,"Imagine a dispatch plan where one technician leaves the depot, visits a hand-picked set of rooftops, and returns to the depot, making sure the total inspected capacity hits the mandated target. The decision is which roofs to book into that single round-trip; the score for any plan is simply drive time for the whole loop plus the sum of penalties for roofs not visited — smaller totals are preferred. The trip must be one continuous tour, each rooftop can only be inspected once, and omitted sites always incur their penalties. The concrete details are given below.
+
+# total_locations=7
+# depot_node=0
+# required_inspected_capacity=175.0
+location_id,x_coord,y_coord,inspected_capacity,omission_penalty
+0,0,0,0,0
+1,9,39,3,70
+2,25,38,66,31
+3,43,64,95,28
+4,85,28,57,35
+5,97,98,30,16
+6,100,100,33,21
+
+When you reply with the chosen tour, please stick to this simple JSON layout so it's straightforward to check:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+""solution"" is just the ordered list of stops — start at the depot, list each rooftop you visit in the order you drive them, and finish back at the depot. The depot_id and location_id bits are placeholders for the actual IDs from the instance. This is only a sketch of the shape I want, not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,zero_based,"{""coordinates"": [[0, 0], [9, 39], [25, 38], [43, 64], [85, 28], [97, 98], [100, 100]], ""prizes"": [0, 3, 66, 95, 57, 30, 33], ""penalties"": [0, 70, 31, 28, 35, 16, 21], ""required_prize"": 175.0, ""depot"": 0, ""route_length"": 232.48927156702302, ""route_prize"": 221.0, ""unvisited_penalty"": 37.0, ""objective"": 269.489271567023}","[0, 4, 3, 2, 1, 0]",269.489271567023,"{""problem_type"": ""PCTSP"", ""num_nodes"": 7, ""nodes"": [{""id"": 0, ""x"": 0, ""y"": 0, ""prize"": 0, ""penalty"": 0}, {""id"": 1, ""x"": 9, ""y"": 39, ""prize"": 3, ""penalty"": 70}, {""id"": 2, ""x"": 25, ""y"": 38, ""prize"": 66, ""penalty"": 31}, {""id"": 3, ""x"": 43, ""y"": 64, ""prize"": 95, ""penalty"": 28}, {""id"": 4, ""x"": 85, ""y"": 28, ""prize"": 57, ""penalty"": 35}, {""id"": 5, ""x"": 97, ""y"": 98, ""prize"": 30, ""penalty"": 16}, {""id"": 6, ""x"": 100, ""y"": 100, ""prize"": 33, ""penalty"": 21}], ""depot"": 0, ""required_prize"": 175.0, ""route_prize"": 221.0, ""unvisited_penalty"": 37.0, ""route_length"": 232.48927156702302, ""objective"": 269.489271567023}","[0, 4, 3, 2, 1, 0]"
+PCTSP_S_033,PCTSP,S,33,"Many people on the planning team are faced with the same simple job: build one circular route from the clinic and back, choosing which neighborhoods to serve in order to reach the required service total. Plans are judged by adding the route’s travel cost to the penalties charged for any neighborhoods skipped; the plan with the lowest total is preferable. The route is a single circuit with no repeated neighborhood visits and it must start and finish at the depot. See the concrete neighborhood list, penalties, and required total below.
+
+There are 8 locations in total, the clinic depot is node 0, and the route must collect at least 200.0 service units.
+
+| neighborhood_id | x_coordinate | y_coordinate | services_provided_if_visited | penalty_for_not_serving |
+|---|---|---|---|---|
+| 0 | 0 | 22 | 0 | 0 |
+| 1 | 5 | 0 | 89 | 29 |
+| 2 | 43 | 50 | 37 | 12 |
+| 3 | 10 | 91 | 48 | 52 |
+| 4 | 81 | 100 | 90 | 56 |
+| 5 | 83 | 9 | 71 | 42 |
+| 6 | 100 | 28 | 46 | 50 |
+| 7 | 98 | 25 | 96 | 1 |
+
+Choose the single circuit that minimizes travel cost plus penalties while meeting the required service total.
+
+When you’re ready to hand in a plan, just follow this little shape so it’s easy to check and use:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+This just means the ""solution"" is the ordered list of stops: start with the depot, list each neighborhood you’ll visit in order, and finish back at the depot. It’s just a sketch of the shape we expect, not your final answer.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"{""coordinates"": [[0, 22], [5, 0], [43, 50], [10, 91], [81, 100], [83, 9], [100, 28], [98, 25]], ""prizes"": [0, 89, 37, 48, 90, 71, 46, 96], ""penalties"": [0, 29, 12, 52, 56, 42, 50, 1], ""required_prize"": 200.0, ""depot"": 0, ""route_length"": 226.7956440810422, ""route_prize"": 302.0, ""unvisited_penalty"": 120.0, ""objective"": 346.79564408104227}","[0, 1, 5, 7, 6, 0]",346.79564408104227,"{""problem_type"": ""PCTSP"", ""num_nodes"": 8, ""nodes"": [{""id"": 0, ""x"": 0, ""y"": 22, ""prize"": 0, ""penalty"": 0}, {""id"": 1, ""x"": 5, ""y"": 0, ""prize"": 89, ""penalty"": 29}, {""id"": 2, ""x"": 43, ""y"": 50, ""prize"": 37, ""penalty"": 12}, {""id"": 3, ""x"": 10, ""y"": 91, ""prize"": 48, ""penalty"": 52}, {""id"": 4, ""x"": 81, ""y"": 100, ""prize"": 90, ""penalty"": 56}, {""id"": 5, ""x"": 83, ""y"": 9, ""prize"": 71, ""penalty"": 42}, {""id"": 6, ""x"": 100, ""y"": 28, ""prize"": 46, ""penalty"": 50}, {""id"": 7, ""x"": 98, ""y"": 25, ""prize"": 96, ""penalty"": 1}], ""depot"": 0, ""required_prize"": 200.0, ""route_prize"": 302.0, ""unvisited_penalty"": 120.0, ""route_length"": 226.7956440810422, ""objective"": 346.79564408104227}","[0, 1, 5, 7, 6, 0]"
+PCTSP_S_034,PCTSP,S,34,"Someone organizing errand runs on a bike has to plan one uninterrupted ride out of the depot, deciding which drop points to visit so the money earned reaches a set minimum while keeping time in the saddle and missed-stop fines as low as possible. The way to judge any plan is straightforward: add the total pedal time for the loop to the penalties charged for skipped stops — that sum is the score to keep down. The trip must start and end at the depot, be continuous, and not revisit the same stop or break into multiple trips. The detailed list of locations, their earnings and penalties is shown below.
+
+{
+  ""total_stops_including_depot"": 8,
+  ""nodes"": [
+    {
+      ""stop_id"": 0,
+      ""x_coordinate"": 44,
+      ""y_coordinate"": 93,
+      ""earnings_at_stop"": 0,
+      ""missed_stop_penalty"": 0
+    },
+    {
+      ""stop_id"": 1,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 0,
+      ""earnings_at_stop"": 81,
+      ""missed_stop_penalty"": 21
+    },
+    {
+      ""stop_id"": 2,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 32,
+      ""earnings_at_stop"": 29,
+      ""missed_stop_penalty"": 43
+    },
+    {
+      ""stop_id"": 3,
+      ""x_coordinate"": 39,
+      ""y_coordinate"": 100,
+      ""earnings_at_stop"": 16,
+      ""missed_stop_penalty"": 48
+    },
+    {
+      ""stop_id"": 4,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 72,
+      ""earnings_at_stop"": 89,
+      ""missed_stop_penalty"": 55
+    },
+    {
+      ""stop_id"": 5,
+      ""x_coordinate"": 20,
+      ""y_coordinate"": 96,
+      ""earnings_at_stop"": 78,
+      ""missed_stop_penalty"": 41
+    },
+    {
+      ""stop_id"": 6,
+      ""x_coordinate"": 27,
+      ""y_coordinate"": 4,
+      ""earnings_at_stop"": 36,
+      ""missed_stop_penalty"": 50
+    },
+    {
+      ""stop_id"": 7,
+      ""x_coordinate"": 65,
+      ""y_coordinate"": 70,
+      ""earnings_at_stop"": 58,
+      ""missed_stop_penalty"": 12
+    }
+  ],
+  ""depot_node_id"": 0,
+  ""min_earnings_required"": 200.0
+}
+
+If you'd like to hand me a proposed route, a simple JSON list is the easiest way to do it — just one continuous array that starts and ends at the depot. Here’s the little template I expect:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of it like a form: ""solution"" is the ride, listed stop by stop in order (first and last entries are the depot). The placeholders above are just showing the shape I want, not a real route.
+
+Please use the exact identifiers that appear in the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”"".",json,zero_based,"{""coordinates"": [[44, 93], [0, 0], [100, 32], [39, 100], [100, 72], [20, 96], [27, 4], [65, 70]], ""prizes"": [0, 81, 29, 16, 89, 78, 36, 58], ""penalties"": [0, 21, 43, 48, 55, 41, 50, 12], ""required_prize"": 200.0, ""depot"": 0, ""route_length"": 174.85508144987426, ""route_prize"": 241.0, ""unvisited_penalty"": 114.0, ""objective"": 288.85508144987426}","[0, 3, 5, 7, 4, 0]",288.85508144987426,"{""problem_type"": ""PCTSP"", ""num_nodes"": 8, ""nodes"": [{""id"": 0, ""x"": 44, ""y"": 93, ""prize"": 0, ""penalty"": 0}, {""id"": 1, ""x"": 0, ""y"": 0, ""prize"": 81, ""penalty"": 21}, {""id"": 2, ""x"": 100, ""y"": 32, ""prize"": 29, ""penalty"": 43}, {""id"": 3, ""x"": 39, ""y"": 100, ""prize"": 16, ""penalty"": 48}, {""id"": 4, ""x"": 100, ""y"": 72, ""prize"": 89, ""penalty"": 55}, {""id"": 5, ""x"": 20, ""y"": 96, ""prize"": 78, ""penalty"": 41}, {""id"": 6, ""x"": 27, ""y"": 4, ""prize"": 36, ""penalty"": 50}, {""id"": 7, ""x"": 65, ""y"": 70, ""prize"": 58, ""penalty"": 12}], ""depot"": 0, ""required_prize"": 200.0, ""route_prize"": 241.0, ""unvisited_penalty"": 114.0, ""route_length"": 174.85508144987426, ""objective"": 288.85508144987426}","[0, 3, 5, 7, 4, 0]"
+PCTSP_S_035,PCTSP,S,35,"Back at headquarters the dispatcher needs one single circular route: leave HQ, visit selected shelters once each, and return to HQ. The decision is which shelters to include so the team reaches the minimum total number of kits while keeping the plan as “light” as possible — light meaning low driving distance plus low expected harm from any shelters skipped. To judge any candidate route, add the route’s miles and the penalty amounts for skipped shelters; lower combined totals are better. The run must be one loop (no double-serving), it must start and end at the depot, and it must meet the required delivery total. Full details for the instance are shown below.
+
+The instance lists 10 locations; the depot is node 1, and the route must supply at least 250.0 kits.
+Location 1 at (0, 6) supplies 0 kits if visited; skipping it incurs 0 expected-harm penalty.
+Location 2 at (25, 100) supplies 98 kits if visited; skipping it incurs 29 expected-harm penalty.
+Location 3 at (24, 98) supplies 91 kits if visited; skipping it incurs 3 expected-harm penalty.
+Location 4 at (28, 14) supplies 78 kits if visited; skipping it incurs 3 expected-harm penalty.
+Location 5 at (35, 0) supplies 89 kits if visited; skipping it incurs 19 expected-harm penalty.
+Location 6 at (44, 0) supplies 46 kits if visited; skipping it incurs 6 expected-harm penalty.
+Location 7 at (91, 70) supplies 32 kits if visited; skipping it incurs 21 expected-harm penalty.
+Location 8 at (100, 80) supplies 64 kits if visited; skipping it incurs 34 expected-harm penalty.
+Location 9 at (94, 37) supplies 59 kits if visited; skipping it incurs 24 expected-harm penalty.
+Location 10 at (77, 33) supplies 4 kits if visited; skipping it incurs 1 expected-harm penalty.
+The plan must form one loop starting and ending at the depot, meet the required kits, and minimize route miles plus penalties for skipped locations.
+
+Also, when you reply with the planned route, please use this simple JSON layout so I can parse it easily:
+
+{
+  ""solution"": [hq_id, shelter_id, ..., hq_id]
+}
+
+Think of that as a little form: ""solution"" is the ordered list of location IDs for the loop — start at the depot (HQ), list every shelter you plan to visit in order (each at most once), and finish back at the depot. This is just a sketch of the shape I need, not the actual route answer.
+
+Please be sure to use the exact identifiers given in the instance input — do not rename or invent labels. 
+""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,one_based,"{""coordinates"": [[0, 6], [25, 100], [24, 98], [28, 14], [35, 0], [44, 0], [91, 70], [100, 80], [94, 37], [77, 33]], ""prizes"": [0, 98, 91, 78, 89, 46, 32, 64, 59, 4], ""penalties"": [0, 29, 3, 3, 19, 6, 21, 34, 24, 1], ""required_prize"": 250.0, ""depot"": 0, ""route_length"": 205.85127009704405, ""route_prize"": 276.0, ""unvisited_penalty"": 87.0, ""objective"": 292.85127009704405}","[0, 3, 9, 8, 5, 4, 0]",292.85127009704405,"{""problem_type"": ""PCTSP"", ""num_nodes"": 10, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 6, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 25, ""y"": 100, ""prize"": 98, ""penalty"": 29}, {""id"": 3, ""x"": 24, ""y"": 98, ""prize"": 91, ""penalty"": 3}, {""id"": 4, ""x"": 28, ""y"": 14, ""prize"": 78, ""penalty"": 3}, {""id"": 5, ""x"": 35, ""y"": 0, ""prize"": 89, ""penalty"": 19}, {""id"": 6, ""x"": 44, ""y"": 0, ""prize"": 46, ""penalty"": 6}, {""id"": 7, ""x"": 91, ""y"": 70, ""prize"": 32, ""penalty"": 21}, {""id"": 8, ""x"": 100, ""y"": 80, ""prize"": 64, ""penalty"": 34}, {""id"": 9, ""x"": 94, ""y"": 37, ""prize"": 59, ""penalty"": 24}, {""id"": 10, ""x"": 77, ""y"": 33, ""prize"": 4, ""penalty"": 1}], ""depot"": 1, ""required_prize"": 250.0, ""route_prize"": 276.0, ""unvisited_penalty"": 87.0, ""route_length"": 205.85127009704405, ""objective"": 292.85127009704405}","[1, 4, 10, 9, 6, 5, 1]"
+PCTSP_S_036,PCTSP,S,36,"On a typical field day the goal is to head out from the office, run a single loop of interviews, and come back — picking which respondents to stop at so the cumulative survey value is at least the required target. What to prefer is clear: pick a loop that keeps driving to a minimum and keeps penalties for people not visited as small as possible — total that up by adding travel length and the penalties for skipped respondents. The route must be continuous and each person can only be counted once; the detailed locations and numbers are shown below.
+
+There are 9 locations in total, the office (depot) is 0, and the required total survey value is 225.0.
+
+| location_id | x_coordinate | y_coordinate | survey_value | skip_penalty |
+|---|---|---|---|---|
+| 0 | 32 | 71 | 0 | 0 |
+| 1 | 100 | 70 | 25 | 51 |
+| 2 | 61 | 58 | 1 | 44 |
+| 3 | 29 | 72 | 44 | 47 |
+| 4 | 22 | 0 | 85 | 46 |
+| 5 | 78 | 100 | 93 | 2 |
+| 6 | 0 | 100 | 13 | 10 |
+| 7 | 26 | 100 | 7 | 2 |
+| 8 | 75 | 1 | 83 | 0 |
+
+Use these locations to pick a single continuous loop that minimizes travel plus skipped penalties while reaching at least 225.0 survey value.
+
+If you want to hand me a proposed route, just pop it into this little JSON envelope and send it back — something simple like this works great:
+
+{
+  ""solution"": [office_id, respondent_id, ..., office_id]
+}
+
+Think of that as a form: ""solution"" is the ordered loop — the first entry is where you start (the office), then the respondents you plan to visit in order, and the last entry is the office again to close the loop. This is just a sketch of the shape I need, not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"{""coordinates"": [[32, 71], [100, 70], [61, 58], [29, 72], [22, 0], [78, 100], [0, 100], [26, 100], [75, 1]], ""prizes"": [0, 25, 1, 44, 85, 93, 13, 7, 83], ""penalties"": [0, 51, 44, 47, 46, 2, 10, 2, 0], ""required_prize"": 225.0, ""depot"": 0, ""route_length"": 274.4854694665728, ""route_prize"": 238.0, ""unvisited_penalty"": 14.0, ""objective"": 288.4854694665728}","[0, 3, 4, 8, 1, 2, 0]",288.4854694665728,"{""problem_type"": ""PCTSP"", ""num_nodes"": 9, ""nodes"": [{""id"": 0, ""x"": 32, ""y"": 71, ""prize"": 0, ""penalty"": 0}, {""id"": 1, ""x"": 100, ""y"": 70, ""prize"": 25, ""penalty"": 51}, {""id"": 2, ""x"": 61, ""y"": 58, ""prize"": 1, ""penalty"": 44}, {""id"": 3, ""x"": 29, ""y"": 72, ""prize"": 44, ""penalty"": 47}, {""id"": 4, ""x"": 22, ""y"": 0, ""prize"": 85, ""penalty"": 46}, {""id"": 5, ""x"": 78, ""y"": 100, ""prize"": 93, ""penalty"": 2}, {""id"": 6, ""x"": 0, ""y"": 100, ""prize"": 13, ""penalty"": 10}, {""id"": 7, ""x"": 26, ""y"": 100, ""prize"": 7, ""penalty"": 2}, {""id"": 8, ""x"": 75, ""y"": 1, ""prize"": 83, ""penalty"": 0}], ""depot"": 0, ""required_prize"": 225.0, ""route_prize"": 238.0, ""unvisited_penalty"": 14.0, ""route_length"": 274.4854694665728, ""objective"": 288.4854694665728}","[0, 3, 4, 8, 1, 2, 0]"
+PCTSP_S_037,PCTSP,S,37,"Someone on the decorating crew is mapping out a holiday route: leave the storage yard, visit a selection of stores to put up displays, then return to the yard. The choice is which stops to make and how to string them together so the total display impact from visited stores reaches the required minimum. A smarter route is one that has less driving and fewer penalties for skipped stores — calculate its value by summing the total miles driven plus the skip-fees for any stores not visited. It’s got to be a single circuit and a store can’t be visited twice. All the specific store data and required totals are below.
+
+{
+  ""total_locations_including_yard"": 6,
+  ""nodes"": [
+    {
+      ""store_node_id"": ""A"",
+      ""store_x_coordinate"": 22,
+      ""store_y_coordinate"": 100,
+      ""display_impact_points"": 0,
+      ""store_skip_fee"": 0
+    },
+    {
+      ""store_node_id"": ""B"",
+      ""store_x_coordinate"": 0,
+      ""store_y_coordinate"": 81,
+      ""display_impact_points"": 100,
+      ""store_skip_fee"": 49
+    },
+    {
+      ""store_node_id"": ""C"",
+      ""store_x_coordinate"": 68,
+      ""store_y_coordinate"": 82,
+      ""display_impact_points"": 56,
+      ""store_skip_fee"": 60
+    },
+    {
+      ""store_node_id"": ""D"",
+      ""store_x_coordinate"": 48,
+      ""store_y_coordinate"": 31,
+      ""display_impact_points"": 15,
+      ""store_skip_fee"": 50
+    },
+    {
+      ""store_node_id"": ""E"",
+      ""store_x_coordinate"": 43,
+      ""store_y_coordinate"": 20,
+      ""display_impact_points"": 14,
+      ""store_skip_fee"": 60
+    },
+    {
+      ""store_node_id"": ""F"",
+      ""store_x_coordinate"": 100,
+      ""store_y_coordinate"": 0,
+      ""display_impact_points"": 91,
+      ""store_skip_fee"": 82
+    }
+  ],
+  ""storage_yard_node_id"": ""A"",
+  ""required_display_impact"": 150.0
+}
+
+Also, when you send back the route, please use this simple JSON layout so it's easy to parse:
+
+{
+  ""solution"": [storage_yard_id, store_id, ..., storage_yard_id]
+}
+
+This just means: put the full circuit in the solution array — start with the storage yard (depot), list the stores you plan to visit in order, and end back at the storage yard. It’s just a sketch of the shape I expect, not the actual answer.
+
+- For example: Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".
+
+Please use the exact identifiers from the instance input — no renaming and no new labels.",json,names,"{""coordinates"": [[22, 100], [0, 81], [68, 82], [48, 31], [43, 20], [100, 0]], ""prizes"": [0, 100, 56, 15, 14, 91], ""penalties"": [0, 49, 60, 50, 60, 82], ""required_prize"": 150.0, ""depot"": 0, ""route_length"": 219.96210214939623, ""route_prize"": 185.0, ""unvisited_penalty"": 82.0, ""objective"": 301.96210214939623}","[0, 1, 4, 3, 2, 0]",301.96210214939623,"{""problem_type"": ""PCTSP"", ""num_nodes"": 6, ""nodes"": [{""id"": ""A"", ""x"": 22, ""y"": 100, ""prize"": 0, ""penalty"": 0}, {""id"": ""B"", ""x"": 0, ""y"": 81, ""prize"": 100, ""penalty"": 49}, {""id"": ""C"", ""x"": 68, ""y"": 82, ""prize"": 56, ""penalty"": 60}, {""id"": ""D"", ""x"": 48, ""y"": 31, ""prize"": 15, ""penalty"": 50}, {""id"": ""E"", ""x"": 43, ""y"": 20, ""prize"": 14, ""penalty"": 60}, {""id"": ""F"", ""x"": 100, ""y"": 0, ""prize"": 91, ""penalty"": 82}], ""depot"": ""A"", ""required_prize"": 150.0, ""route_prize"": 185.0, ""unvisited_penalty"": 82.0, ""route_length"": 219.96210214939623, ""objective"": 301.96210214939623}","[""A"", ""B"", ""E"", ""D"", ""C"", ""A""]"
+PCTSP_S_038,PCTSP,S,38,"Recently the team had to plan one circular route out of the office to hit enough accounts to satisfy the campaign goal. It comes down to choosing which accounts to visit: each visit adds expected income, each skipped account has a penalty, and driving the route costs money. To compare plans, just total the driving cost and all penalties for skipped accounts — among the routes that reach the revenue threshold, pick the one with the lowest combined total. The trip must be a single loop from the office back to the office and only visit selected clients once. Concrete numbers and locations appear below.
+
+{
+  ""total_locations_including_office"": 10,
+  ""nodes"": [
+    {
+      ""location_id"": 0,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 64,
+      ""expected_revenue"": 0,
+      ""skip_penalty"": 0
+    },
+    {
+      ""location_id"": 1,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 86,
+      ""expected_revenue"": 8,
+      ""skip_penalty"": 46
+    },
+    {
+      ""location_id"": 2,
+      ""x_coordinate"": 1,
+      ""y_coordinate"": 91,
+      ""expected_revenue"": 8,
+      ""skip_penalty"": 31
+    },
+    {
+      ""location_id"": 3,
+      ""x_coordinate"": 9,
+      ""y_coordinate"": 42,
+      ""expected_revenue"": 65,
+      ""skip_penalty"": 24
+    },
+    {
+      ""location_id"": 4,
+      ""x_coordinate"": 9,
+      ""y_coordinate"": 100,
+      ""expected_revenue"": 6,
+      ""skip_penalty"": 40
+    },
+    {
+      ""location_id"": 5,
+      ""x_coordinate"": 17,
+      ""y_coordinate"": 6,
+      ""expected_revenue"": 11,
+      ""skip_penalty"": 24
+    },
+    {
+      ""location_id"": 6,
+      ""x_coordinate"": 17,
+      ""y_coordinate"": 77,
+      ""expected_revenue"": 88,
+      ""skip_penalty"": 49
+    },
+    {
+      ""location_id"": 7,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 0,
+      ""expected_revenue"": 94,
+      ""skip_penalty"": 38
+    },
+    {
+      ""location_id"": 8,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 64,
+      ""expected_revenue"": 11,
+      ""skip_penalty"": 32
+    },
+    {
+      ""location_id"": 9,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 86,
+      ""expected_revenue"": 22,
+      ""skip_penalty"": 6
+    }
+  ],
+  ""sales_office_id"": 0,
+  ""campaign_revenue_target"": 250.0
+}
+
+Also, when you send the chosen route back, please use this little JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Here that array is just the loop: start with the office/depot identifier, list each client you plan to visit once in order, and finish back at the office. Think of it like filling out a short form — not the final answer format, just the shape I need.
+
+Please be sure to use the exact identifiers from the instance input — don't rename anything or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"{""coordinates"": [[0, 64], [0, 86], [1, 91], [9, 42], [9, 100], [17, 6], [17, 77], [100, 0], [100, 64], [100, 86]], ""prizes"": [0, 8, 8, 65, 6, 11, 88, 94, 11, 22], ""penalties"": [0, 46, 31, 24, 40, 24, 49, 38, 32, 6], ""required_prize"": 250.0, ""depot"": 0, ""route_length"": 320.57330333455633, ""route_prize"": 280.0, ""unvisited_penalty"": 38.0, ""objective"": 358.5733033345563}","[0, 1, 2, 4, 6, 7, 5, 3, 0]",358.5733033345563,"{""problem_type"": ""PCTSP"", ""num_nodes"": 10, ""nodes"": [{""id"": 0, ""x"": 0, ""y"": 64, ""prize"": 0, ""penalty"": 0}, {""id"": 1, ""x"": 0, ""y"": 86, ""prize"": 8, ""penalty"": 46}, {""id"": 2, ""x"": 1, ""y"": 91, ""prize"": 8, ""penalty"": 31}, {""id"": 3, ""x"": 9, ""y"": 42, ""prize"": 65, ""penalty"": 24}, {""id"": 4, ""x"": 9, ""y"": 100, ""prize"": 6, ""penalty"": 40}, {""id"": 5, ""x"": 17, ""y"": 6, ""prize"": 11, ""penalty"": 24}, {""id"": 6, ""x"": 17, ""y"": 77, ""prize"": 88, ""penalty"": 49}, {""id"": 7, ""x"": 100, ""y"": 0, ""prize"": 94, ""penalty"": 38}, {""id"": 8, ""x"": 100, ""y"": 64, ""prize"": 11, ""penalty"": 32}, {""id"": 9, ""x"": 100, ""y"": 86, ""prize"": 22, ""penalty"": 6}], ""depot"": 0, ""required_prize"": 250.0, ""route_prize"": 280.0, ""unvisited_penalty"": 38.0, ""route_length"": 320.57330333455633, ""objective"": 358.5733033345563}","[0, 1, 2, 4, 6, 7, 5, 3, 0]"
+PCTSP_S_039,PCTSP,S,39,"On a typical route-planning morning the dispatcher needs one circuit from the garage that visits a selection of machines, accumulates at least the required repair value, and brings the van home. The way to pick between different circuits is practical: total driving time for the chosen loop plus the penalties for machines skipped — compute the total by summing drive time and skipped-machine penalties, and choose the plan with the smallest sum. Each machine can only be visited as part of that single loop (no duplicates), skipped machines count their penalty, and the visited ones must together reach the required repair total. Concrete instance details are listed below.
+
+# total_locations_including_garage=8
+# garage_node_id=1
+# required_repair_value=200.0
+machine_node_id,x_coordinate,y_coordinate,repair_value,skip_penalty
+1,0,3,0,0
+2,73,97,12,4
+3,30,79,15,3
+4,3,100,86,5
+5,30,31,57,61
+6,70,0,56,33
+7,100,0,70,24
+8,100,62,85,38
+
+Also, when you send the plan back, just use a small JSON object with the tour in order — nothing fancy. For example:
+
+{
+  ""solution"": [garage_id, machine_id, ..., garage_id]
+}
+
+This little snippet just shows the shape I want: ""solution"" is the circuit, starting and ending at the garage (garage_id), with the machines you visit listed in order (machine_id) in between. Think of it like filling out a form — the array is the sequence of stops. It's only a sketch of the expected shape, not the actual answer.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""coordinates"": [[0, 3], [73, 97], [30, 79], [3, 100], [30, 31], [70, 0], [100, 0], [100, 62]], ""prizes"": [0, 12, 15, 86, 57, 56, 70, 85], ""penalties"": [0, 4, 3, 5, 61, 33, 24, 38], ""required_prize"": 200.0, ""depot"": 0, ""route_length"": 279.65799346147264, ""route_prize"": 268.0, ""unvisited_penalty"": 12.0, ""objective"": 291.65799346147264}","[0, 5, 6, 7, 4, 0]",291.65799346147264,"{""problem_type"": ""PCTSP"", ""num_nodes"": 8, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 3, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 73, ""y"": 97, ""prize"": 12, ""penalty"": 4}, {""id"": 3, ""x"": 30, ""y"": 79, ""prize"": 15, ""penalty"": 3}, {""id"": 4, ""x"": 3, ""y"": 100, ""prize"": 86, ""penalty"": 5}, {""id"": 5, ""x"": 30, ""y"": 31, ""prize"": 57, ""penalty"": 61}, {""id"": 6, ""x"": 70, ""y"": 0, ""prize"": 56, ""penalty"": 33}, {""id"": 7, ""x"": 100, ""y"": 0, ""prize"": 70, ""penalty"": 24}, {""id"": 8, ""x"": 100, ""y"": 62, ""prize"": 85, ""penalty"": 38}], ""depot"": 1, ""required_prize"": 200.0, ""route_prize"": 268.0, ""unvisited_penalty"": 12.0, ""route_length"": 279.65799346147264, ""objective"": 291.65799346147264}","[1, 6, 7, 8, 5, 1]"
+PCTSP_S_040,PCTSP,S,40,"We’re putting together a single guided loop that starts and finishes at the ticket desk and stops at a handful of exhibits along the way. The decision is which exhibits to include so the collected interest points meet the museum’s minimum target. A “better” loop is simply one with a smaller final number, which is calculated by taking the total walking distance of the loop and adding the penalty values for exhibits not visited. The route should be one continuous circuit without repeating exhibits, must return to the ticket desk, and must reach the required interest total. Concrete details are shown below.
+
+We have 9 distinct locations (the ticket desk is node 0) and must collect at least 225.0 interest points.
+
+| exhibit_node_id | x_coordinate_meters | y_coordinate_meters | interest_points | skip_penalty_cost |
+|---|---|---|---|---|
+| 0 | 58 | 0 | 0 | 0 |
+| 1 | 31 | 11 | 39 | 14 |
+| 2 | 2 | 28 | 30 | 38 |
+| 3 | 68 | 60 | 67 | 38 |
+| 4 | 100 | 58 | 16 | 21 |
+| 5 | 0 | 75 | 97 | 17 |
+| 6 | 2 | 82 | 4 | 41 |
+| 7 | 24 | 98 | 10 | 5 |
+| 8 | 44 | 100 | 17 | 1 |
+
+We will form a single circuit starting and ending at node 0 that reaches the 225.0 target while minimizing walking distance plus skip penalties.
+
+Also, when you send back the chosen loop, please stick to this simple JSON layout:
+
+{
+  ""solution"": [ticketdesk_id, exhibit_id, ..., ticketdesk_id]
+}
+
+Think of that as a quick form: the solution array is the loop you’ll take — start at the ticket desk, list the exhibits you visit in order, and finish back at the ticket desk. The placeholders (ticketdesk_id, exhibit_id) are just there to show the shape — don’t fill them in literally in the sketch above; they’re a template, not the final answer.
+
+Please use the exact identifiers from the instance input when you give the real route — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"{""coordinates"": [[58, 0], [31, 11], [2, 28], [68, 60], [100, 58], [0, 75], [2, 82], [24, 98], [44, 100]], ""prizes"": [0, 39, 30, 67, 16, 97, 4, 10, 17], ""penalties"": [0, 14, 38, 38, 21, 17, 41, 5, 1], ""required_prize"": 225.0, ""depot"": 0, ""route_length"": 247.4906097634931, ""route_prize"": 237.0, ""unvisited_penalty"": 27.0, ""objective"": 274.4906097634931}","[0, 1, 2, 5, 6, 3, 0]",274.4906097634931,"{""problem_type"": ""PCTSP"", ""num_nodes"": 9, ""nodes"": [{""id"": 0, ""x"": 58, ""y"": 0, ""prize"": 0, ""penalty"": 0}, {""id"": 1, ""x"": 31, ""y"": 11, ""prize"": 39, ""penalty"": 14}, {""id"": 2, ""x"": 2, ""y"": 28, ""prize"": 30, ""penalty"": 38}, {""id"": 3, ""x"": 68, ""y"": 60, ""prize"": 67, ""penalty"": 38}, {""id"": 4, ""x"": 100, ""y"": 58, ""prize"": 16, ""penalty"": 21}, {""id"": 5, ""x"": 0, ""y"": 75, ""prize"": 97, ""penalty"": 17}, {""id"": 6, ""x"": 2, ""y"": 82, ""prize"": 4, ""penalty"": 41}, {""id"": 7, ""x"": 24, ""y"": 98, ""prize"": 10, ""penalty"": 5}, {""id"": 8, ""x"": 44, ""y"": 100, ""prize"": 17, ""penalty"": 1}], ""depot"": 0, ""required_prize"": 225.0, ""route_prize"": 237.0, ""unvisited_penalty"": 27.0, ""route_length"": 247.4906097634931, ""objective"": 274.4906097634931}","[0, 1, 2, 5, 6, 3, 0]"
+PCTSP_S_041,PCTSP,S,41,"Back at the hub the task is to build a single delivery tour that starts and finishes at the same place and visits a selection of subscribers whose payments add up to at least the required sum. The practical yardstick is simple — take the miles of the chosen tour and add the penalties for everyone who wasn’t visited; the smaller that sum, the better the choice. The tour is one continuous loop with no repeat visits, and the exact locations, subscription amounts and penalties are listed below.
+
+# total_locations_including_hub=7
+# hub_node_id=1
+# required_subscription_sum=175.0
+location_id,x_coordinate,y_coordinate,subscription_value,missed_delivery_penalty
+1,53,2,0,0
+2,35,15,32,26
+3,55,100,7,49
+4,100,0,9,6
+5,0,4,50,14
+6,78,24,96,5
+7,41,46,70,34
+
+Oh — and one more thing: when you send the route back, please stick to this simple JSON layout so it's easy to read and check:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+This ""solution"" array should list the hub where you start, then each subscriber you plan to visit in the order you’ll visit them, and finally the hub again to close the loop. Think of it as the form to fill out — a quick sketch of the tour, not the full write-up.
+
+Please use the exact identifiers from the instance input — no renaming and no new labels. 
+- For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,one_based,"{""coordinates"": [[53, 2], [35, 15], [55, 100], [100, 0], [0, 4], [78, 24], [41, 46]], ""prizes"": [0, 32, 7, 9, 50, 96, 70], ""penalties"": [0, 26, 49, 6, 14, 5, 34], ""required_prize"": 175.0, ""depot"": 0, ""route_length"": 130.1270482296236, ""route_prize"": 198.0, ""unvisited_penalty"": 69.0, ""objective"": 199.1270482296236}","[0, 1, 6, 5, 0]",199.1270482296236,"{""problem_type"": ""PCTSP"", ""num_nodes"": 7, ""nodes"": [{""id"": 1, ""x"": 53, ""y"": 2, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 35, ""y"": 15, ""prize"": 32, ""penalty"": 26}, {""id"": 3, ""x"": 55, ""y"": 100, ""prize"": 7, ""penalty"": 49}, {""id"": 4, ""x"": 100, ""y"": 0, ""prize"": 9, ""penalty"": 6}, {""id"": 5, ""x"": 0, ""y"": 4, ""prize"": 50, ""penalty"": 14}, {""id"": 6, ""x"": 78, ""y"": 24, ""prize"": 96, ""penalty"": 5}, {""id"": 7, ""x"": 41, ""y"": 46, ""prize"": 70, ""penalty"": 34}], ""depot"": 1, ""required_prize"": 175.0, ""route_prize"": 198.0, ""unvisited_penalty"": 69.0, ""route_length"": 130.1270482296236, ""objective"": 199.1270482296236}","[1, 2, 7, 6, 1]"
+PCTSP_S_042,PCTSP,S,42,"There’s a simple routing problem at play: start at the courier locker, make a single loop picking up parcels at chosen stops until the sum of picked-up parcel values reaches the required target, and return to the locker. The choice is which stops to include — each has a pickup value and a skip-penalty — and the best plan keeps the riding time down while avoiding big penalties for skipped spots. To compare plans, add the full riding time and the penalties for any skipped stops; lower totals are better. The trip must be a single loop and can’t double back to visit a spot twice. Concrete details will be shown below.
+
+# total_locations_including_locker=5
+# locker_node_id=1
+# required_pickup_value=125.0
+location_id,x_coordinate,y_coordinate,parcel_value,skip_penalty
+1,69,40,0,0
+2,34,100,86,30
+3,0,3,3,99
+4,0,8,14,35
+5,100,0,28,91
+
+When you’re ready to send back the route, just use this little JSON layout so it’s easy to read and check:
+
+{
+  ""solution"": [locker_id, stop_id, ..., locker_id]
+}
+
+Think of it like a simple form: ""solution"" is the ordered loop — start at the locker, list the stops you’ll visit in order, and finish back at the locker. The words in the array are placeholders showing the shape of what I need; replace them with the actual identifiers from the instance when you give your real answer.
+
+This JSON is only a sketch of the expected shape, not the actual answer — don’t submit it as-is.
+
+Please be sure to use the exact identifiers from the instance input with no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,one_based,"{""coordinates"": [[69, 40], [34, 100], [0, 3], [0, 8], [100, 0]], ""prizes"": [0, 86, 3, 14, 28], ""penalties"": [0, 30, 99, 35, 91], ""required_prize"": 125.0, ""depot"": 0, ""route_length"": 323.1951322242365, ""route_prize"": 131.0, ""unvisited_penalty"": 0.0, ""objective"": 323.1951322242365}","[0, 1, 3, 2, 4, 0]",323.1951322242365,"{""problem_type"": ""PCTSP"", ""num_nodes"": 5, ""nodes"": [{""id"": 1, ""x"": 69, ""y"": 40, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 34, ""y"": 100, ""prize"": 86, ""penalty"": 30}, {""id"": 3, ""x"": 0, ""y"": 3, ""prize"": 3, ""penalty"": 99}, {""id"": 4, ""x"": 0, ""y"": 8, ""prize"": 14, ""penalty"": 35}, {""id"": 5, ""x"": 100, ""y"": 0, ""prize"": 28, ""penalty"": 91}], ""depot"": 1, ""required_prize"": 125.0, ""route_prize"": 131.0, ""unvisited_penalty"": 0.0, ""route_length"": 323.1951322242365, ""objective"": 323.1951322242365}","[1, 2, 4, 3, 5, 1]"
+PCTSP_S_043,PCTSP,S,43,"Recently the team needed a single-run plan: leave the depot, treat selected properties until the required treatment total is reached, and then return home without revisiting spots. To compare plans, simply add the total driving cost for the route to the penalties for the properties not treated — smaller totals are preferable. The route has to start and end at the depot and each chosen property is visited only once. The concrete details are shown below.
+
+{
+  ""total_locations_including_depot"": 8,
+  ""nodes"": [
+    {
+      ""property_id"": ""A"",
+      ""x_coordinate"": 55,
+      ""y_coordinate"": 100,
+      ""treatment_value"": 0,
+      ""untreated_penalty"": 0
+    },
+    {
+      ""property_id"": ""B"",
+      ""x_coordinate"": 63,
+      ""y_coordinate"": 85,
+      ""treatment_value"": 29,
+      ""untreated_penalty"": 1
+    },
+    {
+      ""property_id"": ""C"",
+      ""x_coordinate"": 75,
+      ""y_coordinate"": 51,
+      ""treatment_value"": 15,
+      ""untreated_penalty"": 17
+    },
+    {
+      ""property_id"": ""D"",
+      ""x_coordinate"": 55,
+      ""y_coordinate"": 38,
+      ""treatment_value"": 85,
+      ""untreated_penalty"": 35
+    },
+    {
+      ""property_id"": ""E"",
+      ""x_coordinate"": 40,
+      ""y_coordinate"": 0,
+      ""treatment_value"": 1,
+      ""untreated_penalty"": 42
+    },
+    {
+      ""property_id"": ""F"",
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 34,
+      ""treatment_value"": 13,
+      ""untreated_penalty"": 8
+    },
+    {
+      ""property_id"": ""G"",
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 0,
+      ""treatment_value"": 20,
+      ""untreated_penalty"": 34
+    },
+    {
+      ""property_id"": ""H"",
+      ""x_coordinate"": 35,
+      ""y_coordinate"": 13,
+      ""treatment_value"": 2,
+      ""untreated_penalty"": 44
+    }
+  ],
+  ""depot_node_id"": ""A"",
+  ""required_treatment_total"": 200.0
+}
+
+Also, when you reply with a plan, just paste a small JSON snippet like this — super simple.
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Here ""solution"" is just the ordered list of places visited: start at the depot, visit each chosen property once in the order you want, and finish back at the depot. Think of it like filling out a short form with the route order — that’s all the JSON needs to show. This is just a sketch of the shape I expect, not the actual answer.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""coordinates"": [[55, 100], [63, 85], [75, 51], [55, 38], [40, 0], [100, 34], [0, 0], [35, 13]], ""prizes"": [0, 29, 15, 85, 1, 13, 20, 2], ""penalties"": [0, 1, 17, 35, 42, 8, 34, 44], ""required_prize"": 200.0, ""depot"": 0, ""route_length"": 0.0, ""route_prize"": 0.0, ""unvisited_penalty"": 181.0, ""objective"": 0.0}","[0, 0]",0.0,"{""problem_type"": ""PCTSP"", ""num_nodes"": 8, ""nodes"": [{""id"": ""A"", ""x"": 55, ""y"": 100, ""prize"": 0, ""penalty"": 0}, {""id"": ""B"", ""x"": 63, ""y"": 85, ""prize"": 29, ""penalty"": 1}, {""id"": ""C"", ""x"": 75, ""y"": 51, ""prize"": 15, ""penalty"": 17}, {""id"": ""D"", ""x"": 55, ""y"": 38, ""prize"": 85, ""penalty"": 35}, {""id"": ""E"", ""x"": 40, ""y"": 0, ""prize"": 1, ""penalty"": 42}, {""id"": ""F"", ""x"": 100, ""y"": 34, ""prize"": 13, ""penalty"": 8}, {""id"": ""G"", ""x"": 0, ""y"": 0, ""prize"": 20, ""penalty"": 34}, {""id"": ""H"", ""x"": 35, ""y"": 13, ""prize"": 2, ""penalty"": 44}], ""depot"": ""A"", ""required_prize"": 200.0, ""route_prize"": 0.0, ""unvisited_penalty"": 181.0, ""route_length"": 0.0, ""objective"": 0.0}","[""A"", ""A""]"
+PCTSP_S_044,PCTSP,S,44,"Many people depend on a single outreach run: the clinic van will head out, visit chosen community sites, and return to base in one circuit. The job is to pick which sites to visit so the total vaccinations collected reaches the required threshold; a smarter pick keeps the sum of travel hours and the penalties for any skipped sites as small as possible. In other words, add up the total drive time for the loop and the penalties for missed sites to get the plan’s score — visits can’t be repeated and the loop must end where it started. The specific site-by-site figures are shown below.
+
+{
+  ""total_sites_including_depot"": 7,
+  ""nodes"": [
+    {
+      ""site_id"": 1,
+      ""x_coordinate"": 52,
+      ""y_coordinate"": 93,
+      ""expected_vaccinations_at_site"": 0,
+      ""penalty_hours_for_not_visiting"": 0
+    },
+    {
+      ""site_id"": 2,
+      ""x_coordinate"": 87,
+      ""y_coordinate"": 100,
+      ""expected_vaccinations_at_site"": 46,
+      ""penalty_hours_for_not_visiting"": 62
+    },
+    {
+      ""site_id"": 3,
+      ""x_coordinate"": 0,
+      ""y_coordinate"": 99,
+      ""expected_vaccinations_at_site"": 37,
+      ""penalty_hours_for_not_visiting"": 34
+    },
+    {
+      ""site_id"": 4,
+      ""x_coordinate"": 8,
+      ""y_coordinate"": 100,
+      ""expected_vaccinations_at_site"": 7,
+      ""penalty_hours_for_not_visiting"": 61
+    },
+    {
+      ""site_id"": 5,
+      ""x_coordinate"": 100,
+      ""y_coordinate"": 1,
+      ""expected_vaccinations_at_site"": 58,
+      ""penalty_hours_for_not_visiting"": 26
+    },
+    {
+      ""site_id"": 6,
+      ""x_coordinate"": 29,
+      ""y_coordinate"": 0,
+      ""expected_vaccinations_at_site"": 8,
+      ""penalty_hours_for_not_visiting"": 34
+    },
+    {
+      ""site_id"": 7,
+      ""x_coordinate"": 29,
+      ""y_coordinate"": 100,
+      ""expected_vaccinations_at_site"": 68,
+      ""penalty_hours_for_not_visiting"": 43
+    }
+  ],
+  ""clinic_depot_id"": 1,
+  ""required_vaccination_target"": 175.0
+}
+
+When you're ready to give the selected route, just send it back in this simple JSON shape so it's easy to read and check:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+This ""solution"" list is just the van's loop: start with the depot, list each site in the order you'll visit them, and finish back at the same depot. It's just a compact way of saying ""follow these labels in this sequence.""
+
+This is only a sketch of the expected shape, not the actual answer—fill in the real site labels from the instance input. Please use the identifiers exactly as they appear in the instance (no renaming, no new labels). 
+- For example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,one_based,"{""coordinates"": [[52, 93], [87, 100], [0, 99], [8, 100], [100, 1], [29, 0], [29, 100]], ""prizes"": [0, 46, 37, 7, 58, 8, 68], ""penalties"": [0, 62, 34, 61, 26, 34, 43], ""required_prize"": 175.0, ""depot"": 0, ""route_length"": 328.6611972202207, ""route_prize"": 216.0, ""unvisited_penalty"": 34.0, ""objective"": 362.6611972202207}","[0, 6, 3, 2, 4, 1, 0]",362.6611972202207,"{""problem_type"": ""PCTSP"", ""num_nodes"": 7, ""nodes"": [{""id"": 1, ""x"": 52, ""y"": 93, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 87, ""y"": 100, ""prize"": 46, ""penalty"": 62}, {""id"": 3, ""x"": 0, ""y"": 99, ""prize"": 37, ""penalty"": 34}, {""id"": 4, ""x"": 8, ""y"": 100, ""prize"": 7, ""penalty"": 61}, {""id"": 5, ""x"": 100, ""y"": 1, ""prize"": 58, ""penalty"": 26}, {""id"": 6, ""x"": 29, ""y"": 0, ""prize"": 8, ""penalty"": 34}, {""id"": 7, ""x"": 29, ""y"": 100, ""prize"": 68, ""penalty"": 43}], ""depot"": 1, ""required_prize"": 175.0, ""route_prize"": 216.0, ""unvisited_penalty"": 34.0, ""route_length"": 328.6611972202207, ""objective"": 362.6611972202207}","[1, 7, 4, 3, 5, 2, 1]"
+PCTSP_S_045,PCTSP,S,45,"We’ve got one busker who wants to plan a single circuit from a favorite corner and back, choosing a handful of performance stops so the day’s donation goal is met. The choice is about balancing two things: how much walking is involved and how much potential income is given up by skipping other spots. To compare plans, simply sum the walking distance and the money forgone from omitted stops — the plan with the smaller sum wins, as long as the selected stops together reach the donation target. Nothing gets visited twice, the run must loop back to the starting corner, and the exact locations, expected donations, and distances are shown below.
+
+We list the 10 spots below, with the loop starting and ending at 1 and a donation target of 250.0.
+
+| spot_id | street_x_coord | street_y_coord | expected_donation | forgone_donation |
+|---|---|---|---|---|
+| 1 | 31 | 0 | 0 | 0 |
+| 2 | 57 | 0 | 31 | 17 |
+| 3 | 12 | 100 | 5 | 16 |
+| 4 | 1 | 42 | 70 | 32 |
+| 5 | 100 | 13 | 76 | 42 |
+| 6 | 37 | 81 | 88 | 26 |
+| 7 | 0 | 19 | 61 | 37 |
+| 8 | 95 | 29 | 80 | 30 |
+| 9 | 100 | 85 | 18 | 35 |
+| 10 | 6 | 20 | 34 | 30 |
+
+Pick a loop that meets the 250.0 target while we minimize total walking plus forgone donations.
+
+Oh, and one more thing — when you send back the planned loop, please use this simple JSON layout so it's easy to check:
+
+{
+  ""solution"": [corner_id, stop_id, ..., corner_id]
+}
+
+Think of that as a little form: ""solution"" is the ordered loop — start at your favorite corner, hit each stop in order, and return to the corner at the end. The corner_id and stop_id bits are just placeholders showing where the actual spot identifiers go; this block is only a sketch of the shape I expect, not the real route.
+
+Please use the exact identifiers from the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",markdown_table,one_based,"{""coordinates"": [[31, 0], [57, 0], [12, 100], [1, 42], [100, 13], [37, 81], [0, 19], [95, 29], [100, 85], [6, 20]], ""prizes"": [0, 31, 5, 70, 76, 88, 61, 80, 18, 34], ""penalties"": [0, 17, 16, 32, 42, 26, 37, 30, 35, 30], ""required_prize"": 250.0, ""depot"": 0, ""route_length"": 243.70000054843663, ""route_prize"": 352.0, ""unvisited_penalty"": 77.0, ""objective"": 320.7000005484366}","[0, 1, 4, 7, 3, 6, 9, 0]",320.7000005484366,"{""problem_type"": ""PCTSP"", ""num_nodes"": 10, ""nodes"": [{""id"": 1, ""x"": 31, ""y"": 0, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 57, ""y"": 0, ""prize"": 31, ""penalty"": 17}, {""id"": 3, ""x"": 12, ""y"": 100, ""prize"": 5, ""penalty"": 16}, {""id"": 4, ""x"": 1, ""y"": 42, ""prize"": 70, ""penalty"": 32}, {""id"": 5, ""x"": 100, ""y"": 13, ""prize"": 76, ""penalty"": 42}, {""id"": 6, ""x"": 37, ""y"": 81, ""prize"": 88, ""penalty"": 26}, {""id"": 7, ""x"": 0, ""y"": 19, ""prize"": 61, ""penalty"": 37}, {""id"": 8, ""x"": 95, ""y"": 29, ""prize"": 80, ""penalty"": 30}, {""id"": 9, ""x"": 100, ""y"": 85, ""prize"": 18, ""penalty"": 35}, {""id"": 10, ""x"": 6, ""y"": 20, ""prize"": 34, ""penalty"": 30}], ""depot"": 1, ""required_prize"": 250.0, ""route_prize"": 352.0, ""unvisited_penalty"": 77.0, ""route_length"": 243.70000054843663, ""objective"": 320.7000005484366}","[1, 2, 5, 8, 4, 7, 10, 1]"
+PCTSP_S_046,PCTSP,S,46,"Picture this: a crew needs a single circular route starting and ending at base camp that stops at some sites to gather samples until the mission’s minimum is met, then returns home. The choice is which sites to include and in what order, making sure not to visit any site more than once and to reach the required sample total. A plan is better if it keeps driving to a minimum and limits the penalties for skipped sites — the overall measure is just travel distance plus the sum of penalties for any unsampled locations. The detailed numbers and site list are below.
+
+There are 9 locations including base camp 1; the crew must collect at least 225.0 samples.
+
+| site_id | x_coord | y_coord | sample_value | unsampled_penalty |
+|---|---|---|---|---|
+| 1 | 0 | 86 | 0 | 0 |
+| 2 | 42 | 18 | 86 | 32 |
+| 3 | 67 | 20 | 17 | 41 |
+| 4 | 40 | 43 | 28 | 10 |
+| 5 | 19 | 33 | 53 | 44 |
+| 6 | 84 | 55 | 68 | 4 |
+| 7 | 100 | 0 | 93 | 7 |
+| 8 | 100 | 100 | 15 | 10 |
+| 9 | 84 | 86 | 5 | 5 |
+
+The plan should form a single circular route starting and ending at 1, gather at least 225.0 samples, and minimize travel distance plus unsampled penalties.
+
+Oh, and when you send back the actual route, please use this simple JSON shape so it's easy to read and import:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of ""solution"" as the tour: start with the depot, list each site you plan to stop at in order, and finish back at the depot. The items in the array are placeholders — when you give the real answer, replace them with the exact site IDs from the instance. This is just a sketch of the expected shape, not the real route.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""coordinates"": [[0, 86], [42, 18], [67, 20], [40, 43], [19, 33], [84, 55], [100, 0], [100, 100], [84, 86]], ""prizes"": [0, 86, 17, 28, 53, 68, 93, 15, 5], ""penalties"": [0, 32, 41, 10, 44, 4, 7, 10, 5], ""required_prize"": 225.0, ""depot"": 0, ""route_length"": 252.08704324525493, ""route_prize"": 252.0, ""unvisited_penalty"": 22.0, ""objective"": 274.0870432452549}","[0, 3, 5, 2, 1, 4, 0]",274.0870432452549,"{""problem_type"": ""PCTSP"", ""num_nodes"": 9, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 86, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 42, ""y"": 18, ""prize"": 86, ""penalty"": 32}, {""id"": 3, ""x"": 67, ""y"": 20, ""prize"": 17, ""penalty"": 41}, {""id"": 4, ""x"": 40, ""y"": 43, ""prize"": 28, ""penalty"": 10}, {""id"": 5, ""x"": 19, ""y"": 33, ""prize"": 53, ""penalty"": 44}, {""id"": 6, ""x"": 84, ""y"": 55, ""prize"": 68, ""penalty"": 4}, {""id"": 7, ""x"": 100, ""y"": 0, ""prize"": 93, ""penalty"": 7}, {""id"": 8, ""x"": 100, ""y"": 100, ""prize"": 15, ""penalty"": 10}, {""id"": 9, ""x"": 84, ""y"": 86, ""prize"": 5, ""penalty"": 5}], ""depot"": 1, ""required_prize"": 225.0, ""route_prize"": 252.0, ""unvisited_penalty"": 22.0, ""route_length"": 252.08704324525493, ""objective"": 274.0870432452549}","[1, 4, 6, 3, 2, 5, 1]"
+PCTSP_S_047,PCTSP,S,47,"Many people on the scheduling team have faced this: one depot, a pile of houses with values and skip-penalties, and one circuit to plan that has to meet a target amount of installed value. The decision is which homes to visit on that single loop—each candidate route’s final score is simply driving cost plus the penalties for the homes not visited, and the route with the lowest combined score wins. Visits aren’t repeated, the trip must start and finish at the depot, and the chosen stops must reach the required total value. See the exact numbers and locations below.
+
+Instance specifics follow: 6 total locations (depot 0) and a required prize of 150.0.
+Location 0 at (17, 3) offers prize 0 with a skip penalty of 0.
+Location 1 at (91, 67) offers prize 65 with a skip penalty of 60.
+Location 2 at (79, 3) offers prize 98 with a skip penalty of 52.
+Location 3 at (77, 100) offers prize 42 with a skip penalty of 51.
+Location 4 at (100, 3) offers prize 15 with a skip penalty of 82.
+Location 5 at (0, 0) offers prize 30 with a skip penalty of 23.
+These entries specify the numbers and locations for planning the single circuit that must collect at least 150.0.
+
+Oh, and when you reply, please use this simple JSON layout for the route so it's easy to parse:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+""solution"" is just the tour: start at the depot, list the stops you plan to visit in the order you’ll hit them, and end back at the depot. Think of it as filling out a little itinerary form — just the sequence, nothing else. This is only a sketch of the expected shape, not the actual answer.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",nl,zero_based,"{""coordinates"": [[17, 3], [91, 67], [79, 3], [77, 100], [100, 3], [0, 0]], ""prizes"": [0, 65, 98, 42, 15, 30], ""penalties"": [0, 60, 52, 51, 82, 23], ""required_prize"": 150.0, ""depot"": 0, ""route_length"": 245.46631299730618, ""route_prize"": 178.0, ""unvisited_penalty"": 74.0, ""objective"": 319.4663129973062}","[0, 1, 4, 2, 0]",319.4663129973062,"{""problem_type"": ""PCTSP"", ""num_nodes"": 6, ""nodes"": [{""id"": 0, ""x"": 17, ""y"": 3, ""prize"": 0, ""penalty"": 0}, {""id"": 1, ""x"": 91, ""y"": 67, ""prize"": 65, ""penalty"": 60}, {""id"": 2, ""x"": 79, ""y"": 3, ""prize"": 98, ""penalty"": 52}, {""id"": 3, ""x"": 77, ""y"": 100, ""prize"": 42, ""penalty"": 51}, {""id"": 4, ""x"": 100, ""y"": 3, ""prize"": 15, ""penalty"": 82}, {""id"": 5, ""x"": 0, ""y"": 0, ""prize"": 30, ""penalty"": 23}], ""depot"": 0, ""required_prize"": 150.0, ""route_prize"": 178.0, ""unvisited_penalty"": 74.0, ""route_length"": 245.46631299730618, ""objective"": 319.4663129973062}","[0, 1, 4, 2, 0]"
+PCTSP_S_048,PCTSP,S,48,"I was putting together a one-day photo run that leaves from and comes back to the hotel, picking which sights to shoot so the collection of photos reaches the magazine’s minimum value. The choice is about which stops to include on that single loop — each landmark has a photo value and a penalty if it’s skipped — and the score for any plan is the total travel cost for the whole circuit plus the sum of penalties for unvisited spots. The trip can’t be split into two separate trips or hit the same place twice; it has to be one continuous loop that satisfies the minimum photo value while keeping travel plus skipped-spot penalties as small as possible. The concrete details for the route, values, and penalties are shown below.
+
+There are 5 locations in the instance, the hotel is 1, and I need at least 125.0 photo value on the single loop.
+
+| location_id | x_coord | y_coord | photo_value | skip_penalty |
+|---|---|---|---|---|
+| 1 | 0 | 0 | 0 | 0 |
+| 2 | 68 | 59 | 40 | 69 |
+| 3 | 69 | 63 | 74 | 21 |
+| 4 | 38 | 100 | 36 | 76 |
+| 5 | 100 | 28 | 83 | 52 |
+
+I'll use these details to pick one continuous loop that meets the required photo value while minimizing travel plus penalties.
+
+Oh — one more thing: when you give the route back, just drop it into a tiny JSON snippet like this so it's easy to read and parse.
+
+{
+  ""solution"": [hotel_id, sight_id, ..., hotel_id]
+}
+
+Think of that as a simple form: ""hotel_id"" is where the day starts and ends, the things in the middle are the sights in the order you’ll visit them, and the trailing ""hotel_id"" just closes the loop. This is just a sketch of the shape I need, not the actual route.
+
+Please make sure to use the exact identifiers from the instance input — no renaming and no made-up labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,one_based,"{""coordinates"": [[0, 0], [68, 59], [69, 63], [38, 100], [100, 28]], ""prizes"": [0, 40, 74, 36, 83], ""penalties"": [0, 69, 21, 76, 52], ""required_prize"": 125.0, ""depot"": 0, ""route_length"": 249.39758562514322, ""route_prize"": 150.0, ""unvisited_penalty"": 52.0, ""objective"": 301.3975856251432}","[0, 3, 2, 1, 0]",301.3975856251432,"{""problem_type"": ""PCTSP"", ""num_nodes"": 5, ""nodes"": [{""id"": 1, ""x"": 0, ""y"": 0, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 68, ""y"": 59, ""prize"": 40, ""penalty"": 69}, {""id"": 3, ""x"": 69, ""y"": 63, ""prize"": 74, ""penalty"": 21}, {""id"": 4, ""x"": 38, ""y"": 100, ""prize"": 36, ""penalty"": 76}, {""id"": 5, ""x"": 100, ""y"": 28, ""prize"": 83, ""penalty"": 52}], ""depot"": 1, ""required_prize"": 125.0, ""route_prize"": 150.0, ""unvisited_penalty"": 52.0, ""route_length"": 249.39758562514322, ""objective"": 301.3975856251432}","[1, 4, 3, 2, 1]"
+PCTSP_S_049,PCTSP,S,49,"Recently the team had to plan a single trip from the store that hits enough customers to reach a target sales amount and then returns — not every stop needs to be made, but skipping one carries a penalty. For each possible route, take the miles driven and add the penalties for every skipped order to get that route’s score; routes with smaller scores are better. The tour must be a single outbound-and-back loop, each address can be visited only once, and the sum of delivered orders must at least meet the target. Concrete details are listed below.
+
+# total_locations_including_store=6
+# store_location_id=A
+# target_sales_amount=150.0
+location_id,map_x,map_y,order_value,skip_penalty
+A,11,76,0,0
+B,32,100,74,63
+C,0,71,12,47
+D,20,84,71,6
+E,31,55,77,6
+F,100,0,54,80
+
+When you send the actual route back, just drop it into this simple JSON shape so I can read it easily:
+
+{
+  ""solution"": [depot_id, location_id, ..., depot_id]
+}
+
+Think of ""solution"" as the ordered list for the trip: start at the depot, follow the listed stops (each at most once), and finish back at the depot. This is just the sketch of the shape I expect — not your final answer yet.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new ones.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,names,"{""coordinates"": [[11, 76], [32, 100], [0, 71], [20, 84], [31, 55], [100, 0]], ""prizes"": [0, 74, 12, 71, 77, 54], ""penalties"": [0, 63, 47, 6, 6, 80], ""required_prize"": 150.0, ""depot"": 0, ""route_length"": 87.31028631576524, ""route_prize"": 157.0, ""unvisited_penalty"": 86.0, ""objective"": 173.31028631576524}","[0, 3, 1, 2, 0]",173.31028631576524,"{""problem_type"": ""PCTSP"", ""num_nodes"": 6, ""nodes"": [{""id"": ""A"", ""x"": 11, ""y"": 76, ""prize"": 0, ""penalty"": 0}, {""id"": ""B"", ""x"": 32, ""y"": 100, ""prize"": 74, ""penalty"": 63}, {""id"": ""C"", ""x"": 0, ""y"": 71, ""prize"": 12, ""penalty"": 47}, {""id"": ""D"", ""x"": 20, ""y"": 84, ""prize"": 71, ""penalty"": 6}, {""id"": ""E"", ""x"": 31, ""y"": 55, ""prize"": 77, ""penalty"": 6}, {""id"": ""F"", ""x"": 100, ""y"": 0, ""prize"": 54, ""penalty"": 80}], ""depot"": ""A"", ""required_prize"": 150.0, ""route_prize"": 157.0, ""unvisited_penalty"": 86.0, ""route_length"": 87.31028631576524, ""objective"": 173.31028631576524}","[""A"", ""D"", ""B"", ""C"", ""A""]"
+PCTSP_S_050,PCTSP,S,50,"There’s a yard crew trying to decide on one neat route that departs the yard, visits selected streetlights, and returns, making sure the sum of the service value from visited lights meets the required threshold while keeping the overall expense — driving cost plus the costs of leaving lights unserviced — as low as it can be. The trip must be a single loop with no double-counting of the same light, and the concrete details follow below.
+
+{
+  ""total_locations_including_yard"": 9,
+  ""nodes"": [
+    {
+      ""light_id"": 1,
+      ""x_coord"": 6,
+      ""y_coord"": 100,
+      ""service_value"": 0,
+      ""unserviced_penalty"": 0
+    },
+    {
+      ""light_id"": 2,
+      ""x_coord"": 56,
+      ""y_coord"": 40,
+      ""service_value"": 66,
+      ""unserviced_penalty"": 47
+    },
+    {
+      ""light_id"": 3,
+      ""x_coord"": 70,
+      ""y_coord"": 50,
+      ""service_value"": 36,
+      ""unserviced_penalty"": 35
+    },
+    {
+      ""light_id"": 4,
+      ""x_coord"": 94,
+      ""y_coord"": 19,
+      ""service_value"": 36,
+      ""unserviced_penalty"": 4
+    },
+    {
+      ""light_id"": 5,
+      ""x_coord"": 100,
+      ""y_coord"": 14,
+      ""service_value"": 68,
+      ""unserviced_penalty"": 24
+    },
+    {
+      ""light_id"": 6,
+      ""x_coord"": 52,
+      ""y_coord"": 26,
+      ""service_value"": 31,
+      ""unserviced_penalty"": 50
+    },
+    {
+      ""light_id"": 7,
+      ""x_coord"": 30,
+      ""y_coord"": 43,
+      ""service_value"": 10,
+      ""unserviced_penalty"": 34
+    },
+    {
+      ""light_id"": 8,
+      ""x_coord"": 4,
+      ""y_coord"": 31,
+      ""service_value"": 33,
+      ""unserviced_penalty"": 22
+    },
+    {
+      ""light_id"": 9,
+      ""x_coord"": 0,
+      ""y_coord"": 0,
+      ""service_value"": 12,
+      ""unserviced_penalty"": 21
+    }
+  ],
+  ""yard_node"": 1,
+  ""required_service_value"": 225.0
+}
+
+Oh, and when you send the route back, just stick to this little JSON shape so it's easy to check:
+
+{
+  ""solution"": [yard_id, light_id, ..., yard_id]
+}
+
+Think of that as a simple form: ""solution"" holds the ordered loop — first the yard, then the streetlights you plan to visit in order, and then the yard again to close the loop. The placeholders like yard_id and light_id are just showing the shape; they're not the actual IDs you should use.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”"".",json,one_based,"{""coordinates"": [[6, 100], [56, 40], [70, 50], [94, 19], [100, 14], [52, 26], [30, 43], [4, 31], [0, 0]], ""prizes"": [0, 66, 36, 36, 68, 31, 10, 33, 12], ""penalties"": [0, 47, 35, 4, 24, 50, 34, 22, 21], ""required_prize"": 225.0, ""depot"": 0, ""route_length"": 280.28717958756243, ""route_prize"": 247.0, ""unvisited_penalty"": 43.0, ""objective"": 323.2871795875625}","[0, 6, 1, 5, 4, 3, 2, 0]",323.2871795875625,"{""problem_type"": ""PCTSP"", ""num_nodes"": 9, ""nodes"": [{""id"": 1, ""x"": 6, ""y"": 100, ""prize"": 0, ""penalty"": 0}, {""id"": 2, ""x"": 56, ""y"": 40, ""prize"": 66, ""penalty"": 47}, {""id"": 3, ""x"": 70, ""y"": 50, ""prize"": 36, ""penalty"": 35}, {""id"": 4, ""x"": 94, ""y"": 19, ""prize"": 36, ""penalty"": 4}, {""id"": 5, ""x"": 100, ""y"": 14, ""prize"": 68, ""penalty"": 24}, {""id"": 6, ""x"": 52, ""y"": 26, ""prize"": 31, ""penalty"": 50}, {""id"": 7, ""x"": 30, ""y"": 43, ""prize"": 10, ""penalty"": 34}, {""id"": 8, ""x"": 4, ""y"": 31, ""prize"": 33, ""penalty"": 22}, {""id"": 9, ""x"": 0, ""y"": 0, ""prize"": 12, ""penalty"": 21}], ""depot"": 1, ""required_prize"": 225.0, ""route_prize"": 247.0, ""unvisited_penalty"": 43.0, ""route_length"": 280.28717958756243, ""objective"": 323.2871795875625}","[1, 7, 2, 6, 5, 4, 3, 1]"

@@ -1,0 +1,23 @@
+{
+  "num_instances": 50,
+  "num_elements": {
+    "avg": 21.44,
+    "max": 25,
+    "min": 19
+  },
+  "num_sets": {
+    "avg": 20.44,
+    "max": 25,
+    "min": 15
+  },
+  "density": {
+    "avg": 0.2081165086053442,
+    "min": 0.15,
+    "max": 0.275
+  },
+  "obj": {
+    "avg": 5.7,
+    "min": 3.0,
+    "max": 10.0
+  }
+}

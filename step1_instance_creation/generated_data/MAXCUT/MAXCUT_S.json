@@ -1,0 +1,5071 @@
+[
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 11,
+      "num_edges": 19,
+      "edges": [
+        {
+          "u": 7,
+          "v": 1
+        },
+        {
+          "u": 7,
+          "v": 2
+        },
+        {
+          "u": 7,
+          "v": 9
+        },
+        {
+          "u": 5,
+          "v": 8
+        },
+        {
+          "u": 5,
+          "v": 10
+        },
+        {
+          "u": 5,
+          "v": 11
+        },
+        {
+          "u": 9,
+          "v": 3
+        },
+        {
+          "u": 9,
+          "v": 4
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 3,
+          "v": 8
+        },
+        {
+          "u": 3,
+          "v": 10
+        },
+        {
+          "u": 2,
+          "v": 1
+        },
+        {
+          "u": 2,
+          "v": 4
+        },
+        {
+          "u": 2,
+          "v": 10
+        },
+        {
+          "u": 2,
+          "v": 11
+        },
+        {
+          "u": 4,
+          "v": 10
+        },
+        {
+          "u": 1,
+          "v": 6
+        },
+        {
+          "u": 1,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 6
+        }
+      ],
+      "source_file": "wv2010.mtx",
+      "density": 0.34545454545454546,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0000.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0000.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        1,
+        2,
+        3,
+        5,
+        6,
+        9
+      ],
+      [
+        4,
+        7,
+        8,
+        10,
+        11
+      ]
+    ],
+    "obj": 15.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 9,
+      "num_edges": 12,
+      "edges": [
+        {
+          "u": 2,
+          "v": 4
+        },
+        {
+          "u": 2,
+          "v": 5
+        },
+        {
+          "u": 2,
+          "v": 6
+        },
+        {
+          "u": 4,
+          "v": 8
+        },
+        {
+          "u": 7,
+          "v": 1
+        },
+        {
+          "u": 7,
+          "v": 5
+        },
+        {
+          "u": 7,
+          "v": 9
+        },
+        {
+          "u": 8,
+          "v": 1
+        },
+        {
+          "u": 8,
+          "v": 5
+        },
+        {
+          "u": 9,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 5
+        },
+        {
+          "u": 3,
+          "v": 6
+        }
+      ],
+      "source_file": "wi2010.mtx",
+      "density": 0.3333333333333333,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0001.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0001.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        1,
+        4,
+        5,
+        6,
+        9
+      ],
+      [
+        2,
+        3,
+        7,
+        8
+      ]
+    ],
+    "obj": 12.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 11,
+      "num_edges": 20,
+      "edges": [
+        {
+          "u": 2,
+          "v": 7
+        },
+        {
+          "u": 2,
+          "v": 8
+        },
+        {
+          "u": 2,
+          "v": 9
+        },
+        {
+          "u": 2,
+          "v": 10
+        },
+        {
+          "u": 2,
+          "v": 11
+        },
+        {
+          "u": 10,
+          "v": 1
+        },
+        {
+          "u": 10,
+          "v": 4
+        },
+        {
+          "u": 10,
+          "v": 8
+        },
+        {
+          "u": 9,
+          "v": 4
+        },
+        {
+          "u": 9,
+          "v": 5
+        },
+        {
+          "u": 9,
+          "v": 8
+        },
+        {
+          "u": 11,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 1
+        },
+        {
+          "u": 8,
+          "v": 3
+        },
+        {
+          "u": 8,
+          "v": 5
+        },
+        {
+          "u": 8,
+          "v": 6
+        },
+        {
+          "u": 8,
+          "v": 7
+        },
+        {
+          "u": 6,
+          "v": 1
+        },
+        {
+          "u": 6,
+          "v": 3
+        },
+        {
+          "u": 5,
+          "v": 3
+        }
+      ],
+      "source_file": "wv2010.mtx",
+      "density": 0.36363636363636365,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0002.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0002.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      [
+        1,
+        2,
+        3,
+        4,
+        8
+      ]
+    ],
+    "obj": 16.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 10,
+      "num_edges": 21,
+      "edges": [
+        {
+          "u": 8,
+          "v": 2
+        },
+        {
+          "u": 8,
+          "v": 4
+        },
+        {
+          "u": 8,
+          "v": 7
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 8,
+          "v": 10
+        },
+        {
+          "u": 3,
+          "v": 5
+        },
+        {
+          "u": 3,
+          "v": 6
+        },
+        {
+          "u": 3,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 2
+        },
+        {
+          "u": 9,
+          "v": 4
+        },
+        {
+          "u": 9,
+          "v": 6
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 4
+        },
+        {
+          "u": 1,
+          "v": 7
+        },
+        {
+          "u": 10,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 4,
+          "v": 6
+        },
+        {
+          "u": 4,
+          "v": 7
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 7,
+          "v": 2
+        }
+      ],
+      "source_file": "vt2010.mtx",
+      "density": 0.4666666666666667,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0003.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0003.png",
+      "edge_connectivity": 3
+    },
+    "solution": [
+      [
+        2,
+        3,
+        4,
+        7,
+        10
+      ],
+      [
+        1,
+        5,
+        6,
+        8,
+        9
+      ]
+    ],
+    "obj": 15.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 12,
+      "num_edges": 20,
+      "edges": [
+        {
+          "u": 11,
+          "v": 7
+        },
+        {
+          "u": 11,
+          "v": 8
+        },
+        {
+          "u": 11,
+          "v": 10
+        },
+        {
+          "u": 1,
+          "v": 3
+        },
+        {
+          "u": 1,
+          "v": 4
+        },
+        {
+          "u": 1,
+          "v": 12
+        },
+        {
+          "u": 8,
+          "v": 10
+        },
+        {
+          "u": 9,
+          "v": 4
+        },
+        {
+          "u": 9,
+          "v": 6
+        },
+        {
+          "u": 9,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 2
+        },
+        {
+          "u": 7,
+          "v": 5
+        },
+        {
+          "u": 4,
+          "v": 2
+        },
+        {
+          "u": 4,
+          "v": 12
+        },
+        {
+          "u": 6,
+          "v": 2
+        },
+        {
+          "u": 5,
+          "v": 10
+        },
+        {
+          "u": 12,
+          "v": 3
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 2,
+          "v": 10
+        },
+        {
+          "u": 3,
+          "v": 10
+        }
+      ],
+      "source_file": "wy2010.mtx",
+      "density": 0.30303030303030304,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0004.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0004.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        3,
+        4,
+        6,
+        7,
+        10
+      ],
+      [
+        1,
+        2,
+        5,
+        8,
+        9,
+        11,
+        12
+      ]
+    ],
+    "obj": 17.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 11,
+      "num_edges": 19,
+      "edges": [
+        {
+          "u": 10,
+          "v": 6
+        },
+        {
+          "u": 10,
+          "v": 9
+        },
+        {
+          "u": 2,
+          "v": 9
+        },
+        {
+          "u": 3,
+          "v": 1
+        },
+        {
+          "u": 3,
+          "v": 8
+        },
+        {
+          "u": 3,
+          "v": 11
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 1
+        },
+        {
+          "u": 8,
+          "v": 4
+        },
+        {
+          "u": 8,
+          "v": 5
+        },
+        {
+          "u": 8,
+          "v": 6
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 8,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 1
+        },
+        {
+          "u": 11,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 1
+        },
+        {
+          "u": 9,
+          "v": 4
+        },
+        {
+          "u": 6,
+          "v": 4
+        },
+        {
+          "u": 5,
+          "v": 1
+        }
+      ],
+      "source_file": "wa2010.mtx",
+      "density": 0.34545454545454546,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0005.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0005.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        1,
+        2,
+        4,
+        8,
+        10,
+        11
+      ],
+      [
+        3,
+        5,
+        6,
+        7,
+        9
+      ]
+    ],
+    "obj": 15.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 12,
+      "num_edges": 23,
+      "edges": [
+        {
+          "u": 7,
+          "v": 6
+        },
+        {
+          "u": 7,
+          "v": 11
+        },
+        {
+          "u": 10,
+          "v": 3
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 5,
+          "v": 1
+        },
+        {
+          "u": 5,
+          "v": 2
+        },
+        {
+          "u": 5,
+          "v": 4
+        },
+        {
+          "u": 5,
+          "v": 8
+        },
+        {
+          "u": 2,
+          "v": 1
+        },
+        {
+          "u": 2,
+          "v": 4
+        },
+        {
+          "u": 2,
+          "v": 6
+        },
+        {
+          "u": 2,
+          "v": 9
+        },
+        {
+          "u": 12,
+          "v": 1
+        },
+        {
+          "u": 12,
+          "v": 3
+        },
+        {
+          "u": 12,
+          "v": 6
+        },
+        {
+          "u": 12,
+          "v": 9
+        },
+        {
+          "u": 12,
+          "v": 11
+        },
+        {
+          "u": 3,
+          "v": 1
+        },
+        {
+          "u": 3,
+          "v": 8
+        },
+        {
+          "u": 11,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 1
+        },
+        {
+          "u": 1,
+          "v": 8
+        }
+      ],
+      "source_file": "wy2010.mtx",
+      "density": 0.3484848484848485,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0006.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0006.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        1,
+        2,
+        7,
+        8,
+        10,
+        12
+      ],
+      [
+        3,
+        4,
+        5,
+        6,
+        9,
+        11
+      ]
+    ],
+    "obj": 17.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 12,
+      "num_edges": 24,
+      "edges": [
+        {
+          "u": 12,
+          "v": 4
+        },
+        {
+          "u": 12,
+          "v": 5
+        },
+        {
+          "u": 12,
+          "v": 7
+        },
+        {
+          "u": 9,
+          "v": 5
+        },
+        {
+          "u": 9,
+          "v": 6
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 9,
+          "v": 11
+        },
+        {
+          "u": 6,
+          "v": 3
+        },
+        {
+          "u": 6,
+          "v": 5
+        },
+        {
+          "u": 10,
+          "v": 3
+        },
+        {
+          "u": 10,
+          "v": 5
+        },
+        {
+          "u": 10,
+          "v": 7
+        },
+        {
+          "u": 10,
+          "v": 8
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 3,
+          "v": 1
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 8,
+          "v": 2
+        },
+        {
+          "u": 8,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 2
+        },
+        {
+          "u": 7,
+          "v": 4
+        },
+        {
+          "u": 7,
+          "v": 5
+        },
+        {
+          "u": 11,
+          "v": 5
+        },
+        {
+          "u": 2,
+          "v": 5
+        },
+        {
+          "u": 4,
+          "v": 1
+        }
+      ],
+      "source_file": "wa2010.mtx",
+      "density": 0.36363636363636365,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0007.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0007.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        1,
+        3,
+        5,
+        7,
+        8,
+        9
+      ],
+      [
+        2,
+        4,
+        6,
+        10,
+        11,
+        12
+      ]
+    ],
+    "obj": 18.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 11,
+      "num_edges": 23,
+      "edges": [
+        {
+          "u": 10,
+          "v": 1
+        },
+        {
+          "u": 10,
+          "v": 2
+        },
+        {
+          "u": 10,
+          "v": 4
+        },
+        {
+          "u": 10,
+          "v": 5
+        },
+        {
+          "u": 10,
+          "v": 7
+        },
+        {
+          "u": 10,
+          "v": 8
+        },
+        {
+          "u": 10,
+          "v": 9
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 4,
+          "v": 3
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 4,
+          "v": 6
+        },
+        {
+          "u": 4,
+          "v": 11
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 3
+        },
+        {
+          "u": 1,
+          "v": 9
+        },
+        {
+          "u": 5,
+          "v": 3
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 5,
+          "v": 9
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 6
+        },
+        {
+          "u": 3,
+          "v": 8
+        },
+        {
+          "u": 3,
+          "v": 9
+        },
+        {
+          "u": 3,
+          "v": 11
+        }
+      ],
+      "source_file": "wv2010.mtx",
+      "density": 0.41818181818181815,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0008.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0008.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      [
+        1,
+        3,
+        4,
+        10
+      ]
+    ],
+    "obj": 17.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 8,
+      "num_edges": 14,
+      "edges": [
+        {
+          "u": 1,
+          "v": 3
+        },
+        {
+          "u": 1,
+          "v": 6
+        },
+        {
+          "u": 4,
+          "v": 3
+        },
+        {
+          "u": 4,
+          "v": 7
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 2,
+          "v": 8
+        },
+        {
+          "u": 5,
+          "v": 3
+        },
+        {
+          "u": 5,
+          "v": 7
+        },
+        {
+          "u": 5,
+          "v": 8
+        },
+        {
+          "u": 3,
+          "v": 6
+        },
+        {
+          "u": 3,
+          "v": 7
+        },
+        {
+          "u": 3,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 6
+        }
+      ],
+      "source_file": "wv2010.mtx",
+      "density": 0.5,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0009.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0009.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        1,
+        4,
+        5,
+        6,
+        8
+      ],
+      [
+        2,
+        3,
+        7
+      ]
+    ],
+    "obj": 10.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 12,
+      "num_edges": 17,
+      "edges": [
+        {
+          "u": 7,
+          "v": 2
+        },
+        {
+          "u": 7,
+          "v": 9
+        },
+        {
+          "u": 7,
+          "v": 11
+        },
+        {
+          "u": 8,
+          "v": 3
+        },
+        {
+          "u": 10,
+          "v": 2
+        },
+        {
+          "u": 10,
+          "v": 3
+        },
+        {
+          "u": 10,
+          "v": 4
+        },
+        {
+          "u": 6,
+          "v": 2
+        },
+        {
+          "u": 6,
+          "v": 3
+        },
+        {
+          "u": 6,
+          "v": 11
+        },
+        {
+          "u": 6,
+          "v": 12
+        },
+        {
+          "u": 11,
+          "v": 1
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 1
+        },
+        {
+          "u": 12,
+          "v": 5
+        },
+        {
+          "u": 2,
+          "v": 4
+        },
+        {
+          "u": 3,
+          "v": 5
+        }
+      ],
+      "source_file": "wi2010.mtx",
+      "density": 0.25757575757575757,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0010.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0010.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      [
+        2,
+        3,
+        9,
+        11,
+        12
+      ]
+    ],
+    "obj": 15.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 11,
+      "num_edges": 22,
+      "edges": [
+        {
+          "u": 4,
+          "v": 9
+        },
+        {
+          "u": 4,
+          "v": 10
+        },
+        {
+          "u": 11,
+          "v": 1
+        },
+        {
+          "u": 11,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 1
+        },
+        {
+          "u": 9,
+          "v": 3
+        },
+        {
+          "u": 9,
+          "v": 5
+        },
+        {
+          "u": 9,
+          "v": 6
+        },
+        {
+          "u": 9,
+          "v": 8
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 1
+        },
+        {
+          "u": 10,
+          "v": 2
+        },
+        {
+          "u": 10,
+          "v": 3
+        },
+        {
+          "u": 10,
+          "v": 7
+        },
+        {
+          "u": 10,
+          "v": 8
+        },
+        {
+          "u": 6,
+          "v": 1
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 5
+        },
+        {
+          "u": 1,
+          "v": 7
+        },
+        {
+          "u": 5,
+          "v": 2
+        },
+        {
+          "u": 3,
+          "v": 2
+        },
+        {
+          "u": 7,
+          "v": 8
+        }
+      ],
+      "source_file": "wv2010.mtx",
+      "density": 0.4,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0011.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0011.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        2,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      [
+        1,
+        3,
+        4,
+        5,
+        8
+      ]
+    ],
+    "obj": 16.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 9,
+      "num_edges": 15,
+      "edges": [
+        {
+          "u": 8,
+          "v": 1
+        },
+        {
+          "u": 8,
+          "v": 2
+        },
+        {
+          "u": 8,
+          "v": 4
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 3,
+          "v": 2
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 3,
+          "v": 9
+        },
+        {
+          "u": 2,
+          "v": 9
+        },
+        {
+          "u": 7,
+          "v": 4
+        },
+        {
+          "u": 7,
+          "v": 5
+        },
+        {
+          "u": 7,
+          "v": 9
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 9
+        },
+        {
+          "u": 6,
+          "v": 9
+        },
+        {
+          "u": 1,
+          "v": 9
+        }
+      ],
+      "source_file": "wv2010.mtx",
+      "density": 0.4166666666666667,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0012.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0012.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        1,
+        2,
+        4,
+        9
+      ],
+      [
+        3,
+        5,
+        6,
+        7,
+        8
+      ]
+    ],
+    "obj": 12.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 12,
+      "num_edges": 23,
+      "edges": [
+        {
+          "u": 4,
+          "v": 3
+        },
+        {
+          "u": 4,
+          "v": 9
+        },
+        {
+          "u": 4,
+          "v": 10
+        },
+        {
+          "u": 1,
+          "v": 5
+        },
+        {
+          "u": 1,
+          "v": 6
+        },
+        {
+          "u": 1,
+          "v": 10
+        },
+        {
+          "u": 1,
+          "v": 11
+        },
+        {
+          "u": 1,
+          "v": 12
+        },
+        {
+          "u": 7,
+          "v": 2
+        },
+        {
+          "u": 7,
+          "v": 5
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 6,
+          "v": 12
+        },
+        {
+          "u": 10,
+          "v": 3
+        },
+        {
+          "u": 10,
+          "v": 9
+        },
+        {
+          "u": 10,
+          "v": 12
+        },
+        {
+          "u": 9,
+          "v": 3
+        },
+        {
+          "u": 9,
+          "v": 5
+        },
+        {
+          "u": 9,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 2
+        },
+        {
+          "u": 5,
+          "v": 3
+        },
+        {
+          "u": 5,
+          "v": 8
+        },
+        {
+          "u": 3,
+          "v": 2
+        }
+      ],
+      "source_file": "wa2010.mtx",
+      "density": 0.3484848484848485,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0013.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0013.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        2,
+        4,
+        5,
+        6,
+        10,
+        11
+      ],
+      [
+        1,
+        3,
+        7,
+        8,
+        9,
+        12
+      ]
+    ],
+    "obj": 17.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 12,
+      "num_edges": 24,
+      "edges": [
+        {
+          "u": 5,
+          "v": 1
+        },
+        {
+          "u": 5,
+          "v": 2
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 5,
+          "v": 8
+        },
+        {
+          "u": 5,
+          "v": 11
+        },
+        {
+          "u": 5,
+          "v": 12
+        },
+        {
+          "u": 7,
+          "v": 4
+        },
+        {
+          "u": 7,
+          "v": 6
+        },
+        {
+          "u": 1,
+          "v": 6
+        },
+        {
+          "u": 1,
+          "v": 12
+        },
+        {
+          "u": 9,
+          "v": 3
+        },
+        {
+          "u": 9,
+          "v": 6
+        },
+        {
+          "u": 9,
+          "v": 11
+        },
+        {
+          "u": 2,
+          "v": 6
+        },
+        {
+          "u": 2,
+          "v": 8
+        },
+        {
+          "u": 6,
+          "v": 3
+        },
+        {
+          "u": 6,
+          "v": 4
+        },
+        {
+          "u": 6,
+          "v": 8
+        },
+        {
+          "u": 6,
+          "v": 11
+        },
+        {
+          "u": 6,
+          "v": 12
+        },
+        {
+          "u": 8,
+          "v": 11
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 3
+        },
+        {
+          "u": 11,
+          "v": 4
+        }
+      ],
+      "source_file": "wi2010.mtx",
+      "density": 0.36363636363636365,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0014.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0014.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        4,
+        5,
+        6,
+        9,
+        10
+      ],
+      [
+        1,
+        2,
+        3,
+        7,
+        8,
+        11,
+        12
+      ]
+    ],
+    "obj": 17.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 11,
+      "num_edges": 22,
+      "edges": [
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 5
+        },
+        {
+          "u": 1,
+          "v": 10
+        },
+        {
+          "u": 11,
+          "v": 6
+        },
+        {
+          "u": 11,
+          "v": 7
+        },
+        {
+          "u": 11,
+          "v": 8
+        },
+        {
+          "u": 11,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 3
+        },
+        {
+          "u": 10,
+          "v": 4
+        },
+        {
+          "u": 10,
+          "v": 5
+        },
+        {
+          "u": 10,
+          "v": 6
+        },
+        {
+          "u": 10,
+          "v": 7
+        },
+        {
+          "u": 10,
+          "v": 9
+        },
+        {
+          "u": 3,
+          "v": 5
+        },
+        {
+          "u": 3,
+          "v": 6
+        },
+        {
+          "u": 8,
+          "v": 7
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 4,
+          "v": 2
+        },
+        {
+          "u": 4,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 2
+        },
+        {
+          "u": 9,
+          "v": 7
+        },
+        {
+          "u": 5,
+          "v": 2
+        }
+      ],
+      "source_file": "vt2010.mtx",
+      "density": 0.4,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0015.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0015.png",
+      "edge_connectivity": 3
+    },
+    "solution": [
+      [
+        2,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      [
+        1,
+        3,
+        4,
+        9,
+        11
+      ]
+    ],
+    "obj": 16.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 12,
+      "num_edges": 22,
+      "edges": [
+        {
+          "u": 9,
+          "v": 4
+        },
+        {
+          "u": 9,
+          "v": 6
+        },
+        {
+          "u": 9,
+          "v": 7
+        },
+        {
+          "u": 9,
+          "v": 11
+        },
+        {
+          "u": 7,
+          "v": 3
+        },
+        {
+          "u": 7,
+          "v": 6
+        },
+        {
+          "u": 7,
+          "v": 11
+        },
+        {
+          "u": 10,
+          "v": 1
+        },
+        {
+          "u": 10,
+          "v": 3
+        },
+        {
+          "u": 10,
+          "v": 5
+        },
+        {
+          "u": 1,
+          "v": 3
+        },
+        {
+          "u": 6,
+          "v": 3
+        },
+        {
+          "u": 3,
+          "v": 2
+        },
+        {
+          "u": 3,
+          "v": 5
+        },
+        {
+          "u": 3,
+          "v": 11
+        },
+        {
+          "u": 3,
+          "v": 12
+        },
+        {
+          "u": 11,
+          "v": 2
+        },
+        {
+          "u": 11,
+          "v": 4
+        },
+        {
+          "u": 11,
+          "v": 8
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 4,
+          "v": 8
+        },
+        {
+          "u": 2,
+          "v": 8
+        }
+      ],
+      "source_file": "wy2010.mtx",
+      "density": 0.3333333333333333,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0016.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0016.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        12
+      ],
+      [
+        3,
+        8,
+        9,
+        10,
+        11
+      ]
+    ],
+    "obj": 17.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 9,
+      "num_edges": 12,
+      "edges": [
+        {
+          "u": 2,
+          "v": 1
+        },
+        {
+          "u": 2,
+          "v": 8
+        },
+        {
+          "u": 9,
+          "v": 1
+        },
+        {
+          "u": 9,
+          "v": 6
+        },
+        {
+          "u": 9,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 1
+        },
+        {
+          "u": 4,
+          "v": 1
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 1
+        },
+        {
+          "u": 8,
+          "v": 1
+        },
+        {
+          "u": 1,
+          "v": 3
+        },
+        {
+          "u": 1,
+          "v": 6
+        }
+      ],
+      "source_file": "vt2010.mtx",
+      "density": 0.3333333333333333,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0017.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0017.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        1,
+        4,
+        8,
+        9
+      ],
+      [
+        2,
+        3,
+        5,
+        6,
+        7
+      ]
+    ],
+    "obj": 9.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 9,
+      "num_edges": 15,
+      "edges": [
+        {
+          "u": 6,
+          "v": 3
+        },
+        {
+          "u": 6,
+          "v": 5
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 6,
+          "v": 8
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 3,
+          "v": 8
+        },
+        {
+          "u": 3,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 1
+        },
+        {
+          "u": 9,
+          "v": 4
+        },
+        {
+          "u": 5,
+          "v": 1
+        },
+        {
+          "u": 5,
+          "v": 2
+        },
+        {
+          "u": 5,
+          "v": 7
+        },
+        {
+          "u": 5,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 1
+        },
+        {
+          "u": 2,
+          "v": 1
+        }
+      ],
+      "source_file": "wa2010.mtx",
+      "density": 0.4166666666666667,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0018.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0018.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        1,
+        4,
+        5,
+        6
+      ],
+      [
+        2,
+        3,
+        7,
+        8,
+        9
+      ]
+    ],
+    "obj": 11.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 11,
+      "num_edges": 18,
+      "edges": [
+        {
+          "u": 9,
+          "v": 5
+        },
+        {
+          "u": 9,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 3
+        },
+        {
+          "u": 7,
+          "v": 5
+        },
+        {
+          "u": 7,
+          "v": 6
+        },
+        {
+          "u": 7,
+          "v": 11
+        },
+        {
+          "u": 5,
+          "v": 2
+        },
+        {
+          "u": 5,
+          "v": 8
+        },
+        {
+          "u": 5,
+          "v": 10
+        },
+        {
+          "u": 5,
+          "v": 11
+        },
+        {
+          "u": 8,
+          "v": 4
+        },
+        {
+          "u": 6,
+          "v": 3
+        },
+        {
+          "u": 6,
+          "v": 4
+        },
+        {
+          "u": 6,
+          "v": 10
+        },
+        {
+          "u": 6,
+          "v": 11
+        },
+        {
+          "u": 10,
+          "v": 4
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 1,
+          "v": 11
+        }
+      ],
+      "source_file": "vt2010.mtx",
+      "density": 0.32727272727272727,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0019.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0019.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        2,
+        3,
+        8,
+        9,
+        10,
+        11
+      ],
+      [
+        1,
+        4,
+        5,
+        6,
+        7
+      ]
+    ],
+    "obj": 14.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 12,
+      "num_edges": 16,
+      "edges": [
+        {
+          "u": 2,
+          "v": 6
+        },
+        {
+          "u": 2,
+          "v": 7
+        },
+        {
+          "u": 3,
+          "v": 5
+        },
+        {
+          "u": 3,
+          "v": 6
+        },
+        {
+          "u": 7,
+          "v": 6
+        },
+        {
+          "u": 7,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 4
+        },
+        {
+          "u": 10,
+          "v": 8
+        },
+        {
+          "u": 10,
+          "v": 9
+        },
+        {
+          "u": 4,
+          "v": 1
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 4,
+          "v": 6
+        },
+        {
+          "u": 5,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 1
+        },
+        {
+          "u": 9,
+          "v": 1
+        },
+        {
+          "u": 12,
+          "v": 1
+        }
+      ],
+      "source_file": "wa2010.mtx",
+      "density": 0.24242424242424243,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0020.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0020.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        2,
+        3,
+        4,
+        7,
+        8,
+        9,
+        11,
+        12
+      ],
+      [
+        1,
+        5,
+        6,
+        10
+      ]
+    ],
+    "obj": 15.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 11,
+      "num_edges": 17,
+      "edges": [
+        {
+          "u": 10,
+          "v": 2
+        },
+        {
+          "u": 10,
+          "v": 4
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 1
+        },
+        {
+          "u": 11,
+          "v": 4
+        },
+        {
+          "u": 11,
+          "v": 9
+        },
+        {
+          "u": 5,
+          "v": 3
+        },
+        {
+          "u": 5,
+          "v": 4
+        },
+        {
+          "u": 5,
+          "v": 8
+        },
+        {
+          "u": 5,
+          "v": 9
+        },
+        {
+          "u": 2,
+          "v": 4
+        },
+        {
+          "u": 3,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 4
+        },
+        {
+          "u": 9,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 1
+        },
+        {
+          "u": 4,
+          "v": 6
+        },
+        {
+          "u": 4,
+          "v": 7
+        }
+      ],
+      "source_file": "wv2010.mtx",
+      "density": 0.3090909090909091,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0021.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0021.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        3,
+        4,
+        9,
+        10
+      ],
+      [
+        1,
+        2,
+        5,
+        6,
+        7,
+        8,
+        11
+      ]
+    ],
+    "obj": 13.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 8,
+      "num_edges": 11,
+      "edges": [
+        {
+          "u": 3,
+          "v": 1
+        },
+        {
+          "u": 3,
+          "v": 2
+        },
+        {
+          "u": 3,
+          "v": 5
+        },
+        {
+          "u": 3,
+          "v": 6
+        },
+        {
+          "u": 3,
+          "v": 7
+        },
+        {
+          "u": 3,
+          "v": 8
+        },
+        {
+          "u": 6,
+          "v": 1
+        },
+        {
+          "u": 6,
+          "v": 2
+        },
+        {
+          "u": 5,
+          "v": 4
+        },
+        {
+          "u": 8,
+          "v": 2
+        },
+        {
+          "u": 7,
+          "v": 4
+        }
+      ],
+      "source_file": "wv2010.mtx",
+      "density": 0.39285714285714285,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0022.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0022.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        1,
+        5,
+        6,
+        7,
+        8
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "obj": 9.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 11,
+      "num_edges": 22,
+      "edges": [
+        {
+          "u": 1,
+          "v": 7
+        },
+        {
+          "u": 1,
+          "v": 9
+        },
+        {
+          "u": 1,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 3
+        },
+        {
+          "u": 10,
+          "v": 4
+        },
+        {
+          "u": 10,
+          "v": 5
+        },
+        {
+          "u": 10,
+          "v": 6
+        },
+        {
+          "u": 10,
+          "v": 8
+        },
+        {
+          "u": 10,
+          "v": 9
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 7,
+          "v": 3
+        },
+        {
+          "u": 7,
+          "v": 6
+        },
+        {
+          "u": 4,
+          "v": 2
+        },
+        {
+          "u": 4,
+          "v": 8
+        },
+        {
+          "u": 6,
+          "v": 2
+        },
+        {
+          "u": 6,
+          "v": 3
+        },
+        {
+          "u": 6,
+          "v": 5
+        },
+        {
+          "u": 6,
+          "v": 8
+        },
+        {
+          "u": 6,
+          "v": 11
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 9,
+          "v": 5
+        },
+        {
+          "u": 11,
+          "v": 5
+        }
+      ],
+      "source_file": "wa2010.mtx",
+      "density": 0.4,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0023.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0023.png",
+      "edge_connectivity": 3
+    },
+    "solution": [
+      [
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
+      [
+        2,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    ],
+    "obj": 17.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 8,
+      "num_edges": 11,
+      "edges": [
+        {
+          "u": 5,
+          "v": 1
+        },
+        {
+          "u": 5,
+          "v": 7
+        },
+        {
+          "u": 4,
+          "v": 1
+        },
+        {
+          "u": 3,
+          "v": 1
+        },
+        {
+          "u": 3,
+          "v": 2
+        },
+        {
+          "u": 3,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 1
+        },
+        {
+          "u": 7,
+          "v": 2
+        },
+        {
+          "u": 7,
+          "v": 6
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 2,
+          "v": 1
+        }
+      ],
+      "source_file": "wy2010.mtx",
+      "density": 0.39285714285714285,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0024.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0024.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8
+      ],
+      [
+        1,
+        7
+      ]
+    ],
+    "obj": 9.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 10,
+      "num_edges": 13,
+      "edges": [
+        {
+          "u": 10,
+          "v": 1
+        },
+        {
+          "u": 10,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 1
+        },
+        {
+          "u": 5,
+          "v": 1
+        },
+        {
+          "u": 5,
+          "v": 2
+        },
+        {
+          "u": 6,
+          "v": 1
+        },
+        {
+          "u": 6,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 3
+        },
+        {
+          "u": 1,
+          "v": 4
+        },
+        {
+          "u": 1,
+          "v": 7
+        },
+        {
+          "u": 1,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 3
+        }
+      ],
+      "source_file": "wa2010.mtx",
+      "density": 0.28888888888888886,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0025.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0025.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        1,
+        2,
+        8,
+        9
+      ],
+      [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10
+      ]
+    ],
+    "obj": 10.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 10,
+      "num_edges": 15,
+      "edges": [
+        {
+          "u": 2,
+          "v": 1
+        },
+        {
+          "u": 2,
+          "v": 10
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 5,
+          "v": 7
+        },
+        {
+          "u": 5,
+          "v": 9
+        },
+        {
+          "u": 5,
+          "v": 10
+        },
+        {
+          "u": 6,
+          "v": 4
+        },
+        {
+          "u": 6,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 7
+        },
+        {
+          "u": 9,
+          "v": 8
+        },
+        {
+          "u": 3,
+          "v": 1
+        },
+        {
+          "u": 8,
+          "v": 1
+        },
+        {
+          "u": 8,
+          "v": 4
+        },
+        {
+          "u": 1,
+          "v": 4
+        },
+        {
+          "u": 10,
+          "v": 4
+        }
+      ],
+      "source_file": "vt2010.mtx",
+      "density": 0.3333333333333333,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0026.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0026.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        1,
+        6,
+        7,
+        8,
+        10
+      ],
+      [
+        2,
+        3,
+        4,
+        5,
+        9
+      ]
+    ],
+    "obj": 13.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 12,
+      "num_edges": 24,
+      "edges": [
+        {
+          "u": 6,
+          "v": 1
+        },
+        {
+          "u": 6,
+          "v": 2
+        },
+        {
+          "u": 6,
+          "v": 3
+        },
+        {
+          "u": 6,
+          "v": 4
+        },
+        {
+          "u": 6,
+          "v": 5
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 6,
+          "v": 8
+        },
+        {
+          "u": 6,
+          "v": 10
+        },
+        {
+          "u": 6,
+          "v": 11
+        },
+        {
+          "u": 6,
+          "v": 12
+        },
+        {
+          "u": 7,
+          "v": 3
+        },
+        {
+          "u": 7,
+          "v": 4
+        },
+        {
+          "u": 7,
+          "v": 9
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 9
+        },
+        {
+          "u": 4,
+          "v": 12
+        },
+        {
+          "u": 9,
+          "v": 2
+        },
+        {
+          "u": 9,
+          "v": 12
+        },
+        {
+          "u": 2,
+          "v": 12
+        },
+        {
+          "u": 12,
+          "v": 5
+        },
+        {
+          "u": 12,
+          "v": 11
+        },
+        {
+          "u": 1,
+          "v": 8
+        },
+        {
+          "u": 11,
+          "v": 5
+        },
+        {
+          "u": 10,
+          "v": 8
+        }
+      ],
+      "source_file": "wy2010.mtx",
+      "density": 0.36363636363636365,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0027.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0027.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        3,
+        6,
+        8,
+        9,
+        12
+      ],
+      [
+        1,
+        2,
+        4,
+        5,
+        7,
+        10,
+        11
+      ]
+    ],
+    "obj": 18.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 9,
+      "num_edges": 16,
+      "edges": [
+        {
+          "u": 5,
+          "v": 4
+        },
+        {
+          "u": 5,
+          "v": 7
+        },
+        {
+          "u": 5,
+          "v": 8
+        },
+        {
+          "u": 5,
+          "v": 9
+        },
+        {
+          "u": 7,
+          "v": 1
+        },
+        {
+          "u": 7,
+          "v": 4
+        },
+        {
+          "u": 7,
+          "v": 6
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 3,
+          "v": 6
+        },
+        {
+          "u": 8,
+          "v": 4
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 1
+        },
+        {
+          "u": 9,
+          "v": 4
+        },
+        {
+          "u": 2,
+          "v": 4
+        },
+        {
+          "u": 1,
+          "v": 4
+        },
+        {
+          "u": 6,
+          "v": 4
+        }
+      ],
+      "source_file": "wy2010.mtx",
+      "density": 0.4444444444444444,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0028.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0028.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        2,
+        3,
+        7,
+        8,
+        9
+      ],
+      [
+        1,
+        4,
+        5,
+        6
+      ]
+    ],
+    "obj": 12.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 11,
+      "num_edges": 20,
+      "edges": [
+        {
+          "u": 1,
+          "v": 5
+        },
+        {
+          "u": 1,
+          "v": 6
+        },
+        {
+          "u": 1,
+          "v": 11
+        },
+        {
+          "u": 10,
+          "v": 7
+        },
+        {
+          "u": 10,
+          "v": 9
+        },
+        {
+          "u": 10,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 2
+        },
+        {
+          "u": 11,
+          "v": 4
+        },
+        {
+          "u": 11,
+          "v": 5
+        },
+        {
+          "u": 11,
+          "v": 6
+        },
+        {
+          "u": 11,
+          "v": 8
+        },
+        {
+          "u": 11,
+          "v": 9
+        },
+        {
+          "u": 2,
+          "v": 7
+        },
+        {
+          "u": 2,
+          "v": 8
+        },
+        {
+          "u": 2,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 7
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 3,
+          "v": 6
+        },
+        {
+          "u": 3,
+          "v": 8
+        },
+        {
+          "u": 4,
+          "v": 8
+        }
+      ],
+      "source_file": "wi2010.mtx",
+      "density": 0.36363636363636365,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0029.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0029.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        2,
+        4,
+        5,
+        6,
+        10
+      ],
+      [
+        1,
+        3,
+        7,
+        8,
+        9,
+        11
+      ]
+    ],
+    "obj": 15.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 10,
+      "num_edges": 17,
+      "edges": [
+        {
+          "u": 4,
+          "v": 1
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 4,
+          "v": 9
+        },
+        {
+          "u": 7,
+          "v": 2
+        },
+        {
+          "u": 7,
+          "v": 3
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 7,
+          "v": 9
+        },
+        {
+          "u": 3,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 1
+        },
+        {
+          "u": 9,
+          "v": 2
+        },
+        {
+          "u": 9,
+          "v": 5
+        },
+        {
+          "u": 9,
+          "v": 6
+        },
+        {
+          "u": 9,
+          "v": 8
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 8,
+          "v": 2
+        },
+        {
+          "u": 8,
+          "v": 10
+        },
+        {
+          "u": 6,
+          "v": 2
+        }
+      ],
+      "source_file": "wa2010.mtx",
+      "density": 0.37777777777777777,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0030.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0030.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        1,
+        3,
+        5,
+        6,
+        8
+      ],
+      [
+        2,
+        4,
+        7,
+        9,
+        10
+      ]
+    ],
+    "obj": 12.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 11,
+      "num_edges": 20,
+      "edges": [
+        {
+          "u": 7,
+          "v": 1
+        },
+        {
+          "u": 7,
+          "v": 2
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 7,
+          "v": 9
+        },
+        {
+          "u": 6,
+          "v": 2
+        },
+        {
+          "u": 6,
+          "v": 4
+        },
+        {
+          "u": 6,
+          "v": 10
+        },
+        {
+          "u": 4,
+          "v": 8
+        },
+        {
+          "u": 4,
+          "v": 9
+        },
+        {
+          "u": 4,
+          "v": 10
+        },
+        {
+          "u": 5,
+          "v": 1
+        },
+        {
+          "u": 5,
+          "v": 3
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 8
+        },
+        {
+          "u": 2,
+          "v": 3
+        },
+        {
+          "u": 2,
+          "v": 9
+        },
+        {
+          "u": 2,
+          "v": 10
+        },
+        {
+          "u": 2,
+          "v": 11
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 11,
+          "v": 3
+        }
+      ],
+      "source_file": "wy2010.mtx",
+      "density": 0.36363636363636365,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0031.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0031.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        1,
+        3,
+        6,
+        8,
+        9
+      ],
+      [
+        2,
+        4,
+        5,
+        7,
+        10,
+        11
+      ]
+    ],
+    "obj": 15.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 11,
+      "num_edges": 17,
+      "edges": [
+        {
+          "u": 9,
+          "v": 3
+        },
+        {
+          "u": 9,
+          "v": 7
+        },
+        {
+          "u": 9,
+          "v": 8
+        },
+        {
+          "u": 9,
+          "v": 11
+        },
+        {
+          "u": 2,
+          "v": 6
+        },
+        {
+          "u": 2,
+          "v": 10
+        },
+        {
+          "u": 11,
+          "v": 3
+        },
+        {
+          "u": 11,
+          "v": 4
+        },
+        {
+          "u": 11,
+          "v": 8
+        },
+        {
+          "u": 10,
+          "v": 3
+        },
+        {
+          "u": 10,
+          "v": 4
+        },
+        {
+          "u": 10,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 1
+        },
+        {
+          "u": 3,
+          "v": 1
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 8
+        },
+        {
+          "u": 1,
+          "v": 7
+        }
+      ],
+      "source_file": "vt2010.mtx",
+      "density": 0.3090909090909091,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0032.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0032.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        3,
+        4,
+        6,
+        7,
+        8
+      ],
+      [
+        1,
+        2,
+        5,
+        9,
+        10,
+        11
+      ]
+    ],
+    "obj": 15.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 9,
+      "num_edges": 15,
+      "edges": [
+        {
+          "u": 7,
+          "v": 5
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 2,
+          "v": 4
+        },
+        {
+          "u": 2,
+          "v": 5
+        },
+        {
+          "u": 2,
+          "v": 6
+        },
+        {
+          "u": 2,
+          "v": 8
+        },
+        {
+          "u": 5,
+          "v": 1
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 5,
+          "v": 8
+        },
+        {
+          "u": 6,
+          "v": 1
+        },
+        {
+          "u": 6,
+          "v": 3
+        },
+        {
+          "u": 6,
+          "v": 4
+        },
+        {
+          "u": 4,
+          "v": 3
+        },
+        {
+          "u": 4,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 8
+        }
+      ],
+      "source_file": "vt2010.mtx",
+      "density": 0.4166666666666667,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0033.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0033.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        4,
+        5,
+        6,
+        8
+      ],
+      [
+        1,
+        2,
+        3,
+        7,
+        9
+      ]
+    ],
+    "obj": 12.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 9,
+      "num_edges": 15,
+      "edges": [
+        {
+          "u": 5,
+          "v": 3
+        },
+        {
+          "u": 5,
+          "v": 4
+        },
+        {
+          "u": 5,
+          "v": 9
+        },
+        {
+          "u": 6,
+          "v": 3
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 6,
+          "v": 9
+        },
+        {
+          "u": 7,
+          "v": 3
+        },
+        {
+          "u": 7,
+          "v": 9
+        },
+        {
+          "u": 8,
+          "v": 1
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 2,
+          "v": 9
+        },
+        {
+          "u": 4,
+          "v": 3
+        },
+        {
+          "u": 4,
+          "v": 9
+        },
+        {
+          "u": 1,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 3
+        }
+      ],
+      "source_file": "wv2010.mtx",
+      "density": 0.4166666666666667,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0034.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0034.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        1,
+        3,
+        9
+      ],
+      [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    ],
+    "obj": 11.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 12,
+      "num_edges": 22,
+      "edges": [
+        {
+          "u": 11,
+          "v": 1
+        },
+        {
+          "u": 11,
+          "v": 6
+        },
+        {
+          "u": 11,
+          "v": 8
+        },
+        {
+          "u": 11,
+          "v": 10
+        },
+        {
+          "u": 3,
+          "v": 2
+        },
+        {
+          "u": 3,
+          "v": 6
+        },
+        {
+          "u": 3,
+          "v": 7
+        },
+        {
+          "u": 3,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 6
+        },
+        {
+          "u": 9,
+          "v": 7
+        },
+        {
+          "u": 9,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 1
+        },
+        {
+          "u": 10,
+          "v": 2
+        },
+        {
+          "u": 10,
+          "v": 5
+        },
+        {
+          "u": 10,
+          "v": 6
+        },
+        {
+          "u": 4,
+          "v": 6
+        },
+        {
+          "u": 4,
+          "v": 12
+        },
+        {
+          "u": 5,
+          "v": 2
+        },
+        {
+          "u": 12,
+          "v": 6
+        },
+        {
+          "u": 8,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 2
+        },
+        {
+          "u": 6,
+          "v": 7
+        }
+      ],
+      "source_file": "wv2010.mtx",
+      "density": 0.3333333333333333,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0035.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0035.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        2,
+        4,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      [
+        1,
+        3,
+        5,
+        6,
+        12
+      ]
+    ],
+    "obj": 15.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 11,
+      "num_edges": 16,
+      "edges": [
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 5,
+          "v": 7
+        },
+        {
+          "u": 5,
+          "v": 8
+        },
+        {
+          "u": 10,
+          "v": 3
+        },
+        {
+          "u": 10,
+          "v": 9
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 3
+        },
+        {
+          "u": 1,
+          "v": 6
+        },
+        {
+          "u": 4,
+          "v": 2
+        },
+        {
+          "u": 2,
+          "v": 6
+        },
+        {
+          "u": 2,
+          "v": 7
+        },
+        {
+          "u": 2,
+          "v": 11
+        },
+        {
+          "u": 8,
+          "v": 3
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 6,
+          "v": 3
+        },
+        {
+          "u": 9,
+          "v": 3
+        }
+      ],
+      "source_file": "wv2010.mtx",
+      "density": 0.2909090909090909,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0036.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0036.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        1,
+        4,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      [
+        2,
+        3,
+        5,
+        9
+      ]
+    ],
+    "obj": 14.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 10,
+      "num_edges": 19,
+      "edges": [
+        {
+          "u": 10,
+          "v": 1
+        },
+        {
+          "u": 10,
+          "v": 8
+        },
+        {
+          "u": 9,
+          "v": 2
+        },
+        {
+          "u": 9,
+          "v": 4
+        },
+        {
+          "u": 9,
+          "v": 7
+        },
+        {
+          "u": 9,
+          "v": 8
+        },
+        {
+          "u": 5,
+          "v": 1
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 5,
+          "v": 7
+        },
+        {
+          "u": 5,
+          "v": 8
+        },
+        {
+          "u": 6,
+          "v": 2
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 6,
+          "v": 8
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 3,
+          "v": 8
+        },
+        {
+          "u": 4,
+          "v": 1
+        },
+        {
+          "u": 4,
+          "v": 7
+        },
+        {
+          "u": 1,
+          "v": 8
+        },
+        {
+          "u": 2,
+          "v": 8
+        }
+      ],
+      "source_file": "wv2010.mtx",
+      "density": 0.4222222222222222,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0037.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0037.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        1,
+        2,
+        4,
+        7,
+        8
+      ],
+      [
+        3,
+        5,
+        6,
+        9,
+        10
+      ]
+    ],
+    "obj": 14.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 8,
+      "num_edges": 8,
+      "edges": [
+        {
+          "u": 4,
+          "v": 8
+        },
+        {
+          "u": 7,
+          "v": 1
+        },
+        {
+          "u": 7,
+          "v": 2
+        },
+        {
+          "u": 7,
+          "v": 3
+        },
+        {
+          "u": 7,
+          "v": 5
+        },
+        {
+          "u": 7,
+          "v": 6
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 1,
+          "v": 3
+        }
+      ],
+      "source_file": "wi2010.mtx",
+      "density": 0.2857142857142857,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0038.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0038.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        1,
+        2,
+        3,
+        5,
+        6,
+        8
+      ],
+      [
+        4,
+        7
+      ]
+    ],
+    "obj": 7.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 11,
+      "num_edges": 17,
+      "edges": [
+        {
+          "u": 1,
+          "v": 3
+        },
+        {
+          "u": 1,
+          "v": 5
+        },
+        {
+          "u": 1,
+          "v": 6
+        },
+        {
+          "u": 1,
+          "v": 10
+        },
+        {
+          "u": 8,
+          "v": 7
+        },
+        {
+          "u": 2,
+          "v": 4
+        },
+        {
+          "u": 2,
+          "v": 11
+        },
+        {
+          "u": 7,
+          "v": 6
+        },
+        {
+          "u": 7,
+          "v": 9
+        },
+        {
+          "u": 7,
+          "v": 10
+        },
+        {
+          "u": 4,
+          "v": 5
+        },
+        {
+          "u": 4,
+          "v": 11
+        },
+        {
+          "u": 3,
+          "v": 5
+        },
+        {
+          "u": 5,
+          "v": 10
+        },
+        {
+          "u": 5,
+          "v": 11
+        },
+        {
+          "u": 9,
+          "v": 11
+        },
+        {
+          "u": 10,
+          "v": 11
+        }
+      ],
+      "source_file": "wi2010.mtx",
+      "density": 0.3090909090909091,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0039.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0039.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        2,
+        3,
+        4,
+        6,
+        8,
+        9,
+        10
+      ],
+      [
+        1,
+        5,
+        7,
+        11
+      ]
+    ],
+    "obj": 14.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 8,
+      "num_edges": 12,
+      "edges": [
+        {
+          "u": 3,
+          "v": 1
+        },
+        {
+          "u": 3,
+          "v": 2
+        },
+        {
+          "u": 3,
+          "v": 5
+        },
+        {
+          "u": 3,
+          "v": 6
+        },
+        {
+          "u": 3,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 5
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 4
+        },
+        {
+          "u": 6,
+          "v": 2
+        },
+        {
+          "u": 5,
+          "v": 4
+        },
+        {
+          "u": 2,
+          "v": 1
+        },
+        {
+          "u": 1,
+          "v": 4
+        }
+      ],
+      "source_file": "wa2010.mtx",
+      "density": 0.42857142857142855,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0040.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0040.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        1,
+        5,
+        6,
+        8
+      ],
+      [
+        2,
+        3,
+        4,
+        7
+      ]
+    ],
+    "obj": 10.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 12,
+      "num_edges": 20,
+      "edges": [
+        {
+          "u": 4,
+          "v": 1
+        },
+        {
+          "u": 4,
+          "v": 7
+        },
+        {
+          "u": 4,
+          "v": 9
+        },
+        {
+          "u": 2,
+          "v": 7
+        },
+        {
+          "u": 2,
+          "v": 10
+        },
+        {
+          "u": 9,
+          "v": 1
+        },
+        {
+          "u": 9,
+          "v": 6
+        },
+        {
+          "u": 9,
+          "v": 7
+        },
+        {
+          "u": 10,
+          "v": 7
+        },
+        {
+          "u": 10,
+          "v": 8
+        },
+        {
+          "u": 11,
+          "v": 3
+        },
+        {
+          "u": 11,
+          "v": 7
+        },
+        {
+          "u": 11,
+          "v": 12
+        },
+        {
+          "u": 7,
+          "v": 3
+        },
+        {
+          "u": 7,
+          "v": 5
+        },
+        {
+          "u": 7,
+          "v": 6
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 7,
+          "v": 12
+        },
+        {
+          "u": 1,
+          "v": 6
+        },
+        {
+          "u": 12,
+          "v": 6
+        }
+      ],
+      "source_file": "wa2010.mtx",
+      "density": 0.30303030303030304,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0041.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0041.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        1,
+        7,
+        10,
+        11
+      ],
+      [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        12
+      ]
+    ],
+    "obj": 15.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 12,
+      "num_edges": 20,
+      "edges": [
+        {
+          "u": 11,
+          "v": 2
+        },
+        {
+          "u": 11,
+          "v": 8
+        },
+        {
+          "u": 11,
+          "v": 10
+        },
+        {
+          "u": 12,
+          "v": 7
+        },
+        {
+          "u": 12,
+          "v": 8
+        },
+        {
+          "u": 4,
+          "v": 8
+        },
+        {
+          "u": 7,
+          "v": 1
+        },
+        {
+          "u": 7,
+          "v": 6
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 1,
+          "v": 6
+        },
+        {
+          "u": 1,
+          "v": 10
+        },
+        {
+          "u": 2,
+          "v": 8
+        },
+        {
+          "u": 2,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 6
+        },
+        {
+          "u": 10,
+          "v": 8
+        },
+        {
+          "u": 6,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 3
+        },
+        {
+          "u": 8,
+          "v": 5
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 9,
+          "v": 5
+        }
+      ],
+      "source_file": "wi2010.mtx",
+      "density": 0.30303030303030304,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0042.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0042.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        1,
+        2,
+        3,
+        4,
+        6,
+        9,
+        11,
+        12
+      ],
+      [
+        5,
+        7,
+        8,
+        10
+      ]
+    ],
+    "obj": 15.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 9,
+      "num_edges": 13,
+      "edges": [
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 3
+        },
+        {
+          "u": 1,
+          "v": 4
+        },
+        {
+          "u": 1,
+          "v": 6
+        },
+        {
+          "u": 8,
+          "v": 4
+        },
+        {
+          "u": 8,
+          "v": 6
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 5,
+          "v": 2
+        },
+        {
+          "u": 5,
+          "v": 3
+        },
+        {
+          "u": 5,
+          "v": 7
+        },
+        {
+          "u": 5,
+          "v": 9
+        },
+        {
+          "u": 6,
+          "v": 3
+        },
+        {
+          "u": 9,
+          "v": 3
+        }
+      ],
+      "source_file": "wy2010.mtx",
+      "density": 0.3611111111111111,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0043.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0043.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        2,
+        4,
+        6,
+        7,
+        9
+      ],
+      [
+        1,
+        3,
+        5,
+        8
+      ]
+    ],
+    "obj": 11.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 8,
+      "num_edges": 13,
+      "edges": [
+        {
+          "u": 5,
+          "v": 1
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 2,
+          "v": 4
+        },
+        {
+          "u": 2,
+          "v": 6
+        },
+        {
+          "u": 4,
+          "v": 6
+        },
+        {
+          "u": 4,
+          "v": 7
+        },
+        {
+          "u": 4,
+          "v": 8
+        },
+        {
+          "u": 8,
+          "v": 3
+        },
+        {
+          "u": 8,
+          "v": 7
+        },
+        {
+          "u": 1,
+          "v": 3
+        },
+        {
+          "u": 7,
+          "v": 3
+        },
+        {
+          "u": 7,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 3
+        }
+      ],
+      "source_file": "wi2010.mtx",
+      "density": 0.4642857142857143,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0044.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0044.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        2,
+        3,
+        5,
+        7
+      ],
+      [
+        1,
+        4,
+        6,
+        8
+      ]
+    ],
+    "obj": 10.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 11,
+      "num_edges": 17,
+      "edges": [
+        {
+          "u": 2,
+          "v": 4
+        },
+        {
+          "u": 2,
+          "v": 7
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 5,
+          "v": 7
+        },
+        {
+          "u": 5,
+          "v": 9
+        },
+        {
+          "u": 5,
+          "v": 10
+        },
+        {
+          "u": 7,
+          "v": 4
+        },
+        {
+          "u": 7,
+          "v": 6
+        },
+        {
+          "u": 7,
+          "v": 8
+        },
+        {
+          "u": 7,
+          "v": 11
+        },
+        {
+          "u": 3,
+          "v": 6
+        },
+        {
+          "u": 3,
+          "v": 11
+        },
+        {
+          "u": 1,
+          "v": 6
+        },
+        {
+          "u": 1,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 4
+        },
+        {
+          "u": 9,
+          "v": 4
+        },
+        {
+          "u": 9,
+          "v": 10
+        }
+      ],
+      "source_file": "wa2010.mtx",
+      "density": 0.3090909090909091,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0045.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0045.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        1,
+        3,
+        4,
+        7,
+        10
+      ],
+      [
+        2,
+        5,
+        6,
+        8,
+        9,
+        11
+      ]
+    ],
+    "obj": 14.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 9,
+      "num_edges": 15,
+      "edges": [
+        {
+          "u": 6,
+          "v": 1
+        },
+        {
+          "u": 6,
+          "v": 3
+        },
+        {
+          "u": 6,
+          "v": 8
+        },
+        {
+          "u": 6,
+          "v": 9
+        },
+        {
+          "u": 3,
+          "v": 5
+        },
+        {
+          "u": 3,
+          "v": 8
+        },
+        {
+          "u": 9,
+          "v": 2
+        },
+        {
+          "u": 9,
+          "v": 7
+        },
+        {
+          "u": 9,
+          "v": 8
+        },
+        {
+          "u": 1,
+          "v": 2
+        },
+        {
+          "u": 1,
+          "v": 7
+        },
+        {
+          "u": 8,
+          "v": 5
+        },
+        {
+          "u": 8,
+          "v": 7
+        },
+        {
+          "u": 4,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 5
+        }
+      ],
+      "source_file": "wy2010.mtx",
+      "density": 0.4166666666666667,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0046.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0046.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        1,
+        3,
+        4,
+        8,
+        9
+      ],
+      [
+        2,
+        5,
+        6,
+        7
+      ]
+    ],
+    "obj": 12.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 8,
+      "num_edges": 8,
+      "edges": [
+        {
+          "u": 1,
+          "v": 6
+        },
+        {
+          "u": 1,
+          "v": 7
+        },
+        {
+          "u": 5,
+          "v": 7
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 4,
+          "v": 7
+        },
+        {
+          "u": 3,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 2
+        },
+        {
+          "u": 7,
+          "v": 8
+        }
+      ],
+      "source_file": "wy2010.mtx",
+      "density": 0.2857142857142857,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0047.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0047.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8
+      ]
+    ],
+    "obj": 7.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 10,
+      "num_edges": 15,
+      "edges": [
+        {
+          "u": 5,
+          "v": 3
+        },
+        {
+          "u": 5,
+          "v": 8
+        },
+        {
+          "u": 5,
+          "v": 10
+        },
+        {
+          "u": 10,
+          "v": 6
+        },
+        {
+          "u": 2,
+          "v": 1
+        },
+        {
+          "u": 2,
+          "v": 4
+        },
+        {
+          "u": 2,
+          "v": 6
+        },
+        {
+          "u": 3,
+          "v": 4
+        },
+        {
+          "u": 3,
+          "v": 6
+        },
+        {
+          "u": 3,
+          "v": 9
+        },
+        {
+          "u": 1,
+          "v": 6
+        },
+        {
+          "u": 8,
+          "v": 9
+        },
+        {
+          "u": 4,
+          "v": 6
+        },
+        {
+          "u": 4,
+          "v": 7
+        },
+        {
+          "u": 7,
+          "v": 9
+        }
+      ],
+      "source_file": "wy2010.mtx",
+      "density": 0.3333333333333333,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0048.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0048.png",
+      "edge_connectivity": 2
+    },
+    "solution": [
+      [
+        1,
+        2,
+        3,
+        7,
+        8,
+        10
+      ],
+      [
+        4,
+        5,
+        6,
+        9
+      ]
+    ],
+    "obj": 13.0,
+    "problem_type": "MAXCUT"
+  },
+  {
+    "instance": {
+      "problem_type": "MAXCUT",
+      "num_nodes": 11,
+      "num_edges": 14,
+      "edges": [
+        {
+          "u": 5,
+          "v": 3
+        },
+        {
+          "u": 5,
+          "v": 4
+        },
+        {
+          "u": 5,
+          "v": 6
+        },
+        {
+          "u": 5,
+          "v": 11
+        },
+        {
+          "u": 11,
+          "v": 9
+        },
+        {
+          "u": 2,
+          "v": 7
+        },
+        {
+          "u": 2,
+          "v": 10
+        },
+        {
+          "u": 8,
+          "v": 7
+        },
+        {
+          "u": 9,
+          "v": 1
+        },
+        {
+          "u": 9,
+          "v": 6
+        },
+        {
+          "u": 6,
+          "v": 7
+        },
+        {
+          "u": 6,
+          "v": 10
+        },
+        {
+          "u": 4,
+          "v": 7
+        },
+        {
+          "u": 10,
+          "v": 1
+        }
+      ],
+      "source_file": "wa2010.mtx",
+      "density": 0.2545454545454545,
+      "viz_instance": "generated_data/MAXCUT/viz/MAXCUT_S/instance_0049.png",
+      "viz_solution": "generated_data/MAXCUT/viz/MAXCUT_S/solution_0049.png",
+      "edge_connectivity": 1
+    },
+    "solution": [
+      [
+        1,
+        2,
+        3,
+        4,
+        6,
+        8,
+        11
+      ],
+      [
+        5,
+        7,
+        9,
+        10
+      ]
+    ],
+    "obj": 14.0,
+    "problem_type": "MAXCUT"
+  }
+]

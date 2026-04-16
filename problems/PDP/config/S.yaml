@@ -1,0 +1,16 @@
+problem: PDP
+scale: S
+seed: 43
+step1:
+  dataset_dir: datasets/PDP
+  n_requests: 3-5
+
+  n_instances: 50
+  output: step1_instance_creation/generated_data/PDP/PDP_S.json
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/PDP/PDP_contexts.json
+  instance_dir: step1_instance_creation/generated_data/PDP
+  output_root_dir: step2_contextualization/dataset/PDP
+  k_per_call: 20
+  n_target: 30

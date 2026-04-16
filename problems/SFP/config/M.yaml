@@ -1,0 +1,30 @@
+problem: SFP
+scale: M
+seed: 43
+step1:
+  dataset_path: datasets/STP
+  n_nodes: 16-20
+
+  n_instances: 50
+  output: step1_instance_creation/generated_data/SFP/SFP_M.json
+  params:
+    viz_dir: step1_instance_creation/generated_data/SFP/viz/SFP_M
+    oversample_factor: 2.0
+    steps_per_seed: 5000
+    alpha: 0.15
+    num_seeds: 1
+    t_ratio_choices:
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+    min_groups: 2
+    max_groups: 4
+step2:
+  instance_dir: step1_instance_creation/generated_data/SFP
+  output_root_dir: step2_contextualization/dataset/SFP
+  k_per_call: 20
+  n_target: 30
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/SFP/SFP_contexts.json

@@ -1,0 +1,17 @@
+problem: JSP
+scale: L
+seed: 43
+step1:
+  n_jobs: 9-12
+
+  n_instances: 50
+  output: step1_instance_creation/generated_data/JSP/JSP_L.json
+  params:
+    n_machines: [5, 6]
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/JSP/JSP_contexts.json
+  instance_dir: step1_instance_creation/generated_data/JSP
+  output_root_dir: step2_contextualization/dataset/JSP
+  k_per_call: 20
+  n_target: 30

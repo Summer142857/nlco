@@ -1,0 +1,8354 @@
+[
+  {
+    "items": [
+      {
+        "width": 38,
+        "height": 37,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 50,
+        "demand": 1
+      },
+      {
+        "width": 22,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 67,
+        "demand": 1
+      },
+      {
+        "width": 51,
+        "height": 24,
+        "demand": 1
+      },
+      {
+        "width": 40,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 40,
+        "demand": 1
+      },
+      {
+        "width": 67,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 51,
+        "height": 57,
+        "demand": 1
+      },
+      {
+        "width": 51,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 67,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 88,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 57,
+        "y": 44,
+        "width": 38,
+        "height": 37
+      },
+      {
+        "item_type": 1,
+        "x": 95,
+        "y": 22,
+        "width": 14,
+        "height": 50
+      },
+      {
+        "item_type": 2,
+        "x": 38,
+        "y": 13,
+        "width": 22,
+        "height": 13
+      },
+      {
+        "item_type": 3,
+        "x": 21,
+        "y": 13,
+        "width": 17,
+        "height": 67
+      },
+      {
+        "item_type": 4,
+        "x": 109,
+        "y": 0,
+        "width": 51,
+        "height": 24
+      },
+      {
+        "item_type": 5,
+        "x": 67,
+        "y": 0,
+        "width": 40,
+        "height": 22
+      },
+      {
+        "item_type": 6,
+        "x": 38,
+        "y": 40,
+        "width": 19,
+        "height": 40
+      },
+      {
+        "item_type": 7,
+        "x": 0,
+        "y": 0,
+        "width": 67,
+        "height": 13
+      },
+      {
+        "item_type": 8,
+        "x": 109,
+        "y": 24,
+        "width": 51,
+        "height": 57
+      },
+      {
+        "item_type": 9,
+        "x": 44,
+        "y": 26,
+        "width": 51,
+        "height": 14
+      },
+      {
+        "item_type": 10,
+        "x": 0,
+        "y": 13,
+        "width": 21,
+        "height": 67
+      }
+    ],
+    "obj": 81.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 9,
+        "height": 33,
+        "demand": 1
+      },
+      {
+        "width": 27,
+        "height": 76,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 41,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 59,
+        "height": 21,
+        "demand": 1
+      },
+      {
+        "width": 70,
+        "height": 28,
+        "demand": 1
+      },
+      {
+        "width": 71,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 41,
+        "height": 29,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 93,
+        "demand": 1
+      },
+      {
+        "width": 79,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 31,
+        "height": 68,
+        "demand": 1
+      },
+      {
+        "width": 115,
+        "height": 22,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 121,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 124,
+        "y": 22,
+        "width": 9,
+        "height": 33
+      },
+      {
+        "item_type": 1,
+        "x": 133,
+        "y": 22,
+        "width": 27,
+        "height": 76
+      },
+      {
+        "item_type": 2,
+        "x": 65,
+        "y": 91,
+        "width": 16,
+        "height": 22
+      },
+      {
+        "item_type": 3,
+        "x": 48,
+        "y": 29,
+        "width": 41,
+        "height": 12
+      },
+      {
+        "item_type": 4,
+        "x": 6,
+        "y": 93,
+        "width": 59,
+        "height": 21
+      },
+      {
+        "item_type": 5,
+        "x": 54,
+        "y": 41,
+        "width": 70,
+        "height": 28
+      },
+      {
+        "item_type": 6,
+        "x": 89,
+        "y": 0,
+        "width": 71,
+        "height": 22
+      },
+      {
+        "item_type": 7,
+        "x": 89,
+        "y": 22,
+        "width": 35,
+        "height": 16
+      },
+      {
+        "item_type": 8,
+        "x": 48,
+        "y": 0,
+        "width": 41,
+        "height": 29
+      },
+      {
+        "item_type": 9,
+        "x": 0,
+        "y": 0,
+        "width": 17,
+        "height": 93
+      },
+      {
+        "item_type": 10,
+        "x": 81,
+        "y": 98,
+        "width": 79,
+        "height": 16
+      },
+      {
+        "item_type": 11,
+        "x": 17,
+        "y": 0,
+        "width": 31,
+        "height": 68
+      },
+      {
+        "item_type": 12,
+        "x": 18,
+        "y": 69,
+        "width": 115,
+        "height": 22
+      }
+    ],
+    "obj": 114.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 47,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 56,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 22,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 1,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 20,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 26,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 103,
+        "y": 0,
+        "width": 47,
+        "height": 12
+      },
+      {
+        "item_type": 1,
+        "x": 5,
+        "y": 8,
+        "width": 4,
+        "height": 14
+      },
+      {
+        "item_type": 2,
+        "x": 20,
+        "y": 19,
+        "width": 8,
+        "height": 3
+      },
+      {
+        "item_type": 3,
+        "x": 15,
+        "y": 0,
+        "width": 11,
+        "height": 7
+      },
+      {
+        "item_type": 4,
+        "x": 0,
+        "y": 0,
+        "width": 2,
+        "height": 4
+      },
+      {
+        "item_type": 5,
+        "x": 91,
+        "y": 0,
+        "width": 12,
+        "height": 7
+      },
+      {
+        "item_type": 6,
+        "x": 1,
+        "y": 4,
+        "width": 14,
+        "height": 4
+      },
+      {
+        "item_type": 7,
+        "x": 26,
+        "y": 0,
+        "width": 56,
+        "height": 19
+      },
+      {
+        "item_type": 8,
+        "x": 124,
+        "y": 12,
+        "width": 22,
+        "height": 7
+      },
+      {
+        "item_type": 9,
+        "x": 146,
+        "y": 12,
+        "width": 14,
+        "height": 6
+      },
+      {
+        "item_type": 10,
+        "x": 0,
+        "y": 8,
+        "width": 3,
+        "height": 15
+      },
+      {
+        "item_type": 11,
+        "x": 9,
+        "y": 8,
+        "width": 11,
+        "height": 12
+      },
+      {
+        "item_type": 12,
+        "x": 89,
+        "y": 12,
+        "width": 35,
+        "height": 11
+      },
+      {
+        "item_type": 13,
+        "x": 14,
+        "y": 22,
+        "width": 6,
+        "height": 1
+      },
+      {
+        "item_type": 14,
+        "x": 82,
+        "y": 0,
+        "width": 7,
+        "height": 20
+      }
+    ],
+    "obj": 23.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 5,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 23,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 29,
+        "demand": 1
+      },
+      {
+        "width": 23,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 28,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 37,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 29,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 27,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 15,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 42,
+        "height": 26,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 26,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 38,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 107,
+        "y": 23,
+        "width": 5,
+        "height": 12
+      },
+      {
+        "item_type": 1,
+        "x": 62,
+        "y": 0,
+        "width": 26,
+        "height": 23
+      },
+      {
+        "item_type": 2,
+        "x": 0,
+        "y": 0,
+        "width": 20,
+        "height": 29
+      },
+      {
+        "item_type": 3,
+        "x": 100,
+        "y": 7,
+        "width": 23,
+        "height": 9
+      },
+      {
+        "item_type": 4,
+        "x": 99,
+        "y": 16,
+        "width": 8,
+        "height": 12
+      },
+      {
+        "item_type": 5,
+        "x": 132,
+        "y": 20,
+        "width": 28,
+        "height": 15
+      },
+      {
+        "item_type": 6,
+        "x": 123,
+        "y": 0,
+        "width": 37,
+        "height": 20
+      },
+      {
+        "item_type": 7,
+        "x": 88,
+        "y": 0,
+        "width": 29,
+        "height": 7
+      },
+      {
+        "item_type": 8,
+        "x": 63,
+        "y": 23,
+        "width": 27,
+        "height": 11
+      },
+      {
+        "item_type": 9,
+        "x": 117,
+        "y": 22,
+        "width": 15,
+        "height": 13
+      },
+      {
+        "item_type": 10,
+        "x": 20,
+        "y": 9,
+        "width": 42,
+        "height": 26
+      },
+      {
+        "item_type": 11,
+        "x": 88,
+        "y": 7,
+        "width": 2,
+        "height": 8
+      },
+      {
+        "item_type": 12,
+        "x": 90,
+        "y": 7,
+        "width": 9,
+        "height": 26
+      }
+    ],
+    "obj": 35.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 26,
+        "height": 101,
+        "demand": 1
+      },
+      {
+        "width": 90,
+        "height": 26,
+        "demand": 1
+      },
+      {
+        "width": 29,
+        "height": 74,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 34,
+        "demand": 1
+      },
+      {
+        "width": 43,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 37,
+        "height": 60,
+        "demand": 1
+      },
+      {
+        "width": 41,
+        "height": 24,
+        "demand": 1
+      },
+      {
+        "width": 42,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 34,
+        "height": 70,
+        "demand": 1
+      },
+      {
+        "width": 51,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 41,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 132,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 0,
+        "width": 26,
+        "height": 101
+      },
+      {
+        "item_type": 1,
+        "x": 70,
+        "y": 91,
+        "width": 90,
+        "height": 26
+      },
+      {
+        "item_type": 2,
+        "x": 80,
+        "y": 0,
+        "width": 29,
+        "height": 74
+      },
+      {
+        "item_type": 3,
+        "x": 26,
+        "y": 0,
+        "width": 12,
+        "height": 34
+      },
+      {
+        "item_type": 4,
+        "x": 66,
+        "y": 74,
+        "width": 43,
+        "height": 17
+      },
+      {
+        "item_type": 5,
+        "x": 123,
+        "y": 31,
+        "width": 37,
+        "height": 60
+      },
+      {
+        "item_type": 6,
+        "x": 38,
+        "y": 22,
+        "width": 41,
+        "height": 24
+      },
+      {
+        "item_type": 7,
+        "x": 38,
+        "y": 0,
+        "width": 42,
+        "height": 22
+      },
+      {
+        "item_type": 8,
+        "x": 27,
+        "y": 46,
+        "width": 34,
+        "height": 70
+      },
+      {
+        "item_type": 9,
+        "x": 109,
+        "y": 0,
+        "width": 51,
+        "height": 27
+      },
+      {
+        "item_type": 10,
+        "x": 61,
+        "y": 91,
+        "width": 9,
+        "height": 14
+      },
+      {
+        "item_type": 11,
+        "x": 111,
+        "y": 46,
+        "width": 12,
+        "height": 41
+      }
+    ],
+    "obj": 117.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 18,
+        "height": 55,
+        "demand": 1
+      },
+      {
+        "width": 33,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 30,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 49,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 31,
+        "demand": 1
+      },
+      {
+        "width": 61,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 51,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 41,
+        "demand": 1
+      },
+      {
+        "width": 90,
+        "height": 30,
+        "demand": 1
+      },
+      {
+        "width": 54,
+        "height": 12,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 72,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 142,
+        "y": 0,
+        "width": 18,
+        "height": 55
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 0,
+        "width": 33,
+        "height": 22
+      },
+      {
+        "item_type": 2,
+        "x": 51,
+        "y": 39,
+        "width": 30,
+        "height": 9
+      },
+      {
+        "item_type": 3,
+        "x": 93,
+        "y": 55,
+        "width": 49,
+        "height": 8
+      },
+      {
+        "item_type": 4,
+        "x": 33,
+        "y": 0,
+        "width": 9,
+        "height": 31
+      },
+      {
+        "item_type": 5,
+        "x": 81,
+        "y": 33,
+        "width": 61,
+        "height": 22
+      },
+      {
+        "item_type": 6,
+        "x": 26,
+        "y": 39,
+        "width": 11,
+        "height": 4
+      },
+      {
+        "item_type": 7,
+        "x": 21,
+        "y": 44,
+        "width": 5,
+        "height": 19
+      },
+      {
+        "item_type": 8,
+        "x": 42,
+        "y": 48,
+        "width": 10,
+        "height": 3
+      },
+      {
+        "item_type": 9,
+        "x": 21,
+        "y": 31,
+        "width": 51,
+        "height": 8
+      },
+      {
+        "item_type": 10,
+        "x": 0,
+        "y": 22,
+        "width": 21,
+        "height": 41
+      },
+      {
+        "item_type": 11,
+        "x": 52,
+        "y": 0,
+        "width": 90,
+        "height": 30
+      },
+      {
+        "item_type": 12,
+        "x": 26,
+        "y": 51,
+        "width": 54,
+        "height": 12
+      }
+    ],
+    "obj": 63.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 95,
+        "height": 51,
+        "demand": 1
+      },
+      {
+        "width": 37,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 71,
+        "height": 29,
+        "demand": 1
+      },
+      {
+        "width": 48,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 32,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 92,
+        "demand": 1
+      },
+      {
+        "width": 37,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 28,
+        "demand": 1
+      },
+      {
+        "width": 68,
+        "height": 49,
+        "demand": 1
+      },
+      {
+        "width": 49,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 103,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 134,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 28,
+        "y": 0,
+        "width": 95,
+        "height": 51
+      },
+      {
+        "item_type": 1,
+        "x": 85,
+        "y": 51,
+        "width": 37,
+        "height": 27
+      },
+      {
+        "item_type": 2,
+        "x": 69,
+        "y": 92,
+        "width": 71,
+        "height": 29
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 51,
+        "width": 48,
+        "height": 18
+      },
+      {
+        "item_type": 4,
+        "x": 2,
+        "y": 0,
+        "width": 10,
+        "height": 32
+      },
+      {
+        "item_type": 5,
+        "x": 123,
+        "y": 0,
+        "width": 17,
+        "height": 92
+      },
+      {
+        "item_type": 6,
+        "x": 48,
+        "y": 51,
+        "width": 37,
+        "height": 9
+      },
+      {
+        "item_type": 7,
+        "x": 148,
+        "y": 0,
+        "width": 12,
+        "height": 7
+      },
+      {
+        "item_type": 8,
+        "x": 12,
+        "y": 0,
+        "width": 12,
+        "height": 28
+      },
+      {
+        "item_type": 9,
+        "x": 0,
+        "y": 69,
+        "width": 68,
+        "height": 49
+      },
+      {
+        "item_type": 10,
+        "x": 68,
+        "y": 78,
+        "width": 49,
+        "height": 12
+      },
+      {
+        "item_type": 11,
+        "x": 140,
+        "y": 7,
+        "width": 20,
+        "height": 103
+      }
+    ],
+    "obj": 121.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 10,
+        "height": 32,
+        "demand": 1
+      },
+      {
+        "width": 66,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 55,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 78,
+        "demand": 1
+      },
+      {
+        "width": 56,
+        "height": 28,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 36,
+        "demand": 1
+      },
+      {
+        "width": 54,
+        "height": 45,
+        "demand": 1
+      },
+      {
+        "width": 36,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 73,
+        "height": 33,
+        "demand": 1
+      },
+      {
+        "width": 55,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 1,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 32,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 102,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 20,
+        "y": 0,
+        "width": 10,
+        "height": 32
+      },
+      {
+        "item_type": 1,
+        "x": 40,
+        "y": 33,
+        "width": 66,
+        "height": 12
+      },
+      {
+        "item_type": 2,
+        "x": 20,
+        "y": 33,
+        "width": 14,
+        "height": 55
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 0,
+        "width": 20,
+        "height": 78
+      },
+      {
+        "item_type": 4,
+        "x": 34,
+        "y": 60,
+        "width": 56,
+        "height": 28
+      },
+      {
+        "item_type": 5,
+        "x": 142,
+        "y": 1,
+        "width": 18,
+        "height": 36
+      },
+      {
+        "item_type": 6,
+        "x": 106,
+        "y": 42,
+        "width": 54,
+        "height": 45
+      },
+      {
+        "item_type": 7,
+        "x": 106,
+        "y": 33,
+        "width": 36,
+        "height": 9
+      },
+      {
+        "item_type": 8,
+        "x": 43,
+        "y": 0,
+        "width": 73,
+        "height": 33
+      },
+      {
+        "item_type": 9,
+        "x": 51,
+        "y": 45,
+        "width": 55,
+        "height": 15
+      },
+      {
+        "item_type": 10,
+        "x": 35,
+        "y": 0,
+        "width": 5,
+        "height": 1
+      },
+      {
+        "item_type": 11,
+        "x": 116,
+        "y": 0,
+        "width": 26,
+        "height": 32
+      }
+    ],
+    "obj": 88.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 42,
+        "height": 21,
+        "demand": 1
+      },
+      {
+        "width": 93,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 13,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 5,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 28,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 25,
+        "y": 0,
+        "width": 42,
+        "height": 21
+      },
+      {
+        "item_type": 1,
+        "x": 67,
+        "y": 9,
+        "width": 93,
+        "height": 18
+      },
+      {
+        "item_type": 2,
+        "x": 0,
+        "y": 20,
+        "width": 6,
+        "height": 7
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 9,
+        "width": 10,
+        "height": 11
+      },
+      {
+        "item_type": 4,
+        "x": 153,
+        "y": 0,
+        "width": 7,
+        "height": 9
+      },
+      {
+        "item_type": 5,
+        "x": 10,
+        "y": 7,
+        "width": 14,
+        "height": 15
+      },
+      {
+        "item_type": 6,
+        "x": 91,
+        "y": 0,
+        "width": 26,
+        "height": 8
+      },
+      {
+        "item_type": 7,
+        "x": 80,
+        "y": 0,
+        "width": 6,
+        "height": 3
+      },
+      {
+        "item_type": 8,
+        "x": 86,
+        "y": 0,
+        "width": 5,
+        "height": 7
+      },
+      {
+        "item_type": 9,
+        "x": 54,
+        "y": 25,
+        "width": 8,
+        "height": 2
+      },
+      {
+        "item_type": 10,
+        "x": 0,
+        "y": 0,
+        "width": 25,
+        "height": 7
+      },
+      {
+        "item_type": 11,
+        "x": 62,
+        "y": 22,
+        "width": 5,
+        "height": 5
+      },
+      {
+        "item_type": 12,
+        "x": 67,
+        "y": 0,
+        "width": 13,
+        "height": 4
+      },
+      {
+        "item_type": 13,
+        "x": 36,
+        "y": 22,
+        "width": 18,
+        "height": 5
+      }
+    ],
+    "obj": 27.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 3,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 48,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 24,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 30,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 40,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 1,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 24,
+        "demand": 1
+      },
+      {
+        "width": 27,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 27,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 26,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 94,
+        "height": 14,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 36,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 156,
+        "y": 30,
+        "width": 3,
+        "height": 6
+      },
+      {
+        "item_type": 1,
+        "x": 25,
+        "y": 11,
+        "width": 48,
+        "height": 11
+      },
+      {
+        "item_type": 2,
+        "x": 126,
+        "y": 24,
+        "width": 24,
+        "height": 7
+      },
+      {
+        "item_type": 3,
+        "x": 120,
+        "y": 17,
+        "width": 6,
+        "height": 19
+      },
+      {
+        "item_type": 4,
+        "x": 126,
+        "y": 31,
+        "width": 30,
+        "height": 5
+      },
+      {
+        "item_type": 5,
+        "x": 73,
+        "y": 0,
+        "width": 40,
+        "height": 18
+      },
+      {
+        "item_type": 6,
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 4
+      },
+      {
+        "item_type": 7,
+        "x": 140,
+        "y": 0,
+        "width": 10,
+        "height": 24
+      },
+      {
+        "item_type": 8,
+        "x": 113,
+        "y": 0,
+        "width": 27,
+        "height": 14
+      },
+      {
+        "item_type": 9,
+        "x": 26,
+        "y": 0,
+        "width": 27,
+        "height": 11
+      },
+      {
+        "item_type": 10,
+        "x": 150,
+        "y": 0,
+        "width": 10,
+        "height": 26
+      },
+      {
+        "item_type": 11,
+        "x": 1,
+        "y": 0,
+        "width": 25,
+        "height": 9
+      },
+      {
+        "item_type": 12,
+        "x": 53,
+        "y": 1,
+        "width": 17,
+        "height": 10
+      },
+      {
+        "item_type": 13,
+        "x": 0,
+        "y": 9,
+        "width": 25,
+        "height": 27
+      },
+      {
+        "item_type": 14,
+        "x": 26,
+        "y": 22,
+        "width": 94,
+        "height": 14
+      }
+    ],
+    "obj": 36.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 7,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 33,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 49,
+        "height": 3,
+        "demand": 1
+      }
+    ],
+    "bin_width": 80,
+    "bin_height": 24,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 6,
+        "width": 7,
+        "height": 3
+      },
+      {
+        "item_type": 1,
+        "x": 25,
+        "y": 0,
+        "width": 33,
+        "height": 18
+      },
+      {
+        "item_type": 2,
+        "x": 61,
+        "y": 0,
+        "width": 14,
+        "height": 5
+      },
+      {
+        "item_type": 3,
+        "x": 8,
+        "y": 4,
+        "width": 10,
+        "height": 17
+      },
+      {
+        "item_type": 4,
+        "x": 58,
+        "y": 0,
+        "width": 3,
+        "height": 6
+      },
+      {
+        "item_type": 5,
+        "x": 3,
+        "y": 9,
+        "width": 5,
+        "height": 5
+      },
+      {
+        "item_type": 6,
+        "x": 18,
+        "y": 0,
+        "width": 7,
+        "height": 15
+      },
+      {
+        "item_type": 7,
+        "x": 75,
+        "y": 2,
+        "width": 5,
+        "height": 11
+      },
+      {
+        "item_type": 8,
+        "x": 3,
+        "y": 14,
+        "width": 3,
+        "height": 4
+      },
+      {
+        "item_type": 9,
+        "x": 0,
+        "y": 18,
+        "width": 3,
+        "height": 3
+      },
+      {
+        "item_type": 10,
+        "x": 0,
+        "y": 13,
+        "width": 3,
+        "height": 5
+      },
+      {
+        "item_type": 11,
+        "x": 18,
+        "y": 18,
+        "width": 49,
+        "height": 3
+      }
+    ],
+    "obj": 21.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 7,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 22,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 30,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 108,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 38,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 36,
+        "demand": 1
+      },
+      {
+        "width": 28,
+        "height": 40,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 4,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 52,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 144,
+        "y": 19,
+        "width": 7,
+        "height": 27
+      },
+      {
+        "item_type": 1,
+        "x": 9,
+        "y": 0,
+        "width": 7,
+        "height": 9
+      },
+      {
+        "item_type": 2,
+        "x": 86,
+        "y": 21,
+        "width": 22,
+        "height": 6
+      },
+      {
+        "item_type": 3,
+        "x": 52,
+        "y": 19,
+        "width": 12,
+        "height": 30
+      },
+      {
+        "item_type": 4,
+        "x": 68,
+        "y": 25,
+        "width": 18,
+        "height": 11
+      },
+      {
+        "item_type": 5,
+        "x": 10,
+        "y": 36,
+        "width": 9,
+        "height": 12
+      },
+      {
+        "item_type": 6,
+        "x": 10,
+        "y": 23,
+        "width": 5,
+        "height": 13
+      },
+      {
+        "item_type": 7,
+        "x": 109,
+        "y": 19,
+        "width": 35,
+        "height": 20
+      },
+      {
+        "item_type": 8,
+        "x": 52,
+        "y": 0,
+        "width": 108,
+        "height": 19
+      },
+      {
+        "item_type": 9,
+        "x": 64,
+        "y": 23,
+        "width": 4,
+        "height": 17
+      },
+      {
+        "item_type": 10,
+        "x": 0,
+        "y": 9,
+        "width": 10,
+        "height": 38
+      },
+      {
+        "item_type": 11,
+        "x": 16,
+        "y": 0,
+        "width": 8,
+        "height": 36
+      },
+      {
+        "item_type": 12,
+        "x": 24,
+        "y": 0,
+        "width": 28,
+        "height": 40
+      },
+      {
+        "item_type": 13,
+        "x": 144,
+        "y": 46,
+        "width": 16,
+        "height": 3
+      },
+      {
+        "item_type": 14,
+        "x": 64,
+        "y": 40,
+        "width": 3,
+        "height": 4
+      }
+    ],
+    "obj": 49.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 15,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 43,
+        "height": 34,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 26,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 83,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 27,
+        "height": 26,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 5,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 45,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 46,
+        "y": 19,
+        "width": 15,
+        "height": 22
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 0,
+        "width": 43,
+        "height": 34
+      },
+      {
+        "item_type": 2,
+        "x": 61,
+        "y": 0,
+        "width": 16,
+        "height": 26
+      },
+      {
+        "item_type": 3,
+        "x": 52,
+        "y": 0,
+        "width": 9,
+        "height": 19
+      },
+      {
+        "item_type": 4,
+        "x": 103,
+        "y": 22,
+        "width": 18,
+        "height": 14
+      },
+      {
+        "item_type": 5,
+        "x": 77,
+        "y": 0,
+        "width": 83,
+        "height": 16
+      },
+      {
+        "item_type": 6,
+        "x": 42,
+        "y": 35,
+        "width": 4,
+        "height": 7
+      },
+      {
+        "item_type": 7,
+        "x": 133,
+        "y": 16,
+        "width": 27,
+        "height": 26
+      },
+      {
+        "item_type": 8,
+        "x": 108,
+        "y": 16,
+        "width": 25,
+        "height": 6
+      },
+      {
+        "item_type": 9,
+        "x": 77,
+        "y": 16,
+        "width": 26,
+        "height": 13
+      },
+      {
+        "item_type": 10,
+        "x": 62,
+        "y": 37,
+        "width": 16,
+        "height": 5
+      }
+    ],
+    "obj": 42.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 7,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 26,
+        "demand": 1
+      },
+      {
+        "width": 15,
+        "height": 26,
+        "demand": 1
+      },
+      {
+        "width": 37,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 13,
+        "height": 45,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 52,
+        "height": 34,
+        "demand": 1
+      },
+      {
+        "width": 97,
+        "height": 21,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 34,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 16,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 59,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 32,
+        "y": 0,
+        "width": 7,
+        "height": 18
+      },
+      {
+        "item_type": 1,
+        "x": 18,
+        "y": 29,
+        "width": 14,
+        "height": 26
+      },
+      {
+        "item_type": 2,
+        "x": 40,
+        "y": 29,
+        "width": 15,
+        "height": 26
+      },
+      {
+        "item_type": 3,
+        "x": 64,
+        "y": 0,
+        "width": 37,
+        "height": 20
+      },
+      {
+        "item_type": 4,
+        "x": 0,
+        "y": 0,
+        "width": 13,
+        "height": 45
+      },
+      {
+        "item_type": 5,
+        "x": 39,
+        "y": 16,
+        "width": 25,
+        "height": 11
+      },
+      {
+        "item_type": 6,
+        "x": 101,
+        "y": 0,
+        "width": 52,
+        "height": 34
+      },
+      {
+        "item_type": 7,
+        "x": 55,
+        "y": 34,
+        "width": 97,
+        "height": 21
+      },
+      {
+        "item_type": 8,
+        "x": 13,
+        "y": 21,
+        "width": 5,
+        "height": 34
+      },
+      {
+        "item_type": 9,
+        "x": 32,
+        "y": 43,
+        "width": 8,
+        "height": 12
+      },
+      {
+        "item_type": 10,
+        "x": 32,
+        "y": 27,
+        "width": 3,
+        "height": 16
+      }
+    ],
+    "obj": 55.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 35,
+        "height": 137,
+        "demand": 1
+      },
+      {
+        "width": 71,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 36,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 44,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 34,
+        "demand": 1
+      },
+      {
+        "width": 41,
+        "height": 29,
+        "demand": 1
+      },
+      {
+        "width": 44,
+        "height": 109,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 54,
+        "demand": 1
+      },
+      {
+        "width": 31,
+        "height": 68,
+        "demand": 1
+      },
+      {
+        "width": 146,
+        "height": 25,
+        "demand": 1
+      },
+      {
+        "width": 115,
+        "height": 22,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 179,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 125,
+        "y": 25,
+        "width": 35,
+        "height": 137
+      },
+      {
+        "item_type": 1,
+        "x": 44,
+        "y": 123,
+        "width": 71,
+        "height": 22
+      },
+      {
+        "item_type": 2,
+        "x": 47,
+        "y": 79,
+        "width": 16,
+        "height": 22
+      },
+      {
+        "item_type": 3,
+        "x": 44,
+        "y": 108,
+        "width": 36,
+        "height": 15
+      },
+      {
+        "item_type": 4,
+        "x": 63,
+        "y": 25,
+        "width": 19,
+        "height": 44
+      },
+      {
+        "item_type": 5,
+        "x": 69,
+        "y": 74,
+        "width": 25,
+        "height": 34
+      },
+      {
+        "item_type": 6,
+        "x": 82,
+        "y": 25,
+        "width": 41,
+        "height": 29
+      },
+      {
+        "item_type": 7,
+        "x": 0,
+        "y": 25,
+        "width": 44,
+        "height": 109
+      },
+      {
+        "item_type": 8,
+        "x": 44,
+        "y": 25,
+        "width": 19,
+        "height": 54
+      },
+      {
+        "item_type": 9,
+        "x": 94,
+        "y": 54,
+        "width": 31,
+        "height": 68
+      },
+      {
+        "item_type": 10,
+        "x": 0,
+        "y": 0,
+        "width": 146,
+        "height": 25
+      },
+      {
+        "item_type": 11,
+        "x": 0,
+        "y": 145,
+        "width": 115,
+        "height": 22
+      }
+    ],
+    "obj": 167.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 4,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 60,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 50,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 29,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 11,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 20,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 27,
+        "y": 0,
+        "width": 4,
+        "height": 15
+      },
+      {
+        "item_type": 1,
+        "x": 31,
+        "y": 4,
+        "width": 60,
+        "height": 11
+      },
+      {
+        "item_type": 2,
+        "x": 4,
+        "y": 4,
+        "width": 14,
+        "height": 11
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 6,
+        "width": 4,
+        "height": 6
+      },
+      {
+        "item_type": 4,
+        "x": 0,
+        "y": 0,
+        "width": 4,
+        "height": 6
+      },
+      {
+        "item_type": 5,
+        "x": 108,
+        "y": 0,
+        "width": 9,
+        "height": 9
+      },
+      {
+        "item_type": 6,
+        "x": 94,
+        "y": 9,
+        "width": 50,
+        "height": 8
+      },
+      {
+        "item_type": 7,
+        "x": 18,
+        "y": 2,
+        "width": 9,
+        "height": 13
+      },
+      {
+        "item_type": 8,
+        "x": 91,
+        "y": 0,
+        "width": 3,
+        "height": 11
+      },
+      {
+        "item_type": 9,
+        "x": 94,
+        "y": 0,
+        "width": 14,
+        "height": 9
+      },
+      {
+        "item_type": 10,
+        "x": 117,
+        "y": 0,
+        "width": 29,
+        "height": 9
+      },
+      {
+        "item_type": 11,
+        "x": 151,
+        "y": 4,
+        "width": 9,
+        "height": 11
+      }
+    ],
+    "obj": 17.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 38,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 1,
+        "demand": 1
+      },
+      {
+        "width": 30,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 15,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 49,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 13,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 10,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 19,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 43,
+        "y": 3,
+        "width": 38,
+        "height": 11
+      },
+      {
+        "item_type": 1,
+        "x": 41,
+        "y": 0,
+        "width": 2,
+        "height": 5
+      },
+      {
+        "item_type": 2,
+        "x": 0,
+        "y": 0,
+        "width": 3,
+        "height": 14
+      },
+      {
+        "item_type": 3,
+        "x": 21,
+        "y": 1,
+        "width": 9,
+        "height": 13
+      },
+      {
+        "item_type": 4,
+        "x": 3,
+        "y": 0,
+        "width": 2,
+        "height": 1
+      },
+      {
+        "item_type": 5,
+        "x": 130,
+        "y": 0,
+        "width": 30,
+        "height": 6
+      },
+      {
+        "item_type": 6,
+        "x": 5,
+        "y": 0,
+        "width": 15,
+        "height": 10
+      },
+      {
+        "item_type": 7,
+        "x": 81,
+        "y": 1,
+        "width": 49,
+        "height": 11
+      },
+      {
+        "item_type": 8,
+        "x": 3,
+        "y": 1,
+        "width": 2,
+        "height": 9
+      },
+      {
+        "item_type": 9,
+        "x": 3,
+        "y": 10,
+        "width": 18,
+        "height": 4
+      },
+      {
+        "item_type": 10,
+        "x": 130,
+        "y": 6,
+        "width": 4,
+        "height": 8
+      },
+      {
+        "item_type": 11,
+        "x": 30,
+        "y": 5,
+        "width": 13,
+        "height": 9
+      },
+      {
+        "item_type": 12,
+        "x": 134,
+        "y": 6,
+        "width": 26,
+        "height": 10
+      }
+    ],
+    "obj": 16.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 5,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 41,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 31,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 25,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 65,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 55,
+        "height": 15,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 36,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 51,
+        "y": 11,
+        "width": 5,
+        "height": 9
+      },
+      {
+        "item_type": 1,
+        "x": 41,
+        "y": 0,
+        "width": 10,
+        "height": 2
+      },
+      {
+        "item_type": 2,
+        "x": 51,
+        "y": 0,
+        "width": 35,
+        "height": 11
+      },
+      {
+        "item_type": 3,
+        "x": 41,
+        "y": 20,
+        "width": 14,
+        "height": 4
+      },
+      {
+        "item_type": 4,
+        "x": 41,
+        "y": 2,
+        "width": 8,
+        "height": 2
+      },
+      {
+        "item_type": 5,
+        "x": 41,
+        "y": 24,
+        "width": 12,
+        "height": 8
+      },
+      {
+        "item_type": 6,
+        "x": 0,
+        "y": 0,
+        "width": 41,
+        "height": 27
+      },
+      {
+        "item_type": 7,
+        "x": 56,
+        "y": 11,
+        "width": 31,
+        "height": 20
+      },
+      {
+        "item_type": 8,
+        "x": 87,
+        "y": 0,
+        "width": 4,
+        "height": 25
+      },
+      {
+        "item_type": 9,
+        "x": 91,
+        "y": 0,
+        "width": 4,
+        "height": 14
+      },
+      {
+        "item_type": 10,
+        "x": 95,
+        "y": 15,
+        "width": 65,
+        "height": 17
+      },
+      {
+        "item_type": 11,
+        "x": 95,
+        "y": 0,
+        "width": 55,
+        "height": 15
+      }
+    ],
+    "obj": 32.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 8,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 80,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 57,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 30,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 7,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 21,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 30,
+        "y": 11,
+        "width": 8,
+        "height": 10
+      },
+      {
+        "item_type": 1,
+        "x": 157,
+        "y": 0,
+        "width": 3,
+        "height": 5
+      },
+      {
+        "item_type": 2,
+        "x": 58,
+        "y": 5,
+        "width": 80,
+        "height": 16
+      },
+      {
+        "item_type": 3,
+        "x": 147,
+        "y": 0,
+        "width": 10,
+        "height": 9
+      },
+      {
+        "item_type": 4,
+        "x": 129,
+        "y": 0,
+        "width": 18,
+        "height": 4
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 0,
+        "width": 57,
+        "height": 10
+      },
+      {
+        "item_type": 6,
+        "x": 82,
+        "y": 0,
+        "width": 7,
+        "height": 5
+      },
+      {
+        "item_type": 7,
+        "x": 0,
+        "y": 11,
+        "width": 30,
+        "height": 10
+      },
+      {
+        "item_type": 8,
+        "x": 57,
+        "y": 0,
+        "width": 25,
+        "height": 5
+      },
+      {
+        "item_type": 9,
+        "x": 138,
+        "y": 6,
+        "width": 6,
+        "height": 15
+      },
+      {
+        "item_type": 10,
+        "x": 144,
+        "y": 8,
+        "width": 3,
+        "height": 13
+      },
+      {
+        "item_type": 11,
+        "x": 147,
+        "y": 9,
+        "width": 3,
+        "height": 8
+      },
+      {
+        "item_type": 12,
+        "x": 151,
+        "y": 9,
+        "width": 9,
+        "height": 7
+      }
+    ],
+    "obj": 21.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 18,
+        "height": 43,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 34,
+        "demand": 1
+      },
+      {
+        "width": 97,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 74,
+        "demand": 1
+      },
+      {
+        "width": 31,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 34,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 64,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 24,
+        "height": 76,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 21,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 15,
+        "height": 81,
+        "demand": 1
+      },
+      {
+        "width": 1,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 29,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 28,
+        "height": 14,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 106,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 23,
+        "y": 16,
+        "width": 18,
+        "height": 43
+      },
+      {
+        "item_type": 1,
+        "x": 15,
+        "y": 21,
+        "width": 8,
+        "height": 34
+      },
+      {
+        "item_type": 2,
+        "x": 23,
+        "y": 0,
+        "width": 97,
+        "height": 16
+      },
+      {
+        "item_type": 3,
+        "x": 45,
+        "y": 16,
+        "width": 25,
+        "height": 74
+      },
+      {
+        "item_type": 4,
+        "x": 103,
+        "y": 44,
+        "width": 31,
+        "height": 17
+      },
+      {
+        "item_type": 5,
+        "x": 82,
+        "y": 61,
+        "width": 34,
+        "height": 9
+      },
+      {
+        "item_type": 6,
+        "x": 70,
+        "y": 24,
+        "width": 64,
+        "height": 17
+      },
+      {
+        "item_type": 7,
+        "x": 134,
+        "y": 5,
+        "width": 24,
+        "height": 76
+      },
+      {
+        "item_type": 8,
+        "x": 19,
+        "y": 0,
+        "width": 4,
+        "height": 21
+      },
+      {
+        "item_type": 9,
+        "x": 43,
+        "y": 16,
+        "width": 2,
+        "height": 13
+      },
+      {
+        "item_type": 10,
+        "x": 0,
+        "y": 0,
+        "width": 15,
+        "height": 81
+      },
+      {
+        "item_type": 11,
+        "x": 134,
+        "y": 0,
+        "width": 1,
+        "height": 3
+      },
+      {
+        "item_type": 12,
+        "x": 105,
+        "y": 70,
+        "width": 29,
+        "height": 20
+      },
+      {
+        "item_type": 13,
+        "x": 70,
+        "y": 41,
+        "width": 28,
+        "height": 14
+      }
+    ],
+    "obj": 90.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 44,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 70,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 55,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 29,
+        "height": 137,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 31,
+        "demand": 1
+      },
+      {
+        "width": 58,
+        "height": 58,
+        "demand": 1
+      },
+      {
+        "width": 80,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 28,
+        "height": 74,
+        "demand": 1
+      },
+      {
+        "width": 24,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 63,
+        "height": 132,
+        "demand": 1
+      },
+      {
+        "width": 75,
+        "height": 22,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 179,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 0,
+        "width": 44,
+        "height": 9
+      },
+      {
+        "item_type": 1,
+        "x": 78,
+        "y": 0,
+        "width": 70,
+        "height": 14
+      },
+      {
+        "item_type": 2,
+        "x": 29,
+        "y": 132,
+        "width": 55,
+        "height": 18
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 9,
+        "width": 29,
+        "height": 137
+      },
+      {
+        "item_type": 4,
+        "x": 29,
+        "y": 33,
+        "width": 11,
+        "height": 31
+      },
+      {
+        "item_type": 5,
+        "x": 39,
+        "y": 74,
+        "width": 58,
+        "height": 58
+      },
+      {
+        "item_type": 6,
+        "x": 0,
+        "y": 152,
+        "width": 80,
+        "height": 16
+      },
+      {
+        "item_type": 7,
+        "x": 44,
+        "y": 0,
+        "width": 28,
+        "height": 74
+      },
+      {
+        "item_type": 8,
+        "x": 72,
+        "y": 47,
+        "width": 24,
+        "height": 27
+      },
+      {
+        "item_type": 9,
+        "x": 97,
+        "y": 14,
+        "width": 63,
+        "height": 132
+      },
+      {
+        "item_type": 10,
+        "x": 84,
+        "y": 146,
+        "width": 75,
+        "height": 22
+      }
+    ],
+    "obj": 168.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 2,
+        "height": 1,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 48,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 105,
+        "height": 32,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 44,
+        "demand": 1
+      },
+      {
+        "width": 22,
+        "height": 40,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 26,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 1,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 25,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 22,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 58,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 12,
+        "y": 0,
+        "width": 2,
+        "height": 1
+      },
+      {
+        "item_type": 1,
+        "x": 102,
+        "y": 34,
+        "width": 12,
+        "height": 18
+      },
+      {
+        "item_type": 2,
+        "x": 12,
+        "y": 25,
+        "width": 2,
+        "height": 9
+      },
+      {
+        "item_type": 3,
+        "x": 54,
+        "y": 41,
+        "width": 48,
+        "height": 11
+      },
+      {
+        "item_type": 4,
+        "x": 33,
+        "y": 0,
+        "width": 105,
+        "height": 32
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 3,
+        "width": 12,
+        "height": 44
+      },
+      {
+        "item_type": 6,
+        "x": 138,
+        "y": 0,
+        "width": 22,
+        "height": 40
+      },
+      {
+        "item_type": 7,
+        "x": 114,
+        "y": 33,
+        "width": 12,
+        "height": 19
+      },
+      {
+        "item_type": 8,
+        "x": 0,
+        "y": 0,
+        "width": 7,
+        "height": 3
+      },
+      {
+        "item_type": 9,
+        "x": 126,
+        "y": 32,
+        "width": 10,
+        "height": 20
+      },
+      {
+        "item_type": 10,
+        "x": 21,
+        "y": 26,
+        "width": 7,
+        "height": 26
+      },
+      {
+        "item_type": 11,
+        "x": 10,
+        "y": 47,
+        "width": 6,
+        "height": 1
+      },
+      {
+        "item_type": 12,
+        "x": 16,
+        "y": 27,
+        "width": 5,
+        "height": 25
+      },
+      {
+        "item_type": 13,
+        "x": 13,
+        "y": 3,
+        "width": 20,
+        "height": 22
+      }
+    ],
+    "obj": 52.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 54,
+        "height": 69,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 93,
+        "demand": 1
+      },
+      {
+        "width": 34,
+        "height": 98,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 112,
+        "demand": 1
+      },
+      {
+        "width": 24,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 21,
+        "demand": 1
+      },
+      {
+        "width": 56,
+        "height": 31,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 76,
+        "demand": 1
+      },
+      {
+        "width": 29,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 89,
+        "height": 21,
+        "demand": 1
+      },
+      {
+        "width": 29,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 22,
+        "height": 71,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 146,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 0,
+        "width": 54,
+        "height": 69
+      },
+      {
+        "item_type": 1,
+        "x": 82,
+        "y": 21,
+        "width": 35,
+        "height": 93
+      },
+      {
+        "item_type": 2,
+        "x": 126,
+        "y": 45,
+        "width": 34,
+        "height": 98
+      },
+      {
+        "item_type": 3,
+        "x": 54,
+        "y": 0,
+        "width": 17,
+        "height": 112
+      },
+      {
+        "item_type": 4,
+        "x": 30,
+        "y": 69,
+        "width": 24,
+        "height": 5
+      },
+      {
+        "item_type": 5,
+        "x": 117,
+        "y": 21,
+        "width": 11,
+        "height": 21
+      },
+      {
+        "item_type": 6,
+        "x": 22,
+        "y": 112,
+        "width": 56,
+        "height": 31
+      },
+      {
+        "item_type": 7,
+        "x": 71,
+        "y": 21,
+        "width": 11,
+        "height": 76
+      },
+      {
+        "item_type": 8,
+        "x": 131,
+        "y": 27,
+        "width": 29,
+        "height": 12
+      },
+      {
+        "item_type": 9,
+        "x": 71,
+        "y": 0,
+        "width": 89,
+        "height": 21
+      },
+      {
+        "item_type": 10,
+        "x": 131,
+        "y": 21,
+        "width": 29,
+        "height": 6
+      },
+      {
+        "item_type": 11,
+        "x": 0,
+        "y": 72,
+        "width": 22,
+        "height": 71
+      }
+    ],
+    "obj": 143.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 15,
+        "height": 72,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 38,
+        "height": 21,
+        "demand": 1
+      },
+      {
+        "width": 64,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 54,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 27,
+        "height": 23,
+        "demand": 1
+      },
+      {
+        "width": 28,
+        "height": 71,
+        "demand": 1
+      },
+      {
+        "width": 93,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 77,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 101,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 28,
+        "y": 19,
+        "width": 15,
+        "height": 72
+      },
+      {
+        "item_type": 1,
+        "x": 16,
+        "y": 0,
+        "width": 12,
+        "height": 6
+      },
+      {
+        "item_type": 2,
+        "x": 63,
+        "y": 67,
+        "width": 38,
+        "height": 21
+      },
+      {
+        "item_type": 3,
+        "x": 43,
+        "y": 20,
+        "width": 64,
+        "height": 14
+      },
+      {
+        "item_type": 4,
+        "x": 43,
+        "y": 34,
+        "width": 20,
+        "height": 20
+      },
+      {
+        "item_type": 5,
+        "x": 63,
+        "y": 57,
+        "width": 54,
+        "height": 10
+      },
+      {
+        "item_type": 6,
+        "x": 80,
+        "y": 34,
+        "width": 27,
+        "height": 23
+      },
+      {
+        "item_type": 7,
+        "x": 123,
+        "y": 20,
+        "width": 28,
+        "height": 71
+      },
+      {
+        "item_type": 8,
+        "x": 67,
+        "y": 0,
+        "width": 93,
+        "height": 20
+      },
+      {
+        "item_type": 9,
+        "x": 107,
+        "y": 34,
+        "width": 16,
+        "height": 3
+      },
+      {
+        "item_type": 10,
+        "x": 3,
+        "y": 6,
+        "width": 25,
+        "height": 77
+      }
+    ],
+    "obj": 91.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 10,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 15,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 24,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 15,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 24,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 62,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 10,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 25,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 51,
+        "y": 0,
+        "width": 10,
+        "height": 11
+      },
+      {
+        "item_type": 1,
+        "x": 5,
+        "y": 7,
+        "width": 15,
+        "height": 11
+      },
+      {
+        "item_type": 2,
+        "x": 20,
+        "y": 4,
+        "width": 7,
+        "height": 15
+      },
+      {
+        "item_type": 3,
+        "x": 27,
+        "y": 0,
+        "width": 14,
+        "height": 5
+      },
+      {
+        "item_type": 4,
+        "x": 113,
+        "y": 0,
+        "width": 24,
+        "height": 19
+      },
+      {
+        "item_type": 5,
+        "x": 72,
+        "y": 0,
+        "width": 17,
+        "height": 3
+      },
+      {
+        "item_type": 6,
+        "x": 0,
+        "y": 0,
+        "width": 5,
+        "height": 17
+      },
+      {
+        "item_type": 7,
+        "x": 11,
+        "y": 0,
+        "width": 15,
+        "height": 4
+      },
+      {
+        "item_type": 8,
+        "x": 27,
+        "y": 5,
+        "width": 24,
+        "height": 13
+      },
+      {
+        "item_type": 9,
+        "x": 5,
+        "y": 0,
+        "width": 6,
+        "height": 7
+      },
+      {
+        "item_type": 10,
+        "x": 144,
+        "y": 4,
+        "width": 16,
+        "height": 15
+      },
+      {
+        "item_type": 11,
+        "x": 51,
+        "y": 11,
+        "width": 62,
+        "height": 10
+      },
+      {
+        "item_type": 12,
+        "x": 61,
+        "y": 0,
+        "width": 11,
+        "height": 10
+      }
+    ],
+    "obj": 21.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 60,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 45,
+        "demand": 1
+      },
+      {
+        "width": 45,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 46,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 54,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 32,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 50,
+        "height": 37,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 40,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 41,
+        "height": 6,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 59,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 100,
+        "y": 45,
+        "width": 60,
+        "height": 9
+      },
+      {
+        "item_type": 1,
+        "x": 144,
+        "y": 0,
+        "width": 12,
+        "height": 45
+      },
+      {
+        "item_type": 2,
+        "x": 50,
+        "y": 35,
+        "width": 45,
+        "height": 19
+      },
+      {
+        "item_type": 3,
+        "x": 41,
+        "y": 0,
+        "width": 46,
+        "height": 15
+      },
+      {
+        "item_type": 4,
+        "x": 90,
+        "y": 0,
+        "width": 54,
+        "height": 27
+      },
+      {
+        "item_type": 5,
+        "x": 95,
+        "y": 27,
+        "width": 32,
+        "height": 18
+      },
+      {
+        "item_type": 6,
+        "x": 0,
+        "y": 12,
+        "width": 25,
+        "height": 5
+      },
+      {
+        "item_type": 7,
+        "x": 0,
+        "y": 17,
+        "width": 50,
+        "height": 37
+      },
+      {
+        "item_type": 8,
+        "x": 27,
+        "y": 6,
+        "width": 14,
+        "height": 9
+      },
+      {
+        "item_type": 9,
+        "x": 50,
+        "y": 17,
+        "width": 40,
+        "height": 18
+      },
+      {
+        "item_type": 10,
+        "x": 0,
+        "y": 0,
+        "width": 41,
+        "height": 6
+      }
+    ],
+    "obj": 54.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 26,
+        "height": 101,
+        "demand": 1
+      },
+      {
+        "width": 43,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 41,
+        "height": 24,
+        "demand": 1
+      },
+      {
+        "width": 41,
+        "height": 24,
+        "demand": 1
+      },
+      {
+        "width": 34,
+        "height": 70,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 33,
+        "height": 73,
+        "demand": 1
+      },
+      {
+        "width": 122,
+        "height": 53,
+        "demand": 1
+      },
+      {
+        "width": 42,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 35,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 41,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 34,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 132,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 17,
+        "width": 26,
+        "height": 101
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 0,
+        "width": 43,
+        "height": 17
+      },
+      {
+        "item_type": 2,
+        "x": 44,
+        "y": 46,
+        "width": 41,
+        "height": 24
+      },
+      {
+        "item_type": 3,
+        "x": 44,
+        "y": 22,
+        "width": 41,
+        "height": 24
+      },
+      {
+        "item_type": 4,
+        "x": 126,
+        "y": 0,
+        "width": 34,
+        "height": 70
+      },
+      {
+        "item_type": 5,
+        "x": 26,
+        "y": 22,
+        "width": 18,
+        "height": 14
+      },
+      {
+        "item_type": 6,
+        "x": 85,
+        "y": 0,
+        "width": 33,
+        "height": 73
+      },
+      {
+        "item_type": 7,
+        "x": 26,
+        "y": 73,
+        "width": 122,
+        "height": 53
+      },
+      {
+        "item_type": 8,
+        "x": 43,
+        "y": 0,
+        "width": 42,
+        "height": 22
+      },
+      {
+        "item_type": 9,
+        "x": 118,
+        "y": 38,
+        "width": 8,
+        "height": 35
+      },
+      {
+        "item_type": 10,
+        "x": 148,
+        "y": 70,
+        "width": 12,
+        "height": 41
+      },
+      {
+        "item_type": 11,
+        "x": 31,
+        "y": 36,
+        "width": 12,
+        "height": 34
+      }
+    ],
+    "obj": 126.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 3,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 30,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 2,
+        "demand": 1
+      }
+    ],
+    "bin_width": 56,
+    "bin_height": 7,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 6,
+        "y": 2,
+        "width": 3,
+        "height": 3
+      },
+      {
+        "item_type": 1,
+        "x": 19,
+        "y": 0,
+        "width": 30,
+        "height": 4
+      },
+      {
+        "item_type": 2,
+        "x": 17,
+        "y": 3,
+        "width": 2,
+        "height": 2
+      },
+      {
+        "item_type": 3,
+        "x": 15,
+        "y": 0,
+        "width": 2,
+        "height": 2
+      },
+      {
+        "item_type": 4,
+        "x": 2,
+        "y": 0,
+        "width": 2,
+        "height": 3
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 0,
+        "width": 2,
+        "height": 3
+      },
+      {
+        "item_type": 6,
+        "x": 9,
+        "y": 0,
+        "width": 3,
+        "height": 5
+      },
+      {
+        "item_type": 7,
+        "x": 50,
+        "y": 3,
+        "width": 3,
+        "height": 3
+      },
+      {
+        "item_type": 8,
+        "x": 12,
+        "y": 0,
+        "width": 3,
+        "height": 2
+      },
+      {
+        "item_type": 9,
+        "x": 53,
+        "y": 3,
+        "width": 3,
+        "height": 3
+      },
+      {
+        "item_type": 10,
+        "x": 4,
+        "y": 2,
+        "width": 2,
+        "height": 3
+      },
+      {
+        "item_type": 11,
+        "x": 13,
+        "y": 2,
+        "width": 3,
+        "height": 3
+      },
+      {
+        "item_type": 12,
+        "x": 49,
+        "y": 0,
+        "width": 7,
+        "height": 3
+      },
+      {
+        "item_type": 13,
+        "x": 0,
+        "y": 3,
+        "width": 3,
+        "height": 2
+      },
+      {
+        "item_type": 14,
+        "x": 4,
+        "y": 0,
+        "width": 3,
+        "height": 2
+      }
+    ],
+    "obj": 6.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 5,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 37,
+        "height": 32,
+        "demand": 1
+      },
+      {
+        "width": 27,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 27,
+        "height": 23,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 13,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 60,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 46,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 54,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 45,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 30,
+        "demand": 1
+      },
+      {
+        "width": 30,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 31,
+        "height": 12,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 60,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 69,
+        "y": 53,
+        "width": 5,
+        "height": 2
+      },
+      {
+        "item_type": 1,
+        "x": 123,
+        "y": 0,
+        "width": 37,
+        "height": 32
+      },
+      {
+        "item_type": 2,
+        "x": 106,
+        "y": 32,
+        "width": 27,
+        "height": 18
+      },
+      {
+        "item_type": 3,
+        "x": 133,
+        "y": 32,
+        "width": 27,
+        "height": 23
+      },
+      {
+        "item_type": 4,
+        "x": 60,
+        "y": 0,
+        "width": 25,
+        "height": 5
+      },
+      {
+        "item_type": 5,
+        "x": 80,
+        "y": 6,
+        "width": 13,
+        "height": 10
+      },
+      {
+        "item_type": 6,
+        "x": 0,
+        "y": 0,
+        "width": 60,
+        "height": 9
+      },
+      {
+        "item_type": 7,
+        "x": 55,
+        "y": 45,
+        "width": 19,
+        "height": 8
+      },
+      {
+        "item_type": 8,
+        "x": 0,
+        "y": 9,
+        "width": 35,
+        "height": 46
+      },
+      {
+        "item_type": 9,
+        "x": 62,
+        "y": 5,
+        "width": 18,
+        "height": 11
+      },
+      {
+        "item_type": 10,
+        "x": 47,
+        "y": 16,
+        "width": 54,
+        "height": 27
+      },
+      {
+        "item_type": 11,
+        "x": 35,
+        "y": 10,
+        "width": 12,
+        "height": 45
+      },
+      {
+        "item_type": 12,
+        "x": 101,
+        "y": 13,
+        "width": 5,
+        "height": 30
+      },
+      {
+        "item_type": 13,
+        "x": 93,
+        "y": 0,
+        "width": 30,
+        "height": 11
+      },
+      {
+        "item_type": 14,
+        "x": 74,
+        "y": 43,
+        "width": 31,
+        "height": 12
+      }
+    ],
+    "obj": 55.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 40,
+        "height": 39,
+        "demand": 1
+      },
+      {
+        "width": 143,
+        "height": 26,
+        "demand": 1
+      },
+      {
+        "width": 23,
+        "height": 77,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 27,
+        "height": 53,
+        "demand": 1
+      },
+      {
+        "width": 86,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 22,
+        "height": 65,
+        "demand": 1
+      },
+      {
+        "width": 13,
+        "height": 39,
+        "demand": 1
+      },
+      {
+        "width": 33,
+        "height": 95,
+        "demand": 1
+      },
+      {
+        "width": 84,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 107,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 38,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 21,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 12,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 140,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 33,
+        "y": 94,
+        "width": 40,
+        "height": 39
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 0,
+        "width": 143,
+        "height": 26
+      },
+      {
+        "item_type": 2,
+        "x": 121,
+        "y": 26,
+        "width": 23,
+        "height": 77
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 26,
+        "width": 5,
+        "height": 12
+      },
+      {
+        "item_type": 4,
+        "x": 41,
+        "y": 41,
+        "width": 27,
+        "height": 53
+      },
+      {
+        "item_type": 5,
+        "x": 74,
+        "y": 107,
+        "width": 86,
+        "height": 20
+      },
+      {
+        "item_type": 6,
+        "x": 73,
+        "y": 41,
+        "width": 22,
+        "height": 65
+      },
+      {
+        "item_type": 7,
+        "x": 95,
+        "y": 41,
+        "width": 13,
+        "height": 39
+      },
+      {
+        "item_type": 8,
+        "x": 0,
+        "y": 38,
+        "width": 33,
+        "height": 95
+      },
+      {
+        "item_type": 9,
+        "x": 33,
+        "y": 26,
+        "width": 84,
+        "height": 15
+      },
+      {
+        "item_type": 10,
+        "x": 144,
+        "y": 0,
+        "width": 16,
+        "height": 107
+      },
+      {
+        "item_type": 11,
+        "x": 33,
+        "y": 41,
+        "width": 8,
+        "height": 38
+      },
+      {
+        "item_type": 12,
+        "x": 95,
+        "y": 80,
+        "width": 5,
+        "height": 21
+      },
+      {
+        "item_type": 13,
+        "x": 100,
+        "y": 94,
+        "width": 11,
+        "height": 12
+      }
+    ],
+    "obj": 133.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 46,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 119,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 44,
+        "height": 79,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 23,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 48,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 43,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 38,
+        "height": 78,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 33,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 50,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 30,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 103,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 38,
+        "y": 53,
+        "width": 46,
+        "height": 18
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 79,
+        "width": 119,
+        "height": 18
+      },
+      {
+        "item_type": 2,
+        "x": 97,
+        "y": 0,
+        "width": 44,
+        "height": 79
+      },
+      {
+        "item_type": 3,
+        "x": 86,
+        "y": 30,
+        "width": 11,
+        "height": 23
+      },
+      {
+        "item_type": 4,
+        "x": 148,
+        "y": 0,
+        "width": 12,
+        "height": 48
+      },
+      {
+        "item_type": 5,
+        "x": 141,
+        "y": 0,
+        "width": 7,
+        "height": 43
+      },
+      {
+        "item_type": 6,
+        "x": 38,
+        "y": 0,
+        "width": 17,
+        "height": 14
+      },
+      {
+        "item_type": 7,
+        "x": 0,
+        "y": 0,
+        "width": 38,
+        "height": 78
+      },
+      {
+        "item_type": 8,
+        "x": 38,
+        "y": 14,
+        "width": 17,
+        "height": 33
+      },
+      {
+        "item_type": 9,
+        "x": 55,
+        "y": 0,
+        "width": 9,
+        "height": 50
+      },
+      {
+        "item_type": 10,
+        "x": 71,
+        "y": 0,
+        "width": 26,
+        "height": 30
+      }
+    ],
+    "obj": 97.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 8,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 43,
+        "height": 34,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 62,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 66,
+        "height": 25,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 31,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 29,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 33,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 22,
+        "height": 47,
+        "demand": 1
+      },
+      {
+        "width": 24,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 12,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 62,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 34,
+        "width": 8,
+        "height": 13
+      },
+      {
+        "item_type": 1,
+        "x": 66,
+        "y": 0,
+        "width": 43,
+        "height": 34
+      },
+      {
+        "item_type": 2,
+        "x": 66,
+        "y": 37,
+        "width": 10,
+        "height": 16
+      },
+      {
+        "item_type": 3,
+        "x": 76,
+        "y": 42,
+        "width": 62,
+        "height": 12
+      },
+      {
+        "item_type": 4,
+        "x": 25,
+        "y": 25,
+        "width": 8,
+        "height": 16
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 0,
+        "width": 66,
+        "height": 25
+      },
+      {
+        "item_type": 6,
+        "x": 119,
+        "y": 0,
+        "width": 19,
+        "height": 31
+      },
+      {
+        "item_type": 7,
+        "x": 66,
+        "y": 34,
+        "width": 8,
+        "height": 3
+      },
+      {
+        "item_type": 8,
+        "x": 8,
+        "y": 25,
+        "width": 11,
+        "height": 29
+      },
+      {
+        "item_type": 9,
+        "x": 109,
+        "y": 0,
+        "width": 8,
+        "height": 33
+      },
+      {
+        "item_type": 10,
+        "x": 19,
+        "y": 35,
+        "width": 6,
+        "height": 19
+      },
+      {
+        "item_type": 11,
+        "x": 138,
+        "y": 0,
+        "width": 22,
+        "height": 47
+      },
+      {
+        "item_type": 12,
+        "x": 42,
+        "y": 25,
+        "width": 24,
+        "height": 17
+      },
+      {
+        "item_type": 13,
+        "x": 38,
+        "y": 37,
+        "width": 4,
+        "height": 4
+      },
+      {
+        "item_type": 14,
+        "x": 30,
+        "y": 41,
+        "width": 8,
+        "height": 12
+      }
+    ],
+    "obj": 54.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 6,
+        "height": 1,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 101,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 105,
+        "height": 32,
+        "demand": 1
+      },
+      {
+        "width": 1,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 40,
+        "demand": 1
+      },
+      {
+        "width": 37,
+        "height": 49,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 64,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 57,
+        "y": 0,
+        "width": 6,
+        "height": 1
+      },
+      {
+        "item_type": 1,
+        "x": 141,
+        "y": 0,
+        "width": 19,
+        "height": 9
+      },
+      {
+        "item_type": 2,
+        "x": 33,
+        "y": 49,
+        "width": 26,
+        "height": 12
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 46,
+        "width": 14,
+        "height": 15
+      },
+      {
+        "item_type": 4,
+        "x": 7,
+        "y": 28,
+        "width": 7,
+        "height": 18
+      },
+      {
+        "item_type": 5,
+        "x": 7,
+        "y": 12,
+        "width": 7,
+        "height": 16
+      },
+      {
+        "item_type": 6,
+        "x": 21,
+        "y": 49,
+        "width": 12,
+        "height": 12
+      },
+      {
+        "item_type": 7,
+        "x": 51,
+        "y": 0,
+        "width": 6,
+        "height": 2
+      },
+      {
+        "item_type": 8,
+        "x": 7,
+        "y": 3,
+        "width": 2,
+        "height": 9
+      },
+      {
+        "item_type": 9,
+        "x": 59,
+        "y": 41,
+        "width": 101,
+        "height": 19
+      },
+      {
+        "item_type": 10,
+        "x": 55,
+        "y": 9,
+        "width": 105,
+        "height": 32
+      },
+      {
+        "item_type": 11,
+        "x": 6,
+        "y": 42,
+        "width": 1,
+        "height": 4
+      },
+      {
+        "item_type": 12,
+        "x": 0,
+        "y": 2,
+        "width": 7,
+        "height": 40
+      },
+      {
+        "item_type": 13,
+        "x": 14,
+        "y": 0,
+        "width": 37,
+        "height": 49
+      }
+    ],
+    "obj": 61.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 102,
+        "height": 32,
+        "demand": 1
+      },
+      {
+        "width": 46,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 48,
+        "demand": 1
+      },
+      {
+        "width": 29,
+        "height": 32,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 24,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 112,
+        "demand": 1
+      },
+      {
+        "width": 38,
+        "height": 78,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 28,
+        "height": 89,
+        "demand": 1
+      },
+      {
+        "width": 64,
+        "height": 94,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 146,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 30,
+        "y": 112,
+        "width": 102,
+        "height": 32
+      },
+      {
+        "item_type": 1,
+        "x": 38,
+        "y": 0,
+        "width": 46,
+        "height": 18
+      },
+      {
+        "item_type": 2,
+        "x": 0,
+        "y": 7,
+        "width": 12,
+        "height": 48
+      },
+      {
+        "item_type": 3,
+        "x": 93,
+        "y": 80,
+        "width": 29,
+        "height": 32
+      },
+      {
+        "item_type": 4,
+        "x": 12,
+        "y": 0,
+        "width": 26,
+        "height": 16
+      },
+      {
+        "item_type": 5,
+        "x": 131,
+        "y": 0,
+        "width": 26,
+        "height": 24
+      },
+      {
+        "item_type": 6,
+        "x": 134,
+        "y": 24,
+        "width": 26,
+        "height": 112
+      },
+      {
+        "item_type": 7,
+        "x": 93,
+        "y": 2,
+        "width": 38,
+        "height": 78
+      },
+      {
+        "item_type": 8,
+        "x": 12,
+        "y": 41,
+        "width": 17,
+        "height": 14
+      },
+      {
+        "item_type": 9,
+        "x": 0,
+        "y": 55,
+        "width": 28,
+        "height": 89
+      },
+      {
+        "item_type": 10,
+        "x": 29,
+        "y": 18,
+        "width": 64,
+        "height": 94
+      }
+    ],
+    "obj": 144.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 21,
+        "height": 26,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 101,
+        "demand": 1
+      },
+      {
+        "width": 33,
+        "height": 54,
+        "demand": 1
+      },
+      {
+        "width": 28,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 63,
+        "height": 32,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 22,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 49,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 89,
+        "demand": 1
+      },
+      {
+        "width": 87,
+        "height": 43,
+        "demand": 1
+      },
+      {
+        "width": 58,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 44,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 33,
+        "demand": 1
+      },
+      {
+        "width": 30,
+        "height": 22,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 132,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 22,
+        "y": 0,
+        "width": 21,
+        "height": 26
+      },
+      {
+        "item_type": 1,
+        "x": 140,
+        "y": 0,
+        "width": 20,
+        "height": 101
+      },
+      {
+        "item_type": 2,
+        "x": 35,
+        "y": 62,
+        "width": 33,
+        "height": 54
+      },
+      {
+        "item_type": 3,
+        "x": 98,
+        "y": 94,
+        "width": 28,
+        "height": 8
+      },
+      {
+        "item_type": 4,
+        "x": 77,
+        "y": 62,
+        "width": 63,
+        "height": 32
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 0,
+        "width": 19,
+        "height": 5
+      },
+      {
+        "item_type": 6,
+        "x": 0,
+        "y": 5,
+        "width": 22,
+        "height": 20
+      },
+      {
+        "item_type": 7,
+        "x": 87,
+        "y": 0,
+        "width": 49,
+        "height": 19
+      },
+      {
+        "item_type": 8,
+        "x": 0,
+        "y": 27,
+        "width": 35,
+        "height": 89
+      },
+      {
+        "item_type": 9,
+        "x": 53,
+        "y": 19,
+        "width": 87,
+        "height": 43
+      },
+      {
+        "item_type": 10,
+        "x": 102,
+        "y": 102,
+        "width": 58,
+        "height": 12
+      },
+      {
+        "item_type": 11,
+        "x": 43,
+        "y": 0,
+        "width": 44,
+        "height": 16
+      },
+      {
+        "item_type": 12,
+        "x": 35,
+        "y": 26,
+        "width": 16,
+        "height": 33
+      },
+      {
+        "item_type": 13,
+        "x": 68,
+        "y": 94,
+        "width": 30,
+        "height": 22
+      }
+    ],
+    "obj": 116.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 18,
+        "height": 49,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 33,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 41,
+        "demand": 1
+      },
+      {
+        "width": 32,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 57,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 112,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 48,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 34,
+        "height": 23,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 32,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 75,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 3,
+        "y": 0,
+        "width": 18,
+        "height": 49
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 13,
+        "width": 3,
+        "height": 19
+      },
+      {
+        "item_type": 2,
+        "x": 57,
+        "y": 8,
+        "width": 6,
+        "height": 33
+      },
+      {
+        "item_type": 3,
+        "x": 47,
+        "y": 0,
+        "width": 10,
+        "height": 41
+      },
+      {
+        "item_type": 4,
+        "x": 63,
+        "y": 13,
+        "width": 32,
+        "height": 11
+      },
+      {
+        "item_type": 5,
+        "x": 21,
+        "y": 0,
+        "width": 26,
+        "height": 57
+      },
+      {
+        "item_type": 6,
+        "x": 63,
+        "y": 0,
+        "width": 12,
+        "height": 13
+      },
+      {
+        "item_type": 7,
+        "x": 48,
+        "y": 41,
+        "width": 112,
+        "height": 22
+      },
+      {
+        "item_type": 8,
+        "x": 95,
+        "y": 23,
+        "width": 48,
+        "height": 9
+      },
+      {
+        "item_type": 9,
+        "x": 95,
+        "y": 0,
+        "width": 34,
+        "height": 23
+      },
+      {
+        "item_type": 10,
+        "x": 155,
+        "y": 0,
+        "width": 5,
+        "height": 32
+      }
+    ],
+    "obj": 63.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 10,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 29,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 27,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 101,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 29,
+        "height": 37,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 16,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 49,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 20,
+        "y": 8,
+        "width": 10,
+        "height": 8
+      },
+      {
+        "item_type": 1,
+        "x": 62,
+        "y": 19,
+        "width": 19,
+        "height": 9
+      },
+      {
+        "item_type": 2,
+        "x": 0,
+        "y": 0,
+        "width": 5,
+        "height": 19
+      },
+      {
+        "item_type": 3,
+        "x": 5,
+        "y": 3,
+        "width": 9,
+        "height": 29
+      },
+      {
+        "item_type": 4,
+        "x": 14,
+        "y": 18,
+        "width": 12,
+        "height": 19
+      },
+      {
+        "item_type": 5,
+        "x": 11,
+        "y": 0,
+        "width": 19,
+        "height": 3
+      },
+      {
+        "item_type": 6,
+        "x": 35,
+        "y": 19,
+        "width": 27,
+        "height": 27
+      },
+      {
+        "item_type": 7,
+        "x": 14,
+        "y": 16,
+        "width": 6,
+        "height": 2
+      },
+      {
+        "item_type": 8,
+        "x": 30,
+        "y": 0,
+        "width": 101,
+        "height": 19
+      },
+      {
+        "item_type": 9,
+        "x": 0,
+        "y": 25,
+        "width": 2,
+        "height": 12
+      },
+      {
+        "item_type": 10,
+        "x": 131,
+        "y": 0,
+        "width": 29,
+        "height": 37
+      },
+      {
+        "item_type": 11,
+        "x": 26,
+        "y": 19,
+        "width": 9,
+        "height": 15
+      },
+      {
+        "item_type": 12,
+        "x": 81,
+        "y": 19,
+        "width": 9,
+        "height": 16
+      }
+    ],
+    "obj": 46.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 33,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 33,
+        "demand": 1
+      },
+      {
+        "width": 50,
+        "height": 41,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 30,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 23,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 48,
+        "height": 23,
+        "demand": 1
+      },
+      {
+        "width": 24,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 18,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 54,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 29,
+        "width": 33,
+        "height": 17
+      },
+      {
+        "item_type": 1,
+        "x": 83,
+        "y": 13,
+        "width": 17,
+        "height": 33
+      },
+      {
+        "item_type": 2,
+        "x": 100,
+        "y": 4,
+        "width": 50,
+        "height": 41
+      },
+      {
+        "item_type": 3,
+        "x": 150,
+        "y": 4,
+        "width": 10,
+        "height": 30
+      },
+      {
+        "item_type": 4,
+        "x": 37,
+        "y": 23,
+        "width": 20,
+        "height": 20
+      },
+      {
+        "item_type": 5,
+        "x": 134,
+        "y": 0,
+        "width": 26,
+        "height": 4
+      },
+      {
+        "item_type": 6,
+        "x": 7,
+        "y": 0,
+        "width": 21,
+        "height": 18
+      },
+      {
+        "item_type": 7,
+        "x": 5,
+        "y": 18,
+        "width": 23,
+        "height": 11
+      },
+      {
+        "item_type": 8,
+        "x": 28,
+        "y": 0,
+        "width": 48,
+        "height": 23
+      },
+      {
+        "item_type": 9,
+        "x": 76,
+        "y": 0,
+        "width": 24,
+        "height": 13
+      },
+      {
+        "item_type": 10,
+        "x": 57,
+        "y": 26,
+        "width": 26,
+        "height": 20
+      },
+      {
+        "item_type": 11,
+        "x": 0,
+        "y": 0,
+        "width": 7,
+        "height": 18
+      }
+    ],
+    "obj": 46.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 14,
+        "height": 59,
+        "demand": 1
+      },
+      {
+        "width": 58,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 41,
+        "height": 82,
+        "demand": 1
+      },
+      {
+        "width": 46,
+        "height": 34,
+        "demand": 1
+      },
+      {
+        "width": 46,
+        "height": 24,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 39,
+        "height": 74,
+        "demand": 1
+      },
+      {
+        "width": 77,
+        "height": 25,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 15,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 107,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 88,
+        "y": 25,
+        "width": 14,
+        "height": 59
+      },
+      {
+        "item_type": 1,
+        "x": 102,
+        "y": 59,
+        "width": 58,
+        "height": 20
+      },
+      {
+        "item_type": 2,
+        "x": 26,
+        "y": 0,
+        "width": 18,
+        "height": 5
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 5,
+        "width": 41,
+        "height": 82
+      },
+      {
+        "item_type": 4,
+        "x": 114,
+        "y": 25,
+        "width": 46,
+        "height": 34
+      },
+      {
+        "item_type": 5,
+        "x": 42,
+        "y": 74,
+        "width": 46,
+        "height": 24
+      },
+      {
+        "item_type": 6,
+        "x": 121,
+        "y": 79,
+        "width": 25,
+        "height": 18
+      },
+      {
+        "item_type": 7,
+        "x": 102,
+        "y": 79,
+        "width": 19,
+        "height": 19
+      },
+      {
+        "item_type": 8,
+        "x": 102,
+        "y": 25,
+        "width": 4,
+        "height": 9
+      },
+      {
+        "item_type": 9,
+        "x": 146,
+        "y": 79,
+        "width": 14,
+        "height": 10
+      },
+      {
+        "item_type": 10,
+        "x": 44,
+        "y": 0,
+        "width": 39,
+        "height": 74
+      },
+      {
+        "item_type": 11,
+        "x": 83,
+        "y": 0,
+        "width": 77,
+        "height": 25
+      },
+      {
+        "item_type": 12,
+        "x": 106,
+        "y": 25,
+        "width": 8,
+        "height": 15
+      }
+    ],
+    "obj": 98.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 17,
+        "height": 33,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 24,
+        "demand": 1
+      },
+      {
+        "width": 119,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 38,
+        "height": 78,
+        "demand": 1
+      },
+      {
+        "width": 61,
+        "height": 28,
+        "demand": 1
+      },
+      {
+        "width": 46,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 37,
+        "height": 71,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 48,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 112,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 23,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 50,
+        "height": 24,
+        "demand": 1
+      },
+      {
+        "width": 28,
+        "height": 89,
+        "demand": 1
+      },
+      {
+        "width": 43,
+        "height": 44,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 146,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 68,
+        "y": 44,
+        "width": 17,
+        "height": 33
+      },
+      {
+        "item_type": 1,
+        "x": 59,
+        "y": 101,
+        "width": 26,
+        "height": 16
+      },
+      {
+        "item_type": 2,
+        "x": 59,
+        "y": 77,
+        "width": 26,
+        "height": 24
+      },
+      {
+        "item_type": 3,
+        "x": 41,
+        "y": 122,
+        "width": 119,
+        "height": 18
+      },
+      {
+        "item_type": 4,
+        "x": 122,
+        "y": 42,
+        "width": 38,
+        "height": 78
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 0,
+        "width": 61,
+        "height": 28
+      },
+      {
+        "item_type": 6,
+        "x": 114,
+        "y": 24,
+        "width": 46,
+        "height": 18
+      },
+      {
+        "item_type": 7,
+        "x": 85,
+        "y": 50,
+        "width": 37,
+        "height": 71
+      },
+      {
+        "item_type": 8,
+        "x": 54,
+        "y": 28,
+        "width": 12,
+        "height": 48
+      },
+      {
+        "item_type": 9,
+        "x": 0,
+        "y": 28,
+        "width": 26,
+        "height": 112
+      },
+      {
+        "item_type": 10,
+        "x": 30,
+        "y": 117,
+        "width": 11,
+        "height": 23
+      },
+      {
+        "item_type": 11,
+        "x": 97,
+        "y": 44,
+        "width": 17,
+        "height": 6
+      },
+      {
+        "item_type": 12,
+        "x": 110,
+        "y": 0,
+        "width": 50,
+        "height": 24
+      },
+      {
+        "item_type": 13,
+        "x": 26,
+        "y": 28,
+        "width": 28,
+        "height": 89
+      },
+      {
+        "item_type": 14,
+        "x": 66,
+        "y": 0,
+        "width": 43,
+        "height": 44
+      }
+    ],
+    "obj": 140.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 5,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 23,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 3,
+        "demand": 1
+      }
+    ],
+    "bin_width": 24,
+    "bin_height": 30,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 10,
+        "y": 6,
+        "width": 5,
+        "height": 4
+      },
+      {
+        "item_type": 1,
+        "x": 10,
+        "y": 0,
+        "width": 10,
+        "height": 5
+      },
+      {
+        "item_type": 2,
+        "x": 10,
+        "y": 16,
+        "width": 3,
+        "height": 4
+      },
+      {
+        "item_type": 3,
+        "x": 5,
+        "y": 17,
+        "width": 5,
+        "height": 3
+      },
+      {
+        "item_type": 4,
+        "x": 15,
+        "y": 5,
+        "width": 3,
+        "height": 8
+      },
+      {
+        "item_type": 5,
+        "x": 14,
+        "y": 13,
+        "width": 7,
+        "height": 13
+      },
+      {
+        "item_type": 6,
+        "x": 0,
+        "y": 17,
+        "width": 5,
+        "height": 8
+      },
+      {
+        "item_type": 7,
+        "x": 0,
+        "y": 0,
+        "width": 10,
+        "height": 17
+      },
+      {
+        "item_type": 8,
+        "x": 5,
+        "y": 20,
+        "width": 9,
+        "height": 6
+      },
+      {
+        "item_type": 9,
+        "x": 18,
+        "y": 7,
+        "width": 3,
+        "height": 4
+      },
+      {
+        "item_type": 10,
+        "x": 21,
+        "y": 3,
+        "width": 3,
+        "height": 23
+      },
+      {
+        "item_type": 11,
+        "x": 11,
+        "y": 11,
+        "width": 3,
+        "height": 5
+      },
+      {
+        "item_type": 12,
+        "x": 21,
+        "y": 0,
+        "width": 3,
+        "height": 3
+      }
+    ],
+    "obj": 26.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 17,
+        "height": 29,
+        "demand": 1
+      },
+      {
+        "width": 44,
+        "height": 109,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 34,
+        "demand": 1
+      },
+      {
+        "width": 115,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 41,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 54,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 51,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 71,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 137,
+        "demand": 1
+      },
+      {
+        "width": 36,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 146,
+        "height": 25,
+        "demand": 1
+      },
+      {
+        "width": 41,
+        "height": 29,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 44,
+        "demand": 1
+      },
+      {
+        "width": 31,
+        "height": 68,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 179,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 23,
+        "y": 137,
+        "width": 17,
+        "height": 29
+      },
+      {
+        "item_type": 1,
+        "x": 81,
+        "y": 69,
+        "width": 44,
+        "height": 109
+      },
+      {
+        "item_type": 2,
+        "x": 56,
+        "y": 113,
+        "width": 25,
+        "height": 34
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 25,
+        "width": 115,
+        "height": 22
+      },
+      {
+        "item_type": 4,
+        "x": 119,
+        "y": 25,
+        "width": 41,
+        "height": 12
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 124,
+        "width": 19,
+        "height": 54
+      },
+      {
+        "item_type": 6,
+        "x": 0,
+        "y": 69,
+        "width": 25,
+        "height": 51
+      },
+      {
+        "item_type": 7,
+        "x": 107,
+        "y": 47,
+        "width": 16,
+        "height": 22
+      },
+      {
+        "item_type": 8,
+        "x": 0,
+        "y": 47,
+        "width": 71,
+        "height": 22
+      },
+      {
+        "item_type": 9,
+        "x": 125,
+        "y": 37,
+        "width": 35,
+        "height": 137
+      },
+      {
+        "item_type": 10,
+        "x": 71,
+        "y": 47,
+        "width": 36,
+        "height": 15
+      },
+      {
+        "item_type": 11,
+        "x": 0,
+        "y": 0,
+        "width": 146,
+        "height": 25
+      },
+      {
+        "item_type": 12,
+        "x": 40,
+        "y": 147,
+        "width": 41,
+        "height": 29
+      },
+      {
+        "item_type": 13,
+        "x": 56,
+        "y": 69,
+        "width": 19,
+        "height": 44
+      },
+      {
+        "item_type": 14,
+        "x": 25,
+        "y": 69,
+        "width": 31,
+        "height": 68
+      }
+    ],
+    "obj": 178.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 69,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 29,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 117,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 57,
+        "demand": 1
+      },
+      {
+        "width": 40,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 57,
+        "demand": 1
+      },
+      {
+        "width": 24,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 30,
+        "demand": 1
+      },
+      {
+        "width": 23,
+        "height": 70,
+        "demand": 1
+      },
+      {
+        "width": 30,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 41,
+        "demand": 1
+      },
+      {
+        "width": 15,
+        "height": 4,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 91,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 41,
+        "y": 30,
+        "width": 69,
+        "height": 18
+      },
+      {
+        "item_type": 1,
+        "x": 23,
+        "y": 0,
+        "width": 29,
+        "height": 8
+      },
+      {
+        "item_type": 2,
+        "x": 23,
+        "y": 57,
+        "width": 117,
+        "height": 20
+      },
+      {
+        "item_type": 3,
+        "x": 64,
+        "y": 8,
+        "width": 8,
+        "height": 4
+      },
+      {
+        "item_type": 4,
+        "x": 141,
+        "y": 20,
+        "width": 19,
+        "height": 57
+      },
+      {
+        "item_type": 5,
+        "x": 76,
+        "y": 50,
+        "width": 40,
+        "height": 7
+      },
+      {
+        "item_type": 6,
+        "x": 116,
+        "y": 0,
+        "width": 25,
+        "height": 57
+      },
+      {
+        "item_type": 7,
+        "x": 92,
+        "y": 0,
+        "width": 24,
+        "height": 20
+      },
+      {
+        "item_type": 8,
+        "x": 110,
+        "y": 20,
+        "width": 5,
+        "height": 30
+      },
+      {
+        "item_type": 9,
+        "x": 0,
+        "y": 0,
+        "width": 23,
+        "height": 70
+      },
+      {
+        "item_type": 10,
+        "x": 72,
+        "y": 20,
+        "width": 30,
+        "height": 10
+      },
+      {
+        "item_type": 11,
+        "x": 23,
+        "y": 8,
+        "width": 18,
+        "height": 41
+      },
+      {
+        "item_type": 12,
+        "x": 61,
+        "y": 0,
+        "width": 15,
+        "height": 4
+      }
+    ],
+    "obj": 77.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 26,
+        "height": 30,
+        "demand": 1
+      },
+      {
+        "width": 64,
+        "height": 94,
+        "demand": 1
+      },
+      {
+        "width": 102,
+        "height": 32,
+        "demand": 1
+      },
+      {
+        "width": 43,
+        "height": 44,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 112,
+        "demand": 1
+      },
+      {
+        "width": 37,
+        "height": 71,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 23,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 33,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 43,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 50,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 46,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 37,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 50,
+        "height": 24,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 146,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 64,
+        "y": 0,
+        "width": 26,
+        "height": 30
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 94
+      },
+      {
+        "item_type": 2,
+        "x": 8,
+        "y": 112,
+        "width": 102,
+        "height": 32
+      },
+      {
+        "item_type": 3,
+        "x": 117,
+        "y": 71,
+        "width": 43,
+        "height": 44
+      },
+      {
+        "item_type": 4,
+        "x": 90,
+        "y": 0,
+        "width": 26,
+        "height": 112
+      },
+      {
+        "item_type": 5,
+        "x": 123,
+        "y": 0,
+        "width": 37,
+        "height": 71
+      },
+      {
+        "item_type": 6,
+        "x": 73,
+        "y": 30,
+        "width": 11,
+        "height": 23
+      },
+      {
+        "item_type": 7,
+        "x": 73,
+        "y": 53,
+        "width": 17,
+        "height": 33
+      },
+      {
+        "item_type": 8,
+        "x": 116,
+        "y": 0,
+        "width": 7,
+        "height": 43
+      },
+      {
+        "item_type": 9,
+        "x": 64,
+        "y": 30,
+        "width": 9,
+        "height": 50
+      },
+      {
+        "item_type": 10,
+        "x": 64,
+        "y": 86,
+        "width": 17,
+        "height": 14
+      },
+      {
+        "item_type": 11,
+        "x": 7,
+        "y": 94,
+        "width": 46,
+        "height": 18
+      },
+      {
+        "item_type": 12,
+        "x": 53,
+        "y": 100,
+        "width": 37,
+        "height": 10
+      },
+      {
+        "item_type": 13,
+        "x": 110,
+        "y": 115,
+        "width": 50,
+        "height": 24
+      }
+    ],
+    "obj": 144.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 27,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 36,
+        "height": 56,
+        "demand": 1
+      },
+      {
+        "width": 54,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 51,
+        "demand": 1
+      },
+      {
+        "width": 36,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 109,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 29,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 42,
+        "demand": 1
+      },
+      {
+        "width": 45,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 30,
+        "demand": 1
+      },
+      {
+        "width": 56,
+        "height": 18,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 73,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 31,
+        "y": 33,
+        "width": 27,
+        "height": 18
+      },
+      {
+        "item_type": 1,
+        "x": 83,
+        "y": 18,
+        "width": 19,
+        "height": 8
+      },
+      {
+        "item_type": 2,
+        "x": 124,
+        "y": 10,
+        "width": 36,
+        "height": 56
+      },
+      {
+        "item_type": 3,
+        "x": 58,
+        "y": 27,
+        "width": 54,
+        "height": 27
+      },
+      {
+        "item_type": 4,
+        "x": 7,
+        "y": 0,
+        "width": 16,
+        "height": 51
+      },
+      {
+        "item_type": 5,
+        "x": 124,
+        "y": 0,
+        "width": 36,
+        "height": 10
+      },
+      {
+        "item_type": 6,
+        "x": 7,
+        "y": 54,
+        "width": 109,
+        "height": 16
+      },
+      {
+        "item_type": 7,
+        "x": 112,
+        "y": 18,
+        "width": 7,
+        "height": 29
+      },
+      {
+        "item_type": 8,
+        "x": 69,
+        "y": 18,
+        "width": 14,
+        "height": 9
+      },
+      {
+        "item_type": 9,
+        "x": 0,
+        "y": 0,
+        "width": 7,
+        "height": 42
+      },
+      {
+        "item_type": 10,
+        "x": 23,
+        "y": 0,
+        "width": 45,
+        "height": 19
+      },
+      {
+        "item_type": 11,
+        "x": 119,
+        "y": 26,
+        "width": 5,
+        "height": 30
+      },
+      {
+        "item_type": 12,
+        "x": 68,
+        "y": 0,
+        "width": 56,
+        "height": 18
+      }
+    ],
+    "obj": 70.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 32,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 33,
+        "height": 125,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 70,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 51,
+        "height": 64,
+        "demand": 1
+      },
+      {
+        "width": 13,
+        "height": 90,
+        "demand": 1
+      },
+      {
+        "width": 111,
+        "height": 84,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 67,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 69,
+        "demand": 1
+      },
+      {
+        "width": 37,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 29,
+        "height": 18,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 163,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 13,
+        "y": 84,
+        "width": 32,
+        "height": 11
+      },
+      {
+        "item_type": 1,
+        "x": 127,
+        "y": 0,
+        "width": 33,
+        "height": 125
+      },
+      {
+        "item_type": 2,
+        "x": 90,
+        "y": 84,
+        "width": 20,
+        "height": 70
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 0,
+        "width": 8,
+        "height": 2
+      },
+      {
+        "item_type": 4,
+        "x": 0,
+        "y": 95,
+        "width": 51,
+        "height": 64
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 2,
+        "width": 13,
+        "height": 90
+      },
+      {
+        "item_type": 6,
+        "x": 16,
+        "y": 0,
+        "width": 111,
+        "height": 84
+      },
+      {
+        "item_type": 7,
+        "x": 51,
+        "y": 84,
+        "width": 21,
+        "height": 67
+      },
+      {
+        "item_type": 8,
+        "x": 72,
+        "y": 84,
+        "width": 18,
+        "height": 69
+      },
+      {
+        "item_type": 9,
+        "x": 94,
+        "y": 154,
+        "width": 37,
+        "height": 6
+      },
+      {
+        "item_type": 10,
+        "x": 131,
+        "y": 125,
+        "width": 29,
+        "height": 18
+      }
+    ],
+    "obj": 160.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 8,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 27,
+        "height": 26,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 26,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 22,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 39,
+        "height": 25,
+        "demand": 1
+      },
+      {
+        "width": 23,
+        "height": 31,
+        "demand": 1
+      },
+      {
+        "width": 46,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 15,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 62,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 3,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 41,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 86,
+        "y": 19,
+        "width": 8,
+        "height": 16
+      },
+      {
+        "item_type": 1,
+        "x": 133,
+        "y": 11,
+        "width": 27,
+        "height": 26
+      },
+      {
+        "item_type": 2,
+        "x": 112,
+        "y": 0,
+        "width": 26,
+        "height": 4
+      },
+      {
+        "item_type": 3,
+        "x": 94,
+        "y": 11,
+        "width": 16,
+        "height": 26
+      },
+      {
+        "item_type": 4,
+        "x": 77,
+        "y": 3,
+        "width": 10,
+        "height": 16
+      },
+      {
+        "item_type": 5,
+        "x": 138,
+        "y": 0,
+        "width": 22,
+        "height": 9
+      },
+      {
+        "item_type": 6,
+        "x": 39,
+        "y": 19,
+        "width": 7,
+        "height": 3
+      },
+      {
+        "item_type": 7,
+        "x": 91,
+        "y": 2,
+        "width": 19,
+        "height": 9
+      },
+      {
+        "item_type": 8,
+        "x": 0,
+        "y": 12,
+        "width": 39,
+        "height": 25
+      },
+      {
+        "item_type": 9,
+        "x": 110,
+        "y": 6,
+        "width": 23,
+        "height": 31
+      },
+      {
+        "item_type": 10,
+        "x": 40,
+        "y": 22,
+        "width": 46,
+        "height": 13
+      },
+      {
+        "item_type": 11,
+        "x": 62,
+        "y": 0,
+        "width": 15,
+        "height": 22
+      },
+      {
+        "item_type": 12,
+        "x": 0,
+        "y": 0,
+        "width": 62,
+        "height": 12
+      },
+      {
+        "item_type": 13,
+        "x": 77,
+        "y": 0,
+        "width": 8,
+        "height": 3
+      }
+    ],
+    "obj": 37.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 21,
+        "height": 25,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 86,
+        "height": 60,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 33,
+        "demand": 1
+      },
+      {
+        "width": 38,
+        "height": 43,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 64,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 50,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 28,
+        "height": 77,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 4,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 101,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 67,
+        "y": 60,
+        "width": 21,
+        "height": 25
+      },
+      {
+        "item_type": 1,
+        "x": 86,
+        "y": 0,
+        "width": 25,
+        "height": 14
+      },
+      {
+        "item_type": 2,
+        "x": 0,
+        "y": 0,
+        "width": 86,
+        "height": 60
+      },
+      {
+        "item_type": 3,
+        "x": 119,
+        "y": 0,
+        "width": 35,
+        "height": 33
+      },
+      {
+        "item_type": 4,
+        "x": 116,
+        "y": 33,
+        "width": 38,
+        "height": 43
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 79,
+        "width": 17,
+        "height": 11
+      },
+      {
+        "item_type": 6,
+        "x": 0,
+        "y": 60,
+        "width": 64,
+        "height": 19
+      },
+      {
+        "item_type": 7,
+        "x": 17,
+        "y": 79,
+        "width": 50,
+        "height": 12
+      },
+      {
+        "item_type": 8,
+        "x": 67,
+        "y": 85,
+        "width": 21,
+        "height": 6
+      },
+      {
+        "item_type": 9,
+        "x": 88,
+        "y": 14,
+        "width": 28,
+        "height": 77
+      },
+      {
+        "item_type": 10,
+        "x": 119,
+        "y": 76,
+        "width": 35,
+        "height": 13
+      },
+      {
+        "item_type": 11,
+        "x": 154,
+        "y": 0,
+        "width": 6,
+        "height": 4
+      }
+    ],
+    "obj": 91.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 4,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 23,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 3,
+        "demand": 1
+      }
+    ],
+    "bin_width": 80,
+    "bin_height": 10,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 4,
+        "width": 4,
+        "height": 3
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 0,
+        "width": 4,
+        "height": 4
+      },
+      {
+        "item_type": 2,
+        "x": 29,
+        "y": 0,
+        "width": 3,
+        "height": 5
+      },
+      {
+        "item_type": 3,
+        "x": 19,
+        "y": 0,
+        "width": 3,
+        "height": 7
+      },
+      {
+        "item_type": 4,
+        "x": 4,
+        "y": 1,
+        "width": 12,
+        "height": 6
+      },
+      {
+        "item_type": 5,
+        "x": 57,
+        "y": 0,
+        "width": 20,
+        "height": 5
+      },
+      {
+        "item_type": 6,
+        "x": 32,
+        "y": 0,
+        "width": 4,
+        "height": 4
+      },
+      {
+        "item_type": 7,
+        "x": 26,
+        "y": 0,
+        "width": 3,
+        "height": 4
+      },
+      {
+        "item_type": 8,
+        "x": 32,
+        "y": 4,
+        "width": 23,
+        "height": 4
+      },
+      {
+        "item_type": 9,
+        "x": 22,
+        "y": 0,
+        "width": 4,
+        "height": 5
+      },
+      {
+        "item_type": 10,
+        "x": 77,
+        "y": 0,
+        "width": 3,
+        "height": 4
+      },
+      {
+        "item_type": 11,
+        "x": 16,
+        "y": 0,
+        "width": 3,
+        "height": 5
+      },
+      {
+        "item_type": 12,
+        "x": 37,
+        "y": 0,
+        "width": 20,
+        "height": 4
+      },
+      {
+        "item_type": 13,
+        "x": 26,
+        "y": 4,
+        "width": 3,
+        "height": 3
+      }
+    ],
+    "obj": 8.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 10,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 45,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 59,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 15,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 40,
+        "height": 17,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 23,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 150,
+        "y": 12,
+        "width": 10,
+        "height": 10
+      },
+      {
+        "item_type": 1,
+        "x": 115,
+        "y": 0,
+        "width": 45,
+        "height": 12
+      },
+      {
+        "item_type": 2,
+        "x": 48,
+        "y": 20,
+        "width": 8,
+        "height": 2
+      },
+      {
+        "item_type": 3,
+        "x": 56,
+        "y": 8,
+        "width": 59,
+        "height": 14
+      },
+      {
+        "item_type": 4,
+        "x": 0,
+        "y": 17,
+        "width": 14,
+        "height": 4
+      },
+      {
+        "item_type": 5,
+        "x": 115,
+        "y": 12,
+        "width": 12,
+        "height": 10
+      },
+      {
+        "item_type": 6,
+        "x": 50,
+        "y": 0,
+        "width": 6,
+        "height": 11
+      },
+      {
+        "item_type": 7,
+        "x": 80,
+        "y": 0,
+        "width": 25,
+        "height": 8
+      },
+      {
+        "item_type": 8,
+        "x": 0,
+        "y": 4,
+        "width": 9,
+        "height": 10
+      },
+      {
+        "item_type": 9,
+        "x": 70,
+        "y": 0,
+        "width": 10,
+        "height": 8
+      },
+      {
+        "item_type": 10,
+        "x": 62,
+        "y": 5,
+        "width": 4,
+        "height": 3
+      },
+      {
+        "item_type": 11,
+        "x": 40,
+        "y": 19,
+        "width": 8,
+        "height": 3
+      },
+      {
+        "item_type": 12,
+        "x": 141,
+        "y": 15,
+        "width": 9,
+        "height": 4
+      },
+      {
+        "item_type": 13,
+        "x": 127,
+        "y": 12,
+        "width": 15,
+        "height": 3
+      },
+      {
+        "item_type": 14,
+        "x": 10,
+        "y": 0,
+        "width": 40,
+        "height": 17
+      }
+    ],
+    "obj": 22.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  }
+]

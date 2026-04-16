@@ -1,0 +1,16 @@
+problem: PMED
+scale: S
+seed: 43
+step1:
+  dataset_dir: datasets/cached_context1/PMED
+  n_vertices: 5-8
+
+  n_instances: 50
+  output: step1_instance_creation/generated_data/PMED/PMED_S.json
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/PMED/PMED_contexts.json
+  instance_dir: step1_instance_creation/generated_data/PMED
+  output_root_dir: step2_contextualization/dataset/PMED
+  k_per_call: 20
+  n_target: 30

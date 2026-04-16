@@ -1,0 +1,1731 @@
+id,task_id,difficulty_tier,example_index,prompt,surface_format,indexing_scheme,instance_canonical_json,reference_solution_canonical_json,reference_objective_value,instance_surface_json,reference_solution_surface_json
+CSP_S_001,CSP,S,1,"Recently the shop has been juggling complicated orders and it’s become a small puzzle: how to split each bolt of fabric into the required panel sizes. The task is choosing which cuts to make on each bolt so every customer's quantity is produced and each bolt’s length is respected. The nicer solution is the one that lets the shop use fewer bolts overall — just count bolts used to see which plan wins. Each panel size must be produced in the exact quantity requested, and you can’t exceed the length on any bolt. The full list of sizes and quantities appears below.
+
+# bolt_length=150.0
+panel_type_id,panel_length,quantity_required
+1,68,2
+2,70,4
+3,55,6
+4,81,3
+5,54,2
+6,38,1
+7,37,3
+8,90,7
+9,77,7
+10,52,2
+
+If you want to sketch a cutting plan for me to look at, a relaxed JSON layout like the one below works well — just a list of bolt patterns, each saying how many pieces of each panel type come from that bolt.
+
+{
+  ""solution"": [
+    {""<patch_type_id>"": 2, ""<patch_type_id>"": 1},
+    ...
+  ]
+}
+
+Think of that as: ""solution"" is a list where each element is one bolt's cutting pattern. Inside each pattern object the placeholder keys (like <patch_type_id>) stand for a specific panel type and the numbers are how many pieces of that type are cut from that bolt. Super informal — it's just the shape I expect, not the final plan.
+
+Please remember: when you provide the real plan, use the exact identifiers from the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,one_based,"{""weights"": [68, 70, 55, 81, 54, 38, 37, 90, 77, 52], ""demands"": [2, 4, 6, 3, 2, 1, 3, 7, 7, 2], ""solution_patterns"": [{""7"": 1, ""9"": 1}, {""6"": 1, ""8"": 1}, {""5"": 1, ""6"": 3}, {""4"": 1, ""8"": 1}, {""4"": 1, ""8"": 1}, {""3"": 1, ""9"": 1}, {""2"": 1, ""7"": 1}, {""2"": 1, ""7"": 1}, {""2"": 1, ""7"": 1}, {""2"": 1, ""7"": 1}, {""2"": 1, ""7"": 1}, {""2"": 1, ""7"": 1}, {""1"": 1, ""8"": 1}, {""1"": 1, ""8"": 1}, {""1"": 1, ""8"": 1}, {""1"": 1, ""8"": 1}, {""0"": 1, ""3"": 1}, {""0"": 1, ""3"": 1}], ""obj"": 18, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""7"": 1, ""9"": 1}, {""6"": 1, ""8"": 1}, {""5"": 1, ""6"": 3}, {""4"": 1, ""8"": 1}, {""4"": 1, ""8"": 1}, {""3"": 1, ""9"": 1}, {""2"": 1, ""7"": 1}, {""2"": 1, ""7"": 1}, {""2"": 1, ""7"": 1}, {""2"": 1, ""7"": 1}, {""2"": 1, ""7"": 1}, {""2"": 1, ""7"": 1}, {""1"": 1, ""8"": 1}, {""1"": 1, ""8"": 1}, {""1"": 1, ""8"": 1}, {""1"": 1, ""8"": 1}, {""0"": 1, ""3"": 1}, {""0"": 1, ""3"": 1}]",18,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 10, ""items"": [{""item_id"": 1, ""width"": 68, ""demand"": 2}, {""item_id"": 2, ""width"": 70, ""demand"": 4}, {""item_id"": 3, ""width"": 55, ""demand"": 6}, {""item_id"": 4, ""width"": 81, ""demand"": 3}, {""item_id"": 5, ""width"": 54, ""demand"": 2}, {""item_id"": 6, ""width"": 38, ""demand"": 1}, {""item_id"": 7, ""width"": 37, ""demand"": 3}, {""item_id"": 8, ""width"": 90, ""demand"": 7}, {""item_id"": 9, ""width"": 77, ""demand"": 7}, {""item_id"": 10, ""width"": 52, ""demand"": 2}]}","[{""8"": 1, ""10"": 1}, {""7"": 1, ""9"": 1}, {""6"": 1, ""7"": 3}, {""5"": 1, ""9"": 1}, {""5"": 1, ""9"": 1}, {""4"": 1, ""10"": 1}, {""3"": 1, ""8"": 1}, {""3"": 1, ""8"": 1}, {""3"": 1, ""8"": 1}, {""3"": 1, ""8"": 1}, {""3"": 1, ""8"": 1}, {""3"": 1, ""8"": 1}, {""2"": 1, ""9"": 1}, {""2"": 1, ""9"": 1}, {""2"": 1, ""9"": 1}, {""2"": 1, ""9"": 1}, {""1"": 1, ""4"": 1}, {""1"": 1, ""4"": 1}]"
+CSP_S_002,CSP,S,2,"There’s a busy day at the wallpaper shop where the cutter has to plan cuts from standard rolls to cover a bunch of wall orders. The decision is which combinations of strips to cut from each roll so all requested pieces are produced without wasteful use of extra rolls; the better the plan, the fewer rolls that need to be opened, which you can check simply by counting opened rolls. All requested strips have to be made in the right quantities and sizes, and no roll can be overcut. The concrete order details and roll length follow below.
+
+# roll_length=150.0
+strip_type_id,strip_length,quantity_required
+0,59,5
+1,28,2
+2,82,5
+3,49,3
+4,62,6
+5,79,3
+
+Oh, and when you send the cutting plan back, just follow this little JSON layout — nothing fancy, just the shape below so I can read it automatically:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Here’s what that sketch means in plain terms: ""solution"" is a list where each entry is one opened roll (one cutting pattern). Inside each entry you map the item identifiers (the placeholders shown as ""<item_id>"") to how many strips of that item you cut from that roll. Think of each object as a little checklist for a single roll: which strip types and how many of each you took out.
+
+This JSON is just the expected shape — not the real plan itself. Also, please use the exact identifiers from the instance input with no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,zero_based,"{""weights"": [59, 28, 82, 49, 62, 79], ""demands"": [5, 2, 5, 3, 6, 3], ""solution_patterns"": [{""4"": 1, ""5"": 1}, {""3"": 3}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}, {""0"": 2, ""1"": 1}, {""0"": 2, ""1"": 1}], ""obj"": 11, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""4"": 1, ""5"": 1}, {""3"": 3}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}, {""0"": 2, ""1"": 1}, {""0"": 2, ""1"": 1}]",11,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 6, ""items"": [{""item_id"": 0, ""width"": 59, ""demand"": 5}, {""item_id"": 1, ""width"": 28, ""demand"": 2}, {""item_id"": 2, ""width"": 82, ""demand"": 5}, {""item_id"": 3, ""width"": 49, ""demand"": 3}, {""item_id"": 4, ""width"": 62, ""demand"": 6}, {""item_id"": 5, ""width"": 79, ""demand"": 3}]}","[{""4"": 1, ""5"": 1}, {""3"": 3}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}, {""0"": 2, ""1"": 1}, {""0"": 2, ""1"": 1}]"
+CSP_S_003,CSP,S,3,"I’m juggling a pile of long metal bars and a list of tube lengths someone needs — the task is to decide how to slice those bars so every requested piece is produced in the right quantity, while using as few whole bars as possible. Each bar only stretches so far, so the pieces cut from one bar can’t add up to more than its length, and nothing on the order can be missed or duplicated. The better plan is simply the one that gets all the pieces and uses the smallest number of bars (count the bars used to compare plans). The exact lengths and counts are shown below.
+
+# bar_length=150.0
+tube_type_id,tube_length,quantity_required
+A,93,1
+B,37,1
+C,41,3
+D,84,1
+E,78,6
+F,58,2
+G,75,2
+H,49,1
+
+Oh, and when you reply with the cutting plan, please follow this simple JSON layout so I can read it automatically. Here's the shape I expect:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of it like a little form: ""solution"" is a list where each object describes one whole bar and the counts of pieces of each requested length cut from that bar. The placeholder keys like <item_id> stand for the item identifiers from the order, and the numbers are how many pieces of that item you get from that bar. This is just a sketch of the shape I want, not the actual final cutting plan.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"{""weights"": [93, 37, 41, 84, 78, 58, 75, 49], ""demands"": [1, 1, 3, 1, 6, 2, 2, 1], ""solution_patterns"": [{""6"": 2}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""3"": 1, ""7"": 1}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""1"": 1, ""4"": 1}, {""0"": 1, ""7"": 1}], ""obj"": 9, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""6"": 2}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""3"": 1, ""7"": 1}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""1"": 1, ""4"": 1}, {""0"": 1, ""7"": 1}]",9,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 8, ""items"": [{""item_id"": ""A"", ""width"": 93, ""demand"": 1}, {""item_id"": ""B"", ""width"": 37, ""demand"": 1}, {""item_id"": ""C"", ""width"": 41, ""demand"": 3}, {""item_id"": ""D"", ""width"": 84, ""demand"": 1}, {""item_id"": ""E"", ""width"": 78, ""demand"": 6}, {""item_id"": ""F"", ""width"": 58, ""demand"": 2}, {""item_id"": ""G"", ""width"": 75, ""demand"": 2}, {""item_id"": ""H"", ""width"": 49, ""demand"": 1}]}","[{""G"": 2}, {""E"": 1, ""F"": 1}, {""E"": 1, ""F"": 1}, {""D"": 1, ""H"": 1}, {""C"": 1, ""E"": 1}, {""C"": 1, ""E"": 1}, {""C"": 1, ""E"": 1}, {""B"": 1, ""E"": 1}, {""A"": 1, ""H"": 1}]"
+CSP_S_004,CSP,S,4,"Someone at the shop mapped out all the print orders and now it’s up to the coordinator to map those lengths onto the long master rolls without wasting space. The goal is simple — finish all orders while burning through as few master rolls as possible (just count how many rolls a plan consumes) — and every single roll must not be cut past its length and every requested piece must be cut exactly as ordered. The specific sizes and demands are shown beneath.
+
+# master_roll_length=150.0
+print_order_id,section_length,pieces_required
+A,52,3
+B,79,1
+C,21,5
+D,41,1
+E,20,4
+F,80,2
+G,94,2
+H,46,2
+I,32,1
+
+Oh, and one more thing — when you send a proposed layout, please keep it in this simple JSON shape so it's easy to read and compare:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+This is just a sketch of the shape I expect, not the actual answer. In plain terms: ""solution"" is a list where each entry is one master roll. Each object inside the list shows which requested piece types go on that roll (the placeholder keys) and the numbers are how many of each piece are cut from that roll. Keep it casual and clear — one object per roll.
+
+Please use the exact identifiers from the instance input — do not rename them or add new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"{""weights"": [52, 79, 21, 41, 20, 80, 94, 46, 32], ""demands"": [3, 1, 5, 1, 4, 2, 2, 2, 1], ""solution_patterns"": [{""4"": 1, ""6"": 1, ""8"": 1}, {""4"": 1, ""5"": 1, ""7"": 1}, {""3"": 1, ""4"": 1, ""5"": 1}, {""2"": 2, ""3"": 1, ""4"": 1, ""7"": 1}, {""1"": 1, ""2"": 3}, {""0"": 1, ""6"": 1}, {""0"": 2, ""2"": 2}], ""obj"": 7, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""4"": 1, ""6"": 1, ""8"": 1}, {""4"": 1, ""5"": 1, ""7"": 1}, {""3"": 1, ""4"": 1, ""5"": 1}, {""2"": 2, ""3"": 1, ""4"": 1, ""7"": 1}, {""1"": 1, ""2"": 3}, {""0"": 1, ""6"": 1}, {""0"": 2, ""2"": 2}]",7,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 9, ""items"": [{""item_id"": ""A"", ""width"": 52, ""demand"": 3}, {""item_id"": ""B"", ""width"": 79, ""demand"": 1}, {""item_id"": ""C"", ""width"": 21, ""demand"": 5}, {""item_id"": ""D"", ""width"": 41, ""demand"": 1}, {""item_id"": ""E"", ""width"": 20, ""demand"": 4}, {""item_id"": ""F"", ""width"": 80, ""demand"": 2}, {""item_id"": ""G"", ""width"": 94, ""demand"": 2}, {""item_id"": ""H"", ""width"": 46, ""demand"": 2}, {""item_id"": ""I"", ""width"": 32, ""demand"": 1}]}","[{""E"": 1, ""G"": 1, ""I"": 1}, {""E"": 1, ""F"": 1, ""H"": 1}, {""D"": 1, ""E"": 1, ""F"": 1}, {""C"": 2, ""D"": 1, ""E"": 1, ""H"": 1}, {""B"": 1, ""C"": 3}, {""A"": 1, ""G"": 1}, {""A"": 2, ""C"": 2}]"
+CSP_S_005,CSP,S,5,"In a small workshop, the foreman has to cut ordered boards from fixed-length planks, matching each requested length and quantity exactly while making sure the combined lengths cut from any plank don’t exceed that plank’s size. The practical goal is simply to produce everything while using as few planks as possible — evaluate options by counting how many planks each requires and pick the smallest count. The exact board sizes and demands are shown below.
+
+Each stock plank has usable length 150.0.
+For board 1, the foreman must cut 5 pieces of length 69.
+For board 2, the foreman must cut 6 pieces of length 100.
+For board 3, the foreman must cut 3 pieces of length 57.
+For board 4, the foreman must cut 3 pieces of length 20.
+For board 5, the foreman must cut 2 pieces of length 30.
+The foreman will choose the cutting plan that uses the fewest 150.0-length planks.
+
+Oh, and one more practical thing — when you send the cutting plan back, please use this simple JSON layout so it's easy to read and check.
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Pretty much: ""solution"" is an array where each entry represents one plank (what was cut from that plank). Inside each entry, the ""<item_id>"" key is the placeholder for a board type and the number next to it is how many of that type were cut from that plank. This is just a sketch of the shape I want, not the actual plan.
+
+Please don’t rename any identifiers from the instance input or invent new ones — use them exactly as given. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,one_based,"{""weights"": [69, 100, 57, 20, 30], ""demands"": [5, 6, 3, 3, 2], ""solution_patterns"": [{""1"": 1, ""3"": 1, ""4"": 1}, {""1"": 1, ""3"": 1, ""4"": 1}, {""1"": 1, ""3"": 1, ""4"": 1}, {""1"": 1, ""3"": 1, ""4"": 1}, {""1"": 1, ""3"": 1, ""4"": 1}, {""1"": 1, ""3"": 1, ""4"": 1}, {""0"": 1, ""2"": 1, ""3"": 1}, {""0"": 1, ""2"": 1, ""3"": 1}, {""0"": 1, ""2"": 1, ""3"": 1}, {""0"": 2}], ""obj"": 10, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""1"": 1, ""3"": 1, ""4"": 1}, {""1"": 1, ""3"": 1, ""4"": 1}, {""1"": 1, ""3"": 1, ""4"": 1}, {""1"": 1, ""3"": 1, ""4"": 1}, {""1"": 1, ""3"": 1, ""4"": 1}, {""1"": 1, ""3"": 1, ""4"": 1}, {""0"": 1, ""2"": 1, ""3"": 1}, {""0"": 1, ""2"": 1, ""3"": 1}, {""0"": 1, ""2"": 1, ""3"": 1}, {""0"": 2}]",10,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 5, ""items"": [{""item_id"": 1, ""width"": 69, ""demand"": 5}, {""item_id"": 2, ""width"": 100, ""demand"": 6}, {""item_id"": 3, ""width"": 57, ""demand"": 3}, {""item_id"": 4, ""width"": 20, ""demand"": 3}, {""item_id"": 5, ""width"": 30, ""demand"": 2}]}","[{""2"": 1, ""4"": 1, ""5"": 1}, {""2"": 1, ""4"": 1, ""5"": 1}, {""2"": 1, ""4"": 1, ""5"": 1}, {""2"": 1, ""4"": 1, ""5"": 1}, {""2"": 1, ""4"": 1, ""5"": 1}, {""2"": 1, ""4"": 1, ""5"": 1}, {""1"": 1, ""3"": 1, ""4"": 1}, {""1"": 1, ""3"": 1, ""4"": 1}, {""1"": 1, ""3"": 1, ""4"": 1}, {""1"": 2}]"
+CSP_S_006,CSP,S,6,"A sign maker has to juggle a set of identical-length vinyl rolls and an order sheet with multiple panel lengths and quantities. The choice is how to slice each roll so every requested panel is produced exactly as many times as ordered, no roll is cut beyond its available length, and there aren't any surplus pieces. The better choices are those that keep the number of rolls opened to the minimum — check plans by counting rolls used and pick the smallest total. The concrete order and roll details are provided below.
+
+{
+  ""vinyl_roll_length"": 150.0,
+  ""items"": [
+    {
+      ""panel_type_id"": 1,
+      ""panel_length"": 77,
+      ""panel_quantity"": 2
+    },
+    {
+      ""panel_type_id"": 2,
+      ""panel_length"": 52,
+      ""panel_quantity"": 2
+    },
+    {
+      ""panel_type_id"": 3,
+      ""panel_length"": 75,
+      ""panel_quantity"": 2
+    },
+    {
+      ""panel_type_id"": 4,
+      ""panel_length"": 89,
+      ""panel_quantity"": 2
+    },
+    {
+      ""panel_type_id"": 5,
+      ""panel_length"": 70,
+      ""panel_quantity"": 1
+    },
+    {
+      ""panel_type_id"": 6,
+      ""panel_length"": 21,
+      ""panel_quantity"": 2
+    },
+    {
+      ""panel_type_id"": 7,
+      ""panel_length"": 69,
+      ""panel_quantity"": 1
+    },
+    {
+      ""panel_type_id"": 8,
+      ""panel_length"": 73,
+      ""panel_quantity"": 1
+    },
+    {
+      ""panel_type_id"": 9,
+      ""panel_length"": 90,
+      ""panel_quantity"": 3
+    }
+  ]
+}
+
+Oh, and when you send the cutting plan back, please use this little JSON layout so I can read it easily:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of ""solution"" as a list of rolls: each entry is one roll and the object inside lists the panel-type placeholders and how many pieces of each come from that roll. It's just a sketch of the shape I expect, not the actual answer itself.
+
+Please also make sure all identifiers you use match the instance input exactly — no renaming and don't invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"{""weights"": [77, 52, 75, 89, 70, 21, 69, 73, 90], ""demands"": [2, 2, 2, 2, 1, 2, 1, 1, 3], ""solution_patterns"": [{""5"": 2, ""8"": 1}, {""3"": 1, ""5"": 2}, {""3"": 1, ""5"": 2}, {""2"": 1, ""6"": 1}, {""2"": 2}, {""1"": 1, ""8"": 1}, {""1"": 1, ""8"": 1}, {""0"": 1, ""7"": 1}, {""0"": 1, ""4"": 1}], ""obj"": 9, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""5"": 2, ""8"": 1}, {""3"": 1, ""5"": 2}, {""3"": 1, ""5"": 2}, {""2"": 1, ""6"": 1}, {""2"": 2}, {""1"": 1, ""8"": 1}, {""1"": 1, ""8"": 1}, {""0"": 1, ""7"": 1}, {""0"": 1, ""4"": 1}]",9,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 9, ""items"": [{""item_id"": 1, ""width"": 77, ""demand"": 2}, {""item_id"": 2, ""width"": 52, ""demand"": 2}, {""item_id"": 3, ""width"": 75, ""demand"": 2}, {""item_id"": 4, ""width"": 89, ""demand"": 2}, {""item_id"": 5, ""width"": 70, ""demand"": 1}, {""item_id"": 6, ""width"": 21, ""demand"": 2}, {""item_id"": 7, ""width"": 69, ""demand"": 1}, {""item_id"": 8, ""width"": 73, ""demand"": 1}, {""item_id"": 9, ""width"": 90, ""demand"": 3}]}","[{""6"": 2, ""9"": 1}, {""4"": 1, ""6"": 2}, {""4"": 1, ""6"": 2}, {""3"": 1, ""7"": 1}, {""3"": 2}, {""2"": 1, ""9"": 1}, {""2"": 1, ""9"": 1}, {""1"": 1, ""8"": 1}, {""1"": 1, ""5"": 1}]"
+CSP_S_007,CSP,S,7,"I work at a cable shop and the daily puzzle is this: take big spools of the same fixed length and cut them into the exact runs customers need. The choice to make is which lengths to bunch together on each spool so that every requested run gets cut the right number of times, no piece is skipped or duplicated, and no spool is overfilled. A better plan is simply the one that uses the fewest spools — success is measured by counting how many spools are opened and used — and the exact cuts to make for each spool add up to no more than the spool’s length. The concrete lengths and demands are listed below.
+
+- **spool_length**: 150.0
+
+| run_id | run_length | required_quantity |
+|---|---|---|
+| A | 64 | 2 |
+| B | 37 | 4 |
+| C | 100 | 1 |
+| D | 88 | 3 |
+| E | 30 | 1 |
+| F | 77 | 7 |
+| G | 38 | 2 |
+
+Also, if it's helpful, you can send your plan back to me in a simple JSON layout like this:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of ""solution"" as a list of spools: each object in the list is one spool, the keys inside are the item placeholders (the requested run types) and the numbers are how many of that run to cut from that spool. It's just a sketch of the shape I expect, not the actual cutting plan yet.
+
+Please use the exact identifiers from the instance input — don't rename them or add new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”"".",markdown_table,names,"{""weights"": [64, 37, 100, 88, 30, 77, 38], ""demands"": [2, 4, 1, 3, 1, 7, 2], ""solution_patterns"": [{""3"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""1"": 1, ""4"": 1, ""5"": 1}, {""1"": 1, ""4"": 1, ""5"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}], ""obj"": 11, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""3"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""1"": 1, ""4"": 1, ""5"": 1}, {""1"": 1, ""4"": 1, ""5"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}]",11,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 7, ""items"": [{""item_id"": ""A"", ""width"": 64, ""demand"": 2}, {""item_id"": ""B"", ""width"": 37, ""demand"": 4}, {""item_id"": ""C"", ""width"": 100, ""demand"": 1}, {""item_id"": ""D"", ""width"": 88, ""demand"": 3}, {""item_id"": ""E"", ""width"": 30, ""demand"": 1}, {""item_id"": ""F"", ""width"": 77, ""demand"": 7}, {""item_id"": ""G"", ""width"": 38, ""demand"": 2}]}","[{""D"": 1, ""G"": 1}, {""C"": 1, ""G"": 1}, {""B"": 1, ""E"": 1, ""F"": 1}, {""B"": 1, ""E"": 1, ""F"": 1}, {""B"": 1, ""D"": 1}, {""B"": 1, ""D"": 1}, {""A"": 1, ""F"": 1}, {""A"": 1, ""F"": 1}, {""A"": 1, ""F"": 1}, {""A"": 1, ""F"": 1}, {""A"": 1, ""F"": 1}]"
+CSP_S_008,CSP,S,8,"Many people don’t think about it, but turning a stack of identical glass sheets into dozens of smaller strips is a daily decision in a glazing shop: which strips to take from which sheet. The right choice is the one that fulfills every demand while using the fewest sheets overall, and you can decide between options by simply adding up how many sheets each plan requires. Cuts can’t go past a sheet’s fixed length and every requested piece must be made without extras or omissions; the exact order details appear below.
+
+- **sheet_length**: 150.0
+
+| strip_type_id | strip_length | required_quantity |
+|---|---|---|
+| 1 | 64 | 3 |
+| 2 | 53 | 4 |
+| 3 | 59 | 1 |
+| 4 | 71 | 2 |
+| 5 | 40 | 3 |
+| 6 | 74 | 2 |
+| 7 | 60 | 4 |
+| 8 | 99 | 3 |
+| 9 | 92 | 1 |
+
+Oh, and to keep things simple, just reply using this little JSON shape so it's easy to check automatically:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of it like a quick form: ""solution"" is a list where each entry is one sheet of glass and the pairs inside each entry say which strips you took from that sheet — the placeholder keys like <item_id> stand for the strip type and the numbers tell you how many of that strip were cut from that sheet. It's just a sketch of the expected shape, not the actual, final cutting plan.
+
+Please use the exact identifiers from the instance input — no renaming and no new labels.  
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,one_based,"{""weights"": [64, 53, 59, 71, 40, 74, 60, 99, 92], ""demands"": [3, 4, 1, 2, 3, 2, 4, 3, 1], ""solution_patterns"": [{""6"": 2}, {""5"": 2}, {""4"": 1, ""7"": 1}, {""4"": 1, ""7"": 1}, {""4"": 1, ""7"": 1}, {""3"": 2}, {""2"": 1, ""6"": 1}, {""1"": 1, ""8"": 1}, {""1"": 1, ""6"": 1}, {""1"": 2, ""4"": 1}, {""0"": 1, ""6"": 1}, {""0"": 2}], ""obj"": 12, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""6"": 2}, {""5"": 2}, {""4"": 1, ""7"": 1}, {""4"": 1, ""7"": 1}, {""4"": 1, ""7"": 1}, {""3"": 2}, {""2"": 1, ""6"": 1}, {""1"": 1, ""8"": 1}, {""1"": 1, ""6"": 1}, {""1"": 2, ""4"": 1}, {""0"": 1, ""6"": 1}, {""0"": 2}]",12,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 9, ""items"": [{""item_id"": 1, ""width"": 64, ""demand"": 3}, {""item_id"": 2, ""width"": 53, ""demand"": 4}, {""item_id"": 3, ""width"": 59, ""demand"": 1}, {""item_id"": 4, ""width"": 71, ""demand"": 2}, {""item_id"": 5, ""width"": 40, ""demand"": 3}, {""item_id"": 6, ""width"": 74, ""demand"": 2}, {""item_id"": 7, ""width"": 60, ""demand"": 4}, {""item_id"": 8, ""width"": 99, ""demand"": 3}, {""item_id"": 9, ""width"": 92, ""demand"": 1}]}","[{""7"": 2}, {""6"": 2}, {""5"": 1, ""8"": 1}, {""5"": 1, ""8"": 1}, {""5"": 1, ""8"": 1}, {""4"": 2}, {""3"": 1, ""7"": 1}, {""2"": 1, ""9"": 1}, {""2"": 1, ""7"": 1}, {""2"": 2, ""5"": 1}, {""1"": 1, ""7"": 1}, {""1"": 2}]"
+CSP_S_009,CSP,S,9,"I heard about a curtain workshop that has long metal rails and a pile of customer orders for shorter rail pieces. The team has to decide how to slice each long rail into the different piece lengths people ordered so every single order is fulfilled exactly, with no missing pieces and no extras. A good cutting plan is the one that uses the fewest whole rails possible — that is, count how many full rails each plan requires and pick the plan with the smallest count — and every cut on a rail must leave the total length on that rail at or below the rail’s fixed length. The exact piece sizes and demands are shown below.
+
+Each full rail measures 150.0. The orders are:
+For piece 0, the team needs 5 pieces each of length 74.
+For piece 1, the team needs 2 pieces each of length 72.
+For piece 2, the team needs 3 pieces each of length 92.
+For piece 3, the team needs 1 pieces each of length 81.
+For piece 4, the team needs 1 pieces each of length 50.
+For piece 5, the team needs 3 pieces each of length 22.
+For piece 6, the team needs 2 pieces each of length 54.
+The goal is to meet every demand exactly while minimizing how many full 150.0-length rails are needed.
+
+Oh, and one more thing — when you give the cutting plan back, try to follow this little JSON layout so it's easy to read by whoever's checking the orders:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+This simply means: ""solution"" is a list where each entry is one full rail. Each object inside the list shows how many pieces of each ordered item you cut from that particular rail (the ""<item_id>"" placeholders stand for the item identifiers, and the numbers are how many pieces of that item come from that rail). The ""..."" means more rails/entries can follow. It's just a sketch of the expected shape, not the actual cutting plan.
+
+Please make sure to use the exact identifiers from the instance input — do not rename them or invent new labels. 
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""weights"": [74, 72, 92, 81, 50, 22, 54], ""demands"": [5, 2, 3, 1, 1, 3, 2], ""solution_patterns"": [{""3"": 1, ""5"": 3}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""4"": 1}, {""1"": 2}, {""0"": 2}, {""0"": 2}, {""0"": 2}], ""obj"": 8, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""3"": 1, ""5"": 3}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""4"": 1}, {""1"": 2}, {""0"": 2}, {""0"": 2}, {""0"": 2}]",8,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 7, ""items"": [{""item_id"": 0, ""width"": 74, ""demand"": 5}, {""item_id"": 1, ""width"": 72, ""demand"": 2}, {""item_id"": 2, ""width"": 92, ""demand"": 3}, {""item_id"": 3, ""width"": 81, ""demand"": 1}, {""item_id"": 4, ""width"": 50, ""demand"": 1}, {""item_id"": 5, ""width"": 22, ""demand"": 3}, {""item_id"": 6, ""width"": 54, ""demand"": 2}]}","[{""3"": 1, ""5"": 3}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""4"": 1}, {""1"": 2}, {""0"": 2}, {""0"": 2}, {""0"": 2}]"
+CSP_S_010,CSP,S,10,"Out at the dock a team is slicing fixed-length rope coils into lots of customer-specified lengths and has to decide which cuts go on which coil. One plan beats another if it completes all orders using fewer coils — the way to check is to count how many coils are used up. All requested pieces and quantities must be supplied exactly (no missing or duplicated items), and the total length cut from any coil can’t be more than the coil’s length. The detailed orders and coil size can be found below.
+
+{
+  ""coil_length"": 150.0,
+  ""items"": [
+    {
+      ""piece_type_id"": 1,
+      ""piece_length"": 41,
+      ""quantity_required"": 6
+    },
+    {
+      ""piece_type_id"": 2,
+      ""piece_length"": 29,
+      ""quantity_required"": 3
+    },
+    {
+      ""piece_type_id"": 3,
+      ""piece_length"": 78,
+      ""quantity_required"": 2
+    },
+    {
+      ""piece_type_id"": 4,
+      ""piece_length"": 31,
+      ""quantity_required"": 2
+    },
+    {
+      ""piece_type_id"": 5,
+      ""piece_length"": 80,
+      ""quantity_required"": 7
+    },
+    {
+      ""piece_type_id"": 6,
+      ""piece_length"": 49,
+      ""quantity_required"": 4
+    }
+  ]
+}
+
+If you want to hand me a cutting plan, just stick to this little JSON shape — one array called ""solution"" with an object per coil showing which piece types go on that coil.
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of each object in that array as one rope coil. The ""<item_id>"" placeholders stand in for the type of piece customers ordered, and the numbers are how many pieces of that type you’d cut from that coil. Super simple — it's just the form I need, not the final plan.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,one_based,"{""weights"": [41, 29, 78, 31, 80, 49], ""demands"": [6, 3, 2, 2, 7, 4], ""solution_patterns"": [{""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""0"": 1, ""5"": 2}, {""0"": 1, ""2"": 1, ""3"": 1}, {""0"": 1, ""2"": 1, ""3"": 1}, {""0"": 1, ""1"": 1, ""4"": 1}, {""0"": 1, ""1"": 1, ""4"": 1}, {""0"": 1, ""1"": 1, ""4"": 1}, {""0"": 1, ""1"": 1, ""4"": 1}], ""obj"": 10, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""0"": 1, ""5"": 2}, {""0"": 1, ""2"": 1, ""3"": 1}, {""0"": 1, ""2"": 1, ""3"": 1}, {""0"": 1, ""1"": 1, ""4"": 1}, {""0"": 1, ""1"": 1, ""4"": 1}, {""0"": 1, ""1"": 1, ""4"": 1}, {""0"": 1, ""1"": 1, ""4"": 1}]",10,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 6, ""items"": [{""item_id"": 1, ""width"": 41, ""demand"": 6}, {""item_id"": 2, ""width"": 29, ""demand"": 3}, {""item_id"": 3, ""width"": 78, ""demand"": 2}, {""item_id"": 4, ""width"": 31, ""demand"": 2}, {""item_id"": 5, ""width"": 80, ""demand"": 7}, {""item_id"": 6, ""width"": 49, ""demand"": 4}]}","[{""5"": 1, ""6"": 1}, {""5"": 1, ""6"": 1}, {""5"": 1, ""6"": 1}, {""1"": 1, ""6"": 2}, {""1"": 1, ""3"": 1, ""4"": 1}, {""1"": 1, ""3"": 1, ""4"": 1}, {""1"": 1, ""2"": 1, ""5"": 1}, {""1"": 1, ""2"": 1, ""5"": 1}, {""1"": 1, ""2"": 1, ""5"": 1}, {""1"": 1, ""2"": 1, ""5"": 1}]"
+CSP_S_011,CSP,S,11,"There’s a stack of identical hides in the workshop and a stack of orders asking for panels of different lengths and quantities. The question is how to split each hide into pieces so all orders get exactly what they asked for, while keeping the number of hides consumed as low as possible — effectiveness is just the number of hides opened. No order can be shorted or doubled, and each hide has a fixed usable length that can’t be exceeded. See the concrete details below.
+
+{
+  ""hide_usable_length"": 150.0,
+  ""items"": [
+    {
+      ""panel_type_id"": 0,
+      ""panel_length"": 70,
+      ""panel_quantity"": 2
+    },
+    {
+      ""panel_type_id"": 1,
+      ""panel_length"": 27,
+      ""panel_quantity"": 3
+    },
+    {
+      ""panel_type_id"": 2,
+      ""panel_length"": 26,
+      ""panel_quantity"": 2
+    },
+    {
+      ""panel_type_id"": 3,
+      ""panel_length"": 20,
+      ""panel_quantity"": 2
+    },
+    {
+      ""panel_type_id"": 4,
+      ""panel_length"": 77,
+      ""panel_quantity"": 1
+    },
+    {
+      ""panel_type_id"": 5,
+      ""panel_length"": 52,
+      ""panel_quantity"": 1
+    },
+    {
+      ""panel_type_id"": 6,
+      ""panel_length"": 42,
+      ""panel_quantity"": 2
+    }
+  ]
+}
+
+If you want the cutting plan from me, just give me the results in a little JSON shape like this — keeps things tidy and easy to read:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of it as a simple form where ""solution"" is a list of hides (one entry per hide used), and each object inside lists which panel types you cut from that hide and how many of each. It's just a sketch of the shape I expect, not the actual answer itself.
+
+Please remember: all identifiers must be used exactly as they appear in the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""weights"": [70, 27, 26, 20, 77, 52, 42], ""demands"": [2, 3, 2, 2, 1, 1, 2], ""solution_patterns"": [{""2"": 2, ""5"": 1, ""6"": 1}, {""1"": 3, ""2"": 1, ""3"": 2}, {""0"": 1, ""4"": 1}, {""0"": 1, ""2"": 1, ""6"": 1}], ""obj"": 4, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""2"": 2, ""5"": 1, ""6"": 1}, {""1"": 3, ""2"": 1, ""3"": 2}, {""0"": 1, ""4"": 1}, {""0"": 1, ""2"": 1, ""6"": 1}]",4,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 7, ""items"": [{""item_id"": 0, ""width"": 70, ""demand"": 2}, {""item_id"": 1, ""width"": 27, ""demand"": 3}, {""item_id"": 2, ""width"": 26, ""demand"": 2}, {""item_id"": 3, ""width"": 20, ""demand"": 2}, {""item_id"": 4, ""width"": 77, ""demand"": 1}, {""item_id"": 5, ""width"": 52, ""demand"": 1}, {""item_id"": 6, ""width"": 42, ""demand"": 2}]}","[{""2"": 2, ""5"": 1, ""6"": 1}, {""1"": 3, ""2"": 1, ""3"": 2}, {""0"": 1, ""4"": 1}, {""0"": 1, ""2"": 1, ""6"": 1}]"
+CSP_S_012,CSP,S,12,"I run a small banner shop and have a pile of long rolls of fabric. The job is to cut each roll into strips of specific lengths to meet a stack of orders — every order wants a certain number of strips at a given length. The question is which strips to cut from which rolls so that every requested strip is made (no missing or extra pieces) and no roll is cut beyond its length, while opening as few rolls as possible — the count of rolls actually used is the thing to keep down. The exact strip lengths and quantities are listed below.
+
+{
+  ""roll_length"": 150.0,
+  ""items"": [
+    {
+      ""strip_type_id"": 0,
+      ""strip_length"": 42,
+      ""quantity_required"": 1
+    },
+    {
+      ""strip_type_id"": 1,
+      ""strip_length"": 59,
+      ""quantity_required"": 3
+    },
+    {
+      ""strip_type_id"": 2,
+      ""strip_length"": 64,
+      ""quantity_required"": 2
+    },
+    {
+      ""strip_type_id"": 3,
+      ""strip_length"": 30,
+      ""quantity_required"": 2
+    },
+    {
+      ""strip_type_id"": 4,
+      ""strip_length"": 25,
+      ""quantity_required"": 1
+    },
+    {
+      ""strip_type_id"": 5,
+      ""strip_length"": 79,
+      ""quantity_required"": 2
+    },
+    {
+      ""strip_type_id"": 6,
+      ""strip_length"": 70,
+      ""quantity_required"": 3
+    },
+    {
+      ""strip_type_id"": 7,
+      ""strip_length"": 95,
+      ""quantity_required"": 2
+    }
+  ]
+}
+
+Also, if you could send the cut plan back in a simple JSON shape, that makes it easy for me to read and plug into my cutting notes. Something like this:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Pretty straightforward: ""solution"" is a list where each entry is one roll and the little objects inside say which strip types and how many of each are cut from that roll. The angle-bracket stuff like <item_id> just stands in for the actual strip identifier you get in the instance, the numbers are counts, and ""..."" means repeat similar entries for however many rolls you use. This is just a sketch of the shape I expect, not the final plan.
+
+Please make sure you use the exact identifiers from the instance — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"{""weights"": [42, 59, 64, 30, 25, 79, 70, 95], ""demands"": [1, 3, 2, 2, 1, 2, 3, 2], ""solution_patterns"": [{""5"": 1, ""6"": 1}, {""5"": 1, ""6"": 1}, {""3"": 1, ""4"": 1, ""7"": 1}, {""2"": 2}, {""1"": 1, ""6"": 1}, {""1"": 2, ""3"": 1}, {""0"": 1, ""7"": 1}], ""obj"": 7, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""5"": 1, ""6"": 1}, {""5"": 1, ""6"": 1}, {""3"": 1, ""4"": 1, ""7"": 1}, {""2"": 2}, {""1"": 1, ""6"": 1}, {""1"": 2, ""3"": 1}, {""0"": 1, ""7"": 1}]",7,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 8, ""items"": [{""item_id"": 0, ""width"": 42, ""demand"": 1}, {""item_id"": 1, ""width"": 59, ""demand"": 3}, {""item_id"": 2, ""width"": 64, ""demand"": 2}, {""item_id"": 3, ""width"": 30, ""demand"": 2}, {""item_id"": 4, ""width"": 25, ""demand"": 1}, {""item_id"": 5, ""width"": 79, ""demand"": 2}, {""item_id"": 6, ""width"": 70, ""demand"": 3}, {""item_id"": 7, ""width"": 95, ""demand"": 2}]}","[{""5"": 1, ""6"": 1}, {""5"": 1, ""6"": 1}, {""3"": 1, ""4"": 1, ""7"": 1}, {""2"": 2}, {""1"": 1, ""6"": 1}, {""1"": 2, ""3"": 1}, {""0"": 1, ""7"": 1}]"
+CSP_S_013,CSP,S,13,"Recently the production team had to figure out how to best cut long plastic bars into dozens of parts without wasting material. The setting is straightforward: bars all have the same length, there’s a shopping list of part lengths plus how many of each to make, and the choice is how to arrange cuts on each bar. The best arrangements are those that keep the total number of bars opened to a minimum and minimize wasted leftover — one way to see which is best is to add up all the lengths used and see how many bars that would consume, or just count the bars used in the plan. Every ordered piece has to be made exactly as many times as listed, nothing missing or duplicated, and no cut layout may exceed any bar’s length. The concrete details are shown below.
+
+{
+  ""rod_length"": 150.0,
+  ""items"": [
+    {
+      ""part_id"": 1,
+      ""part_length"": 77,
+      ""quantity_required"": 3
+    },
+    {
+      ""part_id"": 2,
+      ""part_length"": 60,
+      ""quantity_required"": 2
+    },
+    {
+      ""part_id"": 3,
+      ""part_length"": 73,
+      ""quantity_required"": 1
+    },
+    {
+      ""part_id"": 4,
+      ""part_length"": 27,
+      ""quantity_required"": 1
+    },
+    {
+      ""part_id"": 5,
+      ""part_length"": 26,
+      ""quantity_required"": 1
+    },
+    {
+      ""part_id"": 6,
+      ""part_length"": 42,
+      ""quantity_required"": 1
+    }
+  ]
+}
+
+You can just hand me a candidate plan using a tiny JSON sketch like this:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+""solution"" is just a list of layouts — each object is one bar and inside it you say which item ids appear on that bar and how many of each. Think of it like filling out a simple form for each bar: item id → quantity. This block is only the shape I expect, not the actual cutting plan.
+
+Please make sure all identifiers are used exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"{""weights"": [77, 60, 73, 27, 26, 42], ""demands"": [3, 2, 1, 1, 1, 1], ""solution_patterns"": [{""1"": 2, ""4"": 1}, {""0"": 1, ""3"": 1, ""5"": 1}, {""0"": 1, ""2"": 1}, {""0"": 1, ""1"": 1}], ""obj"": 4, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""1"": 2, ""4"": 1}, {""0"": 1, ""3"": 1, ""5"": 1}, {""0"": 1, ""2"": 1}, {""0"": 1, ""1"": 1}]",4,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 6, ""items"": [{""item_id"": 1, ""width"": 77, ""demand"": 3}, {""item_id"": 2, ""width"": 60, ""demand"": 2}, {""item_id"": 3, ""width"": 73, ""demand"": 1}, {""item_id"": 4, ""width"": 27, ""demand"": 1}, {""item_id"": 5, ""width"": 26, ""demand"": 1}, {""item_id"": 6, ""width"": 42, ""demand"": 1}]}","[{""2"": 2, ""5"": 1}, {""1"": 1, ""4"": 1, ""6"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""2"": 1}]"
+CSP_S_014,CSP,S,14,"At the shop someone laid out identical-length stem bundles and a sheet saying how many stems of each length are needed. The job is to work out which cuts to make from each bundle so every length appears the right number of times, and the obvious goal is to keep the number of bundles opened as small as possible — simply sum how many bundles are used to judge a plan. Each bundle can only provide pieces whose total length does not exceed the bundle’s length (remaining bits are scrap), and every requested stem must be produced exactly the requested number of times, no omissions or duplicates. The exact instance details follow below.
+
+Each bundle is 150.0 long.
+Requested 7 stems of length 86 (type 1).
+Requested 2 stems of length 35 (type 2).
+Requested 4 stems of length 82 (type 3).
+Requested 2 stems of length 68 (type 4).
+Requested 4 stems of length 49 (type 5).
+Requested 1 stems of length 64 (type 6).
+Requested 2 stems of length 62 (type 7).
+Cuts should be arranged so every requested stem is produced exactly and the number of opened 150.0-length bundles is minimized.
+
+If you want to hand me a concrete cutting plan, just use this simple JSON shape so I can read it reliably. Something like:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+This sketch says ""solution"" is a list of bundles (one object per opened bundle). Each object maps an item placeholder to how many stems of that length are cut from that bundle. The little ellipsis just means ""repeat as needed"" — it's the form, not the actual plan.
+
+Keep in mind this is only a template of the expected shape, not the final answer.
+
+Please also use the exact identifiers from the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,one_based,"{""weights"": [86, 35, 82, 68, 49, 64, 62], ""demands"": [7, 2, 4, 2, 4, 1, 2], ""solution_patterns"": [{""2"": 1, ""3"": 1}, {""2"": 1, ""3"": 1}, {""1"": 1, ""2"": 1}, {""1"": 1, ""2"": 1}, {""0"": 1, ""6"": 1}, {""0"": 1, ""6"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""4"": 1}, {""0"": 1, ""4"": 1}, {""0"": 1, ""4"": 1}, {""0"": 1, ""4"": 1}], ""obj"": 11, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""2"": 1, ""3"": 1}, {""2"": 1, ""3"": 1}, {""1"": 1, ""2"": 1}, {""1"": 1, ""2"": 1}, {""0"": 1, ""6"": 1}, {""0"": 1, ""6"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""4"": 1}, {""0"": 1, ""4"": 1}, {""0"": 1, ""4"": 1}, {""0"": 1, ""4"": 1}]",11,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 7, ""items"": [{""item_id"": 1, ""width"": 86, ""demand"": 7}, {""item_id"": 2, ""width"": 35, ""demand"": 2}, {""item_id"": 3, ""width"": 82, ""demand"": 4}, {""item_id"": 4, ""width"": 68, ""demand"": 2}, {""item_id"": 5, ""width"": 49, ""demand"": 4}, {""item_id"": 6, ""width"": 64, ""demand"": 1}, {""item_id"": 7, ""width"": 62, ""demand"": 2}]}","[{""3"": 1, ""4"": 1}, {""3"": 1, ""4"": 1}, {""2"": 1, ""3"": 1}, {""2"": 1, ""3"": 1}, {""1"": 1, ""7"": 1}, {""1"": 1, ""7"": 1}, {""1"": 1, ""6"": 1}, {""1"": 1, ""5"": 1}, {""1"": 1, ""5"": 1}, {""1"": 1, ""5"": 1}, {""1"": 1, ""5"": 1}]"
+CSP_S_015,CSP,S,15,"I run a little curtain-pole shop and need to figure out how to slice standard-length poles into the various segment lengths customers ordered. The choice is which cuts to make on each full pole so every customer gets the exact number of pieces they asked for, and the pieces taken from any one full pole never add up to more than that pole’s length. Better plans are the ones that use fewer full poles overall — you can see how good a plan is by simply counting how many stock poles get used; the lower that count, the better. The exact stock length and the list of requested piece sizes and quantities are shown below.
+
+{
+  ""stock_pole_length"": 150.0,
+  ""items"": [
+    {
+      ""segment_type_id"": 0,
+      ""segment_length"": 43,
+      ""quantity_required"": 3
+    },
+    {
+      ""segment_type_id"": 1,
+      ""segment_length"": 28,
+      ""quantity_required"": 1
+    },
+    {
+      ""segment_type_id"": 2,
+      ""segment_length"": 61,
+      ""quantity_required"": 1
+    },
+    {
+      ""segment_type_id"": 3,
+      ""segment_length"": 58,
+      ""quantity_required"": 2
+    },
+    {
+      ""segment_type_id"": 4,
+      ""segment_length"": 68,
+      ""quantity_required"": 3
+    },
+    {
+      ""segment_type_id"": 5,
+      ""segment_length"": 34,
+      ""quantity_required"": 4
+    },
+    {
+      ""segment_type_id"": 6,
+      ""segment_length"": 24,
+      ""quantity_required"": 3
+    },
+    {
+      ""segment_type_id"": 7,
+      ""segment_length"": 47,
+      ""quantity_required"": 2
+    }
+  ]
+}
+
+If you want to hand me a candidate plan, just drop it in a tiny JSON snippet like this so it's easy to read and check:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of this as a simple form: ""solution"" is a list where each entry is one full pole, and each object lists which piece types (the placeholder key) and how many pieces of each type come from that pole (the numbers). It's just a sketch of the shape I expect, not the actual answer.
+
+Please make sure you use the exact identifiers from the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""weights"": [43, 28, 61, 58, 68, 34, 24, 47], ""demands"": [3, 1, 1, 2, 3, 4, 3, 2], ""solution_patterns"": [{""4"": 1, ""5"": 1, ""7"": 1}, {""4"": 1, ""5"": 1, ""6"": 2}, {""3"": 2, ""5"": 1}, {""2"": 1, ""5"": 1, ""7"": 1}, {""0"": 1, ""4"": 1, ""6"": 1}, {""0"": 2, ""1"": 1, ""5"": 1}], ""obj"": 6, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""4"": 1, ""5"": 1, ""7"": 1}, {""4"": 1, ""5"": 1, ""6"": 2}, {""3"": 2, ""5"": 1}, {""2"": 1, ""5"": 1, ""7"": 1}, {""0"": 1, ""4"": 1, ""6"": 1}, {""0"": 2, ""1"": 1, ""5"": 1}]",6,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 8, ""items"": [{""item_id"": 0, ""width"": 43, ""demand"": 3}, {""item_id"": 1, ""width"": 28, ""demand"": 1}, {""item_id"": 2, ""width"": 61, ""demand"": 1}, {""item_id"": 3, ""width"": 58, ""demand"": 2}, {""item_id"": 4, ""width"": 68, ""demand"": 3}, {""item_id"": 5, ""width"": 34, ""demand"": 4}, {""item_id"": 6, ""width"": 24, ""demand"": 3}, {""item_id"": 7, ""width"": 47, ""demand"": 2}]}","[{""4"": 1, ""5"": 1, ""7"": 1}, {""4"": 1, ""5"": 1, ""6"": 2}, {""3"": 2, ""5"": 1}, {""2"": 1, ""5"": 1, ""7"": 1}, {""0"": 1, ""4"": 1, ""6"": 1}, {""0"": 2, ""1"": 1, ""5"": 1}]"
+CSP_S_016,CSP,S,16,"A leatherworker is lining up rolls and an order sheet, trying to work out how to cut strips without wasting rolls. The choice is how to allocate each fixed-length roll into the various strip lengths requested so that all quantities on the order are fulfilled and no roll is asked to provide more material than it has. The goal is simple: finish every order while using as few rolls as possible — the metric is the number of rolls used, lower is better — and make sure every requested strip is cut in the exact amount, no extras or misses. The concrete details are listed below.
+
+- **roll_length**: 150.0
+
+| strip_type_id | strip_length | quantity_required |
+|---|---|---|
+| 0 | 67 | 1 |
+| 1 | 65 | 2 |
+| 2 | 40 | 2 |
+| 3 | 82 | 3 |
+| 4 | 96 | 3 |
+| 5 | 47 | 3 |
+
+Oh, and when you send the cutting plan back, just use this simple JSON layout so I can read it easily:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+This just means: ""solution"" is a list (one entry per roll), and each object shows which strip types go on that roll — the keys are the strip/item identifiers and the numbers are how many of that strip you cut from that roll. Think of it like filling out a packing slip for each roll. It's just a sketch of the shape I expect, not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,zero_based,"{""weights"": [67, 65, 40, 82, 96, 47], ""demands"": [1, 2, 2, 3, 3, 3], ""solution_patterns"": [{""4"": 1, ""5"": 1}, {""2"": 1, ""5"": 2}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""0"": 1, ""3"": 1}], ""obj"": 7, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""4"": 1, ""5"": 1}, {""2"": 1, ""5"": 2}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""0"": 1, ""3"": 1}]",7,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 6, ""items"": [{""item_id"": 0, ""width"": 67, ""demand"": 1}, {""item_id"": 1, ""width"": 65, ""demand"": 2}, {""item_id"": 2, ""width"": 40, ""demand"": 2}, {""item_id"": 3, ""width"": 82, ""demand"": 3}, {""item_id"": 4, ""width"": 96, ""demand"": 3}, {""item_id"": 5, ""width"": 47, ""demand"": 3}]}","[{""4"": 1, ""5"": 1}, {""2"": 1, ""5"": 2}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""0"": 1, ""3"": 1}]"
+CSP_S_017,CSP,S,17,"I’m lining up a bunch of events and need to cut table runners from bolts of fabric that all come in the same fixed length. The decision is how to slice each bolt into the specific runner lengths that were ordered so every order gets exactly what it asked for, and the best plan is the one that opens the fewest bolts—counting bolts opened tells you how well it’s working. Nothing can be left out or duplicated, and no cut can make a bolt’s total length go over its size. Concrete details will be shown below.
+
+# bolt_length=150.0
+runner_type_id,runner_length,quantity_needed
+A,31,6
+B,82,5
+C,67,9
+D,65,1
+E,93,4
+F,50,6
+G,48,2
+H,41,2
+
+Also, if you want to hand me the actual cut plan, please use this little JSON shape so everything lines up cleanly:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of it like a checklist: the top-level ""solution"" is a list where each entry is one opened bolt. Inside each entry you list the ordered item identifiers (""<item_id>"") and the numbers are how many pieces of that item you cut from that bolt. It's just a sketch of the shape I expect, not the final answer itself.
+
+One gentle but important note: use the exact identifiers from the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"{""weights"": [31, 82, 67, 65, 93, 50, 48, 41], ""demands"": [6, 5, 9, 1, 4, 6, 2, 2], ""solution_patterns"": [{""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""3"": 1, ""7"": 2}, {""1"": 1, ""2"": 1}, {""1"": 1, ""2"": 1}, {""1"": 1, ""2"": 1}, {""1"": 1, ""2"": 1}, {""1"": 1, ""2"": 1}, {""0"": 1, ""2"": 1, ""6"": 1}, {""0"": 1, ""2"": 1, ""6"": 1}, {""0"": 1, ""2"": 1, ""5"": 1}, {""0"": 1, ""2"": 1, ""5"": 1}, {""0"": 2, ""2"": 1}], ""obj"": 15, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""3"": 1, ""7"": 2}, {""1"": 1, ""2"": 1}, {""1"": 1, ""2"": 1}, {""1"": 1, ""2"": 1}, {""1"": 1, ""2"": 1}, {""1"": 1, ""2"": 1}, {""0"": 1, ""2"": 1, ""6"": 1}, {""0"": 1, ""2"": 1, ""6"": 1}, {""0"": 1, ""2"": 1, ""5"": 1}, {""0"": 1, ""2"": 1, ""5"": 1}, {""0"": 2, ""2"": 1}]",15,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 8, ""items"": [{""item_id"": ""A"", ""width"": 31, ""demand"": 6}, {""item_id"": ""B"", ""width"": 82, ""demand"": 5}, {""item_id"": ""C"", ""width"": 67, ""demand"": 9}, {""item_id"": ""D"", ""width"": 65, ""demand"": 1}, {""item_id"": ""E"", ""width"": 93, ""demand"": 4}, {""item_id"": ""F"", ""width"": 50, ""demand"": 6}, {""item_id"": ""G"", ""width"": 48, ""demand"": 2}, {""item_id"": ""H"", ""width"": 41, ""demand"": 2}]}","[{""E"": 1, ""F"": 1}, {""E"": 1, ""F"": 1}, {""E"": 1, ""F"": 1}, {""E"": 1, ""F"": 1}, {""D"": 1, ""H"": 2}, {""B"": 1, ""C"": 1}, {""B"": 1, ""C"": 1}, {""B"": 1, ""C"": 1}, {""B"": 1, ""C"": 1}, {""B"": 1, ""C"": 1}, {""A"": 1, ""C"": 1, ""G"": 1}, {""A"": 1, ""C"": 1, ""G"": 1}, {""A"": 1, ""C"": 1, ""F"": 1}, {""A"": 1, ""C"": 1, ""F"": 1}, {""A"": 2, ""C"": 1}]"
+CSP_S_018,CSP,S,18,"At the workshop a foreman looks at a stack of long canvas bolts and a checklist of panel sizes and counts and has to plan the cuts. The task is to decide how to group panel cuts on each bolt so every panel on the list is produced in the exact amount requested, with no bolt being asked to give more length than it has. The smarter layout is the one that finishes the job with the least number of bolts, which is checked by adding up how many bolts are used. The detailed sizes and quantities follow below.
+
+# bolt_length=150.0
+panel_id,panel_length,panel_quantity
+A,96,5
+B,67,2
+C,93,2
+D,69,2
+E,80,2
+F,45,1
+G,78,1
+H,64,4
+I,99,3
+
+Oh, and when you want to hand me the actual cut layout, just follow this little JSON sketch for the shape of the reply — nothing fancy, just the same structure so I can read it straight away:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Here the idea in plain terms: ""solution"" is a list of bolts (one object per bolt), and each object lists which panel IDs appear on that bolt and how many of each are cut there. The angle-bracket placeholders like <item_id> stand in for the panel IDs from the checklist, and the numbers are how many pieces of that panel you cut from that particular bolt. This is just the expected shape of the answer — a sketch, not the actual plan.
+
+Please be sure to use the exact identifiers from the instance input — no renaming, and don't invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"{""weights"": [96, 67, 93, 69, 80, 45, 78, 64, 99], ""demands"": [5, 2, 2, 2, 2, 1, 1, 4, 3], ""solution_patterns"": [{""7"": 2}, {""6"": 1, ""7"": 1}, {""5"": 1, ""8"": 1}, {""5"": 1, ""8"": 1}, {""5"": 1, ""8"": 1}, {""4"": 1, ""7"": 1}, {""4"": 1, ""7"": 1}, {""3"": 2}, {""2"": 1, ""5"": 1}, {""2"": 1, ""5"": 1}, {""1"": 2}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}], ""obj"": 16, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""7"": 2}, {""6"": 1, ""7"": 1}, {""5"": 1, ""8"": 1}, {""5"": 1, ""8"": 1}, {""5"": 1, ""8"": 1}, {""4"": 1, ""7"": 1}, {""4"": 1, ""7"": 1}, {""3"": 2}, {""2"": 1, ""5"": 1}, {""2"": 1, ""5"": 1}, {""1"": 2}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}]",16,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 9, ""items"": [{""item_id"": ""A"", ""width"": 96, ""demand"": 5}, {""item_id"": ""B"", ""width"": 67, ""demand"": 2}, {""item_id"": ""C"", ""width"": 93, ""demand"": 2}, {""item_id"": ""D"", ""width"": 69, ""demand"": 2}, {""item_id"": ""E"", ""width"": 80, ""demand"": 2}, {""item_id"": ""F"", ""width"": 45, ""demand"": 1}, {""item_id"": ""G"", ""width"": 78, ""demand"": 1}, {""item_id"": ""H"", ""width"": 64, ""demand"": 4}, {""item_id"": ""I"", ""width"": 99, ""demand"": 3}]}","[{""H"": 2}, {""G"": 1, ""H"": 1}, {""F"": 1, ""I"": 1}, {""F"": 1, ""I"": 1}, {""F"": 1, ""I"": 1}, {""E"": 1, ""H"": 1}, {""E"": 1, ""H"": 1}, {""D"": 2}, {""C"": 1, ""F"": 1}, {""C"": 1, ""F"": 1}, {""B"": 2}, {""A"": 1, ""F"": 1}, {""A"": 1, ""F"": 1}, {""A"": 1, ""F"": 1}, {""A"": 1, ""F"": 1}, {""A"": 1, ""F"": 1}]"
+CSP_S_019,CSP,S,19,"We’ve got a stack of label rolls to turn into strips for several customer orders, and the job is to decide how to slice each roll so every required label length and quantity is made exactly once. A better plan is the one that finishes the whole batch while opening the smallest possible number of full rolls — you can check success by tallying how many rolls were consumed. The concrete cut sizes and counts are listed below.
+
+- **label_roll_length**: 150.0
+
+| label_job_id | label_strip_length | label_quantity |
+|---|---|---|
+| A | 67 | 3 |
+| B | 24 | 3 |
+| C | 42 | 2 |
+| D | 33 | 2 |
+| E | 20 | 1 |
+| F | 52 | 7 |
+| G | 28 | 5 |
+| H | 55 | 2 |
+| I | 61 | 3 |
+
+You can just send the plan back in a tiny JSON shape like this — one object per roll, listing which label types and how many of each came off that roll.
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of each object in the solution array as one full label roll: the keys (the ""<item_id>"" placeholders) mark the label type, and the numbers are how many pieces of that type you cut from that roll. This is only a sketch of the expected shape — not the actual answer.
+
+Please use the exact identifiers from the instance input, do not rename them or invent new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""weights"": [67, 24, 42, 33, 20, 52, 28, 55, 61], ""demands"": [3, 3, 2, 2, 1, 7, 5, 2, 3], ""solution_patterns"": [{""6"": 1, ""8"": 2}, {""3"": 1, ""5"": 1, ""8"": 1}, {""3"": 1, ""5"": 1, ""8"": 1}, {""2"": 1, ""5"": 2}, {""2"": 1, ""5"": 2}, {""1"": 3, ""4"": 1, ""6"": 2}, {""0"": 1, ""6"": 1, ""7"": 1}, {""0"": 1, ""6"": 1, ""7"": 1}, {""0"": 1, ""5"": 1, ""6"": 1}], ""obj"": 9, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""6"": 1, ""8"": 2}, {""3"": 1, ""5"": 1, ""8"": 1}, {""3"": 1, ""5"": 1, ""8"": 1}, {""2"": 1, ""5"": 2}, {""2"": 1, ""5"": 2}, {""1"": 3, ""4"": 1, ""6"": 2}, {""0"": 1, ""6"": 1, ""7"": 1}, {""0"": 1, ""6"": 1, ""7"": 1}, {""0"": 1, ""5"": 1, ""6"": 1}]",9,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 9, ""items"": [{""item_id"": ""A"", ""width"": 67, ""demand"": 3}, {""item_id"": ""B"", ""width"": 24, ""demand"": 3}, {""item_id"": ""C"", ""width"": 42, ""demand"": 2}, {""item_id"": ""D"", ""width"": 33, ""demand"": 2}, {""item_id"": ""E"", ""width"": 20, ""demand"": 1}, {""item_id"": ""F"", ""width"": 52, ""demand"": 7}, {""item_id"": ""G"", ""width"": 28, ""demand"": 5}, {""item_id"": ""H"", ""width"": 55, ""demand"": 2}, {""item_id"": ""I"", ""width"": 61, ""demand"": 3}]}","[{""G"": 1, ""I"": 2}, {""D"": 1, ""F"": 1, ""I"": 1}, {""D"": 1, ""F"": 1, ""I"": 1}, {""C"": 1, ""F"": 2}, {""C"": 1, ""F"": 2}, {""B"": 3, ""E"": 1, ""G"": 2}, {""A"": 1, ""G"": 1, ""H"": 1}, {""A"": 1, ""G"": 1, ""H"": 1}, {""A"": 1, ""F"": 1, ""G"": 1}]"
+CSP_S_020,CSP,S,20,"At the small factory, the job is to cut fixed-length ribbon spools into a mix of lengths the clients ordered, and the planner decides the cutting pattern for each spool. The rule is straightforward: every order must be met with the correct number of pieces, nothing can be duplicated or left out, and each spool can only provide up to its own length. The plan that wins is the one that gets everything made while opening the fewest spools — you simply count how many spools were used. The specific spool length and order breakdown are shown below.
+
+Each spool holds 150.0 units of ribbon; the planner must fit pieces into spools without exceeding that length.
+Order 1 requires 1 pieces of length 69.
+Order 2 requires 5 pieces of length 74.
+Order 3 requires 6 pieces of length 25.
+Order 4 requires 2 pieces of length 33.
+Order 5 requires 2 pieces of length 60.
+The planner counts opened spools to choose the plan that meets all orders with the fewest spools.
+
+You can send your plan back in a lightweight JSON shape like this — just a quick sketch of how I expect the answer to be laid out:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Here ""solution"" is a list where each entry corresponds to one spool (one cutting pattern). Each object inside the list lists item placeholders (those angled-bracket names) mapped to how many pieces of that length you cut from that spool. This is just the shape I want — a template, not the actual cutting plan.
+
+Please make sure you use the exact identifiers from the instance input — do not rename or invent labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,one_based,"{""weights"": [69, 74, 25, 33, 60], ""demands"": [1, 5, 6, 2, 2], ""solution_patterns"": [{""2"": 1, ""4"": 2}, {""2"": 3, ""3"": 2}, {""1"": 2}, {""1"": 2}, {""1"": 2}, {""0"": 1, ""2"": 3}], ""obj"": 6, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""2"": 1, ""4"": 2}, {""2"": 3, ""3"": 2}, {""1"": 2}, {""1"": 2}, {""1"": 2}, {""0"": 1, ""2"": 3}]",6,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 5, ""items"": [{""item_id"": 1, ""width"": 69, ""demand"": 1}, {""item_id"": 2, ""width"": 74, ""demand"": 5}, {""item_id"": 3, ""width"": 25, ""demand"": 6}, {""item_id"": 4, ""width"": 33, ""demand"": 2}, {""item_id"": 5, ""width"": 60, ""demand"": 2}]}","[{""3"": 1, ""5"": 2}, {""3"": 3, ""4"": 2}, {""2"": 2}, {""2"": 2}, {""2"": 2}, {""1"": 1, ""3"": 3}]"
+CSP_S_021,CSP,S,21,"I was watching a flooring crew figure out how to slice long rolls of vinyl into the exact plank lengths they need for an install. The crew has rolls of a fixed length and a list of plank sizes with how many of each are needed, so the choice is how to cut each roll into pieces so every required plank is produced exactly — no missing pieces and no extra duplicates. A better cutting plan is simply the one that uses fewer full rolls: evaluate any plan by counting how many rolls get opened and cut. The cuts taken from any single roll can’t add up to more than the roll’s length, and the concrete plank sizes and counts are listed below.
+
+{
+  ""roll_length"": 150.0,
+  ""items"": [
+    {
+      ""plank_type_id"": 0,
+      ""plank_length"": 79,
+      ""required_count"": 1
+    },
+    {
+      ""plank_type_id"": 1,
+      ""plank_length"": 20,
+      ""required_count"": 1
+    },
+    {
+      ""plank_type_id"": 2,
+      ""plank_length"": 34,
+      ""required_count"": 2
+    },
+    {
+      ""plank_type_id"": 3,
+      ""plank_length"": 43,
+      ""required_count"": 2
+    },
+    {
+      ""plank_type_id"": 4,
+      ""plank_length"": 96,
+      ""required_count"": 2
+    },
+    {
+      ""plank_type_id"": 5,
+      ""plank_length"": 99,
+      ""required_count"": 1
+    },
+    {
+      ""plank_type_id"": 6,
+      ""plank_length"": 25,
+      ""required_count"": 3
+    }
+  ]
+}
+
+If you want to sketch out a cutting plan, just stick to this simple JSON shape so it's easy to read and check.
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of each object in the solution array as one opened roll and the little pairs inside as ""this many pieces of that plank type were cut from this roll."" The ""<item_id>"" placeholder is where you put the plank identifier from the instance, and the numbers are counts. The ""..."" just means you can list as many rolls (objects) as you need. This is only a sketch of the expected shape, not the actual cutting plan.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new labels.  
+Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",json,zero_based,"{""weights"": [79, 20, 34, 43, 96, 99, 25], ""demands"": [1, 1, 2, 2, 2, 1, 3], ""solution_patterns"": [{""5"": 1, ""6"": 2}, {""3"": 1, ""4"": 1}, {""1"": 1, ""2"": 1, ""4"": 1}, {""0"": 1, ""3"": 1, ""6"": 1}, {""0"": 1, ""2"": 2}], ""obj"": 5, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""5"": 1, ""6"": 2}, {""3"": 1, ""4"": 1}, {""1"": 1, ""2"": 1, ""4"": 1}, {""0"": 1, ""3"": 1, ""6"": 1}, {""0"": 1, ""2"": 2}]",5,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 7, ""items"": [{""item_id"": 0, ""width"": 79, ""demand"": 1}, {""item_id"": 1, ""width"": 20, ""demand"": 1}, {""item_id"": 2, ""width"": 34, ""demand"": 2}, {""item_id"": 3, ""width"": 43, ""demand"": 2}, {""item_id"": 4, ""width"": 96, ""demand"": 2}, {""item_id"": 5, ""width"": 99, ""demand"": 1}, {""item_id"": 6, ""width"": 25, ""demand"": 3}]}","[{""5"": 1, ""6"": 2}, {""3"": 1, ""4"": 1}, {""1"": 1, ""2"": 1, ""4"": 1}, {""0"": 1, ""3"": 1, ""6"": 1}, {""0"": 1, ""2"": 2}]"
+CSP_S_022,CSP,S,22,"Someone in the shop is planning a run of dowel parts and is staring at a stack of identical-length bars and a checklist of required short pieces. The choice is which cuts to make on each bar — what mix of lengths to put on one bar — in a way that produces the exact number of each piece and doesn’t leave anything out or produce extras. The neatest plan is the one that means fewer whole bars get pulled from stock, so you count bars used to see which plan is best. The detailed part sizes and counts follow below.
+
+# stock_bar_length=150.0
+part_id,piece_length,pieces_required
+0,87,3
+1,98,4
+2,92,2
+3,28,4
+4,63,4
+5,79,7
+6,54,3
+7,20,3
+
+If you'd like the cut plan in a simple, machine-friendly form, send it in this little JSON shape so I can read it easily:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of that as a list of bars (the ""solution"" array). Each object in the list is one bar: the keys inside are the piece identifiers and the numbers are how many of that piece go on that bar. The ellipsis just means ""and so on"" — more bars can follow in the same format. This is just a sketch of the shape I expect, not the final plan.
+
+Please make sure every identifier you use matches the instance input exactly — do not rename or invent labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,zero_based,"{""weights"": [87, 98, 92, 28, 63, 79, 54, 20], ""demands"": [3, 4, 2, 4, 4, 7, 3, 3], ""solution_patterns"": [{""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""1"": 1, ""3"": 1, ""7"": 1}, {""1"": 1, ""3"": 1, ""7"": 1}, {""1"": 1, ""3"": 1, ""7"": 1}, {""1"": 1, ""3"": 1, ""7"": 1}, {""0"": 1, ""6"": 1}, {""0"": 1, ""4"": 1}, {""0"": 1, ""4"": 1}], ""obj"": 16, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""1"": 1, ""3"": 1, ""7"": 1}, {""1"": 1, ""3"": 1, ""7"": 1}, {""1"": 1, ""3"": 1, ""7"": 1}, {""1"": 1, ""3"": 1, ""7"": 1}, {""0"": 1, ""6"": 1}, {""0"": 1, ""4"": 1}, {""0"": 1, ""4"": 1}]",16,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 8, ""items"": [{""item_id"": 0, ""width"": 87, ""demand"": 3}, {""item_id"": 1, ""width"": 98, ""demand"": 4}, {""item_id"": 2, ""width"": 92, ""demand"": 2}, {""item_id"": 3, ""width"": 28, ""demand"": 4}, {""item_id"": 4, ""width"": 63, ""demand"": 4}, {""item_id"": 5, ""width"": 79, ""demand"": 7}, {""item_id"": 6, ""width"": 54, ""demand"": 3}, {""item_id"": 7, ""width"": 20, ""demand"": 3}]}","[{""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""1"": 1, ""3"": 1, ""7"": 1}, {""1"": 1, ""3"": 1, ""7"": 1}, {""1"": 1, ""3"": 1, ""7"": 1}, {""1"": 1, ""3"": 1, ""7"": 1}, {""0"": 1, ""6"": 1}, {""0"": 1, ""4"": 1}, {""0"": 1, ""4"": 1}]"
+CSP_S_023,CSP,S,23,"A packaging technician is faced with bundles of orders and identical reels and has to decide how to split each reel into the requested strip lengths. The aim is clear in practice: produce every required strip (no missing pieces, no extras) and do it while using as few reels as possible — simply count the reels to see how efficient the plan is. The detailed sizes and order quantities appear below.
+
+{
+  ""reel_usable_length"": 150.0,
+  ""items"": [
+    {
+      ""strip_type_id"": 0,
+      ""strip_length"": 46,
+      ""quantity_required"": 1
+    },
+    {
+      ""strip_type_id"": 1,
+      ""strip_length"": 20,
+      ""quantity_required"": 2
+    },
+    {
+      ""strip_type_id"": 2,
+      ""strip_length"": 63,
+      ""quantity_required"": 1
+    },
+    {
+      ""strip_type_id"": 3,
+      ""strip_length"": 33,
+      ""quantity_required"": 2
+    },
+    {
+      ""strip_type_id"": 4,
+      ""strip_length"": 23,
+      ""quantity_required"": 2
+    },
+    {
+      ""strip_type_id"": 5,
+      ""strip_length"": 54,
+      ""quantity_required"": 2
+    },
+    {
+      ""strip_type_id"": 6,
+      ""strip_length"": 60,
+      ""quantity_required"": 2
+    }
+  ]
+}
+
+You can just hand me the plan in a tiny JSON object like this — nothing fancy, just the shape I expect:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of ""solution"" as a list of reels (one object per reel) and each object as the little inventory of item identifiers cut from that reel. This is just a sketch of the shape I want, not the actual packing plan — fill it in with the real identifiers from the instance.
+
+Please make sure all identifiers in your final submission are used exactly as they appear in the instance input — no renaming and no new labels. 
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,zero_based,"{""weights"": [46, 20, 63, 33, 23, 54, 60], ""demands"": [1, 2, 1, 2, 2, 2, 2], ""solution_patterns"": [{""3"": 1, ""5"": 1, ""6"": 1}, {""2"": 1, ""3"": 1, ""5"": 1}, {""1"": 2, ""3"": 1, ""4"": 2}, {""0"": 1, ""1"": 1, ""4"": 1, ""6"": 1}], ""obj"": 4, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""3"": 1, ""5"": 1, ""6"": 1}, {""2"": 1, ""3"": 1, ""5"": 1}, {""1"": 2, ""3"": 1, ""4"": 2}, {""0"": 1, ""1"": 1, ""4"": 1, ""6"": 1}]",4,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 7, ""items"": [{""item_id"": 0, ""width"": 46, ""demand"": 1}, {""item_id"": 1, ""width"": 20, ""demand"": 2}, {""item_id"": 2, ""width"": 63, ""demand"": 1}, {""item_id"": 3, ""width"": 33, ""demand"": 2}, {""item_id"": 4, ""width"": 23, ""demand"": 2}, {""item_id"": 5, ""width"": 54, ""demand"": 2}, {""item_id"": 6, ""width"": 60, ""demand"": 2}]}","[{""3"": 1, ""5"": 1, ""6"": 1}, {""2"": 1, ""3"": 1, ""5"": 1}, {""1"": 2, ""3"": 1, ""4"": 2}, {""0"": 1, ""1"": 1, ""4"": 1, ""6"": 1}]"
+CSP_S_024,CSP,S,24,"Out on the waterfront the carpenter looks at the standard-length timber and a sheet that says exactly how many slats of each length are needed. The choice at hand is how to cut each timber so the build list is met exactly — every slat on the sheet must be cut the right number of times and nothing can be left out or made extra — while keeping the number of timbers used as low as possible. You measure success simply by counting the timbers consumed; a smaller count is the goal. The detailed lengths and counts follow below.
+
+{
+  ""standard_timber_length"": 150.0,
+  ""items"": [
+    {
+      ""slat_type_id"": 1,
+      ""slat_length"": 43,
+      ""quantity_required"": 2
+    },
+    {
+      ""slat_type_id"": 2,
+      ""slat_length"": 77,
+      ""quantity_required"": 3
+    },
+    {
+      ""slat_type_id"": 3,
+      ""slat_length"": 44,
+      ""quantity_required"": 2
+    },
+    {
+      ""slat_type_id"": 4,
+      ""slat_length"": 39,
+      ""quantity_required"": 1
+    },
+    {
+      ""slat_type_id"": 5,
+      ""slat_length"": 87,
+      ""quantity_required"": 1
+    },
+    {
+      ""slat_type_id"": 6,
+      ""slat_length"": 99,
+      ""quantity_required"": 1
+    },
+    {
+      ""slat_type_id"": 7,
+      ""slat_length"": 95,
+      ""quantity_required"": 2
+    },
+    {
+      ""slat_type_id"": 8,
+      ""slat_length"": 84,
+      ""quantity_required"": 2
+    }
+  ]
+}
+
+If you want to hand me a cutting plan, just follow this simple JSON shape so it's easy to read and check.
+
+{
+  ""solution"": [
+    {""<slat_type_id>"": 2, ""<slat_type_id>"": 1},
+    ...
+  ]
+}
+
+Think of that as a little form: ""solution"" is the list of timbers you cut. Each object in the list is one timber and the placeholder keys (like <slat_type_id>) stand for the different slat types, with the numbers showing how many pieces of that type come from that timber. It's just a sketch of the shape I expect, not the real answer itself.
+
+Please use the exact identifiers from the instance input — don't rename them and don't invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,one_based,"{""weights"": [43, 77, 44, 39, 87, 99, 95, 84], ""demands"": [2, 3, 2, 1, 1, 1, 2, 2], ""solution_patterns"": [{""3"": 1, ""5"": 1}, {""3"": 1, ""4"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""0"": 1, ""7"": 1}, {""0"": 1, ""7"": 1}], ""obj"": 9, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""3"": 1, ""5"": 1}, {""3"": 1, ""4"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""0"": 1, ""7"": 1}, {""0"": 1, ""7"": 1}]",9,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 8, ""items"": [{""item_id"": 1, ""width"": 43, ""demand"": 2}, {""item_id"": 2, ""width"": 77, ""demand"": 3}, {""item_id"": 3, ""width"": 44, ""demand"": 2}, {""item_id"": 4, ""width"": 39, ""demand"": 1}, {""item_id"": 5, ""width"": 87, ""demand"": 1}, {""item_id"": 6, ""width"": 99, ""demand"": 1}, {""item_id"": 7, ""width"": 95, ""demand"": 2}, {""item_id"": 8, ""width"": 84, ""demand"": 2}]}","[{""4"": 1, ""6"": 1}, {""4"": 1, ""5"": 1}, {""3"": 1, ""7"": 1}, {""3"": 1, ""7"": 1}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""2"": 1, ""4"": 1}, {""1"": 1, ""8"": 1}, {""1"": 1, ""8"": 1}]"
+CSP_S_025,CSP,S,25,"I run a small bindery and every week I have to decide how to slice up long paper rolls into a bunch of fixed-size signatures so each print run gets exactly the number of copies it needs. The choice is which combination of signature lengths to cut from each roll so that nothing is missing or double-counted, and the measure of success is simple: count how many whole rolls were used — the fewer rolls the better. Any leftover scrap on a roll is okay, but every required signature must be produced in full, with no shortages or duplicates. The concrete details are shown below.
+
+Each roll I use has usable length 150.0.
+Signature A: I must cut 2 pieces, each 71 long.
+Signature B: I must cut 1 pieces, each 52 long.
+Signature C: I must cut 2 pieces, each 28 long.
+Signature D: I must cut 1 pieces, each 29 long.
+Signature E: I must cut 1 pieces, each 57 long.
+Signature F: I must cut 2 pieces, each 82 long.
+Signature G: I must cut 1 pieces, each 41 long.
+Signature H: I must cut 5 pieces, each 30 long.
+I'll pack signatures into rolls up to 150.0 long so I use as few whole rolls as possible.
+
+If it helps, I usually send the result back in a tiny JSON snippet like this so it's easy to read and import:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Pretty straightforward: ""solution"" is a list where each entry is one roll and the pairs inside say which signature types and how many of each were cut from that roll. Think of each object as a little packing list for a single paper roll. This is just a sketch of the shape I expect — not the final, concrete answer.
+
+Please remember: all identifiers in your actual reply must match the instance input exactly — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”. """,nl,names,"{""weights"": [71, 52, 28, 29, 57, 82, 41, 30], ""demands"": [2, 1, 2, 1, 1, 2, 1, 5], ""solution_patterns"": [{""3"": 1, ""5"": 1, ""7"": 1}, {""2"": 1, ""7"": 4}, {""2"": 2, ""5"": 1}, {""1"": 1, ""4"": 1, ""6"": 1}, {""0"": 2}], ""obj"": 5, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""3"": 1, ""5"": 1, ""7"": 1}, {""2"": 1, ""7"": 4}, {""2"": 2, ""5"": 1}, {""1"": 1, ""4"": 1, ""6"": 1}, {""0"": 2}]",5,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 8, ""items"": [{""item_id"": ""A"", ""width"": 71, ""demand"": 2}, {""item_id"": ""B"", ""width"": 52, ""demand"": 1}, {""item_id"": ""C"", ""width"": 28, ""demand"": 2}, {""item_id"": ""D"", ""width"": 29, ""demand"": 1}, {""item_id"": ""E"", ""width"": 57, ""demand"": 1}, {""item_id"": ""F"", ""width"": 82, ""demand"": 2}, {""item_id"": ""G"", ""width"": 41, ""demand"": 1}, {""item_id"": ""H"", ""width"": 30, ""demand"": 5}]}","[{""D"": 1, ""F"": 1, ""H"": 1}, {""C"": 1, ""H"": 4}, {""C"": 2, ""F"": 1}, {""B"": 1, ""E"": 1, ""G"": 1}, {""A"": 2}]"
+CSP_S_026,CSP,S,26,"There’s a workshop manager who spends part of every day planning how to cut full-size ceramic slabs into a bunch of smaller strip pieces customers asked for. The choice is which strips to cut from which slab so every single customer quantity is satisfied, nothing is left unmade or made twice, and no slab is overused beyond its length. Success is measured by the number of slabs used — the lower that number, the better the plan, so just tally the slabs to compare options. The concrete order list and slab size are shown below.
+
+# slab_length=150.0
+strip_type_id,strip_length,quantity_required
+0,25,1
+1,100,2
+2,51,2
+3,47,1
+4,37,4
+5,42,2
+6,60,1
+7,32,3
+8,65,1
+
+If you want to share a cutting plan, just use a tiny JSON sketch like the one below — nothing fancy, just a straightforward shape so I know how you’re grouping strips on each full slab.
+
+{
+  ""solution"": [
+    {""<strip_type_id>"": 2, ""<strip_type_id>"": 1},
+    ...
+  ]
+}
+
+Here’s what that little form means in plain language: the top-level ""solution"" holds a list of slabs (one object per slab). Each object lists which strip types and quantities are cut from that slab — the angled-bracket placeholders stand in for the strip type identifiers and the numbers are how many of that type go on that slab. Think of it as a one-line record per slab: which types, how many of each.
+
+This JSON is just the expected shape, not the final answer — a template to fill in with the actual labels and counts.
+
+Please use the exact identifiers given in the instance input — don’t rename them or invent new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""weights"": [25, 100, 51, 47, 37, 42, 60, 32, 65], ""demands"": [1, 2, 2, 1, 4, 2, 1, 3, 1], ""solution_patterns"": [{""4"": 1, ""5"": 1, ""7"": 2}, {""2"": 1, ""7"": 1, ""8"": 1}, {""2"": 1, ""4"": 1, ""6"": 1}, {""1"": 1, ""5"": 1}, {""1"": 1, ""4"": 1}, {""0"": 1, ""3"": 1, ""4"": 2}], ""obj"": 6, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""4"": 1, ""5"": 1, ""7"": 2}, {""2"": 1, ""7"": 1, ""8"": 1}, {""2"": 1, ""4"": 1, ""6"": 1}, {""1"": 1, ""5"": 1}, {""1"": 1, ""4"": 1}, {""0"": 1, ""3"": 1, ""4"": 2}]",6,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 9, ""items"": [{""item_id"": 0, ""width"": 25, ""demand"": 1}, {""item_id"": 1, ""width"": 100, ""demand"": 2}, {""item_id"": 2, ""width"": 51, ""demand"": 2}, {""item_id"": 3, ""width"": 47, ""demand"": 1}, {""item_id"": 4, ""width"": 37, ""demand"": 4}, {""item_id"": 5, ""width"": 42, ""demand"": 2}, {""item_id"": 6, ""width"": 60, ""demand"": 1}, {""item_id"": 7, ""width"": 32, ""demand"": 3}, {""item_id"": 8, ""width"": 65, ""demand"": 1}]}","[{""4"": 1, ""5"": 1, ""7"": 2}, {""2"": 1, ""7"": 1, ""8"": 1}, {""2"": 1, ""4"": 1, ""6"": 1}, {""1"": 1, ""5"": 1}, {""1"": 1, ""4"": 1}, {""0"": 1, ""3"": 1, ""4"": 2}]"
+CSP_S_027,CSP,S,27,"Out in the workshop someone’s balancing a pile of rolls against a list of strap sizes and quantities, trying to plan the cutting. The question is how to split each standard-length roll into the needed pieces so all strap demands are met exactly (no leftovers counted as items, no shortfalls), and so the team doesn’t go through more rolls than necessary. The simple measure of success is the total rolls consumed — lower is better — and the full item sizes and counts follow below.
+
+Each standard roll provides up to 150.0 units of usable length.
+For strap A, someone needs 1 pieces of length 55.
+For strap B, someone needs 2 pieces of length 60.
+For strap C, someone needs 2 pieces of length 29.
+For strap D, someone needs 5 pieces of length 43.
+For strap E, someone needs 1 pieces of length 69.
+For strap F, someone needs 3 pieces of length 70.
+For strap G, someone needs 5 pieces of length 36.
+The plan should meet every demand exactly while using as few 150.0-unit rolls as possible.
+
+Oh, and one more thing — when you send the actual plan back, please follow this simple JSON shape so it's easy to parse. Here's the sketch of the layout I expect:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of ""solution"" as a list of cut patterns: each object in the array is one roll and the little pairs inside say how many pieces of each item type come from that roll. It's just a friendly template — not the final answer.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or introduce new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,names,"{""weights"": [55, 60, 29, 43, 69, 70, 36], ""demands"": [1, 2, 2, 5, 1, 3, 5], ""solution_patterns"": [{""3"": 1, ""5"": 1, ""6"": 1}, {""3"": 1, ""5"": 1, ""6"": 1}, {""3"": 1, ""5"": 1, ""6"": 1}, {""3"": 1, ""4"": 1, ""6"": 1}, {""1"": 1, ""2"": 1, ""6"": 1}, {""1"": 1, ""2"": 1, ""6"": 1}, {""0"": 1, ""2"": 1, ""3"": 1}], ""obj"": 7, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""3"": 1, ""5"": 1, ""6"": 1}, {""3"": 1, ""5"": 1, ""6"": 1}, {""3"": 1, ""5"": 1, ""6"": 1}, {""3"": 1, ""4"": 1, ""6"": 1}, {""1"": 1, ""2"": 1, ""6"": 1}, {""1"": 1, ""2"": 1, ""6"": 1}, {""0"": 1, ""2"": 1, ""3"": 1}]",7,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 7, ""items"": [{""item_id"": ""A"", ""width"": 55, ""demand"": 1}, {""item_id"": ""B"", ""width"": 60, ""demand"": 2}, {""item_id"": ""C"", ""width"": 29, ""demand"": 2}, {""item_id"": ""D"", ""width"": 43, ""demand"": 5}, {""item_id"": ""E"", ""width"": 69, ""demand"": 1}, {""item_id"": ""F"", ""width"": 70, ""demand"": 3}, {""item_id"": ""G"", ""width"": 36, ""demand"": 5}]}","[{""D"": 1, ""F"": 1, ""G"": 1}, {""D"": 1, ""F"": 1, ""G"": 1}, {""D"": 1, ""F"": 1, ""G"": 1}, {""D"": 1, ""E"": 1, ""G"": 1}, {""B"": 1, ""C"": 1, ""G"": 1}, {""B"": 1, ""C"": 1, ""G"": 1}, {""A"": 1, ""C"": 1, ""D"": 1}]"
+CSP_S_028,CSP,S,28,"In a small framing shop the owner lays out long molding sticks and a stack of customer orders specifying how many side pieces of each length are needed. The choice is which cuts to make from each stick to complete every order, and the practical goal is to finish everything while using the smallest possible number of sticks — measure success by the total sticks used. It’s essential that each required piece is made to the right length and count; nothing can be left out or duplicated. The full details are listed below.
+
+Each molding stick measures 150.0 units, so cuts must be arranged within that length.
+Order 0: the owner must cut 3 pieces each 57 long.
+Order 1: the owner must cut 1 pieces each 30 long.
+Order 2: the owner must cut 1 pieces each 84 long.
+Order 3: the owner must cut 1 pieces each 93 long.
+Order 4: the owner must cut 2 pieces each 64 long.
+Order 5: the owner must cut 2 pieces each 54 long.
+Order 6: the owner must cut 2 pieces each 97 long.
+Arrange cuts to produce exactly the listed pieces while minimizing the number of 150.0-unit sticks used.
+
+If you want to hand me a cutting plan, a simple JSON outline like this is perfect — keeps things tidy and easy to read. Here’s the shape I expect:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of each object in the ""solution"" list as one stick and the little pairs inside show which piece types and how many of each come from that stick. It's just a friendly template to show the form your answer should take, not the actual cutting plan.
+
+Remember to use the exact identifiers from the instance input — don't rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""weights"": [57, 30, 84, 93, 64, 54, 97], ""demands"": [3, 1, 1, 1, 2, 2, 2], ""solution_patterns"": [{""4"": 2}, {""1"": 1, ""6"": 1}, {""1"": 1, ""6"": 1}, {""1"": 1, ""5"": 2}, {""0"": 1, ""3"": 1}, {""0"": 1, ""2"": 1}, {""0"": 2, ""1"": 1}], ""obj"": 7, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""4"": 2}, {""1"": 1, ""6"": 1}, {""1"": 1, ""6"": 1}, {""1"": 1, ""5"": 2}, {""0"": 1, ""3"": 1}, {""0"": 1, ""2"": 1}, {""0"": 2, ""1"": 1}]",7,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 7, ""items"": [{""item_id"": 0, ""width"": 57, ""demand"": 3}, {""item_id"": 1, ""width"": 30, ""demand"": 1}, {""item_id"": 2, ""width"": 84, ""demand"": 1}, {""item_id"": 3, ""width"": 93, ""demand"": 1}, {""item_id"": 4, ""width"": 64, ""demand"": 2}, {""item_id"": 5, ""width"": 54, ""demand"": 2}, {""item_id"": 6, ""width"": 97, ""demand"": 2}]}","[{""4"": 2}, {""1"": 1, ""6"": 1}, {""1"": 1, ""6"": 1}, {""1"": 1, ""5"": 2}, {""0"": 1, ""3"": 1}, {""0"": 1, ""2"": 1}, {""0"": 2, ""1"": 1}]"
+CSP_S_029,CSP,S,29,"I run a little deli and every week I get long cured sausage logs that need to be cut into specific portion lengths so every customer’s portion counts are filled. The choice is in how to slice each log so that every requested piece size and quantity is produced — nothing can be left out or counted twice — and the win is using as few whole sausage logs as possible. You can tell which plan is better simply by counting how many full logs it takes to meet all the orders. The exact portion lengths and counts are listed below.
+
+Each whole log is 150.0 long, so I plan cuts against that stock.
+For 0 I need 3 pieces, each 61 long.
+For 1 I need 3 pieces, each 28 long.
+For 2 I need 3 pieces, each 90 long.
+For 3 I need 1 pieces, each 42 long.
+For 4 I need 3 pieces, each 53 long.
+For 5 I need 2 pieces, each 60 long.
+For 6 I need 1 pieces, each 62 long.
+For 7 I need 1 pieces, each 92 long.
+For 8 I need 1 pieces, each 59 long.
+I'll arrange the cuts to use as few 150.0-length logs as possible.
+
+If you want to hand me a cutting plan, just drop it in a little JSON sketch like this — super simple and readable:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of ""solution"" as a list of whole sausage logs. Each object in that list is one log and the pairs inside show which portion types come out of that log and how many of each piece you get. The ""<item_id>"" placeholders stand in for the portion-type identifiers from the order, and the numbers are counts taken from that particular log. This is just the expected shape — a sketch — not the real answer.
+
+Please make sure you use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""weights"": [61, 28, 90, 42, 53, 60, 62, 92, 59], ""demands"": [3, 3, 3, 1, 3, 2, 1, 1, 1], ""solution_patterns"": [{""4"": 1, ""7"": 1}, {""3"": 1, ""4"": 2}, {""2"": 1, ""5"": 1}, {""2"": 1, ""5"": 1}, {""2"": 1, ""4"": 1}, {""1"": 1, ""6"": 1, ""8"": 1}, {""0"": 2, ""1"": 1}, {""0"": 2, ""1"": 1}], ""obj"": 8, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""4"": 1, ""7"": 1}, {""3"": 1, ""4"": 2}, {""2"": 1, ""5"": 1}, {""2"": 1, ""5"": 1}, {""2"": 1, ""4"": 1}, {""1"": 1, ""6"": 1, ""8"": 1}, {""0"": 2, ""1"": 1}, {""0"": 2, ""1"": 1}]",8,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 9, ""items"": [{""item_id"": 0, ""width"": 61, ""demand"": 3}, {""item_id"": 1, ""width"": 28, ""demand"": 3}, {""item_id"": 2, ""width"": 90, ""demand"": 3}, {""item_id"": 3, ""width"": 42, ""demand"": 1}, {""item_id"": 4, ""width"": 53, ""demand"": 3}, {""item_id"": 5, ""width"": 60, ""demand"": 2}, {""item_id"": 6, ""width"": 62, ""demand"": 1}, {""item_id"": 7, ""width"": 92, ""demand"": 1}, {""item_id"": 8, ""width"": 59, ""demand"": 1}]}","[{""4"": 1, ""7"": 1}, {""3"": 1, ""4"": 2}, {""2"": 1, ""5"": 1}, {""2"": 1, ""5"": 1}, {""2"": 1, ""4"": 1}, {""1"": 1, ""6"": 1, ""8"": 1}, {""0"": 2, ""1"": 1}, {""0"": 2, ""1"": 1}]"
+CSP_S_030,CSP,S,30,"Someone in the sewing room needs to figure out how to chop up whole bolts of fabric into the various pattern parts so all customer orders are met. The task is to pick which pieces come off which bolt, keeping in mind that the lengths cut from any single bolt can’t exceed that bolt’s total length, and every requested piece and quantity must be produced, not more and not less. The easier-to-live-with solutions are the ones that consume the fewest bolts — just add up the bolts used; smaller totals are preferable. The specific measurements and quantities are shown below.
+
+One bolt provides 150.0 usable length.
+For 0, produce 2 pieces, each 63 long.
+For 1, produce 2 pieces, each 28 long.
+For 2, produce 3 pieces, each 73 long.
+For 3, produce 4 pieces, each 70 long.
+For 4, produce 5 pieces, each 74 long.
+For 5, produce 5 pieces, each 78 long.
+For 6, produce 4 pieces, each 92 long.
+For 7, produce 2 pieces, each 26 long.
+Cuts must not exceed 150.0 per bolt, every requested piece and quantity must be produced with no extras, and solutions that use the fewest bolts are preferred.
+
+You can reply with a little JSON sketch like this so it's clear what shape I'm expecting:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of ""solution"" as a list of bolts and each object inside it as the pieces cut from that bolt: the placeholder keys are the piece types and the numbers are how many of that piece come off that bolt. It's just a template showing the layout — not the finished cutting plan.
+
+Please make sure to use the exact item identifiers from the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".""",nl,zero_based,"{""weights"": [63, 28, 73, 70, 74, 78, 92, 26], ""demands"": [2, 2, 3, 4, 5, 5, 4, 2], ""solution_patterns"": [{""4"": 2}, {""4"": 2}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""2"": 1, ""4"": 1}, {""2"": 2}, {""1"": 1, ""6"": 1, ""7"": 1}, {""1"": 1, ""6"": 1, ""7"": 1}, {""1"": 1, ""6"": 1, ""7"": 1}, {""1"": 1, ""6"": 1, ""7"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}], ""obj"": 14, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""4"": 2}, {""4"": 2}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""2"": 1, ""4"": 1}, {""2"": 2}, {""1"": 1, ""6"": 1, ""7"": 1}, {""1"": 1, ""6"": 1, ""7"": 1}, {""1"": 1, ""6"": 1, ""7"": 1}, {""1"": 1, ""6"": 1, ""7"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}]",14,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 8, ""items"": [{""item_id"": 0, ""width"": 63, ""demand"": 2}, {""item_id"": 1, ""width"": 28, ""demand"": 2}, {""item_id"": 2, ""width"": 73, ""demand"": 3}, {""item_id"": 3, ""width"": 70, ""demand"": 4}, {""item_id"": 4, ""width"": 74, ""demand"": 5}, {""item_id"": 5, ""width"": 78, ""demand"": 5}, {""item_id"": 6, ""width"": 92, ""demand"": 4}, {""item_id"": 7, ""width"": 26, ""demand"": 2}]}","[{""4"": 2}, {""4"": 2}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""2"": 1, ""4"": 1}, {""2"": 2}, {""1"": 1, ""6"": 1, ""7"": 1}, {""1"": 1, ""6"": 1, ""7"": 1}, {""1"": 1, ""6"": 1, ""7"": 1}, {""1"": 1, ""6"": 1, ""7"": 1}, {""0"": 1, ""5"": 1}, {""0"": 1, ""5"": 1}]"
+CSP_S_031,CSP,S,31,"Recently the team had to work out how best to slice standard-length rods into a mix of shorter bars for several parts. The question: how should each rod be cut so that every requested part appears in the correct quantity, no rod is asked to give more length than it actually has, and the total number of raw rods consumed is as low as possible. To judge options, just count the full rods each option needs — the lower that count, the smarter the cut plan. The concrete details are given below.
+
+- **standard_rod_length**: 150.0
+
+| part_id | part_length | quantity_required |
+|---|---|---|
+| A | 47 | 1 |
+| B | 70 | 3 |
+| C | 82 | 2 |
+| D | 37 | 1 |
+| E | 84 | 5 |
+| F | 36 | 3 |
+
+You can just give the proposed cuts as a small JSON blob like this one — it's an easy way to list each rod and what pieces come from it:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of ""solution"" as a list of rods (one entry per raw rod). Each object inside the list shows which part types are cut from that rod and how many of each — the keys are placeholders for part types and the numbers are counts. This is just a sketch of the expected shape, not the actual answer.
+
+Please make sure to use the exact identifiers shown in the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,names,"{""weights"": [47, 70, 82, 37, 84, 36], ""demands"": [1, 3, 2, 1, 5, 3], ""solution_patterns"": [{""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""3"": 1, ""4"": 1}, {""2"": 1, ""5"": 1}, {""2"": 1, ""5"": 1}, {""1"": 2}, {""1"": 2}, {""0"": 1, ""4"": 1}], ""obj"": 9, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""3"": 1, ""4"": 1}, {""2"": 1, ""5"": 1}, {""2"": 1, ""5"": 1}, {""1"": 2}, {""1"": 2}, {""0"": 1, ""4"": 1}]",9,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 6, ""items"": [{""item_id"": ""A"", ""width"": 47, ""demand"": 1}, {""item_id"": ""B"", ""width"": 70, ""demand"": 3}, {""item_id"": ""C"", ""width"": 82, ""demand"": 2}, {""item_id"": ""D"", ""width"": 37, ""demand"": 1}, {""item_id"": ""E"", ""width"": 84, ""demand"": 5}, {""item_id"": ""F"", ""width"": 36, ""demand"": 3}]}","[{""E"": 1, ""F"": 1}, {""E"": 1, ""F"": 1}, {""E"": 1, ""F"": 1}, {""D"": 1, ""E"": 1}, {""C"": 1, ""F"": 1}, {""C"": 1, ""F"": 1}, {""B"": 2}, {""B"": 2}, {""A"": 1, ""E"": 1}]"
+CSP_S_032,CSP,S,32,"I run into the problem of slicing long dough rolls into the exact mix of loaf sizes a bakery needs for the day. The choice is which loaf sizes to cut from each roll so every customer quantity is made exactly once, without making extras or skipping any orders, and without overstuffing a roll beyond its length. A better plan is the one that uses fewer whole dough rolls — just count how many rolls get opened to see which plan wins. The specific loaf sizes, their counts, and the roll length are laid out below.
+
+- **dough_roll_length**: 150.0
+
+| loaf_type_id | loaf_length | order_quantity |
+|---|---|---|
+| 0 | 22 | 2 |
+| 1 | 92 | 1 |
+| 2 | 50 | 1 |
+| 3 | 84 | 2 |
+| 4 | 40 | 1 |
+
+Also, when you send back a plan, keep it in this simple JSON shape so it's easy to read by people and machines alike:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of it like a little form: ""solution"" is a list of rolls you open; each object in the list shows which loaf placeholders go on that roll and how many of each. It's just an outline of the expected shape, not the actual cutting plan — I'll fill in the real numbers when I compute the plan.
+
+Please make sure to use the exact identifiers from the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,zero_based,"{""weights"": [22, 92, 50, 84, 40], ""demands"": [2, 1, 1, 2, 1], ""solution_patterns"": [{""2"": 1, ""3"": 1}, {""1"": 1, ""4"": 1}, {""0"": 2, ""3"": 1}], ""obj"": 3, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""2"": 1, ""3"": 1}, {""1"": 1, ""4"": 1}, {""0"": 2, ""3"": 1}]",3,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 5, ""items"": [{""item_id"": 0, ""width"": 22, ""demand"": 2}, {""item_id"": 1, ""width"": 92, ""demand"": 1}, {""item_id"": 2, ""width"": 50, ""demand"": 1}, {""item_id"": 3, ""width"": 84, ""demand"": 2}, {""item_id"": 4, ""width"": 40, ""demand"": 1}]}","[{""2"": 1, ""3"": 1}, {""1"": 1, ""4"": 1}, {""0"": 2, ""3"": 1}]"
+CSP_S_033,CSP,S,33,"I was chatting with the team at a small glass shop where they have stacks of the same-size panes and a long list of panel sizes customers ordered. The question is how to slice those standard panes into all the needed panels so every order quantity is met, and the clever part is trying to do that while using as few whole panes as possible — you judge a plan by simply counting how many full panes get used, the lower the count the better. Every requested panel size and quantity has to be produced exactly, and no single panel can be cut from a pane if it wouldn’t fit inside that pane’s length. The exact panel sizes and quantities will be shown below.
+
+Each standard pane is 150.0 long.
+For A, the shop needs 3 panels of length 32.
+For B, the shop needs 5 panels of length 92.
+For C, the shop needs 1 panels of length 47.
+For D, the shop needs 3 panels of length 62.
+For E, the shop needs 5 panels of length 89.
+For F, the shop needs 2 panels of length 86.
+For G, the shop needs 2 panels of length 21.
+For H, the shop needs 2 panels of length 58.
+For I, the shop needs 4 panels of length 64.
+Every panel must fit within a pane of length 150.0; you judge a cutting plan by how many whole panes are used.
+
+Oh, and one more thing — when you send back a plan, try to follow this simple JSON layout so I can read it automatically. It just describes each full pane as a little list of which panel types (and quantities) come from it.
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+This sketch means: the top-level ""solution"" holds an array of cutting patterns; each object in the array lists item identifiers and how many of that item come from a single standard pane. It's just a friendly template — not the final answer itself.
+
+Please be sure to use the exact identifiers from the instance input — don't rename them or invent new ones. 
+- for example: Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",nl,names,"{""weights"": [32, 92, 47, 62, 89, 86, 21, 58, 64], ""demands"": [3, 5, 1, 3, 5, 2, 2, 2, 4], ""solution_patterns"": [{""6"": 1, ""8"": 2}, {""5"": 1, ""8"": 1}, {""5"": 1, ""8"": 1}, {""4"": 1, ""7"": 1}, {""3"": 1, ""6"": 1, ""8"": 1}, {""3"": 2, ""6"": 1}, {""2"": 1, ""4"": 1}, {""1"": 1, ""7"": 1}, {""1"": 1, ""7"": 1}, {""1"": 1, ""7"": 1}, {""1"": 1, ""7"": 1}, {""1"": 1, ""7"": 1}, {""0"": 1, ""4"": 1, ""6"": 1}, {""0"": 1, ""4"": 1, ""6"": 1}, {""0"": 1, ""4"": 1, ""6"": 1}], ""obj"": 15, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""6"": 1, ""8"": 2}, {""5"": 1, ""8"": 1}, {""5"": 1, ""8"": 1}, {""4"": 1, ""7"": 1}, {""3"": 1, ""6"": 1, ""8"": 1}, {""3"": 2, ""6"": 1}, {""2"": 1, ""4"": 1}, {""1"": 1, ""7"": 1}, {""1"": 1, ""7"": 1}, {""1"": 1, ""7"": 1}, {""1"": 1, ""7"": 1}, {""1"": 1, ""7"": 1}, {""0"": 1, ""4"": 1, ""6"": 1}, {""0"": 1, ""4"": 1, ""6"": 1}, {""0"": 1, ""4"": 1, ""6"": 1}]",15,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 9, ""items"": [{""item_id"": ""A"", ""width"": 32, ""demand"": 3}, {""item_id"": ""B"", ""width"": 92, ""demand"": 5}, {""item_id"": ""C"", ""width"": 47, ""demand"": 1}, {""item_id"": ""D"", ""width"": 62, ""demand"": 3}, {""item_id"": ""E"", ""width"": 89, ""demand"": 5}, {""item_id"": ""F"", ""width"": 86, ""demand"": 2}, {""item_id"": ""G"", ""width"": 21, ""demand"": 2}, {""item_id"": ""H"", ""width"": 58, ""demand"": 2}, {""item_id"": ""I"", ""width"": 64, ""demand"": 4}]}","[{""G"": 1, ""I"": 2}, {""F"": 1, ""I"": 1}, {""F"": 1, ""I"": 1}, {""E"": 1, ""H"": 1}, {""D"": 1, ""G"": 1, ""I"": 1}, {""D"": 2, ""G"": 1}, {""C"": 1, ""E"": 1}, {""B"": 1, ""H"": 1}, {""B"": 1, ""H"": 1}, {""B"": 1, ""H"": 1}, {""B"": 1, ""H"": 1}, {""B"": 1, ""H"": 1}, {""A"": 1, ""E"": 1, ""G"": 1}, {""A"": 1, ""E"": 1, ""G"": 1}, {""A"": 1, ""E"": 1, ""G"": 1}]"
+CSP_S_034,CSP,S,34,"There's this straightforward scene: a workbench, a stack of identical-length tubes, and an order ticket listing how many cushion strips of each size are needed. The trick is to plan the cuts so the order is fulfilled and the total length taken from any single tube never goes past what that tube holds. A smarter plan is the one that gets the whole order done using fewer tubes — count the tubes used to judge that. Nothing on the order can be left out or duplicated beyond what’s asked, and the concrete details follow below.
+
+# tube_length=150.0
+strip_type_id,strip_length,required_count
+0,84,1
+1,74,2
+2,23,2
+3,96,2
+4,93,1
+5,45,2
+6,81,1
+
+Oh, and one more thing — when you send the plan back, keep it in this little JSON layout so it's easy to parse. Something like this:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Here ""solution"" is just a list (each element is one tube's worth of cuts). Each object inside says how many pieces of each item to take from that tube — think of each {""<item_id>"": 2} entry as ""cut two of that item from this tube."" This block is only a sketch of the shape I expect, not the actual cutting plan.
+
+Please make sure to use the exact identifiers from the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""weights"": [84, 74, 23, 96, 93, 45, 81], ""demands"": [1, 2, 2, 2, 1, 2, 1], ""solution_patterns"": [{""4"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""2"": 2, ""6"": 1}, {""1"": 2}, {""0"": 1, ""5"": 1}], ""obj"": 6, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""4"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""2"": 2, ""6"": 1}, {""1"": 2}, {""0"": 1, ""5"": 1}]",6,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 7, ""items"": [{""item_id"": 0, ""width"": 84, ""demand"": 1}, {""item_id"": 1, ""width"": 74, ""demand"": 2}, {""item_id"": 2, ""width"": 23, ""demand"": 2}, {""item_id"": 3, ""width"": 96, ""demand"": 2}, {""item_id"": 4, ""width"": 93, ""demand"": 1}, {""item_id"": 5, ""width"": 45, ""demand"": 2}, {""item_id"": 6, ""width"": 81, ""demand"": 1}]}","[{""4"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""2"": 2, ""6"": 1}, {""1"": 2}, {""0"": 1, ""5"": 1}]"
+CSP_S_035,CSP,S,35,"Back at the warehouse the foreman draws up cutting lists so long rolls get turned into the exact number of face strips needed for shipments; the cuts from each roll must not add up past the roll’s fixed length and every requested piece must be produced without extras or shortages. The plan that’s preferred is the one that gets it done using the least number of rolls — just count the rolls to see which plan wins. The specific sizes and demands are listed below.
+
+- **roll_length**: 150.0
+
+| strip_id | strip_length | quantity_required |
+|---|---|---|
+| A | 65 | 1 |
+| B | 84 | 4 |
+| C | 66 | 3 |
+| D | 80 | 1 |
+| E | 88 | 2 |
+| F | 96 | 2 |
+
+Oh, and when you send back the cutting plan, just stick to this simple JSON layout so it's easy to read by the team. Here's a quick sketch of the shape I expect:
+
+{
+  ""solution"": [
+    {""<patch_type_id>"": 2, ""<patch_type_id>"": 1},
+    ...
+  ]
+}
+
+The idea is super straightforward: ""solution"" is a list of rolls, and each object in that list shows which patch/strip placeholders and counts come from that roll. Think of each object like a little cut list for one roll. This is just a sketch of the expected shape, not the actual answer.
+
+Please make sure you use the exact identifiers from the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""weights"": [65, 84, 66, 80, 88, 96], ""demands"": [1, 4, 3, 1, 2, 2], ""solution_patterns"": [{""5"": 1}, {""5"": 1}, {""4"": 1}, {""4"": 1}, {""2"": 1, ""3"": 1}, {""1"": 1, ""2"": 1}, {""1"": 1, ""2"": 1}, {""1"": 1, ""2"": 1}, {""0"": 1, ""1"": 1}], ""obj"": 9, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""5"": 1}, {""5"": 1}, {""4"": 1}, {""4"": 1}, {""2"": 1, ""3"": 1}, {""1"": 1, ""2"": 1}, {""1"": 1, ""2"": 1}, {""1"": 1, ""2"": 1}, {""0"": 1, ""1"": 1}]",9,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 6, ""items"": [{""item_id"": ""A"", ""width"": 65, ""demand"": 1}, {""item_id"": ""B"", ""width"": 84, ""demand"": 4}, {""item_id"": ""C"", ""width"": 66, ""demand"": 3}, {""item_id"": ""D"", ""width"": 80, ""demand"": 1}, {""item_id"": ""E"", ""width"": 88, ""demand"": 2}, {""item_id"": ""F"", ""width"": 96, ""demand"": 2}]}","[{""F"": 1}, {""F"": 1}, {""E"": 1}, {""E"": 1}, {""C"": 1, ""D"": 1}, {""B"": 1, ""C"": 1}, {""B"": 1, ""C"": 1}, {""B"": 1, ""C"": 1}, {""A"": 1, ""B"": 1}]"
+CSP_S_036,CSP,S,36,"Many people in small ateliers face the same problem: a pile of long hides and a packing list of different patch lengths needed to assemble shoes. The trick is deciding how to arrange those patches along the hides so every item on the list gets made while opening the smallest possible number of hides. One arrangement is preferable when it uses fewer whole hides — you simply count the hides required to compare plans — and it has to respect the simple limit that the lengths taken from any single hide don’t go past that hide’s fixed length. The exact requirements are below.
+
+# hide_length=150.0
+patch_type_id,patch_length,required_quantity
+0,34,2
+1,61,5
+2,31,2
+3,86,2
+4,56,2
+5,68,1
+6,54,2
+7,96,1
+8,39,2
+
+If you want to sketch a cutting plan, just follow this simple JSON shape when you reply — it keeps things tidy and easy to read:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of ""solution"" as a list where each entry is one opened hide and the little mappings inside show which patch types come off that hide and in what counts. The angle-bracketed bits are placeholders for patch-type labels and the numbers are how many pieces of that type you take from that hide. This is just a sketch of the expected shape, not the actual answer.
+
+Please use the exact identifiers from the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,zero_based,"{""weights"": [34, 61, 31, 86, 56, 68, 54, 96, 39], ""demands"": [2, 5, 2, 2, 2, 1, 2, 1, 2], ""solution_patterns"": [{""6"": 1, ""7"": 1}, {""5"": 1, ""8"": 2}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""2"": 1, ""4"": 1}, {""1"": 1, ""2"": 1, ""4"": 1}, {""0"": 1, ""1"": 1, ""6"": 1}, {""0"": 2, ""2"": 2}], ""obj"": 8, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""6"": 1, ""7"": 1}, {""5"": 1, ""8"": 2}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""2"": 1, ""4"": 1}, {""1"": 1, ""2"": 1, ""4"": 1}, {""0"": 1, ""1"": 1, ""6"": 1}, {""0"": 2, ""2"": 2}]",8,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 9, ""items"": [{""item_id"": 0, ""width"": 34, ""demand"": 2}, {""item_id"": 1, ""width"": 61, ""demand"": 5}, {""item_id"": 2, ""width"": 31, ""demand"": 2}, {""item_id"": 3, ""width"": 86, ""demand"": 2}, {""item_id"": 4, ""width"": 56, ""demand"": 2}, {""item_id"": 5, ""width"": 68, ""demand"": 1}, {""item_id"": 6, ""width"": 54, ""demand"": 2}, {""item_id"": 7, ""width"": 96, ""demand"": 1}, {""item_id"": 8, ""width"": 39, ""demand"": 2}]}","[{""6"": 1, ""7"": 1}, {""5"": 1, ""8"": 2}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""2"": 1, ""4"": 1}, {""1"": 1, ""2"": 1, ""4"": 1}, {""0"": 1, ""1"": 1, ""6"": 1}, {""0"": 2, ""2"": 2}]"
+CSP_S_037,CSP,S,37,"Many people don’t realize that making curtains is a bit of a packing puzzle: long rolls must be cut into panels of several widths to satisfy lots of orders. The choice is how to assign those panels to each roll so every quantity is produced correctly and the sum of widths from any roll stays within the roll’s fixed length. A smarter assignment is the one that finishes all orders while using the fewest rolls possible — tally the number of rolls as the score — and the exact panel widths, quantities, and roll size are below.
+
+Each roll provides a usable length of 150.0 for cutting panels.
+Panel type A requires 3 panels, each 96 wide.
+Panel type B requires 3 panels, each 80 wide.
+Panel type C requires 3 panels, each 45 wide.
+Panel type D requires 1 panels, each 62 wide.
+Panel type E requires 3 panels, each 98 wide.
+Panel type F requires 5 panels, each 30 wide.
+Panel type G requires 5 panels, each 90 wide.
+Panel type H requires 2 panels, each 32 wide.
+Panel type I requires 4 panels, each 54 wide.
+Use rolls of length 150.0 and pack panels to minimize the total number of rolls used.
+
+When you send back a candidate cutting plan, just drop it in a tiny JSON sketch so it's easy to read and validate. Something casual like this works fine:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of that as: the ""solution"" list contains one entry per roll (one cut pattern per roll). Each object inside lists which panel types and how many of each are cut from that roll. Super informal — just a way to show which items go on which roll. This is only a sketch of the shape I expect, not the final answer.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,names,"{""weights"": [96, 80, 45, 62, 98, 30, 90, 32, 54], ""demands"": [3, 3, 3, 1, 3, 5, 5, 2, 4], ""solution_patterns"": [{""5"": 2, ""6"": 1}, {""5"": 2, ""6"": 1}, {""5"": 2, ""6"": 1}, {""4"": 1, ""7"": 1}, {""4"": 1, ""7"": 1}, {""4"": 1, ""7"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""1"": 1, ""8"": 1}, {""1"": 1, ""8"": 1}, {""1"": 1, ""3"": 1}, {""0"": 1, ""8"": 1}, {""0"": 1, ""8"": 1}, {""0"": 1, ""2"": 1}], ""obj"": 14, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""5"": 2, ""6"": 1}, {""5"": 2, ""6"": 1}, {""5"": 2, ""6"": 1}, {""4"": 1, ""7"": 1}, {""4"": 1, ""7"": 1}, {""4"": 1, ""7"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""1"": 1, ""8"": 1}, {""1"": 1, ""8"": 1}, {""1"": 1, ""3"": 1}, {""0"": 1, ""8"": 1}, {""0"": 1, ""8"": 1}, {""0"": 1, ""2"": 1}]",14,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 9, ""items"": [{""item_id"": ""A"", ""width"": 96, ""demand"": 3}, {""item_id"": ""B"", ""width"": 80, ""demand"": 3}, {""item_id"": ""C"", ""width"": 45, ""demand"": 3}, {""item_id"": ""D"", ""width"": 62, ""demand"": 1}, {""item_id"": ""E"", ""width"": 98, ""demand"": 3}, {""item_id"": ""F"", ""width"": 30, ""demand"": 5}, {""item_id"": ""G"", ""width"": 90, ""demand"": 5}, {""item_id"": ""H"", ""width"": 32, ""demand"": 2}, {""item_id"": ""I"", ""width"": 54, ""demand"": 4}]}","[{""F"": 2, ""G"": 1}, {""F"": 2, ""G"": 1}, {""F"": 2, ""G"": 1}, {""E"": 1, ""H"": 1}, {""E"": 1, ""H"": 1}, {""E"": 1, ""H"": 1}, {""C"": 1, ""G"": 1}, {""C"": 1, ""G"": 1}, {""B"": 1, ""I"": 1}, {""B"": 1, ""I"": 1}, {""B"": 1, ""D"": 1}, {""A"": 1, ""I"": 1}, {""A"": 1, ""I"": 1}, {""A"": 1, ""C"": 1}]"
+CSP_S_038,CSP,S,38,"Someone at the packing table is stacking orders for labels of several lengths and needs to decide how to slice the big label strips to fill them all. The trick is arranging the cuts so all requested pieces are produced while burning through as few of the original strips as possible — just count how many strips get used to see which arrangement wins. It’s essential that every requested label length is produced in the requested quantity, and the sum of pieces from a single strip must stay within that strip’s length. The actual orders and strip length are listed below.
+
+{
+  ""label_strip_length"": 150.0,
+  ""items"": [
+    {
+      ""label_type_id"": ""A"",
+      ""label_length"": 36,
+      ""labels_required"": 3
+    },
+    {
+      ""label_type_id"": ""B"",
+      ""label_length"": 23,
+      ""labels_required"": 2
+    },
+    {
+      ""label_type_id"": ""C"",
+      ""label_length"": 45,
+      ""labels_required"": 3
+    },
+    {
+      ""label_type_id"": ""D"",
+      ""label_length"": 65,
+      ""labels_required"": 3
+    },
+    {
+      ""label_type_id"": ""E"",
+      ""label_length"": 82,
+      ""labels_required"": 2
+    },
+    {
+      ""label_type_id"": ""F"",
+      ""label_length"": 67,
+      ""labels_required"": 2
+    },
+    {
+      ""label_type_id"": ""G"",
+      ""label_length"": 28,
+      ""labels_required"": 2
+    },
+    {
+      ""label_type_id"": ""H"",
+      ""label_length"": 29,
+      ""labels_required"": 1
+    },
+    {
+      ""label_type_id"": ""I"",
+      ""label_length"": 73,
+      ""labels_required"": 7
+    },
+    {
+      ""label_type_id"": ""J"",
+      ""label_length"": 72,
+      ""labels_required"": 8
+    }
+  ]
+}
+
+Oh, and one more thing — when you send back a proposed cutting layout, please follow this simple JSON shape so I can read it easily. Here’s the sketch of the structure I expect:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of the ""solution"" array as a list of original strips. Each object inside that list shows which requested pieces (the placeholder <item_id>) are taken from that strip and how many of each. It's just a quick form to say ""strip 1 had these pieces, strip 2 had those pieces,"" nothing fancy — and not the final answer, just the shape I want the answer in.
+
+Please remember: use the exact identifiers that appear in the problem instance — don't rename them and don't invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,names,"{""weights"": [36, 23, 45, 65, 82, 67, 28, 29, 73, 72], ""demands"": [3, 2, 3, 3, 2, 2, 2, 1, 7, 8], ""solution_patterns"": [{""9"": 2}, {""9"": 2}, {""9"": 2}, {""9"": 2}, {""8"": 2}, {""8"": 2}, {""8"": 2}, {""8"": 2}, {""3"": 1, ""6"": 2, ""7"": 1}, {""3"": 1, ""4"": 1}, {""1"": 1, ""2"": 1, ""4"": 1}, {""0"": 1, ""2"": 1, ""5"": 1}, {""0"": 1, ""2"": 1, ""5"": 1}, {""0"": 1, ""1"": 2, ""3"": 1}], ""obj"": 14, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""9"": 2}, {""9"": 2}, {""9"": 2}, {""9"": 2}, {""8"": 2}, {""8"": 2}, {""8"": 2}, {""8"": 2}, {""3"": 1, ""6"": 2, ""7"": 1}, {""3"": 1, ""4"": 1}, {""1"": 1, ""2"": 1, ""4"": 1}, {""0"": 1, ""2"": 1, ""5"": 1}, {""0"": 1, ""2"": 1, ""5"": 1}, {""0"": 1, ""1"": 2, ""3"": 1}]",14,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 10, ""items"": [{""item_id"": ""A"", ""width"": 36, ""demand"": 3}, {""item_id"": ""B"", ""width"": 23, ""demand"": 2}, {""item_id"": ""C"", ""width"": 45, ""demand"": 3}, {""item_id"": ""D"", ""width"": 65, ""demand"": 3}, {""item_id"": ""E"", ""width"": 82, ""demand"": 2}, {""item_id"": ""F"", ""width"": 67, ""demand"": 2}, {""item_id"": ""G"", ""width"": 28, ""demand"": 2}, {""item_id"": ""H"", ""width"": 29, ""demand"": 1}, {""item_id"": ""I"", ""width"": 73, ""demand"": 7}, {""item_id"": ""J"", ""width"": 72, ""demand"": 8}]}","[{""J"": 2}, {""J"": 2}, {""J"": 2}, {""J"": 2}, {""I"": 2}, {""I"": 2}, {""I"": 2}, {""I"": 2}, {""D"": 1, ""G"": 2, ""H"": 1}, {""D"": 1, ""E"": 1}, {""B"": 1, ""C"": 1, ""E"": 1}, {""A"": 1, ""C"": 1, ""F"": 1}, {""A"": 1, ""C"": 1, ""F"": 1}, {""A"": 1, ""B"": 2, ""D"": 1}]"
+CSP_S_039,CSP,S,39,"Someone at the shop is trying to be smart about cutting: take standard-length channels and chop them into the right flange pieces for multiple assemblies. The choice is which sets of flange lengths to cut from each channel so all required pieces are produced in the required quantities, and the sum of lengths cut from each channel doesn’t exceed that channel’s length. A better choice uses fewer channels overall — the score is just the number of channels consumed. The concrete instance details are below.
+
+# channel_length=150.0
+flange_id,flange_length,quantity_required
+0,71,2
+1,48,6
+2,25,3
+3,20,2
+4,96,4
+5,23,3
+6,84,4
+7,75,4
+8,92,1
+
+Oh, and when you send the actual plan, just stick to this simple JSON shape so it's easy to parse. Something like:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Here’s what that sketch means in plain talk: ""solution"" is a list of cut patterns (one pattern per channel). Each object in the list shows which piece types and how many of each you’d cut from that channel — the keys are the piece-type placeholders and the numbers are counts. It’s just the expected shape, not the final, filled-in answer.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,zero_based,"{""weights"": [71, 48, 25, 20, 96, 23, 84, 75, 92], ""demands"": [2, 6, 3, 2, 4, 3, 4, 4, 1], ""solution_patterns"": [{""7"": 2}, {""7"": 2}, {""3"": 1, ""5"": 2, ""6"": 1}, {""3"": 1, ""5"": 2, ""6"": 1}, {""2"": 2, ""8"": 1}, {""1"": 1, ""6"": 1}, {""1"": 1, ""6"": 1}, {""1"": 1, ""4"": 1}, {""1"": 1, ""4"": 1}, {""1"": 1, ""4"": 1}, {""1"": 1, ""4"": 1}, {""0"": 1, ""1"": 1, ""2"": 1}, {""0"": 2}], ""obj"": 13, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""7"": 2}, {""7"": 2}, {""3"": 1, ""5"": 2, ""6"": 1}, {""3"": 1, ""5"": 2, ""6"": 1}, {""2"": 2, ""8"": 1}, {""1"": 1, ""6"": 1}, {""1"": 1, ""6"": 1}, {""1"": 1, ""4"": 1}, {""1"": 1, ""4"": 1}, {""1"": 1, ""4"": 1}, {""1"": 1, ""4"": 1}, {""0"": 1, ""1"": 1, ""2"": 1}, {""0"": 2}]",13,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 9, ""items"": [{""item_id"": 0, ""width"": 71, ""demand"": 2}, {""item_id"": 1, ""width"": 48, ""demand"": 6}, {""item_id"": 2, ""width"": 25, ""demand"": 3}, {""item_id"": 3, ""width"": 20, ""demand"": 2}, {""item_id"": 4, ""width"": 96, ""demand"": 4}, {""item_id"": 5, ""width"": 23, ""demand"": 3}, {""item_id"": 6, ""width"": 84, ""demand"": 4}, {""item_id"": 7, ""width"": 75, ""demand"": 4}, {""item_id"": 8, ""width"": 92, ""demand"": 1}]}","[{""7"": 2}, {""7"": 2}, {""3"": 1, ""5"": 2, ""6"": 1}, {""3"": 1, ""5"": 2, ""6"": 1}, {""2"": 2, ""8"": 1}, {""1"": 1, ""6"": 1}, {""1"": 1, ""6"": 1}, {""1"": 1, ""4"": 1}, {""1"": 1, ""4"": 1}, {""1"": 1, ""4"": 1}, {""1"": 1, ""4"": 1}, {""0"": 1, ""1"": 1, ""2"": 1}, {""0"": 2}]"
+CSP_S_040,CSP,S,40,"On a busy morning the leatherworker must break down long straps into various belt-piece lengths to meet all the orders on the board. The decision is how to group cuts on each strap so every requested quantity is produced exactly, and the aim is to use the smallest number of straps overall — the simplest way to judge a plan is to count how many straps were used, with a lower count being better. No single strap can have cuts that add up to more than its length. The specific lengths and quantities are shown below.
+
+Each strap has a usable length of 150.0; cuts placed on a single strap may not exceed that length.
+Order 1: produce exactly 1 pieces of length 64.
+Order 2: produce exactly 6 pieces of length 50.
+Order 3: produce exactly 1 pieces of length 75.
+Order 4: produce exactly 1 pieces of length 47.
+Order 5: produce exactly 4 pieces of length 90.
+Order 6: produce exactly 3 pieces of length 58.
+Order 7: produce exactly 3 pieces of length 44.
+Order 8: produce exactly 1 pieces of length 79.
+The leatherworker must group cuts to produce every required piece while minimizing the total number of straps used.
+
+If you want to hand me a plan, a nice, compact way to show it is in this little JSON shape below — just a relaxed example of what I expect, nothing fancy or final.
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+This is just a sketch: ""solution"" holds a list of straps (one object per strap), and each object lists how many pieces of each requested length come from that strap. Think of each top-level array entry as a single strap and the pairs inside as ""which item, how many"" for that strap.
+
+Keep in mind this is only the expected shape, not the actual cutting plan — you'll fill it with the real identifiers and counts.
+
+Please also remember: use the exact identifiers from the instance input with no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,one_based,"{""weights"": [64, 50, 75, 47, 90, 58, 44, 79], ""demands"": [1, 6, 1, 1, 4, 3, 3, 1], ""solution_patterns"": [{""6"": 1, ""7"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""3"": 1, ""4"": 1}, {""1"": 1, ""6"": 2}, {""1"": 3}, {""1"": 3}, {""0"": 1, ""2"": 1}], ""obj"": 9, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""6"": 1, ""7"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""3"": 1, ""4"": 1}, {""1"": 1, ""6"": 2}, {""1"": 3}, {""1"": 3}, {""0"": 1, ""2"": 1}]",9,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 8, ""items"": [{""item_id"": 1, ""width"": 64, ""demand"": 1}, {""item_id"": 2, ""width"": 50, ""demand"": 6}, {""item_id"": 3, ""width"": 75, ""demand"": 1}, {""item_id"": 4, ""width"": 47, ""demand"": 1}, {""item_id"": 5, ""width"": 90, ""demand"": 4}, {""item_id"": 6, ""width"": 58, ""demand"": 3}, {""item_id"": 7, ""width"": 44, ""demand"": 3}, {""item_id"": 8, ""width"": 79, ""demand"": 1}]}","[{""7"": 1, ""8"": 1}, {""5"": 1, ""6"": 1}, {""5"": 1, ""6"": 1}, {""5"": 1, ""6"": 1}, {""4"": 1, ""5"": 1}, {""2"": 1, ""7"": 2}, {""2"": 3}, {""2"": 3}, {""1"": 1, ""3"": 1}]"
+CSP_S_041,CSP,S,41,"We’ve got a craft room scene: several identical yarn beams on the table and a list of project pieces that require specific lengths and quantities. The decision is how to slice each beam into those pieces so every piece on the list is delivered, never cutting more from a beam than its fixed length, and trying to keep the total number of beams pulled into work as low as possible — the score for any plan is just the number of beams used. The precise lengths and demands are given below.
+
+Each yarn beam is 150.0 long; don’t cut more than that from any one beam.
+We need 5 piece(s) of type 0, each 23 long.
+We need 1 piece(s) of type 1, each 21 long.
+We need 4 piece(s) of type 2, each 96 long.
+We need 4 piece(s) of type 3, each 94 long.
+We need 3 piece(s) of type 4, each 26 long.
+We need 3 piece(s) of type 5, each 49 long.
+We need 5 piece(s) of type 6, each 50 long.
+Plan to meet the listed demands while minimizing the number of 150.0-length beams we pull into work.
+
+And when you're ready for an answer, I’ll put it in a simple JSON layout like this so it’s easy to read and parse:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Here ""solution"" is a list of beams (one object per beam). Each object lists how many pieces of each piece type are cut from that beam: the placeholder keys (like <item_id>) stand for a piece type, and the numbers are how many pieces of that type you get from that beam. The ""..."" just means you can have more beams in the list — this is just a sketch of the expected shape, not the final answer.
+
+Please use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,zero_based,"{""weights"": [23, 21, 96, 94, 26, 49, 50], ""demands"": [5, 1, 4, 4, 3, 3, 5], ""solution_patterns"": [{""3"": 1, ""6"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""0"": 3, ""4"": 3}, {""0"": 5, ""1"": 1}], ""obj"": 10, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""3"": 1, ""6"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""0"": 3, ""4"": 3}, {""0"": 5, ""1"": 1}]",10,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 7, ""items"": [{""item_id"": 0, ""width"": 23, ""demand"": 5}, {""item_id"": 1, ""width"": 21, ""demand"": 1}, {""item_id"": 2, ""width"": 96, ""demand"": 4}, {""item_id"": 3, ""width"": 94, ""demand"": 4}, {""item_id"": 4, ""width"": 26, ""demand"": 3}, {""item_id"": 5, ""width"": 49, ""demand"": 3}, {""item_id"": 6, ""width"": 50, ""demand"": 5}]}","[{""3"": 1, ""6"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""2"": 1, ""6"": 1}, {""0"": 3, ""4"": 3}, {""0"": 5, ""1"": 1}]"
+CSP_S_042,CSP,S,42,"At the plant, a packaging designer is mapping cuts on long plastic sheets to supply different pouch sizes for multiple products. The task is to choose how to slice each sheet so that the exact required quantities of each panel are produced (no omissions or duplicates) and so that the sheet consumption is kept to a minimum. The metric to compare layouts is just the number of full sheets they use — lower is better — and each sheet’s combined pieces must not exceed its fixed length. The specific panel lengths and required counts come next below.
+
+# sheet_length=150.0
+panel_type_id,panel_length,required_quantity
+A,70,3
+B,71,1
+C,27,4
+D,62,2
+E,69,1
+F,44,3
+G,76,3
+H,50,1
+I,60,1
+
+I'll sketch the shape I want the cut assignments to take in a simple JSON layout — nothing fancy, just a friendly template you can follow.
+
+{
+  ""solution"": [
+    {""<patch_type_id>"": 2, ""<patch_type_id>"": 1},
+    ...
+  ]
+}
+
+Here’s a quick, easy explanation of the pieces so it reads like a form rather than a spec:
+- ""solution"" is a list of sheets (one entry per sheet layout).
+- Each object inside the list shows which patch types go on that sheet: the placeholder keys are patch-type identifiers (in angle brackets) and the numbers are how many of that patch appear on the sheet.
+- The block above is just a sketch of the expected shape, not the actual cutting plan.
+
+Please make sure to use the exact identifiers from the instance input — do not rename them and do not create new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"{""weights"": [70, 71, 27, 62, 69, 44, 76, 50, 60], ""demands"": [3, 1, 4, 2, 1, 3, 3, 1, 1], ""solution_patterns"": [{""3"": 1, ""5"": 2}, {""2"": 1, ""3"": 1, ""8"": 1}, {""2"": 3, ""5"": 1}, {""2"": 3, ""4"": 1}, {""1"": 1, ""2"": 1, ""7"": 1}, {""0"": 1, ""6"": 1}, {""0"": 1, ""6"": 1}, {""0"": 1, ""6"": 1}], ""obj"": 8, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""3"": 1, ""5"": 2}, {""2"": 1, ""3"": 1, ""8"": 1}, {""2"": 3, ""5"": 1}, {""2"": 3, ""4"": 1}, {""1"": 1, ""2"": 1, ""7"": 1}, {""0"": 1, ""6"": 1}, {""0"": 1, ""6"": 1}, {""0"": 1, ""6"": 1}]",8,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 9, ""items"": [{""item_id"": ""A"", ""width"": 70, ""demand"": 3}, {""item_id"": ""B"", ""width"": 71, ""demand"": 1}, {""item_id"": ""C"", ""width"": 27, ""demand"": 4}, {""item_id"": ""D"", ""width"": 62, ""demand"": 2}, {""item_id"": ""E"", ""width"": 69, ""demand"": 1}, {""item_id"": ""F"", ""width"": 44, ""demand"": 3}, {""item_id"": ""G"", ""width"": 76, ""demand"": 3}, {""item_id"": ""H"", ""width"": 50, ""demand"": 1}, {""item_id"": ""I"", ""width"": 60, ""demand"": 1}]}","[{""D"": 1, ""F"": 2}, {""C"": 1, ""D"": 1, ""I"": 1}, {""C"": 3, ""F"": 1}, {""C"": 3, ""E"": 1}, {""B"": 1, ""C"": 1, ""H"": 1}, {""A"": 1, ""G"": 1}, {""A"": 1, ""G"": 1}, {""A"": 1, ""G"": 1}]"
+CSP_S_043,CSP,S,43,"In a small workshop a seamstress has to turn identical bolts of fabric into a list of curtain panels, each with a specified width and how many are needed. The question to answer is how to assign cuts to each bolt so every requested panel appears the exact number of times (no shortages or duplicates) while using as few bolts as she can. It’s easy to judge: count the number of bolts used by a plan — fewer bolts means a better plan. Remember that the sum of widths cut from any bolt can’t exceed that bolt’s fixed length. The exact bolt length and the panel width-and-quantity list are shown below.
+
+Bolt length is 150.0; assign cuts so the sum of panel widths on each bolt does not exceed this length.
+Panel type 0: width 35, required quantity 6.
+Panel type 1: width 65, required quantity 3.
+Panel type 2: width 41, required quantity 3.
+Panel type 3: width 33, required quantity 1.
+Panel type 4: width 81, required quantity 1.
+Panel type 5: width 80, required quantity 1.
+Panel type 6: width 66, required quantity 1.
+Panel type 7: width 40, required quantity 2.
+Panel type 8: width 91, required quantity 4.
+Minimize the number of bolts used while producing each panel type in the exact required quantity.
+
+If you want to hand me a cutting plan, a tiny JSON sketch like this is perfect — just a casual way to show which panels come from each bolt:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of ""solution"" as a list of bolts. Each object in that list is one bolt, and inside an object each ""<item_id>"" entry says which panel type (by its identifier) and how many of that panel were cut from that bolt. The ""..."" just means ""and so on"" if there are more bolts. This is only the expected shape of the reply, not the actual cutting plan.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new labels. 
+- for example: Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".",nl,zero_based,"{""weights"": [35, 65, 41, 33, 81, 80, 66, 40, 91], ""demands"": [6, 3, 3, 1, 1, 1, 1, 2, 4], ""solution_patterns"": [{""5"": 1, ""6"": 1}, {""2"": 1, ""8"": 1}, {""2"": 1, ""8"": 1}, {""2"": 1, ""8"": 1}, {""1"": 1, ""7"": 2}, {""1"": 2}, {""0"": 1, ""8"": 1}, {""0"": 1, ""3"": 1, ""4"": 1}, {""0"": 4}], ""obj"": 9, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""5"": 1, ""6"": 1}, {""2"": 1, ""8"": 1}, {""2"": 1, ""8"": 1}, {""2"": 1, ""8"": 1}, {""1"": 1, ""7"": 2}, {""1"": 2}, {""0"": 1, ""8"": 1}, {""0"": 1, ""3"": 1, ""4"": 1}, {""0"": 4}]",9,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 9, ""items"": [{""item_id"": 0, ""width"": 35, ""demand"": 6}, {""item_id"": 1, ""width"": 65, ""demand"": 3}, {""item_id"": 2, ""width"": 41, ""demand"": 3}, {""item_id"": 3, ""width"": 33, ""demand"": 1}, {""item_id"": 4, ""width"": 81, ""demand"": 1}, {""item_id"": 5, ""width"": 80, ""demand"": 1}, {""item_id"": 6, ""width"": 66, ""demand"": 1}, {""item_id"": 7, ""width"": 40, ""demand"": 2}, {""item_id"": 8, ""width"": 91, ""demand"": 4}]}","[{""5"": 1, ""6"": 1}, {""2"": 1, ""8"": 1}, {""2"": 1, ""8"": 1}, {""2"": 1, ""8"": 1}, {""1"": 1, ""7"": 2}, {""1"": 2}, {""0"": 1, ""8"": 1}, {""0"": 1, ""3"": 1, ""4"": 1}, {""0"": 4}]"
+CSP_S_044,CSP,S,44,"Many people have requested shelves in different sizes, and the workshop needs to plan how to split its long stock boards to fill every order. The decision is which sets of cuts to make on each board so that the precise requested count of each shelf length is produced — every piece must be accounted for, no extras or misses. The one that’s preferred is the plan that finishes everything while using the smallest number of raw boards; you figure that out by tallying the boards used. The exact specs and counts come below.
+
+- **board_length**: 150.0
+
+| shelf_type_id | shelf_length | required_quantity |
+|---|---|---|
+| 0 | 40 | 2 |
+| 1 | 38 | 3 |
+| 2 | 29 | 2 |
+| 3 | 97 | 2 |
+| 4 | 96 | 2 |
+| 5 | 24 | 1 |
+| 6 | 66 | 3 |
+
+If you like, return the cutting plan in a simple JSON layout so it's easy for the shop to read and apply. Here’s the shape I expect:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of ""solution"" as a list of boards. Each object in the list is one board and shows how many pieces of each requested length come off that board — the placeholder key (<item_id>) stands in for an item identifier from the order and the numbers are counts of that item on that board. This is just a sketch of the expected shape, not the actual answer.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new labels. 
+- for example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,zero_based,"{""weights"": [40, 38, 29, 97, 96, 24, 66], ""demands"": [2, 3, 2, 2, 2, 1, 3], ""solution_patterns"": [{""6"": 2}, {""2"": 1, ""4"": 1, ""5"": 1}, {""1"": 1, ""4"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""2"": 2, ""5"": 1}, {""0"": 2, ""6"": 1}], ""obj"": 7, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""6"": 2}, {""2"": 1, ""4"": 1, ""5"": 1}, {""1"": 1, ""4"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""2"": 2, ""5"": 1}, {""0"": 2, ""6"": 1}]",7,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 7, ""items"": [{""item_id"": 0, ""width"": 40, ""demand"": 2}, {""item_id"": 1, ""width"": 38, ""demand"": 3}, {""item_id"": 2, ""width"": 29, ""demand"": 2}, {""item_id"": 3, ""width"": 97, ""demand"": 2}, {""item_id"": 4, ""width"": 96, ""demand"": 2}, {""item_id"": 5, ""width"": 24, ""demand"": 1}, {""item_id"": 6, ""width"": 66, ""demand"": 3}]}","[{""6"": 2}, {""2"": 1, ""4"": 1, ""5"": 1}, {""1"": 1, ""4"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""2"": 2, ""5"": 1}, {""0"": 2, ""6"": 1}]"
+CSP_S_045,CSP,S,45,"Recently the shop received a batch of orders for cake layers of different thicknesses, and all the layers must be sliced from long dough logs. The task is to plan the cuts so every requested number of layers for each thickness is produced — no missing pieces and no unnecessary extras. The neatest solution is the one that gets everything done while burning through the fewest full dough logs; measure that by tallying the logs used. Each log’s total slices can’t add up to more thickness than the log provides. The exact figures are listed below.
+
+{
+  ""log_thickness_capacity"": 150.0,
+  ""items"": [
+    {
+      ""layer_type_id"": 1,
+      ""layer_thickness"": 29,
+      ""layers_required"": 1
+    },
+    {
+      ""layer_type_id"": 2,
+      ""layer_thickness"": 35,
+      ""layers_required"": 1
+    },
+    {
+      ""layer_type_id"": 3,
+      ""layer_thickness"": 26,
+      ""layers_required"": 1
+    },
+    {
+      ""layer_type_id"": 4,
+      ""layer_thickness"": 60,
+      ""layers_required"": 2
+    },
+    {
+      ""layer_type_id"": 5,
+      ""layer_thickness"": 85,
+      ""layers_required"": 2
+    },
+    {
+      ""layer_type_id"": 6,
+      ""layer_thickness"": 59,
+      ""layers_required"": 1
+    },
+    {
+      ""layer_type_id"": 7,
+      ""layer_thickness"": 97,
+      ""layers_required"": 5
+    },
+    {
+      ""layer_type_id"": 8,
+      ""layer_thickness"": 24,
+      ""layers_required"": 2
+    },
+    {
+      ""layer_type_id"": 9,
+      ""layer_thickness"": 89,
+      ""layers_required"": 1
+    }
+  ]
+}
+
+I'll keep the requested output in a simple JSON shape so it's easy to copy-paste — something like this:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of it like a little form: ""solution"" is a list of cut plans, and each object inside lists layer-type placeholders with how many slices of that thickness are in that plan. It's just the sketch of the shape I want you to follow — not the final cutting plan.
+
+Please remember: all identifiers must be used exactly as they appear in the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,one_based,"{""weights"": [29, 35, 26, 60, 85, 59, 97, 24, 89], ""demands"": [1, 1, 1, 2, 2, 1, 5, 2, 1], ""solution_patterns"": [{""5"": 1, ""8"": 1}, {""3"": 1, ""4"": 1}, {""3"": 1, ""4"": 1}, {""2"": 1, ""6"": 1, ""7"": 1}, {""1"": 1, ""6"": 1}, {""1"": 1, ""6"": 1}, {""1"": 1, ""6"": 1}, {""0"": 1, ""6"": 1, ""7"": 1}], ""obj"": 8, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""5"": 1, ""8"": 1}, {""3"": 1, ""4"": 1}, {""3"": 1, ""4"": 1}, {""2"": 1, ""6"": 1, ""7"": 1}, {""1"": 1, ""6"": 1}, {""1"": 1, ""6"": 1}, {""1"": 1, ""6"": 1}, {""0"": 1, ""6"": 1, ""7"": 1}]",8,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 9, ""items"": [{""item_id"": 1, ""width"": 29, ""demand"": 1}, {""item_id"": 2, ""width"": 35, ""demand"": 1}, {""item_id"": 3, ""width"": 26, ""demand"": 1}, {""item_id"": 4, ""width"": 60, ""demand"": 2}, {""item_id"": 5, ""width"": 85, ""demand"": 2}, {""item_id"": 6, ""width"": 59, ""demand"": 1}, {""item_id"": 7, ""width"": 97, ""demand"": 5}, {""item_id"": 8, ""width"": 24, ""demand"": 2}, {""item_id"": 9, ""width"": 89, ""demand"": 1}]}","[{""6"": 1, ""9"": 1}, {""4"": 1, ""5"": 1}, {""4"": 1, ""5"": 1}, {""3"": 1, ""7"": 1, ""8"": 1}, {""2"": 1, ""7"": 1}, {""2"": 1, ""7"": 1}, {""2"": 1, ""7"": 1}, {""1"": 1, ""7"": 1, ""8"": 1}]"
+CSP_S_046,CSP,S,46,"We’ve got a stack of identical paper rolls and a pile of poster orders: different widths and specific counts for each. The job is to decide how to chop each roll into pieces so every requested poster is produced exactly as ordered, without missing or overproducing, and using as little paper stock as possible. You can tell which cutting plan is smarter by adding up how many rolls it eats — the lower that number, the better. The concrete sizes and quantities appear below.
+
+Each roll gives us up to 150.0 units of usable width.
+We need 3 of poster A (width 97).
+We need 3 of poster B (width 88).
+We need 3 of poster C (width 80).
+We need 3 of poster D (width 45).
+We need 2 of poster E (width 32).
+We need 8 of poster F (width 99).
+We need 1 of poster G (width 72).
+Make cutting plans that meet every required count exactly and minimize how many 150.0-unit rolls we consume.
+
+Also, when you send back a cutting plan, please follow this simple JSON layout so I can read it automatically — nothing fancy, just a list of roll-by-roll cuts in a ""solution"" array.
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Each object in that ""solution"" list is a single roll’s cutting pattern: the keys are placeholders for the item types (the poster widths) and the numbers are how many pieces of that type you cut from that roll. Think of it like filling out a little form for each roll — which posters and how many.
+
+This JSON is just a sketch of the expected shape, not the final answer — it shows how I want the answer formatted.
+
+Please also be careful to use the exact identifiers from the instance input — don’t rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,names,"{""weights"": [97, 88, 80, 45, 32, 99, 72], ""demands"": [3, 3, 3, 3, 2, 8, 1], ""solution_patterns"": [{""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""4"": 1, ""6"": 1}, {""2"": 1, ""3"": 1}, {""2"": 1, ""3"": 1}, {""2"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""0"": 1, ""4"": 1}, {""0"": 1, ""3"": 1}, {""0"": 1, ""3"": 1}], ""obj"": 18, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""5"": 1}, {""3"": 1, ""4"": 1, ""6"": 1}, {""2"": 1, ""3"": 1}, {""2"": 1, ""3"": 1}, {""2"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""1"": 1, ""3"": 1}, {""0"": 1, ""4"": 1}, {""0"": 1, ""3"": 1}, {""0"": 1, ""3"": 1}]",18,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 7, ""items"": [{""item_id"": ""A"", ""width"": 97, ""demand"": 3}, {""item_id"": ""B"", ""width"": 88, ""demand"": 3}, {""item_id"": ""C"", ""width"": 80, ""demand"": 3}, {""item_id"": ""D"", ""width"": 45, ""demand"": 3}, {""item_id"": ""E"", ""width"": 32, ""demand"": 2}, {""item_id"": ""F"", ""width"": 99, ""demand"": 8}, {""item_id"": ""G"", ""width"": 72, ""demand"": 1}]}","[{""D"": 1, ""F"": 1}, {""D"": 1, ""F"": 1}, {""D"": 1, ""F"": 1}, {""D"": 1, ""F"": 1}, {""D"": 1, ""F"": 1}, {""D"": 1, ""F"": 1}, {""D"": 1, ""F"": 1}, {""D"": 1, ""F"": 1}, {""D"": 1, ""E"": 1, ""G"": 1}, {""C"": 1, ""D"": 1}, {""C"": 1, ""D"": 1}, {""C"": 1, ""D"": 1}, {""B"": 1, ""D"": 1}, {""B"": 1, ""D"": 1}, {""B"": 1, ""D"": 1}, {""A"": 1, ""E"": 1}, {""A"": 1, ""D"": 1}, {""A"": 1, ""D"": 1}]"
+CSP_S_047,CSP,S,47,"Many people who work with glass know the drill: you’ve got rows of same-length rods and a list of piece sizes with exact quantities to fill. The task is to map out cuts on those rods so each listed piece appears the right number of times and nothing is left out or overproduced. A smarter layout is the one that gets everything made while needing the least number of rods; you figure that out by counting the rods you had to cut. The full details of sizes and counts are below.
+
+{
+  ""rod_length"": 150.0,
+  ""items"": [
+    {
+      ""piece_id"": ""A"",
+      ""piece_length"": 26,
+      ""quantity_required"": 2
+    },
+    {
+      ""piece_id"": ""B"",
+      ""piece_length"": 79,
+      ""quantity_required"": 3
+    },
+    {
+      ""piece_id"": ""C"",
+      ""piece_length"": 50,
+      ""quantity_required"": 4
+    },
+    {
+      ""piece_id"": ""D"",
+      ""piece_length"": 41,
+      ""quantity_required"": 4
+    },
+    {
+      ""piece_id"": ""E"",
+      ""piece_length"": 57,
+      ""quantity_required"": 3
+    },
+    {
+      ""piece_id"": ""F"",
+      ""piece_length"": 34,
+      ""quantity_required"": 1
+    },
+    {
+      ""piece_id"": ""G"",
+      ""piece_length"": 32,
+      ""quantity_required"": 1
+    }
+  ]
+}
+
+Also, when you send the cut plan back, a simple JSON layout like this keeps everything neat and machine-friendly — something along these lines is perfect:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of that as: ""solution"" is a list of rods (one object per rod), and each object lists which piece identifiers appear on that rod and how many of each. It's just a sketch of the expected shape, not the final answer.
+
+Please make sure all identifiers are used exactly as they appear in the instance input — no renaming and no new labels. 
+- for example: Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,names,"{""weights"": [26, 79, 50, 41, 57, 34, 32], ""demands"": [2, 3, 4, 4, 3, 1, 1], ""solution_patterns"": [{""4"": 2, ""6"": 1}, {""2"": 1, ""3"": 1, ""4"": 1}, {""2"": 2, ""3"": 1}, {""1"": 1, ""2"": 1}, {""0"": 1, ""3"": 1, ""5"": 1, ""6"": 1}, {""0"": 1, ""1"": 1, ""3"": 1}, {""0"": 1, ""1"": 1, ""3"": 1}], ""obj"": 7, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""4"": 2, ""6"": 1}, {""2"": 1, ""3"": 1, ""4"": 1}, {""2"": 2, ""3"": 1}, {""1"": 1, ""2"": 1}, {""0"": 1, ""3"": 1, ""5"": 1, ""6"": 1}, {""0"": 1, ""1"": 1, ""3"": 1}, {""0"": 1, ""1"": 1, ""3"": 1}]",7,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 7, ""items"": [{""item_id"": ""A"", ""width"": 26, ""demand"": 2}, {""item_id"": ""B"", ""width"": 79, ""demand"": 3}, {""item_id"": ""C"", ""width"": 50, ""demand"": 4}, {""item_id"": ""D"", ""width"": 41, ""demand"": 4}, {""item_id"": ""E"", ""width"": 57, ""demand"": 3}, {""item_id"": ""F"", ""width"": 34, ""demand"": 1}, {""item_id"": ""G"", ""width"": 32, ""demand"": 1}]}","[{""E"": 2, ""G"": 1}, {""C"": 1, ""D"": 1, ""E"": 1}, {""C"": 2, ""D"": 1}, {""B"": 1, ""C"": 1}, {""A"": 1, ""D"": 1, ""F"": 1, ""G"": 1}, {""A"": 1, ""B"": 1, ""D"": 1}, {""A"": 1, ""B"": 1, ""D"": 1}]"
+CSP_S_048,CSP,S,48,"I help run a little upholstery shop where long leather rolls come in fixed lengths and need to be sliced into strips for sofa straps. The question is how to decide which widths to cut from each roll so every strap type gets exactly the number it needs, with nothing missing or duplicated. A better plan is the one that uses the fewest whole leather rolls — you can tell how good a plan is simply by counting how many rolls it consumes (fewer is better). The exact strap widths, quantities, and the roll length are shown below.
+
+# roll_length=150.0
+strap_type_id,strip_length,required_quantity
+0,45,1
+1,85,1
+2,55,1
+3,97,2
+4,84,1
+
+If it's helpful, reply with the plan in this little JSON layout so it's easy to parse (one object per roll, listing which strap types and how many strips of each come from that roll).
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+Think of ""solution"" as a stack of rolls. Each object in the list is one whole roll, and inside that object the keys are the strap type identifiers and the numbers are how many strips of that type you cut from that roll. It's just a simple form — show each roll's contents, one object per roll.
+
+This is only a sketch of the shape I expect, not the actual cutting plan. Please be careful to use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""weights"": [45, 85, 55, 97, 84], ""demands"": [1, 1, 1, 2, 1], ""solution_patterns"": [{""2"": 1, ""4"": 1}, {""1"": 1, ""2"": 1}, {""0"": 1, ""3"": 1}, {""0"": 1, ""3"": 1}], ""obj"": 4, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""2"": 1, ""4"": 1}, {""1"": 1, ""2"": 1}, {""0"": 1, ""3"": 1}, {""0"": 1, ""3"": 1}]",4,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 5, ""items"": [{""item_id"": 0, ""width"": 45, ""demand"": 1}, {""item_id"": 1, ""width"": 85, ""demand"": 1}, {""item_id"": 2, ""width"": 55, ""demand"": 1}, {""item_id"": 3, ""width"": 97, ""demand"": 2}, {""item_id"": 4, ""width"": 84, ""demand"": 1}]}","[{""2"": 1, ""4"": 1}, {""1"": 1, ""2"": 1}, {""0"": 1, ""3"": 1}, {""0"": 1, ""3"": 1}]"
+CSP_S_049,CSP,S,49,"On a job the plumber has to make a set of shorter pipe sections from only standard-length stock, and needs to choose which cuts go in which stock pipe. Each stock pipe has a fixed length so the cuts assigned to it must fit, and every listed piece length must be produced in the exact quantity asked for — nothing can be skipped or overproduced. The clearer the plan, the fewer full-length pipes get opened: success is measured by counting the number of stock pipes used, and the aim is to make that count as small as possible while still delivering all required pieces. The concrete instance details appear below.
+
+# stock_pipe_length=150.0
+pipe_section_id,section_length,quantity_required
+A,20,2
+B,95,1
+C,91,3
+D,35,3
+E,28,4
+F,57,1
+G,34,4
+
+Also, just to keep things tidy, here's the little JSON shape I'd like the answer to follow — nothing fancy, just a simple sketch of which pieces go into which opened stock pipe:
+
+{
+  ""solution"": [
+    {""<item_id>"": 2, ""<item_id>"": 1},
+    ...
+  ]
+}
+
+In plain words: ""solution"" is a list where each entry corresponds to one opened stock pipe. Each object inside the list shows which piece types (the placeholder keys) are cut from that particular pipe and the little numbers are the counts of those pieces taken from it. This block is only a template of the expected shape — not the final cutting plan.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"{""weights"": [20, 95, 91, 35, 28, 57, 34], ""demands"": [2, 1, 3, 3, 4, 1, 4], ""solution_patterns"": [{""3"": 2, ""6"": 2}, {""2"": 1, ""5"": 1}, {""2"": 1, ""4"": 2}, {""2"": 1, ""4"": 2}, {""0"": 1, ""4"": 1, ""6"": 3}, {""0"": 1, ""1"": 1, ""3"": 1}], ""obj"": 6, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""3"": 2, ""6"": 2}, {""2"": 1, ""5"": 1}, {""2"": 1, ""4"": 2}, {""2"": 1, ""4"": 2}, {""0"": 1, ""4"": 1, ""6"": 3}, {""0"": 1, ""1"": 1, ""3"": 1}]",6,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 7, ""items"": [{""item_id"": ""A"", ""width"": 20, ""demand"": 2}, {""item_id"": ""B"", ""width"": 95, ""demand"": 1}, {""item_id"": ""C"", ""width"": 91, ""demand"": 3}, {""item_id"": ""D"", ""width"": 35, ""demand"": 3}, {""item_id"": ""E"", ""width"": 28, ""demand"": 4}, {""item_id"": ""F"", ""width"": 57, ""demand"": 1}, {""item_id"": ""G"", ""width"": 34, ""demand"": 4}]}","[{""D"": 2, ""G"": 2}, {""C"": 1, ""F"": 1}, {""C"": 1, ""E"": 2}, {""C"": 1, ""E"": 2}, {""A"": 1, ""E"": 1, ""G"": 3}, {""A"": 1, ""B"": 1, ""D"": 1}]"
+CSP_S_050,CSP,S,50,"I work in a little shoe shop where we get long leather strips and need to cut them up into a bunch of pattern pieces — each piece has a set length and we need a certain number of each. The job is to decide how to slice each strip so that every required piece is made (no missing pieces and no extra copies beyond what's needed), and to do it using as few full strips as possible — in other words, count how many strips are used and make that number as small as you can. The exact strip length, the piece lengths, and the quantities are listed below.
+
+{
+  ""strip_length"": 150.0,
+  ""items"": [
+    {
+      ""pattern_id"": ""A"",
+      ""piece_length"": 61,
+      ""quantity_required"": 4
+    },
+    {
+      ""pattern_id"": ""B"",
+      ""piece_length"": 34,
+      ""quantity_required"": 3
+    },
+    {
+      ""pattern_id"": ""C"",
+      ""piece_length"": 59,
+      ""quantity_required"": 1
+    },
+    {
+      ""pattern_id"": ""D"",
+      ""piece_length"": 93,
+      ""quantity_required"": 1
+    },
+    {
+      ""pattern_id"": ""E"",
+      ""piece_length"": 62,
+      ""quantity_required"": 3
+    },
+    {
+      ""pattern_id"": ""F"",
+      ""piece_length"": 32,
+      ""quantity_required"": 2
+    },
+    {
+      ""pattern_id"": ""G"",
+      ""piece_length"": 74,
+      ""quantity_required"": 2
+    },
+    {
+      ""pattern_id"": ""H"",
+      ""piece_length"": 54,
+      ""quantity_required"": 2
+    },
+    {
+      ""pattern_id"": ""I"",
+      ""piece_length"": 96,
+      ""quantity_required"": 2
+    },
+    {
+      ""pattern_id"": ""J"",
+      ""piece_length"": 63,
+      ""quantity_required"": 2
+    }
+  ]
+}
+
+Also, to keep things tidy when I show the result, I'll use a little JSON sketch of the shape I mean. Nothing fancy — just a simple layout so it's clear how each cut is being listed:
+
+{
+  ""solution"": [
+    {""<item_id>"": ""<patch_type_id>2"", ""<item_id>"": ""<patch_type_id>1""},
+    ...
+  ]
+}
+
+Here I'm just showing the format: each object in the ""solution"" array represents one full leather strip and the entries inside list which patch types go on that strip (the angle-bracket placeholders stand in for the actual patch-type identifiers from the instance). This is just the expected shape, not the final cutting plan.
+
+Please remember to use the exact identifiers from the instance input — don't rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""weights"": [61, 34, 59, 93, 62, 32, 74, 54, 96, 63], ""demands"": [4, 3, 1, 1, 3, 2, 2, 2, 2, 2], ""solution_patterns"": [{""7"": 1, ""8"": 1}, {""6"": 2}, {""5"": 1, ""7"": 1, ""9"": 1}, {""4"": 2}, {""3"": 1, ""5"": 1}, {""2"": 1, ""9"": 1}, {""1"": 1, ""8"": 1}, {""1"": 2, ""4"": 1}, {""0"": 2}, {""0"": 2}], ""obj"": 10, ""bin_capacity"": 150.0, ""problem_type"": ""CSP""}","[{""7"": 1, ""8"": 1}, {""6"": 2}, {""5"": 1, ""7"": 1, ""9"": 1}, {""4"": 2}, {""3"": 1, ""5"": 1}, {""2"": 1, ""9"": 1}, {""1"": 1, ""8"": 1}, {""1"": 2, ""4"": 1}, {""0"": 2}, {""0"": 2}]",10,"{""problem_type"": ""CSP"", ""bin_capacity"": 150.0, ""n_items"": 10, ""items"": [{""item_id"": ""A"", ""width"": 61, ""demand"": 4}, {""item_id"": ""B"", ""width"": 34, ""demand"": 3}, {""item_id"": ""C"", ""width"": 59, ""demand"": 1}, {""item_id"": ""D"", ""width"": 93, ""demand"": 1}, {""item_id"": ""E"", ""width"": 62, ""demand"": 3}, {""item_id"": ""F"", ""width"": 32, ""demand"": 2}, {""item_id"": ""G"", ""width"": 74, ""demand"": 2}, {""item_id"": ""H"", ""width"": 54, ""demand"": 2}, {""item_id"": ""I"", ""width"": 96, ""demand"": 2}, {""item_id"": ""J"", ""width"": 63, ""demand"": 2}]}","[{""H"": 1, ""I"": 1}, {""G"": 2}, {""F"": 1, ""H"": 1, ""J"": 1}, {""E"": 2}, {""D"": 1, ""F"": 1}, {""C"": 1, ""J"": 1}, {""B"": 1, ""I"": 1}, {""B"": 2, ""E"": 1}, {""A"": 2}, {""A"": 2}]"

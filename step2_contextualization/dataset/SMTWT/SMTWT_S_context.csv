@@ -1,0 +1,2169 @@
+id,task_id,difficulty_tier,example_index,prompt,surface_format,indexing_scheme,instance_canonical_json,reference_solution_canonical_json,reference_objective_value,instance_surface_json,reference_solution_surface_json
+SMTWT_S_001,SMTWT,S,1,"Someone running a small kitchen has several batches lined up, each with an expected bake duration, a promised pickup slot, and an importance rating for how badly a late pickup would sting. The choice to make is the baking order — only one batch fits in the oven at a time and each order must be baked exactly once — and the one that’s better is the one that produces the least overall pain: every batch that finishes after its pickup time contributes its importance times the minutes it’s late, while batches finished on or before the promised time add nothing. The detailed batch info is listed below.
+
+There are 10 batches, identified as 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.
+
+| batch_id | bake_time_minutes | importance_score | promised_pickup_time_minutes |
+|---|---|---|---|
+| 1 | 5 | 8 | 491 |
+| 2 | 37 | 10 | 452 |
+| 3 | 90 | 8 | 478 |
+| 4 | 98 | 10 | 437 |
+| 5 | 19 | 1 | 432 |
+| 6 | 60 | 9 | 404 |
+| 7 | 48 | 7 | 389 |
+| 8 | 86 | 10 | 490 |
+| 9 | 90 | 6 | 395 |
+| 10 | 13 | 10 | 486 |
+
+The baking order should be chosen to minimize the total importance-weighted minutes late across these 10 batches.
+
+You can just hand me the baking order in this little JSON shape when you're ready — nothing fancy, just the list of batches in the order they should go in the oven:
+
+{
+  ""solution"": [
+    <batch_id_first>,
+    <batch_id_second>,
+    ...,
+    <batch_id_last>
+  ]
+}
+
+""solution"" is the ordered list of batch IDs: the first item is the batch that goes into the oven first, the next is the one after that, and so on. Think of it like filling out a lineup on a form — easy and straightforward. This JSON is just a sketch of the expected shape, not the actual schedule itself.
+
+Please make sure all identifiers you use match exactly what's in the instance input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""n_jobs"": 10, ""processing_times"": [5, 37, 90, 98, 19, 60, 48, 86, 90, 13], ""weights"": [8, 10, 8, 10, 1, 9, 7, 10, 6, 10], ""due_dates"": [491, 452, 478, 437, 432, 404, 389, 490, 395, 486]}","{""start_times"": [436, 296, 333, 0, 527, 188, 248, 441, 98, 423], ""end_times"": [441, 333, 423, 98, 546, 248, 296, 527, 188, 436], ""tardiness"": [0, 0, 0, 0, 114, 0, 0, 37, 0, 0]}",484.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 10, ""jobs"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], ""job_records"": [{""job_id"": 1, ""processing_time"": 5, ""weight"": 8, ""due_date"": 491}, {""job_id"": 2, ""processing_time"": 37, ""weight"": 10, ""due_date"": 452}, {""job_id"": 3, ""processing_time"": 90, ""weight"": 8, ""due_date"": 478}, {""job_id"": 4, ""processing_time"": 98, ""weight"": 10, ""due_date"": 437}, {""job_id"": 5, ""processing_time"": 19, ""weight"": 1, ""due_date"": 432}, {""job_id"": 6, ""processing_time"": 60, ""weight"": 9, ""due_date"": 404}, {""job_id"": 7, ""processing_time"": 48, ""weight"": 7, ""due_date"": 389}, {""job_id"": 8, ""processing_time"": 86, ""weight"": 10, ""due_date"": 490}, {""job_id"": 9, ""processing_time"": 90, ""weight"": 6, ""due_date"": 395}, {""job_id"": 10, ""processing_time"": 13, ""weight"": 10, ""due_date"": 486}]}","[4, 9, 6, 7, 2, 3, 10, 1, 8, 5]"
+SMTWT_S_002,SMTWT,S,2,"There’s a solo video editor juggling a list of projects and a single computer, where every project has a predicted render time, a requested delivery moment, and a client priority that makes late delivery more painful for some jobs. The task is to arrange the order of renders so every clip gets done once, nothing overlaps, and the schedule causes as little overall client pain as possible. Pain for each clip is its minutes-late (zero if it’s on or before the due time) times that client’s priority, and the score for a schedule is the sum of those pains — smaller sums mean a better schedule. The exact clip durations, deadlines, and priority numbers are shown below.
+
+They are the 5 clips, listed by identifier as 0, 1, 2, 3, 4.
+Clip 0: render time 53 minutes, requested delivery at minute 161, client priority 3.
+Clip 1: render time 67 minutes, requested delivery at minute 154, client priority 7.
+Clip 2: render time 70 minutes, requested delivery at minute 183, client priority 4.
+Clip 3: render time 90 minutes, requested delivery at minute 147, client priority 5.
+Clip 4: render time 15 minutes, requested delivery at minute 153, client priority 1.
+The goal is to sequence these 5 clips so the sum of client pain (minutes late × priority) is as small as possible.
+
+If you want to hand me the exact order, just drop it in a tiny JSON snippet like this — super simple and tidy.
+
+{
+  ""solution"": [
+    <clip_id_first>,
+    <clip_id_second>,
+    ...,
+    <clip_id_last>
+  ]
+}
+
+Pretty plain: ""solution"" is the list of clip IDs in the order they'll be rendered — first entry runs first, last entry runs last. Think of it as the form you'd fill out with the clip identifiers in sequence. This is just a sketch of the shape I expect, not the actual schedule.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""n_jobs"": 5, ""processing_times"": [53, 67, 70, 90, 15], ""weights"": [3, 7, 4, 5, 1], ""due_dates"": [161, 154, 183, 147, 153]}","{""start_times"": [242, 90, 172, 0, 157], ""end_times"": [295, 157, 242, 90, 172], ""tardiness"": [134, 3, 59, 0, 19]}",678.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 5, ""jobs"": [0, 1, 2, 3, 4], ""job_records"": [{""job_id"": 0, ""processing_time"": 53, ""weight"": 3, ""due_date"": 161}, {""job_id"": 1, ""processing_time"": 67, ""weight"": 7, ""due_date"": 154}, {""job_id"": 2, ""processing_time"": 70, ""weight"": 4, ""due_date"": 183}, {""job_id"": 3, ""processing_time"": 90, ""weight"": 5, ""due_date"": 147}, {""job_id"": 4, ""processing_time"": 15, ""weight"": 1, ""due_date"": 153}]}","[3, 1, 4, 2, 0]"
+SMTWT_S_003,SMTWT,S,3,"I work in a one-bay garage where several cars are waiting for fixes; each job has an estimated service time, a promised completion time, and a seriousness rating that says how bad it is if that car goes out late. The bay can only handle one car at a time, every car needs to be done once (no skipping or doubling up), and if a repair finishes after its promised time the lateness is how many minutes it’s late while on-time or early repairs add nothing. The “score” for a schedule is found by taking each job’s minutes-late and multiplying by its seriousness, then adding those values for all cars — the plan that keeps that total pain as small as possible is the one to shoot for. Concrete details for the specific repairs are shown below.
+
+{
+  ""n_repairs"": 5,
+  ""repair_ids"": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  ""data"": [
+    {
+      ""repair_id"": 0,
+      ""service_time_minutes"": 35,
+      ""severity_weight"": 5,
+      ""promised_completion_time_minutes"": 58
+    },
+    {
+      ""repair_id"": 1,
+      ""service_time_minutes"": 54,
+      ""severity_weight"": 6,
+      ""promised_completion_time_minutes"": 65
+    },
+    {
+      ""repair_id"": 2,
+      ""service_time_minutes"": 63,
+      ""severity_weight"": 1,
+      ""promised_completion_time_minutes"": 76
+    },
+    {
+      ""repair_id"": 3,
+      ""service_time_minutes"": 33,
+      ""severity_weight"": 2,
+      ""promised_completion_time_minutes"": 65
+    },
+    {
+      ""repair_id"": 4,
+      ""service_time_minutes"": 11,
+      ""severity_weight"": 8,
+      ""promised_completion_time_minutes"": 77
+    }
+  ]
+}
+
+Oh, and when you send the final schedule back, please just follow this simple JSON layout so it's easy to read and parse — nothing fancy, just the ordered list of car IDs in the sequence they'll be worked on:
+
+{
+  ""solution"": [
+    <car_id_first>,
+    <car_id_second>,
+    ...,
+    <car_id_last>
+  ]
+}
+
+""solution"" is the list that shows the order the cars get the bay — first item is the car you do first, next is the one after that, and so on. Each placeholder like <car_id_first> is where the actual job identifier from the instance would go; think of it like filling in the ""which car?"" fields on a form.
+
+This is just a sketch of the shape I want, not the actual answer. Please make sure to use the exact identifiers as they appear in the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""n_jobs"": 5, ""processing_times"": [35, 54, 63, 33, 11], ""weights"": [5, 6, 1, 2, 8], ""due_dates"": [58, 65, 76, 65, 77]}","{""start_times"": [0, 46, 133, 100, 35], ""end_times"": [35, 100, 196, 133, 46], ""tardiness"": [0, 35, 120, 68, 0]}",466.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 5, ""jobs"": [0, 1, 2, 3, 4], ""job_records"": [{""job_id"": 0, ""processing_time"": 35, ""weight"": 5, ""due_date"": 58}, {""job_id"": 1, ""processing_time"": 54, ""weight"": 6, ""due_date"": 65}, {""job_id"": 2, ""processing_time"": 63, ""weight"": 1, ""due_date"": 76}, {""job_id"": 3, ""processing_time"": 33, ""weight"": 2, ""due_date"": 65}, {""job_id"": 4, ""processing_time"": 11, ""weight"": 8, ""due_date"": 77}]}","[0, 4, 1, 3, 2]"
+SMTWT_S_004,SMTWT,S,4,"There’s a small salon day where one stylist has to juggle a list of requests: each cut or color has an estimated duration, a requested end time, and a weight showing how upset the customer will be if they’re late. The stylist must fit everyone in the single chair without double-booking, and try to make the overall customer pain as tiny as possible — for each person who ends up finishing after their requested time, take the minutes late, multiply by their importance, and sum those values across all clients. The concrete schedule items appear below.
+
+They are 10 appointments, identified as A, B, C, D, E, F, G, H, I, J.
+Client A: 10 minutes service, requested finish at 116 minutes, importance 9.
+Client B: 52 minutes service, requested finish at 91 minutes, importance 1.
+Client C: 6 minutes service, requested finish at 140 minutes, importance 1.
+Client D: 76 minutes service, requested finish at 146 minutes, importance 2.
+Client E: 76 minutes service, requested finish at 60 minutes, importance 6.
+Client F: 30 minutes service, requested finish at 99 minutes, importance 1.
+Client G: 82 minutes service, requested finish at 139 minutes, importance 1.
+Client H: 67 minutes service, requested finish at 110 minutes, importance 3.
+Client I: 20 minutes service, requested finish at 95 minutes, importance 9.
+Client J: 75 minutes service, requested finish at 68 minutes, importance 5.
+The stylist must schedule these 10 appointments on the single chair to minimize the total weighted minutes late.
+
+If you want to hand me a proposed schedule, just pop it into this little JSON shape so I can read it easily:
+
+{
+  ""solution"": [
+    <client_id_first>,
+    <client_id_second>,
+    ...,
+    <client_id_last>
+  ]
+}
+
+This just means ""solution"" should be an ordered list of client IDs in the sequence the stylist will see them — earliest appointment first, last one last. Think of the placeholders as blanks to fill with the actual client IDs from the problem instance. The JSON above is just a sketch of the shape I expect, not the real schedule.
+
+Please be sure to use the exact identifiers from the instance input — no renaming and no new labels. 
+
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,names,"{""n_jobs"": 10, ""processing_times"": [10, 52, 6, 76, 76, 30, 82, 67, 20, 75], ""weights"": [9, 1, 1, 2, 6, 1, 1, 3, 9, 5], ""due_dates"": [116, 91, 140, 146, 60, 99, 139, 110, 95, 68]}","{""start_times"": [96, 360, 106, 284, 0, 254, 412, 187, 76, 112], ""end_times"": [106, 412, 112, 360, 76, 284, 494, 254, 96, 187], ""tardiness"": [0, 321, 0, 214, 16, 185, 355, 144, 1, 119]}",2421.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 10, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 10, ""weight"": 9, ""due_date"": 116}, {""job_id"": ""B"", ""processing_time"": 52, ""weight"": 1, ""due_date"": 91}, {""job_id"": ""C"", ""processing_time"": 6, ""weight"": 1, ""due_date"": 140}, {""job_id"": ""D"", ""processing_time"": 76, ""weight"": 2, ""due_date"": 146}, {""job_id"": ""E"", ""processing_time"": 76, ""weight"": 6, ""due_date"": 60}, {""job_id"": ""F"", ""processing_time"": 30, ""weight"": 1, ""due_date"": 99}, {""job_id"": ""G"", ""processing_time"": 82, ""weight"": 1, ""due_date"": 139}, {""job_id"": ""H"", ""processing_time"": 67, ""weight"": 3, ""due_date"": 110}, {""job_id"": ""I"", ""processing_time"": 20, ""weight"": 9, ""due_date"": 95}, {""job_id"": ""J"", ""processing_time"": 75, ""weight"": 5, ""due_date"": 68}]}","[""E"", ""I"", ""A"", ""C"", ""J"", ""H"", ""F"", ""D"", ""B"", ""G""]"
+SMTWT_S_005,SMTWT,S,5,"We run a one-printer shop where requests pile up: each request comes with a page count, a pickup deadline, and an urgency rating. The trick is deciding which job to print first, second, and so on — the printer can’t do two jobs at once, nothing can be skipped or duplicated, and every order must be completed. To compare schedules, take each job’s lateness (how long it finishes after its promised pickup; if it’s on time or early, that’s zero), multiply that lateness by the job’s urgency, and sum those values across all jobs — the goal is to make that total as small as possible. The specific orders and timings are listed below.
+
+{
+  ""n_orders"": 6,
+  ""order_ids"": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  ""data"": [
+    {
+      ""order_id"": 0,
+      ""pages_to_print"": 71,
+      ""urgency_rating"": 5,
+      ""pickup_deadline"": 244
+    },
+    {
+      ""order_id"": 1,
+      ""pages_to_print"": 41,
+      ""urgency_rating"": 9,
+      ""pickup_deadline"": 343
+    },
+    {
+      ""order_id"": 2,
+      ""pages_to_print"": 17,
+      ""urgency_rating"": 4,
+      ""pickup_deadline"": 273
+    },
+    {
+      ""order_id"": 3,
+      ""pages_to_print"": 72,
+      ""urgency_rating"": 7,
+      ""pickup_deadline"": 272
+    },
+    {
+      ""order_id"": 4,
+      ""pages_to_print"": 92,
+      ""urgency_rating"": 3,
+      ""pickup_deadline"": 347
+    },
+    {
+      ""order_id"": 5,
+      ""pages_to_print"": 69,
+      ""urgency_rating"": 3,
+      ""pickup_deadline"": 359
+    }
+  ]
+}
+
+If you want to return a schedule, just pop it into this little JSON shape so it's easy to read and parse — pretty much list the orders in the sequence the printer should run them.
+
+{
+  ""solution"": [
+    <order_id_first>,
+    <order_id_second>,
+    ...,
+    <order_id_last>
+  ]
+}
+
+Here ""solution"" is the list of order identifiers in the exact order they should be printed (first through last). The angle-bracket placeholders are just a sketch of the shape I expect — replace them with the actual order IDs from the instance when you answer.
+
+Please make sure you use the exact identifiers as given in the problem input — do not rename them or invent new labels.  
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""n_jobs"": 6, ""processing_times"": [71, 41, 17, 72, 92, 69], ""weights"": [5, 9, 4, 7, 3, 3], ""due_dates"": [244, 343, 273, 272, 347, 359]}","{""start_times"": [0, 252, 235, 71, 143, 293], ""end_times"": [71, 293, 252, 143, 235, 362], ""tardiness"": [0, 0, 0, 0, 0, 3]}",9.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 6, ""jobs"": [0, 1, 2, 3, 4, 5], ""job_records"": [{""job_id"": 0, ""processing_time"": 71, ""weight"": 5, ""due_date"": 244}, {""job_id"": 1, ""processing_time"": 41, ""weight"": 9, ""due_date"": 343}, {""job_id"": 2, ""processing_time"": 17, ""weight"": 4, ""due_date"": 273}, {""job_id"": 3, ""processing_time"": 72, ""weight"": 7, ""due_date"": 272}, {""job_id"": 4, ""processing_time"": 92, ""weight"": 3, ""due_date"": 347}, {""job_id"": 5, ""processing_time"": 69, ""weight"": 3, ""due_date"": 359}]}","[0, 3, 4, 2, 1, 5]"
+SMTWT_S_006,SMTWT,S,6,"Recently the receptionist had to rearrange a morning of appointments for a single exam room: each patient had a scheduled time, a consultation length, and a clinical priority that reflects how important punctuality is for them. The goal in choosing the order is simple to explain in plain terms — whenever someone finishes after their appointment, multiply the minutes late by their priority, add those numbers for everyone, and keep that total as low as possible; finishing on time counts as zero. Every patient must be seen once, there’s no overlapping visits, and the exact appointment times, lengths, and priorities follow below.
+
+# n_patients=6
+# patient_ids=A, B, C, D, E, F
+patient_id,consultation_length_minutes,clinical_priority,appointment_time
+A,9,9,162
+B,45,9,197
+C,53,1,109
+D,15,1,184
+E,42,5,173
+F,97,3,168
+
+If you could send the final ordering back as a tiny JSON snippet, that would be perfect — something casual like the shape below that just lists the patients in the order they'll be seen.
+
+{
+  ""solution"": [
+    <patient_id_first>,
+    <patient_id_second>,
+    ...,
+    <patient_id_last>
+  ]
+}
+
+""solution"" is the ordered list of appointments — first entry is seen first, last entry is seen last. The angle-bracket items are placeholders for the patient identifiers from the instance; this block is just a sketch of the shape I want, not the actual answer.
+
+Please use the exact identifiers from the input with no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,names,"{""n_jobs"": 6, ""processing_times"": [9, 45, 53, 15, 42, 97], ""weights"": [9, 9, 1, 1, 5, 3], ""due_dates"": [162, 197, 109, 184, 173, 168]}","{""start_times"": [97, 148, 208, 193, 106, 0], ""end_times"": [106, 193, 261, 208, 148, 97], ""tardiness"": [0, 0, 152, 24, 0, 0]}",176.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 6, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 9, ""weight"": 9, ""due_date"": 162}, {""job_id"": ""B"", ""processing_time"": 45, ""weight"": 9, ""due_date"": 197}, {""job_id"": ""C"", ""processing_time"": 53, ""weight"": 1, ""due_date"": 109}, {""job_id"": ""D"", ""processing_time"": 15, ""weight"": 1, ""due_date"": 184}, {""job_id"": ""E"", ""processing_time"": 42, ""weight"": 5, ""due_date"": 173}, {""job_id"": ""F"", ""processing_time"": 97, ""weight"": 3, ""due_date"": 168}]}","[""F"", ""A"", ""E"", ""B"", ""D"", ""C""]"
+SMTWT_S_007,SMTWT,S,7,"In my bakery the lone decorator faces a list of cakes, each needing a set amount of decorating time, promised for a particular pickup slot, and carrying a different consequence for being late. The only decision is the order they’re tackled in, with the rule that the station can only handle one cake at a time and every cake must be completed once. For any cake completed after its pickup, measure the minutes late and scale that by the cake’s lateness penalty; add those scaled late minutes for all cakes — the aim is to make that sum as small as it can be. The full, concrete times, pickups, and penalties are given below.
+
+There are 6 cakes to schedule: A, B, C, D, E, F.
+
+| cake_id | decorating_time_minutes | lateness_penalty_weight | promised_pickup_time_minutes |
+|---|---|---|---|
+| A | 64 | 8 | 90 |
+| B | 35 | 6 | 108 |
+| C | 47 | 2 | 157 |
+| D | 82 | 9 | 94 |
+| E | 32 | 6 | 157 |
+| F | 89 | 4 | 150 |
+
+I will order them to minimize the total of weighted minutes late.
+
+If you'd like the final answer in a predictable, copy-pasteable shape, just drop it into a tiny JSON object like this:
+
+{
+  ""solution"": [
+    <cake_id_first>,
+    <cake_id_second>,
+    <cake_id_third>,
+    <cake_id_fourth>,
+    <cake_id_last>
+  ]
+}
+
+Think of ""solution"" as the ordered to-do list for the decorator: each placeholder like <cake_id_first> is where you put the identifier of the cake that should be done first, the next one is the cake to do second, and so on. This is just a sketch of the shape I expect — not the actual schedule itself.
+
+Please make sure to use the exact identifiers from the instance input, without renaming or inventing new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,names,"{""n_jobs"": 6, ""processing_times"": [64, 35, 47, 82, 32, 89], ""weights"": [8, 6, 2, 9, 6, 4], ""due_dates"": [90, 108, 157, 94, 157, 150]}","{""start_times"": [149, 82, 302, 0, 117, 213], ""end_times"": [213, 117, 349, 82, 149, 302], ""tardiness"": [123, 9, 192, 0, 0, 152]}",2030.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 6, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 64, ""weight"": 8, ""due_date"": 90}, {""job_id"": ""B"", ""processing_time"": 35, ""weight"": 6, ""due_date"": 108}, {""job_id"": ""C"", ""processing_time"": 47, ""weight"": 2, ""due_date"": 157}, {""job_id"": ""D"", ""processing_time"": 82, ""weight"": 9, ""due_date"": 94}, {""job_id"": ""E"", ""processing_time"": 32, ""weight"": 6, ""due_date"": 157}, {""job_id"": ""F"", ""processing_time"": 89, ""weight"": 4, ""due_date"": 150}]}","[""D"", ""B"", ""E"", ""A"", ""F"", ""C""]"
+SMTWT_S_008,SMTWT,S,8,"A few months ago an engineer described scheduling tough choices on a lone server: a set of maintenance jobs, each with how long it takes, a target completion moment, and an impact score for lateness. Jobs can’t overlap and every job has to be run exactly once. If a job finishes after its target, the extra minutes are that job’s lateness, which are multiplied by the impact score to produce a penalty; sum all those penalties together. The trick is to order the jobs so that total penalty is as small as possible. The detailed job data are provided below.
+
+{
+  ""num_maintenance_jobs"": 10,
+  ""maintenance_job_ids"": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  ""data"": [
+    {
+      ""job_id"": 0,
+      ""execution_time_minutes"": 32,
+      ""impact_score"": 8,
+      ""target_completion_time"": 29
+    },
+    {
+      ""job_id"": 1,
+      ""execution_time_minutes"": 65,
+      ""impact_score"": 9,
+      ""target_completion_time"": 7
+    },
+    {
+      ""job_id"": 2,
+      ""execution_time_minutes"": 71,
+      ""impact_score"": 9,
+      ""target_completion_time"": 137
+    },
+    {
+      ""job_id"": 3,
+      ""execution_time_minutes"": 21,
+      ""impact_score"": 6,
+      ""target_completion_time"": 66
+    },
+    {
+      ""job_id"": 4,
+      ""execution_time_minutes"": 32,
+      ""impact_score"": 10,
+      ""target_completion_time"": 8
+    },
+    {
+      ""job_id"": 5,
+      ""execution_time_minutes"": 30,
+      ""impact_score"": 6,
+      ""target_completion_time"": 122
+    },
+    {
+      ""job_id"": 6,
+      ""execution_time_minutes"": 71,
+      ""impact_score"": 7,
+      ""target_completion_time"": 173
+    },
+    {
+      ""job_id"": 7,
+      ""execution_time_minutes"": 33,
+      ""impact_score"": 5,
+      ""target_completion_time"": 45
+    },
+    {
+      ""job_id"": 8,
+      ""execution_time_minutes"": 51,
+      ""impact_score"": 7,
+      ""target_completion_time"": 88
+    },
+    {
+      ""job_id"": 9,
+      ""execution_time_minutes"": 71,
+      ""impact_score"": 1,
+      ""target_completion_time"": 157
+    }
+  ]
+}
+
+Oh, and when you give the final order, a little JSON sketch like the one below is perfect — just an object with a ""solution"" array listing the job ids in the run order.
+
+{
+  ""solution"": [
+    <job_id_first>,
+    <job_id_second>,
+    ...,
+    <job_id_last>
+  ]
+}
+
+Here’s what that tiny JSON is saying in plain English: ""solution"" holds the schedule as a simple ordered list — first entry is the job to run first, next entry is the job to run second, and so on until the last job. Think of it as filling out a form with the job IDs in the sequence you want.
+
+This JSON is only the expected shape (a sketch), not the actual answer.
+
+Please use the exact job identifiers from the instance input — do not rename them or invent new labels. Valid identifiers look like:
+- plain numbers such as ""1"" or ""23""
+- single capital letters like ""A"" or ""B""
+- a capital letter followed by digits like ""A1"" or ""X7""",json,zero_based,"{""n_jobs"": 10, ""processing_times"": [32, 65, 71, 21, 32, 30, 71, 33, 51, 71], ""weights"": [8, 9, 9, 6, 10, 6, 7, 5, 7, 1], ""due_dates"": [29, 7, 137, 66, 8, 122, 173, 45, 88, 157]}","{""start_times"": [32, 148, 264, 64, 0, 85, 335, 115, 213, 406], ""end_times"": [64, 213, 335, 85, 32, 115, 406, 148, 264, 477], ""tardiness"": [35, 206, 198, 19, 24, 0, 233, 103, 176, 320]}",7968.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 10, ""jobs"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], ""job_records"": [{""job_id"": 0, ""processing_time"": 32, ""weight"": 8, ""due_date"": 29}, {""job_id"": 1, ""processing_time"": 65, ""weight"": 9, ""due_date"": 7}, {""job_id"": 2, ""processing_time"": 71, ""weight"": 9, ""due_date"": 137}, {""job_id"": 3, ""processing_time"": 21, ""weight"": 6, ""due_date"": 66}, {""job_id"": 4, ""processing_time"": 32, ""weight"": 10, ""due_date"": 8}, {""job_id"": 5, ""processing_time"": 30, ""weight"": 6, ""due_date"": 122}, {""job_id"": 6, ""processing_time"": 71, ""weight"": 7, ""due_date"": 173}, {""job_id"": 7, ""processing_time"": 33, ""weight"": 5, ""due_date"": 45}, {""job_id"": 8, ""processing_time"": 51, ""weight"": 7, ""due_date"": 88}, {""job_id"": 9, ""processing_time"": 71, ""weight"": 1, ""due_date"": 157}]}","[4, 0, 3, 5, 7, 1, 8, 2, 6, 9]"
+SMTWT_S_009,SMTWT,S,9,"One afternoon the tailor looked at a pile of shirts and dresses, each with an estimated stitch time, a promised pickup day, and a note about how upset the customer would be if it’s late. The job is to pick the sequence so that for each piece any lateness (finish minus promised time, or zero if on time) gets multiplied by that piece’s upset-level, and then those products are all added up — the lower that total, the better the service. Only one garment can be worked on at a time, every alteration needs doing once, and the full breakdown of times and deadlines is provided below.
+
+Below are the full details for the 10 garments the tailor must schedule: A, B, C, D, E, F, G, H, I, J.
+
+| garment_id | stitch_time | upset_level | promised_pickup_time |
+|---|---|---|---|
+| A | 79 | 8 | 526 |
+| B | 28 | 1 | 459 |
+| C | 59 | 1 | 567 |
+| D | 65 | 3 | 443 |
+| E | 92 | 6 | 459 |
+| F | 62 | 3 | 406 |
+| G | 92 | 5 | 412 |
+| H | 67 | 1 | 521 |
+| I | 47 | 3 | 601 |
+| J | 94 | 1 | 733 |
+
+The tailor will pick a sequence to minimize the total upset-weighted lateness for these 10 garments.
+
+Oh, and to make answering easy, please return your chosen sequence in this simple JSON shape so I can read it programmatically:
+
+{
+  ""solution"": [
+    <garment_id_first>,
+    <garment_id_second>,
+    ...,
+    <garment_id_last>
+  ]
+}
+
+This ""solution"" array is just the sewing order: the first item is the garment you finish first, and the last is the one finished last. Think of each placeholder as a slot where you put the actual garment ID from the instance.
+
+The JSON above is only a sketch of the expected shape — don't treat it as the final schedule. When you fill it in, use the exact identifiers from the instance input: no renaming, no invented labels. Valid identifiers look like:
+
+- ""1"" or ""23""
+- ""A"" or ""B""
+- ""A1"" or ""X7""",markdown_table,names,"{""n_jobs"": 10, ""processing_times"": [79, 28, 59, 65, 92, 62, 92, 67, 47, 94], ""weights"": [8, 1, 1, 3, 6, 3, 5, 1, 3, 1], ""due_dates"": [526, 459, 567, 443, 459, 406, 412, 521, 601, 733]}","{""start_times"": [339, 311, 485, 246, 92, 184, 0, 418, 544, 591], ""end_times"": [418, 339, 544, 311, 184, 246, 92, 485, 591, 685], ""tardiness"": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}",0.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 10, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 79, ""weight"": 8, ""due_date"": 526}, {""job_id"": ""B"", ""processing_time"": 28, ""weight"": 1, ""due_date"": 459}, {""job_id"": ""C"", ""processing_time"": 59, ""weight"": 1, ""due_date"": 567}, {""job_id"": ""D"", ""processing_time"": 65, ""weight"": 3, ""due_date"": 443}, {""job_id"": ""E"", ""processing_time"": 92, ""weight"": 6, ""due_date"": 459}, {""job_id"": ""F"", ""processing_time"": 62, ""weight"": 3, ""due_date"": 406}, {""job_id"": ""G"", ""processing_time"": 92, ""weight"": 5, ""due_date"": 412}, {""job_id"": ""H"", ""processing_time"": 67, ""weight"": 1, ""due_date"": 521}, {""job_id"": ""I"", ""processing_time"": 47, ""weight"": 3, ""due_date"": 601}, {""job_id"": ""J"", ""processing_time"": 94, ""weight"": 1, ""due_date"": 733}]}","[""G"", ""E"", ""F"", ""D"", ""B"", ""A"", ""H"", ""C"", ""I"", ""J""]"
+SMTWT_S_010,SMTWT,S,10,"Picture this: a single-grill food stall, a queue of orders, and for each order a known cook time, a promised pickup minute, and a priority number that says how important punctuality is. The choice is the cooking order — nothing can overlap on the grill and every order must be cooked once without repeats or omissions. For any order finished after its pickup time, note the minutes late (zero if it’s on time), multiply those minutes by that order’s priority, and add up those products across all orders — the schedule with the smallest total pain is the one to aim for. The specific order details are listed below.
+
+There are 10 orders, listed as 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.
+
+| order_id | cook_time_minutes | priority_score | promised_pickup_minute |
+|---|---|---|---|
+| 1 | 18 | 10 | 424 |
+| 2 | 57 | 7 | 321 |
+| 3 | 72 | 4 | 411 |
+| 4 | 39 | 4 | 297 |
+| 5 | 62 | 1 | 359 |
+| 6 | 63 | 8 | 286 |
+| 7 | 49 | 9 | 425 |
+| 8 | 29 | 8 | 219 |
+| 9 | 58 | 10 | 196 |
+| 10 | 43 | 2 | 280 |
+
+Aim for the cooking sequence that minimizes the total weighted minutes late across these 10 orders.
+
+Oh, and if you want to hand me the final cooking order, just drop it into a tiny JSON block like this:
+
+{
+  ""solution"": [
+    <order_id_first>,
+    <order_id_second>,
+    ...,
+    <order_id_last>
+  ]
+}
+
+This ""solution"" array is simply the cooking sequence from first to last — each placeholder like <order_id_first> is where you'd put one order's identifier in the order they get cooked. It's just a sketch of the shape I expect, not the actual answer.
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""n_jobs"": 10, ""processing_times"": [18, 57, 72, 39, 62, 63, 49, 29, 58, 43], ""weights"": [10, 7, 4, 4, 1, 8, 9, 8, 10, 2], ""due_dates"": [424, 321, 411, 297, 359, 286, 425, 219, 196, 280]}","{""start_times"": [361, 193, 289, 250, 428, 87, 379, 58, 0, 150], ""end_times"": [379, 250, 361, 289, 490, 150, 428, 87, 58, 193], ""tardiness"": [0, 0, 0, 0, 131, 0, 3, 0, 0, 0]}",158.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 10, ""jobs"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], ""job_records"": [{""job_id"": 1, ""processing_time"": 18, ""weight"": 10, ""due_date"": 424}, {""job_id"": 2, ""processing_time"": 57, ""weight"": 7, ""due_date"": 321}, {""job_id"": 3, ""processing_time"": 72, ""weight"": 4, ""due_date"": 411}, {""job_id"": 4, ""processing_time"": 39, ""weight"": 4, ""due_date"": 297}, {""job_id"": 5, ""processing_time"": 62, ""weight"": 1, ""due_date"": 359}, {""job_id"": 6, ""processing_time"": 63, ""weight"": 8, ""due_date"": 286}, {""job_id"": 7, ""processing_time"": 49, ""weight"": 9, ""due_date"": 425}, {""job_id"": 8, ""processing_time"": 29, ""weight"": 8, ""due_date"": 219}, {""job_id"": 9, ""processing_time"": 58, ""weight"": 10, ""due_date"": 196}, {""job_id"": 10, ""processing_time"": 43, ""weight"": 2, ""due_date"": 280}]}","[9, 8, 6, 10, 2, 4, 3, 1, 7, 5]"
+SMTWT_S_011,SMTWT,S,11,"Someone dropped off a batch of prints at a tiny studio that has a single machine to process them. Each batch needs a set number of minutes, has a target ready time, and comes with a client weight that tells how costly lateness is for them. The machine can handle only one batch at a time, every batch must be run once (no skipping or repeating), and any batch that finishes after its target is late by finish minus target; that lateness is scaled by the client’s weight and all those scaled latenesses are summed — the schedule that produces the smallest sum feels best. The concrete batch list and timings follow below.
+
+{
+  ""n_batches"": 9,
+  ""batch_ids"": [
+    ""A"",
+    ""B"",
+    ""C"",
+    ""D"",
+    ""E"",
+    ""F"",
+    ""G"",
+    ""H"",
+    ""I""
+  ],
+  ""data"": [
+    {
+      ""batch_id"": ""A"",
+      ""processing_time_minutes"": 12,
+      ""client_weight"": 2,
+      ""ready_time_minutes"": 220
+    },
+    {
+      ""batch_id"": ""B"",
+      ""processing_time_minutes"": 26,
+      ""client_weight"": 6,
+      ""ready_time_minutes"": 145
+    },
+    {
+      ""batch_id"": ""C"",
+      ""processing_time_minutes"": 20,
+      ""client_weight"": 8,
+      ""ready_time_minutes"": 172
+    },
+    {
+      ""batch_id"": ""D"",
+      ""processing_time_minutes"": 95,
+      ""client_weight"": 9,
+      ""ready_time_minutes"": 233
+    },
+    {
+      ""batch_id"": ""E"",
+      ""processing_time_minutes"": 39,
+      ""client_weight"": 7,
+      ""ready_time_minutes"": 197
+    },
+    {
+      ""batch_id"": ""F"",
+      ""processing_time_minutes"": 11,
+      ""client_weight"": 7,
+      ""ready_time_minutes"": 46
+    },
+    {
+      ""batch_id"": ""G"",
+      ""processing_time_minutes"": 96,
+      ""client_weight"": 9,
+      ""ready_time_minutes"": 197
+    },
+    {
+      ""batch_id"": ""H"",
+      ""processing_time_minutes"": 24,
+      ""client_weight"": 7,
+      ""ready_time_minutes"": 101
+    },
+    {
+      ""batch_id"": ""I"",
+      ""processing_time_minutes"": 39,
+      ""client_weight"": 6,
+      ""ready_time_minutes"": 46
+    }
+  ]
+}
+
+If you want to hand me the final schedule, just drop it in the JSON shape below so I can parse it easily — something like this:
+
+{
+  ""solution"": [
+    <batch_id_first>,
+    <batch_id_second>,
+    ...,
+    <batch_id_last>
+  ]
+}
+
+This block is just a simple sketch: the ""solution"" array should list the batches in the exact order you want them processed (first finished to last finished). Each placeholder like <batch_id_first> stands in for the actual batch identifier from the instance.
+
+The JSON above is only the expected shape, not the actual answer—replace those placeholders with the real IDs from the input when you submit your schedule.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.  
+
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,names,"{""n_jobs"": 9, ""processing_times"": [12, 26, 20, 95, 39, 11, 96, 24, 39], ""weights"": [2, 6, 8, 9, 7, 7, 9, 7, 6], ""due_dates"": [220, 145, 172, 233, 197, 46, 197, 101, 46]}","{""start_times"": [254, 74, 139, 159, 100, 0, 266, 50, 11], ""end_times"": [266, 100, 159, 254, 139, 11, 362, 74, 50], ""tardiness"": [46, 0, 0, 21, 0, 0, 165, 0, 4]}",1790.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 9, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 12, ""weight"": 2, ""due_date"": 220}, {""job_id"": ""B"", ""processing_time"": 26, ""weight"": 6, ""due_date"": 145}, {""job_id"": ""C"", ""processing_time"": 20, ""weight"": 8, ""due_date"": 172}, {""job_id"": ""D"", ""processing_time"": 95, ""weight"": 9, ""due_date"": 233}, {""job_id"": ""E"", ""processing_time"": 39, ""weight"": 7, ""due_date"": 197}, {""job_id"": ""F"", ""processing_time"": 11, ""weight"": 7, ""due_date"": 46}, {""job_id"": ""G"", ""processing_time"": 96, ""weight"": 9, ""due_date"": 197}, {""job_id"": ""H"", ""processing_time"": 24, ""weight"": 7, ""due_date"": 101}, {""job_id"": ""I"", ""processing_time"": 39, ""weight"": 6, ""due_date"": 46}]}","[""F"", ""I"", ""H"", ""B"", ""E"", ""C"", ""D"", ""A"", ""G""]"
+SMTWT_S_012,SMTWT,S,12,"Recently the foreman had to map out the painters’ route with just a single sprayer and a list of rooms to tackle. Every room has a painting duration, a deadline the customer expects, and a priority level that reflects how costly a delay would be. Because only one room can be worked on at a time, every room will be scheduled once in a sequence with no overlap. For each room, lateness is the time it finishes past its due date (or zero if on time); multiply that lateness by the room’s priority, then add those numbers for every room — the smaller that total, the better the plan. The concrete numbers for each room are shown below.
+
+There are 8 rooms to schedule, listed as 1, 2, 3, 4, 5, 6, 7, 8.
+
+| room_id | painting_duration | importance_weight | agreed_finish_date |
+|---|---|---|---|
+| 1 | 75 | 8 | 290 |
+| 2 | 26 | 7 | 198 |
+| 3 | 27 | 6 | 151 |
+| 4 | 95 | 5 | 395 |
+| 5 | 83 | 5 | 254 |
+| 6 | 26 | 8 | 385 |
+| 7 | 6 | 10 | 182 |
+| 8 | 25 | 7 | 376 |
+
+These 8 room entries provide the concrete numbers needed to compute the total weighted lateness for the planned sequence.
+
+If you'd prefer the answer in a neat, machine-friendly form, just return the room order in a small JSON object like the one below.
+
+{
+  ""solution"": [
+    <room_id_first>,
+    <room_id_second>,
+    ...,
+    <room_id_last>
+  ]
+}
+
+Think of ""solution"" as the painting sequence: the first placeholder is the room you do first, the next is the room you do second, and so on. Those angle-bracket placeholders are just where the real room identifiers go — this block is a sketch of the shape I expect, not the actual schedule.
+
+Please be sure to use the exact identifiers from the instance input — no renaming and no new labels.  
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""n_jobs"": 8, ""processing_times"": [75, 26, 27, 95, 83, 26, 6, 25], ""weights"": [8, 7, 6, 5, 5, 8, 10, 7], ""due_dates"": [290, 198, 151, 395, 254, 385, 182, 376]}","{""start_times"": [142, 27, 0, 217, 53, 312, 136, 338], ""end_times"": [217, 53, 27, 312, 136, 338, 142, 363], ""tardiness"": [0, 0, 0, 0, 0, 0, 0, 0]}",0.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 8, ""jobs"": [1, 2, 3, 4, 5, 6, 7, 8], ""job_records"": [{""job_id"": 1, ""processing_time"": 75, ""weight"": 8, ""due_date"": 290}, {""job_id"": 2, ""processing_time"": 26, ""weight"": 7, ""due_date"": 198}, {""job_id"": 3, ""processing_time"": 27, ""weight"": 6, ""due_date"": 151}, {""job_id"": 4, ""processing_time"": 95, ""weight"": 5, ""due_date"": 395}, {""job_id"": 5, ""processing_time"": 83, ""weight"": 5, ""due_date"": 254}, {""job_id"": 6, ""processing_time"": 26, ""weight"": 8, ""due_date"": 385}, {""job_id"": 7, ""processing_time"": 6, ""weight"": 10, ""due_date"": 182}, {""job_id"": 8, ""processing_time"": 25, ""weight"": 7, ""due_date"": 376}]}","[3, 2, 5, 7, 1, 4, 6, 8]"
+SMTWT_S_013,SMTWT,S,13,"At the studio there’s a single mastering board and a to-do list of tracks that need finishing in a specific order someone has to pick. Every track needs a fixed amount of time on the board, has a scheduled release date, and some tracks are more important than others, so lateness costs more for them. The board can only do one track at a time and every track must be processed exactly once — no skipping or repeating. For any track that’s done after its scheduled date, multiply how many minutes late it is by that track’s importance and add up those products for the whole set; the goal is to arrange the queue so that total of those importance×lateness numbers is as low as it can be. The detailed track times, dates, and importance ratings are below.
+
+{
+  ""total_tracks"": 5,
+  ""track_ids"": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  ""data"": [
+    {
+      ""track_id"": 0,
+      ""mastering_time_minutes"": 29,
+      ""importance_per_minute"": 3,
+      ""release_deadline_minutes"": 161
+    },
+    {
+      ""track_id"": 1,
+      ""mastering_time_minutes"": 11,
+      ""importance_per_minute"": 5,
+      ""release_deadline_minutes"": 133
+    },
+    {
+      ""track_id"": 2,
+      ""mastering_time_minutes"": 84,
+      ""importance_per_minute"": 1,
+      ""release_deadline_minutes"": 161
+    },
+    {
+      ""track_id"": 3,
+      ""mastering_time_minutes"": 59,
+      ""importance_per_minute"": 10,
+      ""release_deadline_minutes"": 174
+    },
+    {
+      ""track_id"": 4,
+      ""mastering_time_minutes"": 3,
+      ""importance_per_minute"": 1,
+      ""release_deadline_minutes"": 113
+    }
+  ]
+}
+
+Oh, and one quick thing — when you send back the final ordering, please use this little JSON layout so it's easy to read and parse:
+
+{
+  ""solution"": [
+    <track_id_first>,
+    <track_id_second>,
+    ...,
+    <track_id_last>
+  ]
+}
+
+This just means put the chosen sequence (first track to last track) in the array under ""solution"". Think of each placeholder like a slot where you drop the exact track identifier from the instance input — it's just a sketch of the shape I expect, not the actual answer.
+
+Please make sure you use the identifiers exactly as they appear in the instance input — no renaming, no made-up labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""n_jobs"": 5, ""processing_times"": [29, 11, 84, 59, 3], ""weights"": [3, 5, 1, 10, 1], ""due_dates"": [161, 133, 161, 174, 113]}","{""start_times"": [59, 88, 102, 0, 99], ""end_times"": [88, 99, 186, 59, 102], ""tardiness"": [0, 0, 25, 0, 0]}",25.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 5, ""jobs"": [0, 1, 2, 3, 4], ""job_records"": [{""job_id"": 0, ""processing_time"": 29, ""weight"": 3, ""due_date"": 161}, {""job_id"": 1, ""processing_time"": 11, ""weight"": 5, ""due_date"": 133}, {""job_id"": 2, ""processing_time"": 84, ""weight"": 1, ""due_date"": 161}, {""job_id"": 3, ""processing_time"": 59, ""weight"": 10, ""due_date"": 174}, {""job_id"": 4, ""processing_time"": 3, ""weight"": 1, ""due_date"": 113}]}","[3, 0, 1, 4, 2]"
+SMTWT_S_014,SMTWT,S,14,"We have one workbench and a stack of bouquet orders waiting to be assembled. Every bouquet needs a certain assembly time, has a pickup hour the customer wants, and carries an urgency score that reflects how badly the customer cares about being on time. The decision to make is simply which bouquet to do first, second, and so on — they must be done sequentially on the single bench and each order has to be completed once, no skipping or doubling up. What counts as a better plan is the total of urgency times minutes late: for each bouquet, find minutes late (zero if finished by the pickup), multiply by its urgency, then sum those products; a lower total is the aim. The concrete order details are shown below.
+
+There are 5 bouquets waiting with identifiers 0, 1, 2, 3, 4.
+Bouquet 0 requires 40 minutes to assemble, requests pickup at minute 23, and has urgency 4.
+Bouquet 1 requires 37 minutes to assemble, requests pickup at minute 47, and has urgency 8.
+Bouquet 2 requires 74 minutes to assemble, requests pickup at minute 39, and has urgency 8.
+Bouquet 3 requires 20 minutes to assemble, requests pickup at minute 99, and has urgency 6.
+Bouquet 4 requires 34 minutes to assemble, requests pickup at minute 11, and has urgency 1.
+We will schedule these 5 bouquets 0, 1, 2, 3, 4 to minimize the total urgency-weighted minutes late.
+
+Oh, and just so we’re on the same page about the reply format, please give the final order as a tiny JSON snippet like this:
+
+{
+  ""solution"": [
+    <bouquet_id_first>,
+    <bouquet_id_second>,
+    ...,
+    <bouquet_id_last>
+  ]
+}
+
+This JSON is just a simple sketch: the ""solution"" array should list the bouquet IDs in the sequence you plan to assemble them (first to last). Think of each placeholder like the label where you'd drop an order ID — nothing more technical than that.
+
+Reminder: that JSON is only the shape I expect, not the actual answer. Also make sure to use the exact identifiers from the instance input — don’t rename them or invent new ones.
+
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""n_jobs"": 5, ""processing_times"": [40, 37, 74, 20, 34], ""weights"": [4, 8, 8, 6, 1], ""due_dates"": [23, 47, 39, 99, 11]}","{""start_times"": [37, 0, 97, 77, 171], ""end_times"": [77, 37, 171, 97, 205], ""tardiness"": [54, 0, 132, 0, 194]}",1466.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 5, ""jobs"": [0, 1, 2, 3, 4], ""job_records"": [{""job_id"": 0, ""processing_time"": 40, ""weight"": 4, ""due_date"": 23}, {""job_id"": 1, ""processing_time"": 37, ""weight"": 8, ""due_date"": 47}, {""job_id"": 2, ""processing_time"": 74, ""weight"": 8, ""due_date"": 39}, {""job_id"": 3, ""processing_time"": 20, ""weight"": 6, ""due_date"": 99}, {""job_id"": 4, ""processing_time"": 34, ""weight"": 1, ""due_date"": 11}]}","[1, 0, 3, 2, 4]"
+SMTWT_S_015,SMTWT,S,15,"We’ve got one centrifuge and a stack of sample runs, each with its own spin duration, a target completion time, and a study-specific importance. The decision is which run to run first, second, and so on so the centrifuge is never double-booked and every sample gets run once. For any sample that finishes after its target, count the minutes late and multiply by that sample’s importance; add those products up, and the best plan is the one that makes that total as small as possible. The exact run times, target times, and weights appear below.
+
+{
+  ""n_samples"": 6,
+  ""sample_ids"": [
+    ""A"",
+    ""B"",
+    ""C"",
+    ""D"",
+    ""E"",
+    ""F""
+  ],
+  ""data"": [
+    {
+      ""sample_id"": ""A"",
+      ""spin_time_minutes"": 57,
+      ""study_weight"": 2,
+      ""target_completion_time_minutes"": 136
+    },
+    {
+      ""sample_id"": ""B"",
+      ""spin_time_minutes"": 57,
+      ""study_weight"": 7,
+      ""target_completion_time_minutes"": 420
+    },
+    {
+      ""sample_id"": ""C"",
+      ""spin_time_minutes"": 38,
+      ""study_weight"": 2,
+      ""target_completion_time_minutes"": 256
+    },
+    {
+      ""sample_id"": ""D"",
+      ""spin_time_minutes"": 33,
+      ""study_weight"": 2,
+      ""target_completion_time_minutes"": 411
+    },
+    {
+      ""sample_id"": ""E"",
+      ""spin_time_minutes"": 62,
+      ""study_weight"": 4,
+      ""target_completion_time_minutes"": 129
+    },
+    {
+      ""sample_id"": ""F"",
+      ""spin_time_minutes"": 85,
+      ""study_weight"": 5,
+      ""target_completion_time_minutes"": 212
+    }
+  ]
+}
+
+Also, when you send the actual schedule back, please use a tiny JSON snippet like this so it’s easy to parse — just an ordered list of run IDs in the order you’ll run them.
+
+{
+  ""solution"": [
+    <sample_id_first>,
+    <sample_id_second>,
+    ...,
+    <sample_id_last>
+  ]
+}
+
+This just shows the shape I expect: ""solution"" holds the sequence of sample/run identifiers in the order they’ll be run on the centrifuge. The angle-bracket bits are placeholders showing where each run’s ID goes — they’re just a sketch of the shape, not the real answer.
+
+A quick reminder: use the exact identifiers from the instance input — don’t rename them and don’t invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,names,"{""n_jobs"": 6, ""processing_times"": [57, 57, 38, 33, 62, 85], ""weights"": [2, 7, 2, 2, 4, 5], ""due_dates"": [136, 420, 256, 411, 129, 212]}","{""start_times"": [62, 242, 204, 299, 0, 119], ""end_times"": [119, 299, 242, 332, 62, 204], ""tardiness"": [0, 0, 0, 0, 0, 0]}",0.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 6, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 57, ""weight"": 2, ""due_date"": 136}, {""job_id"": ""B"", ""processing_time"": 57, ""weight"": 7, ""due_date"": 420}, {""job_id"": ""C"", ""processing_time"": 38, ""weight"": 2, ""due_date"": 256}, {""job_id"": ""D"", ""processing_time"": 33, ""weight"": 2, ""due_date"": 411}, {""job_id"": ""E"", ""processing_time"": 62, ""weight"": 4, ""due_date"": 129}, {""job_id"": ""F"", ""processing_time"": 85, ""weight"": 5, ""due_date"": 212}]}","[""E"", ""A"", ""F"", ""C"", ""B"", ""D""]"
+SMTWT_S_016,SMTWT,S,16,"Many people face the same problem: one laptop, a set of article drafts, and a fixed block of time to write. Each draft takes a specific amount of time, has a submission time, and an editor-assigned importance that makes delays more costly. The aim is to arrange the writing order so that for each draft finished after its submission time you tally how late it was, multiply that lateness by its importance, and then total those penalties — the smaller that total penalty, the better the schedule. Only one draft can be worked on at once, nothing gets skipped or repeated, and the exact draft times, deadlines, and weights are listed below.
+
+{
+  ""n_drafts"": 9,
+  ""draft_ids"": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  ""data"": [
+    {
+      ""draft_id"": 0,
+      ""writing_duration"": 61,
+      ""editorial_weight"": 5,
+      ""submission_time"": 253
+    },
+    {
+      ""draft_id"": 1,
+      ""writing_duration"": 16,
+      ""editorial_weight"": 4,
+      ""submission_time"": 394
+    },
+    {
+      ""draft_id"": 2,
+      ""writing_duration"": 81,
+      ""editorial_weight"": 3,
+      ""submission_time"": 513
+    },
+    {
+      ""draft_id"": 3,
+      ""writing_duration"": 79,
+      ""editorial_weight"": 2,
+      ""submission_time"": 49
+    },
+    {
+      ""draft_id"": 4,
+      ""writing_duration"": 52,
+      ""editorial_weight"": 7,
+      ""submission_time"": 521
+    },
+    {
+      ""draft_id"": 5,
+      ""writing_duration"": 69,
+      ""editorial_weight"": 8,
+      ""submission_time"": 79
+    },
+    {
+      ""draft_id"": 6,
+      ""writing_duration"": 88,
+      ""editorial_weight"": 4,
+      ""submission_time"": 136
+    },
+    {
+      ""draft_id"": 7,
+      ""writing_duration"": 3,
+      ""editorial_weight"": 1,
+      ""submission_time"": 100
+    },
+    {
+      ""draft_id"": 8,
+      ""writing_duration"": 27,
+      ""editorial_weight"": 2,
+      ""submission_time"": 347
+    }
+  ]
+}
+
+If you want to hand me the schedule, a nice simple shape to stick to is this little JSON snippet — nothing fancy, just a list in order so I can read it easily:
+
+{
+  ""solution"": [
+    <draft_id_first>,
+    <draft_id_second>,
+    ...,
+    <draft_id_last>
+  ]
+}
+
+Here ""solution"" is the ordered sequence of drafts to write (first to last). Each placeholder like <draft_id_first> is meant to be replaced by the actual draft identifier from the instance input — think of it as the slot where you drop the ID for the draft you do first, then second, and so on. This is just a sketch of the expected shape, not the final schedule itself.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""n_jobs"": 9, ""processing_times"": [61, 16, 81, 79, 52, 69, 88, 3, 27], ""weights"": [5, 4, 3, 2, 7, 8, 4, 1, 2], ""due_dates"": [253, 394, 513, 49, 521, 79, 136, 100, 347]}","{""start_times"": [160, 300, 343, 221, 424, 0, 72, 69, 316], ""end_times"": [221, 316, 424, 300, 476, 69, 160, 72, 343], ""tardiness"": [0, 0, 0, 251, 0, 0, 24, 0, 0]}",598.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 9, ""jobs"": [0, 1, 2, 3, 4, 5, 6, 7, 8], ""job_records"": [{""job_id"": 0, ""processing_time"": 61, ""weight"": 5, ""due_date"": 253}, {""job_id"": 1, ""processing_time"": 16, ""weight"": 4, ""due_date"": 394}, {""job_id"": 2, ""processing_time"": 81, ""weight"": 3, ""due_date"": 513}, {""job_id"": 3, ""processing_time"": 79, ""weight"": 2, ""due_date"": 49}, {""job_id"": 4, ""processing_time"": 52, ""weight"": 7, ""due_date"": 521}, {""job_id"": 5, ""processing_time"": 69, ""weight"": 8, ""due_date"": 79}, {""job_id"": 6, ""processing_time"": 88, ""weight"": 4, ""due_date"": 136}, {""job_id"": 7, ""processing_time"": 3, ""weight"": 1, ""due_date"": 100}, {""job_id"": 8, ""processing_time"": 27, ""weight"": 2, ""due_date"": 347}]}","[5, 7, 6, 0, 3, 1, 8, 2, 4]"
+SMTWT_S_017,SMTWT,S,17,"On a typical morning at the dry cleaner there’s one press and a pile of orders, each with a known pressing time, a pickup appointment, and a customer-specific cost per minute of delay. The job is to pick a running order so that whenever an item finishes after its appointment you count how many minutes it’s late, multiply by that item’s cost-per-minute, and keep the total of all those penalties as low as possible. The press can’t run two things at once, every garment must be processed once, and the specific item times and penalty numbers are given below.
+
+There are 6 garments waiting for the single press: 1, 2, 3, 4, 5, 6.
+Garment 1: needs 95 minutes on the press, pickup at 336 minutes, penalty 10 per minute late.
+Garment 2: needs 60 minutes on the press, pickup at 350 minutes, penalty 10 per minute late.
+Garment 3: needs 89 minutes on the press, pickup at 364 minutes, penalty 4 per minute late.
+Garment 4: needs 96 minutes on the press, pickup at 340 minutes, penalty 7 per minute late.
+Garment 5: needs 65 minutes on the press, pickup at 315 minutes, penalty 8 per minute late.
+Garment 6: needs 15 minutes on the press, pickup at 364 minutes, penalty 5 per minute late.
+Schedule them to minimize the total late penalties for the 6 garments.
+
+If you want to hand me a schedule, a simple way is to return a tiny JSON object that lists the garments in the order they should be run on the press. Something like this works fine:
+
+{
+  ""solution"": [
+    <garment_id_first>,
+    <garment_id_second>,
+    ...,
+    <garment_id_last>
+  ]
+}
+
+Here ""solution"" is just the ordered list of garment/order IDs — the first entry finishes first on the press, the last entry finishes last. Treat the angle-bracket placeholders as a sketch of the shape: replace them with the actual IDs from the instance when you send the real schedule.
+
+Please make sure you use the exact identifiers provided in the instance input — don't rename them and don't invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,one_based,"{""n_jobs"": 6, ""processing_times"": [95, 60, 89, 96, 65, 15], ""weights"": [10, 10, 4, 7, 8, 5], ""due_dates"": [336, 350, 364, 340, 315, 364]}","{""start_times"": [0, 160, 331, 220, 95, 316], ""end_times"": [95, 220, 420, 316, 160, 331], ""tardiness"": [0, 0, 56, 0, 0, 0]}",224.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 6, ""jobs"": [1, 2, 3, 4, 5, 6], ""job_records"": [{""job_id"": 1, ""processing_time"": 95, ""weight"": 10, ""due_date"": 336}, {""job_id"": 2, ""processing_time"": 60, ""weight"": 10, ""due_date"": 350}, {""job_id"": 3, ""processing_time"": 89, ""weight"": 4, ""due_date"": 364}, {""job_id"": 4, ""processing_time"": 96, ""weight"": 7, ""due_date"": 340}, {""job_id"": 5, ""processing_time"": 65, ""weight"": 8, ""due_date"": 315}, {""job_id"": 6, ""processing_time"": 15, ""weight"": 5, ""due_date"": 364}]}","[1, 5, 2, 4, 6, 3]"
+SMTWT_S_018,SMTWT,S,18,"Someone at the dock has to run all the lifts with just one hoist: each lift takes a certain stretch of time, each job has a deadline it’s expected to be done by, and some jobs hurt more when late because they’re more urgent. A good plan is the one where you go through the schedule and for every boat that finishes late you measure how late it was and multiply that by that boat’s urgency, then add those numbers up — the smaller that final sum, the better the plan. No boat is left out or done twice, and only one boat can be on the hoist at any moment. The precise job times, deadlines, and urgencies are shown below.
+
+There are 10 lifts to run, labeled 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
+Lift 0 takes 88, must finish by 265, urgency 8.
+Lift 1 takes 5, must finish by 263, urgency 7.
+Lift 2 takes 13, must finish by 221, urgency 10.
+Lift 3 takes 22, must finish by 266, urgency 8.
+Lift 4 takes 9, must finish by 249, urgency 9.
+Lift 5 takes 78, must finish by 231, urgency 6.
+Lift 6 takes 45, must finish by 238, urgency 9.
+Lift 7 takes 42, must finish by 231, urgency 9.
+Lift 8 takes 71, must finish by 252, urgency 8.
+Lift 9 takes 54, must finish by 240, urgency 3.
+List each lift once in this form; the plan is judged by the sum of lateness times urgency.
+
+Also, when you send back the actual plan, please use this simple JSON layout so it's easy to read by hand or by a little script — just a ""solution"" array with the boats in the order you want them lifted.
+
+{
+  ""solution"": [
+    <boat_id_first>,
+    <boat_id_second>,
+    ...,
+    <boat_id_last>
+  ]
+}
+
+This block is just a sketch of the shape I expect: ""solution"" holds a list in the exact order the hoist should process the boats. Each placeholder stands for one boat identifier from the instance. It's informal — think of it like filling out a little form rather than writing code.
+
+A quick reminder: use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as ""1"" or ""23"", single capital letters like ""A"" or ""B"", or a capital letter followed by digits like ""A1"" or ""X7"".""",nl,zero_based,"{""n_jobs"": 10, ""processing_times"": [88, 5, 13, 22, 9, 78, 45, 42, 71, 54], ""weights"": [8, 7, 10, 8, 9, 6, 9, 9, 8, 3], ""due_dates"": [265, 263, 221, 266, 249, 231, 238, 231, 252, 240]}","{""start_times"": [285, 258, 123, 263, 178, 45, 0, 136, 187, 373], ""end_times"": [373, 263, 136, 285, 187, 123, 45, 178, 258, 427], ""tardiness"": [108, 0, 0, 19, 0, 0, 0, 0, 6, 187]}",1625.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 10, ""jobs"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], ""job_records"": [{""job_id"": 0, ""processing_time"": 88, ""weight"": 8, ""due_date"": 265}, {""job_id"": 1, ""processing_time"": 5, ""weight"": 7, ""due_date"": 263}, {""job_id"": 2, ""processing_time"": 13, ""weight"": 10, ""due_date"": 221}, {""job_id"": 3, ""processing_time"": 22, ""weight"": 8, ""due_date"": 266}, {""job_id"": 4, ""processing_time"": 9, ""weight"": 9, ""due_date"": 249}, {""job_id"": 5, ""processing_time"": 78, ""weight"": 6, ""due_date"": 231}, {""job_id"": 6, ""processing_time"": 45, ""weight"": 9, ""due_date"": 238}, {""job_id"": 7, ""processing_time"": 42, ""weight"": 9, ""due_date"": 231}, {""job_id"": 8, ""processing_time"": 71, ""weight"": 8, ""due_date"": 252}, {""job_id"": 9, ""processing_time"": 54, ""weight"": 3, ""due_date"": 240}]}","[6, 5, 2, 7, 4, 8, 1, 3, 0, 9]"
+SMTWT_S_019,SMTWT,S,19,"Recently the lone wash bay had a full schedule and the operator had to pick an order for the cars. Each vehicle takes a certain amount of time, each owner wants it back by a promised pickup time, and some customers carry higher priority than others. Because the bay serves one car at a time, some cars may end up finishing after their promised time; for each one, count how many minutes late it is, multiply that by that car’s priority, and add those numbers for all the cars — a smaller total means a better ordering. Every car must go through the bay once and only once. The full list of cars, durations and priorities is shown below.
+
+There are 10 cars, listed here by their identifiers: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
+
+| car_id | wash_duration_minutes | priority_score | promised_pickup_time |
+|---|---|---|---|
+| 0 | 16 | 10 | 180 |
+| 1 | 38 | 4 | 189 |
+| 2 | 90 | 7 | 144 |
+| 3 | 59 | 7 | 143 |
+| 4 | 58 | 4 | 136 |
+| 5 | 18 | 7 | 194 |
+| 6 | 42 | 2 | 176 |
+| 7 | 14 | 9 | 168 |
+| 8 | 20 | 6 | 149 |
+| 9 | 87 | 5 | 135 |
+
+Every car must be scheduled once; the operator seeks the ordering that minimizes the total weighted minutes late.
+
+If you want to give the wash order back to me in a tidy, machine-friendly way, just use a short JSON snippet like this — nothing fancy, just the shape I expect:
+
+{
+  ""solution"": [
+    <car_id_first>,
+    <car_id_second>,
+    ...,
+    <car_id_last>
+  ]
+}
+
+Here the ""solution"" array is just the queue of cars from the one to wash first to the one to wash last. Each placeholder is where you'd drop the actual car identifier from the instance (this is just the shape — not the real answer).
+
+Please use the exact identifiers from the instance input — don't rename them or invent new labels. For example:
+- Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,zero_based,"{""n_jobs"": 10, ""processing_times"": [16, 38, 90, 59, 58, 18, 42, 14, 20, 87], ""weights"": [10, 4, 7, 7, 4, 7, 2, 9, 6, 5], ""due_dates"": [180, 189, 144, 143, 136, 194, 176, 168, 149, 135]}","{""start_times"": [137, 185, 223, 0, 59, 167, 400, 153, 117, 313], ""end_times"": [153, 223, 313, 59, 117, 185, 442, 167, 137, 400], ""tardiness"": [0, 34, 169, 0, 0, 0, 266, 0, 0, 265]}",3176.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 10, ""jobs"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], ""job_records"": [{""job_id"": 0, ""processing_time"": 16, ""weight"": 10, ""due_date"": 180}, {""job_id"": 1, ""processing_time"": 38, ""weight"": 4, ""due_date"": 189}, {""job_id"": 2, ""processing_time"": 90, ""weight"": 7, ""due_date"": 144}, {""job_id"": 3, ""processing_time"": 59, ""weight"": 7, ""due_date"": 143}, {""job_id"": 4, ""processing_time"": 58, ""weight"": 4, ""due_date"": 136}, {""job_id"": 5, ""processing_time"": 18, ""weight"": 7, ""due_date"": 194}, {""job_id"": 6, ""processing_time"": 42, ""weight"": 2, ""due_date"": 176}, {""job_id"": 7, ""processing_time"": 14, ""weight"": 9, ""due_date"": 168}, {""job_id"": 8, ""processing_time"": 20, ""weight"": 6, ""due_date"": 149}, {""job_id"": 9, ""processing_time"": 87, ""weight"": 5, ""due_date"": 135}]}","[3, 4, 8, 0, 7, 5, 1, 2, 9, 6]"
+SMTWT_S_020,SMTWT,S,20,"On a busy evening the kitchen runs on one stove and the chef must decide the cooking order so each dish is cooked once, straight through, with no simultaneous cooks. The way to compare different orders is to examine every dish that finishes after its promised time, note how many minutes late it is, multiply that lateness by the dish’s importance, and total up those values for all dishes — smaller totals mean a better schedule. The full set of cook times, promised times and importance weights is provided below.
+
+There are 10 dishes listed as 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.
+
+| dish_id | cook_time_minutes | importance_weight | promised_minute |
+|---|---|---|---|
+| 1 | 42 | 4 | 57 |
+| 2 | 66 | 9 | 85 |
+| 3 | 80 | 1 | 123 |
+| 4 | 2 | 10 | 62 |
+| 5 | 34 | 4 | 45 |
+| 6 | 20 | 9 | 85 |
+| 7 | 97 | 1 | 118 |
+| 8 | 26 | 9 | 44 |
+| 9 | 34 | 6 | 90 |
+| 10 | 12 | 8 | 123 |
+
+The chef will evaluate any cooking order by summing each late dish's minutes-late multiplied by its importance.
+
+If you want to reply with a schedule, just drop it in this simple JSON shape so I (or the system) can read it easily:
+
+{
+  ""solution"": [
+    <dish_id_first>,
+    <dish_id_second>,
+    ...,
+    <dish_id_last>
+  ]
+}
+
+Think of ""solution"" as the ordered list of dishes to cook: the first entry is what goes on the stove first, the next is what follows, and so on until the last dish. The angle-bracket placeholders are just a sketch of the shape I expect, not the actual answer — replace them with the real dish IDs from the instance.
+
+Please make sure you use the exact identifiers that appear in the instance input — do not rename them or invent new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""n_jobs"": 10, ""processing_times"": [42, 66, 80, 2, 34, 20, 97, 26, 34, 12], ""weights"": [4, 9, 1, 10, 4, 9, 1, 9, 6, 8], ""due_dates"": [57, 85, 123, 62, 45, 85, 118, 44, 90, 123]}","{""start_times"": [194, 128, 236, 60, 26, 62, 316, 0, 82, 116], ""end_times"": [236, 194, 316, 62, 60, 82, 413, 26, 116, 128], ""tardiness"": [179, 109, 193, 0, 15, 0, 295, 0, 26, 5]}",2441.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 10, ""jobs"": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], ""job_records"": [{""job_id"": 1, ""processing_time"": 42, ""weight"": 4, ""due_date"": 57}, {""job_id"": 2, ""processing_time"": 66, ""weight"": 9, ""due_date"": 85}, {""job_id"": 3, ""processing_time"": 80, ""weight"": 1, ""due_date"": 123}, {""job_id"": 4, ""processing_time"": 2, ""weight"": 10, ""due_date"": 62}, {""job_id"": 5, ""processing_time"": 34, ""weight"": 4, ""due_date"": 45}, {""job_id"": 6, ""processing_time"": 20, ""weight"": 9, ""due_date"": 85}, {""job_id"": 7, ""processing_time"": 97, ""weight"": 1, ""due_date"": 118}, {""job_id"": 8, ""processing_time"": 26, ""weight"": 9, ""due_date"": 44}, {""job_id"": 9, ""processing_time"": 34, ""weight"": 6, ""due_date"": 90}, {""job_id"": 10, ""processing_time"": 12, ""weight"": 8, ""due_date"": 123}]}","[8, 5, 4, 6, 9, 10, 2, 1, 3, 7]"
+SMTWT_S_021,SMTWT,S,21,"Back at the office the assistant is matching a bunch of documents to a single copier, each document with its own deadline and a priority label. The choice is the order to send them so the total hurt from lateness is minimized — for each job that ends up late, count how many minutes it’s late, multiply that by how important that document is, and add those values together for the whole pile; the lower that total, the better the order. The copier can’t work on several jobs at once, every print has to run to completion once started, and each request must be printed exactly once. The detailed job information appears below.
+
+# num_print_requests=8
+# print_job_ids=A, B, C, D, E, F, G, H
+print_job_id,print_duration_minutes,priority_weight,requested_completion_time
+A,36,10,253
+B,16,2,230
+C,65,8,290
+D,62,7,330
+E,73,9,231
+F,24,9,331
+G,60,4,315
+H,39,8,367
+
+Oh — and when you send the final ordering back, just stick to this little JSON shape so I can read it easily:
+
+{
+  ""solution"": [
+    <doc_id_first>,
+    <doc_id_second>,
+    ...,
+    <doc_id_last>
+  ]
+}
+
+It's simple: ""solution"" is the ordered list of document IDs in the sequence you want the copier to handle. The angle-bracket placeholders above are just showing the shape (I've tweaked the placeholder names to match the document/copy story); when you give the real answer you should replace them with the actual IDs from the instance.
+
+One quick reminder: use the identifiers exactly as they appear in the input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.
+
+That JSON is only a sketch of the expected format, not the actual schedule — fill the array with the instance's exact IDs in the order you pick.",csv,names,"{""n_jobs"": 8, ""processing_times"": [36, 16, 65, 62, 73, 24, 60, 39], ""weights"": [10, 2, 8, 7, 9, 9, 4, 8], ""due_dates"": [253, 230, 290, 330, 231, 331, 315, 367]}","{""start_times"": [162, 198, 97, 274, 0, 73, 214, 336], ""end_times"": [198, 214, 162, 336, 73, 97, 274, 375], ""tardiness"": [0, 0, 0, 6, 0, 0, 0, 8]}",106.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 8, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 36, ""weight"": 10, ""due_date"": 253}, {""job_id"": ""B"", ""processing_time"": 16, ""weight"": 2, ""due_date"": 230}, {""job_id"": ""C"", ""processing_time"": 65, ""weight"": 8, ""due_date"": 290}, {""job_id"": ""D"", ""processing_time"": 62, ""weight"": 7, ""due_date"": 330}, {""job_id"": ""E"", ""processing_time"": 73, ""weight"": 9, ""due_date"": 231}, {""job_id"": ""F"", ""processing_time"": 24, ""weight"": 9, ""due_date"": 331}, {""job_id"": ""G"", ""processing_time"": 60, ""weight"": 4, ""due_date"": 315}, {""job_id"": ""H"", ""processing_time"": 39, ""weight"": 8, ""due_date"": 367}]}","[""E"", ""F"", ""C"", ""A"", ""B"", ""G"", ""D"", ""H""]"
+SMTWT_S_022,SMTWT,S,22,"There’s a single scanner and a list of appointments that all need to happen today, and the job is to put them in an order so nobody’s left out or scheduled twice. Some patients are more pressing than others and some scans take longer, so when a scan finishes past its scheduled time the patient is late by that many minutes; if it’s on time or early, lateness is zero. For each appointment, multiply the minutes late (if any) by the patient’s urgency, then add those numbers up for everyone — the goal is to get that overall total as small as possible. Keep in mind only one scan can run at once and once a scan starts it must run straight through. The concrete list of scans and urgencies appears below.
+
+The instance has 6 appointments: 1, 2, 3, 4, 5, 6.
+
+| appointment_id | scan_duration_minutes | urgency_weight | scheduled_time_minutes |
+|---|---|---|---|
+| 1 | 79 | 3 | 169 |
+| 2 | 66 | 4 | 137 |
+| 3 | 15 | 6 | 159 |
+| 4 | 41 | 2 | 123 |
+| 5 | 16 | 8 | 142 |
+| 6 | 40 | 8 | 137 |
+
+Each appointment must appear exactly once in the final order and no scans may overlap.
+
+Oh, and when you send back the final ordering, please put it in a tiny JSON snippet so it's easy to read. Something like this:
+
+{
+  ""solution"": [
+    <scan_id_first>,
+    <scan_id_second>,
+    ...,
+    <scan_id_last>
+  ]
+}
+
+The ""solution"" list is just the schedule: the first item is the scan that goes first, the next item goes second, and so on until the last scan. Think of the placeholders as little blanks where you'll drop the real scan identifiers — this is just a sketch of the shape I expect, not the actual answer.
+
+Please make sure to use the identifiers exactly as they appear in the instance input — do not rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""n_jobs"": 6, ""processing_times"": [79, 66, 15, 41, 16, 40], ""weights"": [3, 4, 6, 2, 8, 8], ""due_dates"": [169, 137, 159, 123, 142, 137]}","{""start_times"": [178, 40, 122, 137, 106, 0], ""end_times"": [257, 106, 137, 178, 122, 40], ""tardiness"": [88, 0, 0, 55, 0, 0]}",374.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 6, ""jobs"": [1, 2, 3, 4, 5, 6], ""job_records"": [{""job_id"": 1, ""processing_time"": 79, ""weight"": 3, ""due_date"": 169}, {""job_id"": 2, ""processing_time"": 66, ""weight"": 4, ""due_date"": 137}, {""job_id"": 3, ""processing_time"": 15, ""weight"": 6, ""due_date"": 159}, {""job_id"": 4, ""processing_time"": 41, ""weight"": 2, ""due_date"": 123}, {""job_id"": 5, ""processing_time"": 16, ""weight"": 8, ""due_date"": 142}, {""job_id"": 6, ""processing_time"": 40, ""weight"": 8, ""due_date"": 137}]}","[6, 2, 5, 3, 4, 1]"
+SMTWT_S_023,SMTWT,S,23,"Someone at the hub has to line up all the drop-offs for a single-van route so every package gets delivered exactly once, back to back, with no two stops happening at the same moment. The way to compare different orders is straightforward: for each delivery that arrives after the requested time, measure how late it was, multiply that delay by the recipient’s urgency rating, and add up those numbers for the whole day — smaller totals mean less overall upset. The required stop list and exact timings are shown below.
+
+They consist of 8 stops listed as 1, 2, 3, 4, 5, 6, 7, 8.
+
+| stop_id | transit_and_service_time | urgency_weight | requested_delivery_time |
+|---|---|---|---|
+| 1 | 58 | 8 | 286 |
+| 2 | 75 | 6 | 272 |
+| 3 | 56 | 2 | 191 |
+| 4 | 59 | 6 | 257 |
+| 5 | 6 | 2 | 271 |
+| 6 | 94 | 5 | 226 |
+| 7 | 99 | 5 | 170 |
+| 8 | 66 | 8 | 206 |
+
+Line them up so the summed urgency-weighted lateness is as small as possible.
+
+Oh, and when you send back the final order, just use a tiny JSON snippet in this shape so it's easy to parse and double-check:
+
+{
+  ""solution"": [
+    <stop_id_first>,
+    <stop_id_second>,
+    ...,
+    <stop_id_last>
+  ]
+}
+
+That ""solution"" list should be the stops in the exact order the van will visit them. Each placeholder like <stop_id_first> is just standing in for the actual identifier of the first stop, and so on — it's a sketch of the shape I want, not the real answer.
+
+Please make sure you use the exact identifiers from the instance input — don't rename them or invent new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""n_jobs"": 8, ""processing_times"": [58, 75, 56, 59, 6, 94, 99, 66], ""weights"": [8, 6, 2, 6, 2, 5, 5, 8], ""due_dates"": [286, 272, 191, 257, 271, 226, 170, 206]}","{""start_times"": [230, 288, 457, 165, 224, 363, 0, 99], ""end_times"": [288, 363, 513, 224, 230, 457, 99, 165], ""tardiness"": [2, 91, 322, 0, 0, 231, 0, 0]}",2361.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 8, ""jobs"": [1, 2, 3, 4, 5, 6, 7, 8], ""job_records"": [{""job_id"": 1, ""processing_time"": 58, ""weight"": 8, ""due_date"": 286}, {""job_id"": 2, ""processing_time"": 75, ""weight"": 6, ""due_date"": 272}, {""job_id"": 3, ""processing_time"": 56, ""weight"": 2, ""due_date"": 191}, {""job_id"": 4, ""processing_time"": 59, ""weight"": 6, ""due_date"": 257}, {""job_id"": 5, ""processing_time"": 6, ""weight"": 2, ""due_date"": 271}, {""job_id"": 6, ""processing_time"": 94, ""weight"": 5, ""due_date"": 226}, {""job_id"": 7, ""processing_time"": 99, ""weight"": 5, ""due_date"": 170}, {""job_id"": 8, ""processing_time"": 66, ""weight"": 8, ""due_date"": 206}]}","[7, 8, 4, 5, 1, 2, 6, 3]"
+SMTWT_S_024,SMTWT,S,24,"Back at the mill the planner is stacking the jobs in an order that will get everything done as fairly as possible. Every job comes with a processing time, a due date, and a weight that measures how costly lateness is; for each job finished after its due date, multiply the lateness by that job’s weight and sum those values across all jobs — smaller sums mean the schedule handled lateness better. The mill must process one job at a time and each machining operation runs uninterrupted, and all jobs must be processed exactly once. The concrete job details and numbers are provided below.
+
+There are 9 parts listed as A, B, C, D, E, F, G, H, I.
+
+| part_id | machining_time | priority_weight | due_deadline |
+|---|---|---|---|
+| A | 48 | 5 | 136 |
+| B | 60 | 8 | 15 |
+| C | 50 | 8 | 1 |
+| D | 26 | 4 | 105 |
+| E | 39 | 2 | 98 |
+| F | 7 | 6 | 60 |
+| G | 54 | 5 | 84 |
+| H | 31 | 4 | 138 |
+| I | 37 | 6 | 116 |
+
+They should be stacked into a single uninterrupted sequence so the summed weighted tardiness is as small as possible.
+
+Also, when you hand over the schedule, just stick it in a tiny JSON blob so it's easy to read and parse — nothing fancy, just a single list that gives the job order. For this story I like to call the placeholder values ""mill_job_*"" to match the mill, but keep the same overall shape:
+
+{
+  ""solution"": [
+    <mill_job_first>,
+    <mill_job_second>,
+    ...,
+    <mill_job_last>
+  ]
+}
+
+Think of ""solution"" as the queue: the array lists job identifiers in the exact order the machine should process them, first to last. The angle-bracket placeholders are just showing where each actual job ID goes — this is a sketch of the shape I need, not the real answer itself.
+
+Please be sure to use the exact identifiers from the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,names,"{""n_jobs"": 9, ""processing_times"": [48, 60, 50, 26, 39, 7, 54, 31, 37], ""weights"": [5, 8, 8, 4, 2, 6, 5, 4, 6], ""due_dates"": [136, 15, 1, 105, 98, 60, 84, 138, 116]}","{""start_times"": [211, 57, 0, 154, 313, 50, 259, 180, 117], ""end_times"": [259, 117, 50, 180, 352, 57, 313, 211, 154], ""tardiness"": [123, 102, 49, 75, 254, 0, 229, 73, 38]}",4296.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 9, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 48, ""weight"": 5, ""due_date"": 136}, {""job_id"": ""B"", ""processing_time"": 60, ""weight"": 8, ""due_date"": 15}, {""job_id"": ""C"", ""processing_time"": 50, ""weight"": 8, ""due_date"": 1}, {""job_id"": ""D"", ""processing_time"": 26, ""weight"": 4, ""due_date"": 105}, {""job_id"": ""E"", ""processing_time"": 39, ""weight"": 2, ""due_date"": 98}, {""job_id"": ""F"", ""processing_time"": 7, ""weight"": 6, ""due_date"": 60}, {""job_id"": ""G"", ""processing_time"": 54, ""weight"": 5, ""due_date"": 84}, {""job_id"": ""H"", ""processing_time"": 31, ""weight"": 4, ""due_date"": 138}, {""job_id"": ""I"", ""processing_time"": 37, ""weight"": 6, ""due_date"": 116}]}","[""C"", ""F"", ""B"", ""I"", ""D"", ""H"", ""A"", ""G"", ""E""]"
+SMTWT_S_025,SMTWT,S,25,"At the data center the scheduler had one machine and several batches waiting, each with a duration, a deadline, and a weight that says how bad it is to be late. The aim was clear: choose the run sequence that keeps the total late-cost down — for each job that finishes after its deadline measure the lateness (finish time minus due date), multiply that amount by the job’s weight, and sum those numbers across all jobs. Nothing can be left out or repeated, jobs can’t overlap on the single server, and a job that starts must run all the way through. The concrete list of jobs and their parameters is given below.
+
+There were 5 batches queued, identified as A, B, C, D, E.
+
+| batch_id | duration | criticality | deadline |
+|---|---|---|---|
+| A | 25 | 5 | 176 |
+| B | 13 | 7 | 248 |
+| C | 39 | 1 | 224 |
+| D | 86 | 3 | 267 |
+| E | 94 | 7 | 130 |
+
+Choose a run order that minimizes the total weighted tardiness.
+
+Oh, and when you send back the final run order, please use this little JSON layout so it's easy to read and plug in:
+
+{
+  ""solution"": [
+    <job_id_first>,
+    <job_id_second>,
+    ...,
+    <job_id_last>
+  ]
+}
+
+""solution"" is meant to be the ordered list of job ids — first item runs first on the machine, next item runs after that, and so on. Think of it like filling in a simple form: replace the placeholders with the actual job identifiers in the order you want them executed. This JSON is just a sketch of the expected shape, not the schedule itself.
+
+All identifiers must be used exactly as they appear in the instance input — no renaming and no new labels.
+
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,names,"{""n_jobs"": 5, ""processing_times"": [25, 13, 39, 86, 94], ""weights"": [5, 7, 1, 3, 7], ""due_dates"": [176, 248, 224, 267, 130]}","{""start_times"": [133, 158, 94, 171, 0], ""end_times"": [158, 171, 133, 257, 94], ""tardiness"": [0, 0, 0, 0, 0]}",0.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 5, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 25, ""weight"": 5, ""due_date"": 176}, {""job_id"": ""B"", ""processing_time"": 13, ""weight"": 7, ""due_date"": 248}, {""job_id"": ""C"", ""processing_time"": 39, ""weight"": 1, ""due_date"": 224}, {""job_id"": ""D"", ""processing_time"": 86, ""weight"": 3, ""due_date"": 267}, {""job_id"": ""E"", ""processing_time"": 94, ""weight"": 7, ""due_date"": 130}]}","[""E"", ""C"", ""A"", ""B"", ""D""]"
+SMTWT_S_026,SMTWT,S,26,"Recently the library took on a digitization push and now there’s a single scanner and a schedule to sort out. Every volume must be run through exactly once, scans can’t overlap, and each scan must be completed without breaks. What counts as a good schedule is the total of all the lateness hits: for each book, measure how many minutes it completed after its target time (zero if not late), multiply that by the collection’s importance, and add up those numbers — smaller totals mean fewer problems. The full list of scan lengths, due times, and importance values appears below.
+
+# n_books=6
+# book_ids=1, 2, 3, 4, 5, 6
+book_id,scan_length_minutes,collection_importance,target_completion_minute
+1,19,4,126
+2,57,8,103
+3,45,3,200
+4,77,2,154
+5,21,6,119
+6,31,1,179
+
+If you want to hand me a proposed scanning order, a little JSON like this keeps things tidy and easy to read:
+
+{
+  ""solution"": [
+    <book_id_first>,
+    <book_id_second>,
+    ...,
+    <book_id_last>
+  ]
+}
+
+Here ""solution"" is just the ordered list of volumes to run through the scanner, from the very first scan to the very last. The angled placeholders like <book_id_first> are there to show where each book's identifier goes — think of them as labels for the slots in the queue. This is just a sketch of the shape I expect, not the actual schedule.
+
+Please use the exact identifiers from the instance input — don't rename them and don't invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,one_based,"{""n_jobs"": 6, ""processing_times"": [19, 57, 45, 77, 21, 31], ""weights"": [4, 8, 3, 2, 6, 1], ""due_dates"": [126, 103, 200, 154, 119, 179]}","{""start_times"": [78, 0, 174, 97, 57, 219], ""end_times"": [97, 57, 219, 174, 78, 250], ""tardiness"": [0, 0, 19, 20, 0, 71]}",168.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 6, ""jobs"": [1, 2, 3, 4, 5, 6], ""job_records"": [{""job_id"": 1, ""processing_time"": 19, ""weight"": 4, ""due_date"": 126}, {""job_id"": 2, ""processing_time"": 57, ""weight"": 8, ""due_date"": 103}, {""job_id"": 3, ""processing_time"": 45, ""weight"": 3, ""due_date"": 200}, {""job_id"": 4, ""processing_time"": 77, ""weight"": 2, ""due_date"": 154}, {""job_id"": 5, ""processing_time"": 21, ""weight"": 6, ""due_date"": 119}, {""job_id"": 6, ""processing_time"": 31, ""weight"": 1, ""due_date"": 179}]}","[2, 5, 1, 4, 3, 6]"
+SMTWT_S_027,SMTWT,S,27,"Recently the shop got a batch of tricky orders: every unit needs a fixed amount of bench time, has a target ship date, and a carry-along urgency level that makes lateness hurt more for some items. The task falling to the scheduler is to line them up — start one, finish it, then move to the next — ensuring each unit is completed exactly once and the station never juggles two units at the same time. If a unit finishes late, count how many time units it missed its date by, multiply that lateness by its urgency, and sum those products across all units; the smoother the sequence, the smaller that summed penalty. The exact numbers for processing times, due dates, and urgencies are given below.
+
+There are 10 units in this batch, listed as 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
+
+| unit_id | assembly_time | urgency_weight | promised_ship_date |
+|---|---|---|---|
+| 0 | 35 | 1 | 344 |
+| 1 | 51 | 9 | 63 |
+| 2 | 70 | 7 | 130 |
+| 3 | 91 | 4 | 287 |
+| 4 | 54 | 10 | 374 |
+| 5 | 48 | 1 | 122 |
+| 6 | 47 | 7 | 137 |
+| 7 | 69 | 4 | 174 |
+| 8 | 52 | 3 | 247 |
+| 9 | 48 | 9 | 236 |
+
+Sequence them on the single station without overlap so the summed weighted lateness is minimized.
+
+Oh, and when you reply with the chosen running order, please put it in a tiny JSON shape like this so it's easy to read and use:
+
+{
+  ""solution"": [
+    <unit_id_first>,
+    <unit_id_second>,
+    ...,
+    <unit_id_last>
+  ]
+}
+
+Think of ""solution"" as just the list of units in the exact sequence you want the bench to process them. Each placeholder there stands for one of the unit identifiers from the instance — just drop the real ids in that order. This is just a sketch of the shape I need, not the final answer.
+
+Also, please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,zero_based,"{""n_jobs"": 10, ""processing_times"": [35, 51, 70, 91, 54, 48, 47, 69, 52, 48], ""weights"": [1, 9, 7, 4, 10, 1, 7, 4, 3, 9], ""due_dates"": [344, 63, 130, 287, 374, 122, 137, 174, 247, 236]}","{""start_times"": [482, 0, 51, 391, 285, 517, 121, 216, 339, 168], ""end_times"": [517, 51, 121, 482, 339, 565, 168, 285, 391, 216], ""tardiness"": [173, 0, 0, 195, 0, 443, 31, 111, 144, 0]}",2489.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 10, ""jobs"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], ""job_records"": [{""job_id"": 0, ""processing_time"": 35, ""weight"": 1, ""due_date"": 344}, {""job_id"": 1, ""processing_time"": 51, ""weight"": 9, ""due_date"": 63}, {""job_id"": 2, ""processing_time"": 70, ""weight"": 7, ""due_date"": 130}, {""job_id"": 3, ""processing_time"": 91, ""weight"": 4, ""due_date"": 287}, {""job_id"": 4, ""processing_time"": 54, ""weight"": 10, ""due_date"": 374}, {""job_id"": 5, ""processing_time"": 48, ""weight"": 1, ""due_date"": 122}, {""job_id"": 6, ""processing_time"": 47, ""weight"": 7, ""due_date"": 137}, {""job_id"": 7, ""processing_time"": 69, ""weight"": 4, ""due_date"": 174}, {""job_id"": 8, ""processing_time"": 52, ""weight"": 3, ""due_date"": 247}, {""job_id"": 9, ""processing_time"": 48, ""weight"": 9, ""due_date"": 236}]}","[1, 2, 6, 9, 7, 4, 8, 3, 0, 5]"
+SMTWT_S_028,SMTWT,S,28,"I’ve got a little patch of land and one trusty rototiller, and I need to decide the order to plant a bunch of seedling beds. Each bed has a preferred planting day and a different importance — some plants really need to go in on time, others not so much. If a bed gets planted after its preferred day, count how many days late it is, multiply that by how important that bed’s plants are, and add those numbers up across all beds; the better the planting order, the smaller that total penalty will be. The rototiller can only work on one bed at a time and each bed must be finished in a single pass. Specific plot sizes, planting times, preferred dates, and importance values are listed below.
+
+I'm looking at 7 beds to plant: 0, 1, 2, 3, 4, 5, 6.
+Bed 0 needs 64 days with the rototiller, prefers to be finished by day 124, and its plants have importance 4.
+Bed 1 needs 59 days with the rototiller, prefers to be finished by day 175, and its plants have importance 4.
+Bed 2 needs 12 days with the rototiller, prefers to be finished by day 162, and its plants have importance 3.
+Bed 3 needs 17 days with the rototiller, prefers to be finished by day 228, and its plants have importance 5.
+Bed 4 needs 49 days with the rototiller, prefers to be finished by day 136, and its plants have importance 2.
+Bed 5 needs 5 days with the rototiller, prefers to be finished by day 206, and its plants have importance 1.
+Bed 6 needs 7 days with the rototiller, prefers to be finished by day 245, and its plants have importance 7.
+I'll use this list to pick an order that keeps the total weighted lateness as small as possible.
+
+When you’re ready to tell me the planting order, just send it back in a tiny JSON packet like this so I can read it easily:
+
+{
+  ""solution"": [
+    <patch_id_first>,
+    <patch_id_second>,
+    ...,
+    <patch_id_last>
+  ]
+}
+
+The ""solution"" list is just the order to run the rototiller over the patches — the first item is the patch to do first, the second item is next, and so on. Think of each placeholder as a slot where you’ll put the exact patch identifier from the instance (this block is just a sketch of the shape I expect, not the actual answer).
+
+Please make sure to use the exact identifiers from the problem input — don’t rename them or make up new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,zero_based,"{""n_jobs"": 7, ""processing_times"": [64, 59, 12, 17, 49, 5, 7], ""weights"": [4, 4, 3, 5, 2, 1, 7], ""due_dates"": [124, 175, 162, 228, 136, 206, 245]}","{""start_times"": [12, 125, 0, 189, 76, 184, 206], ""end_times"": [76, 184, 12, 206, 125, 189, 213], ""tardiness"": [0, 9, 0, 0, 0, 0, 0]}",36.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 7, ""jobs"": [0, 1, 2, 3, 4, 5, 6], ""job_records"": [{""job_id"": 0, ""processing_time"": 64, ""weight"": 4, ""due_date"": 124}, {""job_id"": 1, ""processing_time"": 59, ""weight"": 4, ""due_date"": 175}, {""job_id"": 2, ""processing_time"": 12, ""weight"": 3, ""due_date"": 162}, {""job_id"": 3, ""processing_time"": 17, ""weight"": 5, ""due_date"": 228}, {""job_id"": 4, ""processing_time"": 49, ""weight"": 2, ""due_date"": 136}, {""job_id"": 5, ""processing_time"": 5, ""weight"": 1, ""due_date"": 206}, {""job_id"": 6, ""processing_time"": 7, ""weight"": 7, ""due_date"": 245}]}","[2, 0, 4, 1, 5, 3, 6]"
+SMTWT_S_029,SMTWT,S,29,"There’s a small bar with one bartender and a line of drink requests, each with a prep time, a due time, and a guest importance number. Every cocktail must be made exactly once, the bartender does one at a time and can’t pause in the middle of a pour. If a cocktail shows up after the requested time it racks up a penalty equal to the guest’s importance times the minutes late; if it’s done by the due time, it doesn’t add anything. The job is to decide the sequence of mixes so the total of those importance×minutes-late penalties is as low as it can be. The concrete order and timing info are shown below.
+
+{
+  ""n_drinks"": 6,
+  ""drink_ids"": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  ""data"": [
+    {
+      ""drink_id"": 1,
+      ""prep_time_minutes"": 94,
+      ""guest_priority"": 9,
+      ""requested_time"": 252
+    },
+    {
+      ""drink_id"": 2,
+      ""prep_time_minutes"": 37,
+      ""guest_priority"": 6,
+      ""requested_time"": 248
+    },
+    {
+      ""drink_id"": 3,
+      ""prep_time_minutes"": 100,
+      ""guest_priority"": 4,
+      ""requested_time"": 152
+    },
+    {
+      ""drink_id"": 4,
+      ""prep_time_minutes"": 5,
+      ""guest_priority"": 8,
+      ""requested_time"": 214
+    },
+    {
+      ""drink_id"": 5,
+      ""prep_time_minutes"": 63,
+      ""guest_priority"": 8,
+      ""requested_time"": 97
+    },
+    {
+      ""drink_id"": 6,
+      ""prep_time_minutes"": 1,
+      ""guest_priority"": 9,
+      ""requested_time"": 198
+    }
+  ]
+}
+
+Oh, and when you reply, just use this simple JSON shape for the answer — nothing fancy:
+
+{
+  ""solution"": [
+    <cocktail_id_first>,
+    <cocktail_id_second>,
+    ...,
+    <cocktail_id_last>
+  ]
+}
+
+This just shows the order the bartender should make the drinks. ""solution"" is the sequence, and each placeholder in the list stands for the ID of a cocktail (first-made, second-made, …). It’s just a sketch of the shape I want, not the actual schedule.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,one_based,"{""n_jobs"": 6, ""processing_times"": [94, 37, 100, 5, 63, 1], ""weights"": [9, 6, 4, 8, 8, 9], ""due_dates"": [252, 248, 152, 214, 97, 198]}","{""start_times"": [169, 263, 63, 163, 0, 168], ""end_times"": [263, 300, 163, 168, 63, 169], ""tardiness"": [11, 52, 11, 0, 0, 0]}",455.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 6, ""jobs"": [1, 2, 3, 4, 5, 6], ""job_records"": [{""job_id"": 1, ""processing_time"": 94, ""weight"": 9, ""due_date"": 252}, {""job_id"": 2, ""processing_time"": 37, ""weight"": 6, ""due_date"": 248}, {""job_id"": 3, ""processing_time"": 100, ""weight"": 4, ""due_date"": 152}, {""job_id"": 4, ""processing_time"": 5, ""weight"": 8, ""due_date"": 214}, {""job_id"": 5, ""processing_time"": 63, ""weight"": 8, ""due_date"": 97}, {""job_id"": 6, ""processing_time"": 1, ""weight"": 9, ""due_date"": 198}]}","[5, 3, 4, 6, 1, 2]"
+SMTWT_S_030,SMTWT,S,30,"There’s a small bench in the back where every pair of shoes in the shop must be polished, and each job comes with its own polishing time, promised pickup moment, and a score for how much it matters if the customer waits. The shoemaker needs to pick an order to do the pairs, working on one pair straight through until it’s done, so that whenever a pair ends up finishing after its pickup time you measure how many minutes late it was, multiply that by the customer’s importance, and add up those numbers for everyone — the preferable order is the one with the lowest total. Nothing can overlap, nothing can be left undone or repeated, and the exact job times, pickups, and importance levels are shown below.
+
+{
+  ""total_pairs"": 6,
+  ""pair_ids"": [
+    ""A"",
+    ""B"",
+    ""C"",
+    ""D"",
+    ""E"",
+    ""F""
+  ],
+  ""data"": [
+    {
+      ""pair_id"": ""A"",
+      ""polish_time_minutes"": 26,
+      ""importance_weight"": 4,
+      ""promised_pickup_time"": 137
+    },
+    {
+      ""pair_id"": ""B"",
+      ""polish_time_minutes"": 90,
+      ""importance_weight"": 8,
+      ""promised_pickup_time"": 217
+    },
+    {
+      ""pair_id"": ""C"",
+      ""polish_time_minutes"": 79,
+      ""importance_weight"": 6,
+      ""promised_pickup_time"": 216
+    },
+    {
+      ""pair_id"": ""D"",
+      ""polish_time_minutes"": 14,
+      ""importance_weight"": 10,
+      ""promised_pickup_time"": 137
+    },
+    {
+      ""pair_id"": ""E"",
+      ""polish_time_minutes"": 42,
+      ""importance_weight"": 4,
+      ""promised_pickup_time"": 57
+    },
+    {
+      ""pair_id"": ""F"",
+      ""polish_time_minutes"": 25,
+      ""importance_weight"": 7,
+      ""promised_pickup_time"": 198
+    }
+  ]
+}
+
+Oh, and when you send back the actual ordering, do it in a tiny JSON sketch like this so it's super easy to parse:
+
+{
+  ""solution"": [
+    <pair_id_first>,
+    <pair_id_second>,
+    ...,
+    <pair_id_last>
+  ]
+}
+
+This just means the ""solution"" array lists the shoe pairs in the order you'll polish them: first item finished first, next finished after that, and so on. Think of each placeholder as the ID of a pair from the job list — the JSON is only a sketch of the expected shape, not the actual schedule.
+
+Please make sure to use the exact identifiers from the instance input — don't rename them and don't add new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""n_jobs"": 6, ""processing_times"": [26, 90, 79, 14, 42, 25], ""weights"": [4, 8, 6, 10, 4, 7], ""due_dates"": [137, 217, 216, 137, 57, 198]}","{""start_times"": [42, 82, 197, 68, 0, 172], ""end_times"": [68, 172, 276, 82, 42, 197], ""tardiness"": [0, 0, 60, 0, 0, 0]}",360.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 6, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 26, ""weight"": 4, ""due_date"": 137}, {""job_id"": ""B"", ""processing_time"": 90, ""weight"": 8, ""due_date"": 217}, {""job_id"": ""C"", ""processing_time"": 79, ""weight"": 6, ""due_date"": 216}, {""job_id"": ""D"", ""processing_time"": 14, ""weight"": 10, ""due_date"": 137}, {""job_id"": ""E"", ""processing_time"": 42, ""weight"": 4, ""due_date"": 57}, {""job_id"": ""F"", ""processing_time"": 25, ""weight"": 7, ""due_date"": 198}]}","[""E"", ""A"", ""D"", ""B"", ""F"", ""C""]"
+SMTWT_S_031,SMTWT,S,31,"Someone at the workshop has to plan the day: a handful of fabric pieces need cutting, each with a known cutting duration, a requested pickup time, and a priority showing how painful a delay would be. The planner must choose the order to run these cuts on the single table so each piece is cut once, one after another without interruption, and nothing is skipped or duplicated. For each piece, late minutes are counted only if the finish time is after the pickup time; those minutes are scaled by the piece’s priority and then all those scaled latenesses are added together — the goal is to make that total as small as possible. The full set of order details appears below.
+
+# total_pieces=5
+# piece_ids=1, 2, 3, 4, 5
+piece_id,cutting_duration,priority_weight,requested_pickup_time
+1,51,1,101
+2,25,9,124
+3,43,1,98
+4,24,6,243
+5,81,8,102
+
+If you'd like to give the cutting order in a tidy, machine-friendly way, you can just reply with a little JSON like this:
+
+{
+  ""solution"": [
+    <piece_id_first>,
+    <piece_id_second>,
+    ...,
+    <piece_id_last>
+  ]
+}
+
+Here, ""solution"" is the list (in order) of piece identifiers telling the table which piece to cut first, second, and so on. The angle-bracket placeholders like <piece_id_first> are just placeholders showing the shape I expect — replace them with the actual piece IDs from your instance when you send the real answer.
+
+This JSON is only a sketch of the expected shape, not the actual answer.
+
+Please make sure to use the exact identifiers from the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",csv,one_based,"{""n_jobs"": 5, ""processing_times"": [51, 25, 43, 24, 81], ""weights"": [1, 9, 1, 6, 8], ""due_dates"": [101, 124, 98, 243, 102]}","{""start_times"": [149, 81, 106, 200, 0], ""end_times"": [200, 106, 149, 224, 81], ""tardiness"": [99, 0, 51, 0, 0]}",150.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 5, ""jobs"": [1, 2, 3, 4, 5], ""job_records"": [{""job_id"": 1, ""processing_time"": 51, ""weight"": 1, ""due_date"": 101}, {""job_id"": 2, ""processing_time"": 25, ""weight"": 9, ""due_date"": 124}, {""job_id"": 3, ""processing_time"": 43, ""weight"": 1, ""due_date"": 98}, {""job_id"": 4, ""processing_time"": 24, ""weight"": 6, ""due_date"": 243}, {""job_id"": 5, ""processing_time"": 81, ""weight"": 8, ""due_date"": 102}]}","[5, 2, 3, 1, 4]"
+SMTWT_S_032,SMTWT,S,32,"Out in the shop the day starts with a queue of orders for a single press; the only choice is the order in which to run them. The side-by-side comparison is simple: for each order take its importance number and multiply it by how late it finishes (on-time or early adds nothing), then add those results — the lower that grand total, the better the schedule. Every job must be processed exactly once and the press never runs two jobs simultaneously. The detailed job list and numbers follow below.
+
+This morning there are 8 orders queued for the press: 1, 2, 3, 4, 5, 6, 7, 8.
+
+| order_id | press_run_duration | client_priority_weight | promised_delivery_time |
+|---|---|---|---|
+| 1 | 11 | 3 | 125 |
+| 2 | 99 | 7 | 277 |
+| 3 | 78 | 6 | 355 |
+| 4 | 91 | 4 | 39 |
+| 5 | 34 | 5 | 152 |
+| 6 | 18 | 6 | 112 |
+| 7 | 45 | 2 | 337 |
+| 8 | 9 | 10 | 274 |
+
+Each must run exactly once on the press; the aim remains the lowest total weighted tardiness across these 8 orders.
+
+If you want to hand the running order back, just drop it into a tiny JSON sketch like this — nothing fancy, just a list that goes from the first job to the last:
+
+{
+  ""solution"": [
+    <order_id_first>,
+    <order_id_second>,
+    ...,
+    <order_id_last>
+  ]
+}
+
+Pretty straightforward: ""solution"" is the sequence the press should run, and each item in the array is the identifier for one order (first run, second run, …, last run). Think of it like filling out a simple form — this block just shows the shape I expect, not the actual schedule.
+
+Please use the job identifiers exactly as they appear in the instance input — do not rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,one_based,"{""n_jobs"": 8, ""processing_times"": [11, 99, 78, 91, 34, 18, 45, 9], ""weights"": [3, 7, 6, 4, 5, 6, 2, 10], ""due_dates"": [125, 277, 355, 39, 152, 112, 337, 274]}","{""start_times"": [109, 154, 262, 0, 120, 91, 340, 253], ""end_times"": [120, 253, 340, 91, 154, 109, 385, 262], ""tardiness"": [0, 0, 0, 52, 2, 0, 48, 0]}",314.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 8, ""jobs"": [1, 2, 3, 4, 5, 6, 7, 8], ""job_records"": [{""job_id"": 1, ""processing_time"": 11, ""weight"": 3, ""due_date"": 125}, {""job_id"": 2, ""processing_time"": 99, ""weight"": 7, ""due_date"": 277}, {""job_id"": 3, ""processing_time"": 78, ""weight"": 6, ""due_date"": 355}, {""job_id"": 4, ""processing_time"": 91, ""weight"": 4, ""due_date"": 39}, {""job_id"": 5, ""processing_time"": 34, ""weight"": 5, ""due_date"": 152}, {""job_id"": 6, ""processing_time"": 18, ""weight"": 6, ""due_date"": 112}, {""job_id"": 7, ""processing_time"": 45, ""weight"": 2, ""due_date"": 337}, {""job_id"": 8, ""processing_time"": 9, ""weight"": 10, ""due_date"": 274}]}","[4, 6, 1, 5, 2, 8, 3, 7]"
+SMTWT_S_033,SMTWT,S,33,"Back at the shop, the foreman needs to line up fixes for a single workstation so every item gets done. There’s no parallel work — the bench handles one repair at a time — and once a repair begins it continues until it’s finished. Each item has a quoted return time and a weight showing how costly a late finish is to the customer; if an item is finished late, compute how many units of time it’s past the quote, multiply that by its weight, and then add up those numbers for all items. The goal is to keep that overall late-weight total as small as possible. The exact job timings, due dates and priority scores appear below.
+
+There are 5 repair tasks to schedule at the single workstation: 0, 1, 2, 3, 4.
+Repair 0 requires 27 time units on the bench, quoted return at 130, priority score 10.
+Repair 1 requires 92 time units on the bench, quoted return at 108, priority score 10.
+Repair 2 requires 12 time units on the bench, quoted return at 223, priority score 5.
+Repair 3 requires 62 time units on the bench, quoted return at 112, priority score 6.
+Repair 4 requires 85 time units on the bench, quoted return at 162, priority score 8.
+Arrange them to keep the overall late-weight total as small as possible.
+
+If you want to hand the final schedule back in a tidy way, just drop it into a small JSON object like this — nothing fancy, just a list showing the order to run the repairs:
+
+{
+  ""solution"": [
+    <item_id_first>,
+    <item_id_second>,
+    ...,
+    <item_id_last>
+  ]
+}
+
+""solution"" is the list of items in the sequence they should go on the bench (first finished, then second, and so on). The angle-bracket entries are just placeholders showing the shape I need — not the real answer.
+
+Please use the exact identifiers from the instance input when you fill this in — don't rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",nl,zero_based,"{""n_jobs"": 5, ""processing_times"": [27, 92, 12, 62, 85], ""weights"": [10, 10, 5, 6, 8], ""due_dates"": [130, 108, 223, 112, 162]}","{""start_times"": [92, 0, 204, 216, 119], ""end_times"": [119, 92, 216, 278, 204], ""tardiness"": [0, 0, 0, 166, 42]}",1332.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 5, ""jobs"": [0, 1, 2, 3, 4], ""job_records"": [{""job_id"": 0, ""processing_time"": 27, ""weight"": 10, ""due_date"": 130}, {""job_id"": 1, ""processing_time"": 92, ""weight"": 10, ""due_date"": 108}, {""job_id"": 2, ""processing_time"": 12, ""weight"": 5, ""due_date"": 223}, {""job_id"": 3, ""processing_time"": 62, ""weight"": 6, ""due_date"": 112}, {""job_id"": 4, ""processing_time"": 85, ""weight"": 8, ""due_date"": 162}]}","[1, 0, 4, 2, 3]"
+SMTWT_S_034,SMTWT,S,34,"Many people schedule shoots and then hand over a stack of galleries to a single editor, and that’s the exact setup here: one editing station, multiple galleries, each taking a certain number of hours, each with a promised delivery time, and each client assigned a level of importance. The editor needs to pick a sequence so the station edits one gallery at a time and finishes each gallery in one uninterrupted session — nothing skipped, nothing doubled. If a gallery gets finished after its promised time, count the hours of delay; if it’s on time or early, count zero. Multiply each delay (in hours) by that gallery’s client importance and add those products across all galleries; the aim is to have that overall sum as small as possible. The concrete details are listed below.
+
+# n_galleries=9
+# gallery_ids=0, 1, 2, 3, 4, 5, 6, 7, 8
+gallery_id,edit_hours,client_importance,promised_delivery_time
+0,64,7,320
+1,73,2,324
+2,93,3,288
+3,46,10,282
+4,15,1,299
+5,12,10,301
+6,46,9,334
+7,19,2,293
+8,23,10,348
+
+Also, when you send the final ordering back, a relaxed little JSON snippet like the one below is perfect — just list the galleries in the order the editor should tackle them.
+
+{
+  ""solution"": [
+    <gallery_id_first>,
+    <gallery_id_second>,
+    ...,
+    <gallery_id_last>
+  ]
+}
+
+""solution"" is just the sequence: the first entry is the gallery to edit first, the second entry is next, and so on until the last gallery. Think of it like filling out a simple form that tells the editor which gallery to open first, second, etc. This JSON is only a sketch of the expected shape — not the actual answer itself.
+
+Please use the exact identifiers from the instance input — do not rename them or invent new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""n_jobs"": 9, ""processing_times"": [64, 73, 93, 46, 15, 12, 46, 19, 23], ""weights"": [7, 2, 3, 10, 1, 10, 9, 2, 10], ""due_dates"": [320, 324, 288, 282, 299, 301, 334, 293, 348]}","{""start_times"": [139, 318, 0, 93, 268, 283, 222, 203, 295], ""end_times"": [203, 391, 93, 139, 283, 295, 268, 222, 318], ""tardiness"": [0, 67, 0, 0, 0, 0, 0, 0, 0]}",134.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 9, ""jobs"": [0, 1, 2, 3, 4, 5, 6, 7, 8], ""job_records"": [{""job_id"": 0, ""processing_time"": 64, ""weight"": 7, ""due_date"": 320}, {""job_id"": 1, ""processing_time"": 73, ""weight"": 2, ""due_date"": 324}, {""job_id"": 2, ""processing_time"": 93, ""weight"": 3, ""due_date"": 288}, {""job_id"": 3, ""processing_time"": 46, ""weight"": 10, ""due_date"": 282}, {""job_id"": 4, ""processing_time"": 15, ""weight"": 1, ""due_date"": 299}, {""job_id"": 5, ""processing_time"": 12, ""weight"": 10, ""due_date"": 301}, {""job_id"": 6, ""processing_time"": 46, ""weight"": 9, ""due_date"": 334}, {""job_id"": 7, ""processing_time"": 19, ""weight"": 2, ""due_date"": 293}, {""job_id"": 8, ""processing_time"": 23, ""weight"": 10, ""due_date"": 348}]}","[2, 3, 0, 7, 6, 4, 5, 8, 1]"
+SMTWT_S_035,SMTWT,S,35,"After a long week the single analyzer needs to process a batch of samples; each one requires a specific processing length, has a due date, and carries a priority showing how bad it is to miss that date. The coordinator’s decision is just the order to run them in, making sure every sample is run once, the machine does only one at a time, and each run goes to completion. For samples finishing after their due date, multiply the amount of time they’re late by their priority and add all those values together — the aim is to arrange the order so that total late-priority penalty is as small as possible. The concrete runtimes, due dates and priorities appear below.
+
+{
+  ""n_samples"": 7,
+  ""sample_ids"": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  ""data"": [
+    {
+      ""sample_id"": 0,
+      ""processing_duration"": 70,
+      ""priority_weight"": 8,
+      ""deadline_time"": 123
+    },
+    {
+      ""sample_id"": 1,
+      ""processing_duration"": 24,
+      ""priority_weight"": 6,
+      ""deadline_time"": 149
+    },
+    {
+      ""sample_id"": 2,
+      ""processing_duration"": 16,
+      ""priority_weight"": 5,
+      ""deadline_time"": 122
+    },
+    {
+      ""sample_id"": 3,
+      ""processing_duration"": 36,
+      ""priority_weight"": 7,
+      ""deadline_time"": 169
+    },
+    {
+      ""sample_id"": 4,
+      ""processing_duration"": 39,
+      ""priority_weight"": 10,
+      ""deadline_time"": 149
+    },
+    {
+      ""sample_id"": 5,
+      ""processing_duration"": 56,
+      ""priority_weight"": 5,
+      ""deadline_time"": 144
+    },
+    {
+      ""sample_id"": 6,
+      ""processing_duration"": 3,
+      ""priority_weight"": 9,
+      ""deadline_time"": 151
+    }
+  ]
+}
+
+Also, when you want to hand me the chosen order, a little JSON snippet like the one below is perfect — neat and machine-friendly but still human-readable.
+
+{
+  ""solution"": [
+    <sample_id_first>,
+    <sample_id_second>,
+    ...,
+    <sample_id_last>
+  ]
+}
+
+This just means: put the samples in the ""solution"" list in the exact order you plan to run them (first to last). The angled-bracket items are placeholders showing where each sample identifier goes. Think of it like a simple form: the key ""solution"" holds the run sequence, and each entry in the array is one sample ID.
+
+This JSON is just a sketch of the shape I expect, not the real answer — replace those placeholders with the actual sample IDs from the instance.
+
+Please make sure to use each identifier exactly as it appears in the input — do not rename identifiers or invent new labels. To be clear, valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,zero_based,"{""n_jobs"": 7, ""processing_times"": [70, 24, 16, 36, 39, 56, 3], ""weights"": [8, 6, 5, 7, 10, 5, 9], ""due_dates"": [123, 149, 122, 169, 149, 144, 151]}","{""start_times"": [0, 125, 70, 152, 86, 188, 149], ""end_times"": [70, 149, 86, 188, 125, 244, 152], ""tardiness"": [0, 0, 0, 19, 0, 100, 1]}",642.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 7, ""jobs"": [0, 1, 2, 3, 4, 5, 6], ""job_records"": [{""job_id"": 0, ""processing_time"": 70, ""weight"": 8, ""due_date"": 123}, {""job_id"": 1, ""processing_time"": 24, ""weight"": 6, ""due_date"": 149}, {""job_id"": 2, ""processing_time"": 16, ""weight"": 5, ""due_date"": 122}, {""job_id"": 3, ""processing_time"": 36, ""weight"": 7, ""due_date"": 169}, {""job_id"": 4, ""processing_time"": 39, ""weight"": 10, ""due_date"": 149}, {""job_id"": 5, ""processing_time"": 56, ""weight"": 5, ""due_date"": 144}, {""job_id"": 6, ""processing_time"": 3, ""weight"": 9, ""due_date"": 151}]}","[0, 2, 4, 1, 6, 3, 5]"
+SMTWT_S_036,SMTWT,S,36,"Recently the bakery had a full morning of orders and one oven, and the manager had to decide the baking sequence. Every tray came with its own bake time, a pickup promise, and a rating for how bad it is to be late. The aim was straightforward: keep the total lateness cost low by, for each tray, multiplying its importance by how many minutes it finished after the promised pickup (if it’s on time, that counts as zero) and adding those results across all trays. Since the oven handles only one tray at a time, no overlapping is allowed and every tray must go through once. The concrete tray numbers and deadlines are listed below.
+
+{
+  ""number_of_trays"": 5,
+  ""tray_ids"": [
+    ""A"",
+    ""B"",
+    ""C"",
+    ""D"",
+    ""E""
+  ],
+  ""data"": [
+    {
+      ""tray_id"": ""A"",
+      ""bake_time_minutes"": 98,
+      ""importance_weight"": 3,
+      ""promised_pickup_time_minutes"": 195
+    },
+    {
+      ""tray_id"": ""B"",
+      ""bake_time_minutes"": 69,
+      ""importance_weight"": 8,
+      ""promised_pickup_time_minutes"": 129
+    },
+    {
+      ""tray_id"": ""C"",
+      ""bake_time_minutes"": 66,
+      ""importance_weight"": 1,
+      ""promised_pickup_time_minutes"": 199
+    },
+    {
+      ""tray_id"": ""D"",
+      ""bake_time_minutes"": 95,
+      ""importance_weight"": 3,
+      ""promised_pickup_time_minutes"": 154
+    },
+    {
+      ""tray_id"": ""E"",
+      ""bake_time_minutes"": 70,
+      ""importance_weight"": 1,
+      ""promised_pickup_time_minutes"": 143
+    }
+  ]
+}
+
+Oh, and before you go—whatever answer you send back, please follow this simple JSON layout so I can read the baking order automatically. Here's a little sketch of the shape I expect:
+
+{
+  ""solution"": [
+    <tray_id_first>,
+    <tray_id_second>,
+    ...,
+    <tray_id_last>
+  ]
+}
+
+This just says: put the tray identifiers in order from the first thing the oven bakes to the last. It's just a template — not the actual schedule — so fill in the real IDs from the instance when you submit the answer.
+
+Please make sure you use the exact identifiers from the instance input — don't rename them or invent new ones. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""n_jobs"": 5, ""processing_times"": [98, 69, 66, 95, 70], ""weights"": [3, 8, 1, 3, 1], ""due_dates"": [195, 129, 199, 154, 143]}","{""start_times"": [164, 0, 262, 69, 328], ""end_times"": [262, 69, 328, 164, 398], ""tardiness"": [67, 0, 129, 10, 255]}",615.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 5, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 98, ""weight"": 3, ""due_date"": 195}, {""job_id"": ""B"", ""processing_time"": 69, ""weight"": 8, ""due_date"": 129}, {""job_id"": ""C"", ""processing_time"": 66, ""weight"": 1, ""due_date"": 199}, {""job_id"": ""D"", ""processing_time"": 95, ""weight"": 3, ""due_date"": 154}, {""job_id"": ""E"", ""processing_time"": 70, ""weight"": 1, ""due_date"": 143}]}","[""B"", ""D"", ""A"", ""C"", ""E""]"
+SMTWT_S_037,SMTWT,S,37,"At the shop the foreperson has one lift and a stack of jobs, each with a set repair time and an expected handover time; some customers are much fussier about delays. The job is to pick the sequence cars are worked on — only one can be on the lift at a time, and every repair needs to be done once. After scheduling, any car finished late has its minutes-late counted (on-time is zero), that lateness is multiplied by how important that customer is, and all those products are summed. The better the schedule, the smaller that total sum of weighted lateness. The exact repair lengths, promised return times, and customer importance numbers follow below.
+
+{
+  ""num_repairs"": 10,
+  ""repair_ids"": [
+    ""A"",
+    ""B"",
+    ""C"",
+    ""D"",
+    ""E"",
+    ""F"",
+    ""G"",
+    ""H"",
+    ""I"",
+    ""J""
+  ],
+  ""data"": [
+    {
+      ""repair_id"": ""A"",
+      ""repair_duration_minutes"": 48,
+      ""customer_criticality_weight"": 1,
+      ""promised_handover_time_minutes"": 114
+    },
+    {
+      ""repair_id"": ""B"",
+      ""repair_duration_minutes"": 41,
+      ""customer_criticality_weight"": 3,
+      ""promised_handover_time_minutes"": 51
+    },
+    {
+      ""repair_id"": ""C"",
+      ""repair_duration_minutes"": 87,
+      ""customer_criticality_weight"": 7,
+      ""promised_handover_time_minutes"": 123
+    },
+    {
+      ""repair_id"": ""D"",
+      ""repair_duration_minutes"": 51,
+      ""customer_criticality_weight"": 6,
+      ""promised_handover_time_minutes"": 111
+    },
+    {
+      ""repair_id"": ""E"",
+      ""repair_duration_minutes"": 27,
+      ""customer_criticality_weight"": 2,
+      ""promised_handover_time_minutes"": 119
+    },
+    {
+      ""repair_id"": ""F"",
+      ""repair_duration_minutes"": 13,
+      ""customer_criticality_weight"": 5,
+      ""promised_handover_time_minutes"": 111
+    },
+    {
+      ""repair_id"": ""G"",
+      ""repair_duration_minutes"": 44,
+      ""customer_criticality_weight"": 6,
+      ""promised_handover_time_minutes"": 106
+    },
+    {
+      ""repair_id"": ""H"",
+      ""repair_duration_minutes"": 98,
+      ""customer_criticality_weight"": 6,
+      ""promised_handover_time_minutes"": 90
+    },
+    {
+      ""repair_id"": ""I"",
+      ""repair_duration_minutes"": 6,
+      ""customer_criticality_weight"": 5,
+      ""promised_handover_time_minutes"": 81
+    },
+    {
+      ""repair_id"": ""J"",
+      ""repair_duration_minutes"": 90,
+      ""customer_criticality_weight"": 3,
+      ""promised_handover_time_minutes"": 138
+    }
+  ]
+}
+
+Oh, and one more thing — when you send the answer, please stick to this simple JSON shape so it's easy to read:
+
+{
+  ""solution"": [
+    <car_id_first>,
+    <car_id_second>,
+    ...,
+    <car_id_last>
+  ]
+}
+
+This just means ""solution"" is the ordered list of cars to work on, from the first one you put on the lift to the last. The angle-bracket entries are placeholders showing where each car's identifier goes — it's just a sketch of the shape I expect, not the actual sequence.
+
+Please use the exact identifiers from the instance input — no renaming and no new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,names,"{""n_jobs"": 10, ""processing_times"": [48, 41, 87, 51, 27, 13, 44, 98, 6, 90], ""weights"": [1, 3, 7, 6, 2, 5, 6, 6, 5, 3], ""due_dates"": [114, 51, 123, 111, 119, 111, 106, 90, 81, 138]}","{""start_times"": [457, 0, 155, 104, 242, 41, 60, 269, 54, 367], ""end_times"": [505, 41, 242, 155, 269, 54, 104, 367, 60, 457], ""tardiness"": [391, 0, 119, 44, 150, 0, 0, 277, 0, 319]}",4407.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 10, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 48, ""weight"": 1, ""due_date"": 114}, {""job_id"": ""B"", ""processing_time"": 41, ""weight"": 3, ""due_date"": 51}, {""job_id"": ""C"", ""processing_time"": 87, ""weight"": 7, ""due_date"": 123}, {""job_id"": ""D"", ""processing_time"": 51, ""weight"": 6, ""due_date"": 111}, {""job_id"": ""E"", ""processing_time"": 27, ""weight"": 2, ""due_date"": 119}, {""job_id"": ""F"", ""processing_time"": 13, ""weight"": 5, ""due_date"": 111}, {""job_id"": ""G"", ""processing_time"": 44, ""weight"": 6, ""due_date"": 106}, {""job_id"": ""H"", ""processing_time"": 98, ""weight"": 6, ""due_date"": 90}, {""job_id"": ""I"", ""processing_time"": 6, ""weight"": 5, ""due_date"": 81}, {""job_id"": ""J"", ""processing_time"": 90, ""weight"": 3, ""due_date"": 138}]}","[""B"", ""F"", ""I"", ""G"", ""D"", ""C"", ""E"", ""H"", ""J"", ""A""]"
+SMTWT_S_038,SMTWT,S,38,"On a hectic morning the dryer queue looked like a puzzle: a bunch of loads, each with its own drying time, pickup slot, and a priority level that makes some customers more sensitive to delays. The job is to pick an order so the overall damage is low — for each load, if it’s finished late count how many minutes it missed the pickup, multiply that by its priority, and add those values up; on-time or early is zero. Only one load can be running at once, nothing gets left out or repeated, and the concrete schedule details are shown below.
+
+{
+  ""num_loads"": 9,
+  ""load_ids"": [
+    ""A"",
+    ""B"",
+    ""C"",
+    ""D"",
+    ""E"",
+    ""F"",
+    ""G"",
+    ""H"",
+    ""I""
+  ],
+  ""data"": [
+    {
+      ""load_id"": ""A"",
+      ""drying_time_minutes"": 46,
+      ""priority_weight"": 9,
+      ""pickup_time_minutes"": 353
+    },
+    {
+      ""load_id"": ""B"",
+      ""drying_time_minutes"": 74,
+      ""priority_weight"": 2,
+      ""pickup_time_minutes"": 332
+    },
+    {
+      ""load_id"": ""C"",
+      ""drying_time_minutes"": 6,
+      ""priority_weight"": 8,
+      ""pickup_time_minutes"": 340
+    },
+    {
+      ""load_id"": ""D"",
+      ""drying_time_minutes"": 46,
+      ""priority_weight"": 4,
+      ""pickup_time_minutes"": 266
+    },
+    {
+      ""load_id"": ""E"",
+      ""drying_time_minutes"": 54,
+      ""priority_weight"": 7,
+      ""pickup_time_minutes"": 419
+    },
+    {
+      ""load_id"": ""F"",
+      ""drying_time_minutes"": 8,
+      ""priority_weight"": 1,
+      ""pickup_time_minutes"": 379
+    },
+    {
+      ""load_id"": ""G"",
+      ""drying_time_minutes"": 61,
+      ""priority_weight"": 6,
+      ""pickup_time_minutes"": 304
+    },
+    {
+      ""load_id"": ""H"",
+      ""drying_time_minutes"": 37,
+      ""priority_weight"": 1,
+      ""pickup_time_minutes"": 393
+    },
+    {
+      ""load_id"": ""I"",
+      ""drying_time_minutes"": 94,
+      ""priority_weight"": 1,
+      ""pickup_time_minutes"": 298
+    }
+  ]
+}
+
+If you want the answer in a tidy, machine-friendly package, just follow this JSON layout when you send back the schedule:
+
+{
+  ""solution"": [
+    <load_id_first>,
+    <load_id_second>,
+    ...,
+    <load_id_last>
+  ]
+}
+
+Think of the ""solution"" array as the run order for the dryer loads: the first placeholder is the load that goes on the machine first, the second is next, and so on. The angle-bracket placeholders are just a sketch showing where the real load IDs belong — they’re not the final values.
+
+Please make sure to use the exact identifiers from the instance input — don’t rename them or invent new labels.  
+Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,names,"{""n_jobs"": 9, ""processing_times"": [46, 74, 6, 46, 54, 8, 61, 37, 94], ""weights"": [9, 2, 8, 4, 7, 1, 6, 1, 1], ""due_dates"": [353, 332, 340, 266, 419, 379, 304, 393, 298]}","{""start_times"": [201, 253, 247, 94, 335, 327, 140, 389, 0], ""end_times"": [247, 327, 253, 140, 389, 335, 201, 426, 94], ""tardiness"": [0, 0, 0, 0, 0, 0, 0, 33, 0]}",33.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 9, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 46, ""weight"": 9, ""due_date"": 353}, {""job_id"": ""B"", ""processing_time"": 74, ""weight"": 2, ""due_date"": 332}, {""job_id"": ""C"", ""processing_time"": 6, ""weight"": 8, ""due_date"": 340}, {""job_id"": ""D"", ""processing_time"": 46, ""weight"": 4, ""due_date"": 266}, {""job_id"": ""E"", ""processing_time"": 54, ""weight"": 7, ""due_date"": 419}, {""job_id"": ""F"", ""processing_time"": 8, ""weight"": 1, ""due_date"": 379}, {""job_id"": ""G"", ""processing_time"": 61, ""weight"": 6, ""due_date"": 304}, {""job_id"": ""H"", ""processing_time"": 37, ""weight"": 1, ""due_date"": 393}, {""job_id"": ""I"", ""processing_time"": 94, ""weight"": 1, ""due_date"": 298}]}","[""I"", ""D"", ""G"", ""A"", ""C"", ""B"", ""F"", ""E"", ""H""]"
+SMTWT_S_039,SMTWT,S,39,"Someone has to run the single espresso machine and decide which coffees to make first. Each ticket takes a certain amount of time to pull and has a target pickup time, and different customers have different importance levels, so finishing a drink after its target creates a penalty equal to the customer’s importance times how many minutes late it was (no penalty if it’s on time or early). The job is to arrange all the drinks in a non‑overlapping order, making each once, to minimize the total of those penalties. The detailed list of orders and timings appears below.
+
+Someone must schedule 5 orders, identified as 1, 2, 3, 4, 5.
+
+| order_id | pull_time_minutes | customer_importance | target_pickup_time_minutes |
+|---|---|---|---|
+| 1 | 52 | 4 | 139 |
+| 2 | 49 | 4 | 157 |
+| 3 | 26 | 3 | 177 |
+| 4 | 77 | 2 | 179 |
+| 5 | 23 | 5 | 158 |
+
+Someone should sequence these orders to minimize the total importance-weighted minutes of lateness.
+
+If you prefer to hand the answer over in a tidy, machine-friendly way, just use this little JSON shape and drop the ordered ticket IDs into it:
+
+{
+  ""solution"": [
+    <ticket_id_first>,
+    <ticket_id_second>,
+    ...,
+    <ticket_id_last>
+  ]
+}
+
+Pretty straightforward: ""solution"" is the ordered list of tickets to make, from the one you pull first through to the last. Each placeholder in that array should be replaced by the exact ticket identifier from the instance (this JSON is just a sketch of the shape you should follow, not the actual schedule).
+
+Please make sure you use the identifiers exactly as they appear in the problem input — no renaming and no new labels. Valid identifiers look like:
+- plain numbers such as ""1"" or ""23""
+- single capital letters like ""A"" or ""B""
+- a capital letter followed by digits like ""A1"" or ""X7""",markdown_table,one_based,"{""n_jobs"": 5, ""processing_times"": [52, 49, 26, 77, 23], ""weights"": [4, 4, 3, 2, 5], ""due_dates"": [139, 157, 177, 179, 158]}","{""start_times"": [0, 52, 101, 150, 127], ""end_times"": [52, 101, 127, 227, 150], ""tardiness"": [0, 0, 0, 48, 0]}",96.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 5, ""jobs"": [1, 2, 3, 4, 5], ""job_records"": [{""job_id"": 1, ""processing_time"": 52, ""weight"": 4, ""due_date"": 139}, {""job_id"": 2, ""processing_time"": 49, ""weight"": 4, ""due_date"": 157}, {""job_id"": 3, ""processing_time"": 26, ""weight"": 3, ""due_date"": 177}, {""job_id"": 4, ""processing_time"": 77, ""weight"": 2, ""due_date"": 179}, {""job_id"": 5, ""processing_time"": 23, ""weight"": 5, ""due_date"": 158}]}","[1, 2, 3, 5, 4]"
+SMTWT_S_040,SMTWT,S,40,"On a busy afternoon the single 3D printer has a queue of projects, each with its own print duration, a hoped-for completion time, and an importance rating that measures how bad being late is. The problem to solve is the order to run the prints — one job at a time and every project must go through once — so the overall penalty is kept small. That penalty is simply calculated by, for each project, taking how many minutes it finishes after its hoped-for time (zero if it’s not late), multiplying that lateness by the project’s importance, and summing those figures for every project. The concrete job durations, desired finish times, and importance ratings follow below.
+
+{
+  ""total_projects"": 8,
+  ""project_ids"": [
+    ""A"",
+    ""B"",
+    ""C"",
+    ""D"",
+    ""E"",
+    ""F"",
+    ""G"",
+    ""H""
+  ],
+  ""data"": [
+    {
+      ""project_id"": ""A"",
+      ""print_duration_minutes"": 19,
+      ""importance_score"": 6,
+      ""requested_finish_minute"": 166
+    },
+    {
+      ""project_id"": ""B"",
+      ""print_duration_minutes"": 59,
+      ""importance_score"": 7,
+      ""requested_finish_minute"": 111
+    },
+    {
+      ""project_id"": ""C"",
+      ""print_duration_minutes"": 59,
+      ""importance_score"": 9,
+      ""requested_finish_minute"": 267
+    },
+    {
+      ""project_id"": ""D"",
+      ""print_duration_minutes"": 99,
+      ""importance_score"": 2,
+      ""requested_finish_minute"": 264
+    },
+    {
+      ""project_id"": ""E"",
+      ""print_duration_minutes"": 23,
+      ""importance_score"": 9,
+      ""requested_finish_minute"": 151
+    },
+    {
+      ""project_id"": ""F"",
+      ""print_duration_minutes"": 91,
+      ""importance_score"": 2,
+      ""requested_finish_minute"": 184
+    },
+    {
+      ""project_id"": ""G"",
+      ""print_duration_minutes"": 51,
+      ""importance_score"": 2,
+      ""requested_finish_minute"": 157
+    },
+    {
+      ""project_id"": ""H"",
+      ""print_duration_minutes"": 94,
+      ""importance_score"": 8,
+      ""requested_finish_minute"": 178
+    }
+  ]
+}
+
+If you prefer to send the schedule in a tidy machine-readable way, just use a small JSON object like this:
+
+{
+  ""solution"": [
+    <job_id_first>,
+    <job_id_second>,
+    ...,
+    <job_id_last>
+  ]
+}
+
+This is just a simple sketch: ""solution"" is the ordered list of job IDs that says which print to run first, second, and so on. Think of it like filling out a form where each entry is the next job in the queue. The block above shows the expected shape, not the actual answer — you'll replace those placeholders with the real job IDs from the instance.
+
+Please make sure to use the job identifiers exactly as they appear in the instance input — do not rename them or invent new labels. Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",json,names,"{""n_jobs"": 8, ""processing_times"": [19, 59, 59, 99, 23, 91, 51, 94], ""weights"": [6, 7, 9, 2, 9, 2, 2, 8], ""due_dates"": [166, 111, 267, 264, 151, 184, 157, 178]}","{""start_times"": [82, 0, 195, 396, 59, 305, 254, 101], ""end_times"": [101, 59, 254, 495, 82, 396, 305, 195], ""tardiness"": [0, 0, 0, 231, 0, 212, 148, 17]}",1318.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 8, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 19, ""weight"": 6, ""due_date"": 166}, {""job_id"": ""B"", ""processing_time"": 59, ""weight"": 7, ""due_date"": 111}, {""job_id"": ""C"", ""processing_time"": 59, ""weight"": 9, ""due_date"": 267}, {""job_id"": ""D"", ""processing_time"": 99, ""weight"": 2, ""due_date"": 264}, {""job_id"": ""E"", ""processing_time"": 23, ""weight"": 9, ""due_date"": 151}, {""job_id"": ""F"", ""processing_time"": 91, ""weight"": 2, ""due_date"": 184}, {""job_id"": ""G"", ""processing_time"": 51, ""weight"": 2, ""due_date"": 157}, {""job_id"": ""H"", ""processing_time"": 94, ""weight"": 8, ""due_date"": 178}]}","[""B"", ""E"", ""A"", ""H"", ""C"", ""G"", ""F"", ""D""]"
+SMTWT_S_041,SMTWT,S,41,"We have a one-person cabinet shop and a single table saw, and there’s always a pile of cutting orders with different lengths, deadlines, and urgencies. The only decision is the sequence to run them in—one job at a time, no overlaps, and every job has to be done exactly once. For each order, if it finishes after its promised date count how many hours (or days) it’s late; if it’s on or before the date, count zero. Because some orders matter more than others, the tardiness for each job gets scaled by its importance, and the shop wants the total of those scaled tardiness numbers to be as small as possible. The concrete job list and numbers follow below.
+
+{
+  ""num_cutting_orders"": 5,
+  ""cutting_order_ids"": [
+    ""A"",
+    ""B"",
+    ""C"",
+    ""D"",
+    ""E""
+  ],
+  ""data"": [
+    {
+      ""order_id"": ""A"",
+      ""cutting_time"": 75,
+      ""priority_weight"": 1,
+      ""promised_due_date"": 36
+    },
+    {
+      ""order_id"": ""B"",
+      ""cutting_time"": 25,
+      ""priority_weight"": 9,
+      ""promised_due_date"": 62
+    },
+    {
+      ""order_id"": ""C"",
+      ""cutting_time"": 70,
+      ""priority_weight"": 4,
+      ""promised_due_date"": 88
+    },
+    {
+      ""order_id"": ""D"",
+      ""cutting_time"": 46,
+      ""priority_weight"": 10,
+      ""promised_due_date"": 100
+    },
+    {
+      ""order_id"": ""E"",
+      ""cutting_time"": 60,
+      ""priority_weight"": 4,
+      ""promised_due_date"": 27
+    }
+  ]
+}
+
+If you want the final sequence in a simple, machine-friendly shape, send it back in a tiny JSON object like this:
+
+{
+  ""solution"": [
+    <order_id_first>,
+    <order_id_second>,
+    ...,
+    <order_id_last>
+  ]
+}
+
+Here ""solution"" is just a list of the orders in the exact sequence you want the shop to run them — first item is the first cut, second is next, and so on. The angle-bracket names above are placeholders to show the shape; when you give the real answer, replace each placeholder with the actual identifier for that order.
+
+This JSON is only a sketch of the expected shape, not the actual schedule.
+
+Please be sure to use the identifiers exactly as they appear in the instance input — no renaming and no new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",json,names,"{""n_jobs"": 5, ""processing_times"": [75, 25, 70, 46, 60], ""weights"": [1, 9, 4, 10, 4], ""due_dates"": [36, 62, 88, 100, 27]}","{""start_times"": [201, 0, 131, 25, 71], ""end_times"": [276, 25, 201, 71, 131], ""tardiness"": [240, 0, 113, 0, 104]}",1108.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 5, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 75, ""weight"": 1, ""due_date"": 36}, {""job_id"": ""B"", ""processing_time"": 25, ""weight"": 9, ""due_date"": 62}, {""job_id"": ""C"", ""processing_time"": 70, ""weight"": 4, ""due_date"": 88}, {""job_id"": ""D"", ""processing_time"": 46, ""weight"": 10, ""due_date"": 100}, {""job_id"": ""E"", ""processing_time"": 60, ""weight"": 4, ""due_date"": 27}]}","[""B"", ""D"", ""E"", ""C"", ""A""]"
+SMTWT_S_042,SMTWT,S,42,"Recently the shop got a backlog and the single spray booth became the bottleneck. Each job has a spray plus cure duration, a promised pickup day, and a weight that captures how bad a late pickup would be for that customer. The plan is about ordering the cars: whenever a car finishes after its promised day, its lateness equals finish day minus promised day (if it’s on time or early, lateness is zero). That lateness is then scaled by the car’s importance, and the total pain is the sum of all those scaled latenesses — smaller totals mean happier overall customers. Only one car can occupy the booth at any moment, every vehicle must go through the booth exactly once, and nothing can overlap or be omitted. The exact job timings and urgencies are listed below.
+
+# number_of_vehicles=7
+# vehicle_ids=0, 1, 2, 3, 4, 5, 6
+vehicle_id,paint_and_cure_time_days,customer_urgency_weight,promised_pickup_day
+0,92,2,523
+1,59,10,315
+2,93,2,340
+3,90,7,386
+4,95,8,571
+5,28,6,285
+6,89,2,295
+
+Also, when you return the chosen order, just drop it into this simple JSON shape so it's easy to read and reuse:
+
+{
+  ""solution"": [
+    <car_id_first>,
+    <car_id_second>,
+    ...,
+    <car_id_last>
+  ]
+}
+
+This just shows that the top-level key is ""solution"" and the value is an ordered list of the cars (first processed to last processed). Think of each placeholder like a blank on a form where you put the exact car identifier from the instance.
+
+This JSON is only a sketch of the shape I expect — fill the array with the actual identifiers in the exact order you want to run them. Please do not rename any identifiers or invent new labels; use the ones from the instance exactly as given.
+
+For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""n_jobs"": 7, ""processing_times"": [92, 59, 93, 90, 95, 28, 89], ""weights"": [2, 10, 2, 7, 8, 6, 2], ""due_dates"": [523, 315, 340, 386, 571, 285, 295]}","{""start_times"": [359, 182, 0, 269, 451, 241, 93], ""end_times"": [451, 241, 93, 359, 546, 269, 182], ""tardiness"": [0, 0, 0, 0, 0, 0, 0]}",0.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 7, ""jobs"": [0, 1, 2, 3, 4, 5, 6], ""job_records"": [{""job_id"": 0, ""processing_time"": 92, ""weight"": 2, ""due_date"": 523}, {""job_id"": 1, ""processing_time"": 59, ""weight"": 10, ""due_date"": 315}, {""job_id"": 2, ""processing_time"": 93, ""weight"": 2, ""due_date"": 340}, {""job_id"": 3, ""processing_time"": 90, ""weight"": 7, ""due_date"": 386}, {""job_id"": 4, ""processing_time"": 95, ""weight"": 8, ""due_date"": 571}, {""job_id"": 5, ""processing_time"": 28, ""weight"": 6, ""due_date"": 285}, {""job_id"": 6, ""processing_time"": 89, ""weight"": 2, ""due_date"": 295}]}","[2, 6, 1, 5, 3, 0, 4]"
+SMTWT_S_043,SMTWT,S,43,"Many folks forget how tense a one‑mill schedule can be: the supervisor has to order a bunch of parts that all require known cut times and have target dates, and the mill only handles one at a time. Nothing can be left out or done twice, so the only freedom is the sequence. The way to tell which sequence is kinder to the customers is to add up each part’s penalty — minutes late times that part’s criticality, with zero if it’s not late — and prefer the sequence with the smaller overall penalty. The detailed parts list and numbers are given below.
+
+There are 10 parts to sequence: A, B, C, D, E, F, G, H, I, J.
+
+| part_id | cutting_time_minutes | criticality_weight | target_completion_time |
+|---|---|---|---|
+| A | 3 | 1 | 267 |
+| B | 26 | 3 | 336 |
+| C | 94 | 2 | 301 |
+| D | 99 | 3 | 223 |
+| E | 30 | 2 | 289 |
+| F | 51 | 2 | 345 |
+| G | 43 | 6 | 156 |
+| H | 1 | 6 | 374 |
+| I | 92 | 1 | 364 |
+| J | 17 | 4 | 410 |
+
+Order them to minimize the total penalty — the sum over parts of minutes late × criticality — for these 10 parts.
+
+If you want to hand me the sequence that minimizes the total penalty, just drop it in a tiny JSON form — nothing fancy, just an array named ""solution"" with the job ids in the order they should run.
+
+{
+  ""solution"": [
+    <part_id_first>,
+    <part_id_second>,
+    ...,
+    <part_id_last>
+  ]
+}
+
+This little sketch just says: ""solution"" is the ordered list, and each placeholder like <part_id_first> stands for the identifier of the part/job that goes in that position on the mill. Think of it like filling out a simple schedule form: write the exact id of the first job, then the second, and so on. The JSON is just the shape I expect, not the final answer.
+
+Please make sure to use the job identifiers exactly as they appear in the instance input — don't rename them or invent new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""n_jobs"": 10, ""processing_times"": [3, 26, 94, 99, 30, 51, 43, 1, 92, 17], ""weights"": [1, 3, 2, 3, 2, 2, 6, 6, 1, 4], ""due_dates"": [267, 336, 301, 223, 289, 345, 156, 374, 364, 410]}","{""start_times"": [142, 269, 145, 0, 239, 295, 99, 346, 364, 347], ""end_times"": [145, 295, 239, 99, 269, 346, 142, 347, 456, 364], ""tardiness"": [0, 0, 0, 0, 0, 1, 0, 0, 92, 0]}",94.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 10, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 3, ""weight"": 1, ""due_date"": 267}, {""job_id"": ""B"", ""processing_time"": 26, ""weight"": 3, ""due_date"": 336}, {""job_id"": ""C"", ""processing_time"": 94, ""weight"": 2, ""due_date"": 301}, {""job_id"": ""D"", ""processing_time"": 99, ""weight"": 3, ""due_date"": 223}, {""job_id"": ""E"", ""processing_time"": 30, ""weight"": 2, ""due_date"": 289}, {""job_id"": ""F"", ""processing_time"": 51, ""weight"": 2, ""due_date"": 345}, {""job_id"": ""G"", ""processing_time"": 43, ""weight"": 6, ""due_date"": 156}, {""job_id"": ""H"", ""processing_time"": 1, ""weight"": 6, ""due_date"": 374}, {""job_id"": ""I"", ""processing_time"": 92, ""weight"": 1, ""due_date"": 364}, {""job_id"": ""J"", ""processing_time"": 17, ""weight"": 4, ""due_date"": 410}]}","[""D"", ""G"", ""A"", ""C"", ""E"", ""B"", ""F"", ""H"", ""J"", ""I""]"
+SMTWT_S_044,SMTWT,S,44,"On a busy morning the owner looks at a list of bikes to tune, each with an expected service time, a requested return time, and a customer priority score that weights how bad lateness is. The owner must pick an order so that any bike finished after its requested time contributes its minutes-late times its priority to a running total — and the smaller that total, the better for the shop’s customers. Every job on the list gets done once, nothing overlaps because there’s just the one stand, and the concrete job timings and priorities are given below.
+
+# number_of_bikes=9
+# bike_ids=1, 2, 3, 4, 5, 6, 7, 8, 9
+bike_id,service_duration_minutes,customer_priority_score,requested_return_time_minutes
+1,76,6,135
+2,45,5,269
+3,75,3,246
+4,14,6,284
+5,1,3,303
+6,40,3,165
+7,68,2,142
+8,99,7,208
+9,74,6,318
+
+If you want the final order handed back in a tidy, machine-friendly way, just use this simple JSON shape — nothing fancy, just the list in order:
+
+{
+  ""solution"": [
+    <bike_id_first>,
+    <bike_id_second>,
+    ...,
+    <bike_id_last>
+  ]
+}
+
+Here ""solution"" is the ordered list of bikes to work on. Each placeholder like <bike_id_first> is just standing in for the actual bike identifier that goes first, <bike_id_second> for the one that goes second, and so on. Think of it like filling out a little form — this block is the shape I need, not the final filled-in schedule.
+
+Please make sure all identifiers you put into that array match the instance input exactly — don't rename them or invent new labels. For example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,one_based,"{""n_jobs"": 9, ""processing_times"": [76, 45, 75, 14, 1, 40, 68, 99, 74], ""weights"": [6, 5, 3, 6, 3, 3, 2, 7, 6], ""due_dates"": [135, 269, 246, 284, 303, 165, 142, 208, 318]}","{""start_times"": [0, 215, 349, 260, 274, 76, 424, 116, 275], ""end_times"": [76, 260, 424, 274, 275, 116, 492, 215, 349], ""tardiness"": [0, 0, 178, 0, 0, 0, 350, 7, 31]}",1469.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 9, ""jobs"": [1, 2, 3, 4, 5, 6, 7, 8, 9], ""job_records"": [{""job_id"": 1, ""processing_time"": 76, ""weight"": 6, ""due_date"": 135}, {""job_id"": 2, ""processing_time"": 45, ""weight"": 5, ""due_date"": 269}, {""job_id"": 3, ""processing_time"": 75, ""weight"": 3, ""due_date"": 246}, {""job_id"": 4, ""processing_time"": 14, ""weight"": 6, ""due_date"": 284}, {""job_id"": 5, ""processing_time"": 1, ""weight"": 3, ""due_date"": 303}, {""job_id"": 6, ""processing_time"": 40, ""weight"": 3, ""due_date"": 165}, {""job_id"": 7, ""processing_time"": 68, ""weight"": 2, ""due_date"": 142}, {""job_id"": 8, ""processing_time"": 99, ""weight"": 7, ""due_date"": 208}, {""job_id"": 9, ""processing_time"": 74, ""weight"": 6, ""due_date"": 318}]}","[1, 6, 8, 2, 4, 5, 9, 3, 7]"
+SMTWT_S_045,SMTWT,S,45,"At the shop there’s a stack of book orders, each with a binding duration, a customer-requested date, and an importance rating for lateness. The operator must pick the order to run them in because the binding machine does one batch at a time and nothing can be skipped or repeated. The way to judge any lineup is to calculate how late each job finishes compared to its requested date (treat on-time as zero), multiply that lateness by the job’s importance, add up those numbers for all jobs, and aim for the smallest possible total. The exact times, dates, and importances are listed below.
+
+# total_orders=7
+# order_ids=0, 1, 2, 3, 4, 5, 6
+order_id,binding_duration,importance_weight,requested_date
+0,91,5,153
+1,62,2,131
+2,3,4,36
+3,72,8,140
+4,68,6,21
+5,61,7,155
+6,8,8,83
+
+If you want to hand me a schedule, keep it simple and in JSON so it's easy to check — something casual like this layout will do fine:
+
+{
+  ""solution"": [
+    <order_id_first>,
+    <order_id_second>,
+    ...,
+    <order_id_last>
+  ]
+}
+
+This just means ""solution"" holds the sequence of orders to run on the binder, in the exact order they'll be processed. Replace each placeholder with the actual order identifier from the instance: the first entry is the one you run first, the next is run after that, and so on. Think of it like filling out a short form — no need for extra fields.
+
+Please make sure to use the exact identifiers from the instance input — do not rename or invent labels.
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""n_jobs"": 7, ""processing_times"": [91, 62, 3, 72, 68, 61, 8], ""weights"": [5, 2, 4, 8, 6, 7, 8], ""due_dates"": [153, 131, 36, 140, 21, 155, 83]}","{""start_times"": [212, 303, 0, 79, 3, 151, 71], ""end_times"": [303, 365, 3, 151, 71, 212, 79], ""tardiness"": [150, 234, 0, 11, 50, 57, 0]}",2005.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 7, ""jobs"": [0, 1, 2, 3, 4, 5, 6], ""job_records"": [{""job_id"": 0, ""processing_time"": 91, ""weight"": 5, ""due_date"": 153}, {""job_id"": 1, ""processing_time"": 62, ""weight"": 2, ""due_date"": 131}, {""job_id"": 2, ""processing_time"": 3, ""weight"": 4, ""due_date"": 36}, {""job_id"": 3, ""processing_time"": 72, ""weight"": 8, ""due_date"": 140}, {""job_id"": 4, ""processing_time"": 68, ""weight"": 6, ""due_date"": 21}, {""job_id"": 5, ""processing_time"": 61, ""weight"": 7, ""due_date"": 155}, {""job_id"": 6, ""processing_time"": 8, ""weight"": 8, ""due_date"": 83}]}","[2, 4, 6, 3, 5, 0, 1]"
+SMTWT_S_046,SMTWT,S,46,"Someone at the photo lab is juggling a day’s worth of film rolls through a single processor. Each job takes a fixed stretch of time, each customer expects their film by a certain pickup time, and some customers have higher priority so delays sting more. For each roll, if it comes out after the requested pickup, count how many minutes it’s late (zero if it’s ready on or before the pickup), weight that lateness by the customer’s priority, and then add those weighted late amounts for all the rolls — the schedule that yields the smallest total of those weighted latenesses is the sensible one. Every roll must be developed exactly once and they can’t overlap. The full set of roll details appears below.
+
+There are 6 rolls in total, listed as A, B, C, D, E, F.
+Roll A: development 17 min, priority weight 5, requested pickup at minute 231.
+Roll B: development 92 min, priority weight 7, requested pickup at minute 242.
+Roll C: development 11 min, priority weight 4, requested pickup at minute 301.
+Roll D: development 85 min, priority weight 2, requested pickup at minute 236.
+Roll E: development 50 min, priority weight 5, requested pickup at minute 196.
+Roll F: development 94 min, priority weight 4, requested pickup at minute 236.
+Every roll must be developed exactly once without overlap; the sensible schedule minimizes the sum of weighted minutes late.
+
+Oh, and when you send back the schedule, just slip it into a tiny JSON snippet so it's easy to read and machine-friendly. Something like this:
+
+{
+  ""solution"": [
+    <roll_id_first>,
+    <roll_id_second>,
+    ...,
+    <roll_id_last>
+  ]
+}
+
+This just shows the shape I need: ""solution"" holds an ordered list of the roll IDs in the sequence they should go into the processor. The angle-bracket placeholders (like <roll_id_first>) are just stand-ins for the actual roll identifiers from the instance — think of them like blanks on a form, not the actual values.
+
+The JSON above is only a sketch of the expected shape, not the actual answer. Please use the exact identifiers from the input — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",nl,names,"{""n_jobs"": 6, ""processing_times"": [17, 92, 11, 85, 50, 94], ""weights"": [5, 7, 4, 2, 5, 4], ""due_dates"": [231, 242, 301, 236, 196, 236]}","{""start_times"": [142, 0, 253, 264, 92, 159], ""end_times"": [159, 92, 264, 349, 142, 253], ""tardiness"": [0, 0, 0, 113, 0, 17]}",294.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 6, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 17, ""weight"": 5, ""due_date"": 231}, {""job_id"": ""B"", ""processing_time"": 92, ""weight"": 7, ""due_date"": 242}, {""job_id"": ""C"", ""processing_time"": 11, ""weight"": 4, ""due_date"": 301}, {""job_id"": ""D"", ""processing_time"": 85, ""weight"": 2, ""due_date"": 236}, {""job_id"": ""E"", ""processing_time"": 50, ""weight"": 5, ""due_date"": 196}, {""job_id"": ""F"", ""processing_time"": 94, ""weight"": 4, ""due_date"": 236}]}","[""B"", ""E"", ""A"", ""F"", ""C"", ""D""]"
+SMTWT_S_047,SMTWT,S,47,"Someone dropped off several gadgets with repair time estimates, promised return times, and notes about how important it is to the customer; there’s just a single bench, so jobs can’t overlap. The decision to make is the order in which the bench will handle each device, making sure every job is done exactly once. What makes an order better is easy to see on the end-of-day tally: for each late repair, multiply its lateness in minutes by that customer’s urgency score and then add all those values together — the lower that sum, the better. The concrete list of repairs follows below.
+
+# n_repairs=10
+# device_ids=0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+device_id,repair_time_minutes,urgency_score,promised_return_time_minutes
+0,36,5,243
+1,30,10,366
+2,59,9,350
+3,58,2,248
+4,71,4,119
+5,8,8,353
+6,13,9,174
+7,30,5,407
+8,65,7,90
+9,64,3,258
+
+Also, when you hand back the final ordering, please use this little JSON shape so it's easy to parse and check:
+
+{
+  ""solution"": [
+    <repair_id_first>,
+    <repair_id_second>,
+    ...,
+    <repair_id_last>
+  ]
+}
+
+""solution"" is just the list that says which repair goes on the bench first, then second, and so on until the last. The angle-bracket placeholders are where the actual job IDs go — think of this as a lightweight form, not the real answer.
+
+One more thing: use the exact identifiers from the repair list — no renaming and no new labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""n_jobs"": 10, ""processing_times"": [36, 30, 59, 58, 71, 8, 13, 30, 65, 64], ""weights"": [5, 10, 9, 2, 4, 8, 9, 5, 7, 3], ""due_dates"": [243, 366, 350, 248, 119, 353, 174, 407, 90, 258]}","{""start_times"": [149, 249, 287, 376, 65, 279, 136, 346, 0, 185], ""end_times"": [185, 279, 346, 434, 136, 287, 149, 376, 65, 249], ""tardiness"": [0, 0, 0, 186, 17, 0, 0, 0, 0, 0]}",440.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 10, ""jobs"": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], ""job_records"": [{""job_id"": 0, ""processing_time"": 36, ""weight"": 5, ""due_date"": 243}, {""job_id"": 1, ""processing_time"": 30, ""weight"": 10, ""due_date"": 366}, {""job_id"": 2, ""processing_time"": 59, ""weight"": 9, ""due_date"": 350}, {""job_id"": 3, ""processing_time"": 58, ""weight"": 2, ""due_date"": 248}, {""job_id"": 4, ""processing_time"": 71, ""weight"": 4, ""due_date"": 119}, {""job_id"": 5, ""processing_time"": 8, ""weight"": 8, ""due_date"": 353}, {""job_id"": 6, ""processing_time"": 13, ""weight"": 9, ""due_date"": 174}, {""job_id"": 7, ""processing_time"": 30, ""weight"": 5, ""due_date"": 407}, {""job_id"": 8, ""processing_time"": 65, ""weight"": 7, ""due_date"": 90}, {""job_id"": 9, ""processing_time"": 64, ""weight"": 3, ""due_date"": 258}]}","[8, 4, 6, 0, 9, 1, 5, 2, 7, 3]"
+SMTWT_S_048,SMTWT,S,48,"Recently the bench got slammed with a handful of repairs, each with its own time-to-do, a hoped-for completion time, and an urgency rating that magnifies how costly lateness is. The question becomes the order to run them in, because the bench handles one repair at a time and each item must be completed once. For any item finished late, note how many minutes it’s late, multiply that lateness by that item’s urgency, and sum those numbers across all items — the plan with the smallest sum is the one to aim for. The specific repair durations and targets are shown below.
+
+They are the 5 repairs identified as 0, 1, 2, 3, 4.
+
+| repair_id | repair_duration | urgency_rating | target_completion_time |
+|---|---|---|---|
+| 0 | 50 | 5 | 128 |
+| 1 | 77 | 9 | 80 |
+| 2 | 32 | 2 | 190 |
+| 3 | 53 | 9 | 10 |
+| 4 | 62 | 7 | 29 |
+
+Aim for the sequence that minimizes the total minutes late multiplied by each repair’s urgency.
+
+Also, when you send back the planned order, just drop it into this little JSON sketch so it’s easy to read and machine-friendly:
+
+{
+  ""solution"": [
+    <repair_id_first>,
+    <repair_id_second>,
+    <repair_id_third>,
+    <repair_id_fourth>,
+    <repair_id_fifth>,
+    <repair_id_sixth>,
+    <repair_id_seventh>,
+    <repair_id_eighth>,
+    <repair_id_ninth>,
+    <repair_id_last>
+  ]
+}
+
+The ""solution"" array should be the repairs in the exact order you want them run — first item finished first on the bench, and so on. The angled-bracket placeholders are just a template to show the shape; replace them with the actual repair identifiers from the instance when you answer.
+
+Please make sure to use the identifiers exactly as they appear in the input — don’t rename or invent new labels.  
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.",markdown_table,zero_based,"{""n_jobs"": 5, ""processing_times"": [50, 77, 32, 53, 62], ""weights"": [5, 9, 2, 9, 7], ""due_dates"": [128, 80, 190, 10, 29]}","{""start_times"": [192, 53, 242, 0, 130], ""end_times"": [242, 130, 274, 53, 192], ""tardiness"": [114, 50, 84, 43, 163]}",2716.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 5, ""jobs"": [0, 1, 2, 3, 4], ""job_records"": [{""job_id"": 0, ""processing_time"": 50, ""weight"": 5, ""due_date"": 128}, {""job_id"": 1, ""processing_time"": 77, ""weight"": 9, ""due_date"": 80}, {""job_id"": 2, ""processing_time"": 32, ""weight"": 2, ""due_date"": 190}, {""job_id"": 3, ""processing_time"": 53, ""weight"": 9, ""due_date"": 10}, {""job_id"": 4, ""processing_time"": 62, ""weight"": 7, ""due_date"": 29}]}","[3, 1, 4, 0, 2]"
+SMTWT_S_049,SMTWT,S,49,"Someone at the bindery has to sort the day’s jobs for the only binding machine: every task has a duration, a due date, and a fine per unit of tardiness. The better schedule is the one that keeps the combined fines smallest — when a task finishes past its due date, measure how late it is, multiply that lateness by its fine, and total those values across all tasks (on-time tasks add zero). Each job gets processed exactly once, there’s no multitasking, and the full list of job details is given below.
+
+# num_binding_tasks=5
+# task_ids=0, 1, 2, 3, 4
+task_id,processing_duration,fine_rate,promised_due_time
+0,28,7,102
+1,41,10,17
+2,64,3,5
+3,25,4,77
+4,51,7,65
+
+Also, when you hand back the schedule, a little JSON snippet like the one below is perfect — just list the jobs in the order they should run, first to last.
+
+{
+  ""solution"": [
+    <bindery_job_first>,
+    <bindery_job_second>,
+    ...,
+    <bindery_job_last>
+  ]
+}
+
+This just shows the shape I expect: the ""solution"" array is the ordered list of job IDs (first processed through last processed). Think of it like a simple form — replace each placeholder with the actual job identifier from the instance when you give the real answer. This JSON is only a sketch of the shape, not the schedule itself.
+
+Please use the exact job identifiers from the instance input with no renaming or extra labels. 
+- for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",csv,zero_based,"{""n_jobs"": 5, ""processing_times"": [28, 41, 64, 25, 51], ""weights"": [7, 10, 3, 4, 7], ""due_dates"": [102, 17, 5, 77, 65]}","{""start_times"": [66, 0, 145, 41, 94], ""end_times"": [94, 41, 209, 66, 145], ""tardiness"": [0, 24, 204, 0, 80]}",1412.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 5, ""jobs"": [0, 1, 2, 3, 4], ""job_records"": [{""job_id"": 0, ""processing_time"": 28, ""weight"": 7, ""due_date"": 102}, {""job_id"": 1, ""processing_time"": 41, ""weight"": 10, ""due_date"": 17}, {""job_id"": 2, ""processing_time"": 64, ""weight"": 3, ""due_date"": 5}, {""job_id"": 3, ""processing_time"": 25, ""weight"": 4, ""due_date"": 77}, {""job_id"": 4, ""processing_time"": 51, ""weight"": 7, ""due_date"": 65}]}","[1, 3, 0, 4, 2]"
+SMTWT_S_050,SMTWT,S,50,"We’ve got a stack of parts queued for the single shop lathe, each with its own machining time, a pickup deadline, and a penalty weight that measures how badly a client minds lateness. The lathe will work through the parts one by one, every part must be machined once and none can overlap, so a part’s completion time is whatever time it finishes after all earlier parts. If a part finishes after its deadline, take the minutes late, multiply by its penalty weight, and sum that for all parts — the goal is to pick an order that makes that total as small as possible. The exact times, deadlines and penalties are listed below.
+
+We have 6 parts in total, listed as A, B, C, D, E, F.
+
+| part_id | machining_time | client_penalty_weight | pickup_due_time |
+|---|---|---|---|
+| A | 4 | 9 | 238 |
+| B | 84 | 6 | 148 |
+| C | 93 | 4 | 236 |
+| D | 36 | 7 | 337 |
+| E | 3 | 1 | 228 |
+| F | 62 | 2 | 238 |
+
+We should pick an order that minimizes the total weighted minutes late for these 6 parts.
+
+If you want to hand me back the chosen order, just drop it into a tiny JSON object like this:
+
+{
+  ""solution"": [
+    <part_id_first>,
+    <part_id_second>,
+    ...,
+    <part_id_last>
+  ]
+}
+
+""solution"" should be an array listing the part IDs in the sequence they’ll be machined, from the one to do first to the one to do last. This is just a sketch of the shape I expect — don’t fill it in here, it shows the format I need.
+
+Please use the identifiers exactly as they appear in the instance input — no renaming and no new labels.
+
+for example: ""Valid identifiers look like plain numbers such as “1” or “23”, single capital letters like “A” or “B”, or a capital letter followed by digits like “A1” or “X7”.""",markdown_table,names,"{""n_jobs"": 6, ""processing_times"": [4, 84, 93, 36, 3, 62], ""weights"": [9, 6, 4, 7, 1, 2], ""due_dates"": [238, 148, 236, 337, 228, 238]}","{""start_times"": [84, 0, 91, 246, 88, 184], ""end_times"": [88, 84, 184, 282, 91, 246], ""tardiness"": [0, 0, 0, 0, 0, 8]}",16.0,"{""problem_type"": ""SMTWT"", ""n_jobs"": 6, ""jobs"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F""], ""job_records"": [{""job_id"": ""A"", ""processing_time"": 4, ""weight"": 9, ""due_date"": 238}, {""job_id"": ""B"", ""processing_time"": 84, ""weight"": 6, ""due_date"": 148}, {""job_id"": ""C"", ""processing_time"": 93, ""weight"": 4, ""due_date"": 236}, {""job_id"": ""D"", ""processing_time"": 36, ""weight"": 7, ""due_date"": 337}, {""job_id"": ""E"", ""processing_time"": 3, ""weight"": 1, ""due_date"": 228}, {""job_id"": ""F"", ""processing_time"": 62, ""weight"": 2, ""due_date"": 238}]}","[""B"", ""A"", ""E"", ""C"", ""F"", ""D""]"

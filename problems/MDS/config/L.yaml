@@ -1,0 +1,22 @@
+problem: MDS
+scale: L
+step1:
+  dataset_dir: datasets/StreetNetwork
+  n_nodes: 19-25
+
+  seed: 43
+  n_instances: 50
+  output: step1_instance_creation/generated_data/MDS/MDS_L.json
+  params:
+    min_density: null
+    max_density: null
+    steps: 10000
+    alpha: 0.15
+    oversample_factor: 3.0
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/MDS/MDS_contexts.json
+  instance_dir: step1_instance_creation/generated_data/MDS
+  output_root_dir: step2_contextualization/dataset/MDS
+  k_per_call: 20
+  n_target: 30

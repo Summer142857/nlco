@@ -1,0 +1,16 @@
+problem: OP
+scale: L
+seed: 43
+step1:
+  dataset_dir: datasets/OP
+  n_nodes: 16-25
+
+  n_instances: 50
+  output: step1_instance_creation/generated_data/OP/OP_L.json
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/OP/OP_contexts.json
+  instance_dir: step1_instance_creation/generated_data/OP
+  output_root_dir: step2_contextualization/dataset/OP
+  k_per_call: 20
+  n_target: 30

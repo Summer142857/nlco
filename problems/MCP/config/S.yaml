@@ -1,0 +1,22 @@
+problem: MCP
+scale: S
+step1:
+  dataset_dir: datasets/CitationNetwork
+  n_nodes: 8-12
+
+  seed: 43
+  n_instances: 50
+  output: step1_instance_creation/generated_data/MCP/MCP_S.json
+  params:
+    min_density: 0.3
+    max_density: 0.7
+    steps: 10000
+    alpha: 0.15
+    oversample_factor: 3.0
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/MCP/MCP_contexts.json
+  instance_dir: step1_instance_creation/generated_data/MCP
+  output_root_dir: step2_contextualization/dataset/MCP
+  k_per_call: 20
+  n_target: 30

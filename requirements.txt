@@ -1,0 +1,48 @@
+# NLCO unified Python dependencies
+# Recommended Python version: 3.10 - 3.12
+#
+# Install with:
+#   pip install -r requirements.txt
+#
+# Notes:
+# - `gurobipy` is required by several Step 1 solvers, but using it also requires
+#   a valid Gurobi license at runtime.
+# - Some Step 1 workflows additionally depend on external non-Python binaries
+#   such as SCIP-Jack or LKH-style solvers/scripts already vendored in this repo.
+
+# Core data and config
+PyYAML>=6.0
+numpy>=1.26,<3
+pandas>=2.2,<3
+scipy>=1.12,<2
+requests>=2.31,<3
+tomli>=2.0.1
+
+# Graphs and plotting
+networkx>=3.2,<4
+matplotlib>=3.8,<4
+
+# Step 2 contextualization
+openai>=1.30,<2
+sentence-transformers>=3.0,<4
+tiktoken>=0.7,<1
+
+# Step 3 evaluation providers
+anthropic>=0.34,<1
+google-genai>=0.3,<1
+google-auth>=2.35,<3
+
+# UI
+streamlit>=1.36,<2
+
+# Step 1 solvers and optimization backends
+# - `pyvrp` is used by the PCTSP solver path.
+# - `simpy`, `deap`, and `tomli` are used by the vendored job-shop / scheduling code.
+# - `gurobipy` is required by multiple exact solver paths and needs a valid license.
+torch>=2.4,<3
+ortools>=9.10,<10
+elkai>=2.0,<3
+pyvrp>=0.9,<1
+simpy>=4.1,<5
+deap>=1.4,<2
+gurobipy>=11,<12

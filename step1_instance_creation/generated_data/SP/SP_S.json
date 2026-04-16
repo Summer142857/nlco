@@ -1,0 +1,7303 @@
+[
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 8,
+      "num_sets": 8,
+      "density": 0.453125,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            4,
+            7
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            3
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            2,
+            4,
+            5,
+            7
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            3,
+            4,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            3,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            2,
+            4,
+            6,
+            7,
+            8
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 8,
+        "edges": [
+          {
+            "u": 1,
+            "v": 4
+          },
+          {
+            "u": 5,
+            "v": 2
+          },
+          {
+            "u": 8,
+            "v": 3
+          },
+          {
+            "u": 8,
+            "v": 6
+          },
+          {
+            "u": 8,
+            "v": 7
+          },
+          {
+            "u": 4,
+            "v": 7
+          },
+          {
+            "u": 3,
+            "v": 2
+          },
+          {
+            "u": 3,
+            "v": 7
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0000.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0000.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 8,
+      "num_sets": 8,
+      "density": 0.515625,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            2,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            2,
+            5,
+            6
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            4
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            3,
+            4,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            2,
+            6,
+            8
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            2,
+            5,
+            6,
+            8
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            3,
+            4,
+            7
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            1,
+            2,
+            4,
+            8
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 8,
+        "edges": [
+          {
+            "u": 8,
+            "v": 1
+          },
+          {
+            "u": 8,
+            "v": 2
+          },
+          {
+            "u": 8,
+            "v": 5
+          },
+          {
+            "u": 8,
+            "v": 6
+          },
+          {
+            "u": 3,
+            "v": 7
+          },
+          {
+            "u": 1,
+            "v": 4
+          },
+          {
+            "u": 4,
+            "v": 7
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0001.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0001.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 10,
+      "num_sets": 9,
+      "density": 0.36666666666666664,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            4,
+            6
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            3,
+            4,
+            6,
+            9
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            2,
+            4,
+            10
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            4,
+            5,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            4,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            2,
+            4,
+            7
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            2,
+            4,
+            6,
+            9
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            4,
+            5,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            2,
+            8,
+            9
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 10,
+        "edges": [
+          {
+            "u": 7,
+            "v": 4
+          },
+          {
+            "u": 9,
+            "v": 4
+          },
+          {
+            "u": 9,
+            "v": 5
+          },
+          {
+            "u": 9,
+            "v": 8
+          },
+          {
+            "u": 1,
+            "v": 6
+          },
+          {
+            "u": 3,
+            "v": 2
+          },
+          {
+            "u": 10,
+            "v": 2
+          },
+          {
+            "u": 2,
+            "v": 4
+          },
+          {
+            "u": 4,
+            "v": 6
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0002.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0002.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 9
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 9,
+      "num_sets": 8,
+      "density": 0.4444444444444444,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            3,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            3,
+            5,
+            6
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            3,
+            4,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            3,
+            4,
+            6
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            2,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            3,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            3,
+            4,
+            9
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 9,
+        "edges": [
+          {
+            "u": 2,
+            "v": 5
+          },
+          {
+            "u": 2,
+            "v": 6
+          },
+          {
+            "u": 4,
+            "v": 3
+          },
+          {
+            "u": 4,
+            "v": 9
+          },
+          {
+            "u": 3,
+            "v": 6
+          },
+          {
+            "u": 3,
+            "v": 7
+          },
+          {
+            "u": 7,
+            "v": 1
+          },
+          {
+            "u": 7,
+            "v": 8
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0003.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0003.png"
+    },
+    "solution": [
+      {
+        "id": 4
+      },
+      {
+        "id": 7
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 9,
+      "num_sets": 8,
+      "density": 0.375,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            2,
+            6,
+            7,
+            9
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            3,
+            8
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            7,
+            9
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            3,
+            5
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            2,
+            3,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            2,
+            6,
+            7,
+            9
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            3,
+            6
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            1,
+            2,
+            4,
+            7
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 9,
+        "edges": [
+          {
+            "u": 7,
+            "v": 2
+          },
+          {
+            "u": 7,
+            "v": 9
+          },
+          {
+            "u": 2,
+            "v": 6
+          },
+          {
+            "u": 1,
+            "v": 9
+          },
+          {
+            "u": 9,
+            "v": 4
+          },
+          {
+            "u": 5,
+            "v": 8
+          },
+          {
+            "u": 8,
+            "v": 3
+          },
+          {
+            "u": 8,
+            "v": 6
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0004.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0004.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 4
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 9,
+      "num_sets": 7,
+      "density": 0.5555555555555556,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            5,
+            9
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            2,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            4,
+            8
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            4,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            4,
+            6,
+            9
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 9,
+        "edges": [
+          {
+            "u": 1,
+            "v": 2
+          },
+          {
+            "u": 1,
+            "v": 5
+          },
+          {
+            "u": 1,
+            "v": 6
+          },
+          {
+            "u": 8,
+            "v": 4
+          },
+          {
+            "u": 3,
+            "v": 4
+          },
+          {
+            "u": 9,
+            "v": 6
+          },
+          {
+            "u": 6,
+            "v": 4
+          },
+          {
+            "u": 4,
+            "v": 7
+          },
+          {
+            "u": 7,
+            "v": 2
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0005.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0005.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 3
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 8,
+      "num_sets": 8,
+      "density": 0.328125,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            4,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            2,
+            3
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            3,
+            8
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            5
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            5,
+            6
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            2,
+            6
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            1,
+            4,
+            7,
+            8
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 8,
+        "edges": [
+          {
+            "u": 6,
+            "v": 1
+          },
+          {
+            "u": 6,
+            "v": 5
+          },
+          {
+            "u": 1,
+            "v": 7
+          },
+          {
+            "u": 7,
+            "v": 8
+          },
+          {
+            "u": 2,
+            "v": 4
+          },
+          {
+            "u": 2,
+            "v": 8
+          },
+          {
+            "u": 3,
+            "v": 4
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0006.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0006.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      },
+      {
+        "id": 5
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 12,
+      "num_sets": 11,
+      "density": 0.3106060606060606,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            5,
+            6,
+            12
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            2,
+            6
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            3,
+            12
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            4,
+            8,
+            10
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            2,
+            5,
+            6,
+            7,
+            12
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            2,
+            4,
+            5,
+            7,
+            8,
+            11
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            5,
+            6,
+            7,
+            11
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            1,
+            5,
+            9,
+            12
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            4,
+            10
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            6,
+            7,
+            11
+          ]
+        },
+        {
+          "id": 11,
+          "elements": [
+            1,
+            3,
+            9,
+            12
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 12,
+        "edges": [
+          {
+            "u": 1,
+            "v": 5
+          },
+          {
+            "u": 1,
+            "v": 9
+          },
+          {
+            "u": 1,
+            "v": 12
+          },
+          {
+            "u": 7,
+            "v": 6
+          },
+          {
+            "u": 7,
+            "v": 11
+          },
+          {
+            "u": 8,
+            "v": 4
+          },
+          {
+            "u": 3,
+            "v": 12
+          },
+          {
+            "u": 4,
+            "v": 6
+          },
+          {
+            "u": 4,
+            "v": 10
+          },
+          {
+            "u": 2,
+            "v": 5
+          },
+          {
+            "u": 5,
+            "v": 6
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0007.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0007.png"
+    },
+    "solution": [
+      {
+        "id": 3
+      },
+      {
+        "id": 9
+      },
+      {
+        "id": 10
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 8,
+      "num_sets": 8,
+      "density": 0.40625,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            4,
+            8
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            7
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            5,
+            8
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            6,
+            8
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            2,
+            4,
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            3,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            1,
+            4,
+            6,
+            8
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 8,
+        "edges": [
+          {
+            "u": 3,
+            "v": 7
+          },
+          {
+            "u": 5,
+            "v": 1
+          },
+          {
+            "u": 8,
+            "v": 1
+          },
+          {
+            "u": 7,
+            "v": 2
+          },
+          {
+            "u": 6,
+            "v": 1
+          },
+          {
+            "u": 6,
+            "v": 2
+          },
+          {
+            "u": 1,
+            "v": 4
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0008.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0008.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 3
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 12,
+      "num_sets": 11,
+      "density": 0.2727272727272727,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            3,
+            5
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            9,
+            11
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            8
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            3,
+            5,
+            8
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            6,
+            12
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            3,
+            6,
+            7,
+            12
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            7,
+            8,
+            10,
+            12
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            2,
+            3,
+            7,
+            8,
+            10,
+            11
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            2,
+            8,
+            9,
+            11
+          ]
+        },
+        {
+          "id": 11,
+          "elements": [
+            6,
+            7
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 12,
+        "edges": [
+          {
+            "u": 6,
+            "v": 12
+          },
+          {
+            "u": 12,
+            "v": 7
+          },
+          {
+            "u": 7,
+            "v": 8
+          },
+          {
+            "u": 8,
+            "v": 3
+          },
+          {
+            "u": 8,
+            "v": 9
+          },
+          {
+            "u": 9,
+            "v": 10
+          },
+          {
+            "u": 10,
+            "v": 2
+          },
+          {
+            "u": 10,
+            "v": 11
+          },
+          {
+            "u": 3,
+            "v": 5
+          },
+          {
+            "u": 5,
+            "v": 1
+          },
+          {
+            "u": 5,
+            "v": 4
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0009.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0009.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      },
+      {
+        "id": 6
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 11,
+      "num_sets": 10,
+      "density": 0.37272727272727274,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            3,
+            4,
+            7,
+            9,
+            10
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            5,
+            6,
+            8,
+            11
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            3,
+            7,
+            10
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            3,
+            7
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            2,
+            5,
+            8,
+            9,
+            11
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            2,
+            5,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            3,
+            4,
+            7,
+            10
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            2,
+            6,
+            11
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            3,
+            7,
+            9
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            2,
+            5,
+            8,
+            11
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 11,
+        "edges": [
+          {
+            "u": 1,
+            "v": 3
+          },
+          {
+            "u": 1,
+            "v": 7
+          },
+          {
+            "u": 1,
+            "v": 10
+          },
+          {
+            "u": 7,
+            "v": 3
+          },
+          {
+            "u": 7,
+            "v": 9
+          },
+          {
+            "u": 2,
+            "v": 5
+          },
+          {
+            "u": 9,
+            "v": 6
+          },
+          {
+            "u": 5,
+            "v": 6
+          },
+          {
+            "u": 5,
+            "v": 8
+          },
+          {
+            "u": 5,
+            "v": 11
+          },
+          {
+            "u": 11,
+            "v": 8
+          },
+          {
+            "u": 3,
+            "v": 4
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0010.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0010.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 7
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 8,
+      "num_sets": 8,
+      "density": 0.46875,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            3,
+            4,
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            8
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            2,
+            6,
+            8
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            4
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            4,
+            5,
+            8
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            2,
+            3,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 8,
+        "edges": [
+          {
+            "u": 5,
+            "v": 8
+          },
+          {
+            "u": 4,
+            "v": 8
+          },
+          {
+            "u": 2,
+            "v": 1
+          },
+          {
+            "u": 8,
+            "v": 1
+          },
+          {
+            "u": 6,
+            "v": 1
+          },
+          {
+            "u": 6,
+            "v": 7
+          },
+          {
+            "u": 3,
+            "v": 1
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0011.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0011.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 7
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 8,
+      "num_sets": 8,
+      "density": 0.625,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            6,
+            8
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            3,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            2,
+            4,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            2,
+            4,
+            5,
+            6,
+            8
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            3,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            1,
+            2,
+            6,
+            8
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 8,
+        "edges": [
+          {
+            "u": 3,
+            "v": 2
+          },
+          {
+            "u": 3,
+            "v": 7
+          },
+          {
+            "u": 2,
+            "v": 6
+          },
+          {
+            "u": 4,
+            "v": 5
+          },
+          {
+            "u": 4,
+            "v": 7
+          },
+          {
+            "u": 5,
+            "v": 1
+          },
+          {
+            "u": 5,
+            "v": 6
+          },
+          {
+            "u": 6,
+            "v": 7
+          },
+          {
+            "u": 6,
+            "v": 8
+          },
+          {
+            "u": 8,
+            "v": 1
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0012.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0012.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      }
+    ],
+    "obj": 1.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 8,
+      "num_sets": 8,
+      "density": 0.4375,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            2,
+            3,
+            7
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            2,
+            3,
+            7
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            4,
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            4,
+            6
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            4,
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            4,
+            6,
+            7,
+            8
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 8,
+        "edges": [
+          {
+            "u": 2,
+            "v": 3
+          },
+          {
+            "u": 3,
+            "v": 1
+          },
+          {
+            "u": 1,
+            "v": 7
+          },
+          {
+            "u": 6,
+            "v": 4
+          },
+          {
+            "u": 6,
+            "v": 7
+          },
+          {
+            "u": 6,
+            "v": 8
+          },
+          {
+            "u": 5,
+            "v": 4
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0013.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0013.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 5
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 9,
+      "num_sets": 9,
+      "density": 0.43209876543209874,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            2,
+            4,
+            5,
+            7
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            5,
+            7,
+            9
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            4,
+            8
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            3,
+            4,
+            5,
+            8
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            2,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            1,
+            4
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            2,
+            5,
+            7
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 9,
+        "edges": [
+          {
+            "u": 9,
+            "v": 5
+          },
+          {
+            "u": 2,
+            "v": 5
+          },
+          {
+            "u": 4,
+            "v": 1
+          },
+          {
+            "u": 4,
+            "v": 8
+          },
+          {
+            "u": 7,
+            "v": 5
+          },
+          {
+            "u": 7,
+            "v": 6
+          },
+          {
+            "u": 3,
+            "v": 8
+          },
+          {
+            "u": 1,
+            "v": 5
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0014.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0014.png"
+    },
+    "solution": [
+      {
+        "id": 3
+      },
+      {
+        "id": 9
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 9,
+      "num_sets": 9,
+      "density": 0.41975308641975306,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            4,
+            5,
+            6,
+            8
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            7,
+            9
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            5,
+            9
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            4,
+            8
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            3,
+            4,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            5,
+            6
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            2,
+            5,
+            7
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            4,
+            5,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            1,
+            3,
+            4,
+            7,
+            8,
+            9
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 9,
+        "edges": [
+          {
+            "u": 8,
+            "v": 5
+          },
+          {
+            "u": 3,
+            "v": 9
+          },
+          {
+            "u": 4,
+            "v": 5
+          },
+          {
+            "u": 2,
+            "v": 7
+          },
+          {
+            "u": 5,
+            "v": 1
+          },
+          {
+            "u": 5,
+            "v": 9
+          },
+          {
+            "u": 9,
+            "v": 7
+          },
+          {
+            "u": 1,
+            "v": 6
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0015.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0015.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 4
+      },
+      {
+        "id": 6
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 12,
+      "num_sets": 9,
+      "density": 0.32407407407407407,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            3,
+            9
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            3
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            2,
+            3,
+            5,
+            9
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            4,
+            8
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            4,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            5,
+            6,
+            8,
+            11,
+            12
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            6,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 12,
+        "edges": [
+          {
+            "u": 11,
+            "v": 10
+          },
+          {
+            "u": 11,
+            "v": 12
+          },
+          {
+            "u": 10,
+            "v": 6
+          },
+          {
+            "u": 6,
+            "v": 5
+          },
+          {
+            "u": 6,
+            "v": 8
+          },
+          {
+            "u": 7,
+            "v": 8
+          },
+          {
+            "u": 9,
+            "v": 3
+          },
+          {
+            "u": 9,
+            "v": 5
+          },
+          {
+            "u": 4,
+            "v": 8
+          },
+          {
+            "u": 1,
+            "v": 2
+          },
+          {
+            "u": 1,
+            "v": 3
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0016.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0016.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 4
+      },
+      {
+        "id": 9
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 12,
+      "num_sets": 12,
+      "density": 0.4166666666666667,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            5,
+            8,
+            9,
+            11,
+            12
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            2,
+            3,
+            8
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            4,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            6
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            2,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            4,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            8,
+            9,
+            11,
+            12
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            1,
+            2,
+            6,
+            7,
+            8,
+            9,
+            12
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            8,
+            10,
+            11
+          ]
+        },
+        {
+          "id": 11,
+          "elements": [
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "id": 12,
+          "elements": [
+            2,
+            8,
+            10,
+            12
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 12,
+        "edges": [
+          {
+            "u": 2,
+            "v": 1
+          },
+          {
+            "u": 2,
+            "v": 3
+          },
+          {
+            "u": 2,
+            "v": 8
+          },
+          {
+            "u": 4,
+            "v": 7
+          },
+          {
+            "u": 4,
+            "v": 9
+          },
+          {
+            "u": 7,
+            "v": 9
+          },
+          {
+            "u": 5,
+            "v": 1
+          },
+          {
+            "u": 8,
+            "v": 9
+          },
+          {
+            "u": 8,
+            "v": 11
+          },
+          {
+            "u": 8,
+            "v": 12
+          },
+          {
+            "u": 9,
+            "v": 6
+          },
+          {
+            "u": 6,
+            "v": 1
+          },
+          {
+            "u": 10,
+            "v": 11
+          },
+          {
+            "u": 10,
+            "v": 12
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0017.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0017.png"
+    },
+    "solution": [
+      {
+        "id": 4
+      },
+      {
+        "id": 5
+      },
+      {
+        "id": 11
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 8,
+      "num_sets": 8,
+      "density": 0.4375,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            2,
+            4,
+            8
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            2,
+            4,
+            6
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            5
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            2,
+            5,
+            7
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            3,
+            4,
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            4
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            1,
+            3,
+            8
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 8,
+        "edges": [
+          {
+            "u": 2,
+            "v": 4
+          },
+          {
+            "u": 6,
+            "v": 4
+          },
+          {
+            "u": 3,
+            "v": 8
+          },
+          {
+            "u": 7,
+            "v": 1
+          },
+          {
+            "u": 5,
+            "v": 1
+          },
+          {
+            "u": 5,
+            "v": 8
+          },
+          {
+            "u": 4,
+            "v": 1
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0018.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0018.png"
+    },
+    "solution": [
+      {
+        "id": 3
+      },
+      {
+        "id": 6
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 12,
+      "num_sets": 10,
+      "density": 0.35833333333333334,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            2,
+            5,
+            6
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            5,
+            8
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            3,
+            4,
+            6
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            2,
+            4,
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            3,
+            5,
+            7,
+            8,
+            10,
+            11
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            9,
+            10
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            1,
+            6,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            6,
+            11,
+            12
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 12,
+        "edges": [
+          {
+            "u": 3,
+            "v": 4
+          },
+          {
+            "u": 3,
+            "v": 5
+          },
+          {
+            "u": 11,
+            "v": 7
+          },
+          {
+            "u": 11,
+            "v": 12
+          },
+          {
+            "u": 9,
+            "v": 10
+          },
+          {
+            "u": 10,
+            "v": 8
+          },
+          {
+            "u": 1,
+            "v": 2
+          },
+          {
+            "u": 1,
+            "v": 5
+          },
+          {
+            "u": 1,
+            "v": 8
+          },
+          {
+            "u": 5,
+            "v": 6
+          },
+          {
+            "u": 6,
+            "v": 7
+          },
+          {
+            "u": 6,
+            "v": 8
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0019.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0019.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      },
+      {
+        "id": 8
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 9,
+      "num_sets": 7,
+      "density": 0.4126984126984127,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            2,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            7,
+            9
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            2,
+            3,
+            4,
+            6
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            3,
+            7
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            3,
+            8
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            5,
+            7,
+            9
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 9,
+        "edges": [
+          {
+            "u": 4,
+            "v": 2
+          },
+          {
+            "u": 3,
+            "v": 1
+          },
+          {
+            "u": 3,
+            "v": 2
+          },
+          {
+            "u": 3,
+            "v": 7
+          },
+          {
+            "u": 7,
+            "v": 5
+          },
+          {
+            "u": 7,
+            "v": 9
+          },
+          {
+            "u": 2,
+            "v": 6
+          },
+          {
+            "u": 1,
+            "v": 8
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0020.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0020.png"
+    },
+    "solution": [
+      {
+        "id": 3
+      },
+      {
+        "id": 4
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 12,
+      "num_sets": 10,
+      "density": 0.3416666666666667,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            3,
+            12
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            8,
+            12
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            6,
+            7,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            5,
+            6
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            3,
+            4,
+            6,
+            7,
+            11,
+            12
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            2,
+            3,
+            6,
+            12
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            1,
+            2,
+            3,
+            6,
+            7,
+            10,
+            12
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            3,
+            10
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 12,
+        "edges": [
+          {
+            "u": 1,
+            "v": 10
+          },
+          {
+            "u": 8,
+            "v": 2
+          },
+          {
+            "u": 11,
+            "v": 3
+          },
+          {
+            "u": 10,
+            "v": 3
+          },
+          {
+            "u": 10,
+            "v": 12
+          },
+          {
+            "u": 12,
+            "v": 2
+          },
+          {
+            "u": 12,
+            "v": 7
+          },
+          {
+            "u": 7,
+            "v": 6
+          },
+          {
+            "u": 3,
+            "v": 6
+          },
+          {
+            "u": 5,
+            "v": 9
+          },
+          {
+            "u": 6,
+            "v": 9
+          },
+          {
+            "u": 4,
+            "v": 9
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0021.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0021.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 4
+      },
+      {
+        "id": 10
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 11,
+      "num_sets": 11,
+      "density": 0.4132231404958678,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            2,
+            3,
+            4,
+            6
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            2,
+            3,
+            6,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            2,
+            3,
+            9
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            4,
+            11
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            5,
+            6,
+            7,
+            9,
+            10
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            5,
+            6,
+            10
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            4,
+            5,
+            7,
+            9,
+            10
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            2,
+            6,
+            10
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            1,
+            2,
+            3,
+            5,
+            7
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            2,
+            6,
+            7,
+            8,
+            10
+          ]
+        },
+        {
+          "id": 11,
+          "elements": [
+            1,
+            4,
+            7,
+            9
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 11,
+        "edges": [
+          {
+            "u": 11,
+            "v": 9
+          },
+          {
+            "u": 6,
+            "v": 2
+          },
+          {
+            "u": 6,
+            "v": 8
+          },
+          {
+            "u": 6,
+            "v": 10
+          },
+          {
+            "u": 3,
+            "v": 1
+          },
+          {
+            "u": 5,
+            "v": 7
+          },
+          {
+            "u": 5,
+            "v": 10
+          },
+          {
+            "u": 4,
+            "v": 9
+          },
+          {
+            "u": 2,
+            "v": 1
+          },
+          {
+            "u": 7,
+            "v": 9
+          },
+          {
+            "u": 9,
+            "v": 1
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0022.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0022.png"
+    },
+    "solution": [
+      {
+        "id": 4
+      },
+      {
+        "id": 5
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 9,
+      "num_sets": 8,
+      "density": 0.4583333333333333,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            2,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            2,
+            8
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            4,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            5,
+            8
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            2,
+            3,
+            6,
+            9
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            2,
+            4,
+            5,
+            8,
+            9
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 9,
+        "edges": [
+          {
+            "u": 1,
+            "v": 8
+          },
+          {
+            "u": 7,
+            "v": 3
+          },
+          {
+            "u": 7,
+            "v": 6
+          },
+          {
+            "u": 7,
+            "v": 8
+          },
+          {
+            "u": 8,
+            "v": 2
+          },
+          {
+            "u": 8,
+            "v": 9
+          },
+          {
+            "u": 9,
+            "v": 4
+          },
+          {
+            "u": 9,
+            "v": 5
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0023.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0023.png"
+    },
+    "solution": [
+      {
+        "id": 5
+      },
+      {
+        "id": 6
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 11,
+      "num_sets": 10,
+      "density": 0.38181818181818183,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            3
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            6,
+            7,
+            8,
+            9,
+            11
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            2,
+            7,
+            9
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            8,
+            9,
+            11
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            5,
+            6,
+            7,
+            9,
+            11
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            2,
+            4,
+            6,
+            7,
+            9,
+            11
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            2,
+            5,
+            8,
+            11
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            2,
+            4,
+            9,
+            10
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            1,
+            3,
+            6,
+            9
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            5,
+            6,
+            7,
+            8,
+            11
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 11,
+        "edges": [
+          {
+            "u": 2,
+            "v": 5
+          },
+          {
+            "u": 2,
+            "v": 9
+          },
+          {
+            "u": 2,
+            "v": 11
+          },
+          {
+            "u": 11,
+            "v": 5
+          },
+          {
+            "u": 11,
+            "v": 6
+          },
+          {
+            "u": 8,
+            "v": 5
+          },
+          {
+            "u": 4,
+            "v": 9
+          },
+          {
+            "u": 9,
+            "v": 7
+          },
+          {
+            "u": 6,
+            "v": 7
+          },
+          {
+            "u": 10,
+            "v": 1
+          },
+          {
+            "u": 10,
+            "v": 7
+          },
+          {
+            "u": 3,
+            "v": 1
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0024.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0024.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 8
+      },
+      {
+        "id": 10
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 12,
+      "num_sets": 10,
+      "density": 0.2833333333333333,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            12
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            7,
+            8,
+            10
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            4,
+            6,
+            11
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            3,
+            4,
+            6,
+            8,
+            11
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            5,
+            7,
+            8,
+            11,
+            12
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            2,
+            5,
+            6,
+            8
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            6,
+            9
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            7,
+            11
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            1,
+            2,
+            12
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 12,
+        "edges": [
+          {
+            "u": 5,
+            "v": 8
+          },
+          {
+            "u": 7,
+            "v": 2
+          },
+          {
+            "u": 7,
+            "v": 8
+          },
+          {
+            "u": 1,
+            "v": 2
+          },
+          {
+            "u": 8,
+            "v": 11
+          },
+          {
+            "u": 2,
+            "v": 12
+          },
+          {
+            "u": 10,
+            "v": 12
+          },
+          {
+            "u": 11,
+            "v": 6
+          },
+          {
+            "u": 6,
+            "v": 3
+          },
+          {
+            "u": 6,
+            "v": 4
+          },
+          {
+            "u": 3,
+            "v": 9
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0025.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0025.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 4
+      },
+      {
+        "id": 8
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 10,
+      "num_sets": 10,
+      "density": 0.35,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            3,
+            4,
+            7,
+            10
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            9
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            4,
+            6,
+            8
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            2,
+            3,
+            4,
+            9
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            7,
+            9
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            8,
+            9
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            4,
+            5,
+            7
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            6,
+            8
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            1,
+            9,
+            10
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 10,
+        "edges": [
+          {
+            "u": 9,
+            "v": 1
+          },
+          {
+            "u": 9,
+            "v": 3
+          },
+          {
+            "u": 9,
+            "v": 4
+          },
+          {
+            "u": 9,
+            "v": 7
+          },
+          {
+            "u": 6,
+            "v": 3
+          },
+          {
+            "u": 6,
+            "v": 8
+          },
+          {
+            "u": 4,
+            "v": 2
+          },
+          {
+            "u": 5,
+            "v": 7
+          },
+          {
+            "u": 1,
+            "v": 10
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0026.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0026.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 7
+      },
+      {
+        "id": 8
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 8,
+      "num_sets": 8,
+      "density": 0.484375,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            3,
+            7
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            4,
+            5
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            2,
+            3,
+            4,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            3,
+            4,
+            7
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            2,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            2,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            2,
+            4,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            1,
+            3,
+            6,
+            7
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 8,
+        "edges": [
+          {
+            "u": 3,
+            "v": 2
+          },
+          {
+            "u": 3,
+            "v": 6
+          },
+          {
+            "u": 1,
+            "v": 6
+          },
+          {
+            "u": 4,
+            "v": 2
+          },
+          {
+            "u": 8,
+            "v": 6
+          },
+          {
+            "u": 6,
+            "v": 7
+          },
+          {
+            "u": 7,
+            "v": 2
+          },
+          {
+            "u": 7,
+            "v": 5
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0027.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0027.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 9,
+      "num_sets": 9,
+      "density": 0.43209876543209874,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            5,
+            8
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            4
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            2,
+            3,
+            4,
+            6
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            2,
+            3,
+            4,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            4,
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            1,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            3,
+            4,
+            6,
+            9
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 9,
+        "edges": [
+          {
+            "u": 8,
+            "v": 1
+          },
+          {
+            "u": 8,
+            "v": 5
+          },
+          {
+            "u": 8,
+            "v": 6
+          },
+          {
+            "u": 8,
+            "v": 7
+          },
+          {
+            "u": 2,
+            "v": 3
+          },
+          {
+            "u": 4,
+            "v": 3
+          },
+          {
+            "u": 4,
+            "v": 6
+          },
+          {
+            "u": 4,
+            "v": 9
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0028.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0028.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 11,
+      "num_sets": 11,
+      "density": 0.3305785123966942,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            5,
+            9
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            3,
+            6,
+            7,
+            10
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            4,
+            5,
+            8,
+            9,
+            11
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            3,
+            4,
+            5,
+            8
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            3,
+            4,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            2,
+            6
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            2,
+            7
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            3,
+            4,
+            5,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            5,
+            8
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            2,
+            10,
+            11
+          ]
+        },
+        {
+          "id": 11,
+          "elements": [
+            2,
+            3,
+            10,
+            11
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 11,
+        "edges": [
+          {
+            "u": 8,
+            "v": 5
+          },
+          {
+            "u": 7,
+            "v": 10
+          },
+          {
+            "u": 10,
+            "v": 2
+          },
+          {
+            "u": 11,
+            "v": 2
+          },
+          {
+            "u": 11,
+            "v": 6
+          },
+          {
+            "u": 4,
+            "v": 5
+          },
+          {
+            "u": 3,
+            "v": 2
+          },
+          {
+            "u": 3,
+            "v": 5
+          },
+          {
+            "u": 9,
+            "v": 1
+          },
+          {
+            "u": 9,
+            "v": 5
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0029.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0029.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 6
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 10,
+      "num_sets": 8,
+      "density": 0.375,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            4,
+            7,
+            9
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            3,
+            6,
+            7,
+            10
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            2,
+            3,
+            6
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            5,
+            9
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            3,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            2,
+            5,
+            7,
+            9
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            2,
+            10
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 10,
+        "edges": [
+          {
+            "u": 7,
+            "v": 1
+          },
+          {
+            "u": 7,
+            "v": 5
+          },
+          {
+            "u": 7,
+            "v": 9
+          },
+          {
+            "u": 2,
+            "v": 6
+          },
+          {
+            "u": 2,
+            "v": 8
+          },
+          {
+            "u": 2,
+            "v": 9
+          },
+          {
+            "u": 1,
+            "v": 4
+          },
+          {
+            "u": 3,
+            "v": 6
+          },
+          {
+            "u": 8,
+            "v": 10
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0030.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0030.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 8
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 9,
+      "num_sets": 7,
+      "density": 0.36507936507936506,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            4,
+            5,
+            7,
+            9
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            3,
+            5
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            2,
+            4,
+            9
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            2,
+            3,
+            6,
+            9
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            7,
+            8
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            7,
+            8,
+            9
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 9,
+        "edges": [
+          {
+            "u": 5,
+            "v": 6
+          },
+          {
+            "u": 5,
+            "v": 9
+          },
+          {
+            "u": 1,
+            "v": 8
+          },
+          {
+            "u": 1,
+            "v": 9
+          },
+          {
+            "u": 3,
+            "v": 6
+          },
+          {
+            "u": 8,
+            "v": 7
+          },
+          {
+            "u": 2,
+            "v": 6
+          },
+          {
+            "u": 4,
+            "v": 9
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0031.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0031.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 4
+      },
+      {
+        "id": 6
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 9,
+      "num_sets": 9,
+      "density": 0.41975308641975306,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            3,
+            5,
+            8
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            4,
+            5
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            3,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            4,
+            5,
+            6,
+            8
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            2,
+            4,
+            5,
+            9
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            2,
+            6
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            3,
+            7,
+            9
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            1,
+            4,
+            5,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            1,
+            5,
+            8,
+            9
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 9,
+        "edges": [
+          {
+            "u": 3,
+            "v": 7
+          },
+          {
+            "u": 3,
+            "v": 9
+          },
+          {
+            "u": 6,
+            "v": 2
+          },
+          {
+            "u": 9,
+            "v": 8
+          },
+          {
+            "u": 5,
+            "v": 4
+          },
+          {
+            "u": 5,
+            "v": 8
+          },
+          {
+            "u": 7,
+            "v": 1
+          },
+          {
+            "u": 8,
+            "v": 1
+          },
+          {
+            "u": 4,
+            "v": 2
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0032.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0032.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      },
+      {
+        "id": 6
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 8,
+      "num_sets": 8,
+      "density": 0.34375,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            3,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            8
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            6
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            5,
+            7
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            6
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            7,
+            8
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            1,
+            2,
+            5,
+            8
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 8,
+        "edges": [
+          {
+            "u": 1,
+            "v": 5
+          },
+          {
+            "u": 1,
+            "v": 6
+          },
+          {
+            "u": 8,
+            "v": 2
+          },
+          {
+            "u": 8,
+            "v": 4
+          },
+          {
+            "u": 8,
+            "v": 5
+          },
+          {
+            "u": 5,
+            "v": 7
+          },
+          {
+            "u": 3,
+            "v": 6
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0033.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0033.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      },
+      {
+        "id": 5
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 8,
+      "num_sets": 6,
+      "density": 0.5416666666666666,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            3,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            3,
+            6
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            3,
+            7,
+            8
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 8,
+        "edges": [
+          {
+            "u": 7,
+            "v": 3
+          },
+          {
+            "u": 2,
+            "v": 5
+          },
+          {
+            "u": 8,
+            "v": 3
+          },
+          {
+            "u": 6,
+            "v": 1
+          },
+          {
+            "u": 3,
+            "v": 1
+          },
+          {
+            "u": 4,
+            "v": 5
+          },
+          {
+            "u": 5,
+            "v": 1
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0034.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0034.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 5
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 11,
+      "num_sets": 11,
+      "density": 0.3305785123966942,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            2,
+            3,
+            5,
+            6,
+            9,
+            11
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            5,
+            9
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            2,
+            4,
+            5,
+            6,
+            8
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            2,
+            4,
+            9,
+            10
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            4,
+            6
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            7,
+            9,
+            10
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            6,
+            8
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            1,
+            3,
+            9,
+            10
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            5,
+            7,
+            9,
+            10
+          ]
+        },
+        {
+          "id": 11,
+          "elements": [
+            1,
+            4
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 11,
+        "edges": [
+          {
+            "u": 6,
+            "v": 4
+          },
+          {
+            "u": 6,
+            "v": 8
+          },
+          {
+            "u": 3,
+            "v": 5
+          },
+          {
+            "u": 10,
+            "v": 9
+          },
+          {
+            "u": 11,
+            "v": 4
+          },
+          {
+            "u": 9,
+            "v": 5
+          },
+          {
+            "u": 9,
+            "v": 7
+          },
+          {
+            "u": 2,
+            "v": 1
+          },
+          {
+            "u": 5,
+            "v": 1
+          },
+          {
+            "u": 1,
+            "v": 4
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0035.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0035.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 7
+      },
+      {
+        "id": 8
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 8,
+      "num_sets": 6,
+      "density": 0.4583333333333333,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            7
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            3,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            5,
+            6,
+            8
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            4,
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            2,
+            3,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            3,
+            4,
+            5,
+            7,
+            8
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 8,
+        "edges": [
+          {
+            "u": 7,
+            "v": 3
+          },
+          {
+            "u": 7,
+            "v": 5
+          },
+          {
+            "u": 7,
+            "v": 8
+          },
+          {
+            "u": 2,
+            "v": 3
+          },
+          {
+            "u": 1,
+            "v": 3
+          },
+          {
+            "u": 5,
+            "v": 8
+          },
+          {
+            "u": 6,
+            "v": 4
+          },
+          {
+            "u": 6,
+            "v": 8
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0036.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0036.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 3
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 10,
+      "num_sets": 10,
+      "density": 0.35,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            2,
+            9
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            3,
+            4,
+            7
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            2,
+            3,
+            10
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            2,
+            4
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            2,
+            4,
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            2,
+            4,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            2,
+            3,
+            6,
+            8
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            1,
+            6,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            3,
+            8,
+            10
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 10,
+        "edges": [
+          {
+            "u": 8,
+            "v": 2
+          },
+          {
+            "u": 8,
+            "v": 3
+          },
+          {
+            "u": 1,
+            "v": 9
+          },
+          {
+            "u": 3,
+            "v": 10
+          },
+          {
+            "u": 9,
+            "v": 2
+          },
+          {
+            "u": 2,
+            "v": 6
+          },
+          {
+            "u": 7,
+            "v": 6
+          },
+          {
+            "u": 5,
+            "v": 4
+          },
+          {
+            "u": 6,
+            "v": 4
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0037.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0037.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 5
+      },
+      {
+        "id": 10
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 10,
+      "num_sets": 9,
+      "density": 0.4,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            6,
+            8,
+            10
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            3,
+            7,
+            10
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            10
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            5,
+            7,
+            8,
+            10
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            4,
+            5,
+            10
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            4,
+            6,
+            8,
+            10
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            10
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            2,
+            7,
+            9
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            1,
+            2,
+            3,
+            4,
+            7,
+            8
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 10,
+        "edges": [
+          {
+            "u": 6,
+            "v": 4
+          },
+          {
+            "u": 9,
+            "v": 2
+          },
+          {
+            "u": 8,
+            "v": 4
+          },
+          {
+            "u": 3,
+            "v": 7
+          },
+          {
+            "u": 7,
+            "v": 2
+          },
+          {
+            "u": 7,
+            "v": 10
+          },
+          {
+            "u": 4,
+            "v": 1
+          },
+          {
+            "u": 4,
+            "v": 10
+          },
+          {
+            "u": 5,
+            "v": 10
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0038.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0038.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 8
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 12,
+      "num_sets": 11,
+      "density": 0.26515151515151514,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            2,
+            8
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            8
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            4,
+            10,
+            12
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            3,
+            4,
+            9
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            10,
+            12
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            4,
+            7,
+            11
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            5,
+            8
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            4,
+            7,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            3,
+            12
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            4,
+            6,
+            7,
+            9
+          ]
+        },
+        {
+          "id": 11,
+          "elements": [
+            3,
+            5,
+            12
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 12,
+        "edges": [
+          {
+            "u": 10,
+            "v": 3
+          },
+          {
+            "u": 10,
+            "v": 5
+          },
+          {
+            "u": 10,
+            "v": 12
+          },
+          {
+            "u": 2,
+            "v": 8
+          },
+          {
+            "u": 11,
+            "v": 4
+          },
+          {
+            "u": 11,
+            "v": 6
+          },
+          {
+            "u": 8,
+            "v": 1
+          },
+          {
+            "u": 5,
+            "v": 1
+          },
+          {
+            "u": 3,
+            "v": 9
+          },
+          {
+            "u": 4,
+            "v": 7
+          },
+          {
+            "u": 4,
+            "v": 9
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0039.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0039.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 6
+      },
+      {
+        "id": 9
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 10,
+      "num_sets": 9,
+      "density": 0.34444444444444444,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            5,
+            8,
+            10
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            3,
+            4,
+            5,
+            7
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            2,
+            7
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            3,
+            4
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            2,
+            8,
+            10
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            6,
+            9
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            2,
+            8
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 10,
+        "edges": [
+          {
+            "u": 4,
+            "v": 3
+          },
+          {
+            "u": 6,
+            "v": 5
+          },
+          {
+            "u": 5,
+            "v": 2
+          },
+          {
+            "u": 5,
+            "v": 9
+          },
+          {
+            "u": 2,
+            "v": 1
+          },
+          {
+            "u": 2,
+            "v": 3
+          },
+          {
+            "u": 8,
+            "v": 1
+          },
+          {
+            "u": 10,
+            "v": 1
+          },
+          {
+            "u": 7,
+            "v": 3
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0040.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0040.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 4
+      },
+      {
+        "id": 6
+      },
+      {
+        "id": 8
+      }
+    ],
+    "obj": 4.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 8,
+      "num_sets": 6,
+      "density": 0.4583333333333333,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            2,
+            3,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            5
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            2,
+            4,
+            5,
+            8
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            2,
+            3,
+            4,
+            5,
+            7
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            4,
+            5,
+            7
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 8,
+        "edges": [
+          {
+            "u": 3,
+            "v": 7
+          },
+          {
+            "u": 6,
+            "v": 1
+          },
+          {
+            "u": 6,
+            "v": 2
+          },
+          {
+            "u": 4,
+            "v": 2
+          },
+          {
+            "u": 4,
+            "v": 5
+          },
+          {
+            "u": 7,
+            "v": 1
+          },
+          {
+            "u": 7,
+            "v": 5
+          },
+          {
+            "u": 5,
+            "v": 8
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0041.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0041.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 5
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 11,
+      "num_sets": 10,
+      "density": 0.35454545454545455,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            3,
+            10
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            7
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            2,
+            6,
+            7,
+            9
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            4,
+            6,
+            9
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            3,
+            4,
+            6,
+            8,
+            9,
+            11
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            2,
+            3,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            2,
+            3,
+            6,
+            7,
+            8,
+            11
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            3,
+            6
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            1,
+            5,
+            10,
+            11
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            1,
+            5,
+            8,
+            11
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 11,
+        "edges": [
+          {
+            "u": 8,
+            "v": 2
+          },
+          {
+            "u": 8,
+            "v": 3
+          },
+          {
+            "u": 8,
+            "v": 7
+          },
+          {
+            "u": 9,
+            "v": 6
+          },
+          {
+            "u": 5,
+            "v": 1
+          },
+          {
+            "u": 6,
+            "v": 3
+          },
+          {
+            "u": 6,
+            "v": 4
+          },
+          {
+            "u": 11,
+            "v": 1
+          },
+          {
+            "u": 11,
+            "v": 3
+          },
+          {
+            "u": 10,
+            "v": 1
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0042.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0042.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 4
+      },
+      {
+        "id": 10
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 12,
+      "num_sets": 12,
+      "density": 0.3263888888888889,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            7,
+            10
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            5,
+            12
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            6
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            3,
+            4,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            2,
+            4,
+            5,
+            7,
+            8,
+            12
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            6,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            4,
+            5,
+            7,
+            10,
+            11
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            4,
+            7,
+            8,
+            9,
+            11
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            4,
+            6,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            1,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 11,
+          "elements": [
+            7,
+            8,
+            10,
+            11
+          ]
+        },
+        {
+          "id": 12,
+          "elements": [
+            8,
+            12
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 12,
+        "edges": [
+          {
+            "u": 10,
+            "v": 1
+          },
+          {
+            "u": 10,
+            "v": 7
+          },
+          {
+            "u": 5,
+            "v": 8
+          },
+          {
+            "u": 5,
+            "v": 12
+          },
+          {
+            "u": 11,
+            "v": 7
+          },
+          {
+            "u": 2,
+            "v": 12
+          },
+          {
+            "u": 3,
+            "v": 6
+          },
+          {
+            "u": 7,
+            "v": 8
+          },
+          {
+            "u": 4,
+            "v": 6
+          },
+          {
+            "u": 4,
+            "v": 8
+          },
+          {
+            "u": 4,
+            "v": 9
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0043.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0043.png"
+    },
+    "solution": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 8,
+      "num_sets": 7,
+      "density": 0.44642857142857145,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            4,
+            8
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            3,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            2,
+            3,
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            4
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            2,
+            6,
+            7
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            1,
+            3,
+            5,
+            8
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 8,
+        "edges": [
+          {
+            "u": 3,
+            "v": 1
+          },
+          {
+            "u": 3,
+            "v": 7
+          },
+          {
+            "u": 4,
+            "v": 8
+          },
+          {
+            "u": 5,
+            "v": 1
+          },
+          {
+            "u": 1,
+            "v": 8
+          },
+          {
+            "u": 6,
+            "v": 2
+          },
+          {
+            "u": 7,
+            "v": 2
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0044.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0044.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 4
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 11,
+      "num_sets": 11,
+      "density": 0.45454545454545453,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            2,
+            4,
+            5,
+            6,
+            8,
+            10
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            6,
+            10
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            1,
+            11
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            4,
+            8,
+            10
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            3,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            2,
+            5,
+            6,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            3,
+            7,
+            11
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            2,
+            3,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            6,
+            9,
+            11
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            2,
+            3,
+            4,
+            5,
+            8,
+            10
+          ]
+        },
+        {
+          "id": 11,
+          "elements": [
+            3,
+            5,
+            7,
+            8,
+            9,
+            11
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 11,
+        "edges": [
+          {
+            "u": 1,
+            "v": 2
+          },
+          {
+            "u": 1,
+            "v": 6
+          },
+          {
+            "u": 1,
+            "v": 8
+          },
+          {
+            "u": 1,
+            "v": 10
+          },
+          {
+            "u": 3,
+            "v": 7
+          },
+          {
+            "u": 3,
+            "v": 8
+          },
+          {
+            "u": 3,
+            "v": 11
+          },
+          {
+            "u": 6,
+            "v": 5
+          },
+          {
+            "u": 5,
+            "v": 8
+          },
+          {
+            "u": 5,
+            "v": 9
+          },
+          {
+            "u": 5,
+            "v": 11
+          },
+          {
+            "u": 4,
+            "v": 10
+          },
+          {
+            "u": 10,
+            "v": 8
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0045.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0045.png"
+    },
+    "solution": [
+      {
+        "id": 4
+      },
+      {
+        "id": 7
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 8,
+      "num_sets": 6,
+      "density": 0.4791666666666667,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            2,
+            3,
+            5,
+            6
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            3,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            7
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 8,
+        "edges": [
+          {
+            "u": 2,
+            "v": 4
+          },
+          {
+            "u": 3,
+            "v": 5
+          },
+          {
+            "u": 1,
+            "v": 7
+          },
+          {
+            "u": 7,
+            "v": 6
+          },
+          {
+            "u": 7,
+            "v": 8
+          },
+          {
+            "u": 4,
+            "v": 5
+          },
+          {
+            "u": 5,
+            "v": 6
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0046.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0046.png"
+    },
+    "solution": [
+      {
+        "id": 2
+      },
+      {
+        "id": 6
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 12,
+      "num_sets": 12,
+      "density": 0.3055555555555556,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            4,
+            5,
+            6,
+            9,
+            11
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            2,
+            7,
+            12
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            6,
+            11
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            4,
+            6,
+            9,
+            12
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            5,
+            6
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            3,
+            5,
+            11
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            2,
+            7,
+            10,
+            12
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            6,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            4,
+            6,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            2,
+            10
+          ]
+        },
+        {
+          "id": 11,
+          "elements": [
+            3,
+            4,
+            6,
+            9
+          ]
+        },
+        {
+          "id": 12,
+          "elements": [
+            2,
+            4,
+            6,
+            10
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 12,
+        "edges": [
+          {
+            "u": 2,
+            "v": 7
+          },
+          {
+            "u": 2,
+            "v": 10
+          },
+          {
+            "u": 2,
+            "v": 12
+          },
+          {
+            "u": 8,
+            "v": 9
+          },
+          {
+            "u": 9,
+            "v": 6
+          },
+          {
+            "u": 5,
+            "v": 1
+          },
+          {
+            "u": 3,
+            "v": 11
+          },
+          {
+            "u": 11,
+            "v": 6
+          },
+          {
+            "u": 1,
+            "v": 6
+          },
+          {
+            "u": 12,
+            "v": 4
+          },
+          {
+            "u": 6,
+            "v": 4
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0047.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0047.png"
+    },
+    "solution": [
+      {
+        "id": 6
+      },
+      {
+        "id": 8
+      },
+      {
+        "id": 10
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 10,
+      "num_sets": 10,
+      "density": 0.44,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            4,
+            6,
+            9
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            2,
+            4,
+            10
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            1,
+            4
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            3,
+            5,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            2,
+            6,
+            7,
+            10
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            3,
+            6,
+            7,
+            10
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            3,
+            8
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            1,
+            3,
+            4,
+            5,
+            9,
+            10
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            2,
+            3,
+            6,
+            9
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 10,
+        "edges": [
+          {
+            "u": 4,
+            "v": 1
+          },
+          {
+            "u": 4,
+            "v": 9
+          },
+          {
+            "u": 6,
+            "v": 2
+          },
+          {
+            "u": 6,
+            "v": 10
+          },
+          {
+            "u": 7,
+            "v": 10
+          },
+          {
+            "u": 10,
+            "v": 3
+          },
+          {
+            "u": 3,
+            "v": 5
+          },
+          {
+            "u": 3,
+            "v": 9
+          },
+          {
+            "u": 5,
+            "v": 8
+          },
+          {
+            "u": 1,
+            "v": 2
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0048.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0048.png"
+    },
+    "solution": [
+      {
+        "id": 4
+      },
+      {
+        "id": 8
+      }
+    ],
+    "obj": 2.0,
+    "problem_type": "SP"
+  },
+  {
+    "instance": {
+      "source_file": "road_central.mtx",
+      "k_hop": 2,
+      "num_elements": 12,
+      "num_sets": 12,
+      "density": 0.3125,
+      "sets": [
+        {
+          "id": 1,
+          "elements": [
+            1,
+            2,
+            5,
+            6,
+            9,
+            10,
+            12
+          ]
+        },
+        {
+          "id": 2,
+          "elements": [
+            1,
+            2,
+            10,
+            12
+          ]
+        },
+        {
+          "id": 3,
+          "elements": [
+            3,
+            7,
+            9
+          ]
+        },
+        {
+          "id": 4,
+          "elements": [
+            4,
+            6,
+            11
+          ]
+        },
+        {
+          "id": 5,
+          "elements": [
+            1,
+            5,
+            6,
+            8,
+            9
+          ]
+        },
+        {
+          "id": 6,
+          "elements": [
+            1,
+            5,
+            6
+          ]
+        },
+        {
+          "id": 7,
+          "elements": [
+            3,
+            7,
+            9,
+            11
+          ]
+        },
+        {
+          "id": 8,
+          "elements": [
+            5,
+            11
+          ]
+        },
+        {
+          "id": 9,
+          "elements": [
+            1,
+            3,
+            6
+          ]
+        },
+        {
+          "id": 10,
+          "elements": [
+            2,
+            10
+          ]
+        },
+        {
+          "id": 11,
+          "elements": [
+            1,
+            4,
+            7,
+            8,
+            11,
+            12
+          ]
+        },
+        {
+          "id": 12,
+          "elements": [
+            1,
+            2,
+            11
+          ]
+        }
+      ],
+      "graph": {
+        "num_nodes": 12,
+        "edges": [
+          {
+            "u": 10,
+            "v": 2
+          },
+          {
+            "u": 4,
+            "v": 6
+          },
+          {
+            "u": 5,
+            "v": 8
+          },
+          {
+            "u": 5,
+            "v": 11
+          },
+          {
+            "u": 1,
+            "v": 2
+          },
+          {
+            "u": 1,
+            "v": 11
+          },
+          {
+            "u": 1,
+            "v": 12
+          },
+          {
+            "u": 6,
+            "v": 11
+          },
+          {
+            "u": 3,
+            "v": 7
+          },
+          {
+            "u": 7,
+            "v": 9
+          },
+          {
+            "u": 11,
+            "v": 9
+          }
+        ]
+      },
+      "viz_instance": "generated_data/SP/viz/SP_S/instance_0049.png",
+      "viz_solution": "generated_data/SP/viz/SP_S/solution_0049.png"
+    },
+    "solution": [
+      {
+        "id": 3
+      },
+      {
+        "id": 8
+      },
+      {
+        "id": 10
+      }
+    ],
+    "obj": 3.0,
+    "problem_type": "SP"
+  }
+]

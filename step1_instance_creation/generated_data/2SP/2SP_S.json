@@ -1,0 +1,5234 @@
+[
+  {
+    "items": [
+      {
+        "width": 54,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 22,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 26,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 28,
+        "demand": 1
+      },
+      {
+        "width": 64,
+        "height": 21,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 37,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 21,
+        "width": 54,
+        "height": 14
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 0,
+        "width": 22,
+        "height": 20
+      },
+      {
+        "item_type": 2,
+        "x": 86,
+        "y": 0,
+        "width": 21,
+        "height": 26
+      },
+      {
+        "item_type": 3,
+        "x": 125,
+        "y": 0,
+        "width": 35,
+        "height": 28
+      },
+      {
+        "item_type": 4,
+        "x": 22,
+        "y": 0,
+        "width": 64,
+        "height": 21
+      }
+    ],
+    "obj": 35.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 15,
+        "height": 21,
+        "demand": 1
+      },
+      {
+        "width": 31,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 42,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 32,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 49,
+        "demand": 1
+      },
+      {
+        "width": 90,
+        "height": 30,
+        "demand": 1
+      },
+      {
+        "width": 69,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 41,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 64,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 0,
+        "width": 15,
+        "height": 21
+      },
+      {
+        "item_type": 1,
+        "x": 39,
+        "y": 0,
+        "width": 31,
+        "height": 7
+      },
+      {
+        "item_type": 2,
+        "x": 0,
+        "y": 21,
+        "width": 11,
+        "height": 4
+      },
+      {
+        "item_type": 3,
+        "x": 49,
+        "y": 48,
+        "width": 42,
+        "height": 11
+      },
+      {
+        "item_type": 4,
+        "x": 15,
+        "y": 0,
+        "width": 12,
+        "height": 32
+      },
+      {
+        "item_type": 5,
+        "x": 11,
+        "y": 32,
+        "width": 19,
+        "height": 14
+      },
+      {
+        "item_type": 6,
+        "x": 30,
+        "y": 7,
+        "width": 19,
+        "height": 49
+      },
+      {
+        "item_type": 7,
+        "x": 70,
+        "y": 0,
+        "width": 90,
+        "height": 30
+      },
+      {
+        "item_type": 8,
+        "x": 91,
+        "y": 30,
+        "width": 69,
+        "height": 27
+      },
+      {
+        "item_type": 9,
+        "x": 49,
+        "y": 7,
+        "width": 21,
+        "height": 41
+      }
+    ],
+    "obj": 59.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 57,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 31,
+        "height": 24,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 73,
+        "height": 18,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 36,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 18,
+        "y": 19,
+        "width": 57,
+        "height": 17
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 19,
+        "width": 18,
+        "height": 6
+      },
+      {
+        "item_type": 2,
+        "x": 75,
+        "y": 11,
+        "width": 31,
+        "height": 24
+      },
+      {
+        "item_type": 3,
+        "x": 73,
+        "y": 0,
+        "width": 6,
+        "height": 11
+      },
+      {
+        "item_type": 4,
+        "x": 143,
+        "y": 0,
+        "width": 17,
+        "height": 27
+      },
+      {
+        "item_type": 5,
+        "x": 106,
+        "y": 11,
+        "width": 8,
+        "height": 8
+      },
+      {
+        "item_type": 6,
+        "x": 0,
+        "y": 0,
+        "width": 73,
+        "height": 18
+      }
+    ],
+    "obj": 36.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 78,
+        "height": 35,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 38,
+        "height": 48,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 64,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 33,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 63,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 38,
+        "y": 19,
+        "width": 78,
+        "height": 35
+      },
+      {
+        "item_type": 1,
+        "x": 43,
+        "y": 6,
+        "width": 18,
+        "height": 13
+      },
+      {
+        "item_type": 2,
+        "x": 0,
+        "y": 6,
+        "width": 38,
+        "height": 48
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 0,
+        "width": 6,
+        "height": 6
+      },
+      {
+        "item_type": 4,
+        "x": 125,
+        "y": 0,
+        "width": 19,
+        "height": 6
+      },
+      {
+        "item_type": 5,
+        "x": 38,
+        "y": 10,
+        "width": 5,
+        "height": 9
+      },
+      {
+        "item_type": 6,
+        "x": 6,
+        "y": 0,
+        "width": 21,
+        "height": 6
+      },
+      {
+        "item_type": 7,
+        "x": 61,
+        "y": 0,
+        "width": 64,
+        "height": 19
+      },
+      {
+        "item_type": 8,
+        "x": 116,
+        "y": 21,
+        "width": 12,
+        "height": 33
+      }
+    ],
+    "obj": 54.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 26,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 31,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 25,
+        "demand": 1
+      },
+      {
+        "width": 55,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 57,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 117,
+        "height": 17,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 41,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 122,
+        "y": 31,
+        "width": 26,
+        "height": 7
+      },
+      {
+        "item_type": 1,
+        "x": 122,
+        "y": 0,
+        "width": 21,
+        "height": 31
+      },
+      {
+        "item_type": 2,
+        "x": 0,
+        "y": 0,
+        "width": 5,
+        "height": 25
+      },
+      {
+        "item_type": 3,
+        "x": 5,
+        "y": 0,
+        "width": 55,
+        "height": 17
+      },
+      {
+        "item_type": 4,
+        "x": 60,
+        "y": 0,
+        "width": 57,
+        "height": 22
+      },
+      {
+        "item_type": 5,
+        "x": 5,
+        "y": 22,
+        "width": 117,
+        "height": 17
+      }
+    ],
+    "obj": 39.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 16,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 34,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 22,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 57,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 42,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 80,
+        "height": 18,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 24,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 87,
+        "y": 0,
+        "width": 16,
+        "height": 3
+      },
+      {
+        "item_type": 1,
+        "x": 96,
+        "y": 3,
+        "width": 7,
+        "height": 7
+      },
+      {
+        "item_type": 2,
+        "x": 126,
+        "y": 17,
+        "width": 34,
+        "height": 7
+      },
+      {
+        "item_type": 3,
+        "x": 81,
+        "y": 10,
+        "width": 22,
+        "height": 8
+      },
+      {
+        "item_type": 4,
+        "x": 103,
+        "y": 0,
+        "width": 57,
+        "height": 17
+      },
+      {
+        "item_type": 5,
+        "x": 80,
+        "y": 0,
+        "width": 7,
+        "height": 10
+      },
+      {
+        "item_type": 6,
+        "x": 84,
+        "y": 18,
+        "width": 42,
+        "height": 6
+      },
+      {
+        "item_type": 7,
+        "x": 0,
+        "y": 20,
+        "width": 9,
+        "height": 4
+      },
+      {
+        "item_type": 8,
+        "x": 9,
+        "y": 18,
+        "width": 18,
+        "height": 6
+      },
+      {
+        "item_type": 9,
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 18
+      }
+    ],
+    "obj": 24.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 62,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 37,
+        "demand": 1
+      },
+      {
+        "width": 67,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 62,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 15,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 78,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 72,
+        "height": 12,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 49,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 24,
+        "y": 32,
+        "width": 62,
+        "height": 17
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 22,
+        "width": 4,
+        "height": 27
+      },
+      {
+        "item_type": 2,
+        "x": 4,
+        "y": 12,
+        "width": 20,
+        "height": 37
+      },
+      {
+        "item_type": 3,
+        "x": 72,
+        "y": 0,
+        "width": 67,
+        "height": 16
+      },
+      {
+        "item_type": 4,
+        "x": 98,
+        "y": 31,
+        "width": 62,
+        "height": 18
+      },
+      {
+        "item_type": 5,
+        "x": 145,
+        "y": 0,
+        "width": 15,
+        "height": 22
+      },
+      {
+        "item_type": 6,
+        "x": 24,
+        "y": 12,
+        "width": 10,
+        "height": 13
+      },
+      {
+        "item_type": 7,
+        "x": 34,
+        "y": 16,
+        "width": 78,
+        "height": 15
+      },
+      {
+        "item_type": 8,
+        "x": 0,
+        "y": 0,
+        "width": 72,
+        "height": 12
+      }
+    ],
+    "obj": 49.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 44,
+        "height": 109,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 34,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 137,
+        "demand": 1
+      },
+      {
+        "width": 146,
+        "height": 25,
+        "demand": 1
+      },
+      {
+        "width": 31,
+        "height": 68,
+        "demand": 1
+      },
+      {
+        "width": 115,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 36,
+        "height": 15,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 179,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 53,
+        "width": 44,
+        "height": 109
+      },
+      {
+        "item_type": 1,
+        "x": 44,
+        "y": 62,
+        "width": 25,
+        "height": 34
+      },
+      {
+        "item_type": 2,
+        "x": 125,
+        "y": 25,
+        "width": 35,
+        "height": 137
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 0,
+        "width": 146,
+        "height": 25
+      },
+      {
+        "item_type": 4,
+        "x": 69,
+        "y": 62,
+        "width": 31,
+        "height": 68
+      },
+      {
+        "item_type": 5,
+        "x": 10,
+        "y": 25,
+        "width": 115,
+        "height": 22
+      },
+      {
+        "item_type": 6,
+        "x": 44,
+        "y": 47,
+        "width": 36,
+        "height": 15
+      }
+    ],
+    "obj": 162.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 95,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 151,
+        "height": 25,
+        "demand": 1
+      },
+      {
+        "width": 33,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 44,
+        "demand": 1
+      },
+      {
+        "width": 44,
+        "height": 60,
+        "demand": 1
+      },
+      {
+        "width": 63,
+        "height": 83,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 37,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 108,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 63,
+        "y": 0,
+        "width": 95,
+        "height": 20
+      },
+      {
+        "item_type": 1,
+        "x": 63,
+        "y": 72,
+        "width": 26,
+        "height": 11
+      },
+      {
+        "item_type": 2,
+        "x": 0,
+        "y": 83,
+        "width": 151,
+        "height": 25
+      },
+      {
+        "item_type": 3,
+        "x": 63,
+        "y": 20,
+        "width": 33,
+        "height": 9
+      },
+      {
+        "item_type": 4,
+        "x": 89,
+        "y": 29,
+        "width": 21,
+        "height": 44
+      },
+      {
+        "item_type": 5,
+        "x": 116,
+        "y": 20,
+        "width": 44,
+        "height": 60
+      },
+      {
+        "item_type": 6,
+        "x": 0,
+        "y": 0,
+        "width": 63,
+        "height": 83
+      },
+      {
+        "item_type": 7,
+        "x": 63,
+        "y": 29,
+        "width": 11,
+        "height": 37
+      }
+    ],
+    "obj": 108.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 64,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 82,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 21,
+        "demand": 1
+      },
+      {
+        "width": 52,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 26,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 34,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 96,
+        "y": 14,
+        "width": 64,
+        "height": 17
+      },
+      {
+        "item_type": 1,
+        "x": 78,
+        "y": 0,
+        "width": 82,
+        "height": 14
+      },
+      {
+        "item_type": 2,
+        "x": 0,
+        "y": 0,
+        "width": 4,
+        "height": 21
+      },
+      {
+        "item_type": 3,
+        "x": 26,
+        "y": 0,
+        "width": 52,
+        "height": 14
+      },
+      {
+        "item_type": 4,
+        "x": 24,
+        "y": 0,
+        "width": 2,
+        "height": 13
+      },
+      {
+        "item_type": 5,
+        "x": 4,
+        "y": 0,
+        "width": 12,
+        "height": 26
+      }
+    ],
+    "obj": 31.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 48,
+        "height": 23,
+        "demand": 1
+      },
+      {
+        "width": 34,
+        "height": 51,
+        "demand": 1
+      },
+      {
+        "width": 50,
+        "height": 41,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 28,
+        "height": 71,
+        "demand": 1
+      },
+      {
+        "width": 93,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 31,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 74,
+        "demand": 1
+      },
+      {
+        "width": 23,
+        "height": 4,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 97,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 66,
+        "y": 41,
+        "width": 48,
+        "height": 23
+      },
+      {
+        "item_type": 1,
+        "x": 26,
+        "y": 0,
+        "width": 34,
+        "height": 51
+      },
+      {
+        "item_type": 2,
+        "x": 60,
+        "y": 0,
+        "width": 50,
+        "height": 41
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 0,
+        "width": 20,
+        "height": 20
+      },
+      {
+        "item_type": 4,
+        "x": 132,
+        "y": 0,
+        "width": 28,
+        "height": 71
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 64,
+        "width": 93,
+        "height": 20
+      },
+      {
+        "item_type": 6,
+        "x": 0,
+        "y": 20,
+        "width": 26,
+        "height": 31
+      },
+      {
+        "item_type": 7,
+        "x": 114,
+        "y": 0,
+        "width": 18,
+        "height": 74
+      },
+      {
+        "item_type": 8,
+        "x": 26,
+        "y": 51,
+        "width": 23,
+        "height": 4
+      }
+    ],
+    "obj": 84.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 44,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 40,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 55,
+        "height": 50,
+        "demand": 1
+      },
+      {
+        "width": 33,
+        "height": 36,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 89,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 24,
+        "height": 39,
+        "demand": 1
+      },
+      {
+        "width": 1,
+        "height": 3,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 65,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 17,
+        "width": 44,
+        "height": 11
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 28,
+        "width": 40,
+        "height": 12
+      },
+      {
+        "item_type": 2,
+        "x": 105,
+        "y": 6,
+        "width": 55,
+        "height": 50
+      },
+      {
+        "item_type": 3,
+        "x": 68,
+        "y": 20,
+        "width": 33,
+        "height": 36
+      },
+      {
+        "item_type": 4,
+        "x": 89,
+        "y": 0,
+        "width": 16,
+        "height": 13
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 0,
+        "width": 89,
+        "height": 17
+      },
+      {
+        "item_type": 6,
+        "x": 44,
+        "y": 17,
+        "width": 24,
+        "height": 39
+      },
+      {
+        "item_type": 7,
+        "x": 77,
+        "y": 17,
+        "width": 1,
+        "height": 3
+      }
+    ],
+    "obj": 56.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 89,
+        "height": 21,
+        "demand": 1
+      },
+      {
+        "width": 22,
+        "height": 71,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 66,
+        "demand": 1
+      },
+      {
+        "width": 29,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 57,
+        "height": 23,
+        "demand": 1
+      },
+      {
+        "width": 75,
+        "height": 44,
+        "demand": 1
+      },
+      {
+        "width": 24,
+        "height": 5,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 93,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 24,
+        "y": 0,
+        "width": 89,
+        "height": 21
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 5,
+        "width": 22,
+        "height": 71
+      },
+      {
+        "item_type": 2,
+        "x": 146,
+        "y": 21,
+        "width": 14,
+        "height": 66
+      },
+      {
+        "item_type": 3,
+        "x": 117,
+        "y": 76,
+        "width": 29,
+        "height": 12
+      },
+      {
+        "item_type": 4,
+        "x": 99,
+        "y": 76,
+        "width": 18,
+        "height": 12
+      },
+      {
+        "item_type": 5,
+        "x": 22,
+        "y": 21,
+        "width": 57,
+        "height": 23
+      },
+      {
+        "item_type": 6,
+        "x": 22,
+        "y": 44,
+        "width": 75,
+        "height": 44
+      },
+      {
+        "item_type": 7,
+        "x": 0,
+        "y": 0,
+        "width": 24,
+        "height": 5
+      }
+    ],
+    "obj": 88.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 55,
+        "height": 52,
+        "demand": 1
+      },
+      {
+        "width": 37,
+        "height": 57,
+        "demand": 1
+      },
+      {
+        "width": 27,
+        "height": 53,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 48,
+        "height": 23,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 12,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 75,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 37,
+        "y": 23,
+        "width": 55,
+        "height": 52
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 18,
+        "width": 37,
+        "height": 57
+      },
+      {
+        "item_type": 2,
+        "x": 92,
+        "y": 22,
+        "width": 27,
+        "height": 53
+      },
+      {
+        "item_type": 3,
+        "x": 85,
+        "y": 0,
+        "width": 21,
+        "height": 18
+      },
+      {
+        "item_type": 4,
+        "x": 37,
+        "y": 0,
+        "width": 48,
+        "height": 23
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 0,
+        "width": 5,
+        "height": 12
+      }
+    ],
+    "obj": 75.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 61,
+        "height": 38,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 4,
+        "demand": 1
+      }
+    ],
+    "bin_width": 64,
+    "bin_height": 50,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 0,
+        "width": 61,
+        "height": 38
+      },
+      {
+        "item_type": 1,
+        "x": 4,
+        "y": 43,
+        "width": 7,
+        "height": 7
+      },
+      {
+        "item_type": 2,
+        "x": 0,
+        "y": 46,
+        "width": 4,
+        "height": 4
+      },
+      {
+        "item_type": 3,
+        "x": 11,
+        "y": 38,
+        "width": 5,
+        "height": 12
+      },
+      {
+        "item_type": 4,
+        "x": 16,
+        "y": 38,
+        "width": 5,
+        "height": 4
+      },
+      {
+        "item_type": 5,
+        "x": 21,
+        "y": 38,
+        "width": 4,
+        "height": 4
+      }
+    ],
+    "obj": 50.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 4,
+        "height": 23,
+        "demand": 1
+      },
+      {
+        "width": 74,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 27,
+        "height": 24,
+        "demand": 1
+      },
+      {
+        "width": 15,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 65,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 36,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 27,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 36,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 2,
+        "y": 7,
+        "width": 4,
+        "height": 23
+      },
+      {
+        "item_type": 1,
+        "x": 65,
+        "y": 0,
+        "width": 74,
+        "height": 14
+      },
+      {
+        "item_type": 2,
+        "x": 29,
+        "y": 12,
+        "width": 27,
+        "height": 24
+      },
+      {
+        "item_type": 3,
+        "x": 6,
+        "y": 18,
+        "width": 15,
+        "height": 18
+      },
+      {
+        "item_type": 4,
+        "x": 2,
+        "y": 0,
+        "width": 14,
+        "height": 3
+      },
+      {
+        "item_type": 5,
+        "x": 2,
+        "y": 3,
+        "width": 14,
+        "height": 4
+      },
+      {
+        "item_type": 6,
+        "x": 0,
+        "y": 0,
+        "width": 2,
+        "height": 8
+      },
+      {
+        "item_type": 7,
+        "x": 56,
+        "y": 14,
+        "width": 65,
+        "height": 22
+      },
+      {
+        "item_type": 8,
+        "x": 29,
+        "y": 0,
+        "width": 36,
+        "height": 11
+      },
+      {
+        "item_type": 9,
+        "x": 21,
+        "y": 9,
+        "width": 8,
+        "height": 27
+      }
+    ],
+    "obj": 36.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 20,
+        "height": 30,
+        "demand": 1
+      },
+      {
+        "width": 38,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 55,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 34,
+        "demand": 1
+      },
+      {
+        "width": 30,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 13,
+        "height": 35,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 30,
+        "demand": 1
+      },
+      {
+        "width": 28,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 18,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 46,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 16,
+        "y": 5,
+        "width": 20,
+        "height": 30
+      },
+      {
+        "item_type": 1,
+        "x": 36,
+        "y": 0,
+        "width": 38,
+        "height": 19
+      },
+      {
+        "item_type": 2,
+        "x": 74,
+        "y": 0,
+        "width": 55,
+        "height": 12
+      },
+      {
+        "item_type": 3,
+        "x": 148,
+        "y": 1,
+        "width": 10,
+        "height": 34
+      },
+      {
+        "item_type": 4,
+        "x": 86,
+        "y": 12,
+        "width": 30,
+        "height": 27
+      },
+      {
+        "item_type": 5,
+        "x": 3,
+        "y": 0,
+        "width": 13,
+        "height": 35
+      },
+      {
+        "item_type": 6,
+        "x": 132,
+        "y": 5,
+        "width": 16,
+        "height": 30
+      },
+      {
+        "item_type": 7,
+        "x": 58,
+        "y": 19,
+        "width": 28,
+        "height": 14
+      },
+      {
+        "item_type": 8,
+        "x": 116,
+        "y": 12,
+        "width": 16,
+        "height": 27
+      },
+      {
+        "item_type": 9,
+        "x": 38,
+        "y": 19,
+        "width": 20,
+        "height": 18
+      }
+    ],
+    "obj": 39.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 21,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 15,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 62,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 12,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 58,
+        "height": 10,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 23,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 0,
+        "width": 21,
+        "height": 17
+      },
+      {
+        "item_type": 1,
+        "x": 21,
+        "y": 0,
+        "width": 7,
+        "height": 15
+      },
+      {
+        "item_type": 2,
+        "x": 28,
+        "y": 0,
+        "width": 15,
+        "height": 11
+      },
+      {
+        "item_type": 3,
+        "x": 141,
+        "y": 17,
+        "width": 19,
+        "height": 3
+      },
+      {
+        "item_type": 4,
+        "x": 43,
+        "y": 0,
+        "width": 20,
+        "height": 14
+      },
+      {
+        "item_type": 5,
+        "x": 63,
+        "y": 0,
+        "width": 62,
+        "height": 10
+      },
+      {
+        "item_type": 6,
+        "x": 28,
+        "y": 12,
+        "width": 5,
+        "height": 8
+      },
+      {
+        "item_type": 7,
+        "x": 148,
+        "y": 0,
+        "width": 12,
+        "height": 9
+      },
+      {
+        "item_type": 8,
+        "x": 63,
+        "y": 10,
+        "width": 11,
+        "height": 10
+      },
+      {
+        "item_type": 9,
+        "x": 74,
+        "y": 10,
+        "width": 58,
+        "height": 10
+      }
+    ],
+    "obj": 20.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 40,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 53,
+        "height": 28,
+        "demand": 1
+      },
+      {
+        "width": 45,
+        "height": 39,
+        "demand": 1
+      },
+      {
+        "width": 57,
+        "height": 30,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 51,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 0,
+        "width": 40,
+        "height": 18
+      },
+      {
+        "item_type": 1,
+        "x": 143,
+        "y": 0,
+        "width": 17,
+        "height": 4
+      },
+      {
+        "item_type": 2,
+        "x": 0,
+        "y": 18,
+        "width": 53,
+        "height": 28
+      },
+      {
+        "item_type": 3,
+        "x": 110,
+        "y": 4,
+        "width": 45,
+        "height": 39
+      },
+      {
+        "item_type": 4,
+        "x": 53,
+        "y": 0,
+        "width": 57,
+        "height": 30
+      }
+    ],
+    "obj": 46.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 11,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 29,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 89,
+        "height": 17,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 24,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 0,
+        "width": 11,
+        "height": 14
+      },
+      {
+        "item_type": 1,
+        "x": 14,
+        "y": 0,
+        "width": 21,
+        "height": 17
+      },
+      {
+        "item_type": 2,
+        "x": 35,
+        "y": 0,
+        "width": 5,
+        "height": 11
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 14,
+        "width": 14,
+        "height": 6
+      },
+      {
+        "item_type": 4,
+        "x": 40,
+        "y": 0,
+        "width": 29,
+        "height": 18
+      },
+      {
+        "item_type": 5,
+        "x": 69,
+        "y": 0,
+        "width": 89,
+        "height": 17
+      }
+    ],
+    "obj": 20.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 112,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 42,
+        "height": 60,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 34,
+        "demand": 1
+      },
+      {
+        "width": 23,
+        "height": 72,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 38,
+        "demand": 1
+      },
+      {
+        "width": 38,
+        "height": 43,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 33,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 94,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 0,
+        "width": 112,
+        "height": 22
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 22,
+        "width": 42,
+        "height": 60
+      },
+      {
+        "item_type": 2,
+        "x": 146,
+        "y": 0,
+        "width": 14,
+        "height": 34
+      },
+      {
+        "item_type": 3,
+        "x": 123,
+        "y": 0,
+        "width": 23,
+        "height": 72
+      },
+      {
+        "item_type": 4,
+        "x": 42,
+        "y": 22,
+        "width": 17,
+        "height": 11
+      },
+      {
+        "item_type": 5,
+        "x": 151,
+        "y": 34,
+        "width": 9,
+        "height": 38
+      },
+      {
+        "item_type": 6,
+        "x": 85,
+        "y": 39,
+        "width": 38,
+        "height": 43
+      },
+      {
+        "item_type": 7,
+        "x": 42,
+        "y": 49,
+        "width": 35,
+        "height": 33
+      }
+    ],
+    "obj": 82.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 25,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 55,
+        "height": 28,
+        "demand": 1
+      },
+      {
+        "width": 76,
+        "height": 35,
+        "demand": 1
+      },
+      {
+        "width": 30,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 32,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 30,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 46,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 131,
+        "y": 0,
+        "width": 25,
+        "height": 11
+      },
+      {
+        "item_type": 1,
+        "x": 76,
+        "y": 0,
+        "width": 55,
+        "height": 28
+      },
+      {
+        "item_type": 2,
+        "x": 0,
+        "y": 0,
+        "width": 76,
+        "height": 35
+      },
+      {
+        "item_type": 3,
+        "x": 76,
+        "y": 28,
+        "width": 30,
+        "height": 11
+      },
+      {
+        "item_type": 4,
+        "x": 106,
+        "y": 28,
+        "width": 32,
+        "height": 13
+      },
+      {
+        "item_type": 5,
+        "x": 138,
+        "y": 11,
+        "width": 17,
+        "height": 3
+      },
+      {
+        "item_type": 6,
+        "x": 155,
+        "y": 11,
+        "width": 5,
+        "height": 30
+      }
+    ],
+    "obj": 41.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 26,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 28,
+        "demand": 1
+      },
+      {
+        "width": 24,
+        "height": 21,
+        "demand": 1
+      },
+      {
+        "width": 112,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 31,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 29,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 11,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 37,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 31,
+        "y": 0,
+        "width": 26,
+        "height": 7
+      },
+      {
+        "item_type": 1,
+        "x": 140,
+        "y": 0,
+        "width": 20,
+        "height": 28
+      },
+      {
+        "item_type": 2,
+        "x": 116,
+        "y": 7,
+        "width": 24,
+        "height": 21
+      },
+      {
+        "item_type": 3,
+        "x": 2,
+        "y": 13,
+        "width": 112,
+        "height": 22
+      },
+      {
+        "item_type": 4,
+        "x": 0,
+        "y": 0,
+        "width": 31,
+        "height": 5
+      },
+      {
+        "item_type": 5,
+        "x": 131,
+        "y": 28,
+        "width": 29,
+        "height": 8
+      },
+      {
+        "item_type": 6,
+        "x": 57,
+        "y": 0,
+        "width": 35,
+        "height": 13
+      },
+      {
+        "item_type": 7,
+        "x": 0,
+        "y": 25,
+        "width": 2,
+        "height": 11
+      }
+    ],
+    "obj": 36.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 60,
+        "height": 28,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 38,
+        "demand": 1
+      },
+      {
+        "width": 24,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 112,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 47,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 33,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 33,
+        "demand": 1
+      },
+      {
+        "width": 48,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 11,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 62,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 100,
+        "y": 27,
+        "width": 60,
+        "height": 28
+      },
+      {
+        "item_type": 1,
+        "x": 24,
+        "y": 10,
+        "width": 8,
+        "height": 38
+      },
+      {
+        "item_type": 2,
+        "x": 24,
+        "y": 0,
+        "width": 24,
+        "height": 10
+      },
+      {
+        "item_type": 3,
+        "x": 48,
+        "y": 0,
+        "width": 112,
+        "height": 22
+      },
+      {
+        "item_type": 4,
+        "x": 6,
+        "y": 0,
+        "width": 18,
+        "height": 47
+      },
+      {
+        "item_type": 5,
+        "x": 48,
+        "y": 22,
+        "width": 35,
+        "height": 33
+      },
+      {
+        "item_type": 6,
+        "x": 83,
+        "y": 22,
+        "width": 6,
+        "height": 33
+      },
+      {
+        "item_type": 7,
+        "x": 0,
+        "y": 48,
+        "width": 48,
+        "height": 9
+      },
+      {
+        "item_type": 8,
+        "x": 0,
+        "y": 22,
+        "width": 2,
+        "height": 11
+      }
+    ],
+    "obj": 57.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 4,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 58,
+        "height": 29,
+        "demand": 1
+      },
+      {
+        "width": 93,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 15,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 27,
+        "height": 53,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 30,
+        "demand": 1
+      },
+      {
+        "width": 50,
+        "height": 41,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 69,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 0,
+        "width": 4,
+        "height": 8
+      },
+      {
+        "item_type": 1,
+        "x": 52,
+        "y": 20,
+        "width": 58,
+        "height": 29
+      },
+      {
+        "item_type": 2,
+        "x": 52,
+        "y": 0,
+        "width": 93,
+        "height": 20
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 8,
+        "width": 15,
+        "height": 8
+      },
+      {
+        "item_type": 4,
+        "x": 15,
+        "y": 0,
+        "width": 27,
+        "height": 53
+      },
+      {
+        "item_type": 5,
+        "x": 42,
+        "y": 0,
+        "width": 10,
+        "height": 30
+      },
+      {
+        "item_type": 6,
+        "x": 110,
+        "y": 20,
+        "width": 50,
+        "height": 41
+      }
+    ],
+    "obj": 61.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 17,
+        "height": 112,
+        "demand": 1
+      },
+      {
+        "width": 29,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 58,
+        "height": 71,
+        "demand": 1
+      },
+      {
+        "width": 38,
+        "height": 59,
+        "demand": 1
+      },
+      {
+        "width": 129,
+        "height": 31,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 93,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 45,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 146,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 143,
+        "y": 12,
+        "width": 17,
+        "height": 112
+      },
+      {
+        "item_type": 1,
+        "x": 131,
+        "y": 0,
+        "width": 29,
+        "height": 12
+      },
+      {
+        "item_type": 2,
+        "x": 0,
+        "y": 31,
+        "width": 58,
+        "height": 71
+      },
+      {
+        "item_type": 3,
+        "x": 58,
+        "y": 76,
+        "width": 38,
+        "height": 59
+      },
+      {
+        "item_type": 4,
+        "x": 0,
+        "y": 0,
+        "width": 129,
+        "height": 31
+      },
+      {
+        "item_type": 5,
+        "x": 96,
+        "y": 31,
+        "width": 35,
+        "height": 93
+      },
+      {
+        "item_type": 6,
+        "x": 58,
+        "y": 31,
+        "width": 20,
+        "height": 45
+      }
+    ],
+    "obj": 135.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 19,
+        "height": 25,
+        "demand": 1
+      },
+      {
+        "width": 29,
+        "height": 37,
+        "demand": 1
+      },
+      {
+        "width": 64,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 13,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 34,
+        "height": 23,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 22,
+        "height": 35,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 49,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 7,
+        "y": 12,
+        "width": 19,
+        "height": 25
+      },
+      {
+        "item_type": 1,
+        "x": 26,
+        "y": 0,
+        "width": 29,
+        "height": 37
+      },
+      {
+        "item_type": 2,
+        "x": 77,
+        "y": 0,
+        "width": 64,
+        "height": 19
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 0,
+        "width": 13,
+        "height": 11
+      },
+      {
+        "item_type": 4,
+        "x": 77,
+        "y": 19,
+        "width": 26,
+        "height": 7
+      },
+      {
+        "item_type": 5,
+        "x": 118,
+        "y": 19,
+        "width": 34,
+        "height": 23
+      },
+      {
+        "item_type": 6,
+        "x": 152,
+        "y": 0,
+        "width": 8,
+        "height": 17
+      },
+      {
+        "item_type": 7,
+        "x": 0,
+        "y": 11,
+        "width": 7,
+        "height": 2
+      },
+      {
+        "item_type": 8,
+        "x": 55,
+        "y": 0,
+        "width": 22,
+        "height": 35
+      }
+    ],
+    "obj": 42.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 26,
+        "height": 57,
+        "demand": 1
+      },
+      {
+        "width": 31,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 23,
+        "height": 72,
+        "demand": 1
+      },
+      {
+        "width": 50,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 25,
+        "demand": 1
+      },
+      {
+        "width": 64,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 111,
+        "height": 58,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 94,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 23,
+        "y": 12,
+        "width": 26,
+        "height": 57
+      },
+      {
+        "item_type": 1,
+        "x": 73,
+        "y": 0,
+        "width": 31,
+        "height": 5
+      },
+      {
+        "item_type": 2,
+        "x": 24,
+        "y": 69,
+        "width": 25,
+        "height": 14
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 0,
+        "width": 23,
+        "height": 72
+      },
+      {
+        "item_type": 4,
+        "x": 23,
+        "y": 0,
+        "width": 50,
+        "height": 12
+      },
+      {
+        "item_type": 5,
+        "x": 137,
+        "y": 0,
+        "width": 21,
+        "height": 25
+      },
+      {
+        "item_type": 6,
+        "x": 73,
+        "y": 5,
+        "width": 64,
+        "height": 19
+      },
+      {
+        "item_type": 7,
+        "x": 49,
+        "y": 25,
+        "width": 111,
+        "height": 58
+      }
+    ],
+    "obj": 83.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 22,
+        "height": 47,
+        "demand": 1
+      },
+      {
+        "width": 30,
+        "height": 8,
+        "demand": 1
+      },
+      {
+        "width": 61,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 30,
+        "height": 51,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 83,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 62,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 23,
+        "height": 31,
+        "demand": 1
+      },
+      {
+        "width": 30,
+        "height": 56,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 73,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 38,
+        "y": 16,
+        "width": 22,
+        "height": 47
+      },
+      {
+        "item_type": 1,
+        "x": 94,
+        "y": 43,
+        "width": 30,
+        "height": 8
+      },
+      {
+        "item_type": 2,
+        "x": 60,
+        "y": 16,
+        "width": 61,
+        "height": 13
+      },
+      {
+        "item_type": 3,
+        "x": 124,
+        "y": 0,
+        "width": 30,
+        "height": 51
+      },
+      {
+        "item_type": 4,
+        "x": 154,
+        "y": 44,
+        "width": 6,
+        "height": 19
+      },
+      {
+        "item_type": 5,
+        "x": 38,
+        "y": 0,
+        "width": 83,
+        "height": 16
+      },
+      {
+        "item_type": 6,
+        "x": 92,
+        "y": 51,
+        "width": 62,
+        "height": 12
+      },
+      {
+        "item_type": 7,
+        "x": 0,
+        "y": 0,
+        "width": 8,
+        "height": 14
+      },
+      {
+        "item_type": 8,
+        "x": 60,
+        "y": 32,
+        "width": 23,
+        "height": 31
+      },
+      {
+        "item_type": 9,
+        "x": 8,
+        "y": 0,
+        "width": 30,
+        "height": 56
+      }
+    ],
+    "obj": 63.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 28,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 23,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 94,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 9,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 19,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 128,
+        "y": 9,
+        "width": 28,
+        "height": 9
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 0,
+        "width": 23,
+        "height": 12
+      },
+      {
+        "item_type": 2,
+        "x": 23,
+        "y": 0,
+        "width": 3,
+        "height": 4
+      },
+      {
+        "item_type": 3,
+        "x": 34,
+        "y": 0,
+        "width": 94,
+        "height": 14
+      },
+      {
+        "item_type": 4,
+        "x": 28,
+        "y": 0,
+        "width": 6,
+        "height": 13
+      },
+      {
+        "item_type": 5,
+        "x": 34,
+        "y": 15,
+        "width": 16,
+        "height": 3
+      },
+      {
+        "item_type": 6,
+        "x": 143,
+        "y": 0,
+        "width": 17,
+        "height": 9
+      }
+    ],
+    "obj": 18.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 4,
+        "height": 10,
+        "demand": 1
+      },
+      {
+        "width": 30,
+        "height": 16,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 30,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 36,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 74,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 38,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 19,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 26,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 3,
+        "y": 12,
+        "width": 4,
+        "height": 10
+      },
+      {
+        "item_type": 1,
+        "x": 49,
+        "y": 6,
+        "width": 30,
+        "height": 16
+      },
+      {
+        "item_type": 2,
+        "x": 3,
+        "y": 0,
+        "width": 2,
+        "height": 7
+      },
+      {
+        "item_type": 3,
+        "x": 49,
+        "y": 0,
+        "width": 30,
+        "height": 6
+      },
+      {
+        "item_type": 4,
+        "x": 7,
+        "y": 11,
+        "width": 36,
+        "height": 11
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 0,
+        "width": 3,
+        "height": 14
+      },
+      {
+        "item_type": 6,
+        "x": 43,
+        "y": 0,
+        "width": 6,
+        "height": 20
+      },
+      {
+        "item_type": 7,
+        "x": 86,
+        "y": 6,
+        "width": 74,
+        "height": 14
+      },
+      {
+        "item_type": 8,
+        "x": 5,
+        "y": 0,
+        "width": 38,
+        "height": 11
+      },
+      {
+        "item_type": 9,
+        "x": 79,
+        "y": 0,
+        "width": 7,
+        "height": 19
+      }
+    ],
+    "obj": 22.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 53,
+        "height": 28,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 48,
+        "demand": 1
+      },
+      {
+        "width": 1,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 57,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 49,
+        "height": 38,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 63,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 107,
+        "y": 27,
+        "width": 53,
+        "height": 28
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 0,
+        "width": 21,
+        "height": 13
+      },
+      {
+        "item_type": 2,
+        "x": 78,
+        "y": 0,
+        "width": 25,
+        "height": 48
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 33,
+        "width": 1,
+        "height": 3
+      },
+      {
+        "item_type": 4,
+        "x": 0,
+        "y": 13,
+        "width": 10,
+        "height": 13
+      },
+      {
+        "item_type": 5,
+        "x": 103,
+        "y": 0,
+        "width": 57,
+        "height": 27
+      },
+      {
+        "item_type": 6,
+        "x": 0,
+        "y": 36,
+        "width": 2,
+        "height": 12
+      },
+      {
+        "item_type": 7,
+        "x": 21,
+        "y": 0,
+        "width": 49,
+        "height": 38
+      }
+    ],
+    "obj": 55.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 28,
+        "height": 40,
+        "demand": 1
+      },
+      {
+        "width": 8,
+        "height": 36,
+        "demand": 1
+      },
+      {
+        "width": 63,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 87,
+        "height": 30,
+        "demand": 1
+      },
+      {
+        "width": 82,
+        "height": 12,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 52,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 0,
+        "width": 28,
+        "height": 40
+      },
+      {
+        "item_type": 1,
+        "x": 28,
+        "y": 0,
+        "width": 8,
+        "height": 36
+      },
+      {
+        "item_type": 2,
+        "x": 82,
+        "y": 34,
+        "width": 63,
+        "height": 18
+      },
+      {
+        "item_type": 3,
+        "x": 156,
+        "y": 0,
+        "width": 4,
+        "height": 17
+      },
+      {
+        "item_type": 4,
+        "x": 69,
+        "y": 0,
+        "width": 87,
+        "height": 30
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 40,
+        "width": 82,
+        "height": 12
+      }
+    ],
+    "obj": 52.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 40,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 67,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 50,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 40,
+        "demand": 1
+      },
+      {
+        "width": 68,
+        "height": 44,
+        "demand": 1
+      },
+      {
+        "width": 51,
+        "height": 24,
+        "demand": 1
+      },
+      {
+        "width": 38,
+        "height": 37,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 88,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 61,
+        "y": 0,
+        "width": 40,
+        "height": 22
+      },
+      {
+        "item_type": 1,
+        "x": 125,
+        "y": 0,
+        "width": 35,
+        "height": 67
+      },
+      {
+        "item_type": 2,
+        "x": 68,
+        "y": 24,
+        "width": 14,
+        "height": 50
+      },
+      {
+        "item_type": 3,
+        "x": 106,
+        "y": 0,
+        "width": 19,
+        "height": 40
+      },
+      {
+        "item_type": 4,
+        "x": 0,
+        "y": 24,
+        "width": 68,
+        "height": 44
+      },
+      {
+        "item_type": 5,
+        "x": 10,
+        "y": 0,
+        "width": 51,
+        "height": 24
+      },
+      {
+        "item_type": 6,
+        "x": 82,
+        "y": 40,
+        "width": 38,
+        "height": 37
+      }
+    ],
+    "obj": 77.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 4,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 34,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 40,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 6,
+        "demand": 1
+      }
+    ],
+    "bin_width": 80,
+    "bin_height": 17,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 38,
+        "y": 0,
+        "width": 4,
+        "height": 3
+      },
+      {
+        "item_type": 1,
+        "x": 3,
+        "y": 12,
+        "width": 16,
+        "height": 5
+      },
+      {
+        "item_type": 2,
+        "x": 4,
+        "y": 0,
+        "width": 34,
+        "height": 11
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 12,
+        "width": 3,
+        "height": 5
+      },
+      {
+        "item_type": 4,
+        "x": 19,
+        "y": 11,
+        "width": 10,
+        "height": 6
+      },
+      {
+        "item_type": 5,
+        "x": 40,
+        "y": 4,
+        "width": 40,
+        "height": 13
+      },
+      {
+        "item_type": 6,
+        "x": 0,
+        "y": 8,
+        "width": 4,
+        "height": 4
+      },
+      {
+        "item_type": 7,
+        "x": 29,
+        "y": 11,
+        "width": 7,
+        "height": 6
+      }
+    ],
+    "obj": 17.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 112,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 52,
+        "height": 43,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 57,
+        "demand": 1
+      },
+      {
+        "width": 24,
+        "height": 52,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 75,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 48,
+        "y": 0,
+        "width": 112,
+        "height": 22
+      },
+      {
+        "item_type": 1,
+        "x": 102,
+        "y": 65,
+        "width": 4,
+        "height": 9
+      },
+      {
+        "item_type": 2,
+        "x": 26,
+        "y": 22,
+        "width": 52,
+        "height": 43
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 0,
+        "width": 26,
+        "height": 57
+      },
+      {
+        "item_type": 4,
+        "x": 78,
+        "y": 22,
+        "width": 24,
+        "height": 52
+      }
+    ],
+    "obj": 74.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 58,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 33,
+        "height": 32,
+        "demand": 1
+      },
+      {
+        "width": 32,
+        "height": 63,
+        "demand": 1
+      },
+      {
+        "width": 16,
+        "height": 48,
+        "demand": 1
+      },
+      {
+        "width": 54,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 63,
+        "height": 32,
+        "demand": 1
+      },
+      {
+        "width": 65,
+        "height": 55,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 89,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 116,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 0,
+        "width": 58,
+        "height": 12
+      },
+      {
+        "item_type": 1,
+        "x": 35,
+        "y": 63,
+        "width": 33,
+        "height": 32
+      },
+      {
+        "item_type": 2,
+        "x": 58,
+        "y": 0,
+        "width": 32,
+        "height": 63
+      },
+      {
+        "item_type": 3,
+        "x": 35,
+        "y": 12,
+        "width": 16,
+        "height": 48
+      },
+      {
+        "item_type": 4,
+        "x": 95,
+        "y": 87,
+        "width": 54,
+        "height": 14
+      },
+      {
+        "item_type": 5,
+        "x": 90,
+        "y": 55,
+        "width": 63,
+        "height": 32
+      },
+      {
+        "item_type": 6,
+        "x": 90,
+        "y": 0,
+        "width": 65,
+        "height": 55
+      },
+      {
+        "item_type": 7,
+        "x": 0,
+        "y": 12,
+        "width": 35,
+        "height": 89
+      }
+    ],
+    "obj": 101.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 57,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 73,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 31,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 24,
+        "demand": 1
+      },
+      {
+        "width": 23,
+        "height": 31,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 6,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 41,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 18,
+        "width": 57,
+        "height": 17
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 0,
+        "width": 73,
+        "height": 18
+      },
+      {
+        "item_type": 2,
+        "x": 100,
+        "y": 0,
+        "width": 19,
+        "height": 31
+      },
+      {
+        "item_type": 3,
+        "x": 119,
+        "y": 0,
+        "width": 18,
+        "height": 24
+      },
+      {
+        "item_type": 4,
+        "x": 137,
+        "y": 0,
+        "width": 23,
+        "height": 31
+      },
+      {
+        "item_type": 5,
+        "x": 57,
+        "y": 24,
+        "width": 7,
+        "height": 6
+      }
+    ],
+    "obj": 35.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 2,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 123,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 25,
+        "demand": 1
+      },
+      {
+        "width": 32,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 7,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 33,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 0,
+        "width": 2,
+        "height": 9
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 9,
+        "width": 14,
+        "height": 18
+      },
+      {
+        "item_type": 2,
+        "x": 24,
+        "y": 12,
+        "width": 123,
+        "height": 19
+      },
+      {
+        "item_type": 3,
+        "x": 17,
+        "y": 0,
+        "width": 7,
+        "height": 25
+      },
+      {
+        "item_type": 4,
+        "x": 24,
+        "y": 0,
+        "width": 32,
+        "height": 12
+      },
+      {
+        "item_type": 5,
+        "x": 14,
+        "y": 24,
+        "width": 3,
+        "height": 7
+      }
+    ],
+    "obj": 31.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 7,
+        "height": 32,
+        "demand": 1
+      },
+      {
+        "width": 83,
+        "height": 32,
+        "demand": 1
+      },
+      {
+        "width": 44,
+        "height": 60,
+        "demand": 1
+      },
+      {
+        "width": 63,
+        "height": 83,
+        "demand": 1
+      },
+      {
+        "width": 26,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 107,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 20,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 44,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 108,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 75,
+        "width": 7,
+        "height": 32
+      },
+      {
+        "item_type": 1,
+        "x": 70,
+        "y": 75,
+        "width": 83,
+        "height": 32
+      },
+      {
+        "item_type": 2,
+        "x": 116,
+        "y": 11,
+        "width": 44,
+        "height": 60
+      },
+      {
+        "item_type": 3,
+        "x": 7,
+        "y": 19,
+        "width": 63,
+        "height": 83
+      },
+      {
+        "item_type": 4,
+        "x": 114,
+        "y": 0,
+        "width": 26,
+        "height": 11
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 0,
+        "width": 107,
+        "height": 19
+      },
+      {
+        "item_type": 6,
+        "x": 140,
+        "y": 0,
+        "width": 20,
+        "height": 5
+      },
+      {
+        "item_type": 7,
+        "x": 70,
+        "y": 19,
+        "width": 21,
+        "height": 44
+      }
+    ],
+    "obj": 107.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 55,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 75,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 31,
+        "demand": 1
+      },
+      {
+        "width": 44,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 22,
+        "height": 107,
+        "demand": 1
+      },
+      {
+        "width": 28,
+        "height": 74,
+        "demand": 1
+      },
+      {
+        "width": 99,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 39,
+        "height": 68,
+        "demand": 1
+      },
+      {
+        "width": 63,
+        "height": 132,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 172,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 105,
+        "y": 44,
+        "width": 55,
+        "height": 18
+      },
+      {
+        "item_type": 1,
+        "x": 85,
+        "y": 22,
+        "width": 75,
+        "height": 22
+      },
+      {
+        "item_type": 2,
+        "x": 93,
+        "y": 44,
+        "width": 11,
+        "height": 31
+      },
+      {
+        "item_type": 3,
+        "x": 11,
+        "y": 0,
+        "width": 44,
+        "height": 9
+      },
+      {
+        "item_type": 4,
+        "x": 71,
+        "y": 47,
+        "width": 22,
+        "height": 107
+      },
+      {
+        "item_type": 5,
+        "x": 93,
+        "y": 75,
+        "width": 28,
+        "height": 74
+      },
+      {
+        "item_type": 6,
+        "x": 61,
+        "y": 0,
+        "width": 99,
+        "height": 22
+      },
+      {
+        "item_type": 7,
+        "x": 121,
+        "y": 62,
+        "width": 39,
+        "height": 68
+      },
+      {
+        "item_type": 8,
+        "x": 0,
+        "y": 22,
+        "width": 63,
+        "height": 132
+      }
+    ],
+    "obj": 154.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 3,
+        "height": 14,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 22,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 13,
+        "height": 7,
+        "demand": 1
+      },
+      {
+        "width": 25,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 37,
+        "height": 22,
+        "demand": 1
+      }
+    ],
+    "bin_width": 64,
+    "bin_height": 29,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 37,
+        "y": 0,
+        "width": 3,
+        "height": 14
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 22,
+        "width": 2,
+        "height": 2
+      },
+      {
+        "item_type": 2,
+        "x": 0,
+        "y": 24,
+        "width": 2,
+        "height": 2
+      },
+      {
+        "item_type": 3,
+        "x": 55,
+        "y": 0,
+        "width": 9,
+        "height": 22
+      },
+      {
+        "item_type": 4,
+        "x": 6,
+        "y": 22,
+        "width": 22,
+        "height": 2
+      },
+      {
+        "item_type": 5,
+        "x": 37,
+        "y": 14,
+        "width": 13,
+        "height": 7
+      },
+      {
+        "item_type": 6,
+        "x": 37,
+        "y": 22,
+        "width": 25,
+        "height": 5
+      },
+      {
+        "item_type": 7,
+        "x": 50,
+        "y": 0,
+        "width": 3,
+        "height": 22
+      },
+      {
+        "item_type": 8,
+        "x": 0,
+        "y": 0,
+        "width": 37,
+        "height": 22
+      }
+    ],
+    "obj": 27.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 3,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 35,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 3,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 21,
+        "demand": 1
+      },
+      {
+        "width": 3,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 5,
+        "demand": 1
+      }
+    ],
+    "bin_width": 40,
+    "bin_height": 28,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 1,
+        "y": 0,
+        "width": 3,
+        "height": 5
+      },
+      {
+        "item_type": 1,
+        "x": 5,
+        "y": 16,
+        "width": 35,
+        "height": 12
+      },
+      {
+        "item_type": 2,
+        "x": 7,
+        "y": 0,
+        "width": 4,
+        "height": 15
+      },
+      {
+        "item_type": 3,
+        "x": 4,
+        "y": 5,
+        "width": 3,
+        "height": 5
+      },
+      {
+        "item_type": 4,
+        "x": 11,
+        "y": 0,
+        "width": 4,
+        "height": 3
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 7,
+        "width": 4,
+        "height": 21
+      },
+      {
+        "item_type": 6,
+        "x": 4,
+        "y": 11,
+        "width": 3,
+        "height": 5
+      },
+      {
+        "item_type": 7,
+        "x": 12,
+        "y": 8,
+        "width": 7,
+        "height": 5
+      },
+      {
+        "item_type": 8,
+        "x": 12,
+        "y": 3,
+        "width": 5,
+        "height": 5
+      }
+    ],
+    "obj": 28.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 27,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 77,
+        "height": 25,
+        "demand": 1
+      },
+      {
+        "width": 13,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 46,
+        "height": 34,
+        "demand": 1
+      },
+      {
+        "width": 58,
+        "height": 20,
+        "demand": 1
+      },
+      {
+        "width": 4,
+        "height": 9,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 45,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 58,
+        "y": 0,
+        "width": 27,
+        "height": 18
+      },
+      {
+        "item_type": 1,
+        "x": 90,
+        "y": 40,
+        "width": 18,
+        "height": 5
+      },
+      {
+        "item_type": 2,
+        "x": 13,
+        "y": 20,
+        "width": 77,
+        "height": 25
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 34,
+        "width": 13,
+        "height": 5
+      },
+      {
+        "item_type": 4,
+        "x": 114,
+        "y": 0,
+        "width": 46,
+        "height": 34
+      },
+      {
+        "item_type": 5,
+        "x": 0,
+        "y": 0,
+        "width": 58,
+        "height": 20
+      },
+      {
+        "item_type": 6,
+        "x": 90,
+        "y": 18,
+        "width": 4,
+        "height": 9
+      }
+    ],
+    "obj": 45.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 9,
+        "height": 6,
+        "demand": 1
+      },
+      {
+        "width": 93,
+        "height": 18,
+        "demand": 1
+      },
+      {
+        "width": 17,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 42,
+        "height": 21,
+        "demand": 1
+      },
+      {
+        "width": 2,
+        "height": 12,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 28,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 0,
+        "width": 9,
+        "height": 6
+      },
+      {
+        "item_type": 1,
+        "x": 61,
+        "y": 3,
+        "width": 93,
+        "height": 18
+      },
+      {
+        "item_type": 2,
+        "x": 2,
+        "y": 6,
+        "width": 17,
+        "height": 5
+      },
+      {
+        "item_type": 3,
+        "x": 19,
+        "y": 0,
+        "width": 42,
+        "height": 21
+      },
+      {
+        "item_type": 4,
+        "x": 0,
+        "y": 9,
+        "width": 2,
+        "height": 12
+      }
+    ],
+    "obj": 21.0,
+    "is_nontrivial": false,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 27,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 18,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 64,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 63,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 55,
+        "height": 12,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 29,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 18,
+        "y": 12,
+        "width": 27,
+        "height": 13
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 0,
+        "width": 18,
+        "height": 22
+      },
+      {
+        "item_type": 2,
+        "x": 96,
+        "y": 12,
+        "width": 64,
+        "height": 17
+      },
+      {
+        "item_type": 3,
+        "x": 18,
+        "y": 0,
+        "width": 63,
+        "height": 12
+      },
+      {
+        "item_type": 4,
+        "x": 105,
+        "y": 0,
+        "width": 55,
+        "height": 12
+      }
+    ],
+    "obj": 29.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 44,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 75,
+        "height": 22,
+        "demand": 1
+      },
+      {
+        "width": 11,
+        "height": 31,
+        "demand": 1
+      },
+      {
+        "width": 31,
+        "height": 27,
+        "demand": 1
+      },
+      {
+        "width": 70,
+        "height": 14,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 41,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 0,
+        "width": 44,
+        "height": 9
+      },
+      {
+        "item_type": 1,
+        "x": 85,
+        "y": 14,
+        "width": 75,
+        "height": 22
+      },
+      {
+        "item_type": 2,
+        "x": 74,
+        "y": 0,
+        "width": 11,
+        "height": 31
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 9,
+        "width": 31,
+        "height": 27
+      },
+      {
+        "item_type": 4,
+        "x": 90,
+        "y": 0,
+        "width": 70,
+        "height": 14
+      }
+    ],
+    "obj": 36.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 13,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 56,
+        "height": 19,
+        "demand": 1
+      },
+      {
+        "width": 47,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 4,
+        "demand": 1
+      },
+      {
+        "width": 13,
+        "height": 9,
+        "demand": 1
+      },
+      {
+        "width": 5,
+        "height": 1,
+        "demand": 1
+      },
+      {
+        "width": 19,
+        "height": 21,
+        "demand": 1
+      },
+      {
+        "width": 55,
+        "height": 15,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 2,
+        "demand": 1
+      },
+      {
+        "width": 14,
+        "height": 10,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 28,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 0,
+        "width": 13,
+        "height": 4
+      },
+      {
+        "item_type": 1,
+        "x": 0,
+        "y": 4,
+        "width": 56,
+        "height": 19
+      },
+      {
+        "item_type": 2,
+        "x": 56,
+        "y": 0,
+        "width": 47,
+        "height": 12
+      },
+      {
+        "item_type": 3,
+        "x": 146,
+        "y": 23,
+        "width": 14,
+        "height": 4
+      },
+      {
+        "item_type": 4,
+        "x": 128,
+        "y": 0,
+        "width": 13,
+        "height": 9
+      },
+      {
+        "item_type": 5,
+        "x": 13,
+        "y": 0,
+        "width": 5,
+        "height": 1
+      },
+      {
+        "item_type": 6,
+        "x": 141,
+        "y": 2,
+        "width": 19,
+        "height": 21
+      },
+      {
+        "item_type": 7,
+        "x": 56,
+        "y": 12,
+        "width": 55,
+        "height": 15
+      },
+      {
+        "item_type": 8,
+        "x": 0,
+        "y": 25,
+        "width": 10,
+        "height": 2
+      },
+      {
+        "item_type": 9,
+        "x": 127,
+        "y": 9,
+        "width": 14,
+        "height": 10
+      }
+    ],
+    "obj": 27.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 5,
+        "height": 12,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 26,
+        "demand": 1
+      },
+      {
+        "width": 7,
+        "height": 24,
+        "demand": 1
+      },
+      {
+        "width": 1,
+        "height": 1,
+        "demand": 1
+      },
+      {
+        "width": 76,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 15,
+        "height": 13,
+        "demand": 1
+      },
+      {
+        "width": 97,
+        "height": 21,
+        "demand": 1
+      },
+      {
+        "width": 15,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 9,
+        "height": 5,
+        "demand": 1
+      },
+      {
+        "width": 21,
+        "height": 20,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 34,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 1,
+        "width": 5,
+        "height": 12
+      },
+      {
+        "item_type": 1,
+        "x": 12,
+        "y": 6,
+        "width": 21,
+        "height": 26
+      },
+      {
+        "item_type": 2,
+        "x": 5,
+        "y": 10,
+        "width": 7,
+        "height": 24
+      },
+      {
+        "item_type": 3,
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1
+      },
+      {
+        "item_type": 4,
+        "x": 54,
+        "y": 21,
+        "width": 76,
+        "height": 13
+      },
+      {
+        "item_type": 5,
+        "x": 33,
+        "y": 0,
+        "width": 15,
+        "height": 13
+      },
+      {
+        "item_type": 6,
+        "x": 63,
+        "y": 0,
+        "width": 97,
+        "height": 21
+      },
+      {
+        "item_type": 7,
+        "x": 48,
+        "y": 0,
+        "width": 15,
+        "height": 11
+      },
+      {
+        "item_type": 8,
+        "x": 12,
+        "y": 1,
+        "width": 9,
+        "height": 5
+      },
+      {
+        "item_type": 9,
+        "x": 33,
+        "y": 14,
+        "width": 21,
+        "height": 20
+      }
+    ],
+    "obj": 34.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  },
+  {
+    "items": [
+      {
+        "width": 25,
+        "height": 77,
+        "demand": 1
+      },
+      {
+        "width": 49,
+        "height": 86,
+        "demand": 1
+      },
+      {
+        "width": 33,
+        "height": 17,
+        "demand": 1
+      },
+      {
+        "width": 34,
+        "height": 51,
+        "demand": 1
+      },
+      {
+        "width": 6,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 50,
+        "height": 41,
+        "demand": 1
+      },
+      {
+        "width": 10,
+        "height": 30,
+        "demand": 1
+      },
+      {
+        "width": 48,
+        "height": 23,
+        "demand": 1
+      },
+      {
+        "width": 45,
+        "height": 11,
+        "demand": 1
+      },
+      {
+        "width": 55,
+        "height": 52,
+        "demand": 1
+      }
+    ],
+    "bin_width": 160,
+    "bin_height": 112,
+    "is_strip_packing": false,
+    "solution": [
+      {
+        "item_type": 0,
+        "x": 0,
+        "y": 23,
+        "width": 25,
+        "height": 77
+      },
+      {
+        "item_type": 1,
+        "x": 111,
+        "y": 0,
+        "width": 49,
+        "height": 86
+      },
+      {
+        "item_type": 2,
+        "x": 111,
+        "y": 86,
+        "width": 33,
+        "height": 17
+      },
+      {
+        "item_type": 3,
+        "x": 25,
+        "y": 53,
+        "width": 34,
+        "height": 51
+      },
+      {
+        "item_type": 4,
+        "x": 48,
+        "y": 0,
+        "width": 6,
+        "height": 11
+      },
+      {
+        "item_type": 5,
+        "x": 61,
+        "y": 63,
+        "width": 50,
+        "height": 41
+      },
+      {
+        "item_type": 6,
+        "x": 25,
+        "y": 23,
+        "width": 10,
+        "height": 30
+      },
+      {
+        "item_type": 7,
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 23
+      },
+      {
+        "item_type": 8,
+        "x": 66,
+        "y": 52,
+        "width": 45,
+        "height": 11
+      },
+      {
+        "item_type": 9,
+        "x": 56,
+        "y": 0,
+        "width": 55,
+        "height": 52
+      }
+    ],
+    "obj": 104.0,
+    "is_nontrivial": true,
+    "problem_type": "2SP"
+  }
+]

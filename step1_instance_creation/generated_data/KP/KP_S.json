@@ -1,0 +1,4000 @@
+[
+  {
+    "problem_type": "KP",
+    "weights": [
+      78,
+      66,
+      44,
+      44,
+      86
+    ],
+    "profits": [
+      9,
+      70,
+      21,
+      10,
+      53
+    ],
+    "capacity": 159,
+    "solution": [
+      0,
+      1,
+      0,
+      0,
+      1
+    ],
+    "objective": 123,
+    "solve_time": 0.0065538883209228516,
+    "n_items": 5,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 0,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      74,
+      77,
+      72,
+      79,
+      52,
+      13,
+      84,
+      46,
+      51,
+      38
+    ],
+    "profits": [
+      19,
+      93,
+      79,
+      65,
+      41,
+      83,
+      55,
+      45,
+      46,
+      23
+    ],
+    "capacity": 293,
+    "solution": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    "objective": 366,
+    "solve_time": 0.000484466552734375,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 1,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      56,
+      89,
+      7,
+      86,
+      83
+    ],
+    "profits": [
+      28,
+      64,
+      17,
+      76,
+      71
+    ],
+    "capacity": 160,
+    "solution": [
+      1,
+      0,
+      1,
+      1,
+      0
+    ],
+    "objective": 121,
+    "solve_time": 0.0002620220184326172,
+    "n_items": 5,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 2,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      7,
+      98,
+      45,
+      90,
+      68,
+      78,
+      76
+    ],
+    "profits": [
+      20,
+      37,
+      47,
+      50,
+      5,
+      55,
+      16
+    ],
+    "capacity": 231,
+    "solution": [
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0
+    ],
+    "objective": 172,
+    "solve_time": 0.00030493736267089844,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 3,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      69,
+      93,
+      75,
+      37,
+      97,
+      42,
+      33,
+      91,
+      38
+    ],
+    "profits": [
+      8,
+      47,
+      80,
+      19,
+      47,
+      13,
+      69,
+      48,
+      34
+    ],
+    "capacity": 288,
+    "solution": [
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "objective": 250,
+    "solve_time": 0.0003795623779296875,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 4,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      57,
+      67,
+      95,
+      44,
+      17,
+      84
+    ],
+    "profits": [
+      63,
+      71,
+      10,
+      32,
+      77,
+      84
+    ],
+    "capacity": 182,
+    "solution": [
+      0,
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    "objective": 232,
+    "solve_time": 0.0003211498260498047,
+    "n_items": 6,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 5,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      81,
+      85,
+      39,
+      90,
+      29,
+      24,
+      69
+    ],
+    "profits": [
+      64,
+      14,
+      84,
+      20,
+      81,
+      1,
+      80
+    ],
+    "capacity": 208,
+    "solution": [
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1
+    ],
+    "objective": 246,
+    "solve_time": 0.0003006458282470703,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 6,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      79,
+      67,
+      48,
+      71,
+      28,
+      79,
+      56,
+      46,
+      51
+    ],
+    "profits": [
+      57,
+      4,
+      14,
+      25,
+      12,
+      44,
+      67,
+      66,
+      48
+    ],
+    "capacity": 262,
+    "solution": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1
+    ],
+    "objective": 250,
+    "solve_time": 0.0003364086151123047,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 7,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      57,
+      8,
+      77,
+      58,
+      64,
+      57,
+      56,
+      10,
+      56,
+      80
+    ],
+    "profits": [
+      31,
+      61,
+      4,
+      35,
+      44,
+      99,
+      22,
+      28,
+      41,
+      100
+    ],
+    "capacity": 262,
+    "solution": [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    "objective": 336,
+    "solve_time": 0.0003056526184082031,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 8,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      4,
+      24,
+      83,
+      6,
+      86,
+      29,
+      92,
+      30,
+      44,
+      67
+    ],
+    "profits": [
+      13,
+      56,
+      51,
+      79,
+      100,
+      67,
+      41,
+      41,
+      42,
+      82
+    ],
+    "capacity": 232,
+    "solution": [
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0
+    ],
+    "objective": 398,
+    "solve_time": 0.0003037452697753906,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 9,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      17,
+      34,
+      3,
+      11,
+      10,
+      78
+    ],
+    "profits": [
+      73,
+      70,
+      47,
+      72,
+      17,
+      91
+    ],
+    "capacity": 76,
+    "solution": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      0
+    ],
+    "objective": 279,
+    "solve_time": 0.00023984909057617188,
+    "n_items": 6,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 10,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      94,
+      16,
+      50,
+      70,
+      50,
+      45,
+      17,
+      39
+    ],
+    "profits": [
+      24,
+      31,
+      69,
+      64,
+      61,
+      37,
+      96,
+      9
+    ],
+    "capacity": 190,
+    "solution": [
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0
+    ],
+    "objective": 294,
+    "solve_time": 0.0003838539123535156,
+    "n_items": 8,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 11,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      12,
+      34,
+      97,
+      37,
+      91,
+      50,
+      70
+    ],
+    "profits": [
+      46,
+      27,
+      77,
+      97,
+      27,
+      78,
+      27
+    ],
+    "capacity": 196,
+    "solution": [
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0
+    ],
+    "objective": 298,
+    "solve_time": 0.0003261566162109375,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 12,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      79,
+      45,
+      74,
+      28,
+      8,
+      10,
+      45,
+      91,
+      13
+    ],
+    "profits": [
+      46,
+      71,
+      21,
+      73,
+      31,
+      81,
+      58,
+      55,
+      18
+    ],
+    "capacity": 196,
+    "solution": [
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1
+    ],
+    "objective": 332,
+    "solve_time": 0.0003733634948730469,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 13,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      86,
+      2,
+      76,
+      50,
+      72,
+      67,
+      44
+    ],
+    "profits": [
+      31,
+      63,
+      15,
+      59,
+      10,
+      65,
+      63
+    ],
+    "capacity": 198,
+    "solution": [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1
+    ],
+    "objective": 250,
+    "solve_time": 0.0004088878631591797,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 14,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      76,
+      42,
+      79,
+      5,
+      18
+    ],
+    "profits": [
+      50,
+      19,
+      33,
+      67,
+      15
+    ],
+    "capacity": 110,
+    "solution": [
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    "objective": 132,
+    "solve_time": 0.00031638145446777344,
+    "n_items": 5,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 15,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      11,
+      18,
+      59,
+      80,
+      18,
+      30,
+      93,
+      99,
+      59
+    ],
+    "profits": [
+      45,
+      35,
+      62,
+      60,
+      30,
+      3,
+      16,
+      96,
+      42
+    ],
+    "capacity": 234,
+    "solution": [
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    "objective": 268,
+    "solve_time": 0.00037550926208496094,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 16,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      47,
+      79,
+      7,
+      9,
+      28,
+      49,
+      68
+    ],
+    "profits": [
+      50,
+      45,
+      94,
+      17,
+      58,
+      55,
+      48
+    ],
+    "capacity": 144,
+    "solution": [
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0
+    ],
+    "objective": 274,
+    "solve_time": 0.0003941059112548828,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 17,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      27,
+      96,
+      34,
+      55,
+      53,
+      85,
+      44,
+      29,
+      3
+    ],
+    "profits": [
+      37,
+      83,
+      1,
+      90,
+      55,
+      15,
+      31,
+      56,
+      32
+    ],
+    "capacity": 213,
+    "solution": [
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1
+    ],
+    "objective": 301,
+    "solve_time": 0.0003440380096435547,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 18,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      67,
+      68,
+      12,
+      29,
+      25
+    ],
+    "profits": [
+      66,
+      74,
+      73,
+      94,
+      77
+    ],
+    "capacity": 100,
+    "solution": [
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "objective": 244,
+    "solve_time": 0.00028228759765625,
+    "n_items": 5,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 19,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      11,
+      62,
+      92,
+      98,
+      24,
+      24
+    ],
+    "profits": [
+      4,
+      15,
+      56,
+      55,
+      38,
+      31
+    ],
+    "capacity": 156,
+    "solution": [
+      1,
+      0,
+      1,
+      0,
+      1,
+      1
+    ],
+    "objective": 129,
+    "solve_time": 0.00022363662719726562,
+    "n_items": 6,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 20,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      47,
+      81,
+      97,
+      32,
+      21,
+      96,
+      64,
+      30,
+      63
+    ],
+    "profits": [
+      52,
+      91,
+      26,
+      100,
+      94,
+      19,
+      17,
+      54,
+      5
+    ],
+    "capacity": 266,
+    "solution": [
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    "objective": 391,
+    "solve_time": 0.0001976490020751953,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 21,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      44,
+      97,
+      100,
+      16,
+      90,
+      10
+    ],
+    "profits": [
+      75,
+      85,
+      90,
+      23,
+      90,
+      12
+    ],
+    "capacity": 178,
+    "solution": [
+      1,
+      0,
+      1,
+      1,
+      0,
+      1
+    ],
+    "objective": 200,
+    "solve_time": 0.00018310546875,
+    "n_items": 6,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 22,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      47,
+      32,
+      3,
+      78,
+      34,
+      67,
+      42,
+      38
+    ],
+    "profits": [
+      89,
+      10,
+      74,
+      75,
+      38,
+      27,
+      1,
+      94
+    ],
+    "capacity": 170,
+    "solution": [
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "objective": 332,
+    "solve_time": 0.00018310546875,
+    "n_items": 8,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 23,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      25,
+      4,
+      13,
+      7,
+      84,
+      90,
+      16,
+      75,
+      18,
+      37
+    ],
+    "profits": [
+      60,
+      72,
+      88,
+      5,
+      20,
+      29,
+      32,
+      100,
+      78,
+      33
+    ],
+    "capacity": 184,
+    "solution": [
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "objective": 436,
+    "solve_time": 0.00020956993103027344,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 24,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      50,
+      51,
+      44,
+      15,
+      94,
+      2,
+      18,
+      23,
+      28,
+      14
+    ],
+    "profits": [
+      2,
+      68,
+      97,
+      13,
+      30,
+      51,
+      93,
+      70,
+      77,
+      59
+    ],
+    "capacity": 170,
+    "solution": [
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "objective": 460,
+    "solve_time": 0.00019288063049316406,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 25,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      20,
+      87,
+      81,
+      3,
+      72,
+      9,
+      74
+    ],
+    "profits": [
+      83,
+      14,
+      44,
+      13,
+      57,
+      93,
+      9
+    ],
+    "capacity": 173,
+    "solution": [
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0
+    ],
+    "objective": 246,
+    "solve_time": 0.00019359588623046875,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 26,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      98,
+      31,
+      14,
+      49,
+      51,
+      67,
+      32
+    ],
+    "profits": [
+      96,
+      53,
+      29,
+      97,
+      93,
+      50,
+      3
+    ],
+    "capacity": 171,
+    "solution": [
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0
+    ],
+    "objective": 272,
+    "solve_time": 0.00020384788513183594,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 27,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      56,
+      15,
+      64,
+      85,
+      11,
+      73,
+      15,
+      75
+    ],
+    "profits": [
+      42,
+      1,
+      97,
+      17,
+      60,
+      19,
+      94,
+      74
+    ],
+    "capacity": 197,
+    "solution": [
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1
+    ],
+    "objective": 326,
+    "solve_time": 0.0001838207244873047,
+    "n_items": 8,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 28,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      44,
+      47,
+      64,
+      79,
+      85,
+      2,
+      67,
+      11,
+      29
+    ],
+    "profits": [
+      83,
+      26,
+      80,
+      47,
+      24,
+      34,
+      54,
+      77,
+      61
+    ],
+    "capacity": 214,
+    "solution": [
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1
+    ],
+    "objective": 361,
+    "solve_time": 0.00028514862060546875,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 29,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      87,
+      76,
+      61,
+      29,
+      42,
+      12,
+      38,
+      93,
+      43,
+      12
+    ],
+    "profits": [
+      66,
+      97,
+      87,
+      28,
+      46,
+      54,
+      25,
+      27,
+      24,
+      100
+    ],
+    "capacity": 246,
+    "solution": [
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "objective": 412,
+    "solve_time": 0.0004558563232421875,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 30,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      85,
+      82,
+      96,
+      11,
+      89,
+      7,
+      48,
+      60,
+      36
+    ],
+    "profits": [
+      15,
+      20,
+      83,
+      32,
+      32,
+      93,
+      15,
+      92,
+      93
+    ],
+    "capacity": 257,
+    "solution": [
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1
+    ],
+    "objective": 393,
+    "solve_time": 0.00035953521728515625,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 31,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      17,
+      16,
+      29,
+      58,
+      16,
+      46,
+      12,
+      55
+    ],
+    "profits": [
+      3,
+      71,
+      6,
+      20,
+      18,
+      84,
+      6,
+      43
+    ],
+    "capacity": 124,
+    "solution": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1
+    ],
+    "objective": 198,
+    "solve_time": 0.0003314018249511719,
+    "n_items": 8,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 32,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      52,
+      69,
+      81,
+      40,
+      83,
+      32,
+      99,
+      51
+    ],
+    "profits": [
+      74,
+      88,
+      80,
+      86,
+      54,
+      5,
+      50,
+      19
+    ],
+    "capacity": 254,
+    "solution": [
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "objective": 328,
+    "solve_time": 0.0003368854522705078,
+    "n_items": 8,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 33,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      24,
+      23,
+      25,
+      65,
+      58,
+      95,
+      42,
+      29,
+      5,
+      1
+    ],
+    "profits": [
+      38,
+      93,
+      53,
+      90,
+      11,
+      10,
+      84,
+      11,
+      6,
+      41
+    ],
+    "capacity": 184,
+    "solution": [
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1
+    ],
+    "objective": 399,
+    "solve_time": 0.00048232078552246094,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 34,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      69,
+      10,
+      84,
+      85,
+      81,
+      91,
+      24,
+      98,
+      33,
+      81
+    ],
+    "profits": [
+      58,
+      78,
+      63,
+      65,
+      62,
+      78,
+      74,
+      14,
+      83,
+      54
+    ],
+    "capacity": 328,
+    "solution": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0
+    ],
+    "objective": 441,
+    "solve_time": 0.0003809928894042969,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 35,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      52,
+      97,
+      86,
+      84,
+      47,
+      79
+    ],
+    "profits": [
+      39,
+      69,
+      64,
+      25,
+      27,
+      7
+    ],
+    "capacity": 222,
+    "solution": [
+      1,
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    "objective": 135,
+    "solve_time": 0.00033545494079589844,
+    "n_items": 6,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 36,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      44,
+      48,
+      17,
+      42,
+      61
+    ],
+    "profits": [
+      24,
+      34,
+      37,
+      51,
+      37
+    ],
+    "capacity": 106,
+    "solution": [
+      1,
+      0,
+      1,
+      1,
+      0
+    ],
+    "objective": 112,
+    "solve_time": 0.00030803680419921875,
+    "n_items": 5,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 37,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      33,
+      44,
+      38,
+      19,
+      69,
+      24,
+      30,
+      80,
+      95
+    ],
+    "profits": [
+      68,
+      92,
+      86,
+      49,
+      78,
+      33,
+      47,
+      54,
+      97
+    ],
+    "capacity": 216,
+    "solution": [
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    "objective": 375,
+    "solve_time": 0.00033926963806152344,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 38,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      49,
+      66,
+      21,
+      81,
+      56,
+      54,
+      77,
+      64,
+      8,
+      29
+    ],
+    "profits": [
+      18,
+      74,
+      4,
+      21,
+      60,
+      70,
+      51,
+      87,
+      92,
+      14
+    ],
+    "capacity": 252,
+    "solution": [
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0
+    ],
+    "objective": 383,
+    "solve_time": 0.00037598609924316406,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 39,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      62,
+      64,
+      10,
+      63,
+      73,
+      59,
+      9,
+      53,
+      94,
+      73
+    ],
+    "profits": [
+      14,
+      96,
+      96,
+      17,
+      81,
+      41,
+      60,
+      45,
+      79,
+      100
+    ],
+    "capacity": 280,
+    "solution": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1
+    ],
+    "objective": 438,
+    "solve_time": 0.0003483295440673828,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 40,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      94,
+      95,
+      10,
+      26,
+      73,
+      60,
+      6,
+      10,
+      53
+    ],
+    "profits": [
+      62,
+      17,
+      18,
+      13,
+      57,
+      1,
+      58,
+      48,
+      47
+    ],
+    "capacity": 214,
+    "solution": [
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "objective": 246,
+    "solve_time": 0.0005331039428710938,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 41,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      53,
+      73,
+      77,
+      93,
+      80,
+      52,
+      50,
+      24,
+      60
+    ],
+    "profits": [
+      14,
+      94,
+      85,
+      12,
+      79,
+      12,
+      73,
+      9,
+      49
+    ],
+    "capacity": 281,
+    "solution": [
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "objective": 331,
+    "solve_time": 0.00026226043701171875,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 42,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      73,
+      42,
+      93,
+      78,
+      21,
+      68,
+      74,
+      34
+    ],
+    "profits": [
+      74,
+      90,
+      82,
+      77,
+      64,
+      28,
+      80,
+      37
+    ],
+    "capacity": 242,
+    "solution": [
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    "objective": 316,
+    "solve_time": 0.0002105236053466797,
+    "n_items": 8,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 43,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      32,
+      32,
+      16,
+      97,
+      15,
+      9,
+      94,
+      56
+    ],
+    "profits": [
+      44,
+      74,
+      39,
+      13,
+      73,
+      18,
+      56,
+      95
+    ],
+    "capacity": 176,
+    "solution": [
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1
+    ],
+    "objective": 343,
+    "solve_time": 0.0001952648162841797,
+    "n_items": 8,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 44,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      37,
+      79,
+      62,
+      48,
+      14,
+      38,
+      66,
+      99,
+      1,
+      72
+    ],
+    "profits": [
+      85,
+      96,
+      43,
+      12,
+      28,
+      86,
+      88,
+      64,
+      13,
+      13
+    ],
+    "capacity": 258,
+    "solution": [
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0
+    ],
+    "objective": 396,
+    "solve_time": 0.00019693374633789062,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 45,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      59,
+      4,
+      69,
+      55,
+      2,
+      10,
+      46
+    ],
+    "profits": [
+      73,
+      83,
+      44,
+      30,
+      97,
+      46,
+      32
+    ],
+    "capacity": 122,
+    "solution": [
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "objective": 331,
+    "solve_time": 0.00017714500427246094,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 46,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      2,
+      31,
+      52,
+      92,
+      74,
+      79,
+      55
+    ],
+    "profits": [
+      12,
+      40,
+      100,
+      5,
+      88,
+      69,
+      29
+    ],
+    "capacity": 192,
+    "solution": [
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "objective": 240,
+    "solve_time": 0.00017642974853515625,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 47,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      84,
+      5,
+      11,
+      67,
+      100,
+      3,
+      67,
+      14,
+      66
+    ],
+    "profits": [
+      63,
+      10,
+      69,
+      90,
+      87,
+      3,
+      25,
+      25,
+      46
+    ],
+    "capacity": 208,
+    "solution": [
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0
+    ],
+    "objective": 284,
+    "solve_time": 0.00018978118896484375,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 48,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      86,
+      78,
+      81,
+      20,
+      2
+    ],
+    "profits": [
+      92,
+      29,
+      66,
+      91,
+      4
+    ],
+    "capacity": 134,
+    "solution": [
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    "objective": 187,
+    "solve_time": 0.00016689300537109375,
+    "n_items": 5,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 49,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      1,
+      16,
+      6,
+      82,
+      61
+    ],
+    "profits": [
+      99,
+      81,
+      97,
+      24,
+      29
+    ],
+    "capacity": 83,
+    "solution": [
+      1,
+      1,
+      1,
+      0,
+      0
+    ],
+    "objective": 277,
+    "solve_time": 0.00016832351684570312,
+    "n_items": 5,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 50,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      25,
+      6,
+      67,
+      81,
+      97,
+      93,
+      13,
+      78,
+      85,
+      70
+    ],
+    "profits": [
+      82,
+      84,
+      45,
+      5,
+      46,
+      21,
+      12,
+      13,
+      70,
+      51
+    ],
+    "capacity": 308,
+    "solution": [
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1
+    ],
+    "objective": 345,
+    "solve_time": 0.00022482872009277344,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 51,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      75,
+      55,
+      64,
+      9,
+      86,
+      45,
+      16,
+      82
+    ],
+    "profits": [
+      74,
+      6,
+      20,
+      2,
+      28,
+      10,
+      71,
+      53
+    ],
+    "capacity": 216,
+    "solution": [
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    "objective": 200,
+    "solve_time": 0.00018596649169921875,
+    "n_items": 8,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 52,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      75,
+      62,
+      51,
+      6,
+      8,
+      62,
+      1,
+      5,
+      22,
+      89
+    ],
+    "profits": [
+      46,
+      71,
+      42,
+      18,
+      38,
+      10,
+      78,
+      19,
+      38,
+      99
+    ],
+    "capacity": 190,
+    "solution": [
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "objective": 343,
+    "solve_time": 0.000202178955078125,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 53,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      46,
+      55,
+      79,
+      26,
+      64,
+      88,
+      58,
+      45
+    ],
+    "profits": [
+      15,
+      25,
+      95,
+      55,
+      31,
+      42,
+      58,
+      54
+    ],
+    "capacity": 230,
+    "solution": [
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    "objective": 262,
+    "solve_time": 0.0002090930938720703,
+    "n_items": 8,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 54,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      26,
+      65,
+      45,
+      95,
+      16,
+      15,
+      47,
+      51,
+      70
+    ],
+    "profits": [
+      41,
+      92,
+      48,
+      13,
+      12,
+      98,
+      14,
+      95,
+      28
+    ],
+    "capacity": 215,
+    "solution": [
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    "objective": 374,
+    "solve_time": 0.0002117156982421875,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 55,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      31,
+      62,
+      43,
+      79,
+      62
+    ],
+    "profits": [
+      41,
+      64,
+      98,
+      42,
+      16
+    ],
+    "capacity": 138,
+    "solution": [
+      1,
+      1,
+      1,
+      0,
+      0
+    ],
+    "objective": 203,
+    "solve_time": 0.00017833709716796875,
+    "n_items": 5,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 56,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      85,
+      22,
+      95,
+      59,
+      61,
+      32,
+      93
+    ],
+    "profits": [
+      4,
+      30,
+      42,
+      48,
+      48,
+      15,
+      23
+    ],
+    "capacity": 224,
+    "solution": [
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0
+    ],
+    "objective": 141,
+    "solve_time": 0.00020003318786621094,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 57,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      58,
+      36,
+      57,
+      59,
+      71
+    ],
+    "profits": [
+      55,
+      65,
+      59,
+      66,
+      62
+    ],
+    "capacity": 140,
+    "solution": [
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    "objective": 131,
+    "solve_time": 0.00017189979553222656,
+    "n_items": 5,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 58,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      25,
+      79,
+      35,
+      55,
+      20,
+      44
+    ],
+    "profits": [
+      53,
+      63,
+      53,
+      37,
+      97,
+      52
+    ],
+    "capacity": 129,
+    "solution": [
+      1,
+      0,
+      1,
+      0,
+      1,
+      1
+    ],
+    "objective": 255,
+    "solve_time": 0.00020933151245117188,
+    "n_items": 6,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 59,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      74,
+      56,
+      89,
+      13,
+      93,
+      86,
+      51,
+      74,
+      53
+    ],
+    "profits": [
+      27,
+      80,
+      25,
+      32,
+      52,
+      84,
+      39,
+      50,
+      5
+    ],
+    "capacity": 294,
+    "solution": [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0
+    ],
+    "objective": 285,
+    "solve_time": 0.0002346038818359375,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 60,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      6,
+      8,
+      87,
+      85,
+      83
+    ],
+    "profits": [
+      6,
+      8,
+      29,
+      57,
+      34
+    ],
+    "capacity": 134,
+    "solution": [
+      1,
+      1,
+      0,
+      1,
+      0
+    ],
+    "objective": 71,
+    "solve_time": 0.00017952919006347656,
+    "n_items": 5,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 61,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      18,
+      74,
+      32,
+      7,
+      75,
+      91,
+      2
+    ],
+    "profits": [
+      44,
+      83,
+      71,
+      86,
+      42,
+      38,
+      71
+    ],
+    "capacity": 150,
+    "solution": [
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1
+    ],
+    "objective": 355,
+    "solve_time": 0.0002028942108154297,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 62,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      24,
+      61,
+      67,
+      12,
+      51
+    ],
+    "profits": [
+      37,
+      51,
+      96,
+      8,
+      100
+    ],
+    "capacity": 108,
+    "solution": [
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    "objective": 145,
+    "solve_time": 0.00019741058349609375,
+    "n_items": 5,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 63,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      78,
+      43,
+      32,
+      78,
+      69,
+      15,
+      71
+    ],
+    "profits": [
+      76,
+      39,
+      93,
+      65,
+      34,
+      2,
+      68
+    ],
+    "capacity": 193,
+    "solution": [
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "objective": 237,
+    "solve_time": 0.00021314620971679688,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 64,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      76,
+      53,
+      47,
+      17,
+      72,
+      17
+    ],
+    "profits": [
+      42,
+      84,
+      93,
+      99,
+      96,
+      56
+    ],
+    "capacity": 141,
+    "solution": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1
+    ],
+    "objective": 332,
+    "solve_time": 0.00021028518676757812,
+    "n_items": 6,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 65,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      84,
+      81,
+      100,
+      66,
+      15,
+      51
+    ],
+    "profits": [
+      45,
+      85,
+      40,
+      33,
+      9,
+      84
+    ],
+    "capacity": 198,
+    "solution": [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1
+    ],
+    "objective": 202,
+    "solve_time": 0.00023055076599121094,
+    "n_items": 6,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 66,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      5,
+      44,
+      48,
+      47,
+      92,
+      16,
+      31,
+      19,
+      25
+    ],
+    "profits": [
+      91,
+      95,
+      5,
+      64,
+      24,
+      20,
+      30,
+      20,
+      50
+    ],
+    "capacity": 164,
+    "solution": [
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1
+    ],
+    "objective": 340,
+    "solve_time": 0.00022363662719726562,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 67,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      59,
+      73,
+      50,
+      2,
+      9,
+      27,
+      25,
+      85,
+      85,
+      86
+    ],
+    "profits": [
+      64,
+      56,
+      65,
+      41,
+      68,
+      80,
+      77,
+      62,
+      6,
+      73
+    ],
+    "capacity": 250,
+    "solution": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0
+    ],
+    "objective": 451,
+    "solve_time": 0.000240325927734375,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 68,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      75,
+      54,
+      89,
+      34,
+      94,
+      85,
+      34
+    ],
+    "profits": [
+      49,
+      54,
+      77,
+      69,
+      86,
+      37,
+      51
+    ],
+    "capacity": 232,
+    "solution": [
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1
+    ],
+    "objective": 260,
+    "solve_time": 0.00024318695068359375,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 69,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      91,
+      31,
+      59,
+      13,
+      86,
+      39,
+      35
+    ],
+    "profits": [
+      59,
+      50,
+      85,
+      54,
+      52,
+      11,
+      3
+    ],
+    "capacity": 177,
+    "solution": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1
+    ],
+    "objective": 203,
+    "solve_time": 0.00020933151245117188,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 70,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      100,
+      92,
+      63,
+      64,
+      40,
+      18,
+      1
+    ],
+    "profits": [
+      34,
+      32,
+      20,
+      26,
+      3,
+      61,
+      93
+    ],
+    "capacity": 189,
+    "solution": [
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1
+    ],
+    "objective": 214,
+    "solve_time": 0.000232696533203125,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 71,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      45,
+      43,
+      31,
+      15,
+      60,
+      57,
+      1,
+      42,
+      28
+    ],
+    "profits": [
+      18,
+      71,
+      53,
+      64,
+      72,
+      99,
+      81,
+      63,
+      88
+    ],
+    "capacity": 161,
+    "solution": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "objective": 420,
+    "solve_time": 0.0002143383026123047,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 72,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      99,
+      77,
+      66,
+      91,
+      52,
+      73,
+      29
+    ],
+    "profits": [
+      97,
+      63,
+      79,
+      47,
+      87,
+      8,
+      12
+    ],
+    "capacity": 244,
+    "solution": [
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "objective": 263,
+    "solve_time": 0.0002086162567138672,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 73,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      74,
+      81,
+      45,
+      65,
+      56,
+      97,
+      66,
+      42
+    ],
+    "profits": [
+      97,
+      11,
+      99,
+      16,
+      29,
+      83,
+      74,
+      98
+    ],
+    "capacity": 263,
+    "solution": [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1
+    ],
+    "objective": 377,
+    "solve_time": 0.00021910667419433594,
+    "n_items": 8,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 74,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      64,
+      35,
+      1,
+      13,
+      30,
+      5,
+      51,
+      78,
+      97
+    ],
+    "profits": [
+      49,
+      88,
+      99,
+      86,
+      47,
+      33,
+      98,
+      25,
+      42
+    ],
+    "capacity": 187,
+    "solution": [
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    "objective": 453,
+    "solve_time": 0.0002346038818359375,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 75,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      80,
+      65,
+      9,
+      23,
+      56
+    ],
+    "profits": [
+      55,
+      81,
+      27,
+      93,
+      45
+    ],
+    "capacity": 116,
+    "solution": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ],
+    "objective": 201,
+    "solve_time": 0.00019884109497070312,
+    "n_items": 5,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 76,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      24,
+      4,
+      6,
+      38,
+      96,
+      5,
+      37,
+      11,
+      94
+    ],
+    "profits": [
+      68,
+      77,
+      72,
+      66,
+      78,
+      1,
+      87,
+      74,
+      74
+    ],
+    "capacity": 158,
+    "solution": [
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0
+    ],
+    "objective": 445,
+    "solve_time": 0.00022912025451660156,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 77,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      81,
+      39,
+      5,
+      91,
+      24,
+      11,
+      63
+    ],
+    "profits": [
+      24,
+      86,
+      45,
+      1,
+      96,
+      52,
+      27
+    ],
+    "capacity": 157,
+    "solution": [
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1
+    ],
+    "objective": 306,
+    "solve_time": 0.00020503997802734375,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 78,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      54,
+      3,
+      76,
+      41,
+      70,
+      90,
+      62,
+      68,
+      26
+    ],
+    "profits": [
+      24,
+      42,
+      86,
+      53,
+      35,
+      78,
+      86,
+      91,
+      30
+    ],
+    "capacity": 245,
+    "solution": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "objective": 335,
+    "solve_time": 0.00024890899658203125,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 79,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      60,
+      45,
+      40,
+      12,
+      28,
+      55,
+      89,
+      87,
+      19
+    ],
+    "profits": [
+      68,
+      9,
+      68,
+      35,
+      45,
+      72,
+      43,
+      81,
+      54
+    ],
+    "capacity": 218,
+    "solution": [
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1
+    ],
+    "objective": 342,
+    "solve_time": 0.0002372264862060547,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 80,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      64,
+      30,
+      78,
+      41,
+      54,
+      14,
+      12,
+      58,
+      19,
+      100
+    ],
+    "profits": [
+      86,
+      71,
+      74,
+      60,
+      7,
+      40,
+      50,
+      92,
+      22,
+      50
+    ],
+    "capacity": 235,
+    "solution": [
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0
+    ],
+    "objective": 399,
+    "solve_time": 0.0002696514129638672,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 81,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      14,
+      11,
+      37,
+      9,
+      7,
+      36,
+      21
+    ],
+    "profits": [
+      56,
+      2,
+      31,
+      46,
+      97,
+      64,
+      89
+    ],
+    "capacity": 68,
+    "solution": [
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1
+    ],
+    "objective": 290,
+    "solve_time": 0.000232696533203125,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 82,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      45,
+      43,
+      89,
+      96,
+      97,
+      76,
+      51
+    ],
+    "profits": [
+      55,
+      99,
+      29,
+      35,
+      90,
+      39,
+      24
+    ],
+    "capacity": 248,
+    "solution": [
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1
+    ],
+    "objective": 268,
+    "solve_time": 0.0002193450927734375,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 83,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      33,
+      90,
+      91,
+      31,
+      53,
+      99,
+      75,
+      22
+    ],
+    "profits": [
+      60,
+      62,
+      66,
+      3,
+      30,
+      86,
+      25,
+      30
+    ],
+    "capacity": 247,
+    "solution": [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1
+    ],
+    "objective": 242,
+    "solve_time": 0.0002460479736328125,
+    "n_items": 8,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 84,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      18,
+      16,
+      35,
+      88,
+      1,
+      29
+    ],
+    "profits": [
+      7,
+      57,
+      26,
+      80,
+      59,
+      79
+    ],
+    "capacity": 94,
+    "solution": [
+      0,
+      1,
+      1,
+      0,
+      1,
+      1
+    ],
+    "objective": 221,
+    "solve_time": 0.0002682209014892578,
+    "n_items": 6,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 85,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      44,
+      87,
+      48,
+      95,
+      100,
+      59,
+      68,
+      26
+    ],
+    "profits": [
+      82,
+      68,
+      91,
+      27,
+      79,
+      48,
+      19,
+      18
+    ],
+    "capacity": 264,
+    "solution": [
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1
+    ],
+    "objective": 307,
+    "solve_time": 0.00022792816162109375,
+    "n_items": 8,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 86,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      32,
+      11,
+      43,
+      66,
+      32,
+      96,
+      78,
+      52
+    ],
+    "profits": [
+      94,
+      44,
+      14,
+      4,
+      94,
+      96,
+      74,
+      11
+    ],
+    "capacity": 205,
+    "solution": [
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    "objective": 328,
+    "solve_time": 0.0002224445343017578,
+    "n_items": 8,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 87,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      5,
+      6,
+      25,
+      58,
+      7,
+      99
+    ],
+    "profits": [
+      46,
+      27,
+      52,
+      80,
+      32,
+      5
+    ],
+    "capacity": 100,
+    "solution": [
+      1,
+      0,
+      1,
+      1,
+      1,
+      0
+    ],
+    "objective": 210,
+    "solve_time": 0.0002014636993408203,
+    "n_items": 6,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 88,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      86,
+      12,
+      64,
+      39,
+      78
+    ],
+    "profits": [
+      7,
+      90,
+      70,
+      45,
+      21
+    ],
+    "capacity": 140,
+    "solution": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ],
+    "objective": 205,
+    "solve_time": 0.00019741058349609375,
+    "n_items": 5,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 89,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      31,
+      50,
+      40,
+      24,
+      42,
+      16,
+      1,
+      29,
+      12,
+      42
+    ],
+    "profits": [
+      87,
+      17,
+      1,
+      12,
+      51,
+      28,
+      49,
+      3,
+      34,
+      42
+    ],
+    "capacity": 144,
+    "solution": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1
+    ],
+    "objective": 291,
+    "solve_time": 0.0002334117889404297,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 90,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      56,
+      79,
+      47,
+      85,
+      53,
+      27,
+      23
+    ],
+    "profits": [
+      33,
+      60,
+      25,
+      92,
+      48,
+      87,
+      69
+    ],
+    "capacity": 185,
+    "solution": [
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1
+    ],
+    "objective": 273,
+    "solve_time": 0.00021004676818847656,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 91,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      23,
+      75,
+      34,
+      25,
+      94,
+      49,
+      5
+    ],
+    "profits": [
+      50,
+      47,
+      87,
+      72,
+      20,
+      16,
+      61
+    ],
+    "capacity": 152,
+    "solution": [
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1
+    ],
+    "objective": 286,
+    "solve_time": 0.00022149085998535156,
+    "n_items": 7,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 92,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      32,
+      14,
+      3,
+      92,
+      9
+    ],
+    "profits": [
+      1,
+      94,
+      19,
+      82,
+      4
+    ],
+    "capacity": 75,
+    "solution": [
+      1,
+      1,
+      1,
+      0,
+      1
+    ],
+    "objective": 118,
+    "solve_time": 0.00017571449279785156,
+    "n_items": 5,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 93,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      12,
+      71,
+      63,
+      48,
+      25
+    ],
+    "profits": [
+      9,
+      57,
+      24,
+      60,
+      69
+    ],
+    "capacity": 110,
+    "solution": [
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    "objective": 138,
+    "solve_time": 0.0001690387725830078,
+    "n_items": 5,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 94,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      50,
+      1,
+      29,
+      86,
+      54,
+      62,
+      46,
+      17,
+      90,
+      78
+    ],
+    "profits": [
+      100,
+      86,
+      30,
+      26,
+      25,
+      92,
+      56,
+      46,
+      97,
+      61
+    ],
+    "capacity": 256,
+    "solution": [
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0
+    ],
+    "objective": 451,
+    "solve_time": 0.0002129077911376953,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 95,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      99,
+      8,
+      37,
+      74,
+      82,
+      15,
+      32,
+      55,
+      80,
+      12
+    ],
+    "profits": [
+      61,
+      30,
+      22,
+      52,
+      42,
+      64,
+      32,
+      83,
+      8,
+      87
+    ],
+    "capacity": 247,
+    "solution": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1
+    ],
+    "objective": 370,
+    "solve_time": 0.0002498626708984375,
+    "n_items": 10,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 96,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      74,
+      35,
+      39,
+      2,
+      71
+    ],
+    "profits": [
+      17,
+      66,
+      73,
+      85,
+      71
+    ],
+    "capacity": 110,
+    "solution": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ],
+    "objective": 224,
+    "solve_time": 0.000217437744140625,
+    "n_items": 5,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 97,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      74,
+      83,
+      32,
+      13,
+      90,
+      15
+    ],
+    "profits": [
+      60,
+      24,
+      13,
+      78,
+      15,
+      68
+    ],
+    "capacity": 154,
+    "solution": [
+      1,
+      0,
+      1,
+      1,
+      0,
+      1
+    ],
+    "objective": 219,
+    "solve_time": 0.00018024444580078125,
+    "n_items": 6,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 98,
+    "alpha_idx": 0
+  },
+  {
+    "problem_type": "KP",
+    "weights": [
+      7,
+      18,
+      80,
+      51,
+      13,
+      100,
+      27,
+      1,
+      93
+    ],
+    "profits": [
+      2,
+      56,
+      100,
+      58,
+      59,
+      39,
+      13,
+      58,
+      90
+    ],
+    "capacity": 195,
+    "solution": [
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0
+    ],
+    "objective": 344,
+    "solve_time": 0.00022721290588378906,
+    "n_items": 9,
+    "R": 100,
+    "alpha": 0.5,
+    "instance_idx": 99,
+    "alpha_idx": 0
+  }
+]

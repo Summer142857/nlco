@@ -1,0 +1,16 @@
+problem: CVRP
+scale: M
+seed: 43
+step1:
+  dataset_dir: datasets/CVRP
+  n_nodes: 11-15
+
+  n_instances: 50
+  output: step1_instance_creation/generated_data/CVRP/CVRP_M.json
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/CVRP/CVRP_contexts.json
+  instance_dir: step1_instance_creation/generated_data/CVRP
+  output_root_dir: step2_contextualization/dataset/CVRP
+  k_per_call: 20
+  n_target: 30

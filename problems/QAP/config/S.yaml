@@ -1,0 +1,16 @@
+problem: QAP
+scale: S
+seed: 43
+step1:
+  dataset_dir: datasets/QAP
+  n_nodes: 3-5
+
+  n_instances: 50
+  output: step1_instance_creation/generated_data/QAP/QAP_S.json
+step2:
+  load_cached_contexts: true
+  contexts_audit_path: datasets/cached_context/QAP/QAP_contexts.json
+  instance_dir: step1_instance_creation/generated_data/QAP
+  output_root_dir: step2_contextualization/dataset/QAP
+  k_per_call: 20
+  n_target: 30
