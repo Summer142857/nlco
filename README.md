@@ -399,10 +399,11 @@ Paper link:
 If you use NLCO in your research, please cite:
 
 ```bibtex
-@article{jiang2026reasoning,
-  title={Reasoning in a Combinatorial and Constrained World: Benchmarking LLMs on Natural-Language Combinatorial Optimization},
+@inproceedings{
+  jiang2026reasoning,
+  title={Reasoning in a Combinatorial and Constrained World: Benchmarking {LLM}s on Natural-Language Combinatorial Optimization},
   author={Jiang, Xia and Chen, Jing and Zhang, Cong and Gao, Jie and Hu, Chengpeng and Zhang, Chenhao and Wu, Yaoxin and Zhang, Yingqian},
-  journal={arXiv preprint arXiv:2602.02188},
+  booktitle={Findings of the Association for Computational Linguistics: ACL 2026},
   year={2026}
 }
 ```
